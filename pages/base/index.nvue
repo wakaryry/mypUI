@@ -13,12 +13,19 @@
 </template>
 
 <script>
+import introScroll from '../components/introScroll.vue'
+import hIntroCard from '@/components/card/hIntroCard.vue'
+
 import contentBoxMixin from '@/mypUI/myp-mixin/contentBoxMixin.js';
 import toastMixin from '@/mypUI/myp-mixin/toastMixin.js'
 import navHelper from '@/router/navHelper.js'
 import dataMixin from './mixin/indexData.js'
 
 export default {
+	components: {
+		introScroll,
+		hIntroCard
+	},
 	mixins: [contentBoxMixin, toastMixin, dataMixin, navHelper],
 	data() {
 		return {

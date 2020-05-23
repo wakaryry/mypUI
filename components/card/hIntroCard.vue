@@ -49,7 +49,7 @@
 <style lang="scss" scoped>
 	@import '@/mypUI/mypui.scss';
 	.hic {
-		background-color: $myp-bg-color-second;
+		background-color: $myp-bg-color-light;
 		padding: 0 24rpx;
 		border-radius: 12rpx;
 		

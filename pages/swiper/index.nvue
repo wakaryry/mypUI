@@ -2,53 +2,12 @@
 	<view>
 		<myp-navbar :lefts="leftIcons" title="基础组件" @leftAction="navLeftAction"></myp-navbar>
 		<scroll-view class="m-page" :scroll-y="true" :style="mypContentHeightStyle">
-			<!-- #ifdef APP-NVUE -->
-			<myp-swiper :width="750" :height="1000" :widthScale="0.827" :heightScale="0.84" :pagingEnabled="false">
-				<myp-swiper-item>
-					<calendar-goods></calendar-goods>
-				</myp-swiper-item>
-				<myp-swiper-item>
-					<calendar-goods></calendar-goods>
-				</myp-swiper-item>
-				<myp-swiper-item>
-					<calendar-goods></calendar-goods>
-				</myp-swiper-item>
-			</myp-swiper>
-			<myp-swiper :width="750" :height="1000" :widthScale="0.827" :heightScale="0.84" :pagingEnabled="true">
-				<myp-swiper-item>
-					<calendar-goods></calendar-goods>
-				</myp-swiper-item>
-				<myp-swiper-item>
-					<calendar-goods></calendar-goods>
-				</myp-swiper-item>
-				<myp-swiper-item>
-					<calendar-goods></calendar-goods>
-				</myp-swiper-item>
-			</myp-swiper>
-			<!-- #endif -->
-			<!-- #ifndef APP-NVUE -->
-			<swiper class="bi-swiper" previous-margin="32rpx" next-margin="32rpx">
-				<swiper-item>
-					<image src="/static/swiper/1.jpeg" class="bi-swiper-image" mode="aspectFill"></image>
-				</swiper-item>
-				<swiper-item>
-					<image src="/static/swiper/2.jpeg" class="bi-swiper-image" mode="aspectFill"></image>
-				</swiper-item>
-				<swiper-item>
-					<image src="/static/swiper/3.jpg" class="bi-swiper-image" mode="aspectFill"></image>
-				</swiper-item>
-			</swiper>
-			<!-- #endif -->
+			
 		</scroll-view>
 	</view>
 </template>
 
 <script>
-	import mypNavbar from '@/mypUI/myp-navbar/index.vue'
-	// #ifdef APP-NVUE
-	import mypSwiper from '@/mypUI/myp-banner/scroll.vue'
-	import mypSwiperItem from '@/mypUI/myp-banner/item.vue'
-	// #endif
 	
 	import calendarGoods from '@/components/card/calendarGoods.vue'
 	
@@ -57,11 +16,6 @@
 	
 	export default {
 		components: {
-			mypNavbar,
-			// #ifdef APP-NVUE
-			mypSwiper,
-			mypSwiperItem,
-			// #endif
 			calendarGoods
 		},
 		mixins: [contentBoxMixin, navHelper],

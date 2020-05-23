@@ -1,0 +1,87 @@
+<template>
+	<view>
+		<myp-navbar :lefts="leftIcons" title="宫格" @leftAction="navLeftAction"></myp-navbar>
+		<scroll-view class="m-page" :scroll-y="true" :style="mypContentHeightStyle">
+			<view style="height: 24rpx;"></view>
+			<myp-grid :items="items" iconLabel="icon" textLabel="name" itemHeight="160rpx" boxStyle="margin-left:32rpx;margin-right:32rpx;background-color:#FFFFFF;"></myp-grid>
+			<view style="height: 24rpx;"></view>
+			<myp-grid :items="items" iconType="error" mode="left" iconLabel="icon" textLabel="name" itemHeight="160rpx" boxStyle="margin-left:32rpx;margin-right:32rpx;background-color:#FFFFFF;"></myp-grid>
+			<view style="height: 24rpx;"></view>
+			<myp-grid :hasLine="false" border="none" flex="space-between" itemWidth="140rpx" :items="itemsTwo" :columns="3" iconLabel="icon" iconType="primary" textLabel="name" itemHeight="160rpx" boxStyle="margin-left:32rpx;margin-right:32rpx;background-color:#FFFFFF;"></myp-grid>
+			<view style="height: 24rpx;"></view>
+			<myp-grid :hasLine="false" border="none" flex="center" itemWidth="160rpx" :items="itemsTwo" :columns="3" iconLabel="icon" iconType="warning" textLabel="name" itemHeight="160rpx" boxStyle="margin-left:32rpx;margin-right:32rpx;background-color:#FFFFFF;"></myp-grid>
+			<view style="height: 24rpx;"></view>
+			<myp-grid :hasLine="false" border="none" flex="center" itemWidth="160rpx" :items="itemsThree" :columns="3" iconKind="text" iconLabel="icon" iconType="third" iconSize="ll" textLabel="name" iconTextSpace="24rpx" itemHeight="160rpx" boxStyle="margin-left:32rpx;margin-right:32rpx;background-color:#FFFFFF;"></myp-grid>
+			<view style="height: 24rpx;"></view>
+		</scroll-view>
+		<myp-toast ref="myp-toast"></myp-toast>
+	</view>
+</template>
+
+<script>
+import mypNavbar from '@/mypUI/myp-navbar/index.vue';
+import mypToast from '@/mypUI/myp-notify/toast.vue'
+import mypGrid from '@/mypUI/myp-grid/index.vue'
+import mypTitle from '@/mypUI/myp-title/index.vue'
+
+import contentBoxMixin from '@/mypUI/myp-mixin/contentBoxMixin.js';
+import toastMixin from '@/mypUI/myp-mixin/toastMixin.js'
+import navHelper from '@/router/navHelper.js'
+
+export default {
+	components: {
+		mypNavbar,
+		mypToast,
+		mypGrid,
+		mypTitle
+	},
+	mixins: [contentBoxMixin, toastMixin, navHelper],
+	data() {
+		return {
+			items: [{
+				icon: 'class',
+				name: '校友'
+			}, {
+				icon: 'circle-play',
+				name: '电影'
+			}, {
+				icon: 'task',
+				name: '计划'
+			}, {
+				icon: 'radio-button',
+				name: '戏曲'
+			}, {
+				icon: 'solid-camera',
+				name: '自拍'
+			}],
+			itemsTwo: [{
+				icon: 'class',
+				name: '校友'
+			}, {
+				icon: 'circle-play',
+				name: '电影'
+			}, {
+				icon: 'task',
+				name: '计划'
+			}],
+			itemsThree: [{
+				icon: '10K+',
+				name: '校友'
+			}, {
+				icon: '6K+',
+				name: '电影'
+			}, {
+				icon: '298',
+				name: '计划'
+			}]
+		}
+	},
+	methods: {
+	}
+};
+</script>
+
+<style lang="scss" scoped>
+@import '@/m.scss';
+
+</style>

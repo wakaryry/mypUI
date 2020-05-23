@@ -1,0 +1,110 @@
+<template>
+	<view>
+		<myp-navbar :lefts="leftIcons" title="基础组件" @leftAction="navLeftAction"></myp-navbar>
+		<scroll-view class="m-page" :scroll-y="true" :style="mypContentHeightStyle">
+			<!-- #ifdef APP-NVUE -->
+			<myp-swiper :width="750" :height="1000" :widthScale="0.827" :heightScale="0.84" :pagingEnabled="false">
+				<myp-swiper-item>
+					<calendar-goods></calendar-goods>
+				</myp-swiper-item>
+				<myp-swiper-item>
+					<calendar-goods></calendar-goods>
+				</myp-swiper-item>
+				<myp-swiper-item>
+					<calendar-goods></calendar-goods>
+				</myp-swiper-item>
+			</myp-swiper>
+			<myp-swiper :width="750" :height="1000" :widthScale="0.827" :heightScale="0.84" :pagingEnabled="true">
+				<myp-swiper-item>
+					<calendar-goods></calendar-goods>
+				</myp-swiper-item>
+				<myp-swiper-item>
+					<calendar-goods></calendar-goods>
+				</myp-swiper-item>
+				<myp-swiper-item>
+					<calendar-goods></calendar-goods>
+				</myp-swiper-item>
+			</myp-swiper>
+			<!-- #endif -->
+			<!-- #ifndef APP-NVUE -->
+			<swiper class="bi-swiper" previous-margin="32rpx" next-margin="32rpx">
+				<swiper-item>
+					<image src="/static/swiper/1.jpeg" class="bi-swiper-image" mode="aspectFill"></image>
+				</swiper-item>
+				<swiper-item>
+					<image src="/static/swiper/2.jpeg" class="bi-swiper-image" mode="aspectFill"></image>
+				</swiper-item>
+				<swiper-item>
+					<image src="/static/swiper/3.jpg" class="bi-swiper-image" mode="aspectFill"></image>
+				</swiper-item>
+			</swiper>
+			<!-- #endif -->
+		</scroll-view>
+	</view>
+</template>
+
+<script>
+	import mypNavbar from '@/mypUI/myp-navbar/index.vue'
+	// #ifdef APP-NVUE
+	import mypSwiper from '@/mypUI/myp-banner/scroll.vue'
+	import mypSwiperItem from '@/mypUI/myp-banner/item.vue'
+	// #endif
+	
+	import calendarGoods from '@/components/card/calendarGoods.vue'
+	
+	import contentBoxMixin from '@/mypUI/myp-mixin/contentBoxMixin.js'
+	import navHelper from '@/router/navHelper.js'
+	
+	export default {
+		components: {
+			mypNavbar,
+			// #ifdef APP-NVUE
+			mypSwiper,
+			mypSwiperItem,
+			// #endif
+			calendarGoods
+		},
+		mixins: [contentBoxMixin, navHelper],
+		data() {
+			return {
+				// 数据驱动的页面设计.这个数据完全可以从后台通过接口拉取
+				// 这样页面可以完全由后台来定义，只需要前台实现足够多的组件
+				// 后台直接决定调用谁，配置什么参数.适合于大多数的信息流页面
+				items: [
+					{
+						type: 'swiper',
+						config: {},
+					},
+					{
+						type: 'grid',
+						config: {}
+					},
+					{
+						type: ''
+					}
+				]
+			}
+		}
+	}
+</script>
+
+<style lang="scss">
+	@import '@/m.scss';
+	.bi {
+		&-swiper {
+			width: 750rpx;
+			height: 360rpx;
+			
+			&-image {
+				/* #ifndef APP-NVUE */
+				width: 100%;
+				height: 100%;
+				/* #endif */
+				/* #ifdef APP-NVUE */
+				width: 622rpx;
+				height: 360rpx;
+				/* #endif */
+			}
+		}
+	}
+</style>

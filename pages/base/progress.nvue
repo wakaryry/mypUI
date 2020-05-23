@@ -1,0 +1,37 @@
+<template>
+	<view>
+		<myp-navbar :lefts="leftIcons" title="进度条" @leftAction="navLeftAction"></myp-navbar>
+		<scroll-view class="m-page" :scroll-y="true" :style="mypContentHeightStyle">
+			
+		</scroll-view>
+		<myp-toast ref="myp-toast"></myp-toast>
+	</view>
+</template>
+
+<script>
+import mypNavbar from '@/mypUI/myp-navbar/index.vue';
+import mypToast from '@/mypUI/myp-notify/toast.vue'
+
+import contentBoxMixin from '@/mypUI/myp-mixin/contentBoxMixin.js';
+import toastMixin from '@/mypUI/myp-mixin/toastMixin.js'
+import navHelper from '@/router/navHelper.js'
+
+export default {
+	components: {
+		mypNavbar,
+		mypToast
+	},
+	mixins: [contentBoxMixin, toastMixin, navHelper],
+	data() {
+		return {
+		}
+	},
+	methods: {
+	}
+};
+</script>
+
+<style lang="scss" scoped>
+@import '@/m.scss';
+
+</style>

@@ -1,0 +1,90 @@
+<template>
+	<view>
+		<myp-navbar :lefts="leftIcons" title="图标" @leftAction="navLeftAction"></myp-navbar>
+		<scroll-view class="m-page" :scroll-y="true" :style="mypContentHeightStyle">
+			<myp-title bgType="none" centerIcon1="primary" centerIcon1Type="primary" centerIcon2="triangle-right" title2="主题配置" centerIcon2Type="third" centerStyle="padding-left:16rpx;padding-right:16rpx;background-color:#FFFFFF;border-radius:12rpx;height:60rpx;"></myp-title>
+			<view class="icon-margin icon-bw">
+				<myp-icon name="solid-plus" size="ll"></myp-icon>
+				<myp-icon name="solid-plus" type="primary" size="ll"></myp-icon>
+				<myp-icon name="solid-plus" type="success" size="ll"></myp-icon>
+				<myp-icon name="solid-plus" type="warning" size="ll"></myp-icon>
+				<myp-icon name="solid-plus" type="error" size="ll"></myp-icon>
+			</view>
+			<myp-title bgType="none" centerIcon1="primary" centerIcon1Type="primary" centerIcon2="triangle-right" title2="其它样式" centerIcon2Type="third" centerStyle="padding-left:16rpx;padding-right:16rpx;background-color:#FFFFFF;border-radius:12rpx;height:60rpx;"></myp-title>
+			<view class="icon-margin icon-bw">
+				<myp-icon name="solid-plus" type="warning" iconStyle="font-size:50rpx;"></myp-icon>
+				<myp-icon name="solid-plus" type="primary" size="ll" iconStyle="font-size:50rpx;"></myp-icon>
+				<myp-icon name="solid-plus" type="success" size="ll" iconStyle="font-size:50rpx; color:#FF0000;"></myp-icon>
+				<myp-icon name="solid-plus" type="warning" size="ll" iconStyle="font-size:50rpx;"></myp-icon>
+				<myp-icon name="solid-plus" type="error" size="ll" iconStyle="font-size:50rpx;"></myp-icon>
+			</view>
+			<myp-title bgType="none" centerIcon1="primary" centerIcon1Type="primary" centerIcon2="triangle-right" title2="使用图片" centerIcon2Type="third" centerStyle="padding-left:16rpx;padding-right:16rpx;background-color:#FFFFFF;border-radius:12rpx;height:60rpx;"></myp-title>
+			<view class="icon-margin icon-bw">
+				<myp-icon name="/static/pig.jpeg" iconStyle="width: 120rpx; height: 120rpx; border-radius:60rpx;" mode="aspectFill"></myp-icon>
+				<myp-icon name="https://img-cdn-qiniu.dcloud.net.cn/uploads/avatar/000/93/95/05_avatar_max.jpg" iconStyle="width: 160rpx; height: 160rpx;border-radius:24rpx;"></myp-icon>
+				<myp-icon name="/static/cat.jpg" iconStyle="width: 120rpx; height: 120rpx; border-radius:60rpx;"></myp-icon>
+			</view>
+			<myp-title bgType="none" centerIcon1="primary" centerIcon1Type="primary" centerIcon2="triangle-right" title2="图标列表" centerIcon2Type="third" centerStyle="padding-left:16rpx;padding-right:16rpx;background-color:#FFFFFF;border-radius:12rpx;height:60rpx;"></myp-title>
+			<myp-grid :columns="3" border="none" radius="none" :items="iconArray" iconLabel="name" textLabel="name" iconType="error" itemHeight="160rpx"></myp-grid>
+		</scroll-view>
+		<myp-toast ref="myp-toast"></myp-toast>
+	</view>
+</template>
+
+<script>
+import mypNavbar from '@/mypUI/myp-navbar/index.vue';
+import mypToast from '@/mypUI/myp-notify/toast.vue'
+import mypTitle from '@/mypUI/myp-title/index.vue'
+import mypGrid from '@/mypUI/myp-grid/index.vue'
+import mypIcon from '@/mypUI/myp-icon/index.vue'
+
+import contentBoxMixin from '@/mypUI/myp-mixin/contentBoxMixin.js';
+import toastMixin from '@/mypUI/myp-mixin/toastMixin.js'
+import navHelper from '@/router/navHelper.js'
+
+import icons from '@/mypUI/myp-icon/type.js'
+
+export default {
+	components: {
+		mypNavbar,
+		mypToast,
+		mypTitle,
+		mypIcon,
+		mypGrid
+	},
+	mixins: [contentBoxMixin, toastMixin, navHelper],
+	data() {
+		return {
+			icons
+		}
+	},
+	computed: {
+		iconArray() {
+			const ics = []
+			Object.keys(this.icons).forEach(val => {
+				ics.push({
+					name: val
+				})
+			})
+			return ics
+		}
+	},
+	methods: {
+	}
+};
+</script>
+
+<style lang="scss" scoped>
+@import '@/m.scss';
+.icon {
+	&-margin {
+		margin-left: 32rpx;
+		margin-right: 32rpx;
+	}
+	&-bw {
+		flex-direction: row;
+		justify-content: space-between;
+		align-items: center;
+	}
+}
+</style>

@@ -1,0 +1,104 @@
+<template>
+	<view>
+		<myp-navbar :lefts="leftIcons" title="Tabbar" @leftAction="navLeftAction"></myp-navbar>
+		<myp-tabbar ref="tabbar" :top="navHeight" :tabs="tabs" :tabStyle="tabStyle" @selected="tabbarSwitched">
+			<home-tab></home-tab>
+			<mine-tab></mine-tab>
+		</myp-tabbar>
+		<plus-menu :show="menuVisible" @cancel="toCloseMenu" @page="toPage"></plus-menu>
+	</view>
+</template>
+
+<script>
+	//
+	// 给出了如何制作特殊的border的情况，可以是向外凸，也可以是向内凹，只要背景处理的恰当
+	//
+	// 带突出按钮的情况，且点击突出并不是打开新的页面
+	// 上头有navbar，所以我们在tabbar中使用了top来做偏移
+	//
+	import mypNavbar from '@/mypUI/myp-navbar/index.vue'
+	import mypTabbar from '@/mypUI/myp-tabbar/index.vue'
+	import homeTab from './home.vue'
+	import mineTab from './mine.vue'
+	import plusMenu from './components/plusMenu.vue'
+	
+	import navHelper from '@/router/navHelper.js'
+	import windowMixin from '@/mypUI/myp-mixin/windowMixin.js'
+	
+	export default {
+		components: {
+			mypNavbar,
+			mypTabbar,
+			homeTab,
+			mineTab,
+			plusMenu
+		},
+		mixins: [navHelper, windowMixin],
+		data() {
+			return {
+				menuVisible: false,
+				tabs: [
+					{
+						icon: '/static/tabs/home.png',
+						selectedIcon: '/static/tabs/homeH.png',
+						title: '首页',
+						badge: '12'
+					},
+					{
+						icon: '/static/tabs/plus-border.png',
+						selectedIcon: '/static/tabs/plus-border.png',
+						title: '',
+						badge: '8',
+						isHump: true,
+						noPage: true,
+						humpBottom: 12,
+						iconStyle: 'width:62px;height:62px;',
+						selectedIconStyle: 'width:62px;height:62px;',
+						iconBoxWidth: '72px',
+						badgeStyle: 'top: 2px;'
+					},
+					{
+						icon: '/static/tabs/mine.png',
+						selectedIcon: '/static/tabs/mineH.png',
+						title: '我的',
+						dot: true
+					}
+				],
+				tabStyle: {
+					iconStyle: 'width:22px;height:22px;',
+					selectedIconStyle: 'width:22px;height:22px;',
+					titleStyle: 'font-size:12px;color:#888888;',
+					selectedTitleStyle: 'font-size:12px;color:#108EE9;',
+					boxStyle: 'background-color: #FFFFFF;position:fixed;left:0;width:750rpx;bottom:0;',
+					image: '/static/tabs/tab-bg.png',
+					imageStyle: 'width:750rpx;height:72px;',
+					imageBoxStyle: 'bottom: 5px;'
+				},
+				navHeight: 0
+			}
+		},
+		created() {
+			this.navHeight = this.mypGetStatusBarHeight() + 44
+		},
+		methods: {
+			toCloseMenu() {
+				this.menuVisible = false
+			},
+			toPage(name) {
+				this.menuVisible = false
+				this.navigateTo(name)
+			},
+			tabbarSwitched(val) {
+				const page = val.page
+				if (page === 1) {
+					// hump
+					this.menuVisible = true
+				}
+			}
+		}
+	}
+</script>
+
+<style>
+
+</style>

@@ -1,0 +1,190 @@
+{
+	"pages": [ //pages数组中第一项表示应用启动页，参考：https://uniapp.dcloud.io/collocation/pages
+		// index
+		{
+			"path": "pages/tabs/index",
+			"style": {
+				// 去掉uni自带的页面最外层scroll
+				"disableScroll": true
+			}
+		},
+		// base
+		{
+			"path": "pages/base/index",
+			"style": {
+				"disableScroll": true
+			}
+		},
+		{
+			"path": "pages/base/button",
+			"style": {
+				"disableScroll": true
+			}
+		},
+		{
+			"path": "pages/base/cell",
+			"style": {
+				"disableScroll": true
+			}
+		},
+		{
+			"path": "pages/base/countdown",
+			"style": {
+				"disableScroll": true
+			}
+		},
+		{
+			"path": "pages/base/grid",
+			"style": {
+				"disableScroll": true
+			}
+		},
+		{
+			"path": "pages/base/icon",
+			"style": {
+				"disableScroll": true
+			}
+		},
+		{
+			"path": "pages/base/input",
+			"style": {
+				"disableScroll": true
+			}
+		},
+		{
+			"path": "pages/base/progress",
+			"style": {
+				"disableScroll": true
+			}
+		},
+		{
+			"path": "pages/base/radio",
+			"style": {
+				"disableScroll": true
+			}
+		},
+		{
+			"path": "pages/base/search",
+			"style": {
+				"disableScroll": true
+			}
+		},
+		{
+			"path": "pages/base/segment",
+			"style": {
+				"disableScroll": true
+			}
+		},
+		{
+			"path": "pages/base/stepper",
+			"style": {
+				"disableScroll": true
+			}
+		},
+		{
+			"path": "pages/base/switch",
+			"style": {
+				"disableScroll": true
+			}
+		},
+		{
+			"path": "pages/base/tabs",
+			"style": {
+				"disableScroll": true
+			}
+		},
+		{
+			"path": "pages/base/tag",
+			"style": {
+				"disableScroll": true
+			}
+		},
+		{
+			"path": "pages/base/title",
+			"style": {
+				"disableScroll": true
+			}
+		},
+		// pop
+		{
+			"path": "pages/pop/index",
+			"style": {
+				"disableScroll": true
+			}
+		},
+		// tabbar
+		{
+			"path": "pages/tabbar/index",
+			"style": {
+				"disableScroll": true
+			}
+		},
+		{
+			"path": "pages/tabbar/hump",
+			"style": {
+				"disableScroll": true
+			}
+		},
+		{
+			"path": "pages/tabbar/hump_text",
+			"style": {
+				"disableScroll": true
+			}
+		},
+		{
+			"path": "pages/tabbar/hump_border",
+			"style": {
+				"disableScroll": true
+			}
+		},
+		{
+			"path": "pages/tabbar/normal",
+			"style": {
+				"disableScroll": true
+			}
+		},
+		{
+			"path": "pages/tabbar/no_text",
+			"style": {
+				"disableScroll": true
+			}
+		},
+		// swiper
+		{
+			"path": "pages/swiper/index",
+			"style": {
+				"disableScroll": true
+			}
+		},
+		// scroll
+		{
+			"path": "pages/scroll/index",
+			"style": {
+				"disableScroll": true
+			}
+		},
+		// helper
+		{
+			"path": "pages/helper/about",
+			"style": {
+				// 去掉uni自带的页面最外层scroll
+				"disableScroll": true
+			}
+		}
+	],
+	"globalStyle": {
+		"navigationBarTextStyle": "black",
+		"navigationBarTitleText": "",
+		// 设置默认的navbar背景色，根据自己的项目更改(mp端页面渲染的时候会先出现导航栏)
+		"navigationBarBackgroundColor": "#FFFFFF",
+		// 取消掉所有的导航栏，使用自定义的导航栏
+		"navigationStyle": "custom"
+		// 不使用自带的tabbar，使用自定义的tabbar
+	},
+	"easycom": {
+	  "autoscan": true,
+	  "custom": {
+	    "myp-(.*)": "@/mypUI/myp-$1/myp-$1.vue" // 匹配mypUI内的vue文件
+	  }
+	}
+}

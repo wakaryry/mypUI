@@ -1,0 +1,100 @@
+<template>
+	<view>
+		<myp-navbar :lefts="leftIcons" title="标签" @leftAction="navLeftAction"></myp-navbar>
+		<scroll-view class="m-page" :scroll-y="true" :style="mypContentHeightStyle">
+			<myp-title bgType="none" title1="单个标签:各种样式配置" title1Type="text" boxStyle="padding-left:32rpx;"></myp-title>
+			<view class="tag-items">
+				<myp-tag :selected="uAndMeState" selectedBorderType="success" text="我和你" boxStyle="width:160rpx;margin-right:15rpx;margin-bottom:16rpx;" @tagClicked="toToggleState"></myp-tag>
+				<myp-tag text="之间" height="s" textSize="s" boxStyle="width:160rpx;margin-right:15rpx;margin-bottom:16rpx;"></myp-tag>
+				<myp-tag text="的距离" height="ll" textType="error" boxStyle="width:160rpx;margin-right:15rpx;margin-bottom:16rpx;"></myp-tag>
+				<myp-tag text="明明是" radius="ll" boxStyle="width:160rpx;margin-right:0rpx;margin-bottom:16rpx;"></myp-tag>
+				<myp-tag :selected="true" selectedBgType="warning" text="咫尺" boxStyle="width:160rpx;margin-right:15rpx;margin-bottom:16rpx;"></myp-tag>
+				<myp-tag text="却感觉" border="none" boxStyle="width:160rpx;margin-right:15rpx;margin-bottom:16rpx;"></myp-tag>
+				<myp-tag text="像是" radius="none" boxStyle="width:160rpx;margin-right:15rpx;margin-bottom:16rpx;"></myp-tag>
+				<myp-tag :disabled="true" disabledTextType="inverse" bgType="error" text="天涯" boxStyle="width:160rpx;margin-right:0rpx;margin-bottom:16rpx;"></myp-tag>
+			</view>
+			<myp-title bgType="none" title1="单选标签群:支持配置各种样式" title1Type="text" boxStyle="padding-left:32rpx;"></myp-title>
+			<myp-tag-group v-model="oneSelect" :limits="1" :column="4" :items="selections" titleLabel="title" valueLabel="id" disabledLabel="disabled" bgType="none" tagSelectedBgType="error" tagSelectedTextType="inverse" boxStyle="margin-left:32rpx;margin-right:32rpx;"></myp-tag-group>
+			<myp-title bgType="none" title1="多选标签群:支持配置各种样式" title1Type="text" boxStyle="padding-left:32rpx;"></myp-title>
+			<myp-tag-group v-model="threeSelect" :limits="3" :column="4" :items="selections" titleLabel="title" valueLabel="id" disabledLabel="disabled" bgType="none" tagSelectedTextType="error" tagSelectedBorderType="error" boxStyle="margin-left:32rpx;margin-right:32rpx;"></myp-tag-group>
+			<view class="tag-foot">
+				<text class="tag-foot-text">我们往往很难适配所有的tag式的选择或者展示需求。与其去配置，自己直接写会是更快的选择。如果您有一些常用的tag样式需要我们添加进来，可以联系说明。我们在这里仅仅只是提供了一个壳子。</text>
+			</view>
+		</scroll-view>
+		<myp-toast ref="myp-toast"></myp-toast>
+	</view>
+</template>
+
+<script>
+import mypNavbar from '@/mypUI/myp-navbar/index.vue';
+import mypToast from '@/mypUI/myp-notify/toast.vue'
+import mypTag from '@/mypUI/myp-tag/index.vue'
+import mypTagGroup from '@/mypUI/myp-tag/group.vue'
+import mypTitle from '@/mypUI/myp-title/index.vue'
+
+import contentBoxMixin from '@/mypUI/myp-mixin/contentBoxMixin.js';
+import toastMixin from '@/mypUI/myp-mixin/toastMixin.js'
+import navHelper from '@/router/navHelper.js'
+
+export default {
+	components: {
+		mypNavbar,
+		mypToast,
+		mypTag,
+		mypTagGroup,
+		mypTitle
+	},
+	mixins: [contentBoxMixin, toastMixin, navHelper],
+	data() {
+		return {
+			uAndMeState: false,
+			oneSelect: [6],
+			threeSelect: [7,8],
+			selections: [
+				{title: '我们', id: 1, disabled: false},
+				{title: '你们', id: 2, disabled: false},
+				{title: '他们', id: 3, disabled: false},
+				{title: '都是', id: 4, disabled: true},
+				{title: '平凡的', id: 5, disabled: false},
+				{title: '好人', id: 6, disabled: false},
+				{title: '一生', id: 7, disabled: false},
+				{title: '平安', id: 8, disabled: false},
+				{title: '渡过', id: 9, disabled: true},
+				{title: '难关', id: 10, disabled: false},
+			]
+		}
+	},
+	methods: {
+		toToggleState() {
+			this.uAndMeState = !this.uAndMeState
+		}
+	}
+};
+</script>
+
+<style lang="scss" scoped>
+@import '@/m.scss';
+
+.tag {
+	&-items {
+		flex-direction: row;
+		align-items: center;
+		flex-wrap: wrap;
+		margin-left: 32rpx;
+		margin-right: 32rpx;
+	}
+	
+	&-foot {
+		margin-left: 32rpx;
+		margin-right: 32rpx;
+		margin-bottom: 32rpx;
+		margin-top: 32rpx;
+		
+		&-text {
+			font-size: 30rpx;
+			line-height: 52rpx;
+			color: $m-text-color-second;
+		}
+	}
+}
+</style>

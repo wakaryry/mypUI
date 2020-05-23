@@ -1,0 +1,234 @@
+<template>
+	<view class="m-page-inverse">
+		<image src="/static/house.jpeg" mode="aspectFill" class="ti-head-bg"></image>
+		<myp-navbar :lefts="leftIcons" :fixed="true" :isSeize="false" iconStyle="color:#FFFFFF;" boxStyle="background-color:transparent;" @leftAction="navLeftAction"></myp-navbar>
+		<view class="ti-radius">
+			<view class="ti-radius-top"></view>
+			<view class="ti-radius-body"></view>
+			<view class="ti-radius-icon">
+				<myp-icon name="bookmark" type="text" size="ll"></myp-icon>
+			</view>
+		</view>
+		<scroll-view :scroll-y="true" class="ti-scroll" :style="mypContentHeightStyle">
+			<view class="ti-title">
+				<text class="ti-title-text">Tabbar</text>
+			</view>
+			<view class="ti-desc">
+				<text class="ti-desc-text">快速实现各种tabbar</text>
+			</view>
+			<view class="ti-intro">
+				<text class="ti-intro-text">为了实现各种效果，尤其是动画效果，定制Tabbar是必不可少的。而且定制的Tabbar更加灵活于设计与控制，以及交互</text>
+			</view>
+			<view class="ti-items">
+				<view class="ti-items-one" @tap="toTabbar('hump')">
+					<text class="ti-items-text">Hump</text>
+				</view>
+				<view class="ti-items-v">
+					<view class="ti-items-two" @tap="toTabbar('normal')">
+						<text class="ti-items-text">Normal</text>
+					</view>
+					<view class="ti-items-three" @tap="toTabbar('no_text')">
+						<text class="ti-items-text">Icon</text>
+					</view>
+				</view>
+			</view>
+			<view class="ti-items-h">
+				<view class="ti-items-four" @tap="toTabbar('hump_text')">
+					<text class="ti-items-text">Hump Text</text>
+				</view>
+				<view class="ti-items-five" @tap="toTabbar('hump_border')">
+					<text class="ti-items-text">Hump Border</text>
+				</view>
+			</view>
+			<view class="ti-more">
+				<text class="ti-more-text">更多动画，敬请期待</text>
+			</view>
+		</scroll-view>
+	</view>
+</template>
+
+<script>
+	import mypNavbar from '@/mypUI/myp-navbar/index.vue'
+	import mypIcon from '@/mypUI/myp-icon/index.vue'
+	
+	import navHelper from '@/router/navHelper.js'
+	import contentBoxMixin from '@/mypUI/myp-mixin/contentBoxMixin.js'
+	
+	export default {
+		components: {
+			mypNavbar,
+			mypIcon
+		},
+		mixins: [navHelper, contentBoxMixin],
+		data() {
+			return {
+				mypExtra: 600,
+				mypNavHeight: 0,
+				mypHasStatus: false
+			}
+		},
+		methods: {
+			toTabbar(val) {
+				this.navigateTo("tabbar_" + val)
+			}
+		}
+	}
+</script>
+
+<style lang="scss">
+	@import '@/m.scss';
+	.ti {
+		&-head {
+			&-bg {
+				width: 750rpx;
+				height: 600rpx;
+			}
+		}
+		&-radius {
+			position: relative;
+			width: 750rpx;
+			margin-top: -90rpx;
+			
+			&-top {
+				background-color: transparent;
+				height: 30rpx;
+			}
+			&-body {
+				background-color: #FFFFFF;
+				height: 60rpx;
+				border-top-left-radius: 60rpx;
+				border-top-right-radius: 60rpx;
+			}
+			&-icon {
+				position: absolute;
+				right: 60rpx;
+				top: 0;
+				width: 60rpx;
+				height: 60rpx;
+				border-radius: 30rpx;
+				justify-content: center;
+				align-items: center;
+				background-color: $m-text-color-forth;
+			}
+		}
+		&-scroll {
+			// flex: 1;
+			width: 750rpx;
+			background-color: #FFFFFF;
+		}
+		&-title {
+			margin-left: 30rpx;
+			margin-right: 30rpx;
+			
+			&-text {
+				font-size: 42rpx;
+				line-height: 50rpx;
+				color: $m-text-color;
+				font-weight: 600;
+			}
+		}
+		&-desc {
+			margin-left: 30rpx;
+			margin-right: 30rpx;
+			
+			&-text {
+				font-size: 30rpx;
+				line-height: 42rpx;
+				color: $m-text-color;
+				font-weight: 500;
+			}
+		}
+		&-intro {
+			margin-left: 30rpx;
+			margin-right: 30rpx;
+			margin-top: 45rpx;
+			
+			&-text {
+				font-size: 30rpx;
+				line-height: 42rpx;
+				color: $m-text-color;
+			}
+		}
+		&-items {
+			margin-left: 30rpx;
+			margin-right: 30rpx;
+			margin-top: 45rpx;
+			flex-direction: row;
+			
+			&-h {
+				flex-direction: row;
+				margin-left: 30rpx;
+				margin-right: 30rpx;
+				margin-top: 24rpx;
+			}
+			&-v {
+				flex: 1;
+				flex-direction: column;
+				height: 666rpx;
+			}
+			&-one {
+				flex: 1;
+				margin-right: 24rpx;
+				height: 666rpx;
+				background-color: $m-color-primary;
+				border-radius: 24rpx;
+				justify-content: center;
+				align-items: center;
+			}
+			&-two {
+				flex: 1;
+				margin-bottom: 24rpx;
+				border-radius: 24rpx;
+				background-color: $m-color-error;
+				justify-content: center;
+				align-items: center;
+			}
+			&-three {
+				flex: 1;
+				border-radius: 24rpx;
+				background-color: $m-color-warning;
+				justify-content: center;
+				align-items: center;
+			}
+			&-four {
+				flex: 1;
+				margin-right: 24rpx;
+				background-color: $m-color-error;
+				border-radius: 24rpx;
+				height: 321rpx;
+				justify-content: center;
+				align-items: center;
+			}
+			&-five {
+				flex: 1;
+				background-color: $m-color-success;
+				border-radius: 24rpx;
+				height: 321rpx;
+				justify-content: center;
+				align-items: center;
+			}
+			&-text {
+				color: #FFFFFF;
+				font-size: 36rpx;
+				font-weight: 600;
+			}
+		}
+		&-more {
+			margin-left: 30rpx;
+			margin-right: 30rpx;
+			margin-top: 24rpx;
+			margin-bottom: 24rpx;
+			border-radius: 24rpx;
+			height: 321rpx;
+			justify-content: center;
+			align-items: center;
+			background-color: $m-color-primary;
+			
+			&-text {
+				color: #FFFFFF;
+				font-size: 36rpx;
+				font-weight: 600;
+			}
+		}
+	}
+</style>

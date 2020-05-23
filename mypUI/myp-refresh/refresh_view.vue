@@ -1,0 +1,160 @@
+<template>
+	<view class="myp-refresher">
+		<view :class="['myp-cycle-container', refreshing&&'myp-scroll-rotate']">
+			<view class="myp-u-cover myp-u-c2" :style="cover2Style">
+				<view class="myp-u-cover-cycle" :style="coverCycleStyle"></view>
+			</view>
+		</view>
+		<image v-if="!refreshing" class="myp-arrow-down" ref="arrow" :src="ICON_ARROW_DOWN" mode="aspectFill"></image>
+		<text class="myp-u-txt">{{ refresherText }}</text>
+	</view>
+</template>
+
+<script>
+	// it could only be used in mp/h5, please use refresh.vue in app
+	const ICON_ARROW_DOWN = 'https://img.alicdn.com/tfs/TB1A8faeTtYBeNjy1XdXXXXyVXa-48-48.png';
+	const HEIGHT = uni.upx2px(140)
+	
+	export default {
+		props: {
+			scrollerRef: String,
+			maxTime: {
+				type: Number,
+				default: 0
+			},
+			mainText: {
+				type: String,
+				default: '下拉即可刷新...'
+			},
+			pullingText: {
+				type: String,
+				default: '释放即可刷新...'
+			},
+			refreshingText: {
+				type: String,
+				default: '加载中...'
+			},
+			refreshing: {
+				type: Boolean,
+				default: false
+			},
+			couldUnLash: {
+				type: Boolean,
+				default: false
+			},
+			rate: {
+				type: Number,
+				default: 0
+			}
+		},
+		data() {
+			return {
+				ICON_ARROW_DOWN
+			};
+		},
+		computed: {
+			refresherText() {
+				return this.refreshing ? this.refreshingText : this.pText;
+			},
+			pText() {
+				return this.couldUnLash ? this.pullingText : this.mainText;
+			},
+			cover2Style() {
+				const deg = this.rate >= 1 ? '360deg' : this.rate * 360 + 'deg'
+				return `transition-property: transform; transition-duration: 300ms; transform: rotateZ(${deg});`
+			},
+			coverCycleStyle() {
+				if (this.rate > 0.4) {
+					return 'opacity: 1;'
+				}
+				return 'opacity: 0;'
+			}
+		}
+	}
+</script>
+
+<style lang="scss" scoped>
+	.myp-refresher {
+		height: 140rpx;
+		width: 750rpx;
+		flex-direction: row;
+		justify-content: center;
+		padding-top: 50rpx;
+	}
+
+	.myp-cycle-container {
+		position: relative;
+		width: 60rpx;
+		height: 60rpx;
+	}
+	
+	.myp-u {
+		&-cover {
+			position: absolute;
+			width: 60rpx;
+			height: 60rpx;
+			top: 0;
+			// background-color: #ffffff;
+			overflow: hidden;
+			right: 0;
+			transform-origin: center center;
+			transform: rotateZ(0deg);
+			&-cycle {
+				position: absolute;
+				width: 60rpx;
+				height: 60rpx;
+				right: 0;
+				top: 0;
+				border-width: 2rpx;
+				border-color: #666666;
+				border-bottom-color: transparent;
+				border-style: solid;
+				border-radius: 30rpx;
+				opacity: 0;
+			}
+		}
+	}
+
+	.myp-arrow-down {
+		position: relative;
+		top: 15rpx;
+		left: -45rpx;
+		width: 30rpx;
+		height: 30rpx;
+	}
+
+	.myp-u-txt {
+		font-size: 24rpx;
+		line-height: 40rpx;
+		color: #999999;
+		margin-top: 10rpx;
+		margin-left: 10rpx;
+		height: 40rpx;
+		lines: 1;
+	}
+	
+	/* #ifndef APP-NVUE */
+	/* 旋转动画 */
+	.myp-scroll-rotate {
+		-webkit-animation: scrollRotate 0.6s linear infinite;
+		animation: scrollRotate 0.6s linear infinite;
+	}
+	
+	@-webkit-keyframes scrollRotate {
+		0% {
+			-webkit-transform: rotate(0deg);
+		}
+		100% {
+			-webkit-transform: rotate(360deg);
+		}
+	}
+	@keyframes mescrollRotate {
+		0% {
+			transform: rotate(0deg);
+		}
+		100% {
+			transform: rotate(360deg);
+		}
+	}
+	/* #endif */
+</style>

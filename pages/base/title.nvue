@@ -1,0 +1,61 @@
+<template>
+	<view>
+		<myp-navbar :lefts="leftIcons" title="标题" @leftAction="navLeftAction"></myp-navbar>
+		<scroll-view class="m-page" :scroll-y="true" :style="mypContentHeightStyle">
+			<view style="height: 20rpx;"></view>
+			<view class="bt-margin">
+				<h-entry-card title="今日热评榜" desc="myp-title: 一个就够了. 快用起来吧"></h-entry-card>
+			</view>
+			<view style="height: 20rpx;"></view>
+			<myp-title title1="最简单的形式" boxStyle="padding-left:32rpx;padding-right:32rpx;"></myp-title>
+			<view class="bt-margin">
+				<myp-title bgType="none" leftIcon1="solid-radio" title1="带左侧图标1"></myp-title>
+			</view>
+			<myp-title leftIcon2="right" title1="带左侧图标2" boxStyle="padding-left:32rpx;padding-right:32rpx;"></myp-title>
+			<myp-title bgType="none" rightIcon2="right" title1="带右侧图标2" boxStyle="padding-left:32rpx;padding-right:32rpx;"></myp-title>
+			<myp-title leftIcon2="close" leftIcon2Type="third" title1="艺术" title2="实用" title3="查看更多" boxStyle="padding-left:32rpx;padding-right:32rpx;" centerStyle="flex:1; margin-left:12rpx;" rightStyle="flex:1;justify-content:flex-end;"></myp-title>
+			<myp-title bgType="none" rightIcon1="refresh" title1="带右侧图标/文字" title3="换一批" rightIcon1Type="third" title3Type="third" boxStyle="padding-left:32rpx;padding-right:32rpx;"></myp-title>
+			<myp-title centerIcon1="plus" centerIcon2="plus" title2="居中带两侧图标"></myp-title>
+			<myp-title bgType="none" leftIcon1="plus" leftIcon2="plus" title1="左文字" centerIcon1="plus" centerIcon2="plus" title2="居中" title3="右文字" rightIcon1="plus" rightIcon2="plus" boxStyle="padding-left:32rpx;padding-right:32rpx;"></myp-title>
+			<myp-title title1="我的标题党" :rightBtn="true" btnBgType="primary" title3="查看更多" title3Size="s" boxStyle="padding-left:32rpx;padding-right:32rpx;" btnRadius="ll" btnStyle="padding-left:16rpx;padding-right:16rpx;height:56rpx;"></myp-title>
+			<myp-title bgType="none" centerIcon1="primary" centerIcon1Type="primary" centerIcon2="triangle-right" title2="创意,无限可能" centerIcon2Type="third" centerStyle="padding-left:16rpx;padding-right:16rpx;background-color:#FFFFFF;border-radius:12rpx;height:60rpx;"></myp-title>
+		</scroll-view>
+		<myp-toast ref="myp-toast"></myp-toast>
+	</view>
+</template>
+
+<script>
+import mypNavbar from '@/mypUI/myp-navbar/index.vue';
+import mypToast from '@/mypUI/myp-notify/toast.vue'
+import hEntryCard from '@/components/card/hEntryCard.vue'
+import mypTitle from '@/mypUI/myp-title/index.vue'
+
+import contentBoxMixin from '@/mypUI/myp-mixin/contentBoxMixin.js';
+import toastMixin from '@/mypUI/myp-mixin/toastMixin.js'
+import navHelper from '@/router/navHelper.js'
+
+export default {
+	components: {
+		mypNavbar,
+		mypToast,
+		hEntryCard,
+		mypTitle
+	},
+	mixins: [contentBoxMixin, toastMixin, navHelper],
+	data() {
+		return {
+		}
+	},
+	methods: {
+	}
+};
+</script>
+
+<style lang="scss">
+@import '@/m.scss';
+.bt {
+	&-margin {
+		margin: 0 32rpx;
+	}
+}
+</style>

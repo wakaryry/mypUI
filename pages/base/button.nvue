@@ -1,0 +1,177 @@
+<template>
+	<view>
+		<myp-navbar :lefts="leftIcons" title="按钮" @leftAction="navLeftAction"></myp-navbar>
+		<scroll-view class="m-page" :scroll-y="true" :style="mypContentHeightStyle">
+			<view class="m-margin">
+				<myp-title bgType="none" centerIcon1="primary" centerIcon1Type="primary" centerIcon2="triangle-right" title2="主题配置" centerIcon2Type="third" centerStyle="padding-left:16rpx;padding-right:16rpx;background-color:#FFFFFF;border-radius:12rpx;height:60rpx;"></myp-title>
+				<myp-button text="默认样式"></myp-button>
+				<view class="bb-row">
+					<view style="flex: 1;">
+						<myp-button bgType="primary" text="primary"></myp-button>
+					</view>
+					<view style="flex: 1;">
+						<myp-button bgType="success" text="success"></myp-button>
+					</view>
+				</view>
+				<view class="bb-row">
+					<view style="flex: 1;">
+						<myp-button bgType="warning" text="warning"></myp-button>
+					</view>
+					<view style="flex: 1;">
+						<myp-button bgType="error" text="error"></myp-button>
+					</view>
+				</view>
+				<myp-title bgType="none" centerIcon1="primary" centerIcon1Type="primary" centerIcon2="triangle-right" title2="带图标/图片" centerIcon2Type="third" centerStyle="padding-left:16rpx;padding-right:16rpx;background-color:#FFFFFF;border-radius:12rpx;height:60rpx;"></myp-title>
+				<myp-button icon="plus" text="左侧带图标"></myp-button>
+				<view class="bb-row">
+					<view style="flex: 1;">
+						<myp-button bgType="warning" icon="/static/bear.jpg" iconStyle="width: 60rpx; height: 60rpx; border-radius:8rpx;" text="带图片/可以网络图片"></myp-button>
+					</view>
+				</view>
+				<myp-title bgType="none" centerIcon1="primary" centerIcon1Type="primary" centerIcon2="triangle-right" title2="带loading切换" centerIcon2Type="third" centerStyle="padding-left:16rpx;padding-right:16rpx;background-color:#FFFFFF;border-radius:12rpx;height:60rpx;"></myp-title>
+				<myp-button :loading="true" text="正在为您准备"></myp-button>
+				<view class="bb-row">
+					<view style="flex: 1;">
+						<myp-button :loading="loadingVisible" bgType="success" icon="wechat" text="点击切换加载状态" @buttonClicked="toggleLoading"></myp-button>
+					</view>
+				</view>
+				<myp-title bgType="none" centerIcon1="primary" centerIcon1Type="primary" centerIcon2="triangle-right" title2="禁用状态" centerIcon2Type="third" centerStyle="padding-left:16rpx;padding-right:16rpx;background-color:#FFFFFF;border-radius:12rpx;height:60rpx;"></myp-title>
+				<view style="flex-direction: row;">
+					<view style="flex: 1;">
+						<myp-button bgType="error" :disabled="true" icon="solid-plus" text="禁用状态"></myp-button>
+					</view>
+					<view style="flex: 1;">
+						<myp-button bgType="error" icon="solid-plus" text="可用状态"></myp-button>
+					</view>
+				</view>
+				<myp-title bgType="none" centerIcon1="primary" centerIcon1Type="primary" centerIcon2="triangle-right" title2="样式配置" centerIcon2Type="third" centerStyle="padding-left:16rpx;padding-right:16rpx;background-color:#FFFFFF;border-radius:12rpx;height:60rpx;"></myp-title>
+				<view style="flex-direction: row;">
+					<view style="flex: 1;">
+						<myp-button bgType="primary" text="高度" height="s"></myp-button>
+					</view>
+					<view style="flex: 1;">
+						<myp-button bgType="error" text="圆角" height="s" radius="ll"></myp-button>
+					</view>
+					<view style="flex: 1;">
+						<myp-button text="边框" height="s" borderType="error"></myp-button>
+					</view>
+				</view>
+				<myp-title bgType="none" centerIcon1="primary" centerIcon1Type="primary" centerIcon2="triangle-right" title2="其它" centerIcon2Type="third" centerStyle="padding-left:16rpx;padding-right:16rpx;background-color:#FFFFFF;border-radius:12rpx;height:60rpx;"></myp-title>
+				<view style="flex-direction: row;">
+					<view style="flex: 1;">
+						<myp-button bgType="primary" icon="wechat" text="微信登录"></myp-button>
+					</view>
+					<view style="flex: 1;">
+						<button class="bb-button">
+							<myp-icon name="wechat" type="inverse" size="l"></myp-icon>
+							<text class="bb-button-text">微信登录</text>
+						</button>
+					</view>
+				</view>
+				<view class="bb-row" style="justify-content: center;">
+					<myp-button icon="circle-wechat" :text="null" radius="ll" iconType="success" iconStyle="font-size: 100rpx;" boxStyle="height: 100rpx;width: 100rpx;" border="none"></myp-button>
+					<button class="bb-wechat">
+						<myp-icon name="circle-wechat" type="success" iconStyle="font-size: 100rpx;"></myp-icon>
+					</button>
+				</view>
+			</view>
+			<view style="height: 20rpx;"></view>
+		</scroll-view>
+		<myp-toast ref="myp-toast"></myp-toast>
+	</view>
+</template>
+
+<script>
+import mypNavbar from '@/mypUI/myp-navbar/index.vue';
+import mypToast from '@/mypUI/myp-notify/toast.vue'
+import mypIcon from '@/mypUI/myp-icon/index.vue'
+import mypButton from '@/mypUI/myp-button/index.vue'
+import mypTitle from '@/mypUI/myp-title/index.vue'
+
+import contentBoxMixin from '@/mypUI/myp-mixin/contentBoxMixin.js';
+import toastMixin from '@/mypUI/myp-mixin/toastMixin.js'
+import navHelper from '@/router/navHelper.js'
+
+export default {
+	components: {
+		mypNavbar,
+		mypToast,
+		mypButton,
+		mypTitle,
+		mypIcon
+	},
+	mixins: [contentBoxMixin, toastMixin, navHelper],
+	data() {
+		return {
+			loadingVisible: false
+		}
+	},
+	methods: {
+		toggleLoading() {
+			this.loadingVisible = !this.loadingVisible
+		}
+	}
+};
+</script>
+
+<style lang="scss">
+@import '@/m.scss';
+.bb {
+	&-row {
+		flex-direction: row;
+		margin-top: 16rpx;
+	}
+	
+	&-button {
+		flex-direction: row;
+		flex: 1;
+		/* #ifndef APP-NVUE */
+		display: flex;
+		width: 343rpx;
+		/* #endif */
+		height: 100rpx;
+		padding: 0;
+		align-items: center;
+		justify-content: center;
+		background-color: $m-color-primary;
+		border-width: 0px;
+		border-radius: 12rpx;
+		
+		&-text {
+			color: #FFFFFF;
+			font-size: 30rpx;
+			margin-left: 12rpx;
+		}
+	}
+	
+	&-wechat {
+		/* #ifndef APP-NVUE */
+		display: flex;
+		border: none;
+		/* #endif */
+		/* #ifdef APP-NVUE */
+		border-width: 0px;
+		/* #endif */
+		flex-direction: row;
+		width: 100rpx;
+		height: 100rpx;
+		justify-content: center;
+		align-items: center;
+		border-radius: 60rpx;
+		padding: 0;
+		margin: 0;
+	}
+	
+	/* #ifndef APP-NVUE */
+	button {
+		border: none;
+	}
+	button:after {
+		border: none;
+	}
+	uni-button:after {
+		border: none;
+	}
+	/* #endif */
+}
+</style>

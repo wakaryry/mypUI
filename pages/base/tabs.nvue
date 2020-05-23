@@ -1,0 +1,106 @@
+<template>
+	<view>
+		<myp-navbar :lefts="leftIcons" @leftAction="navLeftAction">
+			<view slot="title" class="tabs-nav">
+				<myp-tabs-h :value="current2" :isTap="true" :items="tabs2" width="86rpx" titleLabel="title" titleType="second" activeType="text" textStyle="font-size:14px;" activeTextStyle="font-size:16px;" indicatorWidth="42rpx" indicatorType="primary" indicatorBottom="6px" scrollSize="350rpx" justify="center" height="44px" @change="toChangeNavTabs"></myp-tabs-h>
+			</view>
+		</myp-navbar>
+		<scroll-view class="m-page" :scroll-y="true" :style="mypContentHeightStyle">
+			<view style="height: 24rpx;"></view>
+			<myp-tabs-h :value="current" :isTap="true" :items="tabs1" activeType="warning" indicatorType="warning" @change="toChange1"></myp-tabs-h>
+			<view style="height: 24rpx;"></view>
+			<myp-tabs-h :value="current" :isTap="true" :items="tabs1" justify="center" activeType="error" indicatorType="error" @change="toChange1"></myp-tabs-h>
+			<view style="height: 24rpx;"></view>
+			<myp-tabs-h :value="current" :isTap="true" :items="tabs1" justify="space-between" activeType="warning" indicatorType="warning" @change="toChange1"></myp-tabs-h>
+			<view style="height: 24rpx;"></view>
+			<myp-tabs-h :value="current3" :isTap="true" :items="tabs3" activeType="error" indicatorType="error" @change="toChange3"></myp-tabs-h>
+			<view style="height: 24rpx;"></view>
+			<myp-tabs-h :value="current4" :isTap="true" :items="tabs4" activeType="warning" width="0" indicatorWidth="0" indicatorType="warning" @change="toChange4"></myp-tabs-h>
+			<view style="height: 24rpx;"></view>
+			<view class="tabs-columns">
+				<myp-tabs-v :value="currentV" :items="tabs1" width="90rpx" space="0" scrollSize="400rpx" itemStyle="padding-left:18rpx;" @change="toChangeV"></myp-tabs-v>
+				<myp-tabs-v :value="currentV" :items="tabs1" width="90rpx" space="0" justify="center" scrollSize="400rpx" itemStyle="padding-left:18rpx;" @change="toChangeV"></myp-tabs-v>
+				<myp-tabs-v :value="currentV" :items="tabs1" width="90rpx" space="0" justify="space-between" scrollSize="400rpx" itemStyle="padding-left:18rpx;" @change="toChangeV"></myp-tabs-v>
+				<myp-tabs-v :value="currentV3" :items="tabs3" width="90rpx" space="0" activeType="error" indicatorType="error" scrollSize="500rpx" itemStyle="padding-left:18rpx;" @change="toChangeV3"></myp-tabs-v>
+				<myp-tabs-v :value="currentV4" :items="tabs4" width="180rpx" space="0" activeType="warning" indicatorType="warning" scrollSize="500rpx" itemStyle="padding-left:18rpx;" @change="toChangeV4"></myp-tabs-v>
+			</view>
+		</scroll-view>
+		<myp-toast ref="myp-toast"></myp-toast>
+	</view>
+</template>
+
+<script>
+//
+// tabs 不再绑定v-model
+//
+import mypNavbar from '@/mypUI/myp-navbar/index.vue';
+import mypToast from '@/mypUI/myp-notify/toast.vue'
+import mypTabsH from '@/mypUI/myp-tabs/h.vue'
+import mypTabsV from '@/mypUI/myp-tabs/v.vue'
+
+import contentBoxMixin from '@/mypUI/myp-mixin/contentBoxMixin.js';
+import toastMixin from '@/mypUI/myp-mixin/toastMixin.js'
+import navHelper from '@/router/navHelper.js'
+
+export default {
+	components: {
+		mypNavbar,
+		mypToast,
+		mypTabsH,
+		mypTabsV
+	},
+	mixins: [contentBoxMixin, toastMixin, navHelper],
+	data() {
+		return {
+			current: 0,
+			current2: 1,
+			current3: 0,
+			current4: 0,
+			currentV: 0,
+			currentV3: 0,
+			currentV4: 0,
+			tabs1: ['我的','你的','Ta的'],
+			tabs2: [{title: '好人'},{title: '一生'},{title: '平安'}],
+			tabs3: ['一起','努力','加油','奋斗','争取','美好','未来','共建','幸福','家园','享受','快乐','人生'],
+			tabs4: ['我们','一起','把家还','好吗','可不可以','要不要得','好的','收到','同意']
+		}
+	},
+	methods: {
+		toChangeNavTabs(i) {
+			this.current2 = i
+		},
+		toChange1(i) {
+			this.current = i
+		},
+		toChange3(i) {
+			this.current3 = i
+		},
+		toChange4(i) {
+			this.current4 = i
+		},
+		toChangeV(i) {
+			this.currentV = i
+		},
+		toChangeV3(i) {
+			this.currentV3 = i
+		},
+		toChangeV4(i) {
+			this.currentV4 = i
+		}
+	}
+};
+</script>
+
+<style lang="scss" scoped>
+@import '@/m.scss';
+.tabs {
+	&-nav {
+		width: 350rpx;
+	}
+	&-columns {
+		margin: 0 32rpx;
+		flex-direction: row;
+		justify-content: space-between;
+	}
+}
+</style>

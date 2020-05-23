@@ -1,0 +1,75 @@
+<template>
+	<view>
+		<myp-navbar :lefts="leftIcons" title="单元" @leftAction="navLeftAction"></myp-navbar>
+		<scroll-view class="m-page" :scroll-y="true" :style="mypContentHeightStyle">
+			<view style="height: 24rpx;"></view>
+			<myp-cell icon="book" title="我的知识" boxStyle="padding-left:32rpx;"></myp-cell>
+			<view style="height: 24rpx;"></view>
+			<myp-cell icon="star-two" title="我的收藏" value="查看更多收藏" valueStyle="text-align:right;" :showIndicator="true" indicator="right" boxStyle="padding-left:32rpx;padding-right:32rpx;"></myp-cell>
+			<view style="height: 24rpx;"></view>
+			<myp-cell icon="setting" title="通用设置" border="all" radius="s" :showIndicator="true" indicator="right" boxStyle="padding-left:32rpx;padding-right:32rpx;margin-left:32rpx;margin-right:32rpx;"></myp-cell>
+			<view style="height: 24rpx;"></view>
+			<myp-cell bgType="error" icon="setting" title="通用设置" value="更多设置请查看源码以及文档" border="all" radius="s" :showIndicator="true" indicator="right" boxStyle="padding-left:32rpx;padding-right:32rpx;margin-left:32rpx;margin-right:32rpx;"></myp-cell>
+			<view style="height: 24rpx;"></view>
+			<myp-cell icon="bold-refresh" title="软件更新" :showIndicator="true" space="24rpx" boxStyle="padding-left:38rpx;padding-right:48rpx;">
+				<view slot="extra" class="cell-upload">
+					<myp-icon name="solid-up" type="inverse" size="l"></myp-icon>
+					<text class="cell-upload-text">有新版本</text>
+				</view>
+			</myp-cell>
+			<view style="height: 24rpx;"></view>
+			<myp-cell icon="solid-about" title="关于我们" :showIndicator="true" space="24rpx" boxStyle="padding-left:38rpx;padding-right:48rpx;" @selected="toAbout"></myp-cell>
+		</scroll-view>
+		<myp-toast ref="myp-toast"></myp-toast>
+	</view>
+</template>
+
+<script>
+import mypNavbar from '@/mypUI/myp-navbar/index.vue';
+import mypToast from '@/mypUI/myp-notify/toast.vue'
+import mypIcon from '@/mypUI/myp-icon/index.vue'
+import mypCell from '@/mypUI/myp-cell/index.vue'
+
+import contentBoxMixin from '@/mypUI/myp-mixin/contentBoxMixin.js';
+import toastMixin from '@/mypUI/myp-mixin/toastMixin.js'
+import navHelper from '@/router/navHelper.js'
+
+export default {
+	components: {
+		mypNavbar,
+		mypToast,
+		mypIcon,
+		mypCell
+	},
+	mixins: [contentBoxMixin, toastMixin, navHelper],
+	data() {
+		return {
+		}
+	},
+	methods: {
+		toAbout() {
+			this.navigateTo("about")
+		}
+	}
+};
+</script>
+
+<style lang="scss" scoped>
+@import '@/m.scss';
+
+.cell {
+	&-upload {
+		background-color: $m-color-primary;
+		border-radius: 30rpx;
+		height: 50rpx;
+		flex-direction: row;
+		align-items: center;
+		padding: 0 12rpx;
+		&-text {
+			color: #FFFFFF;
+			font-size: 28rpx;
+			margin-left: 6rpx;
+		}
+	}
+}
+</style>

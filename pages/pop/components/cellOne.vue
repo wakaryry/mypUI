@@ -25,7 +25,7 @@
 </script>
 
 <style lang="scss" scoped>
-	@import '@/m.scss';
+	@import '@/mypUI/mypui.scss';
 	.co {
 		position: relative;
 		width: 750rpx;

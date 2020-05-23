@@ -56,7 +56,7 @@
 </script>
 
 <style lang="scss" scoped>
-	@import '@/m.scss';
+	@import '@/mypUI/mypui.scss';
 	.hic {
 		background-color: $m-bg-color-second;
 		padding: 0 24rpx;

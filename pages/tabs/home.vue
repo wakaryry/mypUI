@@ -95,5 +95,5 @@
 </script>
 
 <style lang="scss" scoped>
-	@import '@/m.scss';
+	@import '@/mypUI/mypui.scss';
 </style>

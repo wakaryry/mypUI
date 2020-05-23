@@ -52,7 +52,7 @@ export default {
 </script>
 
 <style lang="scss">
-@import '@/m.scss';
+@import '@/mypUI/mypui.scss';
 .bt {
 	&-margin {
 		margin: 0 32rpx;

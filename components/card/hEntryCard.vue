@@ -39,7 +39,7 @@
 </script>
 
 <style lang="scss" scoped>
-	@import '@/m.scss';
+	@import '@/mypUI/mypui.scss';
 	
 	.hec {
 		background-color: $m-text-color-second;

@@ -92,7 +92,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import '@/m.scss';
+@import '@/mypUI/mypui.scss';
 .tabs {
 	&-nav {
 		width: 350rpx;

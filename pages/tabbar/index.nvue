@@ -76,7 +76,7 @@
 </script>
 
 <style lang="scss">
-	@import '@/m.scss';
+	@import '@/mypUI/mypui.scss';
 	.ti {
 		&-head {
 			&-bg {

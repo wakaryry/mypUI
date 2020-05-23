@@ -115,7 +115,7 @@ export default {
 </script>
 
 <style lang="scss">
-@import '@/m.scss';
+@import '@/mypUI/mypui.scss';
 .bb {
 	&-row {
 		flex-direction: row;

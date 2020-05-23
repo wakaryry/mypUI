@@ -1,15 +1,20 @@
 <template>
-	<h-scroll width="750rpx" height="600rpx" boxStyle="padding-top:40rpx;padding-bottom:34rpx;">
+	<myp-scroll-h width="750rpx" height="600rpx" boxStyle="padding-top:40rpx;padding-bottom:34rpx;">
 		<view class="is-token"></view>
 		<view v-for="(item,idx) in items" :key="idx" :class="['is-item', idx===0&&'is-first', (idx===items.length-1)&&'is-last']">
 			<v-care-card :image="item.avatar" :name="item.name" :cares="item.cares" :intro="item.intro" @care="toCare" @close="toClose"></v-care-card>
 		</view>
 		<view class="is-token"></view>
-	</h-scroll>
+	</myp-scroll-h>
 </template>
 
 <script>
+	import vCareCard from '@/components/card/vCareCard.vue'
+	
 	export default {
+		components: {
+			vCareCard
+		},
 		data() {
 			return {
 				items: [{
@@ -23,7 +28,7 @@
 					cares: '66.6万粉丝',
 					intro: '一套代码适用全端'
 				}, {
-					avatar: 'https://cdn.img.wenhairu.com/images/2020/05/23/YTNeu.',
+					avatar: 'https://cdn.img.wenhairu.com/images/2020/05/23/YTNeu.jpg',
 					name: '性能好',
 					cares: '128.9万粉丝',
 					intro: '针对优化，体验好'

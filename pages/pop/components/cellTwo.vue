@@ -1,10 +1,10 @@
 <template>
 	<view class="ct">
 		<view class="ct-bg">
-			<image src="/static/bg-blue.jpeg" class="ct-bg-cover" mode="aspectFill"></image>
+			<image src="https://cdn.img.wenhairu.com/images/2020/05/23/YOiW0.jpg" class="ct-bg-cover" mode="aspectFill"></image>
 		</view>
 		<view class="ct-foot">
-			<image src="/static/unb-up.png" class="ct-foot-cover" mode="aspectFill"></image>
+			<image src="https://cdn.img.wenhairu.com/images/2020/05/23/YTWDS.png" class="ct-foot-cover" mode="aspectFill"></image>
 		</view>
 		<view class="ct-title">
 			<text v-for="(item,idx) in ['T','o','a','s','t']" :key="idx" class="ct-title-text">{{item}}</text>
@@ -12,7 +12,7 @@
 		<view class="ct-one">
 			<view class="ct-item-title">
 				<text class="ct-item-title-text">弹出</text>
-				<image src="/static/drop.png" class="ct-item-hint" mode="aspectFit"></image>
+				<image src="https://cdn.img.wenhairu.com/images/2020/05/23/YOvLH.png" class="ct-item-hint" mode="aspectFit"></image>
 			</view>
 			<view class="ct-item-desc">
 				<text class="ct-item-desc-text">弹出Toast，一定周期后隐藏</text>
@@ -21,7 +21,7 @@
 		<view class="ct-two">
 			<view class="ct-item-title">
 				<text class="ct-item-title-text">滑出</text>
-				<image src="/static/drop.png" class="ct-item-hint" mode="aspectFit"></image>
+				<image src="https://cdn.img.wenhairu.com/images/2020/05/23/YOvLH.png" class="ct-item-hint" mode="aspectFit"></image>
 			</view>
 			<view class="ct-item-desc">
 				<text class="ct-item-desc-text">滑出Toast，一定周期后隐藏</text>
@@ -29,7 +29,7 @@
 		</view>
 		<view class="ct-three">
 			<view class="ct-item-title">
-				<image src="/static/drop.png" class="ct-item-hint" mode="aspectFit"></image>
+				<image src="https://cdn.img.wenhairu.com/images/2020/05/23/YOvLH.png" class="ct-item-hint" mode="aspectFit"></image>
 				<text class="ct-item-title-text">弹出</text>
 			</view>
 			<view class="ct-item-desc">
@@ -38,7 +38,7 @@
 		</view>
 		<view class="ct-four">
 			<view class="ct-item-title">
-				<image src="/static/drop.png" class="ct-item-hint" mode="aspectFit"></image>
+				<image src="https://cdn.img.wenhairu.com/images/2020/05/23/YOvLH.png" class="ct-item-hint" mode="aspectFit"></image>
 				<text class="ct-item-title-text">弹出</text>
 			</view>
 			<view class="ct-item-desc">

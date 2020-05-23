@@ -29,17 +29,17 @@
 				}, {
 					uid: 2,
 					nickname: '雪梨妹妹也爱你直到地老天荒雪梨妹妹也爱你直到地老天荒',
-					avatar: '/static/fruit.png',
+					avatar: '/static/bear.jpg',
 					text: '这个。哦。特点就是，我们没有使用swiper来实现tabbar，没有左右滑动的切换'
 				}, {
 					uid: 2,
 					nickname: '雪梨妹妹',
-					avatar: '/static/fruit.png',
+					avatar: '/static/bear.jpg',
 					text: '还有就是可配置程度高，非常灵活，细节都可以配置'
 				}, {
 					uid: 2,
 					nickname: '雪梨妹妹',
-					avatar: '/static/fruit.png',
+					avatar: '/static/bear.jpg',
 					text: '实在不行的话，你直接复制粘贴一份，然后把tabs的样式全部硬实现一次，也花不了多少时间，毕竟这个东西一个app几乎只用到一次'
 				}, {
 					uid: 1,
@@ -49,12 +49,12 @@
 				}, {
 					uid: 2,
 					nickname: '雪梨妹妹',
-					avatar: '/static/fruit.png',
+					avatar: '/static/bear.jpg',
 					text: 'OK'
 				}, {
 					uid: 2,
 					nickname: '雪梨妹妹',
-					avatar: '/static/fruit.png',
+					avatar: '/static/bear.jpg',
 					text: '另外一个不是hump的例子可以看我们的首页tabbar。这个是hump的。具体的配置看文档。写的很详细的。'
 				}, {
 					uid: 1,

@@ -1,6 +1,6 @@
 <template>
 	<view class="m-page-inverse">
-		<image src="/static/house.jpeg" mode="aspectFill" class="ti-head-bg"></image>
+		<image src="https://cdn.img.wenhairu.com/images/2020/05/23/YTFHI.jpg" mode="aspectFill" class="ti-head-bg"></image>
 		<myp-navbar :lefts="leftIcons" :fixed="true" :isSeize="false" iconStyle="color:#FFFFFF;" boxStyle="background-color:transparent;" @leftAction="navLeftAction"></myp-navbar>
 		<view class="ti-radius">
 			<view class="ti-radius-top"></view>

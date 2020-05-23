@@ -1,22 +1,22 @@
 <template>
 	<view class="cf">
 		<view class="cf-bg">
-			<image src="/static/bg-white.jpeg" class="cf-bg-cover" mode="aspectFill"></image>
+			<image src="https://cdn.img.wenhairu.com/images/2020/05/23/YOrYg.jpg" class="cf-bg-cover" mode="aspectFill"></image>
 		</view>
 		<view class="cf-title-bg">
-			<image class="cf-title-bg-cover" src="/static/bg-slice.png" mode="aspectFit"></image>
+			<image class="cf-title-bg-cover" src="https://cdn.img.wenhairu.com/images/2020/05/23/YO2sj.png" mode="aspectFit"></image>
 		</view>
 		<view class="cf-title">
 			<text class="cf-title-text">Picker</text>
-			<image class="cf-title-hint" src="/static/drop.png" mode="aspectFit"></image>
+			<image class="cf-title-hint" src="https://cdn.img.wenhairu.com/images/2020/05/23/YOvLH.png" mode="aspectFit"></image>
 		</view>
 		<view class="cf-body">
 			<view class="cf-item">
 				<view class="cf-item-bg1">
-					<image src="/static/box.png" class="cf-item-bg" mode="aspectFit"></image>
+					<image src="https://cdn.img.wenhairu.com/images/2020/05/23/YOL8o.png" class="cf-item-bg" mode="aspectFit"></image>
 				</view>
 				<view class="cf-item-bg2">
-					<image src="/static/box.png" class="cf-item-bg" mode="aspectFit"></image>
+					<image src="https://cdn.img.wenhairu.com/images/2020/05/23/YOL8o.png" class="cf-item-bg" mode="aspectFit"></image>
 				</view>
 				<view class="cf-item-body">
 					<view class="cf-item-head"></view>
@@ -24,15 +24,15 @@
 					<text class="cf-item-desc">山有木兮木有枝</text>
 				</view>
 				<view class="cf-item-tl">
-					<image src="/static/top-left.png" class="cf-item-tl-cover" mode="aspectFit"></image>
+					<image src="https://cdn.img.wenhairu.com/images/2020/05/23/YTC4D.png" class="cf-item-tl-cover" mode="aspectFit"></image>
 				</view>
 			</view>
 			<view class="cf-item">
 				<view class="cf-item-bg1">
-					<image src="/static/box.png" class="cf-item-bg" mode="aspectFit"></image>
+					<image src="https://cdn.img.wenhairu.com/images/2020/05/23/YOL8o.png" class="cf-item-bg" mode="aspectFit"></image>
 				</view>
 				<view class="cf-item-bg2">
-					<image src="/static/box.png" class="cf-item-bg" mode="aspectFit"></image>
+					<image src="https://cdn.img.wenhairu.com/images/2020/05/23/YOL8o.png" class="cf-item-bg" mode="aspectFit"></image>
 				</view>
 				<view class="cf-item-body">
 					<view class="cf-item-head"></view>
@@ -40,15 +40,15 @@
 					<text class="cf-item-desc">人映桃花水样红</text>
 				</view>
 				<view class="cf-item-tl">
-					<image src="/static/top-left.png" class="cf-item-tl-cover" mode="aspectFit"></image>
+					<image src="https://cdn.img.wenhairu.com/images/2020/05/23/YTC4D.png" class="cf-item-tl-cover" mode="aspectFit"></image>
 				</view>
 			</view>
 			<view class="cf-item">
 				<view class="cf-item-bg1">
-					<image src="/static/box.png" class="cf-item-bg" mode="aspectFit"></image>
+					<image src="https://cdn.img.wenhairu.com/images/2020/05/23/YOL8o.png" class="cf-item-bg" mode="aspectFit"></image>
 				</view>
 				<view class="cf-item-bg2">
-					<image src="/static/box.png" class="cf-item-bg" mode="aspectFit"></image>
+					<image src="https://cdn.img.wenhairu.com/images/2020/05/23/YOL8o.png" class="cf-item-bg" mode="aspectFit"></image>
 				</view>
 				<view class="cf-item-body">
 					<view class="cf-item-head"></view>
@@ -56,15 +56,15 @@
 					<text class="cf-item-desc">一汀烟雨杏花寒</text>
 				</view>
 				<view class="cf-item-tl">
-					<image src="/static/top-left.png" class="cf-item-tl-cover" mode="aspectFit"></image>
+					<image src="https://cdn.img.wenhairu.com/images/2020/05/23/YTC4D.png" class="cf-item-tl-cover" mode="aspectFit"></image>
 				</view>
 			</view>
 			<view class="cf-item">
 				<view class="cf-item-bg1">
-					<image src="/static/box.png" class="cf-item-bg" mode="aspectFit"></image>
+					<image src="https://cdn.img.wenhairu.com/images/2020/05/23/YOL8o.png" class="cf-item-bg" mode="aspectFit"></image>
 				</view>
 				<view class="cf-item-bg2">
-					<image src="/static/box.png" class="cf-item-bg" mode="aspectFit"></image>
+					<image src="https://cdn.img.wenhairu.com/images/2020/05/23/YOL8o.png" class="cf-item-bg" mode="aspectFit"></image>
 				</view>
 				<view class="cf-item-body">
 					<view class="cf-item-head"></view>
@@ -72,7 +72,7 @@
 					<text class="cf-item-desc">飞起沙鸥一片</text>
 				</view>
 				<view class="cf-item-tl">
-					<image src="/static/top-left.png" class="cf-item-tl-cover" mode="aspectFit"></image>
+					<image src="https://cdn.img.wenhairu.com/images/2020/05/23/YTC4D.png" class="cf-item-tl-cover" mode="aspectFit"></image>
 				</view>
 			</view>
 		</view>

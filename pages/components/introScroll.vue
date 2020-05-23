@@ -13,27 +13,27 @@
 		data() {
 			return {
 				items: [{
-					avatar: '/static/bear.jpg',
+					avatar: 'https://cdn.img.wenhairu.com/images/2020/05/23/YOB0G.jpg',
 					name: '风格化',
 					cares: '28.9万粉丝',
 					intro: 'scss主题配置'
 				}, {
-					avatar: '/static/cat.jpg',
+					avatar: 'https://cdn.img.wenhairu.com/images/2020/05/23/YOhGf.jpg',
 					name: '统一',
 					cares: '66.6万粉丝',
 					intro: '一套代码适用全端'
 				}, {
-					avatar: '/static/pig.jpeg',
+					avatar: 'https://cdn.img.wenhairu.com/images/2020/05/23/YTNeu.',
 					name: '性能好',
 					cares: '128.9万粉丝',
 					intro: '针对优化，体验好'
 				}, {
-					avatar: '/static/girl.jpg',
+					avatar: 'https://cdn.img.wenhairu.com/images/2020/05/23/YT8SX.jpg',
 					name: '效率高',
 					cares: '328.9万粉丝',
 					intro: '可进阶，越用越快'
 				}, {
-					avatar: '/static/hen.jpg',
+					avatar: 'https://cdn.img.wenhairu.com/images/2020/05/23/YTA2p.jpg',
 					name: '规范',
 					cares: '828.9万粉丝',
 					intro: '学习的绝对帮手'

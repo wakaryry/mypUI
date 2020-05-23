@@ -1,19 +1,19 @@
 <template>
 	<view class="ct">
 		<view class="ct-bg">
-			<image src="/static/bg-white.jpeg" class="ct-bg-cover" mode="aspectFill"></image>
+			<image src="https://cdn.img.wenhairu.com/images/2020/05/23/YOrYg.jpg" class="ct-bg-cover" mode="aspectFill"></image>
 		</view>
 		<view class="ct-title-bg">
-			<image class="ct-title-bg-cover" src="/static/bg-slice.png" mode="aspectFit"></image>
+			<image class="ct-title-bg-cover" src="https://cdn.img.wenhairu.com/images/2020/05/23/YO2sj.png" mode="aspectFit"></image>
 		</view>
 		<view class="ct-title">
 			<text class="ct-title-text">ActionSheet</text>
-			<image class="ct-title-hint" src="/static/drop.png" mode="aspectFit"></image>
+			<image class="ct-title-hint" src="https://cdn.img.wenhairu.com/images/2020/05/23/YOvLH.png" mode="aspectFit"></image>
 		</view>
 		<view class="ct-body">
 			<view class="ct-item">
 				<view class="ct-item-top">
-					<image class="ct-item-bg" src="/static/bg-circle.png" mode="aspectFit"></image>
+					<image class="ct-item-bg" src="https://cdn.img.wenhairu.com/images/2020/05/23/YOsSU.png" mode="aspectFit"></image>
 					<view class="ct-item-title">
 						<text class="ct-item-title-text">A</text>
 					</view>
@@ -24,7 +24,7 @@
 			</view>
 			<view class="ct-item">
 				<view class="ct-item-top">
-					<image class="ct-item-bg" src="/static/bg-circle.png" mode="aspectFit"></image>
+					<image class="ct-item-bg" src="https://cdn.img.wenhairu.com/images/2020/05/23/YOsSU.png" mode="aspectFit"></image>
 					<view class="ct-item-title">
 						<text class="ct-item-title-text">B</text>
 					</view>
@@ -35,7 +35,7 @@
 			</view>
 			<view class="ct-item">
 				<view class="ct-item-top">
-					<image class="ct-item-bg" src="/static/bg-circle.png" mode="aspectFit"></image>
+					<image class="ct-item-bg" src="https://cdn.img.wenhairu.com/images/2020/05/23/YOsSU.png" mode="aspectFit"></image>
 					<view class="ct-item-title">
 						<text class="ct-item-title-text">C</text>
 					</view>

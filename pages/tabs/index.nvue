@@ -11,8 +11,6 @@
 </template>
 
 <script>
-	import mypTabbar from '@/mypUI/myp-tabbar/index.vue'
-	import mypToast from '@/mypUI/myp-notify/toast.vue'
 	import homeTab from './home.vue'
 	import discoveryTab from './discovery.vue'
 	import mineTab from './mine.vue'
@@ -22,8 +20,6 @@
 	
 	export default {
 		components: {
-			mypTabbar,
-			mypToast,
 			homeTab,
 			discoveryTab,
 			mineTab

@@ -29,16 +29,7 @@
 </template>
 
 <script>
-	import mypButton from '@/mypUI/myp-button/index.vue'
-	import mypDivider from '@/mypUI/myp-divider/index.vue'
-	import mypIcon from '@/mypUI/myp-icon/index.vue'
-	
 	export default {
-		components: {
-			mypButton,
-			mypDivider,
-			mypIcon
-		},
 		props: {
 			item: {
 				type: Object,
@@ -58,7 +49,7 @@
 <style lang="scss" scoped>
 	@import '@/mypUI/mypui.scss';
 	.hic {
-		background-color: $m-bg-color-second;
+		background-color: $myp-bg-color-second;
 		padding: 0 24rpx;
 		border-radius: 12rpx;
 		
@@ -99,13 +90,13 @@
 			}
 			
 			&-name {
-				color: $m-text-color;
+				color: $myp-text-color;
 				font-size: 32rpx;
 				line-height: 50rpx;
 			}
 			
 			&-desc {
-				color: $m-text-color-third;
+				color: $myp-text-color-third;
 				font-size: 24rpx;
 				line-height: 36rpx;
 			}
@@ -121,7 +112,7 @@
 				flex: 1;
 				font-size: 28rpx;
 				line-height: 36rpx;
-				color: $m-text-color-second;
+				color: $myp-text-color-second;
 				overflow: hidden;
 				/* #ifdef APP-NVUE */
 				lines: 3;
@@ -158,7 +149,7 @@
 			
 			&-name {
 				font-size: 26rpx;
-				color: $m-text-color-third;
+				color: $myp-text-color-third;
 			}
 		}
 	}

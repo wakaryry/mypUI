@@ -82,24 +82,11 @@
 </template>
 
 <script>
-import mypNavbar from '@/mypUI/myp-navbar/index.vue';
-import mypToast from '@/mypUI/myp-notify/toast.vue'
-import mypIcon from '@/mypUI/myp-icon/index.vue'
-import mypButton from '@/mypUI/myp-button/index.vue'
-import mypTitle from '@/mypUI/myp-title/index.vue'
-
 import contentBoxMixin from '@/mypUI/myp-mixin/contentBoxMixin.js';
 import toastMixin from '@/mypUI/myp-mixin/toastMixin.js'
 import navHelper from '@/router/navHelper.js'
 
 export default {
-	components: {
-		mypNavbar,
-		mypToast,
-		mypButton,
-		mypTitle,
-		mypIcon
-	},
 	mixins: [contentBoxMixin, toastMixin, navHelper],
 	data() {
 		return {
@@ -133,7 +120,7 @@ export default {
 		padding: 0;
 		align-items: center;
 		justify-content: center;
-		background-color: $m-color-primary;
+		background-color: $myp-color-primary;
 		border-width: 0px;
 		border-radius: 12rpx;
 		

@@ -9,14 +9,7 @@
 </template>
 
 <script>
-	import vCareCard from '@/components/card/vCareCard.vue'
-	import hScroll from '@/mypUI/myp-scroll/h.vue'
-	
 	export default {
-		components: {
-			vCareCard,
-			hScroll
-		},
 		data() {
 			return {
 				items: [{
@@ -64,11 +57,11 @@
 	.is {
 		&-item {
 			border-left-width: 1px;
-			border-left-color: $m-border-color;
+			border-left-color: $myp-border-color;
 			border-top-width: 1px;
-			border-top-color: $m-border-color;
+			border-top-color: $myp-border-color;
 			border-bottom-width: 1px;
-			border-bottom-color: $m-border-color;
+			border-bottom-color: $myp-border-color;
 			border-right-width: 0;
 			overflow: hidden;
 		}
@@ -78,7 +71,7 @@
 		}
 		&-last {
 			border-right-width: 1px;
-			border-right-color: $m-border-color;
+			border-right-color: $myp-border-color;
 			border-top-right-radius: 12rpx;
 			border-bottom-right-radius: 12rpx;
 		}

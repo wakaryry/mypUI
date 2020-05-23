@@ -6,14 +6,9 @@
 </template>
 
 <script>
-import mypNavbar from '@/mypUI/myp-navbar/index.vue';
-
 import contentBoxMixin from '@/mypUI/myp-mixin/contentBoxMixin.js';
 
 export default {
-	components: {
-		mypNavbar
-	},
 	mixins: [contentBoxMixin],
 	data() {
 		return {

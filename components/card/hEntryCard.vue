@@ -17,13 +17,9 @@
 </template>
 
 <script>
-	import mypIcon from '@/mypUI/myp-icon/index.vue'
 	import filterMixin from '@/mypUI/myp-mixin/filterMixin.js'
 	
 	export default {
-		components: {
-			mypIcon
-		},
 		mixins: [filterMixin],
 		props: {
 			title: {
@@ -42,7 +38,7 @@
 	@import '@/mypUI/mypui.scss';
 	
 	.hec {
-		background-color: $m-text-color-second;
+		background-color: $myp-text-color-second;
 		border-radius: 16rpx;
 		padding: 24rpx;
 		flex-direction: row;
@@ -70,7 +66,7 @@
 					flex: 1;
 					font-size: 28rpx;
 					line-height: 36rpx;
-					color: $m-bg-color-first;
+					color: $myp-text-color-forth;
 					overflow: hidden;
 					text-overflow: ellipsis;
 					/* #ifdef APP-NVUE */

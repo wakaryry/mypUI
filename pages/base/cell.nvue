@@ -25,22 +25,11 @@
 </template>
 
 <script>
-import mypNavbar from '@/mypUI/myp-navbar/index.vue';
-import mypToast from '@/mypUI/myp-notify/toast.vue'
-import mypIcon from '@/mypUI/myp-icon/index.vue'
-import mypCell from '@/mypUI/myp-cell/index.vue'
-
 import contentBoxMixin from '@/mypUI/myp-mixin/contentBoxMixin.js';
 import toastMixin from '@/mypUI/myp-mixin/toastMixin.js'
 import navHelper from '@/router/navHelper.js'
 
 export default {
-	components: {
-		mypNavbar,
-		mypToast,
-		mypIcon,
-		mypCell
-	},
 	mixins: [contentBoxMixin, toastMixin, navHelper],
 	data() {
 		return {
@@ -59,7 +48,7 @@ export default {
 
 .cell {
 	&-upload {
-		background-color: $m-color-primary;
+		background-color: $myp-color-primary;
 		border-radius: 30rpx;
 		height: 50rpx;
 		flex-direction: row;

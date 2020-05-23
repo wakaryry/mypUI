@@ -36,12 +36,7 @@
 </template>
 
 <script>
-	import mypIcon from '@/mypUI/myp-icon/index.vue'
-	
 	export default {
-		components: {
-			mypIcon
-		},
 		props: {
 			lefts: {
 				type: Array,

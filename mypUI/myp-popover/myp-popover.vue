@@ -17,14 +17,11 @@
 
 <script>
 	// TODO:增加主题配置;增加横向显示buttons
-	import mypIcon from '@/mypUI/myp-icon/index.vue'
+	
 	// #ifdef APP-NVUE
 	const animation = weex.requireModule('animation');
 	// #endif
 	export default {
-		components: {
-			mypIcon
-		},
 		props: {
 			buttons: {
 				type: Array,

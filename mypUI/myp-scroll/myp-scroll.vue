@@ -4,14 +4,14 @@
 			<view :style="mypMrScrollContentStyle+'left:0px;'" ref="mypSc">
 				<!-- content of scroll -->
 				<slot></slot>
-				<load-view v-if="mypUp.use" :isLoading="mypIsUpLoading" :hasMore="mypHasMore"></load-view>
+				<myp-loader v-if="mypUp.use" :isLoading="mypIsUpLoading" :hasMore="mypHasMore"></myp-loader>
 				<view :style="{height: footerToken}"></view>
 				<!-- refresh view / header view -->
 				<view>
-					<refresh-view v-if="downMode==='bottom'&&mypDown.use" :refreshing="mypIsDownLoading" :couldUnLash="mypCouldUnLash" :rate="mypDownRate"></refresh-view>
+					<myp-refresher v-if="downMode==='bottom'&&mypDown.use" :refreshing="mypIsDownLoading" :couldUnLash="mypCouldUnLash" :rate="mypDownRate"></myp-refresher>
 				</view>
 				<view :style="mypMrRefreshStyle">
-					<refresh-view v-if="downMode==='top'&&mypDown.use" :refreshing="mypIsDownLoading" :couldUnLash="mypCouldUnLash" :rate="mypDownRate"></refresh-view>
+					<myp-refresher v-if="downMode==='top'&&mypDown.use" :refreshing="mypIsDownLoading" :couldUnLash="mypCouldUnLash" :rate="mypDownRate"></myp-refresher>
 					<slot name="head"></slot>
 				</view>
 			</view>
@@ -36,19 +36,12 @@
 	const animation = weex.requireModule('animation');
 	// #endif
 	
-	import refreshView from '../myp-refresh/refresh_view.vue'
-	import loadView from '../myp-refresh/load_view.vue'
-	
 	import iPhoneXMixin from '../myp-mixin/iPhoneXMixin.js'
 	import windowMixin from '../myp-mixin/windowMixin.js'
 	import hoverScrollMixin from './scrollMixin.js'
 	import {Utils} from '../utils/utils.js'
 	
 	export default {
-		components: {
-			refreshView,
-			loadView
-		},
 		mixins: [iPhoneXMixin, windowMixin, hoverScrollMixin],
 		props: {
 			// 以下全用于计算高度
@@ -403,8 +396,6 @@
 </script>
 
 <style lang="scss" scoped>
-	@import '../base.scss';
-	
 	.hs {
 		&-hover {
 			position: fixed;

@@ -48,17 +48,10 @@
 </template>
 
 <script>
-	import mypNavbar from '@/mypUI/myp-navbar/index.vue'
-	import mypIcon from '@/mypUI/myp-icon/index.vue'
-	
 	import navHelper from '@/router/navHelper.js'
 	import contentBoxMixin from '@/mypUI/myp-mixin/contentBoxMixin.js'
 	
 	export default {
-		components: {
-			mypNavbar,
-			mypIcon
-		},
 		mixins: [navHelper, contentBoxMixin],
 		data() {
 			return {
@@ -108,7 +101,7 @@
 				border-radius: 30rpx;
 				justify-content: center;
 				align-items: center;
-				background-color: $m-text-color-forth;
+				background-color: $myp-text-color-forth;
 			}
 		}
 		&-scroll {
@@ -123,7 +116,7 @@
 			&-text {
 				font-size: 42rpx;
 				line-height: 50rpx;
-				color: $m-text-color;
+				color: $myp-text-color;
 				font-weight: 600;
 			}
 		}
@@ -134,7 +127,7 @@
 			&-text {
 				font-size: 30rpx;
 				line-height: 42rpx;
-				color: $m-text-color;
+				color: $myp-text-color;
 				font-weight: 500;
 			}
 		}
@@ -146,7 +139,7 @@
 			&-text {
 				font-size: 30rpx;
 				line-height: 42rpx;
-				color: $m-text-color;
+				color: $myp-text-color;
 			}
 		}
 		&-items {
@@ -170,7 +163,7 @@
 				flex: 1;
 				margin-right: 24rpx;
 				height: 666rpx;
-				background-color: $m-color-primary;
+				background-color: $myp-color-primary;
 				border-radius: 24rpx;
 				justify-content: center;
 				align-items: center;
@@ -179,21 +172,21 @@
 				flex: 1;
 				margin-bottom: 24rpx;
 				border-radius: 24rpx;
-				background-color: $m-color-error;
+				background-color: $myp-color-error;
 				justify-content: center;
 				align-items: center;
 			}
 			&-three {
 				flex: 1;
 				border-radius: 24rpx;
-				background-color: $m-color-warning;
+				background-color: $myp-color-warning;
 				justify-content: center;
 				align-items: center;
 			}
 			&-four {
 				flex: 1;
 				margin-right: 24rpx;
-				background-color: $m-color-error;
+				background-color: $myp-color-error;
 				border-radius: 24rpx;
 				height: 321rpx;
 				justify-content: center;
@@ -201,7 +194,7 @@
 			}
 			&-five {
 				flex: 1;
-				background-color: $m-color-success;
+				background-color: $myp-color-success;
 				border-radius: 24rpx;
 				height: 321rpx;
 				justify-content: center;
@@ -222,7 +215,7 @@
 			height: 321rpx;
 			justify-content: center;
 			align-items: center;
-			background-color: $m-color-primary;
+			background-color: $myp-color-primary;
 			
 			&-text {
 				color: #FFFFFF;

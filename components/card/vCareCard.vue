@@ -12,9 +12,6 @@
 </template>
 
 <script>
-	import mypIcon from '@/mypUI/myp-icon/index.vue'
-	import mypButton from '@/mypUI/myp-button/index.vue'
-	
 	export default {
 		props: {
 			image: {
@@ -33,10 +30,6 @@
 				type: String,
 				default: ''
 			}
-		},
-		components: {
-			mypIcon,
-			mypButton
 		},
 		methods: {
 			toCare() {
@@ -67,20 +60,20 @@
 		}
 		
 		&-name {
-			color: $m-text-color;
+			color: $myp-text-color;
 			font-size: 32rpx;
 			margin-top: 16rpx;
 			margin-bottom: 16rpx;
 		}
 		
 		&-cares {
-			color: $m-text-color-third;
+			color: $myp-text-color-third;
 			font-size: 28rpx;
 			margin-bottom: 16rpx;
 		}
 		
 		&-intro {
-			color: $m-text-color-second;
+			color: $myp-text-color-second;
 			font-size: 28rpx;
 			margin-bottom: 40rpx;
 		}

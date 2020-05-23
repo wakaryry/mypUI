@@ -14,7 +14,6 @@
 </template>
 
 <script>
-	import mypNavbar from '@/mypUI/myp-navbar/index.vue'
 	import introHeader from './components/introHeader.vue'
 	import componentListItem from './components/listItem.vue'
 	
@@ -22,7 +21,6 @@
 	
 	export default {
 		components: {
-			mypNavbar,
 			introHeader,
 			componentListItem
 		},

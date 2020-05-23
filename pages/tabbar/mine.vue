@@ -13,18 +13,10 @@
 </template>
 
 <script>
-	import mypNavbar from '@/mypUI/myp-navbar/index.vue'
-	import mypMessageText from '@/mypUI/myp-message/cell/text.vue'
-	import mypMessageTime from '@/mypUI/myp-message/cell/time.vue'
 	
 	import contentBoxMixin from '@/mypUI/myp-mixin/contentBoxMixin.js'
 	
 	export default {
-		components: {
-			mypNavbar,
-			mypMessageText,
-			mypMessageTime
-		},
 		mixins: [contentBoxMixin],
 		data() {
 			return {

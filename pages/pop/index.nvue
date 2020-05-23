@@ -19,8 +19,6 @@
 </template>
 
 <script>
-import mypNavbar from '@/mypUI/myp-navbar/index.vue';
-import mypToast from '@/mypUI/myp-notify/toast.vue'
 import cellOne from './components/cellOne.vue'
 import cellTwo from './components/cellTwo.vue'
 import cellThree from './components/cellThree.vue'
@@ -33,8 +31,6 @@ import navHelper from '@/router/navHelper.js'
 
 export default {
 	components: {
-		mypNavbar,
-		mypToast,
 		cellOne,
 		cellTwo,
 		cellThree,

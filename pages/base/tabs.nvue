@@ -33,22 +33,12 @@
 //
 // tabs 不再绑定v-model
 //
-import mypNavbar from '@/mypUI/myp-navbar/index.vue';
-import mypToast from '@/mypUI/myp-notify/toast.vue'
-import mypTabsH from '@/mypUI/myp-tabs/h.vue'
-import mypTabsV from '@/mypUI/myp-tabs/v.vue'
 
 import contentBoxMixin from '@/mypUI/myp-mixin/contentBoxMixin.js';
 import toastMixin from '@/mypUI/myp-mixin/toastMixin.js'
 import navHelper from '@/router/navHelper.js'
 
 export default {
-	components: {
-		mypNavbar,
-		mypToast,
-		mypTabsH,
-		mypTabsV
-	},
 	mixins: [contentBoxMixin, toastMixin, navHelper],
 	data() {
 		return {

@@ -41,18 +41,7 @@
 </template>
 
 <script>
-	//
-	// 因为样式复杂程度提高，复用成本变高
-	// 不再做配置，如果需要修改请在项目里面拷贝过去修改
-	// 如果需要进行服务器端配置，请自己开放响应需要配置的属性
-	// 
-	
-	import mypButton from '@/mypUI/myp-button/index.vue'
-	
 	export default {
-		components: {
-			mypButton
-		}
 	}
 </script>
 
@@ -70,12 +59,12 @@
 		&-top {
 			flex: 1;
 			flex-direction: row;
-			border-bottom-color: $m-border-color;
+			border-bottom-color: $myp-border-color;
 			border-bottom-width: 1px;
 			
 			&-left {
 				width: 200rpx;
-				border-right-color: $m-border-color;
+				border-right-color: $myp-border-color;
 				border-right-width: 1px;
 				flex-direction: column;
 				align-items: center;
@@ -132,12 +121,12 @@
 		&-title {
 			font-size: 40rpx;
 			margin-bottom: 24rpx;
-			color: $m-text-color;
+			color: $myp-text-color;
 		}
 		&-intro {
 			font-size: 32rpx;
 			line-height: 40rpx;
-			color: $m-text-color-second;
+			color: $myp-text-color-second;
 		}
 		&-go {
 			margin-top: 12rpx;
@@ -155,10 +144,10 @@
 				width: 12rpx;
 				height: 12rpx;
 				border-radius: 6rpx;
-				background-color: $m-text-color-third;
+				background-color: $myp-text-color-third;
 			}
 			&-text {
-				color: $m-text-color-third;
+				color: $myp-text-color-third;
 				font-size: 32rpx;
 				margin-left: 12rpx;
 				margin-right: 12rpx;

@@ -1,24 +1,12 @@
 <template>
 	<myp-popup :show="show" pos="bottom" :height="600" @overlayClicked="toCancel">
-		<picker-header @cancel="toCancel" @confirm="toConfirm"></picker-header>
-		<picker-content :mode="mode" :value="value" :startYear="startYear" :endYear="endYear" :startHour="startHour" :endHour="endHour" :step="step" :current="current" :dayStep="dayStep" :minuteStep="minuteStep" :afterStep="afterStep" :disabledAfter="disabledAfter" @change="changePicked"></picker-content>
+		<myp-picker-header @cancel="toCancel" @confirm="toConfirm"></myp-picker-header>
+		<myp-picker-content :mode="mode" :value="value" :startYear="startYear" :endYear="endYear" :startHour="startHour" :endHour="endHour" :step="step" :current="current" :dayStep="dayStep" :minuteStep="minuteStep" :afterStep="afterStep" :disabledAfter="disabledAfter" @change="changePicked"></myp-picker-content>
 	</myp-popup>
 </template>
 
 <script>
-	// since the picker may just used in one or two pages,
-	// it's just an example to show u how to make a picker popup.
-	// u could make what u want
-	import mypPopup from '../myp-popup/index.vue'
-	import pickerContent from './content.vue'
-	import pickerHeader from './header.vue'
-	
 	export default {
-		components: {
-			mypPopup,
-			pickerContent,
-			pickerHeader
-		},
 		props: {
 			show: {
 				type: Boolean,

@@ -2,12 +2,12 @@
 	<view>
 		<!-- #ifdef APP-NVUE -->
 		<list :class="'myp-bg-'+bgType" :style="mrScrollStyle" ref="myp-scroller" :loadmoreoffset="loadMoreOffset" @loadmore="mypLoad">
-			<refresher v-if="mypDown.use" ref="myp-refresher" scroller-ref="myp-scroller" @refresh="mypRefresh"></refresher>
+			<myp-refresher-n v-if="mypDown.use" ref="myp-refresher" scroller-ref="myp-scroller" @refresh="mypRefresh"></myp-refresher-n>
 			<!-- content of list. must in cell element -->
 			<slot></slot>
 			<loader v-if="mypUp.use&&useLoader" ref="myp-loader" :hasMore="mypHasMore" @loading="mypLoad"></loader>
 			<cell v-if="mypUp.use&&!useLoader">
-				<load-view :isLoading="mypIsUpLoading" :hasMore="mypHasMore"></load-view>
+				<myp-loader :isLoading="mypIsUpLoading" :hasMore="mypHasMore"></myp-loader>
 			</cell>
 			<cell>
 				<view :style="{height: footerToken}"></view>
@@ -18,11 +18,11 @@
 		<scroll-view :class="'myp-bg-'+bgType" :style="mrScrollStyle" :scroll-y="mypScrollable" :enable-back-to-top="true" @scroll="mypScroll" @touchstart="mypTouchstartEvent" @touchmove="mypTouchmoveEvent" @touchend="mypTouchendEvent" @touchcancel="mypTouchendEvent">
 			<view :style="mypMrScrollContentStyle">
 				<view v-if="mypDown.use" :style="mypMrRefreshStyle">
-					<refresh-view :refreshing="mypIsDownLoading" :couldUnLash="mypCouldUnLash" :rate="mypDownRate"></refresh-view>
+					<myp-refresher :refreshing="mypIsDownLoading" :couldUnLash="mypCouldUnLash" :rate="mypDownRate"></myp-refresher>
 				</view>
 				<!-- content of scroll -->
 				<slot></slot>
-				<load-view v-if="mypUp.use" :isLoading="mypIsUpLoading" :hasMore="mypHasMore"></load-view>
+				<myp-loader v-if="mypUp.use" :isLoading="mypIsUpLoading" :hasMore="mypHasMore"></myp-loader>
 				<view :style="{height: footerToken}"></view>
 			</view>
 		</scroll-view>
@@ -40,31 +40,12 @@
 	// it's the list/scroll could with refresh and loadmore, for app it's list, others is acroll
 	// 
 	
-	// #ifdef APP-NVUE
-	import refresher from '@/mypUI/myp-refresh/refresh.nvue'
-	import loader from '@/mypUI/myp-refresh/load.nvue'
-	// #endif
-	// #ifndef APP-NVUE
-	import refreshView from '@/mypUI/myp-refresh/refresh_view.vue'
-	// #endif
-	import loadView from '@/mypUI/myp-refresh/load_view.vue'
-	
 	import iPhoneXMixin from '../myp-mixin/iPhoneXMixin.js'
 	import windowMixin from '../myp-mixin/windowMixin.js'
 	import scrollMixin from '../myp-scroll/mixin.js'
 	import {Utils} from '../utils/utils.js'
 	
 	export default {
-		components: {
-			// #ifdef APP-NVUE
-			refresher,
-			loader,
-			// #endif
-			// #ifndef APP-NVUE
-			refreshView,
-			// #endif
-			loadView
-		},
 		mixins: [iPhoneXMixin, windowMixin, scrollMixin],
 		props: {
 			// 以下全用于计算高度
@@ -287,5 +268,4 @@
 </script>
 
 <style lang="scss" scoped>
-	@import '../base.scss';
 </style>

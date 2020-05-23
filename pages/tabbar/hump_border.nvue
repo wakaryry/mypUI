@@ -16,8 +16,6 @@
 	// 带突出按钮的情况，且点击突出并不是打开新的页面
 	// 上头有navbar，所以我们在tabbar中使用了top来做偏移
 	//
-	import mypNavbar from '@/mypUI/myp-navbar/index.vue'
-	import mypTabbar from '@/mypUI/myp-tabbar/index.vue'
 	import homeTab from './home.vue'
 	import mineTab from './mine.vue'
 	import plusMenu from './components/plusMenu.vue'
@@ -27,8 +25,6 @@
 	
 	export default {
 		components: {
-			mypNavbar,
-			mypTabbar,
 			homeTab,
 			mineTab,
 			plusMenu

@@ -19,14 +19,7 @@
 </template>
 
 <script>
-	import mypIcon from '@/mypUI/myp-icon/index.vue'
-	import mypButton from '@/mypUI/myp-button/index.vue'
-	
 	export default {
-		components: {
-			mypIcon,
-			mypButton
-		},
 		props: {
 			item: {
 				type: Object,
@@ -63,12 +56,12 @@
 				margin-top: 92rpx;
 				font-size: 32rpx;
 				font-weight: 600;
-				color: $m-text-color;
+				color: $myp-text-color;
 			}
 			&-desc {
 				font-size: 26rpx;
 				line-height: 62rpx;
-				color: $m-text-color-third;
+				color: $myp-text-color-third;
 			}
 		}
 		&-logo {

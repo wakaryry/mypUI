@@ -11,14 +11,12 @@
 </template>
 
 <script>
-	import mypPopup from '@/mypUI/myp-popup/index.vue'
 	import hIntroCard from '@/components/card/hIntroCard.vue'
 	
 	import dataMixin from '../../base/mixin/indexData.js'
 	
 	export default {
 		components: {
-			mypPopup,
 			hIntroCard
 		},
 		mixins: [dataMixin],

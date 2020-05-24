@@ -1,16 +1,6 @@
 @import './mypui.scss';
 
 .myp-bg {
-	&- {
-		background-color: $myp-bg-color;
-	}
-	&-bg {
-		background-color: $myp-bg-color;
-		&-disabled {
-			background-color: $myp-bg-color;
-			opacity: $myp-opacity-disabled;
-		}
-	}
 	&-primary {
 		background-color: $myp-color-primary;
 		&-disabled {

@@ -148,17 +148,5 @@ export default {
 		padding: 0;
 		margin: 0;
 	}
-	
-	/* #ifndef APP-NVUE */
-	button {
-		border: none;
-	}
-	button:after {
-		border: none;
-	}
-	uni-button:after {
-		border: none;
-	}
-	/* #endif */
 }
 </style>

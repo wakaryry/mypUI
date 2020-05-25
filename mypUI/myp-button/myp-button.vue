@@ -33,7 +33,7 @@
 			},
 			loadingSrc: {
 				type: String,
-				default: '../myp-loading-indicator/loading.gif'
+				default: '/static/ui/loading.gif'
 			},
 			height: {
 				type: String,

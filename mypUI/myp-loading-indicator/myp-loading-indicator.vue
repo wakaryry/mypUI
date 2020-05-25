@@ -8,7 +8,7 @@
 		props: {
 			src: {
 				type: String,
-				default: './loading.gif'
+				default: '/static/ui/loading.gif'
 			},
 			width: {
 				type: String,

@@ -53,7 +53,7 @@
 						<myp-button bgType="error" text="圆角" height="s" radius="ll"></myp-button>
 					</view>
 					<view style="flex: 1;">
-						<myp-button text="边框" height="s" borderType="error"></myp-button>
+						<myp-button text="边框" height="s" border="all-error"></myp-button>
 					</view>
 				</view>
 				<myp-title bgType="none" centerIcon1="primary" centerIcon1Type="primary" centerIcon2="triangle-right" title2="其它" centerIcon2Type="third" centerStyle="padding-left:16rpx;padding-right:16rpx;background-color:#FFFFFF;border-radius:12rpx;height:60rpx;"></myp-title>

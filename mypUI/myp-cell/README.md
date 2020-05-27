@@ -1,12 +1,13 @@
 # myp-cell
 
-> cell/list-cell组件。支持`primary`、`success`、`warning`、`error`主题配置
+> cell组件。该组件是最简单的一行式cell。
 
 ### 规则
 
 - icon/title/value/indicator，默认可以实现一行4段；
 - 默认title对应一级标题，value是二级标题或者是描述内容；
-- 搭配slot可以实现多行或者一行更多段；
+- 搭配slot可以实现多行或者一行更多段，但是不太建议用此来实现多行；
+- 多行公用cell会在另一个组件实现；
 
 ## 使用
 
@@ -41,7 +42,6 @@
 - type/size/iconSize/height/radius/border等可以实现快速设置，根据scss配置，可以快速实现自己的效果；
 - 其它的style设置可以覆盖掉这些快捷设置的效果；
 - 既满足一键配置，也满足灵活定义。也就是满足共性，包容特性；
-- 在部分平台下，boxStyle中如果设置了background-color/opacity等影响hover的属性，hover时会没有效果，我们提供了一个boxClass来对这些属性进行设置；
 
 ### slot
 
@@ -51,7 +51,7 @@
 ### 事件回掉
 | Event     | Params   | Description  |
 |--------|--------|-----|
-| selected | | 点击触发 |
+| cellClicked | | 点击触发 |
 
 ### 示例与结果
 

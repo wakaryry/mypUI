@@ -1,5 +1,5 @@
 <template>
-	<view :class="['myp-cell', 'myp-bg-'+bgType, 'myp-height-'+height, 'myp-radius-'+radius, 'myp-border-'+border, 'myp-border-color-'+borderType]" :style="boxStyle" :hover-class="'myp-hover-'+hover" @tap.stop="toSelect">
+	<view :class="['myp-cell', 'myp-bg-'+bgType, 'myp-height-'+height, 'myp-radius-'+radius, 'myp-border-'+border]" :style="boxStyle" :hover-class="'myp-hover-'+hover" @tap.stop="toSelect">
 		<view v-if="icon && icon.length > 0" :style="{'margin-right': space}">
 			<myp-icon :name="icon" :type="mrIconType" :size="iconSize" :mode="iconMode" :iconStyle="iconStyle"></myp-icon>
 		</view>
@@ -10,7 +10,7 @@
 		</slot>
 		<!-- custom right extra view -->
 		<slot name="extra"></slot>
-		<view v-if="showIndicator&&indicator&&indicator.length>0" :style="{'margin-left': space}">
+		<view v-if="indicator&&indicator.length>0" :style="{'margin-left': space}">
 			<myp-icon :name="indicator" :type="mrIndicatorType" :size="indicatorSize" :mode="indicatorMode" :iconStyle="indicatorStyle"></myp-icon>
 		</view>
 	</view>
@@ -63,6 +63,14 @@
 				type: String,
 				default: 's'
 			},
+			iconSize: {
+				type: String,
+				default: "l"
+			},
+			indicatorSize: {
+				type: String,
+				default: "l"
+			},
 			height: {
 				type: String,
 				default: 'l'
@@ -75,10 +83,6 @@
 				type: String,
 				default: ''
 			},
-			borderType: {
-				type: String,
-				default: 'border'
-			},
 			hover: {
 				type: String,
 				default: 'bg'
@@ -87,21 +91,9 @@
 				type: String,
 				default: '12rpx'
 			},
-			showIndicator: {
-				type: Boolean,
-				default: false
-			},
-			iconSize: {
-				type: String,
-				default: "l"
-			},
 			iconStyle: {
 				type: String,
 				default: ''
-			},
-			indicatorSize: {
-				type: String,
-				default: "l"
 			},
 			indicatorStyle: {
 				type: String,

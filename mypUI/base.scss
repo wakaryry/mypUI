@@ -1,6 +1,9 @@
 @import './mypui.scss';
 
 .myp-bg {
+	&- {
+		background-color: $myp-bg-color-inverse;
+	}
 	&-primary {
 		background-color: $myp-color-primary;
 		&-disabled {

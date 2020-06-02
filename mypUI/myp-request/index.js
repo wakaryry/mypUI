@@ -58,48 +58,45 @@ export default class Request {
 			if (that.responseInterceptor) {
 				_res = that.responseInterceptor(response, options)
 			}
-			that.success && that.success(response)
-			successHandler && successHandler(response)
 			if (_res && _res.mypReqToReject) {
 				delete _res.mypReqToReject
-				Promise.reject(_res)
+				that.fail && that.fail(response)
+				failHandler && failHandler(response)
+				that.complete && that.complete(response)
+				completeHandler && completeHandler(response)
+				!task && Promise.reject(_res)
 			} else {
-				Promise.resolve(_res)
+				that.success && that.success(response)
+				successHandler && successHandler(response)
+				that.complete && that.complete(response)
+				completeHandler && completeHandler(response)
+				!task && Promise.resolve(_res)
 			}
 		}
 		config["fail"] = (response) => {
 			that.fail && that.fail(response)
 			failHandler && failHandler(response)
+			that.complete && that.complete(response)
+			completeHandler && completeHandler(response)
 			if (config.failReject && (typeof config.failReject === 'object')) {
-				Promise.reject(config.failReject)
+				!task && Promise.reject(config.failReject)
 			} else {
 				if (that.failReject) {
-					Promise.reject(that.failReject)
+					!task && Promise.reject(that.failReject)
 				} else {
 					// reject the error
-					Promise.reject(response)
+					!task && Promise.reject(response)
 				}
 			}
 		}
-		config["complete"] = (response) => {
-			that.complete && that.complete(response)
-			completeHandler && completeHandler(response)
-		}
-		if (task) {
-			if (type === "request") {
-				Promise.resolve(uni.request(config))
-			} else if (type === "upload") {
-				Promise.resolve(uni.uploadFile(config))
-			} else {
-				Promise.resolve(uni.downloadFile(config))
-			}
-			return
-		}
 		if (type === "request") {
+			if (task) return uni.request(config);
 			uni.request(config)
 		} else if (type === "upload") {
+			if (task) return uni.uploadFile(config);
 			uni.uploadFile(config)
 		} else {
+			if (task) return uni.downloadFile(config);
 			uni.downloadFile(config)
 		}
 	}

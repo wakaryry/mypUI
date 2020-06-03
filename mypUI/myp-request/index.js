@@ -21,12 +21,6 @@ export default class Request {
 		} else {
 			this.cancelReject = {text: '请求未通过验证,检查是否登录或者数据正确', type: 'warning'}
 		}
-		if (config.failReject && (typeof config.failReject === 'object')) {
-			this.failReject = Object.assign({}, config.failReject)
-		} else {
-			// when null fail reject, it will reject the error info of fail
-			this.failReject = null
-		}
 	}
 	// type: request/upload/download.
 	// the success/fail/complete handler will not override the global, it will just call after global
@@ -54,40 +48,36 @@ export default class Request {
 		}
 		const that = this
 		config["success"] = (response) => {
-			let _res = null
+			let _res = response
 			if (that.responseInterceptor) {
 				_res = that.responseInterceptor(response, options)
 			}
 			if (_res && _res.mypReqToReject) {
 				delete _res.mypReqToReject
-				that.fail && that.fail(response)
-				failHandler && failHandler(response)
-				that.complete && that.complete(response)
-				completeHandler && completeHandler(response)
+				that.fail && that.fail(_res)
+				failHandler && failHandler(_res)
+				that.complete && that.complete(_res)
+				completeHandler && completeHandler(_res)
 				!task && Promise.reject(_res)
 			} else {
-				that.success && that.success(response)
-				successHandler && successHandler(response)
-				that.complete && that.complete(response)
-				completeHandler && completeHandler(response)
+				that.success && that.success(_res)
+				successHandler && successHandler(_res)
+				that.complete && that.complete(_res)
+				completeHandler && completeHandler(_res)
 				!task && Promise.resolve(_res)
 			}
 		}
 		config["fail"] = (response) => {
-			that.fail && that.fail(response)
-			failHandler && failHandler(response)
-			that.complete && that.complete(response)
-			completeHandler && completeHandler(response)
-			if (config.failReject && (typeof config.failReject === 'object')) {
-				!task && Promise.reject(config.failReject)
-			} else {
-				if (that.failReject) {
-					!task && Promise.reject(that.failReject)
-				} else {
-					// reject the error
-					!task && Promise.reject(response)
-				}
+			let _res = response
+			if (that.responseInterceptor) {
+				_res = that.responseInterceptor({mypFail: true, response: response}, options)
+				delete _res.mypReqToReject
 			}
+			that.fail && that.fail(_res)
+			failHandler && failHandler(_res)
+			that.complete && that.complete(_res)
+			completeHandler && completeHandler(_res)
+			!task && Promise.reject(_res)
 		}
 		if (type === "request") {
 			if (task) return uni.request(config);

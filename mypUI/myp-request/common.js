@@ -27,10 +27,6 @@ export async function requestConfig(ins, options) {
 		// we could also change the url and header in interceptors
 		config.url = _cg.url
 		config.header = _cg.header
-		// we could also config the fail reject info in options
-		if (_cg.failReject && (typeof _cg.failReject === 'object')) {
-			config.failReject = _cg.failReject
-		}
 	}
 	const type = options.type || "request"
 	// config detail, remove unneeded props

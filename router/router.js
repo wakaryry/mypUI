@@ -31,6 +31,14 @@ export default {
 	swiper_index: '/pages/swiper/index',
 	// scroll
 	scroll_index: '/pages/scroll/index',
+	scroll_h: '/pages/scroll/scroll_h',
+	scroll_header_swiper: '/pages/scroll/scroll_header_swiper',
+	scroll_header: '/pages/scroll/scroll_header',
+	scroll_list_one: '/pages/scroll/scroll_list_one',
+	scroll_list_two: '/pages/scroll/scroll_list_two',
+	scroll_waterfall: '/pages/scroll/scroll_waterfall',
+	scroll_x_one: '/pages/scroll/scroll_x_one',
+	scroll_x_two: '/pages/scroll/scroll_x_two',
 	// helper
 	about: '/pages/helper/about'
 }

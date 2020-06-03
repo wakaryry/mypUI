@@ -163,6 +163,54 @@
 				"disableScroll": true
 			}
 		},
+		{
+			"path": "pages/scroll/scroll_h",
+			"style": {
+				"disableScroll": true
+			}
+		},
+		{
+			"path": "pages/scroll/scroll_header_swiper",
+			"style": {
+				"disableScroll": true
+			}
+		},
+		{
+			"path": "pages/scroll/scroll_header",
+			"style": {
+				"disableScroll": true
+			}
+		},
+		{
+			"path": "pages/scroll/scroll_list_one",
+			"style": {
+				"disableScroll": true
+			}
+		},
+		{
+			"path": "pages/scroll/scroll_list_two",
+			"style": {
+				"disableScroll": true
+			}
+		},
+		{
+			"path": "pages/scroll/scroll_waterfall",
+			"style": {
+				"disableScroll": true
+			}
+		},
+		{
+			"path": "pages/scroll/scroll_x_one",
+			"style": {
+				"disableScroll": true
+			}
+		},
+		{
+			"path": "pages/scroll/scroll_x_two",
+			"style": {
+				"disableScroll": true
+			}
+		},
 		// helper
 		{
 			"path": "pages/helper/about",

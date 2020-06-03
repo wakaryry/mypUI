@@ -17,15 +17,14 @@
 		data() {
 			return {
 				items: [
-					{name: '通用scroll', page: 'scroll_normal', icon: 'topic', desc: '全端scroll，带下拉/上提'},
 					{name: '横向scroll', page: 'scroll_h', icon: 'class', desc: '横向滚动scroll'},
-					{name: 'list', page: 'scroll_list', icon: 'subject', desc: 'list/scroll，带下拉/上提'},
+					{name: 'list', page: 'scroll_list_one', icon: 'topic', desc: 'list/scroll'},
+					{name: 'list', page: 'scroll_list_two', icon: 'subject', desc: 'list/scroll，带下拉/上提'},
 					{name: 'waterfall', page: 'scroll_waterfall', icon: 'radio-button', desc: 'waterfall/scroll，带下拉/上提'},
-					{name: '头部-1', page: 'scroll_header_one', icon: 'headphone', desc: '一次性全部打开/关闭，带下拉/上提'},
-					{name: '头部-2', page: 'scroll_header_two', icon: 'headphone', desc: '支持不完全打开，带下拉/上提'},
-					{name: '头部-3', page: 'scroll_header_swiper', icon: 'headphone', desc: 'header+tabs+swiper，带下拉/上提'},
-					{name: 'x兼容-1', page: 'scroll_x_one', icon: 'teacher', desc: 'xBar透明，底部内容不被遮挡'},
-					{name: 'x兼容-2', page: 'scroll_x_two', icon: 'teacher', desc: 'xBar不透明，底部内容不被遮挡'}
+					{name: '头部-1', page: 'scroll_header', icon: 'headphone', desc: '支持不完全打开，带下拉/上提'},
+					{name: '头部-2', page: 'scroll_header_swiper', icon: 'headphone', desc: 'header+tabs+swiper，带下拉/上提'},
+					{name: 'x兼容-1', page: 'scroll_x_one', icon: 'teacher', desc: 'xBar透明，底部不被遮挡'},
+					{name: 'x兼容-2', page: 'scroll_x_two', icon: 'teacher', desc: 'xBar不透明，底部不被遮挡'}
 				]
 			}
 		},

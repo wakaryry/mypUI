@@ -152,7 +152,7 @@
 		},
 		methods: {
 			toSelect() {
-				this.$emit("selected")
+				this.$emit("cellClicked")
 			}
 		}
 	}

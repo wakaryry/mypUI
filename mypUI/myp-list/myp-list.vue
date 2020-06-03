@@ -35,18 +35,11 @@
 </template>
 
 <script>
-	// 
-	// 只是用来刷新/加载的列表
-	// it's the list/scroll could with refresh and loadmore, for app it's list, others is acroll
-	// 
-	
-	import iPhoneXMixin from '../myp-mixin/iPhoneXMixin.js'
-	import windowMixin from '../myp-mixin/windowMixin.js'
-	import scrollMixin from '../myp-scroll/mixin.js'
-	import {Utils} from '../utils/utils.js'
+	import xBarMixin from '../myp-mixin/xBarMixin.js'
+	import scrollMixin from './mixin.js'
 	
 	export default {
-		mixins: [iPhoneXMixin, windowMixin, scrollMixin],
+		mixins: [xBarMixin, scrollMixin],
 		props: {
 			// 以下全用于计算高度
 			hasStatus: {

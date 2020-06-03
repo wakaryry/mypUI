@@ -1,0 +1,88 @@
+<template>
+	<view>
+		<myp-navbar title="myp-scroll-h" :lefts="leftIcons" @leftAction="navLeftAction"></myp-navbar>
+		<myp-list>
+			<myp-list-cell>
+				<myp-scroll-h height="600rpx">
+					<view style="width: 32rpx;"></view>
+					<v-care-card v-for="(item,idx) in items" :key="idx" :image="item.avatar" :name="item.name" :cares="item.cares" :intro="item.intro" @care="toCare" @close="toClose"></v-care-card>
+					<view style="width: 32rpx;"></view>
+				</myp-scroll-h>
+			</myp-list-cell>
+			<myp-list-cell>
+				<myp-scroll-h height="600rpx" justify="center">
+					<view style="width: 32rpx;"></view>
+					<v-care-card v-for="(item,idx) in itemsAnother" :key="idx" :image="item.avatar" :name="item.name" :cares="item.cares" :intro="item.intro" @care="toCare" @close="toClose"></v-care-card>
+					<view style="width: 32rpx;"></view>
+				</myp-scroll-h>
+			</myp-list-cell>
+			<myp-list-cell>
+				<myp-scroll-h height="600rpx" justify="space-between">
+					<view style="width: 32rpx;"></view>
+					<v-care-card v-for="(item,idx) in itemsAnother" :key="idx" :image="item.avatar" :name="item.name" :cares="item.cares" :intro="item.intro" @care="toCare" @close="toClose"></v-care-card>
+					<view style="width: 32rpx;"></view>
+				</myp-scroll-h>
+			</myp-list-cell>
+		</myp-list>
+	</view>
+</template>
+
+<script>
+	import vCareCard from '@/components/card/vCareCard.vue'
+	
+	import navHelper from '@/router/navHelper.js'
+	
+	export default {
+		components: {
+			vCareCard
+		},
+		mixins: [navHelper],
+		data() {
+			return {
+				items: [{
+					avatar: 'https://cdn.img.wenhairu.com/images/2020/05/23/YOB0G.jpg',
+					name: '风格化',
+					cares: '28.9万粉丝',
+					intro: 'scss主题配置'
+				}, {
+					avatar: 'https://cdn.img.wenhairu.com/images/2020/05/23/YOhGf.jpg',
+					name: '统一',
+					cares: '66.6万粉丝',
+					intro: '一套代码适用全端'
+				}, {
+					avatar: 'https://cdn.img.wenhairu.com/images/2020/05/23/YTNeu.jpg',
+					name: '性能好',
+					cares: '128.9万粉丝',
+					intro: '针对优化，体验好'
+				}, {
+					avatar: 'https://cdn.img.wenhairu.com/images/2020/05/23/YT8SX.jpg',
+					name: '效率高',
+					cares: '328.9万粉丝',
+					intro: '可进阶，越用越快'
+				}, {
+					avatar: 'https://cdn.img.wenhairu.com/images/2020/05/23/YTA2p.jpg',
+					name: '规范',
+					cares: '828.9万粉丝',
+					intro: '学习的绝对帮手'
+				}]
+			}
+		},
+		computed: {
+			itemsAnother() {
+				return this.items.slice(1, 3)
+			}
+		},
+		methods: {
+			toCare() {
+				
+			},
+			toClose() {
+				
+			}
+		}
+	}
+</script>
+
+<style>
+
+</style>

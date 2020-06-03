@@ -15,11 +15,10 @@
 	// #endif
 	
 	import pxMixin from '../myp-mixin/pxMixin.js'
-	import windowMixin from '../myp-mixin/windowMixin.js'
-	import iPhoneXMixin from '../myp-mixin/iPhoneXMixin.js'
+	import xBarMixin from '../myp-mixin/xBarMixin.js'
 
 	export default {
-		mixins: [pxMixin, iPhoneXMixin, windowMixin],
+		mixins: [pxMixin, xBarMixin],
 		props: {
 			// 使用show来控制，外部需要改变show的状态，改变之后延迟执行动画
 			// 当前关闭动画如果不是overlay引起的关闭，没有动画

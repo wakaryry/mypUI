@@ -1,33 +1,12 @@
 export default {
 	methods: {
-		mypGetWindowHeight() {
+		mypGetPlatform() {
 			const app = getApp({allowDefault: true})
-			if (app.globalData.windowHeight) {
-				console.log('zero:', app.globalData.windowHeight)
-				return app.globalData.windowHeight
-			}
-			console.log('first:', app.globalData.windowHeight)
-			this.mypInitSystemInfo()
-			console.log('second:', app.globalData.windowHeight)
-			return app.globalData.windowHeight
-		},
-		mypGetScreenHeight() {
-			const app = getApp({allowDefault: true})
-			if (app.globalData.screenHeight) {
-				return app.globalData.screenHeight
+			if (app.globalData.platform) {
+				return app.globalData.platform
 			}
 			this.mypInitSystemInfo()
-			return app.globalData.screenHeight
-		},
-		mypGetStatusBarHeight() {
-			const app = getApp({allowDefault: true})
-			if (app.globalData.statusBarHeight) {
-				return app.globalData.statusBarHeight
-			}
-			if (!app.globalData.platform || app.globalData.platform.length === 0) {
-				this.mypInitSystemInfo()
-			}
-			return app.globalData.statusBarHeight
+			return app.globalData.platform
 		},
 		mypInitSystemInfo() {
 			try{

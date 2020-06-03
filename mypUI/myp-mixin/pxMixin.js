@@ -1,11 +1,5 @@
 export default {
 	methods: {
-		//
-		// 默认是rpx/upx
-		// 使用：在computed里面对某个prop/data进行px化，为了正确监听到数据，我们可以这样：
-		// heightPx() { const a = this.height; return this.mypToPx(this.height); }
-		// 而不是直接使用：heightPx() { return this.mypToPx(this.height); }
-		//
 		mypToPx(val) {
 			if (typeof val === 'number') {
 				return uni.upx2px(val)

@@ -1,5 +1,5 @@
 <template>
-	<view class="myp-tab-page" :style="{top: top+'px'}">
+	<view class="myp-tab-page" :style="{top: topPx+'px'}">
 		<view class="myp-tab-page-container" ref="tab-container" :style="mrTabContainerStyle+noWeexTransform">
 			<slot></slot>
 		</view>
@@ -35,24 +35,15 @@
 </template>
 
 <script>
-	//
-	// 非swiper实现，无左右滑动切换功能
-	// hump只可以有一个(且必须是中间那个)，noPage的设置也只能有一个
-	// (也没有必要设置多个noPage，noPage表示打开的不是页面，不会进行页面跳转)
-	// 如果你的样式非常特殊，无法适配完成，建议您直接拷贝一份，然后在拷贝里面实现自己的tabs布局
-	// 毕竟这种样式一个app也就写一次，想怎么特殊就怎么特殊写，这里仅仅只是提供通用的壳子/样例
-	//
-
 	// #ifdef APP-NVUE
-	const dom = weex.requireModule('dom');
 	const animation = weex.requireModule('animation');
 	// #endif
 	
-	import iPhoneXMixin from '../myp-mixin/iPhoneXMixin.js'
-	import windowMixin from '../myp-mixin/windowMixin.js'
+	import xBarMixin from '../myp-mixin/xBarMixin.js'
+	import pxMixin from '../myp-mixin/pxMixin.js'
 
 	export default {
-		mixins: [iPhoneXMixin, windowMixin],
+		mixins: [xBarMixin, pxMixin],
 		props: {
 			// 可以为每一个tab单独设置
 			// isHump 表示是否凸起, noPage 表示点击当前tab时不切换，依然停留在原tab内容, hump具备humpStyle,hump有humpBottom(就是距离底部的距离px)
@@ -90,10 +81,6 @@
 				type: Boolean,
 				default: true
 			},
-			supportXBar: {
-				type: Boolean,
-				default: true
-			},
 			duration: {
 				type: [Number, String],
 				default: 300
@@ -102,11 +89,8 @@
 				type: String,
 				default: 'cubic-bezier(0.25, 0.46, 0.45, 0.94)'
 			},
-			// since it's position relative, we add a top to help to posite it when needed
-			// 只是为了辅助定位，有个时候需要在上面加一个内容，为了不被遮挡，tabs的内容需要偏移
-			// px
 			top: {
-				type: Number,
+				type: [Number, String],
 				default: 0
 			}
 		},
@@ -170,6 +154,9 @@
 					}
 				}
 				return -1
+			},
+			topPx() {
+				return this.mypToPx(this.top)
 			},
 			tabHeightPx() {
 				if (this.tabStyle && this.tabStyle.height) {

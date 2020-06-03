@@ -34,12 +34,12 @@ export default class Request {
 			return Promise.reject(_res)
 		}
 		if (task) {
-			const cg = _configWrapper(null, null, config, this.responseInterceptor, [this.success, successHandler, this.complete, completeHandler], [this.fail, failHandler, this.complete, completeHandler])
+			const cg = _configWrapper(null, null, config, options, this.responseInterceptor, [this.success, successHandler, this.complete, completeHandler], [this.fail, failHandler, this.complete, completeHandler])
 			const f = _requestWrapper(type)
 			return f(cg)
 		}
 		return new Promise((resolve, reject) => {
-			const cg = _configWrapper(resolve, reject, config, this.responseInterceptor, [this.success, successHandler, this.complete, completeHandler], [this.fail, failHandler, this.complete, completeHandler])
+			const cg = _configWrapper(resolve, reject, config, options, this.responseInterceptor, [this.success, successHandler, this.complete, completeHandler], [this.fail, failHandler, this.complete, completeHandler])
 			const f = _requestWrapper(type)
 			f(cg)
 		})
@@ -52,11 +52,11 @@ function _callbackWrapper(res, fns) {
 	})
 }
 
-function _configWrapper(resolve, reject, config, interceptor, sucFns, failFns) {
+function _configWrapper(resolve, reject, config, options, interceptor, sucFns, failFns) {
 	config["success"] = (response) => {
 		let _res = response
 		if (interceptor) {
-			_res = interceptor(response, config)
+			_res = interceptor(response, options)
 		}
 		if (_res && _res.mypReqToReject) {
 			delete _res.mypReqToReject
@@ -70,7 +70,7 @@ function _configWrapper(resolve, reject, config, interceptor, sucFns, failFns) {
 	config["fail"] = (response) => {
 		let _res = response
 		if (interceptor) {
-			_res = interceptor({mypFail: true, response: response}, config)
+			_res = interceptor({mypFail: true, response: response}, options)
 		}
 		delete _res.mypReqToReject
 		_callbackWrapper(_res, failFns)

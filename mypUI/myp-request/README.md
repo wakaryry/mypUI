@@ -14,7 +14,6 @@
 - 支持常规请求，上传以及下载；
 - 支持Promise以及Task；
 - 支持同步/异步；
-- 支持配置取消/错误的提示信息；
 - 更多...
 
 # TODO
@@ -28,6 +27,8 @@
 > 不对`url`进行任何的检测（自己保证`url`的合法性），最终的`url`就是`baseUrl`和`api`配置中`url`的拼接（当然，你可以在拦截请求器里面修改`url`）。
 > 
 > 可以根据需要在构建接口时任意添加`参数/字段`，方便你在`拦截器`里面使用。
+> 
+> `请求被拦截`也会进入响应拦截器里面，而且会自动`reject`返回的内容，响应拦截器接收到的数据为`{mypCancel:true, response:...}`；
 > 
 > 请求`fail`也会进入响应拦截器里面，而且会自动`reject`返回的内容，`fail`时响应拦截器接收到的数据为`{mypFail:true, response:...}`；
 > 
@@ -44,6 +45,7 @@
 - 请求取消或者失败会走`reject`（`catch`中处理）；
 - 您可以通过`mypReqToReject`在响应拦截器中自由控制是否进入`reject`；
 - `fail`情况下也会进入响应拦截器，是否`fail`根据`response`中的`mypFail`来做判断；
+- `请求被拦截`也会进入响应拦截器，是否`被拦截`根据`response`中的`mypCancel`来做判断；
 
 ## 初始化请求器
 
@@ -56,22 +58,14 @@ import Request from '@/mypUI/myp-request/index.js'
 // 设置 通用的 baseUrl 以及 header
 const config = {
 	baseUrl: baseUrl,
-	header: {"content-type": "application/x-www-form-urlencoded"},
-	// 取消请求时的提示信息配置，自己根据自己的需要设置字段以及内容
-	// 全局有效，可以在api的options中进行单独覆盖配置
-	cancelReject: {
-		text: '请求未通过验证,检查是否登录或者数据正确',
-		type: 'warning'  // 我用来控制提示UI的样式
-	}
+	header: {"content-type": "application/x-www-form-urlencoded"}
 }
 
 // 设置自己的请求拦截器，必须加上 `async`
 // 请求前的拦截，比如是否登录/过期/刷新token/...
 const reqInterceptor = async (options) => {
-	// 必须返回一个 Object 或者 false
-	// false 代表该 请求被拦截，不会进行请求，这个时候会reject全局设置的cancelReject
-	// 请求被拦截时，也可以配置拦截时的提示信息：cancelReject-对象
-	// return {mypReqToCancel: true, cancelReject: {...}}
+	// 必须返回一个 Object
+	// 拦截请求：return {mypReqToCancel: true, ...}
 	// TODO: 添加任意拦截逻辑
 	return options
 }
@@ -84,6 +78,10 @@ const resInterceptor = (response, conf={}) => {
 	// 如果需要reject，需要设置mypReqToReject:true，还可以携带自己定义的任何提示内容（catch中处理）
 	// uni.request进入fail也会进入该拦截器（为了统一处理逻辑），这个时候的response参数为{mypFail: true, response: fail info}。fail时不管返回啥，都进入reject(catch)
 	if (response.mypFail) {
+		return response.response
+	}
+	// 请求被拦截时也会进入该回掉（为了统一处理逻辑），这个时候的response参数为{mypCancel: true, response: cancel info}。cancel时不管返回啥，都进入reject(catch)
+	if (response.mypCancel) {
 		return response.response
 	}
 	return response
@@ -102,12 +100,11 @@ export default req
 
 - type: request-普通请求，upload-上传，download-下载；
 - task: 布尔值，是否返回task任务，默认是不返回 false；
-- cancelReject: Object。您定义的取消请求时的提示内容；
 
 **我们使用了一些固定的参数来标记拦截状态：**
 
 - mypReqToCancel: 布尔值。请求拦截器的返回里标记是否拦截请求；
-- cancelReject: Object。请求拦截时的`reject`的内容；
+- mypCancel: 布尔值。响应拦截器回掉参数中，标记请求是否被拦截；
 - mypFail: 布尔值。响应拦截器回掉参数中，标记是否进入了`uni.request`的`fail`，具体可以看拦截器示范；
 - mypReqToReject：布尔值。用于响应拦截器里面的返回内容标记，标记是否进入`reject`；
 
@@ -236,7 +233,7 @@ console.log('hello')
 - `success/fail/complete`都支持全局配置和局部配置，全局和局部并不是覆盖关系，而是都会运行。先运行全局配置，然后是局部配置；
 - 所有的回掉都有一个参数，该参数就是响应拦截器里面您的返回内容；
 - `success/fail/complete`回掉并不对应`uni.request`的相应回掉，而是对应您的业务逻辑，`resolve/then`的就是`success`，`reject/catch`的就是`fail`；
-- `task`任务中，业务处理在`success/fail/complete`回掉中，毕竟不再是常规的`then/catch`处理
+- `task`任务中，业务处理在`success/fail/complete`回掉中，毕竟不再是常规的`then/catch`处理；
 
 ### 全局配置
 ```js
@@ -290,3 +287,5 @@ const reqInterceptor = async (options) => {
 全新的 `nvue-uniapp` 组件，一套组件支持编译到 `mp/h5/app`。
 
 QQ群：`306797275`
+
+有任何问题可以加`QQ：382006503`或者`微信：pptpdf`。

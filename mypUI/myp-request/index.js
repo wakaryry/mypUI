@@ -2,7 +2,6 @@ import { requestConfig } from './common.js'
 
 export default class Request {
 	constructor(config={}, reqInterceptor=null, resInterceptor=null, successHandler=null, failHandler=null, completeHandler=null) {
-		// base
 	    this.baseUrl = config.baseUrl
 		if (config.header) {
 			// we must parse deep-copy header, then it can not be influenced by the-before request
@@ -16,14 +15,8 @@ export default class Request {
 		// interceptors
 		this.requestInterceptor = reqInterceptor
 		this.responseInterceptor = resInterceptor
-		if (config.cancelReject && (typeof config.cancelReject === 'object')) {
-			this.cancelReject = Object.assign({}, config.cancelReject)
-		} else {
-			this.cancelReject = {text: '请求未通过验证,检查是否登录或者数据正确', type: 'warning'}
-		}
 	}
-	// type: request/upload/download.
-	// the success/fail/complete handler will not override the global, it will just call after global
+	
 	async request(options, successHandler=null, failHandler=null, completeHandler=null) {
 		const task = options.task || false
 		const type = options.type || "request"
@@ -31,63 +24,67 @@ export default class Request {
 		try{
 			config = await requestConfig(this, options)
 		}catch(e){
-			return Promise.reject(e)
+			const _res = (this.responseInterceptor && this.responseInterceptor({mypCancel: true, response: e}, options)) || {mypCancel: true, response: e}
+			_callbackWrapper(_res, [this.fail, failHandler, this.complete, completeHandler])
+			return Promise.reject(_res)
 		}
-		if (!config || typeof config != 'object') {
-			return Promise.reject(this.cancelReject)
-		}
-		// mypReqToCancel with cancelReject
 		if (config.mypReqToCancel) {
-			if (config.cancelReject && (typeof config.cancelReject === 'object')) {
-				return Promise.reject(config.cancelReject)
-			}
-			return Promise.reject(this.cancelReject)
+			const _res = (this.responseInterceptor && this.responseInterceptor({mypCancel: true, response: config}, options)) || {mypCancel: true, response: config}
+			_callbackWrapper(_res, [this.fail, failHandler, this.complete, completeHandler])
+			return Promise.reject(_res)
 		}
-		if (config.cancelReject) {
-			delete config.cancelReject
+		if (task) {
+			const cg = _configWrapper(null, null, config, this.responseInterceptor, [this.success, successHandler, this.complete, completeHandler], [this.fail, failHandler, this.complete, completeHandler])
+			const f = _requestWrapper(type)
+			return f(cg)
 		}
-		const that = this
-		config["success"] = (response) => {
-			let _res = response
-			if (that.responseInterceptor) {
-				_res = that.responseInterceptor(response, options)
-			}
-			if (_res && _res.mypReqToReject) {
-				delete _res.mypReqToReject
-				that.fail && that.fail(_res)
-				failHandler && failHandler(_res)
-				that.complete && that.complete(_res)
-				completeHandler && completeHandler(_res)
-				!task && Promise.reject(_res)
-			} else {
-				that.success && that.success(_res)
-				successHandler && successHandler(_res)
-				that.complete && that.complete(_res)
-				completeHandler && completeHandler(_res)
-				!task && Promise.resolve(_res)
-			}
+		return new Promise((resolve, reject) => {
+			const cg = _configWrapper(resolve, reject, config, this.responseInterceptor, [this.success, successHandler, this.complete, completeHandler], [this.fail, failHandler, this.complete, completeHandler])
+			const f = _requestWrapper(type)
+			f(cg)
+		})
+	}
+}
+
+function _callbackWrapper(res, fns) {
+	fns.forEach(fn => {
+		fn && fn(res)
+	})
+}
+
+function _configWrapper(resolve, reject, config, interceptor, sucFns, failFns) {
+	config["success"] = (response) => {
+		let _res = response
+		if (interceptor) {
+			_res = interceptor(response, config)
 		}
-		config["fail"] = (response) => {
-			let _res = response
-			if (that.responseInterceptor) {
-				_res = that.responseInterceptor({mypFail: true, response: response}, options)
-				delete _res.mypReqToReject
-			}
-			that.fail && that.fail(_res)
-			failHandler && failHandler(_res)
-			that.complete && that.complete(_res)
-			completeHandler && completeHandler(_res)
-			!task && Promise.reject(_res)
-		}
-		if (type === "request") {
-			if (task) return uni.request(config);
-			uni.request(config)
-		} else if (type === "upload") {
-			if (task) return uni.uploadFile(config);
-			uni.uploadFile(config)
+		if (_res && _res.mypReqToReject) {
+			delete _res.mypReqToReject
+			_callbackWrapper(_res, failFns)
+			reject && reject(_res)
 		} else {
-			if (task) return uni.downloadFile(config);
-			uni.downloadFile(config)
+			_callbackWrapper(_res, sucFns)
+			resolve && resolve(_res)
 		}
+	}
+	config["fail"] = (response) => {
+		let _res = response
+		if (interceptor) {
+			_res = interceptor({mypFail: true, response: response}, config)
+		}
+		delete _res.mypReqToReject
+		_callbackWrapper(_res, failFns)
+		reject && reject(_res)
+	}
+	return config
+}
+
+function _requestWrapper(type) {
+	if (type === 'request') {
+		return uni.request
+	} else if (type === 'upload') {
+		return uni.uploadFile
+	} else {
+		return uni.downloadFile
 	}
 }

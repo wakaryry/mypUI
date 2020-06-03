@@ -15,10 +15,7 @@ export async function requestConfig(ins, options) {
 			// _cg is tha same object of _options
 			_cg = await ins.requestInterceptor(_options)
 		}catch(e){
-			return false
-		}
-		if (!_cg || typeof _cg !== 'object') {
-			return false
+			return {mypReqToCancel: true, error: e}
 		}
 		// no need to reqeust
 		if (_cg.mypReqToCancel) {

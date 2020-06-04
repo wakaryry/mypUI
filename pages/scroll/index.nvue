@@ -18,7 +18,7 @@
 			return {
 				items: [
 					{name: '实验室', page: 'scroll_test', icon: 'class', desc: '测试入口'},
-					{name: '横向scroll', page: 'scroll_h', icon: 'class', desc: '横向滚动scroll'},
+					{name: '横向scroll', page: 'scroll_h', icon: 'book', desc: '横向滚动scroll'},
 					{name: 'list', page: 'scroll_list_one', icon: 'topic', desc: 'list/scroll'},
 					{name: 'list', page: 'scroll_list_two', icon: 'subject', desc: 'list/scroll，带下拉/上提'},
 					{name: 'waterfall', page: 'scroll_waterfall', icon: 'radio-button', desc: 'waterfall/scroll，带下拉/上提'},

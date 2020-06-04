@@ -1,7 +1,7 @@
 <template>
 	<view>
 		<myp-navbar :lefts="leftIcons" title="测试入口" @leftAction="navLeftAction"></myp-navbar>
-		<scroll-view class="m-page" :style="mypContentHeightStyle+'width:750rpx;'">
+		<scroll-view :scroll-y="true" :style="mypContentHeightStyle+'width:750rpx;'">
 			<view style="height: 20rpx;"></view>
 			<myp-cell v-for="(item,idx) in items" :key="idx" :icon="item.icon" :title="item.name" :value="item.desc" :showIndicator="true" indicator="right" radius="none" border="bottom" height="ll" valueStyle="text-align:right;" boxStyle="padding-left:30rpx;padding-right:30rpx;" @cellClicked="toDetailScroll(item)"></myp-cell>
 		</scroll-view>
@@ -17,15 +17,14 @@
 		data() {
 			return {
 				items: [
-					{name: '不封装list', page: 'scroll_raw', icon: 'class', desc: '直接用list'},
-					{name: '横向scroll', page: 'scroll_h', icon: 'class', desc: '横向滚动scroll'},
-					{name: 'list', page: 'scroll_list_one', icon: 'topic', desc: 'list/scroll'},
-					{name: 'list', page: 'scroll_list_two', icon: 'subject', desc: 'list/scroll，带下拉/上提'},
-					{name: 'waterfall', page: 'scroll_waterfall', icon: 'radio-button', desc: 'waterfall/scroll，带下拉/上提'},
-					{name: '头部-1', page: 'scroll_header', icon: 'headphone', desc: '支持不完全打开，带下拉/上提'},
-					{name: '头部-2', page: 'scroll_header_swiper', icon: 'headphone', desc: 'header+tabs+swiper，带下拉/上提'},
-					{name: 'x兼容-1', page: 'scroll_x_one', icon: 'teacher', desc: 'xBar透明，底部不被遮挡'},
-					{name: 'x兼容-2', page: 'scroll_x_two', icon: 'teacher', desc: 'xBar不透明，底部不被遮挡'}
+					{name: '不封装list', page: 'scroll_raw', icon: 'class', desc: 'refresh/loading'},
+					{name: '不封装list', page: 'scroll_raw_one', icon: 'class', desc: 'r/l,内容不足一页'},
+					{name: '不封装list', page: 'scroll_raw_two', icon: 'topic', desc: '自定义refresh/loading'},
+					{name: '不封装list', page: 'scroll_raw_three', icon: 'topic', desc: '自定义r/l,不足一页'},
+					{name: '封装list', page: 'scroll_wrap', icon: 'headphone', desc: 'refresh/loading'},
+					{name: '封装list', page: 'scroll_wrap_one', icon: 'headphone', desc: 'r/l,内容不足一页'},
+					{name: '封装list', page: 'scroll_wrap_two', icon: 'radio-button', desc: '自定义refresh/loading'},
+					{name: '封装list', page: 'scroll_wrap_three', icon: 'radio-button', desc: '自定义r/l,不足一页'}
 				]
 			}
 		},

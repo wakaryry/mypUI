@@ -32,6 +32,13 @@ export default {
 	// scroll
 	scroll_index: '/pages/scroll/index',
 	scroll_raw: '/pages/scroll/scroll_raw',
+	scroll_raw_one: '/pages/scroll/scroll_raw_one',
+	scroll_raw_two: '/pages/scroll/scroll_raw_two',
+	scroll_raw_three: '/pages/scroll/scroll_raw_three',
+	scroll_wrap: '/pages/scroll/scroll_wrap',
+	scroll_wrap_one: '/pages/scroll/scroll_wrap_one',
+	scroll_wrap_two: '/pages/scroll/scroll_wrap_two',
+	scroll_wrap_three: '/pages/scroll/scroll_wrap_three',
 	scroll_test: '/pages/scroll/test',
 	scroll_h: '/pages/scroll/scroll_h',
 	scroll_header_swiper: '/pages/scroll/scroll_header_swiper',

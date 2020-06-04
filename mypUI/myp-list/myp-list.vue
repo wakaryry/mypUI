@@ -4,9 +4,9 @@
 		<list :class="'myp-bg-'+bgType" :style="mrScrollStyle" ref="myp-scroller" :loadmoreoffset="loadMoreOffset" @loadmore="mypLoad">
 			<myp-refresher-n v-if="mypDown.use" ref="myp-refresher" scroller-ref="myp-scroller" @refresh="mypRefresh"></myp-refresher-n>
 			<slot></slot>
-			<loader v-if="mypUp.use&&useLoader" ref="myp-loader" :hasMore="mypHasMore" @loading="mypLoad"></loader>
+			<myp-loader v-if="mypUp.use&&useLoader" ref="myp-loader" :hasMore="mypHasMore" @loading="mypLoad"></myp-loader>
 			<cell v-if="mypUp.use&&!useLoader">
-				<myp-loader :isLoading="mypIsUpLoading" :hasMore="mypHasMore"></myp-loader>
+				<myp-loader-n :isLoading="mypIsUpLoading" :hasMore="mypHasMore"></myp-loader-n>
 			</cell>
 			<cell>
 				<view :style="{height: footerToken}"></view>

@@ -176,6 +176,48 @@
 			}
 		},
 		{
+			"path": "pages/scroll/scroll_raw_one",
+			"style": {
+				"disableScroll": true
+			}
+		},
+		{
+			"path": "pages/scroll/scroll_raw_two",
+			"style": {
+				"disableScroll": true
+			}
+		},
+		{
+			"path": "pages/scroll/scroll_raw_three",
+			"style": {
+				"disableScroll": true
+			}
+		},
+		{
+			"path": "pages/scroll/scroll_wrap",
+			"style": {
+				"disableScroll": true
+			}
+		},
+		{
+			"path": "pages/scroll/scroll_wrap_one",
+			"style": {
+				"disableScroll": true
+			}
+		},
+		{
+			"path": "pages/scroll/scroll_wrap_two",
+			"style": {
+				"disableScroll": true
+			}
+		},
+		{
+			"path": "pages/scroll/scroll_wrap_three",
+			"style": {
+				"disableScroll": true
+			}
+		},
+		{
 			"path": "pages/scroll/scroll_h",
 			"style": {
 				"disableScroll": true

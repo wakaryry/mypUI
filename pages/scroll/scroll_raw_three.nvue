@@ -1,20 +1,15 @@
 <template>
 	<view>
-		<myp-navbar title="refresh/loading" :lefts="leftIcons" @leftAction="navLeftAction"></myp-navbar>
+		<myp-navbar title="自定义r/l-不足一页" :lefts="leftIcons" @leftAction="navLeftAction"></myp-navbar>
 		<!-- #ifdef APP-NVUE -->
-		<list :style="mypContentHeightStyle+'width:750rpx;'">
-			<refresh class="raw-refresh" :display="display" @refresh="toRefresh">
-				<loading-indicator></loading-indicator>
-			</refresh>
+		<list ref='myp-raw-list' :style="mypContentHeightStyle+'width:750rpx;'">
+			<myp-refresher-n ref="myp-refresher" scroller-ref="myp-raw-list" @refresh="toRefresh"></myp-refresher-n>
 			<cell v-for="(item,idx) in items" :key="idx">
 				<view class="raw-item">
 					<text class="raw-item-text">{{item}}</text>
 				</view>
 			</cell>
-			<!-- Android下不能用v-if直接控制loading，否则app奔溃 -->
-			<loading class="raw-loading" :display="displayLoading" @loading="toLoad">
-				<loading-indicator></loading-indicator>
-			</loading>
+			<myp-loader-n ref="myp-loader" :hasMore="hasMore" @loading="toLoad"></myp-loader-n>
 		</list>
 		<!-- #endif -->
 		<!-- #ifndef APP-NVUE -->
@@ -31,7 +26,7 @@
 	import contentBoxMixin from '@/mypUI/myp-mixin/contentBoxMixin.js'
 	import navHelper from '@/router/navHelper.js'
 	
-	const rawItems = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+	const rawItems = [1]
 	
 	export default {
 		mixins: [navHelper, contentBoxMixin],
@@ -39,8 +34,6 @@
 			return {
 				items: rawItems,
 				// #ifdef APP-NVUE
-				display: 'hide',
-				displayLoading: 'hide',
 				hasMore: true,
 				currentPage: 1
 				// #endif
@@ -49,59 +42,43 @@
 		methods: {
 			// #ifdef APP-NVUE
 			toRefresh() {
-				if (this.displayLoading === 'show') {
-					this.display = 'hide'
-					return
-				}
-				this.display = 'show'
 				const cp = 1
 				setTimeout(()=>{
 					this.items = rawItems
 					this.currentPage = 1
-					this.display = 'hide'
 					this.hasMore = true
+					this.$refs['myp-refresher'].cancel()
 				}, 300)
 			},
 			toLoad() {
-				if (this.display === 'show') {
-					this.displayLoading = 'hide'
-					return
-				}
-				if (this.displayLoading === 'show') {
-					return
-				}
 				if (!this.hasMore) {
 					console.log('没有更多辣')
 					const platform = this.mypGetPlatform()
 					if (platform === 'ios') {
-						// ios下必须直接关闭，不然可以一直往上拖动，底部出现大量空白，而且不会自动回弹消除空白
-						this.displayLoading = 'hide'
+						this.$refs['myp-loader'].cancel()
 					} else {
-						// 安卓下不能直接关闭，需要先打开，然后延时关闭。不打开也不能关闭。打开不延时关闭也不能关闭
-						this.displayLoading = 'show'
 						setTimeout(()=>{
-							this.displayLoading = 'hide'
+							this.$refs['myp-loader'].cancel()
 						}, 0)
 					}
 					return
 				}
-				this.displayLoading = 'show'
 				const cp = this.currentPage + 1
 				setTimeout(()=>{
 					if (cp === 1) {
 						this.items = rawItems
 						this.currentPage = 1
-						this.displayLoading = 'hide'
 						this.hasMore = true
+						this.$refs['myp-loader'].cancel()
 					} else {
 						const newItems = []
 						rawItems.forEach(val => {
-							newItems.push(val+(cp-1)*10)
+							newItems.push(val+(cp-1)*1)
 						})
 						this.items = this.items.concat(newItems)
 						this.currentPage = cp
-						this.displayLoading = 'hide'
-						if (cp >= 4) {
+						this.$refs['myp-loader'].cancel()
+						if (cp >= 10) {
 							this.hasMore = false
 						} else {
 							this.hasMore = true
@@ -120,10 +97,10 @@
 					} else {
 						const newItems = []
 						rawItems.forEach(val => {
-							newItems.push(val+(cp-1)*10)
+							newItems.push(val+(cp-1)*1)
 						})
 						this.items = this.items.concat(newItems)
-						if (cp >= 4) {
+						if (cp >= 10) {
 							ins.mypEndSuccess(false)
 						} else {
 							ins.mypEndSuccess(true)

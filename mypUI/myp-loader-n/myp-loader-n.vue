@@ -62,9 +62,11 @@
 			// onLoading意味着触发了上提加载，正在请求数据
 			onloading(e) {
 				console.log("正在加载")
-				if (!this.hasMore) return;
 				this.isLoading = true
 				this.$emit("loading")
+				if (!this.hasMore) return;
+				// this.isLoading = true
+				// this.$emit("loading")
 				if (this.maxTime <= 0) return;
 				this.loadTimeOut && clearTimeout(this.loadTimeOut)
 				const that = this

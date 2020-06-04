@@ -1,0 +1,94 @@
+<template>
+	<view>
+		<myp-navbar title="wrap-自定义r/l-不足一页" :lefts="leftIcons" @leftAction="navLeftAction"></myp-navbar>
+		<!-- #ifdef APP-NVUE -->
+		<wrap-four></wrap-four>
+		<!-- #endif -->
+		<!-- #ifndef APP-NVUE -->
+		<myp-list ref="myp-list" @down="toLoadItems" @up="toLoadItems">
+			<view class="raw-item" v-for="(item,idx) in items" :key="idx">
+				<text class="raw-item-text">{{item}}</text>
+			</view>
+		</myp-list>
+		<!-- #endif -->
+	</view>
+</template>
+
+<script>
+	import wrapFour from './components/wrap_four.vue'
+	
+	import navHelper from '@/router/navHelper.js'
+	
+	const rawItems = [1]
+	
+	export default {
+		components: {
+			wrapFour
+		},
+		mixins: [navHelper],
+		data() {
+			return {
+				items: rawItems,
+				// #ifdef APP-NVUE
+				hasMore: true,
+				currentPage: 1
+				// #endif
+			}
+		},
+		methods: {
+			toLoadItems() {
+				const ins = this.$refs['myp-list']
+				const cp = ins.mypCurrentPage
+				setTimeout(()=>{
+					if (cp === 1) {
+						this.items = rawItems
+						ins.mypEndSuccess(true)
+					} else {
+						const newItems = []
+						rawItems.forEach(val => {
+							newItems.push(val+(cp-1)*1)
+						})
+						this.items = this.items.concat(newItems)
+						if (cp >= 10) {
+							ins.mypEndSuccess(false)
+						} else {
+							ins.mypEndSuccess(true)
+						}
+					}
+				}, 300)
+			}
+		}
+	}
+</script>
+
+<style lang="scss">
+	@import '@/mypUI/mypui.scss';
+	
+	.raw {
+		&-item {
+			width: 750rpx;
+			background-color: $myp-color-primary;
+			height: 240rpx;
+			justify-content: center;
+			align-items: center;
+			margin-bottom: 20rpx;
+			
+			&-text {
+				font-size: 46rpx;
+				color: #FFFFFF;
+			}
+		}
+		&-refresh {
+			width: 750rpx;
+			height: 80rpx;
+			justify-content: center;
+			align-items: center;
+		}
+		&-loading {
+			width: 750rpx;
+			height: 80rpx;
+			justify-content: center;
+			align-items: center;
+		}
+	}
+</style>

@@ -1,0 +1,59 @@
+<template>
+	<view>
+		<myp-navbar title="wrap-r/l" :lefts="leftIcons" @leftAction="navLeftAction"></myp-navbar>
+		<!-- #ifdef APP-NVUE -->
+		<wrap-one></wrap-one>
+		<!-- #endif -->
+		<!-- #ifndef APP-NVUE -->
+		<myp-list ref="myp-list" :autoUpdate="true" @down="toLoadItems" @up="toLoadItems">
+			<view class="raw-item" v-for="(item,idx) in items" :key="idx">
+				<text class="raw-item-text">{{item}}</text>
+			</view>
+		</myp-list>
+		<!-- #endif -->
+	</view>
+</template>
+
+<script>
+	import wrapOne from './components/wrap_one.vue'
+	
+	import navHelper from '@/router/navHelper.js'
+	
+	const rawItems = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+	
+	export default {
+		components: {
+			wrapOne
+		},
+		mixins: [navHelper],
+		methods: {
+			// #ifndef APP-NVUE
+			toLoadItems() {
+				const ins = this.$refs['myp-list']
+				const cp = ins.mypCurrentPage
+				setTimeout(()=>{
+					if (cp === 1) {
+						this.items = rawItems
+						ins.mypEndSuccess(true)
+					} else {
+						const newItems = []
+						rawItems.forEach(val => {
+							newItems.push(val+(cp-1)*10)
+						})
+						this.items = this.items.concat(newItems)
+						if (cp >= 4) {
+							ins.mypEndSuccess(false)
+						} else {
+							ins.mypEndSuccess(true)
+						}
+					}
+				}, 300)
+			}
+			// #endif
+		}
+	}
+</script>
+
+<style>
+
+</style>

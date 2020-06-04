@@ -31,6 +31,8 @@ export default {
 	swiper_index: '/pages/swiper/index',
 	// scroll
 	scroll_index: '/pages/scroll/index',
+	scroll_raw: '/pages/scroll/scroll_raw',
+	scroll_test: '/pages/scroll/test',
 	scroll_h: '/pages/scroll/scroll_h',
 	scroll_header_swiper: '/pages/scroll/scroll_header_swiper',
 	scroll_header: '/pages/scroll/scroll_header',

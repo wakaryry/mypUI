@@ -1,0 +1,80 @@
+<template>
+	<view>
+		<myp-navbar title="直接条件使用" :lefts="leftIcons" @leftAction="navLeftAction"></myp-navbar>
+		<!-- #ifdef APP-NVUE -->
+		<list :style="mypContentHeightStyle+'width:750rpx;'">
+			<refresher></refresher>
+			<cell v-for="(item,idx) in items" :key="idx">
+				<view class="raw-item">
+					<text class="raw-item-text">{{item}}</text>
+				</view>
+			</cell>
+			<loader></loader>
+		</list>
+		<!-- #endif -->
+		<!-- #ifndef APP-NVUE -->
+		<myp-list ref="myp-list" @down="toLoadItems" @up="toLoadItems">
+			<view class="raw-item" v-for="(item,idx) in items" :key="idx">
+				<text class="raw-item-text">{{item}}</text>
+			</view>
+		</myp-list>
+		<!-- #endif -->
+	</view>
+</template>
+
+<script>
+	import contentBoxMixin from '@/mypUI/myp-mixin/contentBoxMixin.js'
+	import navHelper from '@/router/navHelper.js'
+	
+	const rawItems = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+	
+	export default {
+		mixins: [navHelper, contentBoxMixin],
+		data() {
+			return {
+				items: rawItems
+			}
+		},
+		methods: {
+			toLoadItems() {
+				const ins = this.$refs['myp-list']
+				const cp = ins.mypCurrentPage
+				setTimeout(()=>{
+					if (cp === 1) {
+						this.items = rawItems
+						ins.mypEndSuccess(true)
+					} else {
+						const newItems = []
+						rawItems.forEach(val => {
+							newItems.push(val+cp*10)
+						})
+						this.items = this.items.concat(newItems)
+						if (cp >= 4) {
+							ins.mypEndSuccess(false)
+						} else {
+							ins.mypEndSuccess(true)
+						}
+					}
+				}, 300)
+			}
+		}
+	}
+</script>
+
+<style lang="scss">
+	@import '@/mypUI/mypui.scss';
+	
+	.raw-item {
+		width: 750rpx;
+		background-color: $myp-color-primary;
+		height: 240rpx;
+		justify-content: center;
+		align-items: center;
+		margin-bottom: 20rpx;
+		
+		&-text {
+			font-size: 46rpx;
+			color: #FFFFFF;
+		}
+	}
+</style>

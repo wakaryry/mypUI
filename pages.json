@@ -164,6 +164,18 @@
 			}
 		},
 		{
+			"path": "pages/scroll/test",
+			"style": {
+				"disableScroll": true
+			}
+		},
+		{
+			"path": "pages/scroll/scroll_raw",
+			"style": {
+				"disableScroll": true
+			}
+		},
+		{
 			"path": "pages/scroll/scroll_h",
 			"style": {
 				"disableScroll": true

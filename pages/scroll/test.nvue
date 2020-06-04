@@ -1,6 +1,6 @@
 <template>
 	<view>
-		<myp-navbar :lefts="leftIcons" title="各种scroll的适配" @leftAction="navLeftAction"></myp-navbar>
+		<myp-navbar :lefts="leftIcons" title="测试入口" @leftAction="navLeftAction"></myp-navbar>
 		<scroll-view class="m-page" :style="mypContentHeightStyle+'width:750rpx;'">
 			<view style="height: 20rpx;"></view>
 			<myp-cell v-for="(item,idx) in items" :key="idx" :icon="item.icon" :title="item.name" :value="item.desc" :showIndicator="true" indicator="right" radius="none" border="bottom" height="ll" valueStyle="text-align:right;" boxStyle="padding-left:30rpx;padding-right:30rpx;" @cellClicked="toDetailScroll(item)"></myp-cell>
@@ -17,7 +17,7 @@
 		data() {
 			return {
 				items: [
-					{name: '实验室', page: 'scroll_test', icon: 'class', desc: '测试入口'},
+					{name: '不封装list', page: 'scroll_raw', icon: 'class', desc: '直接用list'},
 					{name: '横向scroll', page: 'scroll_h', icon: 'class', desc: '横向滚动scroll'},
 					{name: 'list', page: 'scroll_list_one', icon: 'topic', desc: 'list/scroll'},
 					{name: 'list', page: 'scroll_list_two', icon: 'subject', desc: 'list/scroll，带下拉/上提'},

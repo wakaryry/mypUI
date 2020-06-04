@@ -11,16 +11,12 @@
 			</myp-list-cell>
 			<myp-list-cell>
 				<myp-scroll-h height="600rpx" justify="center">
-					<view style="width: 32rpx;"></view>
 					<v-care-card v-for="(item,idx) in itemsAnother" :key="idx" :image="item.avatar" :name="item.name" :cares="item.cares" :intro="item.intro" @care="toCare" @close="toClose"></v-care-card>
-					<view style="width: 32rpx;"></view>
 				</myp-scroll-h>
 			</myp-list-cell>
 			<myp-list-cell>
 				<myp-scroll-h height="600rpx" justify="space-between">
-					<view style="width: 32rpx;"></view>
 					<v-care-card v-for="(item,idx) in itemsAnother" :key="idx" :image="item.avatar" :name="item.name" :cares="item.cares" :intro="item.intro" @care="toCare" @close="toClose"></v-care-card>
-					<view style="width: 32rpx;"></view>
 				</myp-scroll-h>
 			</myp-list-cell>
 		</myp-list>

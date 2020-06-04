@@ -3,7 +3,6 @@
 		<!-- #ifdef APP-NVUE -->
 		<list :class="'myp-bg-'+bgType" :style="mrScrollStyle" ref="myp-scroller" :loadmoreoffset="loadMoreOffset" @loadmore="mypLoad">
 			<myp-refresher-n v-if="mypDown.use" ref="myp-refresher" scroller-ref="myp-scroller" @refresh="mypRefresh"></myp-refresher-n>
-			<!-- content of list. must in cell element -->
 			<slot></slot>
 			<loader v-if="mypUp.use&&useLoader" ref="myp-loader" :hasMore="mypHasMore" @loading="mypLoad"></loader>
 			<cell v-if="mypUp.use&&!useLoader">
@@ -36,10 +35,11 @@
 
 <script>
 	import xBarMixin from '../myp-mixin/xBarMixin.js'
+	import pxMixin from '../myp-mixin/pxMixin.js'
 	import scrollMixin from './mixin.js'
 	
 	export default {
-		mixins: [xBarMixin, scrollMixin],
+		mixins: [xBarMixin, pxMixin, scrollMixin],
 		props: {
 			// 以下全用于计算高度
 			hasStatus: {
@@ -60,7 +60,7 @@
 			},
 			extra: {
 				type: [Number, String],
-				default: 0  // rpx or px, number is rpx
+				default: 0
 			},
 			// 如果设置了height，则会直接使用height，忽略其它的计算
 			height: {
@@ -80,7 +80,7 @@
 			// app loadmore offset. px
 			loadMoreOffset: {
 				type: Number,
-				default: 20
+				default: 10
 			},
 			// 进入自动刷新数据. 默认不自动刷新数据
 			autoUpdate: {
@@ -124,17 +124,12 @@
 			}
 		},
 		computed: {
-			// 计算属性,响应式的.而不是在created直接计算
-			// scrollMixin中需要用到，所以命名为myp开头
-			// 必须提供该值，一方面你需要设置scroll的高度，另一方面在scrollMixin的上提加载更多中需要用到
 			mypScrollHeight() {
 				if (this.heightPx !== 0) {
 					return this.heightPx
 				}
-				const app = getApp({allowDefault: true})
 				let _height = this.mypGetScreenHeight()
 				if (_height === 0) {
-					// try again
 					_height = this.mypGetScreenHeight()
 				}
 				if (this.hasStatus) {
@@ -143,35 +138,17 @@
 				if (_height === 0) {
 					return 0
 				}
-				const xBarHeight = this.supportXBar ? this.mypXBarHeight : 0  // 34px
+				const xBarHeight = this.supportXBar ? this.mypGetXBarHeight() : 0
 				return _height - this.navHeight - this.tabHeight - this.extraPx - xBarHeight
 			},
 			heightPx() {
-				if (parseInt(this.height) === 0) {
-					return 0
-				}
-				if (typeof this.height === 'number') {
-					return uni.upx2px(this.height)
-				}
-				if (this.height.indexOf('rpx') >= 0) {
-					return uni.upx2px(parseInt(this.height))
-				}
-				return parseInt(this.height)
+				return this.mypToPx(this.height)
 			},
 			mrScrollStyle() {
 				return `width:${this.width};height:${this.mypScrollHeight}px;`+this.boxStyle
 			},
 			extraPx() {
-				if (typeof this.extra === 'number') {
-					return uni.upx2px(this.extra)
-				}
-				if (this.extra.indexOf('rpx') >= 0) {
-					return uni.upx2px(parseInt(this.extra))
-				} else if (this.extra.indexOf('px') >= 0) {
-					return parseInt(this.extra)
-				} else {
-					return uni.upx2px(parseInt(this.extra))
-				}
+				return this.mypToPx(this.extra)
 			}
 		},
 		created() {
@@ -188,10 +165,9 @@
 			}
 			this.mypDown = Object.assign(defaultDown, this.down)
 			this.mypUp = Object.assign(defaultUp, this.up)
-			// 因为emit this 会导致在mp端报错。并且感觉不建议emit this
+			// emit this 会在mp端报错，且不建议
 			// this.$emit("inited", this)
-			// 注意：如果我们直接emit，外部监听到inited的时候，还不能通过ref获取到实例
-			// 您可以加个setTimeout(()=>{}, 0)来获取实例
+			// 注意：如果直接emit，外部监听到inited的时候，还不能通过ref获取到实例
 			// 这里我们事先加了个延时
 			// this.$emit("inited")
 			setTimeout(()=>{
@@ -207,7 +183,6 @@
 		},
 		methods: {
 			mypRefresh() {
-				// console.log('refresh')
 				this.mypPrePage = this.mypCurrentPage
 				this.mypCurrentPage = 1
 				// #ifdef APP-NVUE

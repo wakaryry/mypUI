@@ -1,0 +1,167 @@
+<template>
+	<view>
+		<myp-navbar title="refresh/loadMore" :lefts="leftIcons" @leftAction="navLeftAction"></myp-navbar>
+		<!-- #ifdef APP-NVUE -->
+		<list :style="mypContentHeightStyle+'width:750rpx;'" :loadmoreoffset="20" @loadmore="toLoad">
+			<refresh class="raw-refresh" :display="display" @refresh="toRefresh">
+				<loading-indicator></loading-indicator>
+			</refresh>
+			<cell v-for="(item,idx) in items" :key="idx">
+				<view class="raw-item">
+					<text class="raw-item-text">{{item}}</text>
+				</view>
+			</cell>
+			<cell>
+				<myp-loader :isLoading="displayLoading==='show'" :hasMore="hasMore"></myp-loader>
+			</cell>
+		</list>
+		<!-- #endif -->
+		<!-- #ifndef APP-NVUE -->
+		<myp-list ref="myp-list" @down="toLoadItems" @up="toLoadItems">
+			<view class="raw-item" v-for="(item,idx) in items" :key="idx">
+				<text class="raw-item-text">{{item}}</text>
+			</view>
+		</myp-list>
+		<!-- #endif -->
+	</view>
+</template>
+
+<script>
+	import contentBoxMixin from '@/mypUI/myp-mixin/contentBoxMixin.js'
+	import navHelper from '@/router/navHelper.js'
+	
+	const rawItems = [1]
+	
+	export default {
+		mixins: [navHelper, contentBoxMixin],
+		data() {
+			return {
+				items: rawItems,
+				// #ifdef APP-NVUE
+				display: 'hide',
+				displayLoading: 'hide',
+				hasMore: true,
+				currentPage: 1
+				// #endif
+			}
+		},
+		methods: {
+			// #ifdef APP-NVUE
+			toRefresh() {
+				if (this.displayLoading === 'show') {
+					this.display = 'hide'
+					return
+				}
+				this.display = 'show'
+				const cp = 1
+				setTimeout(()=>{
+					this.items = rawItems
+					this.currentPage = 1
+					this.display = 'hide'
+					this.hasMore = true
+				}, 300)
+			},
+			toLoad() {
+				if (this.display === 'show') {
+					this.displayLoading = 'hide'
+					return
+				}
+				if (this.displayLoading === 'show') {
+					return
+				}
+				if (!this.hasMore) {
+					console.log('没有更多辣')
+					const platform = this.mypGetPlatform()
+					if (platform === 'ios') {
+						// ios下必须直接关闭，不然可以一直往上拖动，底部出现大量空白，而且不会自动回弹消除空白
+						this.displayLoading = 'hide'
+					} else {
+						// 安卓下不能直接关闭，需要先打开，然后延时关闭。不打开也不能关闭。打开不延时关闭也不能关闭
+						this.displayLoading = 'show'
+						setTimeout(()=>{
+							this.displayLoading = 'hide'
+						}, 0)
+					}
+					return
+				}
+				this.displayLoading = 'show'
+				const cp = this.currentPage + 1
+				setTimeout(()=>{
+					if (cp === 1) {
+						this.items = rawItems
+						this.currentPage = 1
+						this.displayLoading = 'hide'
+						this.hasMore = true
+					} else {
+						const newItems = []
+						rawItems.forEach(val => {
+							newItems.push(val+(cp-1)*1)
+						})
+						this.items = this.items.concat(newItems)
+						this.currentPage = cp
+						this.displayLoading = 'hide'
+						if (cp >= 10) {
+							this.hasMore = false
+						} else {
+							this.hasMore = true
+						}
+					}
+				}, 300)
+			},
+			// #endif
+			toLoadItems() {
+				const ins = this.$refs['myp-list']
+				const cp = ins.mypCurrentPage
+				setTimeout(()=>{
+					if (cp === 1) {
+						this.items = rawItems
+						ins.mypEndSuccess(true)
+					} else {
+						const newItems = []
+						rawItems.forEach(val => {
+							newItems.push(val+(cp-1)*1)
+						})
+						this.items = this.items.concat(newItems)
+						if (cp >= 10) {
+							ins.mypEndSuccess(false)
+						} else {
+							ins.mypEndSuccess(true)
+						}
+					}
+				}, 300)
+			}
+		}
+	}
+</script>
+
+<style lang="scss">
+	@import '@/mypUI/mypui.scss';
+	
+	.raw {
+		&-item {
+			width: 750rpx;
+			background-color: $myp-color-primary;
+			height: 240rpx;
+			justify-content: center;
+			align-items: center;
+			margin-bottom: 20rpx;
+			
+			&-text {
+				font-size: 46rpx;
+				color: #FFFFFF;
+			}
+		}
+		&-refresh {
+			width: 750rpx;
+			height: 80rpx;
+			justify-content: center;
+			align-items: center;
+		}
+		&-loading {
+			width: 750rpx;
+			height: 80rpx;
+			justify-content: center;
+			align-items: center;
+		}
+	}
+</style>

@@ -24,7 +24,11 @@
 					{name: '封装list', page: 'scroll_wrap', icon: 'headphone', desc: 'refresh/loading'},
 					{name: '封装list', page: 'scroll_wrap_one', icon: 'headphone', desc: 'r/l,内容不足一页'},
 					{name: '封装list', page: 'scroll_wrap_two', icon: 'radio-button', desc: '自定义refresh/loading'},
-					{name: '封装list', page: 'scroll_wrap_three', icon: 'radio-button', desc: '自定义r/l,不足一页'}
+					{name: '封装list', page: 'scroll_wrap_three', icon: 'radio-button', desc: '自定义r/l,不足一页'},
+					{name: '不封装list', page: 'scroll_load_more', icon: 'class', desc: 'loadMore'},
+					{name: '不封装list', page: 'scroll_load_more_one', icon: 'class', desc: 'loadMore,内容不足一页'},
+					{name: '封装list', page: 'scroll_load_more_wrap', icon: 'headphone', desc: 'loadMore'},
+					{name: '封装list', page: 'scroll_load_more_wrap_one', icon: 'headphone', desc: 'loadMore,内容不足一页'}
 				]
 			}
 		},

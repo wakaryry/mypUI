@@ -2,7 +2,7 @@
 	<view>
 		<!-- #ifdef APP-NVUE -->
 		<list ref='myp-raw-list' :style="mypContentHeightStyle+'width:750rpx;'">
-			<myp-refresher-n ref="myp-refresher" scroller-ref="myp-raw-list" @refresh="toRefresh"></myp-refresher-n>
+			<myp-refresher-n v-if="refresh" ref="myp-refresher" scroller-ref="myp-raw-list" @refresh="toRefresh"></myp-refresher-n>
 			<cell v-for="(item,idx) in items" :key="idx">
 				<view class="raw-item">
 					<text class="raw-item-text">{{item}}</text>
@@ -20,6 +20,12 @@
 	const rawItems = [1]
 	
 	export default {
+		props: {
+			refresh: {
+				type: Boolean,
+				default: false
+			}
+		},
 		mixins: [contentBoxMixin],
 		data() {
 			return {
@@ -82,5 +88,22 @@
 	}
 </script>
 
-<style>
+<style lang="scss" scoped>
+	@import '@/mypUI/mypui.scss';
+	
+	.raw {
+		&-item {
+			width: 750rpx;
+			background-color: $myp-color-primary;
+			height: 240rpx;
+			justify-content: center;
+			align-items: center;
+			margin-bottom: 20rpx;
+			
+			&-text {
+				font-size: 46rpx;
+				color: #FFFFFF;
+			}
+		}
+	}
 </style>

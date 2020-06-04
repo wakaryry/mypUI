@@ -1,8 +1,8 @@
 <template>
 	<view>
-		<myp-navbar title="wrap-自定义r/l-不足一页" :lefts="leftIcons" @leftAction="navLeftAction"></myp-navbar>
+		<myp-navbar title="refresh/loadMore" :lefts="leftIcons" @leftAction="navLeftAction"></myp-navbar>
 		<!-- #ifdef APP-NVUE -->
-		<wrap-four :refresh="true"></wrap-four>
+		<load-more-one></load-more-one>
 		<!-- #endif -->
 		<!-- #ifndef APP-NVUE -->
 		<myp-list ref="myp-list" @down="toLoadItems" @up="toLoadItems">
@@ -15,24 +15,19 @@
 </template>
 
 <script>
-	import wrapFour from './components/wrap_four.vue'
-	
+	import loadMoreOne from './components/load_more_one.vue'
 	import navHelper from '@/router/navHelper.js'
 	
 	const rawItems = [1]
 	
 	export default {
 		components: {
-			wrapFour
+			loadMoreOne
 		},
 		mixins: [navHelper],
 		data() {
 			return {
-				items: rawItems,
-				// #ifdef APP-NVUE
-				hasMore: true,
-				currentPage: 1
-				// #endif
+				items: rawItems
 			}
 		},
 		methods: {

@@ -218,6 +218,30 @@
 			}
 		},
 		{
+			"path": "pages/scroll/scroll_load_more",
+			"style": {
+				"disableScroll": true
+			}
+		},
+		{
+			"path": "pages/scroll/scroll_load_more_one",
+			"style": {
+				"disableScroll": true
+			}
+		},
+		{
+			"path": "pages/scroll/scroll_load_more_wrap",
+			"style": {
+				"disableScroll": true
+			}
+		},
+		{
+			"path": "pages/scroll/scroll_load_more_wrap_one",
+			"style": {
+				"disableScroll": true
+			}
+		},
+		{
 			"path": "pages/scroll/scroll_h",
 			"style": {
 				"disableScroll": true

@@ -8,15 +8,15 @@
 				<view class="myp-u-cover-cycle" ref="cover-cycle"></view>
 			</view>
 		</view>
-		<image v-if="!usingDefault" class="myp-arrow-down" ref="arrow" :src="ICON_ARROW_DOWN" mode="aspectFill"></image>
+		<image v-if="!usingDefault" class="myp-arrow-down" ref="arrow" :src="downIcon" mode="aspectFill"></image>
 		<loading-indicator v-if="usingDefault&&refreshing" class="myp-indicator" :animating="refreshing"></loading-indicator>
 		<text class="myp-u-txt">{{ refresherText }}</text>
 	</refresh>
 </template>
 
 <script>
-	// it's from weex-ui
-	// 注意：在iOS-app中，当scroll的内容不足一个scroll的高度（也就是scroll无法滚动的时候），无法触发下拉刷新和上提加载
+	// 
+	// 注意：iOS-app中，scroll的内容不足一个scroll的高度（也就是scroll无法滚动的时候），无法触发下拉刷新和上提加载
 	// list中无此问题
 	//
 	// #ifdef APP-NVUE
@@ -24,7 +24,6 @@
 	const bindingX = uni.requireNativePlugin('bindingx');
 	// #endif
 
-	const ICON_ARROW_DOWN = 'https://img.alicdn.com/tfs/TB1A8faeTtYBeNjy1XdXXXXyVXa-48-48.png';
 	const HEIGHT = uni.upx2px(140)
 
 	export default {
@@ -46,7 +45,11 @@
 				type: String,
 				default: '加载中...'
 			},
-			// 非default样式需要判断是否支持bindingX，但是uni引入的无法获取值
+			downIcon: {
+				type: String,
+				default: '/static/ui/down.png'
+			},
+			// 非default样式需要支持bindingX
 			usingDefault: {
 				type: Boolean,
 				default: false
@@ -54,7 +57,6 @@
 		},
 		data() {
 			return {
-				ICON_ARROW_DOWN,
 				refreshing: false,
 				couldUnLash: false,
 				isAndroid: false

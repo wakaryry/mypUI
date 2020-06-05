@@ -1,7 +1,7 @@
 <template>
 	<view class="myp-loading">
 		<view v-if="hasMore&&isLoading" class="myp-loading-content">
-			<image class="myp-loading-img" :src="LOADING_ICON" mode="aspectFill"></image>
+			<image class="myp-loading-img" :src="loadingSrc" mode="aspectFill"></image>
 			<text class="myp-loading-text">{{loadText}}</text>
 		</view>
 		<text v-if="!hasMore" class="myp-loading-text">{{loadText}}</text>
@@ -9,12 +9,6 @@
 </template>
 
 <script>
-	// 不同的加载体验
-	// - 无限上提加载，无提示，无停顿：scroll/list中直接@loadmore/@scrolltolower；
-	// - 无限上提加载，带有提示，无停顿：scroll/list中直接@loadmore/@scrolltolower，再加一个提示的内容或者cell；
-	// - 使用loading组件，不需要@loadmore；
-	// 实际上以上两种原理是一样的，同样是计算到底部的距离来触发加载更多，只不过app上面loading组件有上拉的效果；
-	const LOADING_ICON = 'https://img.alicdn.com/tfs/TB1CWnby7yWBuNjy0FpXXassXXa-32-32.gif'
 	export default {
 		props: {
 			maxTime: {
@@ -37,6 +31,10 @@
 				type: Boolean,
 				default: false
 			},
+			loadingSrc: {
+				type: String,
+				default: '/static/ui/loading-small.gif'
+			},
 			hasMore: {
 				type: Boolean,
 				default: true
@@ -44,7 +42,6 @@
 		},
 		data() {
 			return {
-				LOADING_ICON
 			}
 		},
 		computed: {

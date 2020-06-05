@@ -13,13 +13,15 @@ export default {
 			mypCurrentPage: 0,  // start with 0. if > 0, it means data inited
 			mypPrePage: 0,
 			mypIsDownLoading: false,
-			mypIsUpLoading: false
+			mypIsUpLoading: false,
+			platform: ''
 		}
 	},
 	created() {
 		// config the down/up
 		this.mypDown = Object.assign(this.down)
 		this.mypUp = Object.assign(this.up)
+		this.platform = this.mypGetPlatform()
 		// emit this 会在mp端报错，且不建议
 		// this.$emit("inited", this)
 		// 注意：如果直接emit，外部监听到inited的时候，还不能通过ref获取到实例
@@ -50,14 +52,28 @@ export default {
 		mypLoad() {
 			if (!this.up.use) return;
 			if (this.mypIsDownLoading) {
-				this.$refs['myp-loader'] && this.$refs['myp-loader'].cancel()
+				if (this.platform === 'ios') {
+					this.$refs['myp-loader'] && this.$refs['myp-loader'].cancel()
+					return
+				}
+				const that = this
+				setTimeout(()=>{
+					that.$refs['myp-loader'] && that.$refs['myp-loader'].cancel()
+				}, 0)
 				return
 			}
 			if (this.mypIsUpLoading) {
 				return
 			}
 			if (!this.mypHasMore) {
-				this.$refs['myp-loader'] && this.$refs['myp-loader'].cancel()
+				if (this.platform === 'ios') {
+					this.$refs['myp-loader'] && this.$refs['myp-loader'].cancel()
+					return
+				}
+				const that = this
+				setTimeout(()=>{
+					that.$refs['myp-loader'] && that.$refs['myp-loader'].cancel()
+				}, 0)
 				return
 			}
 			this.mypPrePage = this.mypCurrentPage

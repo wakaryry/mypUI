@@ -2,6 +2,7 @@
 	<loading class="myp-loading" @loading="onloading" :display="isLoading ? 'show' : 'hide'">
 		<image v-if="hasMore&&isLoading" class="myp-loading-img" :src="LOADING_ICON" mode="aspectFill"></image>
 		<text v-if="isLoading || !hasMore" class="myp-loading-text">{{loadText}}</text>
+		<text v-if="!isLoading&&hasMore" class="myp-loading-text">{{mainText}}</text>
 	</loading>
 </template>
 
@@ -25,7 +26,7 @@
 			},
 			mainText: {
 				type: String,
-				default: '上拉加载更多'
+				default: '继续上拉加载更多'
 			},
 			loadingText: {
 				type: String,
@@ -61,7 +62,7 @@
 		methods: {
 			// onLoading意味着触发了上提加载，正在请求数据
 			onloading(e) {
-				console.log("正在加载")
+				// console.log("正在加载")
 				this.isLoading = true
 				this.$emit("loading")
 				if (!this.hasMore) return;

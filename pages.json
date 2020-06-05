@@ -272,6 +272,12 @@
 			}
 		},
 		{
+			"path": "pages/scroll/scroll_list_three",
+			"style": {
+				"disableScroll": true
+			}
+		},
+		{
 			"path": "pages/scroll/scroll_waterfall",
 			"style": {
 				"disableScroll": true

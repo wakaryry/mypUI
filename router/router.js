@@ -49,6 +49,7 @@ export default {
 	scroll_header: '/pages/scroll/scroll_header',
 	scroll_list_one: '/pages/scroll/scroll_list_one',
 	scroll_list_two: '/pages/scroll/scroll_list_two',
+	scroll_list_three: "/pages/scroll/scroll_list_three",
 	scroll_waterfall: '/pages/scroll/scroll_waterfall',
 	scroll_x_one: '/pages/scroll/scroll_x_one',
 	scroll_x_two: '/pages/scroll/scroll_x_two',

@@ -468,7 +468,7 @@ export default {
 			}
 		},
 		// 下拉刷新/上提加载，失败之后使用
-		mypEndErr() {
+		mypEndError() {
 			// reback the current page
 			this.mypCurrentPage = this.mypPrePage
 			if (this.mypIsDownLoading) {

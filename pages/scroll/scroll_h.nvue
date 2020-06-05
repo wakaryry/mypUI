@@ -1,7 +1,7 @@
 <template>
 	<view>
 		<myp-navbar title="myp-scroll-h" :lefts="leftIcons" @leftAction="navLeftAction"></myp-navbar>
-		<myp-list>
+		<myp-list-simple>
 			<myp-list-cell>
 				<myp-scroll-h height="600rpx">
 					<view style="width: 32rpx;"></view>
@@ -19,7 +19,7 @@
 					<v-care-card v-for="(item,idx) in itemsAnother" :key="idx" :image="item.avatar" :name="item.name" :cares="item.cares" :intro="item.intro" @care="toCare" @close="toClose"></v-care-card>
 				</myp-scroll-h>
 			</myp-list-cell>
-		</myp-list>
+		</myp-list-simple>
 	</view>
 </template>
 

@@ -1,13 +1,13 @@
 <template>
 	<view>
 		<myp-navbar :lefts="leftIcons" title="myp-list-simple" @leftAction="navLeftAction"></myp-navbar>
-		<myp-list ref="myp-list" footToken="100px" :autoUpdate="true" @down="toLoadData" @up="toLoadData">
+		<myp-list-more ref="myp-list" footToken="100px" :autoUpdate="true" @down="toLoadData" @up="toLoadData">
 			<myp-list-cell v-for="(item,idx) in items" :key="idx">
-				<view class="sltwo-item">
-					<text class="sltwo-item-text">{{item}}</text>
+				<view class="slthree-item">
+					<text class="slthree-item-text">{{item}}</text>
 				</view>
 			</myp-list-cell>
-		</myp-list>
+		</myp-list-more>
 	</view>
 </template>
 
@@ -52,7 +52,7 @@
 <style lang="scss">
 	@import '@/mypUI/mypui.scss';
 	
-	.sltwo {
+	.slthree {
 		&-item {
 			width: 750rpx;
 			background-color: $myp-color-primary;

@@ -1,16 +1,15 @@
 <template>
 	<view :style="boxStyle">
 		<!-- #ifdef APP-NVUE -->
-		<list :class="'myp-bg-'+bgType" :style="mrScrollStyle" ref="myp-scroller" @scroll="mypScroll">
+		<list :class="'myp-bg-'+bgType" :style="mrScrollStyle" ref="myp-scroller" :loadmoreoffset="loadMoreOffset" @loadmore="mypLoad">
 			<myp-refresher-n v-if="mypDown.use" ref="myp-refresher" scroller-ref="myp-scroller" @refresh="mypRefresh"></myp-refresher-n>
 			<slot></slot>
+			<cell v-if="mypUp.use">
+				<myp-loader :isLoading="mypIsUpLoading" :hasMore="mypHasMore"></myp-loader>
+			</cell>
 			<cell>
 				<view :style="{height: footToken}"></view>
 			</cell>
-			<!-- in android, we must put loading in the last, or it will not trigger loading next page. --> 
-			<!-- it's the same in loadMore with loadMoreOffset -->
-			<!-- or we could put the foot-token after loading -->
-			<myp-loader-n v-if="mypUp.use" ref="myp-loader" :hasMore="mypHasMore" @loading="mypLoad"></myp-loader-n>
 		</list>
 		<!-- #endif -->
 		<!-- #ifndef APP-NVUE -->
@@ -30,18 +29,23 @@
 </template>
 
 <script>
-	// loading with no loadMore for list
-	import styleMixin from './styleMixin.js'
+	// loading with loadMore/loadMoreOffset for list
+	import styleMixin from '../myp-list/styleMixin.js'
 	// #ifdef APP-NVUE
-	import scrollMixin from './weexMixin.js'
+	import scrollMixin from '../myp-list/weexMixin.js'
 	// #endif
 	// #ifndef APP-NVUE
-	import scrollMixin from './mixin.js'
+	import scrollMixin from '../myp-list/mixin.js'
 	// #endif
 	
 	export default {
 		mixins: [styleMixin, scrollMixin],
 		props: {
+			// app loadmore offset. px
+			loadMoreOffset: {
+				type: Number,
+				default: 20
+			},
 			// 进入自动刷新数据. 默认不自动刷新数据
 			autoUpdate: {
 				type: Boolean,

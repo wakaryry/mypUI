@@ -1,12 +1,5 @@
-// we use mixin for scroll state manager
-// we could also use an no-mixin Object as state manager, but we now use mixin
-
-// 对于里面的数据,方法等,您可以直接在主文件(引入这个mixin的文件)里面覆盖(重新定义即为覆盖)
-// 需要注意不要和其它mixin的数据/方法同名
-// 
-// 用于刷新/加载数据
-// 只适用于mp/h5,我们可以在app-nvue中使用这里的状态,但是app-nvue不适用此套下拉/上提组件
-// 
+// 通过mescroll来的，当时mescroll是一个 new function对象
+// 因为想灵活的控制高度以及方便快速调用，特意改成了mixin形式
 export default {
 	data() {
 		return {
@@ -30,8 +23,8 @@ export default {
 			mypDown: {
 				use: true,
 				offset: uni.upx2px(140),
-				inRate: 0.8,  // 在列表顶部,下拉的距离小于offset时,改变下拉区域高度比例;值小于1且越接近0,高度变化越小,表现为越往下越难拉
-				outRate: 0.2  // 在列表顶部,下拉的距离大于offset时,改变下拉区域高度比例;值小于1且越接近0,高度变化越小,表现为越往下越难拉
+				inRate: 0.8,  // 下拉的距离小于offset时,改变下拉区域高度比例;0-1,越小,越难拉
+				outRate: 0.2  // 下拉的距离大于offset时,改变下拉区域高度比例;0-1,越小,越难拉
 			},
 			mypIsMoveDown: false,
 			mypDownMoveType: 0,
@@ -62,6 +55,25 @@ export default {
 		},
 		mypDownRate() {
 			return this.mypDownHeight / (this.mypDown.offset || 80)
+		}
+	},
+	created() {
+		// config the down/up
+		this.mypDown = Object.assign({use: true,offset: uni.upx2px(140),inRate: 0.8,outRate: 0.2}, this.down)
+		this.mypUp = Object.assign({use: true,offset: 80}, this.up)
+		// emit this 会在mp端报错，且不建议
+		// this.$emit("inited", this)
+		// 注意：如果直接emit，外部监听到inited的时候，还不能通过ref获取到实例
+		// this.$emit("inited")
+		setTimeout(()=>{
+			this.$emit("inited")
+		}, 0)
+		if (this.autoUpdate) {
+			const that = this
+			setTimeout(() => {
+				// to refresh data
+				this.mypInitContentList()
+			}, 10)
 		}
 	},
 	methods: {
@@ -177,6 +189,28 @@ export default {
 		mypOnDownMoving(rate, downHeight) {
 			
 		},
+		mypRefresh() {
+			this.mypPrePage = this.mypCurrentPage
+			this.mypCurrentPage = 1
+			this.mypGetContentList('refresh')
+		},
+		mypLoad() {
+			this.mypPrePage = this.mypCurrentPage
+			this.mypCurrentPage += 1
+			this.mypGetContentList('load')
+		},
+		mypInitContentList() {
+			this.mypPrePage = 0
+			this.mypCurrentPage = 1
+			this.mypGetContentList('refresh')
+		},
+		mypGetContentList(type='refresh') {
+			if (type === 'refresh') {
+				this.$emit('down')
+			} else {
+				this.$emit('up')
+			}
+		},
 		// 刷新
 		mypTriggerDownScroll() {
 			this.mypScrollable = true
@@ -184,10 +218,6 @@ export default {
 			this.mypIsDownLoading = true
 			this.mypDownHeight = this.mypDown.offset
 			this.mypRefresh()
-		},
-		mypRefresh() {
-			// refresh/downScroll callback. here to refresh data...
-			// you need to override this method
 		},
 		mypEndDownScroll() {
 			this.mypScrollable = true
@@ -207,42 +237,26 @@ export default {
 			this.mypIsUpLoading = true
 			this.mypLoad()
 		},
-		mypLoad() {
-			// loadmore/upScroll callback. here to load more data
-			// you need to override this method
-		},
 		mypEndUpScroll() {
 			this.mypIsUpLoading = false
 		},
 		mypEndSuccess(hasMore=true) {
 			this.mypHasMore = hasMore
 			if (this.mypIsDownLoading) {
-				// #ifdef APP-NVUE
-				this.$refs['myp-refresher'].cancel()
-				// #endif
 				this.mypEndDownScroll()
 			}
 			if (this.mypIsUpLoading) {
-				// #ifdef APP-NVUE
-				this.$refs['myp-loader'] && this.$refs['myp-loader'].cancel()
-				// #endif
 				this.mypEndUpScroll()
 			}
 		},
 		// 下拉刷新/上提加载，失败之后使用
-		mypEndErr() {
+		mypEndError() {
 			// reback the current page
 			this.mypCurrentPage = this.mypPrePage
 			if (this.mypIsDownLoading) {
-				// #ifdef APP-NVUE
-				this.$refs['myp-refresher'].cancel()
-				// #endif
 				this.mypEndDownScroll()
 			}
 			if (this.mypIsUpLoading) {
-				// #ifdef APP-NVUE
-				this.$refs['myp-loader'] && this.$refs['myp-loader'].cancel()
-				// #endif
 				this.mypEndUpScroll()
 			}
 		},

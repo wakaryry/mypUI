@@ -19,14 +19,14 @@
 				items: [
 					{name: '实验室', page: 'scroll_test', icon: 'class', desc: '测试入口'},
 					{name: '横向scroll', page: 'scroll_h', icon: 'book', desc: '横向滚动scroll'},
-					{name: 'list', page: 'scroll_list_one', icon: 'topic', desc: 'list/scroll'},
-					{name: 'list', page: 'scroll_list_two', icon: 'topic', desc: 'list/scroll，带下拉/上提'},
-					{name: 'list', page: 'scroll_list_three', icon: 'topic', desc: 'list/scroll，带下拉/loadmoreoffset'},
+					{name: 'list', page: 'scroll_list_simple', icon: 'topic', desc: 'list/scroll'},
+					{name: 'list', page: 'scroll_list_loading', icon: 'topic', desc: 'list/scroll，带下拉/上提'},
+					{name: 'list', page: 'scroll_list_more', icon: 'topic', desc: 'list/scroll，带下拉/loadmoreoffset'},
 					{name: 'waterfall', page: 'scroll_waterfall', icon: 'radio-button', desc: 'waterfall/scroll，带下拉/上提'},
 					{name: '头部-1', page: 'scroll_header', icon: 'headphone', desc: '支持不完全打开，带下拉/上提'},
 					{name: '头部-2', page: 'scroll_header_swiper', icon: 'headphone', desc: 'header+tabs+swiper，带下拉/上提'},
-					{name: 'x兼容-1', page: 'scroll_x_one', icon: 'teacher', desc: 'xBar透明，底部不被遮挡'},
-					{name: 'x兼容-2', page: 'scroll_x_two', icon: 'teacher', desc: 'xBar不透明，底部不被遮挡'}
+					{name: 'x兼容-1', page: 'scroll_x_support_no', icon: 'teacher', desc: 'xBar透明，底部不被遮挡'},
+					{name: 'x兼容-2', page: 'scroll_x_support', icon: 'teacher', desc: 'xBar不透明，底部不被遮挡'}
 				]
 			}
 		},

@@ -3,7 +3,7 @@
 		<!-- #ifdef APP-NVUE -->
 		<list :style="mypContentHeightStyle+'width:750rpx;'">
 			<refresh class="wrap-refresh" :display="display" @refresh="toRefresh">
-				<loading-indicator></loading-indicator>
+				<loading-indicator class="wrap-indicator"></loading-indicator>
 			</refresh>
 			<cell v-for="(item,idx) in items" :key="idx">
 				<view class="wrap-item">
@@ -11,7 +11,7 @@
 				</view>
 			</cell>
 			<loading class="wrap-loading" :display="displayLoading" @loading="toLoad">
-				<loading-indicator></loading-indicator>
+				<loading-indicator class="wrap-indicator"></loading-indicator>
 			</loading>
 		</list>
 		<!-- #endif -->
@@ -20,7 +20,7 @@
 
 <script>
 	import contentBoxMixin from '@/mypUI/myp-mixin/contentBoxMixin.js'
-	const rawItems = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+	const rawItems = [1]
 	
 	export default {
 		mixins: [contentBoxMixin],
@@ -94,12 +94,12 @@
 					} else {
 						const newItems = []
 						rawItems.forEach(val => {
-							newItems.push(val+(cp-1)*10)
+							newItems.push(val+(cp-1)*1)
 						})
 						this.items = this.items.concat(newItems)
 						this.currentPage = cp
 						this.displayLoading = 'hide'
-						if (cp >= 4) {
+						if (cp >= 10) {
 							this.hasMore = false
 						} else {
 							this.hasMore = true
@@ -140,6 +140,11 @@
 			height: 80rpx;
 			justify-content: center;
 			align-items: center;
+		}
+		&-indicator {
+			height: 60rpx;
+			width: 60rpx;
+			color: #666666;
 		}
 	}
 </style>

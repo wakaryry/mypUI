@@ -1,10 +1,9 @@
 <template>
 	<view>
-		<myp-navbar title="refresh/loadMore" :lefts="leftIcons" @leftAction="navLeftAction"></myp-navbar>
 		<!-- #ifdef APP-NVUE -->
 		<list :style="mypContentHeightStyle+'width:750rpx;'" :loadmoreoffset="20" @loadmore="toLoad">
 			<refresh class="raw-refresh" :display="display" @refresh="toRefresh">
-				<loading-indicator></loading-indicator>
+				<loading-indicator class="raw-indicator"></loading-indicator>
 			</refresh>
 			<cell v-for="(item,idx) in items" :key="idx">
 				<view class="raw-item">
@@ -16,24 +15,16 @@
 			</cell>
 		</list>
 		<!-- #endif -->
-		<!-- #ifndef APP-NVUE -->
-		<myp-list ref="myp-list" @down="toLoadItems" @up="toLoadItems">
-			<view class="raw-item" v-for="(item,idx) in items" :key="idx">
-				<text class="raw-item-text">{{item}}</text>
-			</view>
-		</myp-list>
-		<!-- #endif -->
 	</view>
 </template>
 
 <script>
 	import contentBoxMixin from '@/mypUI/myp-mixin/contentBoxMixin.js'
-	import navHelper from '@/router/navHelper.js'
 	
-	const rawItems = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+	const rawItems = [1]
 	
 	export default {
-		mixins: [navHelper, contentBoxMixin],
+		mixins: [contentBoxMixin],
 		data() {
 			return {
 				items: rawItems,
@@ -95,46 +86,25 @@
 					} else {
 						const newItems = []
 						rawItems.forEach(val => {
-							newItems.push(val+(cp-1)*10)
+							newItems.push(val+(cp-1)*1)
 						})
 						this.items = this.items.concat(newItems)
 						this.currentPage = cp
 						this.displayLoading = 'hide'
-						if (cp >= 4) {
+						if (cp >= 10) {
 							this.hasMore = false
 						} else {
 							this.hasMore = true
 						}
 					}
 				}, 300)
-			},
-			// #endif
-			toLoadItems() {
-				const ins = this.$refs['myp-list']
-				const cp = ins.mypCurrentPage
-				setTimeout(()=>{
-					if (cp === 1) {
-						this.items = rawItems
-						ins.mypEndSuccess(true)
-					} else {
-						const newItems = []
-						rawItems.forEach(val => {
-							newItems.push(val+(cp-1)*10)
-						})
-						this.items = this.items.concat(newItems)
-						if (cp >= 4) {
-							ins.mypEndSuccess(false)
-						} else {
-							ins.mypEndSuccess(true)
-						}
-					}
-				}, 300)
 			}
+			// #endif
 		}
 	}
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 	@import '@/mypUI/mypui.scss';
 	
 	.raw {
@@ -162,6 +132,11 @@
 			height: 80rpx;
 			justify-content: center;
 			align-items: center;
+		}
+		&-indicator {
+			height: 60rpx;
+			width: 60rpx;
+			color: #666666;
 		}
 	}
 </style>

@@ -4,11 +4,12 @@
 		<list :class="'myp-bg-'+bgType" :style="mrScrollStyle" ref="myp-scroller" :loadmoreoffset="loadMoreOffset" @loadmore="mypLoad">
 			<myp-refresher-n v-if="mypDown.use" ref="myp-refresher" scroller-ref="myp-scroller" @refresh="mypRefresh"></myp-refresher-n>
 			<slot></slot>
-			<cell v-if="mypUp.use">
-				<myp-loader :isLoading="mypIsUpLoading" :hasMore="mypHasMore"></myp-loader>
-			</cell>
 			<cell>
 				<view :style="{height: footToken}"></view>
+			</cell>
+			<!-- 本来以为是可以将foot-token放在最后的，没有想到在安卓上面加载提示出现空白 -->
+			<cell v-if="mypUp.use">
+				<myp-loader :isLoading="mypIsUpLoading" :hasMore="mypHasMore"></myp-loader>
 			</cell>
 		</list>
 		<!-- #endif -->

@@ -170,127 +170,127 @@
 			}
 		},
 		{
-			"path": "pages/scroll/scroll_raw",
+			"path": "pages/scroll/test/raw",
 			"style": {
 				"disableScroll": true
 			}
 		},
 		{
-			"path": "pages/scroll/scroll_raw_one",
+			"path": "pages/scroll/test/raw_one",
 			"style": {
 				"disableScroll": true
 			}
 		},
 		{
-			"path": "pages/scroll/scroll_raw_two",
+			"path": "pages/scroll/test/raw_wrap",
 			"style": {
 				"disableScroll": true
 			}
 		},
 		{
-			"path": "pages/scroll/scroll_raw_three",
+			"path": "pages/scroll/test/raw_one_wrap",
 			"style": {
 				"disableScroll": true
 			}
 		},
 		{
-			"path": "pages/scroll/scroll_wrap",
+			"path": "pages/scroll/test/custom",
 			"style": {
 				"disableScroll": true
 			}
 		},
 		{
-			"path": "pages/scroll/scroll_wrap_one",
+			"path": "pages/scroll/test/custom_one",
 			"style": {
 				"disableScroll": true
 			}
 		},
 		{
-			"path": "pages/scroll/scroll_wrap_two",
+			"path": "pages/scroll/test/custom_one_wrap",
 			"style": {
 				"disableScroll": true
 			}
 		},
 		{
-			"path": "pages/scroll/scroll_wrap_three",
+			"path": "pages/scroll/test/custom_wrap",
 			"style": {
 				"disableScroll": true
 			}
 		},
 		{
-			"path": "pages/scroll/scroll_load_more",
+			"path": "pages/scroll/test/load_more",
 			"style": {
 				"disableScroll": true
 			}
 		},
 		{
-			"path": "pages/scroll/scroll_load_more_one",
+			"path": "pages/scroll/test/load_more_one",
 			"style": {
 				"disableScroll": true
 			}
 		},
 		{
-			"path": "pages/scroll/scroll_load_more_wrap",
+			"path": "pages/scroll/test/load_more_wrap",
 			"style": {
 				"disableScroll": true
 			}
 		},
 		{
-			"path": "pages/scroll/scroll_load_more_wrap_one",
+			"path": "pages/scroll/test/load_more_one_wrap",
 			"style": {
 				"disableScroll": true
 			}
 		},
 		{
-			"path": "pages/scroll/scroll_h",
+			"path": "pages/scroll/h",
 			"style": {
 				"disableScroll": true
 			}
 		},
 		{
-			"path": "pages/scroll/scroll_header_swiper",
+			"path": "pages/scroll/header_swiper",
 			"style": {
 				"disableScroll": true
 			}
 		},
 		{
-			"path": "pages/scroll/scroll_header",
+			"path": "pages/scroll/header",
 			"style": {
 				"disableScroll": true
 			}
 		},
 		{
-			"path": "pages/scroll/scroll_list_one",
+			"path": "pages/scroll/list_simple",
 			"style": {
 				"disableScroll": true
 			}
 		},
 		{
-			"path": "pages/scroll/scroll_list_two",
+			"path": "pages/scroll/list_loading",
 			"style": {
 				"disableScroll": true
 			}
 		},
 		{
-			"path": "pages/scroll/scroll_list_three",
+			"path": "pages/scroll/list_more",
 			"style": {
 				"disableScroll": true
 			}
 		},
 		{
-			"path": "pages/scroll/scroll_waterfall",
+			"path": "pages/scroll/waterfall",
 			"style": {
 				"disableScroll": true
 			}
 		},
 		{
-			"path": "pages/scroll/scroll_x_one",
+			"path": "pages/scroll/x_support",
 			"style": {
 				"disableScroll": true
 			}
 		},
 		{
-			"path": "pages/scroll/scroll_x_two",
+			"path": "pages/scroll/x_support_no",
 			"style": {
 				"disableScroll": true
 			}

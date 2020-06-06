@@ -1,23 +1,23 @@
 <template>
 	<view>
-		<myp-navbar title="refresh/loadMore" :lefts="leftIcons" @leftAction="navLeftAction"></myp-navbar>
+		<myp-navbar title="r/l-不足一页" :lefts="leftIcons" @leftAction="navLeftAction"></myp-navbar>
 		<!-- #ifdef APP-NVUE -->
-		<list :style="mypContentHeightStyle+'width:750rpx;'" :loadmoreoffset="20" @loadmore="toLoad">
+		<list :style="mypContentHeightStyle+'width:750rpx;'">
 			<refresh class="raw-refresh" :display="display" @refresh="toRefresh">
-				<loading-indicator></loading-indicator>
+				<loading-indicator class="raw-indicator"></loading-indicator>
 			</refresh>
 			<cell v-for="(item,idx) in items" :key="idx">
 				<view class="raw-item">
 					<text class="raw-item-text">{{item}}</text>
 				</view>
 			</cell>
-			<cell>
-				<myp-loader :isLoading="displayLoading==='show'" :hasMore="hasMore"></myp-loader>
-			</cell>
+			<loading class="raw-loading" :display="displayLoading" @loading="toLoad">
+				<loading-indicator class="raw-indicator"></loading-indicator>
+			</loading>
 		</list>
 		<!-- #endif -->
 		<!-- #ifndef APP-NVUE -->
-		<myp-list ref="myp-list" @down="toLoadItems" @up="toLoadItems">
+		<myp-list ref="myp-list" :autoUpdate="true" @down="toLoadItems" @up="toLoadItems">
 			<view class="raw-item" v-for="(item,idx) in items" :key="idx">
 				<text class="raw-item-text">{{item}}</text>
 			</view>
@@ -53,11 +53,20 @@
 					return
 				}
 				this.display = 'show'
+				const platform = this.mypGetPlatform()
+				if (platform === 'ios') {
+					// 不起作用
+					this.displayLoading = 'hide'
+				}
 				const cp = 1
 				setTimeout(()=>{
 					this.items = rawItems
 					this.currentPage = 1
 					this.display = 'hide'
+					if (platform === 'ios') {
+						// 不起作用
+						this.displayLoading = 'hide'
+					}
 					this.hasMore = true
 				}, 300)
 			},
@@ -73,7 +82,7 @@
 					console.log('没有更多辣')
 					const platform = this.mypGetPlatform()
 					if (platform === 'ios') {
-						// ios下必须直接关闭，不然可以一直往上拖动，底部出现大量空白，而且不会自动回弹消除空白
+						// ios下必须直接关闭，不然可以一直往上拖动，底部出现大量空白
 						this.displayLoading = 'hide'
 					} else {
 						// 安卓下不能直接关闭，需要先打开，然后延时关闭。不打开也不能关闭。打开不延时关闭也不能关闭
@@ -95,7 +104,7 @@
 					} else {
 						const newItems = []
 						rawItems.forEach(val => {
-							newItems.push(val+(cp-1)*1)
+							newItems.push(val+cp-1)
 						})
 						this.items = this.items.concat(newItems)
 						this.currentPage = cp
@@ -110,6 +119,8 @@
 			},
 			// #endif
 			toLoadItems() {
+				// 非app端bug：
+				// 内容不足一页时，加载更多使内容足一页，然后刷新，内容再次不足一页，然后无法触发加载更多
 				const ins = this.$refs['myp-list']
 				const cp = ins.mypCurrentPage
 				setTimeout(()=>{
@@ -119,7 +130,7 @@
 					} else {
 						const newItems = []
 						rawItems.forEach(val => {
-							newItems.push(val+(cp-1)*1)
+							newItems.push(val+cp-1)
 						})
 						this.items = this.items.concat(newItems)
 						if (cp >= 10) {
@@ -162,6 +173,11 @@
 			height: 80rpx;
 			justify-content: center;
 			align-items: center;
+		}
+		&-indicator {
+			height: 60rpx;
+			width: 60rpx;
+			color: #666666;
 		}
 	}
 </style>

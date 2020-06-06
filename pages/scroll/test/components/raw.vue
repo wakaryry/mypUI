@@ -1,18 +1,18 @@
 <template>
 	<view>
 		<!-- #ifdef APP-NVUE -->
-		<list :style="mypContentHeightStyle+'width:750rpx;'" :loadmoreoffset="20" @loadmore="toLoad">
-			<refresh class="raw-refresh" :display="display" @refresh="toRefresh">
-				<loading-indicator></loading-indicator>
+		<list :style="mypContentHeightStyle+'width:750rpx;'">
+			<refresh class="wrap-refresh" :display="display" @refresh="toRefresh">
+				<loading-indicator class="wrap-indicator"></loading-indicator>
 			</refresh>
 			<cell v-for="(item,idx) in items" :key="idx">
-				<view class="raw-item">
-					<text class="raw-item-text">{{item}}</text>
+				<view class="wrap-item">
+					<text class="wrap-item-text">{{item}}</text>
 				</view>
 			</cell>
-			<cell>
-				<myp-loader :isLoading="displayLoading==='show'" :hasMore="hasMore"></myp-loader>
-			</cell>
+			<loading class="wrap-loading" :display="displayLoading" @loading="toLoad">
+				<loading-indicator class="wrap-indicator"></loading-indicator>
+			</loading>
 		</list>
 		<!-- #endif -->
 	</view>
@@ -20,15 +20,14 @@
 
 <script>
 	import contentBoxMixin from '@/mypUI/myp-mixin/contentBoxMixin.js'
-	
 	const rawItems = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
 	
 	export default {
 		mixins: [contentBoxMixin],
 		data() {
 			return {
-				items: rawItems,
 				// #ifdef APP-NVUE
+				items: rawItems,
 				display: 'hide',
 				displayLoading: 'hide',
 				hasMore: true,
@@ -44,11 +43,20 @@
 					return
 				}
 				this.display = 'show'
+				const platform = this.mypGetPlatform()
+				if (platform === 'ios') {
+					// 不起作用
+					this.displayLoading = 'hide'
+				}
 				const cp = 1
 				setTimeout(()=>{
 					this.items = rawItems
 					this.currentPage = 1
 					this.display = 'hide'
+					if (platform === 'ios') {
+						// 不起作用
+						this.displayLoading = 'hide'
+					}
 					this.hasMore = true
 				}, 300)
 			},
@@ -64,7 +72,7 @@
 					console.log('没有更多辣')
 					const platform = this.mypGetPlatform()
 					if (platform === 'ios') {
-						// ios下必须直接关闭，不然可以一直往上拖动，底部出现大量空白，而且不会自动回弹消除空白
+						// ios下必须直接关闭，不然可以一直往上拖动，底部出现大量空白
 						this.displayLoading = 'hide'
 					} else {
 						// 安卓下不能直接关闭，需要先打开，然后延时关闭。不打开也不能关闭。打开不延时关闭也不能关闭
@@ -104,10 +112,10 @@
 	}
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
 	@import '@/mypUI/mypui.scss';
 	
-	.raw {
+	.wrap {
 		&-item {
 			width: 750rpx;
 			background-color: $myp-color-primary;
@@ -132,6 +140,11 @@
 			height: 80rpx;
 			justify-content: center;
 			align-items: center;
+		}
+		&-indicator {
+			height: 60rpx;
+			width: 60rpx;
+			color: #666666;
 		}
 	}
 </style>

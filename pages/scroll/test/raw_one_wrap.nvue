@@ -2,7 +2,7 @@
 	<view>
 		<myp-navbar title="wrap-r/l-不足一页" :lefts="leftIcons" @leftAction="navLeftAction"></myp-navbar>
 		<!-- #ifdef APP-NVUE -->
-		<wrap-two></wrap-two>
+		<wrap></wrap>
 		<!-- #endif -->
 		<!-- #ifndef APP-NVUE -->
 		<myp-list ref="myp-list" :autoUpdate="true" @down="toLoadItems" @up="toLoadItems">
@@ -15,7 +15,7 @@
 </template>
 
 <script>
-	import wrapTwo from './components/wrap_two.vue'
+	import wrap from './components/raw_one.vue'
 	
 	import navHelper from '@/router/navHelper.js'
 	
@@ -23,7 +23,7 @@
 	
 	export default {
 		components: {
-			wrapTwo
+			wrap
 		},
 		mixins: [navHelper],
 		methods: {

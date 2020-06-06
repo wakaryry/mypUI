@@ -1,40 +1,30 @@
 <template>
 	<view>
-		<myp-navbar title="refresh/loading" :lefts="leftIcons" @leftAction="navLeftAction"></myp-navbar>
 		<!-- #ifdef APP-NVUE -->
-		<list :style="mypContentHeightStyle+'width:750rpx;'">
+		<list :style="mypContentHeightStyle+'width:750rpx;'" :loadmoreoffset="20" @loadmore="toLoad">
 			<refresh class="raw-refresh" :display="display" @refresh="toRefresh">
-				<loading-indicator></loading-indicator>
+				<loading-indicator class="raw-indicator"></loading-indicator>
 			</refresh>
 			<cell v-for="(item,idx) in items" :key="idx">
 				<view class="raw-item">
 					<text class="raw-item-text">{{item}}</text>
 				</view>
 			</cell>
-			<!-- Android下不能用v-if直接控制loading，否则app奔溃 -->
-			<loading class="raw-loading" :display="displayLoading" @loading="toLoad">
-				<loading-indicator></loading-indicator>
-			</loading>
+			<cell>
+				<myp-loader :isLoading="displayLoading==='show'" :hasMore="hasMore"></myp-loader>
+			</cell>
 		</list>
-		<!-- #endif -->
-		<!-- #ifndef APP-NVUE -->
-		<myp-list ref="myp-list" @down="toLoadItems" @up="toLoadItems">
-			<view class="raw-item" v-for="(item,idx) in items" :key="idx">
-				<text class="raw-item-text">{{item}}</text>
-			</view>
-		</myp-list>
 		<!-- #endif -->
 	</view>
 </template>
 
 <script>
 	import contentBoxMixin from '@/mypUI/myp-mixin/contentBoxMixin.js'
-	import navHelper from '@/router/navHelper.js'
 	
 	const rawItems = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
 	
 	export default {
-		mixins: [navHelper, contentBoxMixin],
+		mixins: [contentBoxMixin],
 		data() {
 			return {
 				items: rawItems,
@@ -108,34 +98,13 @@
 						}
 					}
 				}, 300)
-			},
-			// #endif
-			toLoadItems() {
-				const ins = this.$refs['myp-list']
-				const cp = ins.mypCurrentPage
-				setTimeout(()=>{
-					if (cp === 1) {
-						this.items = rawItems
-						ins.mypEndSuccess(true)
-					} else {
-						const newItems = []
-						rawItems.forEach(val => {
-							newItems.push(val+(cp-1)*10)
-						})
-						this.items = this.items.concat(newItems)
-						if (cp >= 4) {
-							ins.mypEndSuccess(false)
-						} else {
-							ins.mypEndSuccess(true)
-						}
-					}
-				}, 300)
 			}
+			// #endif
 		}
 	}
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 	@import '@/mypUI/mypui.scss';
 	
 	.raw {
@@ -163,6 +132,11 @@
 			height: 80rpx;
 			justify-content: center;
 			align-items: center;
+		}
+		&-indicator {
+			height: 60rpx;
+			width: 60rpx;
+			color: #666666;
 		}
 	}
 </style>

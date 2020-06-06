@@ -23,10 +23,14 @@
 	const animation = weex.requireModule('animation');
 	const bindingX = uni.requireNativePlugin('bindingx');
 	// #endif
-
+	
+	import systemMixin from '../myp-mixin/systemMixin.js'
+	
+	const HEIGHT_RPX = 140
 	const HEIGHT = uni.upx2px(140)
 
 	export default {
+		mixins: [systemMixin],
 		props: {
 			scrollerRef: String,
 			maxTime: {
@@ -71,7 +75,8 @@
 			}
 		},
 		created() {
-			this.isAndroid = uni.getSystemInfoSync().platform === 'android';
+			const system = this.mypGetPlatform()
+			this.isAndroid = system === 'android';
 			!this.usingDefault && this.animationBinding();
 		},
 		beforeDestroy() {
@@ -109,10 +114,11 @@
 				// it means the refresh-component is pulling-down
 				this.$emit('pullingDown', event);
 				// TODO:
-				let pd = event.pullingDistance * (this.isAndroid ? -1 : 1);
-				//console.log(pd)
+				// console.log(event.pullingDistance)
+				let pd = event.pullingDistance // * (this.isAndroid ? -1 : 1);
+				// console.log(pd)
 				// 暂时未开放下拉多少可以触发释放下拉的回掉
-				pd > (this.isAndroid ? HEIGHT+60 : HEIGHT) ? (this.couldUnLash = true) : (this.couldUnLash = false);
+				pd > (this.isAndroid ? HEIGHT+140 : HEIGHT) ? (this.couldUnLash = true) : (this.couldUnLash = false);
 				//console.log(this.couldUnLash)
 				if (this.refreshing && pd < 20) {
 					this.timeoutSto && clearTimeout(this.timeoutSto);
@@ -124,13 +130,10 @@
 			 * 注册 bindingx
 			 */
 			animationBinding() {
-				// 确保可以取到元素
 				setTimeout(() => {
-					// 降级版本取不到，需要注意
 					const scroller = this.$parent.$refs[this.scrollerRef].ref;
 					const cover2 = this.$refs['cover2'].ref;
 					const coverCycle = this.$refs['cover-cycle'].ref;
-
 					const bindingResult = bindingX.bind({
 							eventType: 'scroll',
 							anchor: scroller,
@@ -155,7 +158,7 @@
 			 * 旋转动作
 			 */
 			cycleGoRound() {
-				if (this.isAndroid) return;
+				// if (this.isAndroid) return;
 				let cycle = this.$refs['cycle'].ref;
 				this.arrowShow(false);
 				if (!cycle) {

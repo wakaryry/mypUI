@@ -1,8 +1,8 @@
 <template>
 	<view>
-		<myp-navbar title="wrap-自定义r/l" :lefts="leftIcons" @leftAction="navLeftAction"></myp-navbar>
+		<myp-navbar title="wrap-自定义r/l-不足一页" :lefts="leftIcons" @leftAction="navLeftAction"></myp-navbar>
 		<!-- #ifdef APP-NVUE -->
-		<wrap-three></wrap-three>
+		<custom :refresh="true"></custom>
 		<!-- #endif -->
 		<!-- #ifndef APP-NVUE -->
 		<myp-list ref="myp-list" @down="toLoadItems" @up="toLoadItems">
@@ -15,20 +15,24 @@
 </template>
 
 <script>
-	import wrapThree from './components/wrap_three.vue'
+	import custom from './components/custom_one.vue'
 	
 	import navHelper from '@/router/navHelper.js'
 	
-	const rawItems = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+	const rawItems = [1]
 	
 	export default {
 		components: {
-			wrapThree
+			custom
 		},
 		mixins: [navHelper],
 		data() {
 			return {
-				items: rawItems
+				items: rawItems,
+				// #ifdef APP-NVUE
+				hasMore: true,
+				currentPage: 1
+				// #endif
 			}
 		},
 		methods: {
@@ -42,10 +46,10 @@
 					} else {
 						const newItems = []
 						rawItems.forEach(val => {
-							newItems.push(val+(cp-1)*10)
+							newItems.push(val+(cp-1)*1)
 						})
 						this.items = this.items.concat(newItems)
-						if (cp >= 4) {
+						if (cp >= 10) {
 							ins.mypEndSuccess(false)
 						} else {
 							ins.mypEndSuccess(true)

@@ -15,7 +15,9 @@
 </template>
 
 <script>
+	// #ifdef APP-NVUE
 	import custom from './components/custom.vue'
+	// #endif
 	
 	import navHelper from '@/router/navHelper.js'
 	
@@ -23,7 +25,9 @@
 	
 	export default {
 		components: {
+			// #ifdef APP-NVUE
 			custom
+			// #endif
 		},
 		mixins: [navHelper],
 		data() {

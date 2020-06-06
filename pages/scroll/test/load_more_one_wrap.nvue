@@ -15,14 +15,19 @@
 </template>
 
 <script>
+	// #ifdef APP-NVUE
 	import loadMoreOne from './components/load_more_one.vue'
+	// #endif
+	
 	import navHelper from '@/router/navHelper.js'
 	
 	const rawItems = [1]
 	
 	export default {
 		components: {
+			// #ifdef APP-NVUE
 			loadMoreOne
+			// #endif
 		},
 		mixins: [navHelper],
 		data() {

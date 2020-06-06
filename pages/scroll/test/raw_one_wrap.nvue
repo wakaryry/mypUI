@@ -15,7 +15,9 @@
 </template>
 
 <script>
+	// #ifdef APP-NVUE
 	import wrap from './components/raw_one.vue'
+	// #endif
 	
 	import navHelper from '@/router/navHelper.js'
 	
@@ -23,9 +25,16 @@
 	
 	export default {
 		components: {
+			// #ifdef APP-NVUE
 			wrap
+			// #endif
 		},
 		mixins: [navHelper],
+		data() {
+			return {
+				items: []
+			}
+		},
 		methods: {
 			// #ifndef APP-NVUE
 			toLoadItems() {
@@ -54,6 +63,22 @@
 	}
 </script>
 
-<style>
-
+<style lang="scss">
+	@import '@/mypUI/mypui.scss';
+	
+	.raw {
+		&-item {
+			width: 750rpx;
+			background-color: $myp-color-primary;
+			height: 240rpx;
+			justify-content: center;
+			align-items: center;
+			margin-bottom: 20rpx;
+			
+			&-text {
+				font-size: 46rpx;
+				color: #FFFFFF;
+			}
+		}
+	}
 </style>

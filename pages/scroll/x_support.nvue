@@ -1,12 +1,14 @@
 <template>
-	<div>
-		
-	</div>
+	<view>
+		<myp-navbar :lefts="leftIcons" title="xBar独立存在" @leftAction="navLeftAction"></myp-navbar>
+	</view>
 </template>
 
 <script>
+	import navHelper from '@/router/navHelper.js'
+	
 	export default {
-		
+		mixins: [navHelper]
 	}
 </script>
 

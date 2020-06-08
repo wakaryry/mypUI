@@ -1,4 +1,16 @@
 export default {
+	props: {
+		// 是否启用loading组件，而不是loadmoreofset触发
+		useLoading: {
+			type: Boolean,
+			default: false
+		},
+		// 使用loadmoreofset时的触发偏移量
+		loadMoreOffset: {
+			type: Number,
+			default: 40
+		}
+	},
 	data() {
 		return {
 			// down
@@ -40,6 +52,15 @@ export default {
 	methods: {
 		mypScroll(e) {
 			this.$emit("scroll", e)
+		},
+		mypMoreLoad() {
+			if (!this.mypUp.use) {
+				return
+			}
+			if (this.useLoading) {
+				return
+			}
+			this.mypLoad()
 		},
 		mypRefresh() {
 			this.mypPrePage = this.mypCurrentPage

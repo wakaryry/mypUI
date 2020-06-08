@@ -1,7 +1,7 @@
 <template>
 	<view>
 		<view v-if="fixed&&isSeize" :style="{height: seizeHeight + 'px', width: '750rpx'}"></view>
-		<view :class="['myp-nav-box', fixed&&'myp-nav-fixed']" :style="boxStyle">
+		<view :class="['myp-bg-'+bgType, 'myp-nav-box', fixed&&'myp-nav-fixed']" :style="boxStyle">
 			<view v-if="haveStatus" :style="{width: '750rpx', height: statusHeight + 'px'}"></view>
 			<view class="myp-nav-content" :style="mrNavStyle">
 				<view class="myp-nav-lefts" :style="leftStyle">
@@ -49,6 +49,10 @@
 			rights: {
 				type: Array,
 				default: ()=>{return []}
+			},
+			bgType: {
+				type: String,
+				default: ''
 			},
 			iconStyle: {
 				type: String,
@@ -149,7 +153,6 @@
 		width: 750rpx;
 		left: 0;
 		top: 0;
-		background-color: #FFFFFF;
 	}
 	.myp-nav-fixed {
 		position: fixed;

@@ -13,7 +13,8 @@
 			</view>
 		</myp-navbar>
 		<!-- #ifdef APP-NVUE -->
-		<list :id="pageId" :bounce="true" isSwiperList="true" :style="'width:750rpx;'+mypContentHeightStyle" @scroll="handleParentScroll">
+		<list :id="pageId" :bounce="true" isSwiperList="true" ref="myp-scroller" :style="'width:750rpx;'+mypContentHeightStyle" @scroll="mypHandleParentScroll">
+			<myp-refresher-n ref="myp-refresher" scroller-ref="myp-scroller" @refresh="mypHandleRefresh"></myp-refresher-n>
 			<cell>
 				<circle-head :numbers="numbers" @page="toPage"></circle-head>
 			</cell>
@@ -36,7 +37,7 @@
 		</list>
 		<!-- #endif -->
 		<!-- #ifndef APP-NVUE -->
-		<scroll-view :scroll-y="parentScrollable" :scroll-top="parentScrollTop" :scroll-with-animation="true" :style="'width:750rpx;'+mypContentHeightStyle" @scroll="handleParentScroll">
+		<scroll-view :scroll-y="parentScrollable" :scroll-top="parentScrollTop" :scroll-with-animation="true" :style="'width:750rpx;'+mypContentHeightStyle" @scroll="mypHandleParentScroll">
 			<circle-head :numbers="numbers" @page="toPage"></circle-head>
 			<view class="ch-tabs">
 				<text :class="['ch-tabs-item', currentTab===0&&'ch-tabs-item-current']" @tap="toChangeTab(0)">新贴</text>
@@ -44,23 +45,14 @@
 			</view>
 			<swiper :current="currentTab" :style="'width:750rpx;'+mypContentHeightStyle" @change="onSwiperChange">
 				<swiper-item>
-					<album-list :scrollable="childScrollable" :circleId="id" :parentId="pageId" :current="currentTab" :index="0" @move="childTouchMove" @end="childTouchEnd" @user="toUser" @detail="toDetail" @comment="toComment" @moreComment="toMoreComment" @share="toShare" @login="toHanderLogin" @error="toError"></album-list>
+					<album-list :scrollable="childScrollable" :circleId="id" :parentId="pageId" :current="currentTab" :index="0" @move="mypChildTouchMove" @end="mypChildTouchEnd" @user="toUser" @detail="toDetail" @comment="toComment" @moreComment="toMoreComment" @share="toShare" @login="toHanderLogin" @error="toError"></album-list>
 				</swiper-item>
 				<swiper-item>
-					<album-list :scrollable="childScrollable" :circleId="id" :parentId="pageId" :current="currentTab" :index="1" @move="childTouchMove" @end="childTouchEnd" @user="toUser" @detail="toDetail" @comment="toComment" @moreComment="toMoreComment" @share="toShare" @login="toHanderLogin" @error="toError"></album-list>
+					<album-list :scrollable="childScrollable" :circleId="id" :parentId="pageId" :current="currentTab" :index="1" @move="mypChildTouchMove" @end="mypChildTouchEnd" @user="toUser" @detail="toDetail" @comment="toComment" @moreComment="toMoreComment" @share="toShare" @login="toHanderLogin" @error="toError"></album-list>
 				</swiper-item>
 			</swiper>
 		</scroll-view>
 		<!-- #endif -->
-		<view v-if="false" class="ch-join">
-			<view bubble="true" class="ch-join-plus" @tap.stop.prevent="toJoin">
-				<image :src="avatar" v-if="hasLogedIn&&(joinState===1||joinState===2)" mode="aspectFill" class="ch-join-avatar"></image>
-				<myp-icon v-else name="plus" iconStyle="font-size: 38rpx;color:#000000;" @iconClicked="toJoin"></myp-icon>
-			</view>
-			<view class="ch-join-edit" @tap.stop.prevent="toPubAlbum">
-				<myp-icon name="edit" iconStyle="font-size: 38rpx;color:#000000;" @iconClicked="toPubAlbum"></myp-icon>
-			</view>
-		</view>
 		<view class="ch-foot">
 			<view class="ch-foot-content">
 				<view class="ch-foot-token"></view>
@@ -84,14 +76,16 @@
 </template>
 
 <script>
-	import circleHead from './components/circleHead.vue'
+	import circleHead from '../components/circleHead.vue'
 	import albumList from './components/albumList.vue'
-	import circleHeadPop from './components/circleHeadPop.vue'
+	import circleHeadPop from '../components/circleHeadPop.vue'
 	
 	import contentBoxMixin from '@/mypUI/myp-mixin/contentBoxMixin.js'
 	import navHelper from '@/router/navHelper.js'
 	import toastMixin from '@/mypUI/myp-mixin/toastMixin.js'
 	import loadingMixin from '@/mypUI/myp-mixin/loadingMixin.js'
+	
+	import parentMixin from './components/parentMixin.js'
 	
 	export default {
 		components: {
@@ -99,7 +93,7 @@
 			albumList,
 			circleHeadPop
 		},
-		mixins: [contentBoxMixin, navHelper, toastMixin, loadingMixin],
+		mixins: [contentBoxMixin, navHelper, toastMixin, loadingMixin, parentMixin],
 		data() {
 			return {
 				id: 0,
@@ -112,15 +106,7 @@
 				],
 				currentTab: 0,
 				titleVisible: true,
-				headVisible: false,
-				// list about
-				pageId: 'circle_home',
-				headerHeight: uni.upx2px(168), // 不包含tabs
-				tabsHeight: uni.upx2px(80), // 30 + 50
-				allHeight: uni.upx2px(248),
-				childScrollable: false,
-				parentScrollable: true,
-				parentScrollTop: 0
+				headVisible: false
 			}
 		},
 		methods: {
@@ -150,64 +136,6 @@
 			},
 			toMoreComment(val) {
 				this.toDetail(val)
-			},
-			childTouchMove(downHeight) {
-				// console.log("move", downHeight)
-				let dh = downHeight
-				if (downHeight >= this.allHeight) {
-					dh = this.allHeight
-				}
-				if (downHeight <= 0) {
-					dh = 0
-				}
-				// console.log(this.parentScrollable, this.childScrollable)
-				dh = this.allHeight - dh
-				// 限制10px移动距离，否则不动
-				// 一次性全部打开
-				if (downHeight > 10) {
-					this.parentScrollable = true
-					this.childScrollable = false
-					setTimeout(()=>{
-						this.parentScrollTop = 0
-					}, 0)
-				}
-			},
-			childTouchEnd(downHeight) {
-				// console.log("end", downHeight)
-			},
-			handleParentScroll(e) {
-				// console.log('parent scroll')
-				// #ifdef APP-NVUE
-				const offsetY = e.contentOffset.y
-				// console.log(offsetY)
-				let pg = -offsetY / this.allHeight
-				if (pg >= 1) {
-					this.titleVisible = false
-				} else {
-					this.titleVisible = true
-				}
-				// #endif
-				// #ifndef APP-NVUE
-				const scrollTop = e.detail.scrollTop
-				let spg = scrollTop / this.allHeight
-				if (spg >= 1) {
-					this.titleVisible = false
-				} else {
-					this.titleVisible = true
-				}
-				if (scrollTop >= this.allHeight) {
-					this.parentScrollable = false
-					if (this.parentScrollTop === this.allHeight) {
-						this.parentScrollTop = this.allHeight + 0.1
-					} else {
-						this.parentScrollTop = this.allHeight
-					}
-					this.childScrollable = true
-				} else {
-					this.parentScrollable = true
-					this.childScrollable = false
-				}
-				// #endif
 			},
 			toPage(val) {
 				this.headVisible = false

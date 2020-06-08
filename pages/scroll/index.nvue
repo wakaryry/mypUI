@@ -23,8 +23,7 @@
 					{name: 'list', page: 'scroll_list_loading', icon: 'topic', desc: 'list/scroll，带下拉/上提'},
 					{name: 'list', page: 'scroll_list_more', icon: 'topic', desc: 'list/scroll，带下拉/loadmoreoffset'},
 					{name: 'waterfall', page: 'scroll_waterfall', icon: 'radio-button', desc: 'waterfall/scroll，带下拉/上提'},
-					{name: '头部-1', page: 'scroll_header', icon: 'headphone', desc: '支持不完全打开，带下拉/上提'},
-					{name: '头部-2', page: 'scroll_header_swiper', icon: 'headphone', desc: 'header+tabs+swiper，带下拉/上提'},
+					{name: 'header-swiper', page: 'scroll_header', icon: 'headphone', desc: 'header+tabs+swiper，带下拉/上提'},
 					{name: 'x兼容-1', page: 'scroll_x_support_no', icon: 'teacher', desc: 'xBar透明，底部不被遮挡'},
 					{name: 'x兼容-2', page: 'scroll_x_support', icon: 'teacher', desc: 'xBar不透明，底部不被遮挡'}
 				]

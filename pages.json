@@ -242,13 +242,13 @@
 			}
 		},
 		{
-			"path": "pages/scroll/h",
+			"path": "pages/scroll/test/header",
 			"style": {
 				"disableScroll": true
 			}
 		},
 		{
-			"path": "pages/scroll/header_swiper",
+			"path": "pages/scroll/h",
 			"style": {
 				"disableScroll": true
 			}

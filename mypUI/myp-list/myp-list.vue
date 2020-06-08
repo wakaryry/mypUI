@@ -1,7 +1,7 @@
 <template>
 	<view :style="boxStyle">
 		<!-- #ifdef APP-NVUE -->
-		<list :class="'myp-bg-'+bgType" :style="mrScrollStyle" ref="myp-scroller" @scroll="mypScroll">
+		<list :class="'myp-bg-'+bgType" :style="mrScrollStyle" ref="myp-scroller" :loadmoreoffset="(mypUp.use&&!useLoading)?loadMoreOffset:0" @loadmore="mypMoreLoad" @scroll="mypScroll">
 			<myp-refresher-n v-if="mypDown.use" ref="myp-refresher" scroller-ref="myp-scroller" @refresh="mypRefresh"></myp-refresher-n>
 			<slot></slot>
 			<cell>
@@ -10,7 +10,10 @@
 			<!-- in android, we must put loading in the last, or it will not trigger loading next page. --> 
 			<!-- it's the same in loadMore with loadMoreOffset -->
 			<!-- or we could put the foot-token after loading -->
-			<myp-loader-n v-if="mypUp.use" ref="myp-loader" :hasMore="mypHasMore" @loading="mypLoad"></myp-loader-n>
+			<cell v-if="mypUp.use&&!useLoading">
+				<myp-loader :isLoading="mypIsUpLoading" :hasMore="mypHasMore"></myp-loader>
+			</cell>
+			<myp-loader-n v-if="mypUp.use&&useLoading" ref="myp-loader" :hasMore="mypHasMore" @loading="mypLoad"></myp-loader-n>
 		</list>
 		<!-- #endif -->
 		<!-- #ifndef APP-NVUE -->

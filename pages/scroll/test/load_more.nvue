@@ -11,6 +11,7 @@
 					<text class="raw-item-text">{{item}}</text>
 				</view>
 			</cell>
+			<!-- 存在问题，上提加载更多一页，然后刷新，然后就无法触发加载更多 -->
 			<cell>
 				<myp-loader :isLoading="displayLoading==='show'" :hasMore="hasMore"></myp-loader>
 			</cell>

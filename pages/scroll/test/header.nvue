@@ -13,8 +13,8 @@
 			</view>
 		</myp-navbar>
 		<!-- #ifdef APP-NVUE -->
-		<list :id="pageId" :bounce="true" isSwiperList="true" ref="myp-scroller" :style="'width:750rpx;'+mypContentHeightStyle" @scroll="mypHandleParentScroll">
-			<myp-refresher-n ref="myp-refresher" scroller-ref="myp-scroller" @refresh="mypHandleRefresh"></myp-refresher-n>
+		<list :id="mypPageId" :bounce="true" isSwiperList="true" ref="myp-scroller" :style="'width:750rpx;'+mypContentHeightStyle" @scroll="mypHandleParentScroll">
+			<myp-refresher-n ref="myp-refresher" scroller-ref="myp-scroller" @refresh="toHandleRefresh"></myp-refresher-n>
 			<cell>
 				<circle-head :numbers="numbers" @page="toPage"></circle-head>
 			</cell>
@@ -27,30 +27,35 @@
 			<cell>
 				<swiper id="swiper" ref="swiper" :current="currentTab" :style="'width:750rpx;'+mypContentHeightStyle" @change="onSwiperChange">
 					<swiper-item>
-						<album-list ref="recent" :circleId="id" :parentId="pageId" :current="currentTab" :index="0" @user="toUser" @detail="toDetail" @comment="toComment" @moreComment="toMoreComment" @share="toShare" @login="toHanderLogin" @error="toError"></album-list>
+						<album-list ref="recent" :parentId="mypPageId" :current="currentTab" :index="0" @user="toUser" @detail="toDetail" @comment="toComment" @moreComment="toMoreComment" @share="toShare" @login="toHanderLogin" @error="toError"></album-list>
 					</swiper-item>
 					<swiper-item>
-						<album-list ref="hot" :circleId="id" :parentId="pageId" :current="currentTab" :index="1" @user="toUser" @detail="toDetail" @comment="toComment" @moreComment="toMoreComment" @share="toShare" @login="toHanderLogin" @error="toError"></album-list>
+						<album-list ref="hot" :parentId="mypPageId" :current="currentTab" :index="1" @user="toUser" @detail="toDetail" @comment="toComment" @moreComment="toMoreComment" @share="toShare" @login="toHanderLogin" @error="toError"></album-list>
 					</swiper-item>
 				</swiper>
 			</cell>
 		</list>
 		<!-- #endif -->
 		<!-- #ifndef APP-NVUE -->
-		<scroll-view :scroll-y="parentScrollable" :scroll-top="parentScrollTop" :scroll-with-animation="true" :style="'width:750rpx;'+mypContentHeightStyle" @scroll="mypHandleParentScroll">
-			<circle-head :numbers="numbers" @page="toPage"></circle-head>
-			<view class="ch-tabs">
-				<text :class="['ch-tabs-item', currentTab===0&&'ch-tabs-item-current']" @tap="toChangeTab(0)">新贴</text>
-				<text :class="['ch-tabs-item', currentTab===1&&'ch-tabs-item-current']" @tap="toChangeTab(1)">热门</text>
+		<scroll-view :scroll-y="mypScrollable" :scroll-top="mypParentScrollTop" :scroll-with-animation="true" :style="'width:750rpx;'+mypContentHeightStyle"  @scroll="mypScroll" @touchstart="mypTouchstartEvent" @touchmove="mypTouchmoveEvent" @touchend="mypTouchendEvent" @touchcancel="mypTouchendEvent">
+			<view :style="mypMrScrollContentStyle">
+				<view :style="mypMrRefreshStyle">
+					<myp-refresher :refreshing="mypIsDownLoading" :couldUnLash="mypCouldUnLash" :rate="mypDownRate"></myp-refresher>
+				</view>
+				<circle-head :numbers="numbers" @page="toPage"></circle-head>
+				<view class="ch-tabs">
+					<text :class="['ch-tabs-item', currentTab===0&&'ch-tabs-item-current']" @tap="toChangeTab(0)">新贴</text>
+					<text :class="['ch-tabs-item', currentTab===1&&'ch-tabs-item-current']" @tap="toChangeTab(1)">热门</text>
+				</view>
+				<swiper :current="currentTab" :style="'width:750rpx;'+mypContentHeightStyle" @change="onSwiperChange">
+					<swiper-item>
+						<album-list :scrollable="mypChildScrollable" :current="currentTab" :index="0" @move="mypChildTouchMove" @end="mypChildTouchEnd" @user="toUser" @detail="toDetail" @comment="toComment" @moreComment="toMoreComment" @share="toShare" @login="toHanderLogin" @error="toError"></album-list>
+					</swiper-item>
+					<swiper-item>
+						<album-list :scrollable="mypChildScrollable" :current="currentTab" :index="1" @move="mypChildTouchMove" @end="mypChildTouchEnd" @user="toUser" @detail="toDetail" @comment="toComment" @moreComment="toMoreComment" @share="toShare" @login="toHanderLogin" @error="toError"></album-list>
+					</swiper-item>
+				</swiper>
 			</view>
-			<swiper :current="currentTab" :style="'width:750rpx;'+mypContentHeightStyle" @change="onSwiperChange">
-				<swiper-item>
-					<album-list :scrollable="childScrollable" :circleId="id" :parentId="pageId" :current="currentTab" :index="0" @move="mypChildTouchMove" @end="mypChildTouchEnd" @user="toUser" @detail="toDetail" @comment="toComment" @moreComment="toMoreComment" @share="toShare" @login="toHanderLogin" @error="toError"></album-list>
-				</swiper-item>
-				<swiper-item>
-					<album-list :scrollable="childScrollable" :circleId="id" :parentId="pageId" :current="currentTab" :index="1" @move="mypChildTouchMove" @end="mypChildTouchEnd" @user="toUser" @detail="toDetail" @comment="toComment" @moreComment="toMoreComment" @share="toShare" @login="toHanderLogin" @error="toError"></album-list>
-				</swiper-item>
-			</swiper>
 		</scroll-view>
 		<!-- #endif -->
 		<view class="ch-foot">
@@ -69,7 +74,7 @@
 				</view>
 			</view>
 		</view>
-		<circle-head-pop :show="headVisible" :name="name" :apps="apps" @cancel="toHideHead" @select="toPage"></circle-head-pop>
+		<circle-head-pop :show="headVisible" :apps="apps" @cancel="toHideHead" @select="toPage"></circle-head-pop>
 		<myp-loading :show="mypLoading"></myp-loading>
 		<myp-toast ref="myp-toast"></myp-toast>
 	</view>
@@ -85,7 +90,13 @@
 	import toastMixin from '@/mypUI/myp-mixin/toastMixin.js'
 	import loadingMixin from '@/mypUI/myp-mixin/loadingMixin.js'
 	
+	// #ifdef APP-NVUE
 	import parentMixin from './components/parentMixin.js'
+	// #endif
+	// #ifndef APP-NVUE
+	import scrollParentMixin from './components/scrollParentMixin.js'
+	// #endif
+	import actionsMixin from './components/actionsMixin.js'
 	
 	export default {
 		components: {
@@ -93,11 +104,15 @@
 			albumList,
 			circleHeadPop
 		},
-		mixins: [contentBoxMixin, navHelper, toastMixin, loadingMixin, parentMixin],
+		// #ifdef APP-NVUE
+		mixins: [contentBoxMixin, navHelper, toastMixin, loadingMixin, parentMixin, actionsMixin],
+		// #endif
+		// #ifndef APP-NVUE
+		mixins: [contentBoxMixin, navHelper, toastMixin, loadingMixin, scrollParentMixin, actionsMixin],
+		// #endif
 		data() {
 			return {
-				id: 0,
-				name: '',
+				mypExtra: 100,
 				numbers: [
 					{num: 1, name: '贴子', badge: 6, page: 'album_list'}, {num: 28, name: '成员', badge: 7, page: 'member_list'}, {num: 35, name: '访客', badge: 49, page: 'message_visitor'}
 				],
@@ -110,36 +125,49 @@
 			}
 		},
 		methods: {
-			toShowHead() {
-				this.headVisible = true
+			toHandleRefresh() {
+				// #ifdef APP-NVUE
+				let ref = null
+				if (i === 0) {
+					ref = this.$refs.recent
+				} else if (i === 1) {
+					ref = this.$refs.hot
+				}
+				this.mypHandleRefresh(ref)
+				// #endif
 			},
-			toHideHead() {
-				this.headVisible = false
-			},
-			toHanderLogin() {
-				this.toShowLoginPop(true)
-			},
-			toError(err) {
-				this.mypShowToast(err)
-			},
-			toDetail(val) {
-				this.navigateTo("album_detail", {id: val.id, attr: val.attrId})
-			},
-			toUser(val) {
-				this.navigateTo("user_main", {id: val.id})
-			},
-			toComment(val) {
-				this.toDetail(val)
-			},
-			toShare(val) {
-				this.toDetail(val)
-			},
-			toMoreComment(val) {
-				this.toDetail(val)
-			},
-			toPage(val) {
-				this.headVisible = false
-				this.navigateTo(val.page, {id: this.id, type: 'circle', name: this.name})
+			mypHandleParentScroll(e) {
+				// #ifdef APP-NVUE
+				const offsetY = e.contentOffset.y
+				// console.log(offsetY)
+				let pg = -offsetY / this.mypAllHeight
+				if (pg >= 1) {
+					this.titleVisible = false
+				} else {
+					this.titleVisible = true
+				}
+				// #endif
+				// #ifndef APP-NVUE
+				const scrollTop = e.detail.scrollTop
+				let spg = scrollTop / this.mypAllHeight
+				if (spg >= 1) {
+					this.titleVisible = false
+				} else {
+					this.titleVisible = true
+				}
+				if (scrollTop >= this.mypAllHeight) {
+					this.mypScrollable = false
+					if (this.mypParentScrollTop === this.mypAllHeight) {
+						this.mypParentScrollTop = this.mypAllHeight + 0.1
+					} else {
+						this.mypParentScrollTop = this.mypAllHeight
+					}
+					this.mypChildScrollable = true
+				} else {
+					this.mypScrollable = true
+					this.mypChildScrollable = false
+				}
+				// #endif
 			},
 			toChangeTab(i) {
 				this.toSwitchTab(i)
@@ -155,54 +183,12 @@
 				} else if (i === 1) {
 					ref = this.$refs.hot
 				}
-				ref && ref.setScrollRef(this.allHeight)
+				this.mypSetScrollRef(ref)
 				// #endif
 				this.currentTab = i
 			},
 			toInitSpecial() {
 				this.toSwitchTab(this.currentTab)
-			},
-			toFootUser(e) {
-				e && e.stopPropagation && e.stopPropagation()
-			},
-			toShareCircle(e) {
-				e && e.stopPropagation && e.stopPropagation()
-				// #ifdef MP
-				this.mypShowToast({
-					text: '点击右上角分享',
-					mode: 'big',
-					type: 'success',
-					bgType: 'dark'
-				})
-				// #endif
-			},
-			toFootJoin() {
-				if (this.joinState === 2) {
-					this.toPubAlbum()
-					return
-				}
-				this.toJoin()
-			},
-			toPubAlbum() {
-				if (!this.hasLogedIn) {
-					this.toShowLoginPop(true)
-					return
-				}
-				if (this.joinState === 0) {
-					this.mypShowToast({
-						text: '您尚未加入',
-						mode: 'big',
-						type: 'warning'
-					})
-				} else if (this.joinState === 1) {
-					this.mypShowToast({
-						text: '您的申请正在审核中',
-						mode: 'big',
-						type: 'warning'
-					})
-				} else if (this.joinState === 2) {
-					this.navigateTo("write_album", {type: 'circle', id: this.id, name: this.name})
-				}
 			}
 		},
 		onReady() {

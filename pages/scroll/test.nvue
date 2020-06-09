@@ -17,10 +17,7 @@
 		data() {
 			return {
 				items: [
-					{name: 'header-list', page: 'scroll_test_header', icon: 'triangle', desc: 'refresh/loading'},
-					{name: 'header-list', page: 'scroll_test_header_more', icon: 'triangle', desc: 'refresh/loadMore'},
-					{name: 'header-swiper-list', page: 'scroll_test_swiper', icon: 'clock2', desc: 'refresh/loading'},
-					{name: 'header-swiper-list', page: 'scroll_test_swiper_more', icon: 'clock2', desc: 'refresh/loadMore'},
+					{name: 'header-list', page: 'scroll_test_header', icon: 'triangle', desc: 'refresh/loadMore'},
 					{name: '不封装list', page: 'scroll_raw', icon: 'class', desc: 'refresh/loading'},
 					{name: '不封装list', page: 'scroll_raw_one', icon: 'class', desc: 'r/l,内容不足一页'},
 					{name: '不封装list', page: 'scroll_custom', icon: 'topic', desc: '自定义refresh/loading'},

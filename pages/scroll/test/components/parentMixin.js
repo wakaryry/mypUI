@@ -10,12 +10,9 @@ export default {
 	methods: {
 		mypHandleRefresh(ref) {
 			const refresher = this.$refs['myp-refresher']
-			console.log('1', refresher)
 			ref &&ref.toRefresh(refresher, (val) => {
-				console.log('2', val)
 				val && val.cancel()
 			}, (val) => {
-				console.log('3', val)
 				val && val.cancel()
 			})
 		},

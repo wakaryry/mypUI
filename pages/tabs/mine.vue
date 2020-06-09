@@ -1,7 +1,7 @@
 <template>
 	<view>
 		<myp-navbar :fixed="false" title="我的"></myp-navbar>
-		<scroll-view class="m-page" :scroll-y="true" :style="mypContentHeightStyle"></scroll-view>
+		<scroll-view class="myp-bg-page" :scroll-y="true" :style="mypContentHeightStyle"></scroll-view>
 	</view>
 </template>
 

@@ -1,7 +1,7 @@
 <template>
 	<view>
 		<myp-navbar :lefts="leftIcons" title="关于我们" @leftAction="navLeftAction"></myp-navbar>
-		<scroll-view class="m-page" :scroll-y="true" :style="mypContentHeightStyle">
+		<scroll-view class="myp-bg-page" :scroll-y="true" :style="mypContentHeightStyle">
 			<view class="about-section" v-for="(item,idx) in items" :key="idx">
 				<text class="about-section-title">{{item.title}}</text>
 				<text class="about-section-desc">{{item.desc}}</text>

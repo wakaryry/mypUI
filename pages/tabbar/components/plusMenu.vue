@@ -1,12 +1,16 @@
 <template>
 	<myp-popup :show='show' pos="top" :width="660" :height="860" :offset="260" @overlayClicked="toClose">
-		<scroll-view class="m-page-inverse" :scroll-y="true" :style="{width: '660rpx', height: '860rpx', 'border-radius': '32rpx'}">
-			<view style="height: 32rpx;"></view>
-			<view class="pm-margin" v-for="(item, idx) in items" :key="idx">
-				<h-intro-card :item="item" @select="toPage(item.page)"></h-intro-card>
+		<myp-list-simple bgType="inverse" width="660rpx" height="860rpx" scrollStyle="border-radius:24rpx;">
+			<myp-list-cell>
 				<view style="height: 32rpx;"></view>
-			</view>
-		</scroll-view>
+			</myp-list-cell>
+			<myp-list-cell v-for="(item, idx) in items" :key="idx">
+				<view class="pm-margin">
+					<h-intro-card :item="item" @select="toPage(item.page)"></h-intro-card>
+					<view style="height: 32rpx;"></view>
+				</view>
+			</myp-list-cell>
+		</myp-list-simple>
 	</myp-popup>
 </template>
 
@@ -38,8 +42,6 @@
 </script>
 
 <style lang="scss" scoped>
-	@import '@/mypUI/mypui.scss';
-	
 	.pm {
 		&-margin {
 			margin: 0 32rpx;

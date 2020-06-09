@@ -1,6 +1,6 @@
 <template>
 	<view>
-		<scroll-view class="m-page tm" :scroll-y="true" :style="mypContentHeightStyle">
+		<scroll-view class="myp-bg-page tm" :scroll-y="true" :style="mypContentHeightStyle">
 			<view style="height: 32rpx;"></view>
 			<view :class="['tm-content', item.uid===1?'tm-content-left':'tm-content-right']" v-for="(item, idx) in items" :key="idx">
 				<myp-message-time v-if="idx===0 || idx ===5" :time="idx===0?'10:46':'11:05'" boxStyle="width:686rpx;"></myp-message-time>

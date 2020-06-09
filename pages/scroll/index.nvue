@@ -1,19 +1,22 @@
 <template>
 	<view>
 		<myp-navbar :lefts="leftIcons" title="各种scroll的适配" @leftAction="navLeftAction"></myp-navbar>
-		<scroll-view class="m-page" :style="mypContentHeightStyle+'width:750rpx;'">
-			<view style="height: 20rpx;"></view>
-			<myp-cell v-for="(item,idx) in items" :key="idx" :icon="item.icon" :title="item.name" :value="item.desc" :showIndicator="true" indicator="right" radius="none" border="bottom" height="ll" valueStyle="text-align:right;" boxStyle="padding-left:30rpx;padding-right:30rpx;" @cellClicked="toDetailScroll(item)"></myp-cell>
-		</scroll-view>
+		<myp-list-simple bgType="page">
+			<myp-list-cell>
+				<view style="height: 20rpx;"></view>
+			</myp-list-cell>
+			<myp-list-cell v-for="(item,idx) in items" :key="idx">
+				<myp-cell :icon="item.icon" :title="item.name" :value="item.desc" :showIndicator="true" indicator="right" radius="none" border="bottom" height="ll" valueStyle="text-align:right;" boxStyle="padding-left:30rpx;padding-right:30rpx;" @cellClicked="toDetailScroll(item)"></myp-cell>
+			</myp-list-cell>
+		</myp-list-simple>
 	</view>
 </template>
 
 <script>
-	import contentBoxMixin from '@/mypUI/myp-mixin/contentBoxMixin.js'
 	import navHelper from '@/router/navHelper.js'
 	
 	export default {
-		mixins: [navHelper, contentBoxMixin],
+		mixins: [navHelper],
 		data() {
 			return {
 				items: [
@@ -38,6 +41,4 @@
 </script>
 
 <style lang="scss">
-@import '@/mypUI/mypui.scss';
-
 </style>

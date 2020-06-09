@@ -1,50 +1,79 @@
 <template>
 	<view>
 		<myp-navbar :lefts="leftIcons" title="输入框" @leftAction="navLeftAction"></myp-navbar>
-		<scroll-view class="m-page-inverse" :scroll-y="true" :style="mypContentHeightStyle">
-			<myp-title bgType="none" title1="快速适配" title1Type="third" boxStyle="padding-left:32rpx;padding-right:32rpx;"></myp-title>
-			<view class="bi-margin">
-				<myp-input v-model="phone" mode="number" :maxlength="11" icon="phone" height="l" placeholder="输入手机号" space="20rpx" boxStyle="padding-left:10rpx;padding-right:10rpx;"></myp-input>
-				<myp-input v-model="password" :maxlength="24" :isSecret="pwdNoVisible" :action="rightEye" icon="lock" height="l" placeholder="密码" space="20rpx" boxStyle="padding-left:10rpx;padding-right:10rpx;" @rightAction="togglePwdVisible"></myp-input>
-			</view>
-			<myp-title bgType="none" title1="特殊定制" title1Type="third" boxStyle="padding-left:32rpx;padding-right:32rpx;"></myp-title>
-			<view class="bi-margin">
-				<myp-input v-model="code" mode="number" :maxlength="4" icon="lock" height="l" placeholder="四位验证码" space="20rpx" boxStyle="padding-left:10rpx;padding-right:10rpx;">
-					<view slot="extra" @tap="toGetCode">
-						<text :class="['bi-code', seconds===0&&'bi-code-active']">{{codeHintText}}</text>
-					</view>
-				</myp-input>
-			</view>
-			<myp-title bgType="none" title1="格式化输入" title1Type="third" boxStyle="padding-left:32rpx;padding-right:32rpx;"></myp-title>
-			<view class="bi-margin">
-				<myp-input v-model="phone2" :maxlength="13" icon="phone" iconSize="ll" height="l" :format="[3,4,4]" placeholder="输入手机号" separator="-" space="20rpx" boxStyle="padding-left:10rpx;padding-right:10rpx;" inputStyle="font-size:36rpx;font-weight:500;"></myp-input>
-			</view>
-			<myp-title bgType="none" title1="密码/验证码样式" title1Type="third" boxStyle="padding-left:32rpx;padding-right:32rpx;"></myp-title>
-			<myp-input-one v-model="oneBox" mode="box"></myp-input-one>
-			<myp-input-one v-model="oneBottom" type="error" mode="bottom"></myp-input-one>
-			<myp-input-one v-model="oneMiddle" mode="middle"></myp-input-one>
-			<myp-title bgType="none" title1="可自增多行输入框" title1Type="third" boxStyle="padding-left:32rpx;padding-right:32rpx;"></myp-title>
-			<view class="bi-margin">
-				<myp-input-grow value="我开始输入一些内容,让他看上去有质感一些.您可以继续输入或者删除掉这些内容"></myp-input-grow>
-			</view>
-			<myp-title bgType="none" title1="高度/边框/圆角/等" title1Type="third" boxStyle="padding-left:32rpx;padding-right:32rpx;"></myp-title>
-			<view class="bi-margin">
-				<myp-input bgType="success" label="您的名字" valueAlign="right" placeholder="请输入您的名字" boxStyle="padding-left:10rpx;padding-right:10rpx" radius="base" border="none"></myp-input>
-			</view>
-			<view style="height: 20rpx;"></view>
-		</scroll-view>
+		<myp-list-simple bgType="page">
+			<myp-list-cell>
+				<myp-title bgType="none" title1="快速适配" title1Type="third" boxStyle="padding-left:32rpx;padding-right:32rpx;"></myp-title>
+			</myp-list-cell>
+			<myp-list-cell>
+				<view class="bi-margin">
+					<myp-input v-model="phone" mode="number" :maxlength="11" icon="phone" height="l" placeholder="输入手机号" space="20rpx" boxStyle="padding-left:10rpx;padding-right:10rpx;"></myp-input>
+					<myp-input v-model="password" :maxlength="24" :isSecret="pwdNoVisible" :action="rightEye" icon="lock" height="l" placeholder="密码" space="20rpx" boxStyle="padding-left:10rpx;padding-right:10rpx;" @rightAction="togglePwdVisible"></myp-input>
+				</view>
+			</myp-list-cell>
+			<myp-list-cell>
+				<myp-title bgType="none" title1="特殊定制" title1Type="third" boxStyle="padding-left:32rpx;padding-right:32rpx;"></myp-title>
+			</myp-list-cell>
+			<myp-list-cell>
+				<view class="bi-margin">
+					<myp-input v-model="code" mode="number" :maxlength="4" icon="lock" height="l" placeholder="四位验证码" space="20rpx" boxStyle="padding-left:10rpx;padding-right:10rpx;">
+						<view slot="extra" @tap="toGetCode">
+							<text :class="['bi-code', seconds===0&&'bi-code-active']">{{codeHintText}}</text>
+						</view>
+					</myp-input>
+				</view>
+			</myp-list-cell>
+			<myp-list-cell>
+				<myp-title bgType="none" title1="格式化输入" title1Type="third" boxStyle="padding-left:32rpx;padding-right:32rpx;"></myp-title>
+			</myp-list-cell>
+			<myp-list-cell>
+				<view class="bi-margin">
+					<myp-input v-model="phone2" :maxlength="13" icon="phone" iconSize="ll" height="l" :format="[3,4,4]" placeholder="输入手机号" separator="-" space="20rpx" boxStyle="padding-left:10rpx;padding-right:10rpx;" inputStyle="font-size:36rpx;font-weight:500;"></myp-input>
+				</view>
+			</myp-list-cell>
+			<myp-list-cell>
+				<myp-title bgType="none" title1="密码/验证码样式" title1Type="third" boxStyle="padding-left:32rpx;padding-right:32rpx;"></myp-title>
+			</myp-list-cell>
+			<myp-list-cell>
+				<myp-input-one v-model="oneBox" mode="box"></myp-input-one>
+			</myp-list-cell>
+			<myp-list-cell>
+				<myp-input-one v-model="oneBottom" type="error" mode="bottom"></myp-input-one>
+			</myp-list-cell>
+			<myp-list-cell>
+				<myp-input-one v-model="oneMiddle" mode="middle"></myp-input-one>
+			</myp-list-cell>
+			<myp-list-cell>
+				<myp-title bgType="none" title1="可自增多行输入框" title1Type="third" boxStyle="padding-left:32rpx;padding-right:32rpx;"></myp-title>
+			</myp-list-cell>
+			<myp-list-cell>
+				<view class="bi-margin">
+					<myp-input-grow value="我开始输入一些内容,让他看上去有质感一些.您可以继续输入或者删除掉这些内容"></myp-input-grow>
+				</view>
+			</myp-list-cell>
+			<myp-list-cell>
+				<myp-title bgType="none" title1="高度/边框/圆角/等" title1Type="third" boxStyle="padding-left:32rpx;padding-right:32rpx;"></myp-title>
+			</myp-list-cell>
+			<myp-list-cell>
+				<view class="bi-margin">
+					<myp-input bgType="success" label="您的名字" valueAlign="right" placeholder="请输入您的名字" boxStyle="padding-left:10rpx;padding-right:10rpx" radius="base" border="none"></myp-input>
+				</view>
+			</myp-list-cell>
+			<myp-list-cell>
+				<view style="height: 20rpx;"></view>
+			</myp-list-cell>
+		</myp-list-simple>
 		<myp-toast ref="myp-toast"></myp-toast>
 	</view>
 </template>
 
 <script>
-import contentBoxMixin from '@/mypUI/myp-mixin/contentBoxMixin.js';
 import toastMixin from '@/mypUI/myp-mixin/toastMixin.js'
 import navHelper from '@/router/navHelper.js'
 import timerMixin from '@/service/timerMixin.js'
 
 export default {
-	mixins: [contentBoxMixin, toastMixin, navHelper, timerMixin],
+	mixins: [toastMixin, navHelper, timerMixin],
 	data() {
 		return {
 			pwdNoVisible: true,

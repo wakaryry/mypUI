@@ -1,7 +1,7 @@
 <template>
 	<view>
 		<!-- #ifdef APP-NVUE -->
-		<list ref="myp-list" :bounce="true" isSwiperList="true" :style="mypContentHeightStyle+'width:750rpx;'" :loadmoreoffset="40" @loadmore="toGetAlbums">
+		<list class="myp-bg-page" ref="myp-list" :bounce="true" isSwiperList="true" :style="mypContentHeightStyle+'width:750rpx;'" :loadmoreoffset="40" @loadmore="toGetAlbums">
 			<cell v-if="items.length===0">
 				<view style="width: 750rpx;height: 30rpx;background-color: #FFFFFF;"></view>
 			</cell>
@@ -15,7 +15,7 @@
 		</list>
 		<!-- #endif -->
 		<!-- #ifndef APP-NVUE -->
-		<scroll-view :scroll-y="scrollable" :style="mypContentHeightStyle+'width:750rpx;'" @touchstart="onTouchStart" @touchmove="onTouchMove" @touchend="onTouchEnd" @touchcancel="onTouchEnd" @scroll="onScroll" @scrolltolower="toGetAlbums">
+		<scroll-view class="myp-bg-page" :scroll-y="scrollable" :style="mypContentHeightStyle+'width:750rpx;'" @touchstart="onTouchStart" @touchmove="onTouchMove" @touchend="onTouchEnd" @touchcancel="onTouchEnd" @scroll="onScroll" @scrolltolower="toGetAlbums">
 			<view v-if="items.length===0">
 				<view style="width: 750rpx;height: 30rpx;background-color: #FFFFFF;"></view>
 			</view>

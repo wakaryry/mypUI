@@ -1,7 +1,7 @@
 <template>
 	<view>
 		<myp-navbar :fixed="false" title="mypUI"></myp-navbar>
-		<scroll-view class="m-page" :scroll-y="true" :style="mypContentHeightStyle">
+		<scroll-view class="myp-bg-page" :scroll-y="true" :style="mypContentHeightStyle">
 			<view style="height: 24rpx;"></view>
 			<intro-header @selected="toIntro"></intro-header>
 			<view style="height: 24rpx;"></view>

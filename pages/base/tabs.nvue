@@ -5,26 +5,50 @@
 				<myp-tabs-h :value="current2" :isTap="true" :items="tabs2" width="86rpx" titleLabel="title" titleType="second" activeType="text" textStyle="font-size:14px;" activeTextStyle="font-size:16px;" indicatorWidth="42rpx" indicatorType="primary" indicatorBottom="6px" scrollSize="350rpx" justify="center" height="44px" @change="toChangeNavTabs"></myp-tabs-h>
 			</view>
 		</myp-navbar>
-		<scroll-view class="m-page" :scroll-y="true" :style="mypContentHeightStyle">
-			<view style="height: 24rpx;"></view>
-			<myp-tabs-h :value="current" :isTap="true" :items="tabs1" activeType="warning" indicatorType="warning" @change="toChange1"></myp-tabs-h>
-			<view style="height: 24rpx;"></view>
-			<myp-tabs-h :value="current" :isTap="true" :items="tabs1" justify="center" activeType="error" indicatorType="error" @change="toChange1"></myp-tabs-h>
-			<view style="height: 24rpx;"></view>
-			<myp-tabs-h :value="current" :isTap="true" :items="tabs1" justify="space-between" activeType="warning" indicatorType="warning" @change="toChange1"></myp-tabs-h>
-			<view style="height: 24rpx;"></view>
-			<myp-tabs-h :value="current3" :isTap="true" :items="tabs3" activeType="error" indicatorType="error" @change="toChange3"></myp-tabs-h>
-			<view style="height: 24rpx;"></view>
-			<myp-tabs-h :value="current4" :isTap="true" :items="tabs4" activeType="warning" width="0" indicatorWidth="0" indicatorType="warning" @change="toChange4"></myp-tabs-h>
-			<view style="height: 24rpx;"></view>
-			<view class="tabs-columns">
-				<myp-tabs-v :value="currentV" :items="tabs1" width="90rpx" space="0" scrollSize="400rpx" itemStyle="padding-left:18rpx;" @change="toChangeV"></myp-tabs-v>
-				<myp-tabs-v :value="currentV" :items="tabs1" width="90rpx" space="0" justify="center" scrollSize="400rpx" itemStyle="padding-left:18rpx;" @change="toChangeV"></myp-tabs-v>
-				<myp-tabs-v :value="currentV" :items="tabs1" width="90rpx" space="0" justify="space-between" scrollSize="400rpx" itemStyle="padding-left:18rpx;" @change="toChangeV"></myp-tabs-v>
-				<myp-tabs-v :value="currentV3" :items="tabs3" width="90rpx" space="0" activeType="error" indicatorType="error" scrollSize="500rpx" itemStyle="padding-left:18rpx;" @change="toChangeV3"></myp-tabs-v>
-				<myp-tabs-v :value="currentV4" :items="tabs4" width="180rpx" space="0" activeType="warning" indicatorType="warning" scrollSize="500rpx" itemStyle="padding-left:18rpx;" @change="toChangeV4"></myp-tabs-v>
-			</view>
-		</scroll-view>
+		<myp-list-simple bgType="page">
+			<myp-list-cell>
+				<view style="height: 24rpx;"></view>
+			</myp-list-cell>
+			<myp-list-cell>
+				<myp-tabs-h :value="current" :isTap="true" :items="tabs1" activeType="warning" indicatorType="warning" @change="toChange1"></myp-tabs-h>
+			</myp-list-cell>
+			<myp-list-cell>
+				<view style="height: 24rpx;"></view>
+			</myp-list-cell>
+			<myp-list-cell>
+				<myp-tabs-h :value="current" :isTap="true" :items="tabs1" justify="center" activeType="error" indicatorType="error" @change="toChange1"></myp-tabs-h>
+			</myp-list-cell>
+			<myp-list-cell>
+				<view style="height: 24rpx;"></view>
+			</myp-list-cell>
+			<myp-list-cell>
+				<myp-tabs-h :value="current" :isTap="true" :items="tabs1" justify="space-between" activeType="warning" indicatorType="warning" @change="toChange1"></myp-tabs-h>
+			</myp-list-cell>
+			<myp-list-cell>
+				<view style="height: 24rpx;"></view>
+			</myp-list-cell>
+			<myp-list-cell>
+				<myp-tabs-h :value="current3" :isTap="true" :items="tabs3" activeType="error" indicatorType="error" @change="toChange3"></myp-tabs-h>
+			</myp-list-cell>
+			<myp-list-cell>
+				<view style="height: 24rpx;"></view>
+			</myp-list-cell>
+			<myp-list-cell>
+				<myp-tabs-h :value="current4" :isTap="true" :items="tabs4" activeType="warning" width="0" indicatorWidth="0" indicatorType="warning" @change="toChange4"></myp-tabs-h>
+			</myp-list-cell>
+			<myp-list-cell>
+				<view style="height: 24rpx;"></view>
+			</myp-list-cell>
+			<myp-list-cell>
+				<view class="tabs-columns">
+					<myp-tabs-v :value="currentV" :items="tabs1" width="90rpx" space="0" scrollSize="400rpx" itemStyle="padding-left:18rpx;" @change="toChangeV"></myp-tabs-v>
+					<myp-tabs-v :value="currentV" :items="tabs1" width="90rpx" space="0" justify="center" scrollSize="400rpx" itemStyle="padding-left:18rpx;" @change="toChangeV"></myp-tabs-v>
+					<myp-tabs-v :value="currentV" :items="tabs1" width="90rpx" space="0" justify="space-between" scrollSize="400rpx" itemStyle="padding-left:18rpx;" @change="toChangeV"></myp-tabs-v>
+					<myp-tabs-v :value="currentV3" :items="tabs3" width="90rpx" space="0" activeType="error" indicatorType="error" scrollSize="500rpx" itemStyle="padding-left:18rpx;" @change="toChangeV3"></myp-tabs-v>
+					<myp-tabs-v :value="currentV4" :items="tabs4" width="180rpx" space="0" activeType="warning" indicatorType="warning" scrollSize="500rpx" itemStyle="padding-left:18rpx;" @change="toChangeV4"></myp-tabs-v>
+				</view>
+			</myp-list-cell>
+		</myp-list-simple>
 		<myp-toast ref="myp-toast"></myp-toast>
 	</view>
 </template>
@@ -34,12 +58,11 @@
 // tabs 不再绑定v-model
 //
 
-import contentBoxMixin from '@/mypUI/myp-mixin/contentBoxMixin.js';
 import toastMixin from '@/mypUI/myp-mixin/toastMixin.js'
 import navHelper from '@/router/navHelper.js'
 
 export default {
-	mixins: [contentBoxMixin, toastMixin, navHelper],
+	mixins: [toastMixin, navHelper],
 	data() {
 		return {
 			current: 0,
@@ -82,7 +105,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import '@/mypUI/mypui.scss';
+
 .tabs {
 	&-nav {
 		width: 350rpx;

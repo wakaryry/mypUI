@@ -1,7 +1,7 @@
 <template>
 	<view>
 		<myp-navbar :lefts="leftIcons" title="按钮" @leftAction="navLeftAction"></myp-navbar>
-		<scroll-view class="m-page" :scroll-y="true" :style="mypContentHeightStyle">
+		<scroll-view class="myp-bg-page" :scroll-y="true" :style="mypContentHeightStyle">
 			<view class="m-margin">
 				<myp-title bgType="none" centerIcon1="primary" centerIcon1Type="primary" centerIcon2="triangle-right" title2="主题配置" centerIcon2Type="third" centerStyle="padding-left:16rpx;padding-right:16rpx;background-color:#FFFFFF;border-radius:12rpx;height:60rpx;"></myp-title>
 				<myp-button text="默认样式"></myp-button>

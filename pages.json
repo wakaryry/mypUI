@@ -260,6 +260,12 @@
 			}
 		},
 		{
+			"path": "pages/scroll/header_refresh",
+			"style": {
+				"disableScroll": true
+			}
+		},
+		{
 			"path": "pages/scroll/list_simple",
 			"style": {
 				"disableScroll": true

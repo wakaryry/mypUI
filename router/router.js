@@ -47,6 +47,7 @@ export default {
 	scroll_index: '/pages/scroll/index',
 	scroll_h: '/pages/scroll/h',
 	scroll_header: '/pages/scroll/header',
+	scroll_header_refresh: '/pages/scroll/header_refresh',
 	scroll_list_simple: '/pages/scroll/list_simple',
 	scroll_list_loading: '/pages/scroll/list_loading',
 	scroll_list_more: "/pages/scroll/list_more",

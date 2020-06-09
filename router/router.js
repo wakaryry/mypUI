@@ -30,7 +30,7 @@ export default {
 	// swiper
 	swiper_index: '/pages/swiper/index',
 	// scroll
-	scroll_test: '/pages/scroll/test',
+	scroll_test: '/pages/scroll/test/test',
 	scroll_raw: '/pages/scroll/test/raw',
 	scroll_raw_one: '/pages/scroll/test/raw_one',
 	scroll_raw_wrap: '/pages/scroll/test/raw_wrap',

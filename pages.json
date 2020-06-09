@@ -164,7 +164,7 @@
 			}
 		},
 		{
-			"path": "pages/scroll/test",
+			"path": "pages/scroll/test/test",
 			"style": {
 				"disableScroll": true
 			}

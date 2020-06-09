@@ -52,15 +52,6 @@
 			</swiper>
 		</scroll-view>
 		<!-- #endif -->
-		<view v-if="false" class="ch-join">
-			<view bubble="true" class="ch-join-plus" @tap.stop.prevent="toJoin">
-				<image :src="avatar" v-if="hasLogedIn&&(joinState===1||joinState===2)" mode="aspectFill" class="ch-join-avatar"></image>
-				<myp-icon v-else name="plus" iconStyle="font-size: 38rpx;color:#000000;" @iconClicked="toJoin"></myp-icon>
-			</view>
-			<view class="ch-join-edit" @tap.stop.prevent="toPubAlbum">
-				<myp-icon name="edit" iconStyle="font-size: 38rpx;color:#000000;" @iconClicked="toPubAlbum"></myp-icon>
-			</view>
-		</view>
 		<view class="ch-foot">
 			<view class="ch-foot-content">
 				<view class="ch-foot-token"></view>

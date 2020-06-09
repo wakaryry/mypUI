@@ -112,7 +112,7 @@
 	@import '../mypui.scss';
 	
 	.myp-loading {
-		position: fixed;
+		position: relative;
 		
 		&-mask {
 			position: fixed;

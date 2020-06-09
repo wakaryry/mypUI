@@ -128,9 +128,9 @@
 			toHandleRefresh() {
 				// #ifdef APP-NVUE
 				let ref = null
-				if (i === 0) {
+				if (this.currentTab === 0) {
 					ref = this.$refs.recent
-				} else if (i === 1) {
+				} else if (this.currentTab === 1) {
 					ref = this.$refs.hot
 				}
 				this.mypHandleRefresh(ref)

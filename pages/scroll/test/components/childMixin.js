@@ -48,6 +48,15 @@ export default {
 				that.toRefresh()
 			}, 30)
 		}
+		// 非app端swiper里面ref获取不到，采用互相通信
+		// #ifndef APP-NVUE
+		uni.$on("swiperScrollRefresh", ()=>{
+			that.toRefresh()
+		})
+		// #endif
+	},
+	destroyed() {
+		uni.$off("swiperScrollRefresh")
 	},
 	watch: {
 		current(newV) {

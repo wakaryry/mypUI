@@ -156,7 +156,7 @@ export default {
 			
 		},
 		mypHandleRefresh() {
-			
+			uni.$emit("swiperScrollRefresh")
 		},
 		// 刷新
 		mypTriggerDownScroll() {
@@ -172,16 +172,13 @@ export default {
 			this.mypIsDownLoading = false
 			this.mypDownHeight = 0
 		},
-		mypEndSuccess(hasMore=true) {
-			this.mypHasMore = hasMore
+		mypEndSuccess() {
 			if (this.mypIsDownLoading) {
 				this.mypEndDownScroll()
 			}
 		},
 		// 下拉刷新/上提加载，失败之后使用
 		mypEndError() {
-			// reback the current page
-			this.mypCurrentPage = this.mypPrePage
 			if (this.mypIsDownLoading) {
 				this.mypEndDownScroll()
 			}
@@ -235,5 +232,18 @@ export default {
 		mypChildTouchEnd(downHeight) {
 			// console.log("end", downHeight)
 		}
+	},
+	onLoad() {
+		const that = this
+		uni.$on("swiperScrollRefreshSuc", ()=>{
+			that.mypEndSuccess()
+		})
+		uni.$on("swiperScrollRefreshErr", ()=>{
+			that.mypEndError()
+		})
+	},
+	onUnload() {
+		uni.$off("swiperScrollRefreshSuc")
+		uni.$off("swiperScrollRefreshErr")
 	}
 }

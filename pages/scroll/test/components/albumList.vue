@@ -71,6 +71,7 @@
 				this.$emit("moreComment", val)
 			},
 			toGetAlbums(val, ref, sucH, failH) {
+				if (this.current !== this.index) return;
 				this.inited = true
 				let cp = 1
 				if (val === 'refresh') {
@@ -98,6 +99,9 @@
 					this.hasMore = response.next || false
 					if (cp === 1) {
 						ref && sucH && sucH(ref)
+						// #ifndef APP-NVUE
+						uni.$emit("swiperScrollRefreshSuc")
+						// #endif
 						this.isDownLoading = false
 					} else {
 						this.isUpLoading = false
@@ -107,6 +111,9 @@
 					this.$emit("error", err)
 					if (cp === 1) {
 						ref && failH && failH(ref)
+						// #ifndef APP-NVUE
+						uni.$emit("swiperScrollRefreshErr")
+						// #endif
 						this.isDownLoading = false
 					} else {
 						this.isUpLoading = false

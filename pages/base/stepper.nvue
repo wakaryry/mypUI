@@ -20,7 +20,7 @@ import toastMixin from '@/mypUI/myp-mixin/toastMixin.js'
 import navHelper from '@/router/navHelper.js'
 
 export default {
-	mixins: [contentBoxMixin, toastMixin, navHelper],
+	mixins: [toastMixin, navHelper],
 	data() {
 		return {
 		}

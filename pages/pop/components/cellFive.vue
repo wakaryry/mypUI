@@ -55,7 +55,7 @@
 			</view>
 		</view>
 		<view class="cf-right">
-			<image src="/static/bird.png" class="cf-right-bg" mode="aspectFit"></image>
+			<image src="https://cdn.img.wenhairu.com/images/2020/05/23/YOtHK.png" class="cf-right-bg" mode="aspectFit"></image>
 		</view>
 	</view>
 </template>

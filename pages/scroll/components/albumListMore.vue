@@ -73,21 +73,8 @@
 			toGetAlbums(val, ref, sucH, failH) {
 				if (this.current !== this.index) return;
 				this.mypInited = true
-				let cp = 1
-				if (val === 'refresh') {
-					cp = 1
-				} else {
-					cp = this.mypCurrentPage + 1
-				}
-				if (cp > 1 && !this.mypHasMore) {
-					this.mypIsUpLoading = false
-					return
-				}
-				if (cp === 1) {
-					this.mypIsDownLoading = true
-				} else {
-					this.mypIsUpLoading = true
-				}
+				const cp = this.mypStart(val)
+				if (!cp) return;
 				const mode = this.index === 0 ? 'all' : 'hot'
 				getAlbumList({mode: mode, page: cp}).then(response => {
 					if (cp === 1) {
@@ -95,29 +82,10 @@
 					} else {
 						this.items = this.items.concat(response.results || [])
 					}
-					this.mypCurrentPage = cp
-					this.mypHasMore = response.next || false
-					if (cp === 1) {
-						ref && sucH && sucH(ref)
-						// #ifndef APP-NVUE
-						uni.$emit("swiperScrollRefreshSuc")
-						// #endif
-						this.mypIsDownLoading = false
-					} else {
-						this.mypIsUpLoading = false
-					}
+					this.mypEndSuccess(cp, response.next, ref, sucH)
 				}).catch(err => {
-					console.log(err)
 					this.$emit("error", err)
-					if (cp === 1) {
-						ref && failH && failH(ref)
-						// #ifndef APP-NVUE
-						uni.$emit("swiperScrollRefreshErr")
-						// #endif
-						this.mypIsDownLoading = false
-					} else {
-						this.mypIsUpLoading = false
-					}
+					this.mypEndError(cp, ref, failH)
 				})
 			}
 		}

@@ -80,6 +80,51 @@ export default {
 		toRefresh(ref, sucH,  failH) {
 			// u must override it to do your refresh logic
 		},
+		mypStart(val) {
+			// 加载数据之前的前置设置
+			let cp = 1
+			if (val === 'refresh') {
+				cp = 1
+			} else {
+				cp = this.mypCurrentPage + 1
+			}
+			if (cp > 1 && !this.mypHasMore) {
+				this.mypIsUpLoading = false
+				return false
+			}
+			if (cp === 1) {
+				this.mypIsDownLoading = true
+			} else {
+				this.mypIsUpLoading = true
+			}
+			return cp
+		},
+		mypEndSuccess(cp, hasMore, ref, sucH) {
+			// 数据加载成功
+			this.mypCurrentPage = cp
+			this.mypHasMore = hasMore || false
+			if (cp === 1) {
+				ref && sucH && sucH(ref)
+				// #ifndef APP-NVUE
+				uni.$emit("swiperScrollRefreshSuc")
+				// #endif
+				this.mypIsDownLoading = false
+			} else {
+				this.mypIsUpLoading = false
+			}
+		},
+		mypEndError(cp, ref, failH) {
+			// 数据加载失败
+			if (cp === 1) {
+				ref && failH && failH(ref)
+				// #ifndef APP-NVUE
+				uni.$emit("swiperScrollRefreshErr")
+				// #endif
+				this.mypIsDownLoading = false
+			} else {
+				this.mypIsUpLoading = false
+			}
+		},
 		// #ifndef APP-NVUE
 		mypOnTouchStart(e) {
 			if (!this.scrollable) return;

@@ -4,7 +4,7 @@
 			<image src="https://cdn.img.wenhairu.com/images/2020/05/23/YOl0d.png" class="co-bg-cover" mode="aspectFill"></image>
 		</view>
 		<view class="co-body">
-			<text class="co-body-title">弹层   物语</text>
+			<text class="co-body-title">弹层  X  物语</text>
 			<text class="co-body-desc">非常精细灵活的弹层，方向/动画/offset...</text>
 			<view class="co-body-actions">
 				<text class="co-body-item">左</text>
@@ -12,7 +12,27 @@
 				<text class="co-body-item">上</text>
 				<text class="co-body-item">下</text>
 				<text class="co-body-item">中</text>
+			</view>
+			<view class="co-body-actions">
 				<text class="co-body-item">距</text>
+				<text class="co-body-item">距</text>
+				<text class="co-body-item">距</text>
+				<text class="co-body-item">距</text>
+				<text class="co-body-item">距</text>
+			</view>
+			<view class="co-body-actions">
+				<text class="co-body-item">双</text>
+				<text class="co-body-item">双</text>
+				<text class="co-body-item">双</text>
+				<text class="co-body-item">双</text>
+				<text class="co-body-item">双</text>
+			</view>
+			<view class="co-body-actions">
+				<text class="co-body-item">凸</text>
+				<text class="co-body-item">凸</text>
+				<text class="co-body-item">凸</text>
+				<text class="co-body-item">凸</text>
+				<text class="co-body-item">凸</text>
 			</view>
 		</view>
 	</view>

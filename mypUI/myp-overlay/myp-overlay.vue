@@ -1,11 +1,10 @@
 <template>
-	<view class="myp-overlay" v-if="helpShow" ref="myp-overlay" @click.stop.prevent="overlayClose" :style="overlayStyle + noWeexTransition" >
+	<view :class="['myp-overlay', 'myp-bg-'+bgType]" v-if="helpShow" ref="myp-overlay" @click.stop="overlayClose" :style="overlayStyle + noWeexTransition" >
 		<slot></slot>
 	</view>
 </template>
 
 <script>
-	// 通过prop或者ref来控制打开/关闭
 	// #ifdef APP-NVUE
 	const animation = weex.requireModule('animation');
 	// #endif
@@ -27,6 +26,10 @@
 				type: Array,
 				default: () => (['ease-in', 'ease-out'])
 			},
+			bgType: {
+				type: String,
+				default: 'mask'
+			},
 			bg: {
 				type: String,
 				default: ''
@@ -35,6 +38,22 @@
 			canAutoClose: {
 				type: Boolean,
 				default: true
+			},
+			left: {
+				type: [Number, String],
+				default: '0'
+			},
+			top: {
+				type: [Number, String],
+				default: '0'
+			},
+			right: {
+				type: [Number, String],
+				default: '0'
+			},
+			bottom: {
+				type: [Number, String],
+				default: '0'
 			}
 		},
 		computed: {
@@ -92,7 +111,6 @@
 			},
 			// 点击关闭，执行完关闭动画之后发送关闭事件通知
 			overlayClose(e) {
-				console.log("from overlay")
 				this.canAutoClose ? this.appearOverlay(false, this.duration, true) : this.$emit('overlayClicked', {});
 				e.stopPropagation && e.stopPropagation();
 			},
@@ -226,6 +244,5 @@
 		right: 0;
 		bottom: 0;
 		left: 0;
-		background-color: $myp-bg-color-mask;
 	}
 </style>

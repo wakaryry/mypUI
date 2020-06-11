@@ -2,16 +2,17 @@
 	<view>
 		<myp-navbar :lefts="leftIcons" title="弹层互动" @leftAction="navLeftAction"></myp-navbar>
 		<scroll-view class="myp-bg-page" :scroll-y="true" :style="mypContentHeightStyle">
+			<pop-cell></pop-cell>
 			<view style="height: 24rpx;"></view>
-			<cell-one></cell-one>
+			<toast-cell></toast-cell>
 			<view style="height: 24rpx;"></view>
-			<cell-two></cell-two>
+			<action-cell></action-cell>
 			<view style="height: 24rpx;"></view>
-			<cell-three></cell-three>
+			<picker-cell></picker-cell>
 			<view style="height: 24rpx;"></view>
-			<cell-four></cell-four>
+			<modal-cell></modal-cell>
 			<view style="height: 24rpx;"></view>
-			<cell-five></cell-five>
+			<overlay-cell></overlay-cell>
 			<view style="height: 24rpx;"></view>
 		</scroll-view>
 		<myp-toast ref="myp-toast"></myp-toast>
@@ -19,11 +20,12 @@
 </template>
 
 <script>
-import cellOne from './components/cellOne.vue'
-import cellTwo from './components/cellTwo.vue'
-import cellThree from './components/cellThree.vue'
-import cellFour from './components/cellFour.vue'
-import cellFive from './components/cellFive.vue'
+import popCell from './components/popCell.vue'
+import toastCell from './components/toastCell.vue'
+import actionCell from './components/actionCell.vue'
+import pickerCell from './components/pickerCell.vue'
+import modalCell from './components/modalCell.vue'
+import overlayCell from './components/overlayCell.vue'
 
 import contentBoxMixin from '@/mypUI/myp-mixin/contentBoxMixin.js';
 import toastMixin from '@/mypUI/myp-mixin/toastMixin.js'
@@ -31,11 +33,12 @@ import navHelper from '@/router/navHelper.js'
 
 export default {
 	components: {
-		cellOne,
-		cellTwo,
-		cellThree,
-		cellFour,
-		cellFive
+		popCell,
+		toastCell,
+		actionCell,
+		pickerCell,
+		modalCell,
+		overlayCell
 	},
 	mixins: [contentBoxMixin, toastMixin, navHelper],
 	data() {

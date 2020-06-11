@@ -3,7 +3,7 @@
 		<view>
 			<myp-overlay :show="overlayShow" :bg="overlay.bg" :duration="overlay.duration" :hasAnimation="overlay.hasAnimation" :timingFunction="overlay.timingFunction" :canAutoClose="false" @overlayClicked="mypOverlayClicked"></myp-overlay>
 		</view>
-		<view ref="myp-popup" v-if="helpShow" @click.stop.prevent="toPrevent" :class="['myp-popup', 'myp-bg-'+bgType, 'myp-popup-'+pos]" :style="mrPopStyle + noWeexAni">
+		<view ref="myp-popup" v-if="helpShow" @click.stop="toPrevent" :class="['myp-popup', 'myp-bg-'+bgType, 'myp-popup-'+pos]" :style="mrPopStyle + noWeexAni">
 			<slot></slot>
 		</view>
 	</view>
@@ -20,9 +20,6 @@
 	export default {
 		mixins: [pxMixin, xBarMixin],
 		props: {
-			// 使用show来控制，外部需要改变show的状态，改变之后延迟执行动画
-			// 当前关闭动画如果不是overlay引起的关闭，没有动画
-			// 或者使用ref来控制打开/关闭
 			show: {
 				type: Boolean,
 				default: false
@@ -59,7 +56,7 @@
 				type: [Number, String],
 				default: 0
 			},
-			// 打开后与边框的距离. 事实上这个可以通过其它方式实现，比如内容高度增加，然后背景色透明
+			// 打开后与边框的距离. 可以通过其它方式实现，比如内容高度增加，然后背景色透明
 			offset: {
 				type: [Number, String],
 				default: 0
@@ -73,6 +70,22 @@
 				default: () => ({
 					timingFunction: 'ease-in-out'
 				})
+			},
+			left: {
+				type: [Number, String],
+				default: '0'
+			},
+			top: {
+				type: [Number, String],
+				default: '0'
+			},
+			right: {
+				type: [Number, String],
+				default: '0'
+			},
+			bottom: {
+				type: [Number, String],
+				default: '0'
 			}
 		},
 		data() {

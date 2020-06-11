@@ -1,7 +1,7 @@
 <template>
 	<view>
 		<myp-navbar :lefts="leftIcons" title="Tabbar" @leftAction="navLeftAction"></myp-navbar>
-		<myp-tabbar ref="tabbar" :top="navHeight" :tabs="tabs" :tabStyle="tabStyle" @selected="tabbarSwitched">
+		<myp-tabbar ref="tabbar" :includeStatus="false" :includeNav="false" :tabs="tabs" :tabStyle="tabStyle" @selected="tabbarSwitched">
 			<home-tab></home-tab>
 			<mine-tab></mine-tab>
 		</myp-tabbar>
@@ -17,7 +17,6 @@
 	import plusMenu from './components/plusMenu.vue'
 	
 	import navHelper from '@/router/navHelper.js'
-	import windowMixin from '@/mypUI/myp-mixin/windowMixin.js'
 	
 	export default {
 		components: {
@@ -25,7 +24,7 @@
 			mineTab,
 			plusMenu
 		},
-		mixins: [navHelper, windowMixin],
+		mixins: [navHelper],
 		data() {
 			return {
 				menuVisible: false,
@@ -62,13 +61,8 @@
 					titleStyle: 'font-size:12px;color:#888888;',
 					selectedTitleStyle: 'font-size:12px;color:#108EE9;',
 					boxStyle: 'background-color: #FFFFFF;'
-				},
-				navHeight: 0
+				}
 			}
-		},
-		created() {
-			// const info = uni.getSystemInfoSync()
-			this.navHeight = this.mypGetStatusBarHeight() + 44
 		},
 		methods: {
 			toCloseMenu() {

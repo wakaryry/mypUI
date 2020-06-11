@@ -81,6 +81,10 @@
 				type: Boolean,
 				default: true
 			},
+			includeNav: {
+				type: Boolean,
+				default: true
+			},
 			duration: {
 				type: [Number, String],
 				default: 300
@@ -109,6 +113,9 @@
 				}
 				if (!this.includeStatus) {
 					_height = _height - this.mypGetStatusBarHeight()
+				}
+				if (!this.includeNav) {
+					_height = _height - this.mypGetNavHeight()
 				}
 				if (_height === 0) {
 					return 0
@@ -151,7 +158,9 @@
 				return -1
 			},
 			topPx() {
-				return this.mypToPx(this.top)
+				const st = this.includeStatus ? 0 : this.mypGetStatusBarHeight()
+				const nh = this.includeNav ? 0 : this.mypGetNavHeight()
+				return this.mypToPx(this.top) + st + nh
 			},
 			tabHeightPx() {
 				if (this.tabStyle && this.tabStyle.height) {

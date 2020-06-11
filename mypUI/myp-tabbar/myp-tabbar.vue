@@ -101,9 +101,6 @@
 			defaultIconBoxWidth: '46px'
 		}),
 		computed: {
-			isIPhoneX() {
-				return this.mypIsIphoneX && this.supportXBar
-			},
 			containerHeight() {
 				let _height = this.mypGetScreenHeight()
 				if (_height === 0) {
@@ -116,15 +113,13 @@
 				if (_height === 0) {
 					return 0
 				}
-				const xBarHeight = this.isIPhoneX ? this.mypXBarHeight : 0
+				const xBarHeight = this.includeXBar ? this.mypGetXBarHeight() : 0
 				return _height - this.tabHeightPx - xBarHeight - this.top
 			},
 			mrHumpStyle() {
 				if (!this.humpItem) return '';
 				let btm = this.humpItem.humpBottom || 12
-				if (this.isIPhoneX) {
-					btm += 34
-				}
+				btm += this.mypGetXBarHeight()
 				const style = this.humpItem.humpStyle || ''
 				return style + `bottom:${btm}px;`
 			},
@@ -187,16 +182,12 @@
 			},
 			mrTabsBoxStyle() {
 				let _style = (this.tabStyle && this.tabStyle.boxStyle) || ''
-				if (this.isIPhoneX) {
-					_style += 'padding-bottom:34px;'
-				}
+				_style += `padding-bottom:${this.mypGetXBarHeight()}px;`
 				return _style
 			},
 			mrTabsImageBoxStyle() {
 				let _style = (this.tabStyle && this.tabStyle.imageBoxStyle) || ''
-				if (this.isIPhoneX) {
-					_style += 'padding-bottom:34px;'
-				}
+				_style += `padding-bottom:${this.mypGetXBarHeight()}px;`
 				return _style
 			}
 		},

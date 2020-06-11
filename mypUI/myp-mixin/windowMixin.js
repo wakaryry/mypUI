@@ -14,12 +14,9 @@ export default {
 		mypGetWindowHeight() {
 			const app = getApp({allowDefault: true})
 			if (app.globalData.windowHeight) {
-				console.log('zero:', app.globalData.windowHeight)
 				return app.globalData.windowHeight
 			}
-			console.log('first:', app.globalData.windowHeight)
 			this.mypInitSystemInfo()
-			console.log('second:', app.globalData.windowHeight)
 			return app.globalData.windowHeight
 		},
 		mypGetScreenHeight() {

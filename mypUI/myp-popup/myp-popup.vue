@@ -51,7 +51,7 @@
 				type: [Number, String],
 				default: 0
 			},
-			// 对外露出的高度/宽度
+			// 收起后对外露出的高度/宽度
 			standOut: {
 				type: [Number, String],
 				default: 0
@@ -60,6 +60,22 @@
 			offset: {
 				type: [Number, String],
 				default: 0
+			},
+			leftOffset: {
+				type: [Number, String],
+				default: -1
+			},
+			rightOffset: {
+				type: [Number, String],
+				default: -1
+			},
+			bottomOffset: {
+				type: [Number, String],
+				default: -1
+			},
+			topOffset: {
+				type: [Number, String],
+				default: -1
 			},
 			width: {
 				type: [Number, String],

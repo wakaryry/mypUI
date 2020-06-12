@@ -167,7 +167,8 @@ export default {
 		},
 		mypHandleParentScroll(e) {
 			const scrollTop = e.detail.scrollTop
-			if (scrollTop >= this.mypAllHeight) {
+			// 缓冲8px
+			if (scrollTop >= this.mypAllHeight - 8) {
 				this.mypParentScrollable = false
 				if (this.mypParentScrollTop === this.mypAllHeight) {
 					this.mypParentScrollTop = this.mypAllHeight + 0.1

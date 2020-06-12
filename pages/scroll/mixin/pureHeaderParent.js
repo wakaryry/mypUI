@@ -23,7 +23,7 @@ export default {
 		mypHandleParentScroll(e) {
 			// #ifndef APP-NVUE
 			const scrollTop = e.detail.scrollTop
-			if (scrollTop >= this.mypAllHeight) {
+			if (scrollTop >= this.mypAllHeight - 8) {
 				this.mypParentScrollable = false
 				if (this.mypParentScrollTop === this.mypAllHeight) {
 					this.mypParentScrollTop = this.mypAllHeight + 0.1

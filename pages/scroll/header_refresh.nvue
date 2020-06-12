@@ -147,7 +147,7 @@
 				this.mypScroll(e)
 				const scrollTop = e.detail.scrollTop
 				let spg = scrollTop / this.mypAllHeight
-				if (spg >= 1) {
+				if (spg >= 0.99) {
 					this.titleVisible = false
 				} else {
 					this.titleVisible = true

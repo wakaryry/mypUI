@@ -4,22 +4,19 @@ import pxMixin from '../myp-mixin/pxMixin.js'
 export default {
 	mixins: [xBarMixin, pxMixin],
 	props: {
-		hasStatus: {
+		includeStatus: {
 			type: Boolean,
-			default: true
+			default: false
+		},
+		includeNav: {
+			type: Boolean,
+			default: false
 		},
 		tabHeight: {
 			type: Number,
 			default: 0 // px
 		},
-		navHeight: {
-			type: Number,
-			default: 44 // px
-		},
-		supportXBar: {
-			type: Boolean,
-			default: true
-		},
+		// 补充高度
 		extra: {
 			type: [Number, String],
 			default: 0
@@ -34,15 +31,9 @@ export default {
 			default: '750rpx'
 		},
 		// foot悬浮在scroll之上，滚动到底部时，foot可能遮挡住scroll的内容，我们给scroll加一个底部空白高度
-		// 会自动加上xBar的高度
 		footToken: {
 			type: String,
 			default: '0px'  // 占位的高度
-		},
-		// foot对于xBar的处理：不根据scroll的supportXBar处理，因为可能scroll不考虑xBar，但是foot依然考虑
-		footSupportXBar: {
-			type: Boolean,
-			default: true
 		},
 		boxStyle: {
 			type: String,
@@ -55,6 +46,11 @@ export default {
 		bgType: {
 			type: String,
 			default: 'page'
+		},
+		// foot会导致xBar区域不可点击
+		hasFoot: {
+			type: Boolean,
+			default: false
 		},
 		footStyle: {
 			type: String,
@@ -70,14 +66,22 @@ export default {
 			if (_height === 0) {
 				_height = this.mypGetScreenHeight()
 			}
-			if (this.hasStatus) {
+			if (!this.includeStatus) {
 				_height = _height - this.mypGetStatusBarHeight()
 			}
-			if (_height === 0) {
+			if (!this.includeNav) {
+				_height = _height - this.mypGetNavHeight()
+			}
+			if (!this.includeXBar) {
+				_height = _height - this.mypGetXBarHeight()
+			} else if (this.includeXBar && !this.overrideXBar) {
+				_height = _height - this.mypGetXBarHeight()
+			}
+			_height = _height - this.tabHeight - this.extraPx
+			if (_height <= 0) {
 				return 0
 			}
-			const xBarHeight = this.supportXBar ? this.mypGetXBarHeight() : 0
-			return _height - this.navHeight - this.tabHeight - this.extraPx - xBarHeight
+			return _height
 		},
 		heightPx() {
 			return this.mypToPx(this.height)

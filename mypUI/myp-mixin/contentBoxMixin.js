@@ -4,10 +4,10 @@ import pxMixin from './pxMixin.js'
 export default {
 	data() {
 		return {
-			mypHasStatus: true,
-			mypNavHeight: 44,
+			mypIncludeStatus: false,
+			mypIncludeNav: false,
 			mypTabHeight: 0,
-			mypSupportXBar: true,
+			mypIncludeXBar: true,
 			mypExtra: '0px'
 		}
 	},
@@ -19,14 +19,20 @@ export default {
 				// try again
 				_height = this.mypGetScreenHeight()
 			}
-			if (this.mypHasStatus) {
+			if (!this.mypIncludeStatus) {
 				_height = _height - this.mypGetStatusBarHeight()
 			}
-			if (_height === 0) {
+			if (!this.mypIncludeNav) {
+				_height = _height - this.mypGetNavHeight()
+			}
+			if (!this.mypIncludeXBar) {
+				_height = _height - this.mypGetXBarHeight()
+			}
+			_height = _height - this.mypTabHeight - this.mypExtraPx
+			if (_height <= 0) {
 				return 0
 			}
-			const xBarHeight = this.mypSupportXBar ? this.mypGetXBarHeight() : 0
-			return _height - this.mypNavHeight - this.mypTabHeight - this.mypExtraPx - xBarHeight
+			return _height
 		},
 		mypContentHeightStyle() {
 			return `height:${this.mypContentHeight}px;`

@@ -6,17 +6,24 @@
 			<cell>
 				<view :style="{height: footToken}"></view>
 			</cell>
+			<cell>
+				<view v-if="includeXBar&&overrideXBar" :style="mypXBarHeightStyle"></view>
+			</cell>
 		</list>
 		<!-- #endif -->
 		<!-- #ifndef APP-NVUE -->
 		<scroll-view :scroll-y="true" :class="'myp-bg-'+bgType" :style="mrScrollStyle" @scroll="toScroll">
 			<slot></slot>
 			<view :style="{height: footToken}"></view>
+			<view v-if="includeXBar&&overrideXBar" :style="mypXBarHeightStyle"></view>
 		</scroll-view>
 		<!-- #endif -->
+		<!-- xBar -->
+		<view v-if="includeXBar&&!overrideXBar" :class="['myp-bg-'+xBarBgType]" :style="mypXBarStyle"></view>
 		<!-- foot -->
-		<view class="myp-simple-foot" :style="footStyle">
+		<view v-if="hasFoot" class="myp-simple-foot" :style="footStyle">
 			<slot name="foot"></slot>
+			<view v-if="includeXBar" :style="mypXBarHeightStyle"></view>
 		</view>
 	</view>
 </template>
@@ -40,6 +47,8 @@
 		
 		&-foot {
 			position: absolute;
+			left: 0;
+			bottom: 0;
 		}
 	}
 </style>

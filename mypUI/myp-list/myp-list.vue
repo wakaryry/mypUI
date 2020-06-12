@@ -1,11 +1,14 @@
 <template>
-	<view :style="boxStyle">
+	<view class="myp-list" :style="boxStyle">
 		<!-- #ifdef APP-NVUE -->
 		<list :class="'myp-bg-'+bgType" :style="mrScrollStyle" ref="myp-scroller" :loadmoreoffset="(mypUp.use&&!useLoading)?loadMoreOffset:0" @loadmore="mypMoreLoad" @scroll="mypScroll">
 			<myp-refresher-n v-if="mypDown.use" ref="myp-refresher" scroller-ref="myp-scroller" @refresh="mypRefresh"></myp-refresher-n>
 			<slot></slot>
 			<cell>
 				<view :style="{height: footToken}"></view>
+			</cell>
+			<cell>
+				<view v-if="includeXBar&&overrideXBar" :style="mypXBarHeightStyle"></view>
 			</cell>
 			<!-- in android, we must put loading in the last, or it will not trigger loading next page. --> 
 			<!-- it's the same in loadMore with loadMoreOffset -->
@@ -26,9 +29,17 @@
 				<slot></slot>
 				<myp-loader v-if="mypUp.use" :isLoading="mypIsUpLoading" :hasMore="mypHasMore"></myp-loader>
 				<view :style="{height: footToken}"></view>
+				<view v-if="includeXBar&&overrideXBar" :style="mypXBarHeightStyle"></view>
 			</view>
 		</scroll-view>
 		<!-- #endif -->
+		<!-- xBar -->
+		<view v-if="includeXBar&&!overrideXBar" :class="['myp-bg-'+xBarBgType]" :style="mypXBarStyle"></view>
+		<!-- foot -->
+		<view v-if="hasFoot" class="myp-simple-foot" :style="footStyle">
+			<slot name="foot"></slot>
+			<view v-if="includeXBar" :style="mypXBarHeightStyle"></view>
+		</view>
 	</view>
 </template>
 
@@ -77,4 +88,13 @@
 </script>
 
 <style lang="scss" scoped>
+	.myp-list {
+		position: relative;
+		
+		&-foot {
+			position: absolute;
+			left: 0;
+			bottom: 0;
+		}
+	}
 </style>

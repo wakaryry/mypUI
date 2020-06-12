@@ -8,7 +8,7 @@ export default {
 		// 使用loadmoreofset时的触发偏移量
 		loadMoreOffset: {
 			type: Number,
-			default: 40
+			default: 60
 		}
 	},
 	data() {

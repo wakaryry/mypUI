@@ -36,9 +36,8 @@
 		<!-- xBar -->
 		<view v-if="includeXBar&&!overrideXBar" :class="['myp-bg-'+xBarBgType]" :style="mypXBarStyle"></view>
 		<!-- foot -->
-		<view class="myp-simple-foot" :style="footStyle">
+		<view class="myp-simple-foot" :style="mrFootStyle">
 			<slot name="foot"></slot>
-			<view v-if="includeXBar&&hasFoot" :style="mypXBarHeightStyle"></view>
 		</view>
 	</view>
 </template>

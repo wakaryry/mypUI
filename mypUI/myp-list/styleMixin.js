@@ -52,6 +52,11 @@ export default {
 			type: Boolean,
 			default: false
 		},
+		// 我们通过footBottom来设置bottom的距离
+		footBottom: {
+			type: String,
+			default: '0px'
+		},
 		footStyle: {
 			type: String,
 			default: ''
@@ -91,6 +96,14 @@ export default {
 		},
 		extraPx() {
 			return this.mypToPx(this.extra)
+		},
+		mrFootStyle() {
+			let bt = this.mypToPx(this.footBottom)
+			if (this.includeXBar&&this.hasFoot) {
+				const xh = this.mypGetXBarHeight()
+				bt = bt + xh
+			}
+			return this.footStyle + 'bottom:' + bt + 'px;'
 		}
 	}
 }

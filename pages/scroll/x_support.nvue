@@ -1,7 +1,7 @@
 <template>
 	<view>
 		<myp-navbar :lefts="leftIcons" title="xBar安全区适配" @leftAction="navLeftAction"></myp-navbar>
-		<myp-list-simple :hasFoot="hasFoot" :includeXBar="includeXBar" :overrideXBar="overrideXBar" :footToken="footToken" :xBarBgType="xBarBgType">
+		<myp-list-simple :hasFoot="hasFoot" :includeXBar="includeXBar" :overrideXBar="overrideXBar" :footToken="footToken" :xBarBgType="xBarBgType" footBottom="32rpx">
 			<myp-list-cell>
 				<view style="height: 32rpx;"></view>
 			</myp-list-cell>
@@ -12,34 +12,35 @@
 					<view style="height: 32rpx;"></view>
 				</view>
 			</myp-list-cell>
-			<view class="x-foot" slot="foot">
+			<view v-if="hasFoot" class="x-foot" slot="foot">
 				<myp-button bgType="error" border="none" radius="ll" icon="love" text="发爱心给Ta" iconType="inverse" textType="inverse" boxStyle="width:600rpx;"></myp-button>
-				<view style="height: 32rpx;"></view>
 			</view>
 		</myp-list-simple>
 		<myp-x-bar v-if="!includeXBar" :bgType="xBarBgType"></myp-x-bar>
-		<view class="x-set">
-			<view class="x-set-item">
-				<text class="x-set-text">hasFoot</text>
-				<myp-switch :value="hasFoot" @change="toToggleFoot"></myp-switch>
+		<myp-foot :fixed="true" bottom="200rpx" boxStyle="left:20rpx;">
+			<view class="x-set">
+				<view class="x-set-item">
+					<text class="x-set-text">hasFoot</text>
+					<myp-switch :value="hasFoot" @change="toToggleFoot"></myp-switch>
+				</view>
+				<view class="x-set-item">
+					<text class="x-set-text">includeXBar</text>
+					<myp-switch :value="includeXBar" @change="toToggleX"></myp-switch>
+				</view>
+				<view class="x-set-item">
+					<text class="x-set-text">overrideXBar</text>
+					<myp-switch :value="overrideXBar" @change="toToggleXWay"></myp-switch>
+				</view>
+				<view class="x-set-item">
+					<text class="x-set-text">footToken</text>
+					<myp-switch :value="footTokenFlag" @change="toToggleFootToken"></myp-switch>
+				</view>
+				<view class="x-set-item">
+					<text class="x-set-text">xBarBgType</text>
+					<myp-switch :value="xBarBgType==='primary'" @change="toToggleXBarBg"></myp-switch>
+				</view>
 			</view>
-			<view class="x-set-item">
-				<text class="x-set-text">includeXBar</text>
-				<myp-switch :value="includeXBar" @change="toToggleX"></myp-switch>
-			</view>
-			<view class="x-set-item">
-				<text class="x-set-text">overrideXBar</text>
-				<myp-switch :value="overrideXBar" @change="toToggleXWay"></myp-switch>
-			</view>
-			<view class="x-set-item">
-				<text class="x-set-text">footToken</text>
-				<myp-switch :value="footTokenFlag" @change="toToggleFootToken"></myp-switch>
-			</view>
-			<view class="x-set-item">
-				<text class="x-set-text">xBarBgType</text>
-				<myp-switch :value="xBarBgType==='primary'" @change="toToggleXBarBg"></myp-switch>
-			</view>
-		</view>
+		</myp-foot>
 	</view>
 </template>
 
@@ -109,9 +110,6 @@
 			width: 600rpx;
 		}
 		&-set {
-			position: fixed;
-			left: 20rpx;
-			bottom: 272rpx;
 			
 			&-item {
 				flex-direction: row;

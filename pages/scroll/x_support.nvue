@@ -1,17 +1,133 @@
 <template>
 	<view>
-		<myp-navbar :lefts="leftIcons" title="xBar独立存在" @leftAction="navLeftAction"></myp-navbar>
+		<myp-navbar :lefts="leftIcons" title="xBar安全区适配" @leftAction="navLeftAction"></myp-navbar>
+		<myp-list-simple :hasFoot="hasFoot" :includeXBar="includeXBar" :overrideXBar="overrideXBar" :footToken="footToken" :xBarBgType="xBarBgType">
+			<myp-list-cell>
+				<view style="height: 32rpx;"></view>
+			</myp-list-cell>
+			<myp-list-cell v-for="(item, idx) in items" :key="idx">
+				<view :class="['slo-content', item.uid===1?'slo-content-left':'slo-content-right']">
+					<myp-message-time v-if="idx===0 || idx ===5" :time="idx===0?'10:46':'11:05'" boxStyle="width:686rpx;"></myp-message-time>
+					<myp-message-text :direction="item.uid===1?'left':'right'" :nickname="item.nickname" :avatar="item.avatar" :text="item.text" :bgType="item.uid===1?'':'error'" :textType="item.uid===1?'':'inverse'"></myp-message-text>
+					<view style="height: 32rpx;"></view>
+				</view>
+			</myp-list-cell>
+			<view class="x-foot" slot="foot">
+				<myp-button bgType="error" border="none" radius="ll" icon="love" text="发爱心给Ta" iconType="inverse" textType="inverse" boxStyle="width:600rpx;"></myp-button>
+				<view style="height: 32rpx;"></view>
+			</view>
+		</myp-list-simple>
+		<view class="x-set">
+			<view class="x-set-item">
+				<text class="x-set-text">hasFoot</text>
+				<myp-switch :value="hasFoot" @change="toToggleFoot"></myp-switch>
+			</view>
+			<view class="x-set-item">
+				<text class="x-set-text">includeXBar</text>
+				<myp-switch :value="includeXBar" @change="toToggleX"></myp-switch>
+			</view>
+			<view class="x-set-item">
+				<text class="x-set-text">overrideXBar</text>
+				<myp-switch :value="overrideXBar" @change="toToggleXWay"></myp-switch>
+			</view>
+			<view class="x-set-item">
+				<text class="x-set-text">footToken</text>
+				<myp-switch :value="footTokenFlag" @change="toToggleFootToken"></myp-switch>
+			</view>
+			<view class="x-set-item">
+				<text class="x-set-text">xBarBgType</text>
+				<myp-switch :value="xBarBgType==='primary'" @change="toToggleXBarBg"></myp-switch>
+			</view>
+		</view>
 	</view>
 </template>
 
 <script>
 	import navHelper from '@/router/navHelper.js'
+	import xBarData from './mixin/xBarData.js'
 	
 	export default {
-		mixins: [navHelper]
+		mixins: [navHelper, xBarData],
+		data() {
+			return {
+				hasFoot: true,
+				includeXBar: true,
+				overrideXBar: true,
+				footToken: '132rpx',
+				xBarBgType: 'primary'
+			}
+		},
+		computed: {
+			footTokenFlag() {
+				return parseInt(this.footToken) > 0
+			}
+		},
+		methods: {
+			toToggleFoot(val) {
+				this.hasFoot = val
+			},
+			toToggleX(val) {
+				this.includeXBar = val
+			},
+			toToggleXWay(val) {
+				this.overrideXBar = val
+			},
+			toToggleFootToken(val) {
+				this.footToken = val ? '132rpx' : '0px'
+			},
+			toToggleXBarBg(val) {
+				this.xBarBgType = val ? 'primary' : 'none'
+			}
+		}
 	}
 </script>
 
-<style>
-
+<style lang="scss">
+	@import '@/mypUI/mypui.scss';
+	
+	.slo {
+		width: 750rpx;
+		
+		&-content {
+			padding-left: 32rpx;
+			padding-right: 32rpx;
+			flex-direction: column;
+			
+			&-left {
+				align-items: flex-start;
+			}
+			
+			&-right {
+				align-items: flex-end;
+			}
+		}
+	}
+	.x {
+		&-foot {
+			margin-left: 75rpx;
+			width: 600rpx;
+		}
+		&-set {
+			position: fixed;
+			left: 20rpx;
+			bottom: 272rpx;
+			
+			&-item {
+				flex-direction: row;
+				align-items: center;
+				justify-content: space-between;
+				margin-bottom: 16rpx;
+				padding-left: 16rpx;
+				padding-right: 16rpx;
+				background-color: rgba($color: $myp-color-primary, $alpha: 0.4);
+				border-radius: 60rpx;
+				height: 80rpx;
+			}
+			&-text {
+				font-size: 32rpx;
+				color: $myp-text-color;
+				margin-right: 12rpx;
+			}
+		}
+	}
 </style>

@@ -21,15 +21,14 @@
 			return {
 				items: [
 					{name: '实验室', page: 'scroll_test', icon: 'class', desc: '测试入口'},
-					{name: 'header-swiper', page: 'scroll_header', icon: 'headphone', desc: 'header+tabs+swiper'},
-					{name: 'header-swiper', page: 'scroll_header_refresh', icon: 'headphone', desc: 'header+tabs+swiper，带下拉/上提'},
+					{name: 'header-swiper', page: 'scroll_header', icon: 'headphone', desc: '简单header-swiper'},
+					{name: 'header-swiper', page: 'scroll_header_refresh', icon: 'headphone', desc: 'header-swiper，带下拉/上提'},
 					{name: '横向scroll', page: 'scroll_h', icon: 'book', desc: '横向滚动scroll'},
-					{name: 'list', page: 'scroll_list_simple', icon: 'topic', desc: 'list/scroll'},
-					{name: 'list', page: 'scroll_list_loading', icon: 'topic', desc: 'list/scroll，带下拉/上提'},
-					{name: 'list', page: 'scroll_list_more', icon: 'topic', desc: 'list/scroll，带下拉/loadmoreoffset'},
-					{name: 'waterfall', page: 'scroll_waterfall', icon: 'radio-button', desc: 'waterfall/scroll，带下拉/上提'},
-					{name: 'x兼容-1', page: 'scroll_x_support_no', icon: 'teacher', desc: 'xBar透明，底部不被遮挡'},
-					{name: 'x兼容-2', page: 'scroll_x_support', icon: 'teacher', desc: 'xBar不透明，底部不被遮挡'}
+					{name: 'list', page: 'scroll_list_simple', icon: 'topic', desc: '简单list'},
+					{name: 'list', page: 'scroll_list_loading', icon: 'topic', desc: 'list，带下拉/上提'},
+					{name: 'list', page: 'scroll_list_more', icon: 'topic', desc: 'list，带下拉/loadmoreoffset'},
+					{name: 'waterfall', page: 'scroll_waterfall', icon: 'radio-button', desc: 'waterfall，带下拉/上提'},
+					{name: 'xBar', page: 'scroll_x_support', icon: 'teacher', desc: 'xBar安全区适配'}
 				]
 			}
 		},

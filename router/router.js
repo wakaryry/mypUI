@@ -53,7 +53,6 @@ export default {
 	scroll_list_more: "/pages/scroll/list_more",
 	scroll_waterfall: '/pages/scroll/waterfall',
 	scroll_x_support: '/pages/scroll/x_support',
-	scroll_x_support_no: '/pages/scroll/x_support_no',
 	// helper
 	about: '/pages/helper/about'
 }

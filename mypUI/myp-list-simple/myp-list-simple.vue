@@ -21,9 +21,9 @@
 		<!-- xBar -->
 		<view v-if="includeXBar&&!overrideXBar" :class="['myp-bg-'+xBarBgType]" :style="mypXBarStyle"></view>
 		<!-- foot -->
-		<view v-if="hasFoot" class="myp-simple-foot" :style="footStyle">
+		<view class="myp-simple-foot" :style="footStyle">
 			<slot name="foot"></slot>
-			<view v-if="includeXBar" :style="mypXBarHeightStyle"></view>
+			<view v-if="includeXBar&&hasFoot" :style="mypXBarHeightStyle"></view>
 		</view>
 	</view>
 </template>

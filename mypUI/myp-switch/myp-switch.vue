@@ -6,9 +6,6 @@
 </template>
 
 <script>
-	// 默认ball以及animate使用bg-inverse，整体背景色以及选中背景色都是bg-border
-	// type只是指定选中的背景色。
-	// 所有颜色可以重新配置覆盖
 	export default {
 		props: {
 			// it means checked

@@ -1,0 +1,102 @@
+export default {
+	data() {
+		return {
+			items: [{
+				uid: 1,
+				nickname: '章鱼哥哥很爱你直到天荒地老章鱼哥哥很爱你直到天荒地老',
+				avatar: '/static/octopus.png',
+				text: '雪梨妹妹。我给你看个好东西 😂'
+			}, {
+				uid: 2,
+				nickname: '雪梨妹妹也爱你直到地老天荒雪梨妹妹也爱你直到地老天荒',
+				avatar: '/static/bear.jpg',
+				text: '嗯哼。你是说myp-list-simple吧。我早就知道了'
+			}, {
+				uid: 1,
+				nickname: '章鱼哥哥很爱你直到天荒地老章鱼哥哥很爱你直到天荒地老',
+				avatar: '/static/octopus.png',
+				text: '哦。打扰了'
+			}, {
+				uid: 2,
+				nickname: '雪梨妹妹',
+				avatar: '/static/bear.jpg',
+				text: '没有啦。章鱼哥哥。我也是刚刚偷偷看了一眼。要不章鱼哥哥帮我看看我理解的对不对'
+			}, {
+				uid: 1,
+				nickname: '章鱼哥哥很爱你直到天荒地老章鱼哥哥很爱你直到天荒地老',
+				avatar: '/static/octopus.png',
+				text: '好呢 遵命'
+			}, {
+				uid: 2,
+				nickname: '雪梨妹妹',
+				avatar: '/static/bear.jpg',
+				text: '有时候我们只是简单的需要scroll/list，并不需要刷新和加载更多，所以引入了myp-list-simple，去除了刷新和加载的各种代码，这样比较简单纯粹'
+			}, {
+				uid: 1,
+				nickname: '章鱼哥哥',
+				avatar: '/static/octopus.png',
+				text: '说得对！😊'
+			}, {
+				uid: 2,
+				nickname: '雪梨妹妹',
+				avatar: '/static/bear.jpg',
+				text: 'OK。而且myp-list-simple还会自动处理xBar以及foot等遮挡问题。'
+			}, {
+				uid: 2,
+				nickname: '雪梨妹妹',
+				avatar: '/static/bear.jpg',
+				text: '对不对嘛。章鱼哥哥'
+			}, {
+				uid: 1,
+				nickname: '章鱼哥哥',
+				avatar: '/static/octopus.png',
+				text: '雪梨妹妹说得太对了。那个，不过我有个疑问'
+			}, {
+				uid: 2,
+				nickname: '雪梨妹妹',
+				avatar: '/static/bear.jpg',
+				text: '什么疑问啊。章鱼哥哥'
+			}, {
+				uid: 1,
+				nickname: '章鱼哥哥',
+				avatar: '/static/octopus.png',
+				text: '这...这个...'
+			}, {
+				uid: 2,
+				nickname: '雪梨妹妹',
+				avatar: '/static/bear.jpg',
+				text: '？'
+			}, {
+				uid: 1,
+				nickname: '章鱼哥哥',
+				avatar: '/static/octopus.png',
+				text: '你喜欢我吗？😳'
+			}, {
+				uid: 2,
+				nickname: '雪梨妹妹',
+				avatar: '/static/bear.jpg',
+				text: '你爱我吗'
+			}, {
+				uid: 1,
+				nickname: '章鱼哥哥',
+				avatar: '/static/octopus.png',
+				text: '我爱'
+			}, {
+				uid: 2,
+				nickname: '雪梨妹妹',
+				avatar: '/static/bear.jpg',
+				text: '我也是'
+			}, {
+				uid: 1,
+				nickname: '章鱼哥哥',
+				avatar: '/static/octopus.png',
+				text: '哈哈。太好了'
+			}, {
+				uid: 2,
+				nickname: '雪梨妹妹',
+				avatar: '/static/bear.jpg',
+				text: '嘻嘻'
+			}]
+		}
+	}
+}

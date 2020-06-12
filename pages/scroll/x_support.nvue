@@ -17,6 +17,7 @@
 				<view style="height: 32rpx;"></view>
 			</view>
 		</myp-list-simple>
+		<myp-x-bar v-if="!includeXBar" :bgType="xBarBgType"></myp-x-bar>
 		<view class="x-set">
 			<view class="x-set-item">
 				<text class="x-set-text">hasFoot</text>

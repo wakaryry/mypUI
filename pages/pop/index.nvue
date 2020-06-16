@@ -2,7 +2,7 @@
 	<view>
 		<myp-navbar :lefts="leftIcons" title="弹层互动" @leftAction="navLeftAction"></myp-navbar>
 		<scroll-view class="myp-bg-page" :scroll-y="true" :style="mypContentHeightStyle">
-			<pop-cell></pop-cell>
+			<pop-cell @pop="toShowPop"></pop-cell>
 			<view style="height: 24rpx;"></view>
 			<toast-cell></toast-cell>
 			<view style="height: 24rpx;"></view>
@@ -15,6 +15,22 @@
 			<overlay-cell></overlay-cell>
 			<view style="height: 24rpx;"></view>
 		</scroll-view>
+		<top-pop :show="topVisible" @cancel="toHidePop" @pay="toShowPay"></top-pop>
+		<top-offset-pop :show="topOffsetVisible" @cancel="toHidePop" @pay="toShowPay"></top-offset-pop>
+		<top-left-pop :show="topLeftVisible" @cancel="toHidePop" @pay="toShowPay"></top-left-pop>
+		<top-right-pop :show="topRightVisible" @cancel="toHidePop" @pay="toShowPay"></top-right-pop>
+		<bottom-pop :show="bottomVisible" @cancel="toHidePop" @pay="toShowPay"></bottom-pop>
+		<bottom-offset-pop :show="bottomOffsetVisible" @cancel="toHidePop" @pay="toShowPay"></bottom-offset-pop>
+		<bottom-left-pop :show="bottomLeftVisible" @cancel="toHidePop" @pay="toShowPay"></bottom-left-pop>
+		<bottom-right-pop :show="bottomRightVisible" @cancel="toHidePop" @pay="toShowPay"></bottom-right-pop>
+		<left-pop :show="leftVisible" @cancel="toHidePop" @pay="toShowPay"></left-pop>
+		<left-offset-pop :show="leftOffsetVisible" @cancel="toHidePop" @pay="toShowPay"></left-offset-pop>
+		<left-top-pop :show="leftTopVisible" @cancel="toHidePop" @pay="toShowPay"></left-top-pop>
+		<left-bottom-pop :show="leftBottomVisible" @cancel="toHidePop" @pay="toShowPay"></left-bottom-pop>
+		<right-pop :show="rightVisible" @cancel="toHidePop" @pay="toShowPay"></right-pop>
+		<right-offset-pop :show="rightOffsetVisible" @cancel="toHidePop" @pay="toShowPay"></right-offset-pop>
+		<right-top-pop :show="rightTopVisible" @cancel="toHidePop" @pay="toShowPay"></right-top-pop>
+		<right-bottom-pop :show="rightBottomVisible" @cancel="toHidePop" @pay="toShowPay"></right-bottom-pop>
 		<myp-toast ref="myp-toast"></myp-toast>
 	</view>
 </template>
@@ -26,6 +42,22 @@ import actionCell from './components/actionCell.vue'
 import pickerCell from './components/pickerCell.vue'
 import modalCell from './components/modalCell.vue'
 import overlayCell from './components/overlayCell.vue'
+import topPop from './components/topPop.vue'
+import topOffsetPop from './components/topOffsetPop.vue'
+import topLeftPop from './components/topLeftPop.vue'
+import topRightPop from './components/topRightPop.vue'
+import bottomPop from './components/bottomPop.vue'
+import bottomOffsetPop from './components/bottomOffsetPop.vue'
+import bottomLeftPop from './components/bottomLeftPop.vue'
+import bottomRightPop from './components/bottomRightPop.vue'
+import leftPop from './components/leftPop.vue'
+import leftOffsetPop from './components/leftOffsetPop.vue'
+import leftTopPop from './components/leftTopPop.vue'
+import leftBottomPop from './components/leftBottomPop.vue'
+import rightPop from './components/rightPop.vue'
+import rightOffsetPop from './components/rightOffsetPop.vue'
+import rightTopPop from './components/rightTopPop.vue'
+import rightBottomPop from './components/rightBottomPop.vue'
 
 import contentBoxMixin from '@/mypUI/myp-mixin/contentBoxMixin.js';
 import toastMixin from '@/mypUI/myp-mixin/toastMixin.js'
@@ -38,14 +70,82 @@ export default {
 		actionCell,
 		pickerCell,
 		modalCell,
-		overlayCell
+		overlayCell,
+		topPop,
+		topOffsetPop,
+		topLeftPop,
+		topRightPop,
+		bottomPop,
+		bottomOffsetPop,
+		bottomLeftPop,
+		bottomRightPop,
+		leftPop,
+		leftOffsetPop,
+		leftTopPop,
+		leftBottomPop,
+		rightPop,
+		rightOffsetPop,
+		rightTopPop,
+		rightBottomPop
 	},
 	mixins: [contentBoxMixin, toastMixin, navHelper],
 	data() {
 		return {
+			topVisible: false,
+			topOffsetVisible: false,
+			topLeftVisible: false,
+			topRightVisible: false,
+			bottomVisible: false,
+			bottomOffsetVisible: false,
+			bottomLeftVisible: false,
+			bottomRightVisible: false,
+			leftVisible: false,
+			leftOffsetVisible: false,
+			leftTopVisible: false,
+			leftBottomVisible: false,
+			rightVisible: false,
+			rightOffsetVisible: false,
+			rightTopVisible: false,
+			rightBottomVisible: false,
+			centerVisible: false,
+			centerLeftVisible: false,
+			centerTopVisible: false,
+			centerRightVisible: false,
+			centerBottomVisible: false,
+			centerScaleVisible: false
 		}
 	},
 	methods: {
+		toShowPop(val) {
+			this[val+'Visible'] = true
+		},
+		toHidePop() {
+			this.topVisible = false
+			this.topOffsetVisible = false
+			this.topLeftVisible = false
+			this.topRightVisible = false
+			this.bottomVisible = false
+			this.bottomOffsetVisible = false
+			this.bottomLeftVisible = false
+			this.bottomRightVisible = false
+			this.leftVisible = false
+			this.leftOffsetVisible = false
+			this.leftTopVisible = false
+			this.leftBottomVisible = false
+			this.rightVisible = false
+			this.rightOffsetVisible = false
+			this.rightTopVisible = false
+			this.rightBottomVisible = false
+			this.centerVisible = false
+			this.centerLeftVisible = false
+			this.centerTopVisible = false
+			this.centerRightVisible = false
+			this.centerBottomVisible = false
+			this.centerScaleVisible = false
+		},
+		toShowPay() {
+			
+		}
 	}
 };
 </script>

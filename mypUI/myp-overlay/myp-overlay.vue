@@ -40,19 +40,19 @@
 				default: true
 			},
 			left: {
-				type: [Number, String],
+				type: String,
 				default: '0'
 			},
 			top: {
-				type: [Number, String],
+				type: String,
 				default: '0'
 			},
 			right: {
-				type: [Number, String],
+				type: String,
 				default: '0'
 			},
 			bottom: {
-				type: [Number, String],
+				type: String,
 				default: '0'
 			}
 		},
@@ -62,6 +62,7 @@
 				if (this.bg && this.bg.length > 0) {
 					_style += `background-color:${this.bg};`
 				}
+				_style += `left:${this.left};top:${this.top};right:${this.right};bottom:${this.bottom};`
 				return _style
 			}
 		},
@@ -216,27 +217,12 @@
 						})
 					}
 				}
-			},
-			// @touchend.stop.prevent="handleTouchEnd"
-			// 移除掉，因为h5上无法引起click事件。mp和app上面可以引起
-			handleTouchEnd(e) {
-				console.log("hi")
-				e.stopPropagation && e.stopPropagation()
-				// 在支付宝上面有点击穿透问题
-				// #ifdef APP-NVUE
-				const {
-					platform
-				} = weex.config.env;
-				platform === 'Web' && e.preventDefault && e.preventDefault();
-				// #endif
 			}
 		}
 	}
 </script>
 
 <style lang="scss" scoped>
-	@import '../mypui.scss';
-	
 	.myp-overlay {
 		width: 750rpx;
 		position: fixed;

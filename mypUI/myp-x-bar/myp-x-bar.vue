@@ -1,5 +1,5 @@
 <template>
-	<view :class="['myp-x-bar', 'myp-bg-'+bgType]" :style="xBarStyle"></view>
+	<view :class="['myp-bg-'+bgType]" :style="xBarStyle"></view>
 </template>
 
 <script>
@@ -27,7 +27,4 @@
 </script>
 
 <style lang="scss" scoped>
-	.myp-x-bar {
-		width: 750rpx;
-	}
 </style>

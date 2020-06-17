@@ -24,7 +24,8 @@
 					[{value: 'bottom', name: '下'}, {value: 'bottomOffset', name: '距'}, {value: 'bottomLeft', name: '左'}, {value: 'bottomRight', name: '右'}],
 					[{value: 'left', name: '左'}, {value: 'leftOffset', name: '距'}, {value: 'leftTop', name: '上'}, {value: 'leftBottom', name: '下'}],
 					[{value: 'right', name: '右'}, {value: 'rightOffset', name: '距'}, {value: 'rightTop', name: '上'}, {value: 'rightBottom', name: '下'}],
-					[{value: 'center', name: '中'}, {value: 'centerBottom', name: '下'}, {value: 'centerScale', name: '变'}]
+					[{value: 'center', name: '中'}, {value: 'centerLeft', name: '左'}, {value: 'centerTop', name: '上'}, {value: 'centerRight', name: '右'}],
+					[{value: 'centerBottom', name: '中下'}, {value: 'centerScale', name: '中变'}]
 				]
 			}
 		},

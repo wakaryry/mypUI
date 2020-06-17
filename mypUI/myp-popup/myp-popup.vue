@@ -127,12 +127,40 @@
 					width: `${this.widthPx}px`,
 					height: `${this.heightPx}px`
 				}
-				this.pos === 'center' && (style = {
-					...style,
-					left: `${375 - Number(width)/ 2 }rpx`,
-					height: `${height}rpx`,
-					top: `${windowHeight/ 2 }rpx`
-				});
+				// center/top-center/left-center/bottom-center/right-center/scale-center
+				if (this.pos.endsWith('center')) {
+					if (this.pos === 'center' || this.pos === 'scale-center') {
+						// opacity
+						style['left'] = (this.screenWidth - this.widthPx) * 0.5 + 'px'
+						if (this.topOffsetPx < 0 && this.bottomOffsetPx < 0) {
+							style['top'] = (this.screenHeight - this.heightPx) * 0.5 + 'px'
+						} else {
+							if (this.topOffsetPx >= 0) {
+								style['top'] = (this.screenHeight - this.heightPx) * 0.5 + this.topOffsetPx + 'px'
+							} else if (this.bottomOffsetPx >= 0) {
+								style['top'] = (this.screenHeight - this.heightPx) * 0.5 - this.bottomOffsetPx + 'px'
+							}
+						}
+						this.pos === 'center' && (style['opacity'] = 0)
+						this.pos === 'scale-center' && (style['transform'] = 'scale(0,0)')
+					} else if (this.pos === 'left-center' || this.pos === 'right-center') {
+						if (this.topOffsetPx < 0 && this.bottomOffsetPx < 0) {
+							style['top'] = (this.screenHeight - this.heightPx) * 0.5 + 'px'
+						} else {
+							if (this.topOffsetPx >= 0) {
+								style['top'] = (this.screenHeight - this.heightPx) * 0.5 + this.topOffsetPx + 'px'
+							} else if (this.bottomOffsetPx >= 0) {
+								style['top'] = (this.screenHeight - this.heightPx) * 0.5 - this.bottomOffsetPx + 'px'
+							}
+						}
+						this.pos === 'left-center' && (style['left'] = -this.widthPx + 'px')
+						this.pos === 'right-center' && (style['right'] = -this.widthPx + 'px')
+					} else if (this.pos === 'top-center' || this.pos === 'bottom-center') {
+						style['left'] = (this.screenWidth - this.widthPx) * 0.5 + 'px'
+						this.pos === 'top-center' && (style['top'] = -this.heightPx + 'px')
+						this.pos === 'bottom-center' && (style['bottom'] = -this.heightPx + 'px')
+					}
+				}
 				// top: left/right-width-height-top  bottom: left/right-width-height-bottom
 				if (this.pos === 'top' || this.pos === 'bottom') {
 					if (this.leftOffsetPx < 0 && this.rightOffsetPx < 0) {
@@ -260,10 +288,14 @@
 					return;
 				}
 				const that = this
+				let styles = {}
+				if (this.pos === 'center') {
+					styles = {opacity: bool ? 1 : 0}
+				} else {
+					styles = {transform: this.getTransform(this.pos, !bool)}
+				}
 				animation.transition(popupEl, {
-					styles: {
-						transform: this.getTransform(this.pos, !bool)
-					},
+					styles: styles,
 					duration,
 					delay: 0,
 					...this.animation
@@ -275,9 +307,15 @@
 			},
 			noWeexAppearPopup(bool, duration = this.duration) {
 				this.isShow = bool
-				let _style = "transition-property:transform;transition-duration:" + duration + 'ms;'
+				let _style = "transition-duration:" + duration + 'ms;'
 				_style += "transition-timing-function:" + this.animation.timingFunction + ';'
-				_style += "transform:" + this.getTransform(this.pos, !bool) + ';'
+				if (this.pos === 'center') {
+					_style += 'transition-property:opacity;'
+					_style += 'opacity:' + (bool ? 1 : 0) + ';'
+				} else {
+					_style += 'transition-property:transform;'
+					_style += "transform:" + this.getTransform(this.pos, !bool) + ';'
+				}
 				this.noWeexAni = _style
 				const that = this
 				setTimeout(()=>{
@@ -315,6 +353,49 @@
 						}
 						_transform = `translateX(-${_size}px)`;
 						break;
+					case 'scale-center':
+						_transform = toClose ? 'scale(0,0)' : 'scale(1,1)'
+						break
+					case 'left-center':
+						if (!toClose) {
+							_size = (this.screenWidth + this.widthPx) * 0.5
+						}
+						_transform = `translateX(${_size}px)`;
+						break
+					case 'right-center':
+						if (!toClose) {
+							_size = (this.screenWidth + this.widthPx) * 0.5
+						}
+						_transform = `translateX(-${_size}px)`;
+						break
+					case 'top-center':
+						if (!toClose) {
+							if (this.topOffsetPx < 0 && this.bottomOffsetPx < 0) {
+								_size = (this.screenHeight + this.heightPx) * 0.5
+							} else{
+								 if (this.topOffsetPx >= 0) {
+								    _size = (this.screenHeight + this.heightPx) * 0.5 + this.topOffsetPx
+								} else if (this.bottomOffsetPx >= 0) {
+								    _size = (this.screenHeight + this.heightPx) * 0.5 - this.bottomOffsetPx
+								}
+							}
+						}
+						_transform = `translateY(${_size}px)`;
+						break
+					case 'bottom-center':
+						if (!toClose) {
+							if (this.topOffsetPx < 0 && this.bottomOffsetPx < 0) {
+								_size = (this.screenHeight + this.heightPx) * 0.5
+							} else{
+								 if (this.topOffsetPx >= 0) {
+								    _size = (this.screenHeight + this.heightPx) * 0.5 - this.topOffsetPx
+								} else if (this.bottomOffsetPx >= 0) {
+								    _size = (this.screenHeight + this.heightPx) * 0.5 + this.bottomOffsetPx
+								}
+							}
+						}
+						_transform = `translateY(-${_size}px)`;
+						break
 				}
 				return _transform;
 			},

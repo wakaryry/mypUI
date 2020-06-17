@@ -1,7 +1,8 @@
 import systemMixin from './systemMixin.js'
+import pxMixin from './pxMixin.js'
 
 export default {
-	mixins: [systemMixin],
+	mixins: [systemMixin, pxMixin],
 	methods: {
 		mypGetNavHeight() {
 			const app = getApp({allowDefault: true})
@@ -46,6 +47,53 @@ export default {
 				this.mypInitSystemInfo()
 			}
 			return app.globalData.safeBottom
+		},
+		mypGetHeight(val) {
+			if (val === 'status') {
+				return this.mypGetStatusBarHeight()
+			}
+			if (val === 'nav') {
+				return this.mypGetNavHeight()
+			}
+			if (val === 'status-nav' || val === 'nav-status') {
+				return this.mypGetStatusBarHeight() + this.mypGetNavHeight()
+			}
+			if (val === 'x') {
+				return this.mypGetXBarHeight()
+			}
+			if (typeof val === 'string' && val.startsWith('status') || val.startsWith('nav')) {
+				const arr = val.split('-')
+				let h = 0
+				for (const i in arr) {
+					const t = arr[i]
+					if (t === 'status') {
+						h += this.mypGetStatusBarHeight()
+					} else if (t === 'nav') {
+						h += this.mypGetNavHeight()
+					} else {
+						if (!isNaN(t)) {
+							h += this.mypToPx(t)
+						}
+					}
+				}
+				return h
+			}
+			if (typeof val === 'string' && val.startsWith('x')) {
+				const arr = val.split('-')
+				let h = 0
+				for (const i in arr) {
+					const t = arr[i]
+					if (t === 'x') {
+						h += this.mypGetXBarHeight()
+					} else {
+						if (!isNaN(t)) {
+							h += this.mypToPx(t)
+						}
+					}
+				}
+				return h
+			}
+			return this.mypToPx(val)
 		}
 	}
 }

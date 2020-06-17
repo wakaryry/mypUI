@@ -1,6 +1,9 @@
 <template>
-	<view ref="myp-notify" v-if="show" :hack="isNeedShow" :class="['myp-notify', 'myp-bg-'+(type&&type.length>0?type:'text')]" :style="mrBoxStyle + noWeexAnimation">
-		<text :class="['myp-size-'+size, 'myp-color-inverse']" :style="msgStyle">{{msg}}</text>
+	<view ref="myp-notice" v-if="show" :hack="hackShow" :class="['myp-notice', 'myp-bg-'+mrBgType]" :style="mrBoxStyle + noWeexAnimation">
+		<slot>
+			<myp-icon :name="icon" :iconStyle="iconStyle" :type="iconType" :size="iconSize" :boxStyle="iconBoxStyle"></myp-icon>
+			<text :class="['myp-size-'+textSize, 'myp-type-'+textType]" :style="textStyle">{{text}}</text>
+		</slot>
 	</view>
 </template>
 
@@ -8,54 +11,68 @@
 	// #ifdef APP-NVUE
 	const animation = weex.requireModule('animation');
 	// #endif
-	import {
-		Utils
-	} from "../utils/utils.js";
+	import windowMixin from '../myp-mixin/windowMixin.js'
+	
 	export default {
+		mixins: [windowMixin],
 		data() {
 			return {
-				barHeight: Utils.env.getPageSafeArea().top,
 				show: false,
-				msg: '',
+				pos: 'top', // top/bottom/top-center/bottom-center
+				offset: 'status-nav',  // status/nav/status-nav/status-nav-xxx/number/rpx/px/x-xxx
 				type: '',
-				size: '',
+				bgType: '',
 				bg: '',
-				height: 88,
+				text: '',
+				textType: 'inverse',
+				textSize: 'base',
+				textStyle: '',
+				icon: '',
+				iconType: '',
+				iconSize: '',
+				iconBoxStyle: '',
+				iconStyle: '',
+				height: '44px',
+				boxStyle: '',
 				duration: 2000,
-				msgStyle: "",
 				animation: 'ease-out',
 				noWeexAnimation: ""
 			}
 		},
 		computed: {
-			totalHeight() {
-				const _height = uni.upx2px(this.height)
-				return this.barHeight + _height
+			offsetPx() {
+				return this.mypGetHeight(this.offset)
 			},
-			isNeedShow() {
-				// it's just a hack
-				this.hackShow()
-				// this.appearPopup(this.show);
+			heightPx() {
+				return this.mypToPx(this.height)
+			},
+			hackShow() {
+				this.handleHackShow()
 				return this.show;
 			},
+			mrBgType() {
+				if (this.bgType && this.bgType.length > 0) return this.bgType;
+				return this.type
+			},
+			mrIcon() {
+				if (this.icon && this.icon.length > 0) return this.icon;
+				return this.type
+			},
 			mrBoxStyle() {
-				const {
-					bg,
-					totalHeight,
-					barHeight
-				} = this;
-				let style = "padding-top:" + barHeight + ';'
-				style += `top:${-totalHeight}px;`
-				style += `height:${totalHeight}px;`
-				if (bg && bg.length > 0) {
-					style += `background-color:${bg};`
+				let style = ''
+				style += `height:${this.heightPx}px;`
+				if (this.pos === 'top') {
+					style += `top:${-this.heightPx}px;`
+				} else {
+					style += `bottom:${-this.heightPx}px;`
 				}
-				return style;
+				if (this.bg && this.bg.length > 0) {
+					style += `background-color:${this.bg};`
+				}
+				return style + this.boxStyle;
 			}
 		},
 		methods: {
-			// call it to notify info
-			// we could custom type/size/height/msg/bg/animation/duration/msgStyle in info
 			notify(info) {
 				for (const i in info) {
 					this[i] = info[i]
@@ -66,7 +83,7 @@
 					this.hide()
 				}, this.duration);
 			},
-			hackShow() {
+			handleHackShow() {
 				const that = this
 				// since we used v-if, the element may not exist
 				setTimeout(() => {
@@ -74,19 +91,19 @@
 				}, 50);
 			},
 			hide() {
-				this.appearPopup(false, 0);
+				this.appearPopup(false, 300);
 			},
 			appearPopup(bool, duration = 300) {
 				// #ifdef APP-NVUE
-				this.weexAppearPopup(bool)
+				this.weexAppearPopup(bool, duration)
 				// #endif
 				// #ifndef APP-NVUE
-				this.noWeexAppearPopup(bool)
+				this.noWeexAppearPopup(bool, duration)
 				// #endif
 			},
 			noWeexAppearPopup(bool, duration = 300) {
 				// add css transition properties
-				let _style = "transform:" + this.getTransform(this.totalHeight, !bool) + ';'
+				let _style = "transform:" + this.getTransform(!bool) + ';'
 				_style += "transition: all " + duration + "ms " + this.animation + ';'
 				this.noWeexAnimation = _style
 				const that = this
@@ -104,7 +121,7 @@
 				}
 				animation.transition(popupEl, {
 					styles: {
-						transform: this.getTransform(this.totalHeight, !bool)
+						transform: this.getTransform(!bool)
 					},
 					duration,
 					delay: 0,
@@ -114,12 +131,14 @@
 						this.show = false
 						this.$emit('close');
 					}
-				});
+				})
 			},
-			getTransform(height, bool) {
-				let _size = height;
-				bool && (_size = 0);
-				return `translateY(${_size}px)`;
+			getTransform(toClose) {
+				let _size = 0
+				if (!toClose) {
+					_size = this.heightPx + this.offsetPx
+				}
+				return this.pos === 'top' ? `translateY(${_size}px)` : `translateY(${-_size}px)`
 			}
 		}
 	};
@@ -132,5 +151,6 @@
 		right: 0;
 		align-items: center;
 		justify-content: center;
+		flex-direction: row;
 	}
 </style>

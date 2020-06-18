@@ -4,7 +4,7 @@
 		<scroll-view class="myp-bg-page" :scroll-y="true" :style="mypContentHeightStyle">
 			<pop-cell @pop="toShowPop"></pop-cell>
 			<view style="height: 24rpx;"></view>
-			<toast-cell></toast-cell>
+			<toast-cell @toast="toShowToast"></toast-cell>
 			<view style="height: 24rpx;"></view>
 			<action-cell></action-cell>
 			<view style="height: 24rpx;"></view>
@@ -37,6 +37,7 @@
 		<center-right-pop :show="centerRightVisible" @cancel="toHidePop" @pay="toShowPay"></center-right-pop>
 		<center-bottom-pop :show="centerBottomVisible" @cancel="toHidePop" @pay="toShowPay"></center-bottom-pop>
 		<center-scale-pop :show="centerScaleVisible" @cancel="toHidePop" @pay="toShowPay"></center-scale-pop>
+		<myp-notice-dynamic ref="notify"></myp-notice-dynamic>
 		<myp-toast ref="myp-toast"></myp-toast>
 	</view>
 </template>
@@ -137,6 +138,11 @@ export default {
 		}
 	},
 	methods: {
+		toShowToast(val) {
+			if (val.name.startsWith('notify')) {
+				this.$refs['notify'].notify(val.options)
+			}
+		},
 		toShowPop(val) {
 			this[val+'Visible'] = true
 		},

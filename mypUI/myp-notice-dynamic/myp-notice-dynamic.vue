@@ -1,15 +1,15 @@
 <template>
 	<view ref="myp-notice" v-if="show" :hack="hackShow" :class="['myp-notice', 'myp-bg-'+mrBgType]" :style="mrBoxStyle + noWeexAnimation">
 		<slot>
-			<myp-icon :name="icon" :iconStyle="iconStyle" :type="iconType" :size="iconSize" :boxStyle="iconBoxStyle"></myp-icon>
-			<text :class="['myp-size-'+textSize, 'myp-type-'+textType]" :style="textStyle">{{text}}</text>
+			<myp-icon :name="mrIcon" :iconStyle="iconStyle" :type="iconType" :size="iconSize" :boxStyle="iconBoxStyle"></myp-icon>
+			<text :class="['myp-size-'+textSize, 'myp-color-'+textType]" :style="mrTextStyle">{{text}}</text>
 		</slot>
 	</view>
 </template>
 
 <script>
 	// #ifdef APP-NVUE
-	const animation = weex.requireModule('animation');
+	const animation = weex.requireModule('animation')
 	// #endif
 	import windowMixin from '../myp-mixin/windowMixin.js'
 	
@@ -20,26 +20,30 @@
 				show: false,
 				pos: 'top', // top/bottom/top-center/bottom-center
 				offset: 'status-nav',  // status/nav/status-nav/status-nav-xxx/number/rpx/px/x-xxx
-				type: '',
-				bgType: '',
+				type: 'primary',
+				bgType: 'primary',
 				bg: '',
-				text: '',
+				text: '欢迎使用mypUI',
 				textType: 'inverse',
 				textSize: 'base',
 				textStyle: '',
 				icon: '',
-				iconType: '',
-				iconSize: '',
+				iconType: 'inverse',
+				iconSize: 'll',
 				iconBoxStyle: '',
 				iconStyle: '',
 				height: '44px',
 				boxStyle: '',
-				duration: 2000,
+				duration: 2400,
 				animation: 'ease-out',
+				space: '12rpx',
 				noWeexAnimation: ""
 			}
 		},
 		computed: {
+			screenHeight() {
+				return this.mypGetScreenHeight()
+			},
 			offsetPx() {
 				return this.mypGetHeight(this.offset)
 			},
@@ -51,25 +55,34 @@
 				return this.show;
 			},
 			mrBgType() {
-				if (this.bgType && this.bgType.length > 0) return this.bgType;
+				if (this.bgType && this.bgType.length > 0) return this.bgType
 				return this.type
 			},
 			mrIcon() {
-				if (this.icon && this.icon.length > 0) return this.icon;
+				if (this.icon && this.icon.length > 0) return this.icon
 				return this.type
+			},
+			mrTextStyle() {
+				return `margin-left:${this.space};` + this.textStyle
 			},
 			mrBoxStyle() {
 				let style = ''
 				style += `height:${this.heightPx}px;`
 				if (this.pos === 'top') {
 					style += `top:${-this.heightPx}px;`
-				} else {
+				} else if (this.pos === 'bottom') {
 					style += `bottom:${-this.heightPx}px;`
+				} else if (this.pos === 'center' || this.pos === 'top-center' || this.pos === 'center-top') {
+					style += `top:${-this.heightPx}px;`
+				} else if (this.pos === 'bottom-center' || this.pos === 'center-bottom') {
+					style += `bottom:${-this.heightPx}px;`
+				} else {
+					style += `top:${-this.heightPx}px;`
 				}
 				if (this.bg && this.bg.length > 0) {
 					style += `background-color:${this.bg};`
 				}
-				return style + this.boxStyle;
+				return style + this.boxStyle
 			}
 		},
 		methods: {
@@ -81,14 +94,14 @@
 				if (!this.duration) return
 				setTimeout(() => {
 					this.hide()
-				}, this.duration);
+				}, this.duration)
 			},
 			handleHackShow() {
 				const that = this
 				// since we used v-if, the element may not exist
 				setTimeout(() => {
-					that.appearPopup(that.show);
-				}, 50);
+					that.appearPopup(that.show)
+				}, 50)
 			},
 			hide() {
 				this.appearPopup(false, 300);
@@ -115,9 +128,9 @@
 				}, duration)
 			},
 			weexAppearPopup(bool, duration = 300) {
-				const popupEl = this.$refs['myp-notify'];
+				const popupEl = this.$refs['myp-notice']
 				if (!popupEl) {
-					return;
+					return
 				}
 				animation.transition(popupEl, {
 					styles: {
@@ -129,23 +142,30 @@
 				}, () => {
 					if (!bool) {
 						this.show = false
-						this.$emit('close');
+						this.$emit('close')
 					}
 				})
 			},
 			getTransform(toClose) {
 				let _size = 0
 				if (!toClose) {
-					_size = this.heightPx + this.offsetPx
+					if (this.pos === 'center' || this.pos === 'top-center' || this.pos === 'center-top' || this.pos === 'bottom-center' || this.pos === 'center-bottom') {
+						_size = this.screenHeight * 0.5 - this.heightPx * 0.5 + this.offsetPx
+					} else {
+						_size = this.heightPx + this.offsetPx
+					}
 				}
-				return this.pos === 'top' ? `translateY(${_size}px)` : `translateY(${-_size}px)`
+				if (this.pos === 'top' || this.pos === 'center' || this.pos === 'center-top' || this.pos === 'top-center') {
+					return `translateY(${_size}px)`
+				}
+				return `translateY(${-_size}px)`
 			}
 		}
 	};
 </script>
 
 <style lang="scss" scoped>
-	.myp-notify {
+	.myp-notice {
 		position: fixed;
 		left: 0;
 		right: 0;

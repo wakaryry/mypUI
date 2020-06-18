@@ -9,40 +9,14 @@
 		<view class="ct-title">
 			<text v-for="(item,idx) in ['T','o','a','s','t']" :key="idx" class="ct-title-text">{{item}}</text>
 		</view>
-		<view class="ct-one">
-			<view class="ct-item-title">
-				<text class="ct-item-title-text">弹出</text>
+		<view v-for="(item,idx) in items" :key="idx" :class="['ct-'+item.class]">
+			<view v-if="item.type==='notify'" class="ct-item-title" bubble="true" @tap="toToast(item)">
 				<image src="https://cdn.img.wenhairu.com/images/2020/05/23/YOvLH.png" class="ct-item-hint" mode="aspectFit"></image>
+				<text class="ct-item-title-text">{{item.title}}</text>
 			</view>
-			<view class="ct-item-desc">
-				<text class="ct-item-desc-text">弹出Toast，一定周期后隐藏</text>
-			</view>
-		</view>
-		<view class="ct-two">
-			<view class="ct-item-title">
-				<text class="ct-item-title-text">滑出</text>
+			<view v-else class="ct-item-title" bubble="true" @tap="toToast(item)">
+				<text class="ct-item-title-text">{{item.title}}</text>
 				<image src="https://cdn.img.wenhairu.com/images/2020/05/23/YOvLH.png" class="ct-item-hint" mode="aspectFit"></image>
-			</view>
-			<view class="ct-item-desc">
-				<text class="ct-item-desc-text">滑出Toast，一定周期后隐藏</text>
-			</view>
-		</view>
-		<view class="ct-three">
-			<view class="ct-item-title">
-				<image src="https://cdn.img.wenhairu.com/images/2020/05/23/YOvLH.png" class="ct-item-hint" mode="aspectFit"></image>
-				<text class="ct-item-title-text">弹出</text>
-			</view>
-			<view class="ct-item-desc">
-				<text class="ct-item-desc-text" style="text-align: right;">弹出Toast，改变mode</text>
-			</view>
-		</view>
-		<view class="ct-four">
-			<view class="ct-item-title">
-				<image src="https://cdn.img.wenhairu.com/images/2020/05/23/YOvLH.png" class="ct-item-hint" mode="aspectFit"></image>
-				<text class="ct-item-title-text">弹出</text>
-			</view>
-			<view class="ct-item-desc">
-				<text class="ct-item-desc-text" style="text-align: right;">弹出Toast，改变位置</text>
 			</view>
 		</view>
 	</view>
@@ -50,7 +24,26 @@
 
 <script>
 	export default {
-		
+		data() {
+			return {
+				items: [
+					{name: 'notifyTop', class: 'notify-one', type: 'notify', title: '滑出-top', options: {pos: 'top', offset: '0'}},
+					{name: 'notifyBottom', class: 'notify-two', type: 'notify', title: '滑出-bottom', options: {pos: 'bottom', offset: 'x'}},
+					{name: 'notifyTopOffset', class: 'notify-three', type: 'notify', title: '滑出-offset', options: {pos: 'top', offset: 'status-nav-100rpx'}},
+					{name: 'notifyCenter', class: 'notify-four', type: 'notify', title: '滑出-center', options: {pos: 'top-center', offset: '0'}},
+					{name: 'notifyCenterOffset', class: 'notify-five', type: 'notify', title: '滑出-center-offset', options: {pos: 'bottom-center', offset: '-100rpx'}},
+					{name: 'toastCenter', class: 'toast-one', type: 'toast', title: '弹出-center'},
+					{name: 'toastOffset', class: 'toast-two', type: 'toast', title: '弹出-offset'},
+					{name: 'toastTop', class: 'toast-three', type: 'toast', title: '弹出-top'},
+					{name: 'toastBottom', class: 'toast-four', type: 'toast', title: '弹出-bottom'}
+				]
+			}
+		},
+		methods: {
+			toToast(val) {
+				this.$emit("toast", val)
+			}
+		}
 	}
 </script>
 
@@ -101,29 +94,69 @@
 				font-weight: 700;
 			}
 		}
-		&-one {
-			position: absolute;
-			left: 25rpx;
-			top: 200rpx;
+		&-notify {
+			&-one {
+				position: absolute;
+				left: 40rpx;
+				top: 30rpx;
+			}
+			&-two {
+				position: absolute;
+				left: 40rpx;
+				top: 110rpx;
+			}
+			&-three {
+				position: absolute;
+				left: 40rpx;
+				top: 190rpx;
+			}
+			&-four {
+				position: absolute;
+				left: 40rpx;
+				top: 270rpx;
+			}
+			&-five {
+				position: absolute;
+				left: 40rpx;
+				top: 350rpx;
+			}
 		}
-		&-two {
-			position: absolute;
-			left: 120rpx;
-			top: 32rpx;
-		}
-		&-three {
-			position: absolute;
-			right: 120rpx;
-			top: 32rpx;
-			flex-direction: column;
-			align-items: flex-end;
-		}
-		&-four {
-			position: absolute;
-			right: 25rpx;
-			top: 200rpx;
-			flex-direction: column;
-			align-items: flex-end;
+		&-toast {
+			&-one {
+				position: absolute;
+				right: 40rpx;
+				top: 30rpx;
+				flex-direction: column;
+				align-items: flex-end;
+			}
+			&-two {
+				position: absolute;
+				right: 40rpx;
+				top: 110rpx;
+				flex-direction: column;
+				align-items: flex-end;
+			}
+			&-three {
+				position: absolute;
+				right: 40rpx;
+				top: 190rpx;
+				flex-direction: column;
+				align-items: flex-end;
+			}
+			&-four {
+				position: absolute;
+				right: 40rpx;
+				top: 270rpx;
+				flex-direction: column;
+				align-items: flex-end;
+			}
+			&-five {
+				position: absolute;
+				right: 40rpx;
+				top: 350rpx;
+				flex-direction: column;
+				align-items: flex-end;
+			}
 		}
 		&-item {
 			&-title {

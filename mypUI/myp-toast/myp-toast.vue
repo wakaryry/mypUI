@@ -110,7 +110,6 @@
 				} else {
 					style += `top:${this.offsetPx}px;transform:translateX(-50%);`
 				}
-				console.log(this.offsetPx)
 				return style
 			},
 			mrIconType() {

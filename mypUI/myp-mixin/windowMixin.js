@@ -71,9 +71,7 @@ export default {
 					} else if (t === 'nav') {
 						h += this.mypGetNavHeight()
 					} else {
-						if (!isNaN(t)) {
-							h += this.mypToPx(t)
-						}
+						h += this.mypToPx(t)
 					}
 				}
 				return h
@@ -86,9 +84,7 @@ export default {
 					if (t === 'x') {
 						h += this.mypGetXBarHeight()
 					} else {
-						if (!isNaN(t)) {
-							h += this.mypToPx(t)
-						}
+						h += this.mypToPx(t)
 					}
 				}
 				return h

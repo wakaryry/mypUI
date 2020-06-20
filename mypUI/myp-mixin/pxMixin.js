@@ -1,21 +1,20 @@
 export default {
 	methods: {
 		mypToPx(val) {
-			const a = parseInt(val)
-			const isNeg = (a < 0)
 			if (typeof val === 'number') {
-				return uni.upx2px(val) * (isNeg ? -1 : 1)
+				return uni.upx2px(val)
 			}
+			const a = parseInt(val)
 			if (val.indexOf('rpx') >= 0) {
-				return uni.upx2px(a) * (isNeg ? -1 : 1)
+				return uni.upx2px(a)
 			}
 			if (val.indexOf('upx') >= 0) {
-				return uni.upx2px(a) * (isNeg ? -1 : 1)
+				return uni.upx2px(a)
 			}
 			if (val.indexOf('px') >= 0) {
-				return a * (isNeg ? -1 : 1)
+				return a
 			}
-			return uni.upx2px(a) * (isNeg ? -1 : 1)
+			return uni.upx2px(a)
 		}
 	}
 }

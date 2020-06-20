@@ -32,10 +32,10 @@
 					{name: 'notifyTopOffset', class: 'notify-three', type: 'notify', title: '滑出-offset', options: {pos: 'top', offset: 'status-nav-100rpx'}},
 					{name: 'notifyCenter', class: 'notify-four', type: 'notify', title: '滑出-center', options: {pos: 'top-center', offset: '0'}},
 					{name: 'notifyCenterOffset', class: 'notify-five', type: 'notify', title: '滑出-center-offset', options: {pos: 'bottom-center', offset: '-100rpx'}},
-					{name: 'toastCenter', class: 'toast-one', type: 'toast', title: '弹出-center'},
-					{name: 'toastOffset', class: 'toast-two', type: 'toast', title: '弹出-offset'},
-					{name: 'toastTop', class: 'toast-three', type: 'toast', title: '弹出-top'},
-					{name: 'toastBottom', class: 'toast-four', type: 'toast', title: '弹出-bottom'}
+					{name: 'toastCenter', class: 'toast-one', type: 'toast', title: '弹出-center', options: {type: 'warning', text: '前方有危险', mode: 'big'}},
+					{name: 'toastOffset', class: 'toast-two', type: 'toast', title: '弹出-offset', options: {type: 'error', text: '高能！高能！禁止前进', mode: 'big', pos: 'top', offset: 'status-nav-60px'}},
+					{name: 'toastTop', class: 'toast-three', type: 'toast', title: '弹出-top', options: {type: 'success', text: '欢迎来到mypUI，敌人还有3s到达战场', pos: 'top', offset: 'status-nav-60px'}},
+					{name: 'toastBottom', class: 'toast-four', type: 'toast', title: '弹出-bottom', options: {type: 'success', text: '欢迎来到mypUI，敌人还有3s到达战场', pos: 'bottom', offset: 'x-60px'}}
 				]
 			}
 		},

@@ -1,16 +1,19 @@
 export default {
-	data() {
-		return {
-			// we use mypLoading, so we can not use mypLoading as props in other vue file now
-			mypLoading: false
-		}
-	},
 	methods: {
-		mypShowLoading() {
-			this.mypLoading = true
+		mypShowLoading(info) {
+			const loadingIns = this.$refs['myp-loading']
+			if (loadingIns) {
+				loadingIns.show(info)
+			} else {
+				const that = this
+				setTimeout(()=>{
+					that.$refs['myp-loading'].show(info)
+				}, 0)
+			}
 		},
 		mypHideLoading() {
-			this.mypLoading = false
+			const loadingIns = this.$refs['myp-loading']
+			loadingIns && loadingIns.hide()
 		}
 	}
 }

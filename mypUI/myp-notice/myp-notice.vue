@@ -1,5 +1,5 @@
 <template>
-	<view v-if="show" bubble="true" :class="['myp-noticebar', 'myp-bg-'+bgType, 'myp-height-'+height, 'myp-border-'+border, 'myp-radius-'+radius]" :style="boxStyle" @tap.stop="noticeBarClicked">
+	<view v-if="showing" bubble="true" :class="['myp-noticebar', 'myp-bg-'+bgType, 'myp-height-'+height, 'myp-border-'+border, 'myp-radius-'+radius]" :style="boxStyle" @tap.stop="noticeBarClicked">
 		<view v-if="icon" :style="{'margin-right': space}">
 			<myp-icon :name="icon" :type="mrIconType" :size="iconSize" :iconStyle="iconStyle" @iconClicked="noticeBarClicked"></myp-icon>
 		</view>
@@ -92,7 +92,7 @@
 			}
 		},
 		data: () => ({
-			show: true
+			showing: true
 		}),
 		computed: {
 			mrTextType() {
@@ -115,18 +115,19 @@
 			}
 		},
 		methods: {
-			showNotice() {
-				this.show = true
+			show() {
+				this.showing = true
 			},
-			hideNotice() {
-				this.show = false
+			hide() {
+				this.showing = false
 			},
-			noticeBarClicked() {
+			noticeBarClicked(e) {
+				e.stopPropagation && e.stopPropagation()
 				this.$emit("noticeClicked")
 			},
 			indicatorClicked() {
 				if (this.closable) {
-					this.show = false
+					this.showing = false
 				} else {
 					this.$emit("indicatorClicked")
 				}

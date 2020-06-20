@@ -6,7 +6,7 @@
 			<view style="height: 24rpx;"></view>
 			<toast-cell @toast="toShowToast"></toast-cell>
 			<view style="height: 24rpx;"></view>
-			<action-cell></action-cell>
+			<action-cell @select="toShowAction"></action-cell>
 			<view style="height: 24rpx;"></view>
 			<picker-cell></picker-cell>
 			<view style="height: 24rpx;"></view>
@@ -40,7 +40,11 @@
 		<center-right-pop :show="centerRightVisible" @cancel="toHidePop" @pay="toShowPay"></center-right-pop>
 		<center-bottom-pop :show="centerBottomVisible" @cancel="toHidePop" @pay="toShowPay"></center-bottom-pop>
 		<center-scale-pop :show="centerScaleVisible" @cancel="toHidePop" @pay="toShowPay"></center-scale-pop>
+		<action-all :show="actionAllVisible" @cancel="toHidePop" @select="toConfirmAction"></action-all>
+		<action-half :show="actionHalfVisible" @cancel="toHidePop" @select="toConfirmAction"></action-half>
+		<action-cancel :show="actionCancelVisible" @cancel="toHidePop" @select="toConfirmAction"></action-cancel>
 		<myp-notice-dynamic ref="myp-notify"></myp-notice-dynamic>
+		<myp-loading ref="myp-loading"></myp-loading>
 		<myp-toast ref="myp-toast"></myp-toast>
 	</view>
 </template>
@@ -74,6 +78,9 @@ import centerRightPop from './components/centerRightPop.vue'
 import centerTopPop from './components/centerTopPop.vue'
 import centerBottomPop from './components/centerBottomPop.vue'
 import centerScalePop from './components/centerScalePop.vue'
+import actionAll from './components/actionAll.vue'
+import actionHalf from './components/actionHalf.vue'
+import actionCancel from './components/actionCancel.vue'
 import payPop from './components/payPop.vue'
 
 import contentBoxMixin from '@/mypUI/myp-mixin/contentBoxMixin.js';
@@ -110,6 +117,9 @@ export default {
 		centerRightPop,
 		centerBottomPop,
 		centerScalePop,
+		actionAll,
+		actionHalf,
+		actionCancel,
 		payPop
 	},
 	mixins: [contentBoxMixin, toastMixin, navHelper],
@@ -137,18 +147,29 @@ export default {
 			centerRightVisible: false,
 			centerBottomVisible: false,
 			centerScaleVisible: false,
+			actionAllVisible: false,
+			actionHalfVisible: false,
+			actionCancelVisible: false,
 			payVisible: false
 		}
 	},
 	methods: {
 		toShowToast(val) {
 			if (val.name.startsWith('notify')) {
-				this.$refs['myp-notify'].notify(val.options)
+				this.$refs['myp-notify'].show(val.options)
 			} else if (val.name.startsWith('toast')) {
-				this.$refs['myp-toast'].showToast(val.options)
+				this.$refs['myp-toast'].show(val.options)
+			} else if (val.name.startsWith('notice')) {
+				this.$refs['myp-notice'].show()
 			} else {
-				this.$refs['myp-notice'].showNotice()
+				this.$refs['myp-loading'].show(val.options)
+				setTimeout(()=>{
+					this.$refs['myp-loading'].hide()
+				}, 3000)
 			}
+		},
+		toShowAction(val) {
+			this[val+'Visible'] = true
 		},
 		toShowPop(val) {
 			this[val+'Visible'] = true
@@ -176,6 +197,15 @@ export default {
 			this.centerRightVisible = false
 			this.centerBottomVisible = false
 			this.centerScaleVisible = false
+			this.actionAllVisible = false
+			this.actionCancelVisible = false
+			this.actionHalfVisible = false
+		},
+		toConfirmAction(val) {
+			this.actionAllVisible = false
+			this.actionCancelVisible = false
+			this.actionHalfVisible = false
+			this.$refs['myp-toast'].showToast({type: 'success', text: '选择了'+val, mode: 'big'})
 		},
 		toShowPay() {
 			

@@ -1,45 +1,49 @@
 <template>
-	<view :class="['myp-loading', showLoading && needMask && 'myp-loading-mask']" @click="maskClicked" :style="maskStyle">
-		<view class="myp-loading-content" :style="{ top: topPosition + 'px'}" v-if="showLoading">
-			<view class="myp-loading-content-box" :style="contentStyle">
-				<image :src="src" mode="aspectFill" class="myp-loading-content-image" :style="imageStyle"></image>
-				<text v-if="text" class="myp-loading-content-text" :style="textStyle">{{text}}</text>
-			</view>
+	<view v-if="showLoading" :class="['myp-loading', showLoading&&itemNeedMask&&'myp-bg-'+itemMaskType, showLoading&&itemNeedMask&&'myp-loading-mask']" @tap.stop="maskClicked" :style="itemMaskStyle">
+		<view :class="['myp-loading-content', 'myp-bg-'+itemBgType]" :style="mrContentStyle">
+			<image :src="itemIcon" mode="aspectFill" class="myp-loading-content-image" :style="itemIconStyle"></image>
+			<text v-if="itemText" :class="['myp-loading-content-text', 'myp-color-'+itemTextType, 'myp-size-'+itemTextSize]" :style="itemTextStyle">{{itemText}}</text>
 		</view>
 	</view>
 </template>
 
 <script>
-	// loading or toast with no animation
-	import {Utils} from '../utils/utils.js';
+	import windowMixin from '../myp-mixin/windowMixin.js'
 
 	export default {
+		mixins: [windowMixin],
 		props: {
-			show: {
-				type: Boolean,
-				default: false
-			},
-			// when custom type
-			src: {
+			pos: {
 				type: String,
-				default: 'https://img.alicdn.com/tfs/TB1Ep_9NVXXXXb8XVXXXXXXXXXX-74-74.gif'
+				default: 'center'
+			},
+			offset: {
+				type: String,
+				default: '0'
+			},
+			icon: {
+				type: String,
+				default: '/static/ui/loading.gif'
 			},
 			text: {
 				type: String,
 				default: ''
 			},
 			delay: {
-				type: [Number, String],
+				type: Number,
 				default: 0
 			},
-			// 如果不设置top，默认居中
-			top: {
+			bgType: {
 				type: String,
-				default: null
+				default: 'mask-dark'
 			},
 			needMask: {
 				type: Boolean,
 				default: false
+			},
+			maskType: {
+				type: String,
+				default: 'mask'
 			},
 			maskStyle: {
 				type: String,
@@ -49,9 +53,17 @@
 				type: String,
 				default: ''
 			},
-			imageStyle: {
+			iconStyle: {
 				type: String,
 				default: ''
+			},
+			textType: {
+				type: String,
+				default: 'inverse'
+			},
+			textSize: {
+				type: String,
+				default: 'ss'
 			},
 			textStyle: {
 				type: String,
@@ -61,51 +73,81 @@
 		data() {
 			return {
 				showLoading: false,
-				topPosition: 250,
+				itemPos: 'center',
+				itemOffset: '0',
+				itemNeedMask: false,
+				itemMaskType: '',
+				itemMaskStyle: '',
+				itemBgType: '',
+				itemIcon: '',
+				itemText: '',
+				itemIconStyle: '',
+				itemTextType: '',
+				itemTextSize: '',
+				itemTextStyle: '',
+				itemContentStyle: '',
+				itemDelay: 0,
 				tid: 0
 			}
 		},
-		watch: {
-			show() {
-				this.setShow();
-			}
-		},
 		computed: {
-		},
-		created() {
-			this.setShow();
-			this.topPosition = (Utils.env.getWindowHeight() - 200) / 2
+			screenHeight() {
+				return this.mypGetScreenHeight()
+			},
+			offsetPx() {
+				return this.mypGetHeight(this.itemOffset)
+			},
+			mrContentStyle() {
+				let style = ''
+				if (this.itemPos === 'center') {
+					style += 'transform:translate(-50%,-50%);'
+					style += `top:${this.screenHeight*0.5+this.offsetPx}px;`
+				} else if (this.itemPos === 'bottom') {
+					style += 'transform:translateX(-50%);'
+					style += `bottom:${this.offsetPx}px;`
+				} else {
+					style += 'transform:translateX(-50%);'
+					style += `top:${this.offsetPx}px;`
+				}
+				return this.itemContentStyle + style
+			}
 		},
 		methods: {
-			maskClicked() {
-				this.needMask && (this.$emit('maskClicked', {}));
-			},
-			setShow() {
-				const {
-					delay,
-					show,
-					showLoading
-				} = this;
-				const stInterval = parseInt(delay);
-				clearTimeout(this.tid);
-				if (show) {
-					if (showLoading) {
-						return;
-					}
-					if (stInterval === 0) {
-						this.showLoading = true;
-					} else {
-						const that = this
-						this.tid = setTimeout(() => {
-							that.showLoading = true;
-						}, stInterval);
-					}
+			show(options) {
+				this.tid && clearTimeout(this.tid)
+				const opts = Object.assign({}, options)
+				this.itemPos = opts.pos || this.pos
+				this.itemOffset = opts.offset || this.offset
+				this.itemNeedMask = (typeof opts.needMask === 'boolean') ? opts.needMask : this.needMask
+				this.itemMaskType = opts.maskType || this.maskType
+				this.itemMaskStyle = opts.maskStyle || this.maskStyle
+				this.itemBgType = opts.bgType || this.bgType
+				this.itemIcon = opts.icon || this.icon
+				this.itemText = opts.text || this.text
+				this.itemTextType = opts.textType || this.textType
+				this.itemTextSize = opts.textSize || this.textSize
+				this.itemTextStyle = opts.textStyle || this.textStyle
+				this.itemIconStyle = opts.iconStyle || this.iconStyle
+				this.itemContentStyle = opts.contentStyle || this.contentStyle
+				this.itemDelay = opts.delay || this.delay
+				if (this.itemDelay === 0) {
+					this.showLoading = true
 				} else {
-					this.showLoading = false;
+					const that = this
+					this.tid = setTimeout(() => {
+						that.showLoading = true
+					}, this.itemDelay)
 				}
+			},
+			hide() {
+				this.showLoading = false
+			},
+			maskClicked(e) {
+				e.stopPropagation && e.stopPropagation()
+				this.itemNeedMask && (this.$emit('maskClicked', {}))
 			}
 		}
-	};
+	}
 </script>
 
 <style lang="scss" scoped>
@@ -120,32 +162,30 @@
 			left: 0;
 			right: 0;
 			bottom: 0;
-			background-color: $myp-bg-color-mask;
 		}
 		
 		&-content {
 			position: fixed;
-			left: 275rpx;
-			
-			&-box {
-				flex-direction: column;
-				align-items: center;
-				justify-content: center;
-				border-radius: 20rpx;
-				background-color: $myp-bg-color-mask-dark;
-				width: 200rpx;
-				height: 200rpx;
-			}
-			
+			left: 375rpx;
+			flex-direction: column;
+			align-items: center;
+			justify-content: center;
+			border-radius: 20rpx;
+			width: 200rpx;
+			height: 200rpx;
+
 			&-image {
 				width: 75rpx;
 				height: 75rpx;
 			}
-			
 			&-text {
 				overflow: hidden;
 				text-align: center;
 				text-overflow: ellipsis;
+				lines: 1;
+				/* #ifndef APP-NVUE */
+				white-space: nowrap;
+				/* #endif */
 				color: #FFFFFF;
 				font-size: 24rpx;
 				line-height: 30rpx;

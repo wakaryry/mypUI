@@ -11,37 +11,15 @@
 			<image class="ct-title-hint" src="https://cdn.img.wenhairu.com/images/2020/05/23/YOvLH.png" mode="aspectFit"></image>
 		</view>
 		<view class="ct-body">
-			<view class="ct-item">
-				<view class="ct-item-top">
+			<view class="ct-item" v-for="(item,idx) in items" :key="idx">
+				<view bubble="true" class="ct-item-top" @tap="toSelect(item.name)">
 					<image class="ct-item-bg" src="https://cdn.img.wenhairu.com/images/2020/05/23/YOsSU.png" mode="aspectFit"></image>
 					<view class="ct-item-title">
-						<text class="ct-item-title-text">A</text>
+						<text class="ct-item-title-text">{{item.title}}</text>
 					</view>
 				</view>
 				<view class="ct-item-desc">
-					<text class="ct-item-desc-text">100%宽度</text>
-				</view>
-			</view>
-			<view class="ct-item">
-				<view class="ct-item-top">
-					<image class="ct-item-bg" src="https://cdn.img.wenhairu.com/images/2020/05/23/YOsSU.png" mode="aspectFit"></image>
-					<view class="ct-item-title">
-						<text class="ct-item-title-text">B</text>
-					</view>
-				</view>
-				<view class="ct-item-desc">
-					<text class="ct-item-desc-text">两边有间距</text>
-				</view>
-			</view>
-			<view class="ct-item">
-				<view class="ct-item-top">
-					<image class="ct-item-bg" src="https://cdn.img.wenhairu.com/images/2020/05/23/YOsSU.png" mode="aspectFit"></image>
-					<view class="ct-item-title">
-						<text class="ct-item-title-text">C</text>
-					</view>
-				</view>
-				<view class="ct-item-desc">
-					<text class="ct-item-desc-text">带特殊取消</text>
+					<text class="ct-item-desc-text">{{item.desc}}</text>
 				</view>
 			</view>
 		</view>
@@ -50,7 +28,18 @@
 
 <script>
 	export default {
-		
+		data() {
+			return {
+				items: [
+					{name: 'actionAll', title: 'A', desc: '100%宽度'},{name: 'actionHalf', title: 'B', desc: '两边有间距'},{name: 'actionCancel', title: 'C', desc: '带特殊取消'}
+				]
+			}
+		},
+		methods: {
+			toSelect(val) {
+				this.$emit("select", val)
+			}
+		}
 	}
 </script>
 

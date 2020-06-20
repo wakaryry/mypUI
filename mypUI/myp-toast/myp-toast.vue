@@ -1,5 +1,5 @@
 <template>
-	<view v-if="showing" :class="['myp-toast', itemNeedMask&&'myp-bg-'+maskType]" @click.stop="toPrevent" :style="maskStyle">
+	<view v-if="showing" :class="['myp-toast', itemNeedMask&&'myp-toast-mask', itemNeedMask&&'myp-bg-'+maskType]" @click.stop="toPrevent" :style="maskStyle">
 		<view v-if="mode==='big'" class="myp-toast-content" :style="mrContentStyle">
 			<view :class="['myp-toast-content-box', 'myp-bg-'+(bgType&&bgType.length>0?bgType:'text')]" :style="contentStyle+itemContentStyle">
 				<myp-icon v-if="icon&&icon.length>0" :name="icon" :type="mrIconType" :size="mrIconSize" :iconStyle="bigIconStyle+iconStyle+itemIconStyle"></myp-icon>
@@ -130,8 +130,8 @@
 			}
 		},
 		methods: {
-			showToast(info, cInterval=null, cFinish=null, errorOptions=null) {
-				this.tid && clearTimeout(this.tid);
+			show(info, cInterval=null, cFinish=null, errorOptions=null) {
+				this.tid && clearTimeout(this.tid)
 				if (this.showing) {
 					this.showing = false
 				}
@@ -264,12 +264,15 @@
 	@import '../mypui.scss';
 	
 	.myp-toast {
-		position: fixed;
-		top: 0;
-		left: 0;
-		right: 0;
-		bottom: 0;
+		position: relative;
 		
+		&-mask {
+			position: fixed;
+			top: 0;
+			left: 0;
+			right: 0;
+			bottom: 0;
+		}
 		&-content {
 			position: fixed;
 			

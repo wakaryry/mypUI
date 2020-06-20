@@ -1,5 +1,5 @@
 <template>
-	<view ref="myp-notice" v-if="show" :hack="hackShow" :class="['myp-notice', 'myp-bg-'+mrBgType]" :style="mrBoxStyle + noWeexAnimation">
+	<view ref="myp-notice" v-if="showing" :hack="hackShow" :class="['myp-notice', 'myp-bg-'+mrBgType]" :style="mrBoxStyle + noWeexAnimation">
 		<slot>
 			<myp-icon :name="mrIcon" :iconStyle="iconStyle" :type="iconType" :size="iconSize" :boxStyle="iconBoxStyle"></myp-icon>
 			<text :class="['myp-size-'+textSize, 'myp-color-'+textType]" :style="mrTextStyle">{{text}}</text>
@@ -17,7 +17,7 @@
 		mixins: [windowMixin],
 		data() {
 			return {
-				show: false,
+				showing: false,
 				pos: 'top', // top/bottom/top-center/bottom-center
 				offset: 'status-nav',  // status/nav/status-nav/status-nav-xxx/number/rpx/px/x-xxx
 				type: 'primary',
@@ -48,11 +48,11 @@
 				return this.mypGetHeight(this.offset)
 			},
 			heightPx() {
-				return this.mypToPx(this.height)
+				return this.mypGetHeight(this.height)
 			},
 			hackShow() {
 				this.handleHackShow()
-				return this.show;
+				return this.showing
 			},
 			mrBgType() {
 				if (this.bgType && this.bgType.length > 0) return this.bgType
@@ -86,11 +86,11 @@
 			}
 		},
 		methods: {
-			notify(info) {
+			show(info) {
 				for (const i in info) {
 					this[i] = info[i]
 				}
-				this.show = true
+				this.showing = true
 				if (!this.duration) return
 				setTimeout(() => {
 					this.hide()
@@ -100,7 +100,7 @@
 				const that = this
 				// since we used v-if, the element may not exist
 				setTimeout(() => {
-					that.appearPopup(that.show)
+					that.appearPopup(that.showing)
 				}, 50)
 			},
 			hide() {
@@ -122,7 +122,7 @@
 				const that = this
 				setTimeout(()=>{
 					if (!bool) {
-						that.show = false
+						that.showing = false
 						that.$emit("close")
 					}
 				}, duration)
@@ -141,7 +141,7 @@
 					timingFunction: this.animation
 				}, () => {
 					if (!bool) {
-						this.show = false
+						this.showing = false
 						this.$emit('close')
 					}
 				})

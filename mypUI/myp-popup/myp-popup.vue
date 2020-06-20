@@ -14,11 +14,10 @@
 	const animation = weex.requireModule('animation');
 	// #endif
 	
-	import pxMixin from '../myp-mixin/pxMixin.js'
-	import xBarMixin from '../myp-mixin/xBarMixin.js'
+	import windowMixin from '../myp-mixin/windowMixin.js'
 
 	export default {
-		mixins: [pxMixin, xBarMixin],
+		mixins: [windowMixin],
 		props: {
 			show: {
 				type: Boolean,
@@ -195,13 +194,14 @@
 				return _style
 			},
 			heightPx() {
-				const h = this.mypToPx(this.height)
+				const h = this.mypGetHeight(this.height)
+				if (h > 1) {
+					return h
+				}
 				if (h <= 0) {
 					return this.screenHeight - this.topPx - this.bottomPx - (this.topOffsetPx>=0?this.topOffsetPx:0) - (this.bottomOffsetPx>=0?this.bottomOffsetPx:0)
-				} else if (h>0 && h<=1) {
-					return this.screenHeight * h
 				}
-				return h
+				return this.screenHeight * h
 			},
 			widthPx() {
 				const w = this.mypToPx(this.width)
@@ -211,32 +211,32 @@
 				return w
 			},
 			leftOffsetPx() {
-				const a = parseInt(this.leftOffset)
-				return a >= 0 ? this.mypToPx(this.leftOffset) : a
+				if (this.leftOffset === -1) return -1;
+				return this.mypToPx(this.leftOffset)
 			},
 			topOffsetPx() {
-				const a = parseInt(this.topOffset)
-				return a >= 0 ? this.mypToPx(this.topOffset) : a
+				if (this.topOffset === -1) return -1;
+				return this.mypGetHeight(this.topOffset)
 			},
 			rightOffsetPx() {
-				const a = parseInt(this.rightOffset)
-				return a >= 0 ? this.mypToPx(this.rightOffset) : a
+				if (this.rightOffset === -1) return -1;
+				return this.mypToPx(this.rightOffset)
 			},
 			bottomOffsetPx() {
-				const a = parseInt(this.bottomOffset)
-				return a >= 0 ? this.mypToPx(this.bottomOffset) : a
+				if (this.bottomOffset === -1) return -1;
+				return this.mypGetHeight(this.bottomOffset)
 			},
 			leftPx() {
 				return this.mypToPx(this.left)
 			},
 			topPx() {
-				return this.mypToPx(this.top)
+				return this.mypGetHeight(this.top)
 			},
 			rightPx() {
 				return this.mypToPx(this.right)
 			},
 			bottomPx() {
-				return this.mypToPx(this.bottom)
+				return this.mypGetHeight(this.bottom)
 			}
 		},
 		methods: {

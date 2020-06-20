@@ -241,7 +241,6 @@
 				if (typeof _info.offset === 'undefined' || (typeof _info.offset === 'string' && _info.offset.length === 0)) {
 					this.offset = '0'
 				}
-				console.log(this.offset)
 				if (cInterval) {
 					_interval = cInterval
 				}

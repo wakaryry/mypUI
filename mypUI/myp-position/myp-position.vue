@@ -6,16 +6,19 @@
 
 <script>
 	import windowMixin from '../myp-mixin/windowMixin.js'
-	import pxMixin from '../myp-mixin/pxMixin.js'
 	
 	export default {
-		mixins: [windowMixin, pxMixin],
+		mixins: [windowMixin],
 		props: {
 			fixed: {
 				type: Boolean,
 				default: false
 			},
-			bottom: {
+			pos: {
+				type: String,
+				default: 'bottom'
+			},
+			offset: {
 				type: String,
 				default: '0px'
 			},
@@ -25,13 +28,11 @@
 			}
 		},
 		computed: {
-			// 附加到bottom上面，防止事件阻塞
+			offsetPx() {
+				return this.mypGetHeight(this.offset)
+			},
 			mrBoxStyle() {
-				let bt = this.bottom
-				bt = this.mypToPx(this.bottom)
-				const xh = this.mypGetXBarHeight()
-				bt = bt + xh
-				return this.boxStyle + 'bottom:' + bt + 'px;'
+				return this.boxStyle + (this.pos === 'top' ? `top:${this.offsetPx}px;` : `bottom:${this.offsetPx}px;`)
 			}
 		}
 	}

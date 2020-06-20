@@ -17,7 +17,7 @@
 			</view>
 		</myp-list-simple>
 		<myp-x-bar v-if="!includeXBar" :bgType="xBarBgType"></myp-x-bar>
-		<myp-foot :fixed="true" bottom="200rpx" boxStyle="left:20rpx;">
+		<myp-position pos="bottom" :fixed="true" offset="x-100px" boxStyle="left:20rpx;">
 			<view class="x-set">
 				<view class="x-set-item">
 					<text class="x-set-text">hasFoot</text>
@@ -40,7 +40,7 @@
 					<myp-switch :value="xBarBgType==='primary'" @change="toToggleXBarBg"></myp-switch>
 				</view>
 			</view>
-		</myp-foot>
+		</myp-position>
 	</view>
 </template>
 

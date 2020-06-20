@@ -1,20 +1,16 @@
 <template>
-	<view v-if="show" :class="['myp-noticebar', 'myp-bg-'+bgType, 'myp-height-'+height, 'myp-border-'+border, 'myp-radius-'+radius]" :style="boxStyle" @click="noticeBarClicked">
+	<view v-if="show" bubble="true" :class="['myp-noticebar', 'myp-bg-'+bgType, 'myp-height-'+height, 'myp-border-'+border, 'myp-radius-'+radius]" :style="boxStyle" @tap.stop="noticeBarClicked">
 		<view v-if="icon" :style="{'margin-right': space}">
-			<myp-icon :name="icon" :type="mrIconType" :size="iconSize" :iconStyle="iconStyle"></myp-icon>
+			<myp-icon :name="icon" :type="mrIconType" :size="iconSize" :iconStyle="iconStyle" @iconClicked="noticeBarClicked"></myp-icon>
 		</view>
 		<text :class="['myp-noticebar-text', 'myp-size-'+textSize, 'myp-color-'+mrTextType]" :style="textStyle">{{text}}</text>
-		<view v-if="indicator" :style="{'margin-left': space}" @tap="indicatorClicked">
-			<myp-icon :name="indicator" :type="mrIndicatorType" :size="indicatorSize" :iconStyle="indicatorStyle"></myp-icon>
+		<view v-if="indicator" bubble="true" :style="{'margin-left': space}" @tap.stop="indicatorClicked">
+			<myp-icon :name="indicator" :type="mrIndicatorType" :size="indicatorSize" :iconStyle="indicatorStyle" @iconClicked="indicatorClicked"></myp-icon>
 		</view>
 	</view>
 </template>
 
 <script>
-	import {
-		Utils
-	} from '../utils/utils.js';
-
 	export default {
 		props: {
 			text: {
@@ -23,7 +19,7 @@
 			},
 			textSize: {
 				type: String,
-				default: ''
+				default: 'base'
 			},
 			bgType: {
 				type: String,
@@ -55,7 +51,7 @@
 			},
 			iconSize: {
 				type: String,
-				default: 'base'
+				default: 'll'
 			},
 			iconStyle: {
 				type: String,
@@ -71,7 +67,7 @@
 			},
 			indicatorSize: {
 				type: String,
-				default: 'base'
+				default: 'll'
 			},
 			indicatorStyle: {
 				type: String,
@@ -119,15 +115,20 @@
 			}
 		},
 		methods: {
+			showNotice() {
+				this.show = true
+			},
+			hideNotice() {
+				this.show = false
+			},
 			noticeBarClicked() {
-				// 为了方便扩展，比如 navigator 类型，直接跳转到页面
+				this.$emit("noticeClicked")
 			},
 			indicatorClicked() {
 				if (this.closable) {
 					this.show = false
-					this.$emit("close")
 				} else {
-					this.noticeBarClicked();
+					this.$emit("indicatorClicked")
 				}
 			}
 		}
@@ -143,7 +144,12 @@
 		
 		&-text {
 			flex: 1;
+			lines: 1;
+			overflow: hidden;
 			text-overflow: ellipsis;
+			/* #ifndef APP-NVUE */
+			white-space: nowrap;
+			/* #endif */
 		}
 	}
 </style>

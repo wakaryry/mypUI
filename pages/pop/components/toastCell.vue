@@ -35,7 +35,8 @@
 					{name: 'toastCenter', class: 'toast-one', type: 'toast', title: '弹出-center', options: {type: 'warning', text: '前方有危险', mode: 'big'}},
 					{name: 'toastOffset', class: 'toast-two', type: 'toast', title: '弹出-offset', options: {type: 'error', text: '高能！高能！禁止前进', mode: 'big', pos: 'top', offset: 'status-nav-60px'}},
 					{name: 'toastTop', class: 'toast-three', type: 'toast', title: '弹出-top', options: {type: 'success', text: '欢迎来到mypUI，敌人还有3s到达战场', pos: 'top', offset: 'status-nav-60px'}},
-					{name: 'toastBottom', class: 'toast-four', type: 'toast', title: '弹出-bottom', options: {type: 'success', text: '欢迎来到mypUI，敌人还有3s到达战场', pos: 'bottom', offset: 'x-60px'}}
+					{name: 'toastBottom', class: 'toast-four', type: 'toast', title: '弹出-bottom', options: {type: 'success', text: '欢迎来到mypUI，敌人还有3s到达战场', pos: 'bottom', offset: 'x-60px'}},
+					{name: 'notice', class: 'toast-five', type: 'notice', title: 'notice'}
 				]
 			}
 		},

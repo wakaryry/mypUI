@@ -15,6 +15,9 @@
 			<overlay-cell></overlay-cell>
 			<view style="height: 24rpx;"></view>
 		</scroll-view>
+		<myp-foot bottom="16px" boxStyle="left:32rpx;right:32rpx;">
+			<myp-notice ref="myp-notice" bgType="primary" icon="hint" text="如果不坚持吃饭,是有可能饿死的" indicator="circle-close" radius="ll" :closable="true"></myp-notice>
+		</myp-foot>
 		<top-pop :show="topVisible" @cancel="toHidePop" @pay="toShowPay"></top-pop>
 		<top-offset-pop :show="topOffsetVisible" @cancel="toHidePop" @pay="toShowPay"></top-offset-pop>
 		<top-left-pop :show="topLeftVisible" @cancel="toHidePop" @pay="toShowPay"></top-left-pop>
@@ -141,8 +144,10 @@ export default {
 		toShowToast(val) {
 			if (val.name.startsWith('notify')) {
 				this.$refs['myp-notify'].notify(val.options)
-			} else {
+			} else if (val.name.startsWith('toast')) {
 				this.$refs['myp-toast'].showToast(val.options)
+			} else {
+				this.$refs['myp-notice'].showNotice()
 			}
 		},
 		toShowPop(val) {

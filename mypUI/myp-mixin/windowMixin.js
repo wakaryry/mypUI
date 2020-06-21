@@ -61,7 +61,7 @@ export default {
 			if (val === 'x') {
 				return this.mypGetXBarHeight()
 			}
-			if (typeof val === 'string' && val.startsWith('status') || val.startsWith('nav')) {
+			if (typeof val === 'string' && (val.startsWith('status') || val.startsWith('nav'))) {
 				const arr = val.split('-')
 				let h = 0
 				for (const i in arr) {

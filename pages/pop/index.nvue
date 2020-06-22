@@ -10,7 +10,7 @@
 			<view style="height: 24rpx;"></view>
 			<picker-cell></picker-cell>
 			<view style="height: 24rpx;"></view>
-			<modal-cell></modal-cell>
+			<modal-cell @modal="toShowModal"></modal-cell>
 			<view style="height: 24rpx;"></view>
 			<overlay-cell @select="toShowOverlay"></overlay-cell>
 			<view style="height: 24rpx;"></view>
@@ -54,6 +54,9 @@
 				<myp-button border="none" radius="ll" bgType="error" text="点我关闭" boxStyle="width:420rpx;" @buttonClicked="toHidePop"></myp-button>
 			</view>
 		</myp-overlay>
+		<modal-opacity :show="modalOpacityVisible" @cancel="toHidePop" @confirm="toHidePop"></modal-opacity>
+		<modal-scale :show="modalScaleVisible" @cancel="toHidePop" @confirm="toHidePop"></modal-scale>
+		<modal-top :show="modalTopVisible" @cancel="toHidePop" @confirm="toHidePop"></modal-top>
 		<myp-loading ref="myp-loading"></myp-loading>
 		<myp-toast ref="myp-toast"></myp-toast>
 	</view>
@@ -91,6 +94,9 @@ import centerScalePop from './components/centerScalePop.vue'
 import actionAll from './components/actionAll.vue'
 import actionHalf from './components/actionHalf.vue'
 import actionCancel from './components/actionCancel.vue'
+import modalOpacity from './components/modalOpacity.vue'
+import modalScale from './components/modalScale.vue'
+import modalTop from './components/modalTop.vue'
 import payPop from './components/payPop.vue'
 
 import contentBoxMixin from '@/mypUI/myp-mixin/contentBoxMixin.js';
@@ -130,6 +136,9 @@ export default {
 		actionAll,
 		actionHalf,
 		actionCancel,
+		modalOpacity,
+		modalScale,
+		modalTop,
 		payPop
 	},
 	mixins: [contentBoxMixin, toastMixin, navHelper],
@@ -162,10 +171,16 @@ export default {
 			actionCancelVisible: false,
 			overlayVisible: false,
 			overlayOptions: {canAutoClose: false, hasBg: false},
+			modalOpacityVisible: false,
+			modalScaleVisible: false,
+			modalTopVisible: false,
 			payVisible: false
 		}
 	},
 	methods: {
+		toShowModal(val) {
+			this[val.name+'Visible'] = true
+		},
 		toShowOverlay(val) {
 			this.overlayOptions = val.options
 			setTimeout(()=>{
@@ -224,6 +239,9 @@ export default {
 			this.actionCancelVisible = false
 			this.actionHalfVisible = false
 			this.overlayVisible = false
+			this.modalOpacityVisible = false
+			this.modalScaleVisible = false
+			this.modalTopVisible = false
 		},
 		toConfirmAction(val) {
 			this.actionAllVisible = false

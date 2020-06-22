@@ -11,7 +11,7 @@
 			<image class="cf-title-hint" src="https://cdn.img.wenhairu.com/images/2020/05/23/YOvLH.png" mode="aspectFit"></image>
 		</view>
 		<view class="cf-body">
-			<view class="cf-item">
+			<view class="cf-item" v-for="(item,idx) in items" :key="idx" bubble="true" @tap="toSelect(item)">
 				<view class="cf-item-bg">
 					<image src="https://cdn.img.wenhairu.com/images/2020/05/23/YOL8o.png" class="cf-item-bg-cover" mode="aspectFit"></image>
 				</view>
@@ -22,35 +22,7 @@
 					<image src="https://cdn.img.wenhairu.com/images/2020/05/23/YOzX3.png" class="cf-item-br-bg" mode="aspectFit"></image>
 				</view>
 				<view class="cf-item-title">
-					<text class="cf-item-title-text" v-for="(item,idx) in ['小','确','幸']" :key="idx">{{item}}</text>
-				</view>
-			</view>
-			<view class="cf-item">
-				<view class="cf-item-bg">
-					<image src="https://cdn.img.wenhairu.com/images/2020/05/23/YOL8o.png" class="cf-item-bg-cover" mode="aspectFit"></image>
-				</view>
-				<view class="cf-item-tl">
-					<image src="https://cdn.img.wenhairu.com/images/2020/05/23/YTC4D.png" class="cf-item-tl-bg" mode="aspectFit"></image>
-				</view>
-				<view class="cf-item-br">
-					<image src="https://cdn.img.wenhairu.com/images/2020/05/23/YOzX3.png" class="cf-item-br-bg" mode="aspectFit"></image>
-				</view>
-				<view class="cf-item-title">
-					<text class="cf-item-title-text" v-for="(item,idx) in ['是','梦','醒']" :key="idx">{{item}}</text>
-				</view>
-			</view>
-			<view class="cf-item">
-				<view class="cf-item-bg">
-					<image src="https://cdn.img.wenhairu.com/images/2020/05/23/YOL8o.png" class="cf-item-bg-cover" mode="aspectFit"></image>
-				</view>
-				<view class="cf-item-tl">
-					<image src="https://cdn.img.wenhairu.com/images/2020/05/23/YTC4D.png" class="cf-item-tl-bg" mode="aspectFit"></image>
-				</view>
-				<view class="cf-item-br">
-					<image src="https://cdn.img.wenhairu.com/images/2020/05/23/YOzX3.png" class="cf-item-br-bg" mode="aspectFit"></image>
-				</view>
-				<view class="cf-item-title">
-					<text class="cf-item-title-text" v-for="(item,idx) in ['那','封','信']" :key="idx">{{item}}</text>
+					<text class="cf-item-title-text" v-for="(char,index) in item.title" :key="index">{{char}}</text>
 				</view>
 			</view>
 		</view>
@@ -62,7 +34,20 @@
 
 <script>
 	export default {
-		
+		data() {
+			return {
+				items: [
+					{name: 'modalOpacity', title: ['小','确','幸']},
+					{name: 'modalScale', title: ['是','梦','醒']},
+					{name: 'modalTop', title: ['那','封','信']}
+				]
+			}
+		},
+		methods: {
+			toSelect(val) {
+				this.$emit("modal", val)
+			}
+		}
 	}
 </script>
 

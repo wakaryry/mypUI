@@ -23,18 +23,14 @@
 	import introHeader from './components/introHeader.vue'
 	import componentListItem from './components/listItem.vue'
 	
-	import contentBoxMixin from '@/mypUI/myp-mixin/contentBoxMixin.js'
-	
 	export default {
 		components: {
 			introHeader,
 			componentListItem
 		},
-		mixins: [contentBoxMixin],
 		inject: ['tabRoot'],
 		data() {
 			return {
-				mypTabHeight: 50,
 				items: [{
 					icon: 'radio-button',
 					name: '基础组件',

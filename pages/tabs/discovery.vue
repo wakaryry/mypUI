@@ -1,18 +1,15 @@
 <template>
 	<view>
 		<myp-navbar :fixed="false" title="发现"></myp-navbar>
-		<scroll-view class="myp-bg-page" :scroll-y="true" :style="mypContentHeightStyle"></scroll-view>
+		<myp-list-simple bgType="page" :includeXBar="false"></myp-list-simple>
 	</view>
 </template>
 
 <script>
-import contentBoxMixin from '@/mypUI/myp-mixin/contentBoxMixin.js';
 
 export default {
-	mixins: [contentBoxMixin],
 	data() {
 		return {
-			mypTabHeight: 50,
 		}
 	},
 	methods: {}

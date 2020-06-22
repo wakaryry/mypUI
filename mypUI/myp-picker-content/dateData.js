@@ -1,4 +1,4 @@
-// 该组件最开始来自于插件市场的 日期选择插件 https://ext.dcloud.net.cn/plugin?id=273
+// 数据处理方法来自于： 日期选择插件 https://ext.dcloud.net.cn/plugin?id=273
 const forMatNum = (num) => {
 	return num < 10 ? ('0' + num) : (num + '');
 }

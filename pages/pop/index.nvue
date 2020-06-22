@@ -8,7 +8,7 @@
 			<view style="height: 24rpx;"></view>
 			<action-cell @select="toShowAction"></action-cell>
 			<view style="height: 24rpx;"></view>
-			<picker-cell></picker-cell>
+			<picker-cell @picker="toShowPicker"></picker-cell>
 			<view style="height: 24rpx;"></view>
 			<modal-cell @modal="toShowModal"></modal-cell>
 			<view style="height: 24rpx;"></view>
@@ -57,6 +57,10 @@
 		<modal-opacity :show="modalOpacityVisible" @cancel="toHidePop" @confirm="toHidePop"></modal-opacity>
 		<modal-scale :show="modalScaleVisible" @cancel="toHidePop" @confirm="toHidePop"></modal-scale>
 		<modal-top :show="modalTopVisible" @cancel="toHidePop" @confirm="toHidePop"></modal-top>
+		<picker-date :show="pickerDateVisible"></picker-date>
+		<picker-time :show="pickerTimeVisible"></picker-time>
+		<picker-range :show="pickerRangeVisible"></picker-range>
+		<picker-area :show="pickerAreaVisible"></picker-area>
 		<myp-loading ref="myp-loading"></myp-loading>
 		<myp-toast ref="myp-toast"></myp-toast>
 	</view>
@@ -97,6 +101,10 @@ import actionCancel from './components/actionCancel.vue'
 import modalOpacity from './components/modalOpacity.vue'
 import modalScale from './components/modalScale.vue'
 import modalTop from './components/modalTop.vue'
+import pickerDate from './components/pickerDate.vue'
+import pickerTime from './components/pickerTime.vue'
+import pickerRange from './components/pickerRange.vue'
+import pickerArea from './components/pickerArea.vue'
 import payPop from './components/payPop.vue'
 
 import contentBoxMixin from '@/mypUI/myp-mixin/contentBoxMixin.js';
@@ -139,6 +147,10 @@ export default {
 		modalOpacity,
 		modalScale,
 		modalTop,
+		pickerDate,
+		pickerTime,
+		pickerRange,
+		pickerArea,
 		payPop
 	},
 	mixins: [contentBoxMixin, toastMixin, navHelper],
@@ -174,10 +186,18 @@ export default {
 			modalOpacityVisible: false,
 			modalScaleVisible: false,
 			modalTopVisible: false,
+			pickerDateVisible: false,
+			pickerTimeVisible: false,
+			pickerRangeVisible: false,
+			pickerAreaVisible: false,
 			payVisible: false
 		}
 	},
 	methods: {
+		toShowPicker(val) {
+			console.log(val)
+			this[val.name+'Visible'] = true
+		},
 		toShowModal(val) {
 			this[val.name+'Visible'] = true
 		},
@@ -242,6 +262,10 @@ export default {
 			this.modalOpacityVisible = false
 			this.modalScaleVisible = false
 			this.modalTopVisible = false
+			this.pickerAreaVisible = false
+			this.pickerDateVisible = false
+			this.pickerRangeVisible = false
+			this.pickerTimeVisible = false
 		},
 		toConfirmAction(val) {
 			this.actionAllVisible = false

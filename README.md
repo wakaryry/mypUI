@@ -54,6 +54,7 @@
 
 - [免费图片压缩](https://tinypng.com/)
 - [免费图片托管](https://img.wenhairu.com/)
+- Picker的日期内容处理，来自：[日期选择插件](https://ext.dcloud.net.cn/plugin?id=273)。我只是使用`myp-popup`包装了一层，然后对于`s1/s2/s3`封装了可自定义`label`与`value`
 
 如果您发现我们使用了您的`设计`或者`图片`资源，如有侵权，恳请告知，我们一定第一时间删除或者按照您的要求添加申明。
 

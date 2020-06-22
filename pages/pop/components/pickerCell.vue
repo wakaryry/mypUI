@@ -11,7 +11,7 @@
 			<image class="cf-title-hint" src="https://cdn.img.wenhairu.com/images/2020/05/23/YOvLH.png" mode="aspectFit"></image>
 		</view>
 		<view class="cf-body">
-			<view class="cf-item">
+			<view class="cf-item" v-for="(item,idx) in items" :key="idx" bubble="true" @tap="toSelect(item)">
 				<view class="cf-item-bg1">
 					<image src="https://cdn.img.wenhairu.com/images/2020/05/23/YOL8o.png" class="cf-item-bg" mode="aspectFit"></image>
 				</view>
@@ -20,56 +20,8 @@
 				</view>
 				<view class="cf-item-body">
 					<view class="cf-item-head"></view>
-					<text class="cf-item-title">年月日</text>
-					<text class="cf-item-desc">山有木兮木有枝</text>
-				</view>
-				<view class="cf-item-tl">
-					<image src="https://cdn.img.wenhairu.com/images/2020/05/23/YTC4D.png" class="cf-item-tl-cover" mode="aspectFit"></image>
-				</view>
-			</view>
-			<view class="cf-item">
-				<view class="cf-item-bg1">
-					<image src="https://cdn.img.wenhairu.com/images/2020/05/23/YOL8o.png" class="cf-item-bg" mode="aspectFit"></image>
-				</view>
-				<view class="cf-item-bg2">
-					<image src="https://cdn.img.wenhairu.com/images/2020/05/23/YOL8o.png" class="cf-item-bg" mode="aspectFit"></image>
-				</view>
-				<view class="cf-item-body">
-					<view class="cf-item-head"></view>
-					<text class="cf-item-title">时间</text>
-					<text class="cf-item-desc">人映桃花水样红</text>
-				</view>
-				<view class="cf-item-tl">
-					<image src="https://cdn.img.wenhairu.com/images/2020/05/23/YTC4D.png" class="cf-item-tl-cover" mode="aspectFit"></image>
-				</view>
-			</view>
-			<view class="cf-item">
-				<view class="cf-item-bg1">
-					<image src="https://cdn.img.wenhairu.com/images/2020/05/23/YOL8o.png" class="cf-item-bg" mode="aspectFit"></image>
-				</view>
-				<view class="cf-item-bg2">
-					<image src="https://cdn.img.wenhairu.com/images/2020/05/23/YOL8o.png" class="cf-item-bg" mode="aspectFit"></image>
-				</view>
-				<view class="cf-item-body">
-					<view class="cf-item-head"></view>
-					<text class="cf-item-title">周期</text>
-					<text class="cf-item-desc">一汀烟雨杏花寒</text>
-				</view>
-				<view class="cf-item-tl">
-					<image src="https://cdn.img.wenhairu.com/images/2020/05/23/YTC4D.png" class="cf-item-tl-cover" mode="aspectFit"></image>
-				</view>
-			</view>
-			<view class="cf-item">
-				<view class="cf-item-bg1">
-					<image src="https://cdn.img.wenhairu.com/images/2020/05/23/YOL8o.png" class="cf-item-bg" mode="aspectFit"></image>
-				</view>
-				<view class="cf-item-bg2">
-					<image src="https://cdn.img.wenhairu.com/images/2020/05/23/YOL8o.png" class="cf-item-bg" mode="aspectFit"></image>
-				</view>
-				<view class="cf-item-body">
-					<view class="cf-item-head"></view>
-					<text class="cf-item-title">联动</text>
-					<text class="cf-item-desc">飞起沙鸥一片</text>
+					<text class="cf-item-title">{{item.title}}</text>
+					<text class="cf-item-desc">{{item.desc}}</text>
 				</view>
 				<view class="cf-item-tl">
 					<image src="https://cdn.img.wenhairu.com/images/2020/05/23/YTC4D.png" class="cf-item-tl-cover" mode="aspectFit"></image>
@@ -81,7 +33,21 @@
 
 <script>
 	export default {
-		
+		data() {
+			return {
+				items: [
+					{name: 'pickerDate', title: '年月日', desc: '山有木兮木有枝', type: 'picker', options: {}},
+					{name: 'pickerTime', title: '时间', desc: '人映桃花水杨红', type: 'picker', options: {}},
+					{name: 'pickerRange', title: '区间', desc: '一汀烟雨杏花寒', type: 'picker', options: {}},
+					{name: 'pickerArea', title: '联动', desc: '飞起沙鸥一片', type: 'picker', options: {}}
+				]
+			}
+		},
+		methods: {
+			toSelect(val) {
+				this.$emit("picker", val)
+			}
+		}
 	}
 </script>
 

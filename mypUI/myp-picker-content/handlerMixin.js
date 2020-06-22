@@ -2,7 +2,7 @@ import dateTimeMaker from "./dateData.js"
 
 export default {
 	methods: {
-		useCurrent() {
+		getCurrent() {
 			let aToday = new Date()
 			let tYear = aToday.getFullYear().toString()
 			let tMonth = this.formatNum(aToday.getMonth() + 1).toString()
@@ -65,11 +65,11 @@ export default {
 					break
 				case "range":
 				case "yearMonthRange":
-					data = dateTimeMaker.range.init(this.startYear, this.endYear, this.useCurrent(), this.current)
+					data = dateTimeMaker.range.init(this.startYear, this.endYear, this.getCurrent(), this.current)
 					dVal = (data.defaultVal && this.current) ? data.defaultVal : this.value
 					break
 				default:
-					data = dateTimeMaker.date.init(this.startYear, this.endYear, this.mode, this.step, this.useCurrent(), this.current, this.disabledAfter)
+					data = dateTimeMaker.date.init(this.startYear, this.endYear, this.mode, this.step, this.getCurrent(), this.current, this.disabledAfter)
 					dVal = (data.defaultVal && this.current) ? data.defaultVal : this.value
 					break
 			}
@@ -167,12 +167,16 @@ export default {
 					this.resultStr = province[this.pl]
 					break
 			}
-			this.pickVal = dVal
-			/*
-			const that = this
-			this.$nextTick(() => {
-				that.pickVal = dVal
-			})*/
+			this.$emit("inited", {
+				checkArr: this.checkArr,
+				checkValue: this.checkValue,
+				defaultVal: dVal,
+				result: this.resultStr
+			})
+			// we must set default-data in nextTick, or mp will not show the current index
+			this.$nextTick(()=>{
+				this.pickVal = dVal
+			})
 		},
 		bindChange(val) {
 			let arr = val.detail.value

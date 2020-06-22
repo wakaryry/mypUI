@@ -161,12 +161,7 @@
 </template>
 
 <script>
-	// TODO: 不滚动时，默认没有选中任何内容，应该默认选中第一个;
-	// TODO: 初始化之后应该滚动到初始化选中的位置;
-	// TODO: 如果我们需要很特别的indicator-style
-	// 比如中间有间隔等.其实一个picker-view只带一个column就可以，一个选择组件由多个picker-view组成
-	
-	// s1/s2/s3
+	//处理方法来自于： 日期选择插件 https://ext.dcloud.net.cn/plugin?id=273
 	import selectionMixin from './sMixin.js'
 	import handlerMixin from './handlerMixin.js'
 	

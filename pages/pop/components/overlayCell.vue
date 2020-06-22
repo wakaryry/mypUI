@@ -14,7 +14,7 @@
 			<image src="https://cdn.img.wenhairu.com/images/2020/05/23/YObjv.png" class="cf-left-bg" mode="aspectFit"></image>
 		</view>
 		<view class="cf-body">
-			<view class="cf-item">
+			<view bubble="true" class="cf-item" v-for="(item,idx) in items" :key="idx" @tap="toSelect(item)">
 				<view class="cf-item-bg">
 					<image src="https://cdn.img.wenhairu.com/images/2020/05/23/YOL8o.png" class="cf-item-bg-cover" mode="aspectFit"></image>
 				</view>
@@ -25,35 +25,7 @@
 					<image src="https://cdn.img.wenhairu.com/images/2020/05/23/YOzX3.png" class="cf-item-br-bg" mode="aspectFit"></image>
 				</view>
 				<view class="cf-item-title">
-					<text class="cf-item-title-text" v-for="(item,idx) in ['是','通','用']" :key="idx">{{item}}</text>
-				</view>
-			</view>
-			<view class="cf-item">
-				<view class="cf-item-bg">
-					<image src="https://cdn.img.wenhairu.com/images/2020/05/23/YOL8o.png" class="cf-item-bg-cover" mode="aspectFit"></image>
-				</view>
-				<view class="cf-item-tl">
-					<image src="https://cdn.img.wenhairu.com/images/2020/05/23/YTC4D.png" class="cf-item-tl-bg" mode="aspectFit"></image>
-				</view>
-				<view class="cf-item-br">
-					<image src="https://cdn.img.wenhairu.com/images/2020/05/23/YOzX3.png" class="cf-item-br-bg" mode="aspectFit"></image>
-				</view>
-				<view class="cf-item-title">
-					<text class="cf-item-title-text" v-for="(item,idx) in ['自','关','闭']" :key="idx">{{item}}</text>
-				</view>
-			</view>
-			<view class="cf-item">
-				<view class="cf-item-bg">
-					<image src="https://cdn.img.wenhairu.com/images/2020/05/23/YOL8o.png" class="cf-item-bg-cover" mode="aspectFit"></image>
-				</view>
-				<view class="cf-item-tl">
-					<image src="https://cdn.img.wenhairu.com/images/2020/05/23/YTC4D.png" class="cf-item-tl-bg" mode="aspectFit"></image>
-				</view>
-				<view class="cf-item-br">
-					<image src="https://cdn.img.wenhairu.com/images/2020/05/23/YOzX3.png" class="cf-item-br-bg" mode="aspectFit"></image>
-				</view>
-				<view class="cf-item-title">
-					<text class="cf-item-title-text" v-for="(item,idx) in ['设','背','景']" :key="idx">{{item}}</text>
+					<text class="cf-item-title-text" v-for="(char,index) in item.title" :key="index">{{char}}</text>
 				</view>
 			</view>
 		</view>
@@ -62,7 +34,20 @@
 
 <script>
 	export default {
-		
+		data() {
+			return {
+				items: [
+					{name: 'normal', title: ['是','通','用'], type: 'overlay', options: {canAutoClose: false, hasBg: false}},
+					{name: 'auto', title: ['自','关','闭'], type: 'overlay', options: {canAutoClose: true, hasBg: false}},
+					{name: 'bg', title: ['设','背','景'], type: 'overlay', options: {canAutoClose: true, hasBg: true}}
+				]
+			}
+		},
+		methods: {
+			toSelect(val) {
+				this.$emit("select", val)
+			}
+		}
 	}
 </script>
 

@@ -12,7 +12,7 @@
 			<view style="height: 24rpx;"></view>
 			<modal-cell></modal-cell>
 			<view style="height: 24rpx;"></view>
-			<overlay-cell></overlay-cell>
+			<overlay-cell @select="toShowOverlay"></overlay-cell>
 			<view style="height: 24rpx;"></view>
 		</scroll-view>
 		<myp-position pos="bottom" offset="x-16px" boxStyle="left:32rpx;right:32rpx;">
@@ -44,6 +44,16 @@
 		<action-half :show="actionHalfVisible" @cancel="toHidePop" @select="toConfirmAction"></action-half>
 		<action-cancel :show="actionCancelVisible" @cancel="toHidePop" @select="toConfirmAction"></action-cancel>
 		<myp-notice-dynamic ref="myp-notify"></myp-notice-dynamic>
+		<myp-overlay :show="overlayVisible" @overlayClicked="overlayClicked">
+			<view class="pop-overlay" v-if="overlayOptions.hasBg">
+				<image class="pop-overlay-bg" mode="aspectFill" src="/static/logo.png"></image>
+				<view style="height: 32rpx;"></view>
+				<myp-button border="none" radius="ll" bgType="error" text="点我关闭" boxStyle="width:420rpx;" @buttonClicked="toHidePop"></myp-button>
+			</view>
+			<view class="pop-overlay" v-if="!overlayOptions.canAutoClose&&!overlayOptions.hasBg">
+				<myp-button border="none" radius="ll" bgType="error" text="点我关闭" boxStyle="width:420rpx;" @buttonClicked="toHidePop"></myp-button>
+			</view>
+		</myp-overlay>
 		<myp-loading ref="myp-loading"></myp-loading>
 		<myp-toast ref="myp-toast"></myp-toast>
 	</view>
@@ -150,10 +160,23 @@ export default {
 			actionAllVisible: false,
 			actionHalfVisible: false,
 			actionCancelVisible: false,
+			overlayVisible: false,
+			overlayOptions: {canAutoClose: false, hasBg: false},
 			payVisible: false
 		}
 	},
 	methods: {
+		toShowOverlay(val) {
+			this.overlayOptions = val.options
+			setTimeout(()=>{
+				this.overlayVisible = true
+			}, 0)
+		},
+		overlayClicked() {
+			if (this.overlayOptions.canAutoClose) {
+				this.overlayVisible = false
+			}
+		},
 		toShowToast(val) {
 			if (val.name.startsWith('notify')) {
 				this.$refs['myp-notify'].show(val.options)
@@ -200,6 +223,7 @@ export default {
 			this.actionAllVisible = false
 			this.actionCancelVisible = false
 			this.actionHalfVisible = false
+			this.overlayVisible = false
 		},
 		toConfirmAction(val) {
 			this.actionAllVisible = false
@@ -216,5 +240,22 @@ export default {
 
 <style lang="scss" scoped>
 @import '@/mypUI/mypui.scss';
-
+.pop {
+	&-overlay {
+		position: fixed;
+		left: 0;
+		right: 0;
+		top: 0;
+		bottom: 0;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+		
+		&-bg {
+			width: 200rpx;
+			height: 200rpx;
+			border-radius: 12rpx;
+		}
+	}
+}
 </style>

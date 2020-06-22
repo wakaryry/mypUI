@@ -121,7 +121,7 @@
 					return 0
 				}
 				const xBarHeight = this.includeXBar ? this.mypGetXBarHeight() : 0
-				return _height - this.tabHeightPx - xBarHeight - this.top
+				return _height - this.tabHeightPx - xBarHeight - this.topPx
 			},
 			mrHumpStyle() {
 				if (!this.humpItem) return '';

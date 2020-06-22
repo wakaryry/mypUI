@@ -1,15 +1,21 @@
 <template>
 	<view>
 		<myp-navbar :fixed="false" title="mypUI"></myp-navbar>
-		<scroll-view class="myp-bg-page" :scroll-y="true" :style="mypContentHeightStyle">
-			<view style="height: 24rpx;"></view>
-			<intro-header @selected="toIntro"></intro-header>
-			<view style="height: 24rpx;"></view>
-			<view v-for="(item, idx) in items" :key="idx">
+		<myp-list-simple bgType="page" :tabHeight="50" :includeXBar="false">
+			<myp-list-cell>
+				<view style="height: 24rpx;"></view>
+			</myp-list-cell>
+			<myp-list-cell>
+				<intro-header @selected="toIntro"></intro-header>
+			</myp-list-cell>
+			<myp-list-cell>
+				<view style="height: 24rpx;"></view>
+			</myp-list-cell>
+			<myp-list-cell v-for="(item, idx) in items" :key="idx">
 				<component-list-item :item="item" @selected="toItem(item.type)"></component-list-item>
 				<view style="height: 24rpx;"></view>
-			</view>
-		</scroll-view>
+			</myp-list-cell>
+		</myp-list-simple>
 	</view>
 </template>
 

@@ -126,6 +126,36 @@
 				"disableScroll": true
 			}
 		},
+		{
+			"path": "pages/filter/nav_down",
+			"style": {
+				"disableScroll": true
+			}
+		},
+		{
+			"path": "pages/filter/down",
+			"style": {
+				"disableScroll": true
+			}
+		},
+		{
+			"path": "pages/filter/more_down",
+			"style": {
+				"disableScroll": true
+			}
+		},
+		{
+			"path": "pages/filter/up",
+			"style": {
+				"disableScroll": true
+			}
+		},
+		{
+			"path": "pages/filter/more_up",
+			"style": {
+				"disableScroll": true
+			}
+		},
 		// navbar
 		{
 			"path": "pages/navbar/index",

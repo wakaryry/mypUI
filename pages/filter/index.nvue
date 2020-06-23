@@ -1,7 +1,14 @@
 <template>
 	<view>
 		<myp-navbar :lefts="leftIcons" title="Filter" @leftAction="navLeftAction"></myp-navbar>
-		<myp-list-simple bgType="page"></myp-list-simple>
+		<myp-list-simple bgType="page">
+			<myp-list-cell>
+				<view style="height: 20rpx;"></view>
+			</myp-list-cell>
+			<myp-list-cell v-for="(item,idx) in items" :key="idx">
+				<myp-cell :icon="item.icon" :title="item.name" :value="item.desc" :showIndicator="true" indicator="right" radius="none" border="bottom" height="ll" valueStyle="text-align:right;" boxStyle="padding-left:30rpx;padding-right:30rpx;" @cellClicked="toDetailFilter(item)"></myp-cell>
+			</myp-list-cell>
+		</myp-list-simple>
 	</view>
 </template>
 
@@ -12,6 +19,18 @@
 		mixins: [navHelper],
 		data() {
 			return {
+				items: [
+					{icon: 'star', name: 'nav-dropdown', desc: '单个dropdown', page: 'filter_nav_down'},
+					{icon: 'star', name: 'dropdown', desc: '单个dropdown', page: 'filter_down'},
+					{icon: 'star', name: 'more-dropdown', desc: '多个dropdown', page: 'filter_more_down'},
+					{icon: 'star-two', name: 'foot-slideup', desc: '单个slideup', page: 'filter_up'},
+					{icon: 'star-two', name: 'foot-more-slideup', desc: '多个slideup', page: 'filter_more_up'}
+				]
+			}
+		},
+		methods: {
+			toDetailFilter(val) {
+				this.navigateTo(val.page)
 			}
 		}
 	}

@@ -7,24 +7,25 @@
 				<view class="myp-nav-lefts" :style="leftStyle">
 					<slot name="left">
 						<block v-if="lefts && lefts.length > 0">
-							<view v-for="(left, idx) in lefts" :key="idx" @tap="goLeft(idx)">
-								<myp-icon v-if="left.icon" :name="left.icon" :iconStyle="mrIconStyle" @iconClicked="goLeft(idx)"></myp-icon>
+							<view v-for="(left, idx) in lefts" :key="idx" bubble="true" @tap="goLeft(idx)">
+								<myp-icon v-if="left.icon" :name="left.icon" :iconStyle="mrActionIconStyle" @iconClicked="goLeft(idx)"></myp-icon>
 								<text v-if="left.text" :style="actionTextStyle">{{left.text}}</text>
 							</view>
 						</block>
 					</slot>
 				</view>
-				<view class="myp-nav-title" :style="centerStyle" @tap="clickCenter">
+				<view class="myp-nav-title" :style="centerStyle">
 					<slot name="title">
-						<text v-if="title" class="myp-nav-title-text" :style="titleStyle">{{ title }}</text>
+						<text v-if="title" class="myp-nav-title-text" :style="titleStyle" @tap="clickCenter">{{ title }}</text>
+						<myp-icon v-if="icon" :name="icon" :iconStyle="mrIconStyle" @iconClicked="clickCenter"></myp-icon>
 					</slot>
 				</view>
 				<!-- 考虑到小程序的胶囊按钮,我们使用左右各30%来占位 -->
 				<view class="myp-nav-rights" :style="rightStyle">
 					<slot name="right">
 						<block v-if="rights && rights.length > 0">
-							<view v-for="(right, idx) in rights" :key="idx" @tap="goRight(idx)">
-								<myp-icon v-if="right.icon" :name="right.icon" :iconStyle="mrIconStyle" @iconClicked="goRight(idx)"></myp-icon>
+							<view v-for="(right, idx) in rights" :key="idx" bubble="true" @tap="goRight(idx)">
+								<myp-icon v-if="right.icon" :name="right.icon" :iconStyle="mrActionIconStyle" @iconClicked="goRight(idx)"></myp-icon>
 								<text v-if="right.text" :style="actionTextStyle">{{right.text}}</text>
 							</view>
 						</block>
@@ -46,6 +47,10 @@
 				type: String,
 				default: null
 			},
+			icon: {
+				type: String,
+				default: null
+			},
 			rights: {
 				type: Array,
 				default: ()=>{return []}
@@ -55,6 +60,10 @@
 				default: ''
 			},
 			iconStyle: {
+				type: String,
+				default: ""
+			},
+			actionIconStyle: {
 				type: String,
 				default: ""
 			},
@@ -113,6 +122,9 @@
 			}
 		},
 		computed: {
+			mrActionIconStyle() {
+				return 'color:#4C4C4C;font-size:16px;' + this.iconStyle
+			},
 			mrIconStyle() {
 				return 'color:#4C4C4C;font-size:16px;' + this.iconStyle
 			},
@@ -187,8 +199,6 @@
 	}
 	.myp-nav-title-text {
 		font-size: 16px;
-		flex: 1;
-		text-align: center;
 		color: #000000;
 		overflow: hidden;
 		text-overflow: ellipsis;

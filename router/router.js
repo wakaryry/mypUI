@@ -31,6 +31,11 @@ export default {
 	picker_index: '/pages/picker/index',
 	// filter
 	filter_index: '/pages/filter/index',
+	filter_nav_down: '/pages/filter/nav_down',
+	filter_down: '/pages/filter/down',
+	filter_more_down: '/pages/filter/more_down',
+	filter_up: '/pages/filter/up',
+	filter_more_up: '/pages/filter/more_up',
 	// swiper
 	swiper_index: '/pages/swiper/index',
 	// scroll

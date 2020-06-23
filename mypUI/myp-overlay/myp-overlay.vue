@@ -8,7 +8,10 @@
 	// #ifdef APP-NVUE
 	const animation = weex.requireModule('animation');
 	// #endif
+	import windowMixin from '../myp-mixin/windowMixin.js'
+	
 	export default {
+		mixins: [windowMixin],
 		props: {
 			show: {
 				type: Boolean,
@@ -62,8 +65,20 @@
 				if (this.bg && this.bg.length > 0) {
 					_style += `background-color:${this.bg};`
 				}
-				_style += `left:${this.left};top:${this.top};right:${this.right};bottom:${this.bottom};`
+				_style += `left:${this.leftPx}px;top:${this.topPx}px;right:${this.rightPx}px;bottom:${this.bottomPx}px;`
 				return _style
+			},
+			leftPx() {
+				return this.mypToPx(this.left)
+			},
+			topPx() {
+				return this.mypGetHeight(this.top)
+			},
+			rightPx() {
+				return this.mypToPx(this.right)
+			},
+			bottomPx() {
+				return this.mypGetHeight(this.bottom)
 			}
 		},
 		watch: {

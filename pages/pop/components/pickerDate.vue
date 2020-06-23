@@ -39,11 +39,9 @@
  				this.$emit("confirm", this.result)
 			},
 			initedDate(val) {
-				console.log(val)
 				this.result = JSON.parse(JSON.stringify(val||{}))
 			},
 			changedDate(val) {
-				console.log(val)
 				this.result = JSON.parse(JSON.stringify(val||{}))
 			}
 		}

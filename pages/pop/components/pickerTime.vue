@@ -1,7 +1,7 @@
 <template>
-	<myp-popup pos="bottom">
+	<myp-popup :show="show" pos="bottom" height="600" @overlayClicked="toCancel">
 		<myp-picker-header @cancel="toCancel" @confirm="toConfirm"></myp-picker-header>
-		<myp-picker-content :value="value" :current="current" mode="date" @inited="initedDate" @change="changedDate"></myp-picker-content>
+		<myp-picker-content :value="value" :current="current" mode="dateTime" @inited="initedDate" @change="changedDate"></myp-picker-content>
 	</myp-popup>
 </template>
 
@@ -13,12 +13,14 @@
 				default: false
 			},
 			value: {
-				type: String,
-				default: ''
+				type: Array,
+				default: ()=>{
+					return [1996,10,15,9,10,46,0]
+				}
 			},
 			current: {
 				type: Boolean,
-				default: true
+				default: false
 			}
 		},
 		data() {
@@ -37,11 +39,9 @@
  				this.$emit("confirm", this.result)
 			},
 			initedDate(val) {
-				console.log(val)
 				this.result = JSON.parse(JSON.stringify(val||{}))
 			},
 			changedDate(val) {
-				console.log(val)
 				this.result = JSON.parse(JSON.stringify(val||{}))
 			}
 		}

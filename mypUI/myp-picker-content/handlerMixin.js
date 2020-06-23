@@ -3,14 +3,14 @@ import dateTimeMaker from "./dateData.js"
 export default {
 	methods: {
 		getCurrent() {
-			let aToday = new Date()
-			let tYear = aToday.getFullYear().toString()
-			let tMonth = this.formatNum(aToday.getMonth() + 1).toString()
-			let tDay = this.formatNum(aToday.getDate()).toString()
-			let tHours = this.formatNum(aToday.getHours()).toString()
-			let tMinutes = this.formatNum(aToday.getMinutes()).toString()
-			let tSeconds = this.formatNum(aToday.getSeconds()).toString()
 			if (this.current) {
+				const aToday = new Date()
+				const tYear = aToday.getFullYear().toString()
+				const tMonth = this.formatNum(aToday.getMonth() + 1).toString()
+				const tDay = this.formatNum(aToday.getDate()).toString()
+				const tHours = this.formatNum(aToday.getHours()).toString()
+				const tMinutes = this.formatNum(aToday.getMinutes()).toString()
+				const tSeconds = this.formatNum(aToday.getSeconds()).toString()
 				return [tYear, tMonth, tDay, tHours, (Math.floor(tMinutes / this.step) * this.step).toString(), tSeconds]
 			} else {
 				return this.value

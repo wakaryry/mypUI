@@ -57,10 +57,10 @@
 		<modal-opacity :show="modalOpacityVisible" @cancel="toHidePop" @confirm="toHidePop"></modal-opacity>
 		<modal-scale :show="modalScaleVisible" @cancel="toHidePop" @confirm="toHidePop"></modal-scale>
 		<modal-top :show="modalTopVisible" @cancel="toHidePop" @confirm="toHidePop"></modal-top>
-		<picker-date :show="pickerDateVisible"></picker-date>
-		<picker-time :show="pickerTimeVisible"></picker-time>
-		<picker-range :show="pickerRangeVisible"></picker-range>
-		<picker-area :show="pickerAreaVisible"></picker-area>
+		<picker-date :show="pickerDateVisible" @cancel="toHidePop" @confirm="confirmPicker"></picker-date>
+		<picker-time :show="pickerTimeVisible" @cancel="toHidePop" @confirm="confirmPicker"></picker-time>
+		<picker-range :show="pickerRangeVisible" @cancel="toHidePop" @confirm="confirmPicker"></picker-range>
+		<picker-area :show="pickerAreaVisible" @cancel="toHidePop" @confirm="confirmPicker"></picker-area>
 		<myp-loading ref="myp-loading"></myp-loading>
 		<myp-toast ref="myp-toast"></myp-toast>
 	</view>
@@ -197,6 +197,13 @@ export default {
 		toShowPicker(val) {
 			console.log(val)
 			this[val.name+'Visible'] = true
+		},
+		confirmPicker(val) {
+			this.toHidePop()
+			this.$refs['myp-toast'].show({
+				type: 'success',
+				text: '选择' + val.checkArr.join('-')
+			})
 		},
 		toShowModal(val) {
 			this[val.name+'Visible'] = true

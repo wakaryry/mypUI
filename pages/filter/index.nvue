@@ -1,6 +1,6 @@
 <template>
 	<view>
-		<myp-navbar :lefts="leftIcons" title="swiper" @leftAction="navLeftAction"></myp-navbar>
+		<myp-navbar :lefts="leftIcons" title="Filter" @leftAction="navLeftAction"></myp-navbar>
 		<myp-list-simple bgType="page"></myp-list-simple>
 	</view>
 </template>

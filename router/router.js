@@ -27,6 +27,10 @@ export default {
 	tabbar_hump_border: '/pages/tabbar/hump_border',
 	tabbar_normal: '/pages/tabbar/normal',
 	tabbar_no_text: '/pages/tabbar/no_text',
+	// picker
+	picker_index: '/pages/picker/index',
+	// filter
+	filter_index: '/pages/filter/index',
 	// swiper
 	swiper_index: '/pages/swiper/index',
 	// scroll
@@ -53,6 +57,8 @@ export default {
 	scroll_list_more: "/pages/scroll/list_more",
 	scroll_waterfall: '/pages/scroll/waterfall',
 	scroll_x_support: '/pages/scroll/x_support',
+	// others
+	others_index: '/pages/others/index',
 	// helper
 	about: '/pages/helper/about'
 }

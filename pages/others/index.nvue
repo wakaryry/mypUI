@@ -1,15 +1,22 @@
 <template>
-	<div>
-		
-	</div>
+	<view>
+		<myp-navbar :lefts="leftIcons" title="其它内容" @leftAction="navLeftAction"></myp-navbar>
+		<myp-list-simple bgType="page"></myp-list-simple>
+	</view>
 </template>
 
 <script>
+	import navHelper from '@/router/navHelper.js'
+	
 	export default {
-		
+		mixins: [navHelper],
+		data() {
+			return {
+			}
+		}
 	}
 </script>
 
-<style>
+<style lang="scss">
 
 </style>

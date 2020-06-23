@@ -112,6 +112,27 @@
 				"disableScroll": true
 			}
 		},
+		// picker
+		{
+			"path": "pages/picker/index",
+			"style": {
+				"disableScroll": true
+			}
+		},
+		// filter
+		{
+			"path": "pages/filter/index",
+			"style": {
+				"disableScroll": true
+			}
+		},
+		// navbar
+		{
+			"path": "pages/navbar/index",
+			"style": {
+				"disableScroll": true
+			}
+		},
 		// tabbar
 		{
 			"path": "pages/tabbar/index",
@@ -291,6 +312,13 @@
 		},
 		{
 			"path": "pages/scroll/x_support",
+			"style": {
+				"disableScroll": true
+			}
+		},
+		// others
+		{
+			"path": "pages/others/index",
 			"style": {
 				"disableScroll": true
 			}

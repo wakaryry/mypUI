@@ -39,6 +39,13 @@
 					intro: '图标 按钮 输入框 单元格 格子 标签 ...',
 					hint: '查看具体'
 				}, {
+					icon: 'bold-refresh',
+					name: '下拉上提',
+					type: 'scroll_index',
+					title: 'scroll和list',
+					intro: '分别对mp/h5/app端做了下拉与上提',
+					hint: '试试感觉'
+				}, {
 					icon: 'warning',
 					name: '弹层互动',
 					type: 'pop_index',
@@ -52,6 +59,20 @@
 					title: '完全自定义',
 					intro: '默认与随心所欲之间，没有限制',
 					hint: '查看样板'
+				}, {
+					icon: 'album',
+					name: '弹层选择',
+					type: 'filter_index',
+					title: 'filter/down-up',
+					intro: '选择filter/dropdown，等',
+					hint: '马上感受'
+				}, {
+					icon: 'topic',
+					name: 'Picker',
+					type: 'picker_index',
+					title: '各种picker',
+					intro: 'myp-popup封装的picker示范',
+					hint: '体验一下'
 				}, {
 					icon: 'solid-plus',
 					name: 'Tabbar',
@@ -67,16 +88,9 @@
 					intro: '还有针对app端的余弦放大缩小特效',
 					hint: '试下手感'
 				}, {
-					icon: 'bold-refresh',
-					name: '下拉上提',
-					type: 'scroll_index',
-					title: 'scroll和list',
-					intro: '分别对mp/h5/app端做了下拉与上提',
-					hint: '试试感觉'
-				}, {
 					icon: 'radio',
 					name: '其它',
-					type: '',
+					type: 'others_index',
 					title: '组件或页面',
 					intro: '常用的一些UI设计，以及页面',
 					hint: '去瞄一下'

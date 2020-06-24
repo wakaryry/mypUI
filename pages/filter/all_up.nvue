@@ -1,15 +1,44 @@
 <template>
-	<div>
-		
-	</div>
+	<view>
+		<myp-navbar :lefts="leftIcons" title="点我弹出全屏筛选" @leftAction="navLeftAction" @centerAction="toToggle"></myp-navbar>
+		<myp-list-simple bgType="page">
+			
+		</myp-list-simple>
+		<all-up-pop :show="allVisible" :current="service" @cancel="toToggle" @select="toSelect"></all-up-pop>
+	</view>
 </template>
 
 <script>
+	import allUpPop from './components/allUpPop.vue'
+	import navHelper from '@/router/navHelper.js'
+	
 	export default {
-		
+		components: {
+			allUpPop
+		},
+		mixins: [navHelper],
+		data() {
+			return {
+				allVisible: false,
+				service: {
+					id: 0,
+					title: '服务商'
+				}
+			}
+		},
+		methods: {
+			toToggle() {
+				this.allVisible = !this.allVisible
+				console.log('hhhhhhhhhh')
+			},
+			toSelect(val) {
+				this.service = val
+				this.allVisible = false
+			}
+		}
 	}
 </script>
 
-<style>
-
+<style lang="scss">
+	@import '@/mypUI/mypui.scss';
 </style>

@@ -36,6 +36,7 @@ export default {
 	filter_more_down: '/pages/filter/more_down',
 	filter_up: '/pages/filter/up',
 	filter_more_up: '/pages/filter/more_up',
+	filter_all_up: '/pages/filter/all_up',
 	// swiper
 	swiper_index: '/pages/swiper/index',
 	// scroll

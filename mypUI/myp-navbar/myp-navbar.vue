@@ -16,7 +16,7 @@
 				</view>
 				<view class="myp-nav-title" :style="centerStyle">
 					<slot name="title">
-						<text v-if="title" class="myp-nav-title-text" :style="titleStyle" @tap="clickCenter">{{ title }}</text>
+						<text v-if="title" class="myp-nav-title-text" :style="titleStyle" @tap.stop="clickCenter">{{ title }}</text>
 						<myp-icon v-if="icon" :name="icon" :iconStyle="mrIconStyle" @iconClicked="clickCenter"></myp-icon>
 					</slot>
 				</view>
@@ -150,7 +150,8 @@
 			goLeft(i) {
 				this.$emit("leftAction", i)
 			},
-			clickCenter() {
+			clickCenter(e) {
+				e.stopPropagation && e.stopPropagation()
 				this.$emit("centerAction")
 			},
 			goRight(i) {

@@ -24,7 +24,8 @@
 					{icon: 'star', name: 'dropdown', desc: '单个dropdown', page: 'filter_down'},
 					{icon: 'star', name: 'more-dropdown', desc: '多个dropdown', page: 'filter_more_down'},
 					{icon: 'star-two', name: 'foot-slideup', desc: '单个slideup', page: 'filter_up'},
-					{icon: 'star-two', name: 'foot-more-slideup', desc: '多个slideup', page: 'filter_more_up'}
+					{icon: 'star-two', name: 'foot-more-slideup', desc: '多个slideup', page: 'filter_more_up'},
+					{icon: 'star-two', name: 'foot-all-slideup', desc: '全屏弹出', page: 'filter_all_up'}
 				]
 			}
 		},

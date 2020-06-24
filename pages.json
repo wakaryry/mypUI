@@ -156,6 +156,12 @@
 				"disableScroll": true
 			}
 		},
+		{
+			"path": "pages/filter/all_up",
+			"style": {
+				"disableScroll": true
+			}
+		},
 		// navbar
 		{
 			"path": "pages/navbar/index",

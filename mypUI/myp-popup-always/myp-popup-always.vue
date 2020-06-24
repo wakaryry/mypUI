@@ -131,9 +131,6 @@
 			},
 			mrOverlayStyle() {
 				let style = `left:${this.leftPx}px;top:${this.topPx}px;right:${this.rightPx}px;`
-				// #ifndef APP-NVUE
-				style += `bottom:${this.bottomPx}px;`
-				// #endif
 				return style
 			},
 			mrPopStyle() {
@@ -157,9 +154,7 @@
 						}
 						if (this.pos === 'center') {
 							style['opacity'] = 0
-							// #ifdef APP-NVUE
 							style['transform'] = 'scale(0,0)'
-							// #endif
 						}
 						this.pos === 'scale-center' && (style['transform'] = 'scale(0,0)')
 					} else if (this.pos === 'left-center' || this.pos === 'right-center') {
@@ -318,6 +313,7 @@
 				let _style = "transition-duration:" + duration + 'ms;'
 				_style += "transition-timing-function:" + this.animation.timingFunction + ';'
 				if (this.pos === 'center') {
+					_style += bool ? 'transform: scale(1,1);' : ''
 					_style += 'transition-property:opacity;'
 					_style += 'opacity:' + (bool ? 1 : 0) + ';'
 				} else {
@@ -325,13 +321,20 @@
 					_style += "transform:" + this.getTransform(this.pos, !bool) + ';'
 				}
 				this.noWeexAni = _style
+				setTimeout(()=>{
+					!bool && (this.noWeexAni='')
+				}, duration)
 				const that = this
 				// overlay
 				let _oStyle = "transition-duration:" + this.overlay.duration + 'ms;'
+				bool && (_oStyle += `height:${this.overlayHeight}px;`)
 				_oStyle += "transition-timing-function:" + (bool ? this.overlay.timingFunction[0] : this.overlay.timingFunction[1]) + ';'
 				_oStyle += 'transition-property:opacity;'
 				_oStyle += 'opacity:' + (bool ? 1 : 0) + ';'
 				this.overlayNoWeexAni = _oStyle
+				setTimeout(() => {
+					!bool && (this.overlayNoWeexAni = '')
+				}, this.overlay.duration)
 			},
 			getTransform(pos, toClose) {
 				let _size = 0
@@ -422,9 +425,7 @@
 		&-over {
 			position: fixed;
 			opacity: 0;
-			/* #ifdef APP-NVUE */
 			height: 0px;
-			/* #endif */
 		}
 	}
 </style>

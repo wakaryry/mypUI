@@ -1,20 +1,54 @@
 <template>
 	<view>
-		<myp-navbar :lefts="leftIcons" title="Filter" @leftAction="navLeftAction"></myp-navbar>
-		<myp-list-simple bgType="page">
+		<myp-navbar :lefts="leftIcons" title="底部出现" @leftAction="navLeftAction"></myp-navbar>
+		<myp-list-simple bgType="page" :includeXBar="false" extra="64px">
 			
 		</myp-list-simple>
+		<up-pop :show="upVisible" :current="current" @cancel="toToggleUp" @select="selectedUp"></up-pop>
+		<myp-position :fixed="true" boxStyle="left:0;width:750rpx;">
+			<view class="up-btn">
+				<myp-button text="选择您的爱好" bgType="primary" border="none" radius="ll" boxStyle="width:420rpx;height:40px;" @buttonClicked="toToggleUp"></myp-button>
+			</view>
+			<myp-x-bar bgType="inverse" boxStyle="width:750rpx;"></myp-x-bar>
+		</myp-position>
 	</view>
 </template>
 
 <script>
+	import upPop from './components/upPop.vue'
+	
 	import navHelper from '@/router/navHelper.js'
 	
 	export default {
-		mixins: [navHelper]
+		components: {
+			upPop
+		},
+		mixins: [navHelper],
+		data() {
+			return {
+				upVisible: false,
+				current: []
+			}
+		},
+		methods: {
+			toToggleUp() {
+				this.upVisible = !this.upVisible
+			},
+			selectedUp(val) {
+				this.current = val
+			}
+		}
 	}
 </script>
 
-<style>
-
+<style lang="scss">
+	.up {
+		&-btn {
+			width: 750rpx;
+			height: 64px;
+			justify-content: center;
+			align-items: center;
+			background-color: #FFFFFF;
+		}
+	}
 </style>

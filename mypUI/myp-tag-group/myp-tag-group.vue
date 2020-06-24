@@ -36,6 +36,11 @@
 				type: Number,
 				default: 0
 			},
+			// limits为1时是否允许取消当前选择
+			leastOne: {
+				type: Boolean,
+				default: false
+			},
 			// 0表示动态宽度，其余就是等宽
 			column: {
 				type: Number,
@@ -218,7 +223,11 @@
 						item['myp-checked'] = false
 					})
 				}
-				item['myp-checked'] = isToCheck
+				if (this.limits === 1 && this.leastOne) {
+					item['myp-checked'] = true
+				} else {
+					item['myp-checked'] = isToCheck
+				}
 				const _vals = []
 				this.updatedItems.forEach(item => {
 					if (item['myp-checked']) {

@@ -1,15 +1,19 @@
 <template>
 	<view>
-		<view>
-			<myp-overlay :show="overlayShow" :bgType="overlay.bgType" :bg="overlay.bg" :duration="overlay.duration" :hasAnimation="overlay.hasAnimation" :timingFunction="overlay.timingFunction" :canAutoClose="false" :left="left" :top="top" :right="right" :bottom="bottom" @overlayClicked="overlayClicked"></myp-overlay>
+		<view ref="myp-popo-overlay" :class="['myp-popo-over', 'myp-bg-'+overlay.bgType]" @tap.stop="overlayClose" :style="mrOverlayStyle + overlayNoWeexAni">
+			<slot name="overlay"></slot>
 		</view>
-		<view ref="myp-popup" v-if="helpShow" @click.stop="toPrevent" :class="['myp-popup', 'myp-bg-'+bgType]" :style="boxStyle+mrPopStyle + noWeexAni">
+		<view ref="myp-popo" @tap.stop="toPrevent" :class="['myp-popo', 'myp-bg-'+bgType]" :style="boxStyle+mrPopStyle + noWeexAni">
 			<slot></slot>
 		</view>
 	</view>
 </template>
 
 <script>
+	//
+	// 一直存在，不通过v-if控制，直接控制是否在可见屏幕内
+	// 支持standout
+	//
 	// #ifdef APP-NVUE
 	const animation = weex.requireModule('animation');
 	// #endif
@@ -39,7 +43,6 @@
 			overlay: {
 				type: Object,
 				default: () => ({
-					hasAnimation: true,
 					timingFunction: ['ease-in', 'ease-out'],
 					duration: 300,
 					bg: '',
@@ -50,6 +53,11 @@
 				type: [Number, String],
 				default: 0
 			},
+			standout: {
+				type: [Number, String],
+				default: '0'
+			},
+			// 打开后与边框的距离. 可以通过其它方式实现，比如内容高度增加，然后背景色透明
 			leftOffset: {
 				type: [Number, String],
 				default: -1
@@ -99,10 +107,9 @@
 		},
 		data() {
 			return {
-				// we need to add a v-if in overlay, 
-				// or it will show upper on the popup content 
 				overlayShow: false,
 				helpShow: false,
+				overlayNoWeexAni: '',
 				noWeexAni: '',
 				isShow: false
 			}
@@ -118,6 +125,16 @@
 			},
 			screenHeight() {
 				return this.mypGetScreenHeight()
+			},
+			overlayHeight() {
+				return this.screenHeight - this.topPx - this.bottomPx
+			},
+			mrOverlayStyle() {
+				let style = `left:${this.leftPx}px;top:${this.topPx}px;right:${this.rightPx}px;`
+				// #ifndef APP-NVUE
+				style += `bottom:${this.bottomPx}px;`
+				// #endif
+				return style
 			},
 			mrPopStyle() {
 				let style = {
@@ -138,7 +155,12 @@
 								style['top'] = (this.screenHeight - this.heightPx) * 0.5 - this.bottomOffsetPx + 'px'
 							}
 						}
-						this.pos === 'center' && (style['opacity'] = 0)
+						if (this.pos === 'center') {
+							style['opacity'] = 0
+							// #ifdef APP-NVUE
+							style['transform'] = 'scale(0,0)'
+							// #endif
+						}
 						this.pos === 'scale-center' && (style['transform'] = 'scale(0,0)')
 					} else if (this.pos === 'left-center' || this.pos === 'right-center') {
 						if (this.topOffsetPx < 0 && this.bottomOffsetPx < 0) {
@@ -150,12 +172,12 @@
 								style['top'] = (this.screenHeight - this.heightPx) * 0.5 - this.bottomOffsetPx + 'px'
 							}
 						}
-						this.pos === 'left-center' && (style['left'] = -this.widthPx + 'px')
-						this.pos === 'right-center' && (style['right'] = -this.widthPx + 'px')
+						this.pos === 'left-center' && (style['left'] = -this.widthPx + this.standoutPx + 'px')
+						this.pos === 'right-center' && (style['right'] = -this.widthPx + this.standoutPx + 'px')
 					} else if (this.pos === 'top-center' || this.pos === 'bottom-center') {
 						style['left'] = (this.screenWidth - this.widthPx) * 0.5 + 'px'
-						this.pos === 'top-center' && (style['top'] = -this.heightPx + 'px')
-						this.pos === 'bottom-center' && (style['bottom'] = -this.heightPx + 'px')
+						this.pos === 'top-center' && (style['top'] = -this.heightPx + this.standoutPx + 'px')
+						this.pos === 'bottom-center' && (style['bottom'] = -this.heightPx + this.standoutPx + 'px')
 					}
 				}
 				// top: left/right-width-height-top  bottom: left/right-width-height-bottom
@@ -169,8 +191,8 @@
 							style['right'] = (this.rightPx + this.rightOffsetPx) + 'px'
 						}
 					}
-					this.pos === 'top' && (style['top'] = -this.heightPx + 'px')
-					this.pos === 'bottom' && (style['bottom'] = -this.heightPx + 'px')
+					this.pos === 'top' && (style['top'] = -this.heightPx + this.standoutPx + 'px')
+					this.pos === 'bottom' && (style['bottom'] = -this.heightPx + this.standoutPx + 'px')
 				}
 				if (this.pos === 'left' || this.pos === 'right') {
 					if (this.topOffsetPx < 0 && this.bottomOffsetPx < 0) {
@@ -182,8 +204,8 @@
 							style['bottom'] = (this.bottomPx + this.bottomOffsetPx) + 'px'
 						}
 					}
-					this.pos === 'left' && (style['left'] = -this.widthPx + 'px')
-					this.pos === 'right' && (style['right'] = -this.widthPx + 'px')
+					this.pos === 'left' && (style['left'] = -this.widthPx + this.standoutPx + 'px')
+					this.pos === 'right' && (style['right'] = -this.widthPx + this.standoutPx + 'px')
 				}
 				let _style = ""
 				for (const i in style) {
@@ -207,6 +229,9 @@
 					return this.screenWidth - this.leftPx - this.rightPx - (this.leftOffsetPx>=0?this.leftOffsetPx:0) - (this.rightOffsetPx>=0?this.rightOffsetPx:0)
 				}
 				return w
+			},
+			standoutPx() {
+				return this.mypGetHeight(this.standout)
 			},
 			leftOffsetPx() {
 				if (this.leftOffset === -1) return -1;
@@ -239,36 +264,10 @@
 		},
 		methods: {
 			toHackShow(bool) {
-				if (bool) {
-					// 先渲染元素
-					this.overlayShow = true
-					// 必须确保overlay先于popup-content渲染，将popup-content移入下一个loop
-					setTimeout(()=>{
-						this.helpShow = true
-					}, 0)
-					// app端不能同一个loop同步执行，否则overlay始终在最上层
-					// this.helpShow = true
-					// 为了能够获取到元素，且实现动画
-					setTimeout(() => {
-						this.appearPopup(bool);
-					}, 50);
-				} else {
-					// 关闭动画需要执行动画之后再关闭v-if
-					this.overlayShow = false
-					this.appearPopup(bool)
-				}
+				this.appearPopup(bool)
 			},
-			showPopup() {
-				// ref method
-			},
-			hidePopup() {
-				// ref method
-				this.appearPopup(false);
-				this.$refs.overlay.appearOverlay(false);
-			},
-			// since we can not auto close the overlay in popup, the event is just overlayClicked.
-			// and we do not close the popup auto, so we could use it as a modal
-			overlayClicked() {
+			overlayClose(e) {
+				e.stopPropagation && e.stopPropagation()
 				this.isShow && (this.$emit('overlayClicked', {}));
 			},
 			appearPopup(bool, duration = this.duration) {
@@ -281,7 +280,7 @@
 			},
 			weexAppearPopup(bool, duration = this.duration) {
 				this.isShow = bool;
-				const popupEl = this.$refs['myp-popup'];
+				const popupEl = this.$refs['myp-popo'];
 				if (!popupEl) {
 					return;
 				}
@@ -289,6 +288,7 @@
 				let styles = {}
 				if (this.pos === 'center') {
 					styles = {opacity: bool ? 1 : 0}
+					bool && (animation.transition(popupEl, {styles: {transform: 'scale(1,1)'},duration: 0,delay: 0}))
 				} else {
 					styles = {transform: this.getTransform(this.pos, !bool)}
 				}
@@ -298,10 +298,20 @@
 					delay: 0,
 					...this.animation
 				}, () => {
-					if (!bool) {
-						that.helpShow = false;
-					}
-				});
+					!bool && this.pos === 'center' && (animation.transition(popupEl, {styles: {transform: 'scale(0,0)'},duration: 0,delay: 0}))
+				})
+				// overlay
+				const popupOverEl = this.$refs['myp-popo-overlay']
+				if (!popupOverEl) return;
+				bool && (animation.transition(popupOverEl, {styles: {height: `${this.overlayHeight}px`},duration: 0,delay: 0}))
+				animation.transition(popupOverEl, {
+					styles: {opacity: bool ? 1 : 0},
+					duration: this.overlay.duration,
+					delay: 0,
+					timingFunction: bool ? this.overlay.timingFunction[0] : this.overlay.timingFunction[1]
+				}, () => {
+					!bool && (animation.transition(popupOverEl, {styles: {height: '0px'},duration: 0,delay: 0}))
+				})
 			},
 			noWeexAppearPopup(bool, duration = this.duration) {
 				this.isShow = bool
@@ -316,11 +326,12 @@
 				}
 				this.noWeexAni = _style
 				const that = this
-				setTimeout(()=>{
-					if (!bool) {
-						that.helpShow = false;
-					}
-				}, duration)
+				// overlay
+				let _oStyle = "transition-duration:" + this.overlay.duration + 'ms;'
+				_oStyle += "transition-timing-function:" + (bool ? this.overlay.timingFunction[0] : this.overlay.timingFunction[1]) + ';'
+				_oStyle += 'transition-property:opacity;'
+				_oStyle += 'opacity:' + (bool ? 1 : 0) + ';'
+				this.overlayNoWeexAni = _oStyle
 			},
 			getTransform(pos, toClose) {
 				let _size = 0
@@ -328,25 +339,25 @@
 				switch (pos) {
 					case 'top':
 						if (!toClose) {
-							_size = this.heightPx + this.topPx + (this.topOffsetPx >= 0 ? this.topOffsetPx : 0)
+							_size = this.heightPx - this.standoutPx + this.topPx + (this.topOffsetPx >= 0 ? this.topOffsetPx : 0)
 						}
 						_transform = `translateY(${_size}px)`;
 						break;
 					case 'bottom':
 						if (!toClose) {
-							_size = this.heightPx + this.bottomPx + (this.bottomOffsetPx >= 0 ? this.bottomOffsetPx : 0)
+							_size = this.heightPx - this.standoutPx + this.bottomPx + (this.bottomOffsetPx >= 0 ? this.bottomOffsetPx : 0)
 						}
 						_transform = `translateY(-${_size}px)`;
 						break;
 					case 'left':
 						if (!toClose) {
-							_size = this.widthPx + this.leftPx + (this.leftOffsetPx >= 0 ? this.leftOffsetPx : 0)
+							_size = this.widthPx - this.standoutPx + this.leftPx + (this.leftOffsetPx >= 0 ? this.leftOffsetPx : 0)
 						}
 						_transform = `translateX(${_size}px)`;
 						break;
 					case 'right':
 						if (!toClose) {
-							_size = this.widthPx + this.rightPx + (this.rightOffsetPx >= 0 ? this.rightOffsetPx : 0)
+							_size = this.widthPx - this.standoutPx + this.rightPx + (this.rightOffsetPx >= 0 ? this.rightOffsetPx : 0)
 						}
 						_transform = `translateX(-${_size}px)`;
 						break;
@@ -355,25 +366,25 @@
 						break
 					case 'left-center':
 						if (!toClose) {
-							_size = (this.screenWidth + this.widthPx) * 0.5
+							_size = (this.screenWidth + this.widthPx) * 0.5 - this.standoutPx
 						}
 						_transform = `translateX(${_size}px)`;
 						break
 					case 'right-center':
 						if (!toClose) {
-							_size = (this.screenWidth + this.widthPx) * 0.5
+							_size = (this.screenWidth + this.widthPx) * 0.5 - this.standoutPx
 						}
 						_transform = `translateX(-${_size}px)`;
 						break
 					case 'top-center':
 						if (!toClose) {
 							if (this.topOffsetPx < 0 && this.bottomOffsetPx < 0) {
-								_size = (this.screenHeight + this.heightPx) * 0.5
+								_size = (this.screenHeight + this.heightPx) * 0.5 - this.standoutPx
 							} else{
 								 if (this.topOffsetPx >= 0) {
-								    _size = (this.screenHeight + this.heightPx) * 0.5 + this.topOffsetPx
+								    _size = (this.screenHeight + this.heightPx) * 0.5 + this.topOffsetPx - this.standoutPx
 								} else if (this.bottomOffsetPx >= 0) {
-								    _size = (this.screenHeight + this.heightPx) * 0.5 - this.bottomOffsetPx
+								    _size = (this.screenHeight + this.heightPx) * 0.5 - this.bottomOffsetPx - this.standoutPx
 								}
 							}
 						}
@@ -382,12 +393,12 @@
 					case 'bottom-center':
 						if (!toClose) {
 							if (this.topOffsetPx < 0 && this.bottomOffsetPx < 0) {
-								_size = (this.screenHeight + this.heightPx) * 0.5
+								_size = (this.screenHeight + this.heightPx) * 0.5 - this.standoutPx
 							} else{
 								 if (this.topOffsetPx >= 0) {
-								    _size = (this.screenHeight + this.heightPx) * 0.5 - this.topOffsetPx
+								    _size = (this.screenHeight + this.heightPx) * 0.5 - this.topOffsetPx - this.standoutPx
 								} else if (this.bottomOffsetPx >= 0) {
-								    _size = (this.screenHeight + this.heightPx) * 0.5 + this.bottomOffsetPx
+								    _size = (this.screenHeight + this.heightPx) * 0.5 + this.bottomOffsetPx - this.standoutPx
 								}
 							}
 						}
@@ -404,8 +415,16 @@
 </script>
 
 <style lang="scss" scoped>
-	.myp-popup {
+	.myp-popo {
 		position: fixed;
 		width: 750rpx;
+		
+		&-over {
+			position: fixed;
+			opacity: 0;
+			/* #ifdef APP-NVUE */
+			height: 0px;
+			/* #endif */
+		}
 	}
 </style>

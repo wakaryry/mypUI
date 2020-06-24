@@ -1,5 +1,5 @@
 <template>
-	<view :class="['myp-overlay', 'myp-bg-'+bgType]" v-if="helpShow" ref="myp-overlay" @click.stop="overlayClose" :style="overlayStyle + noWeexTransition" >
+	<view :class="['myp-overlay', 'myp-bg-'+bgType]" v-if="helpShow" ref="myp-overlay" @click.stop="overlayClose" :style="overlayStyle + noWeexTransition">
 		<slot></slot>
 	</view>
 </template>
@@ -239,7 +239,6 @@
 
 <style lang="scss" scoped>
 	.myp-overlay {
-		width: 750rpx;
 		position: fixed;
 		top: 0;
 		right: 0;

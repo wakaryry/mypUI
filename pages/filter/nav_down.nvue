@@ -4,8 +4,8 @@
 		<myp-list-simple bgType="page">
 			
 		</myp-list-simple>
-		<nav-down-pop :show="downVisible" :current="current"></nav-down-pop>
-		<myp-navbar :fixed="true" :isSeize="false" :lefts="leftIcons" title="dropdown" icon="down" titleStyle="margin-right:12rpx;max-width:300rpx;" @leftAction="navLeftAction" @centerAction="toToggleDropDown"></myp-navbar>
+		<nav-down-pop :show="downVisible" :current="current" @select="changedFilter" @cancel="toToggleDropDown"></nav-down-pop>
+		<myp-navbar :fixed="true" :isSeize="false" :lefts="leftIcons" :title="current.title" icon="down" titleStyle="margin-right:12rpx;max-width:300rpx;" @leftAction="navLeftAction" @centerAction="toToggleDropDown"></myp-navbar>
 	</view>
 </template>
 
@@ -24,11 +24,15 @@
 				downVisible: false,
 				current: {
 					id: 0,
-					name: '全部'
+					title: '全部心情'
 				}
 			}
 		},
 		methods: {
+			changedFilter(val) {
+				this.current = Object.assign({}, val)
+				this.downVisible = false
+			},
 			toToggleDropDown() {
 				this.downVisible = !this.downVisible
 			}

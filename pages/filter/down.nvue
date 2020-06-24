@@ -1,20 +1,70 @@
 <template>
 	<view>
-		<myp-navbar :lefts="leftIcons" title="Filter" @leftAction="navLeftAction"></myp-navbar>
+		<myp-height height="status-nav"></myp-height>
 		<myp-list-simple bgType="page">
 			
 		</myp-list-simple>
+		<down-pop :show="downVisible" :current="service" @cancel="toToggle" @select="toSelect"></down-pop>
+		<myp-navbar :fixed="true" :isSeize="false" :lefts="leftIcons" title="dropdown" @leftAction="navLeftAction"></myp-navbar>
+		<myp-position :fixed="true" pos="top" offset="status-nav" boxStyle="left:32rpx;width:200rpx;">
+			<view class="d-select" @tap.stop="toToggle">
+				<text class="d-select-text">{{service.title}}</text>
+			</view>
+		</myp-position>
 	</view>
 </template>
 
 <script>
+	import downPop from './components/downPop.vue'
 	import navHelper from '@/router/navHelper.js'
 	
 	export default {
-		mixins: [navHelper]
+		components: {
+			downPop
+		},
+		mixins: [navHelper],
+		data() {
+			return {
+				downVisible: false,
+				service: {
+					id: 0,
+					title: '服务商'
+				}
+			}
+		},
+		methods: {
+			toToggle(e) {
+				e && e.stopPropagation && e.stopPropagation()
+				this.downVisible = !this.downVisible
+			},
+			toSelect(val) {
+				this.service = val
+				this.downVisible = false
+			}
+		}
 	}
 </script>
 
-<style>
-
+<style lang="scss">
+	@import '@/mypUI/mypui.scss';
+	
+	.d {
+		&-select {
+			width: 200rpx;
+			height: 40px;
+			border-radius: 20px;
+			border-color: $myp-border-color-light;
+			border-width: 1px;
+			background-color: #FFFFFF;
+			flex-direction: row;
+			justify-content: center;
+			align-items: center;
+			
+			&-text {
+				font-size: 14px;
+				color: $myp-text-color;
+				line-height: 20px;
+			}
+		}
+	}
 </style>

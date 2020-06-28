@@ -1,7 +1,7 @@
 <template>
-	<view :class="['myp-item', flexDirection==='row' ? 'myp-item-row':'myp-item-column']" :hover-class="'myp-hover-'+hover" :style="boxStyle" @tap="clickedItem">
+	<view :class="['myp-item', flexDirection==='row' ? 'myp-item-row':'myp-item-column']" :hover-class="'myp-hover-'+hover" :style="boxStyle" bubble="true" @tap="clickedItem">
 		<text v-if="textFirst" :class="['myp-color-'+textType, 'myp-size-'+textSize]" :style="mrTextStyle">{{text}}</text>
-		<myp-icon v-if="iconKind!=='text'" :name="icon" :type="iconType" :size="iconSize" :mode="iconMode" :iconStyle="iconStyle"></myp-icon>
+		<myp-icon v-if="iconKind!=='text'" :name="icon" :type="iconType" :size="iconSize" :mode="iconMode" :iconStyle="iconStyle" @iconClicked="clickedItem"></myp-icon>
 		<text v-if="iconKind==='text'" :class="['myp-color-'+iconType, 'myp-size-'+iconSize]" :style="iconStyle">{{icon}}</text>
 		<text v-if="!textFirst" :class="['myp-color-'+textType, 'myp-size-'+textSize]" :style="mrTextStyle">{{text}}</text>
 	</view>

@@ -6,12 +6,10 @@
 			<view class="myp-nav-content" :style="mrNavStyle">
 				<view class="myp-nav-lefts" :style="leftStyle">
 					<slot name="left">
-						<block v-if="lefts && lefts.length > 0">
-							<view v-for="(left, idx) in lefts" :key="idx" bubble="true" @tap="goLeft(idx)">
-								<myp-icon v-if="left.icon" :name="left.icon" :iconStyle="mrActionIconStyle" @iconClicked="goLeft(idx)"></myp-icon>
-								<text v-if="left.text" :style="actionTextStyle">{{left.text}}</text>
-							</view>
-						</block>
+						<view v-if="lefts && lefts.length > 0" v-for="(left, idx) in lefts" :key="idx" class="myp-nav-lefts-item" bubble="true" @tap="goLeft(idx)">
+							<myp-icon v-if="left.icon" :name="left.icon" :iconStyle="mrActionIconStyle" @iconClicked="goLeft(idx)"></myp-icon>
+							<text v-if="left.text" :style="actionTextStyle">{{left.text}}</text>
+						</view>
 					</slot>
 				</view>
 				<view class="myp-nav-title" :style="centerStyle">
@@ -23,12 +21,10 @@
 				<!-- 考虑到小程序的胶囊按钮,我们使用左右各30%来占位 -->
 				<view class="myp-nav-rights" :style="rightStyle">
 					<slot name="right">
-						<block v-if="rights && rights.length > 0">
-							<view v-for="(right, idx) in rights" :key="idx" bubble="true" @tap="goRight(idx)">
-								<myp-icon v-if="right.icon" :name="right.icon" :iconStyle="mrActionIconStyle" @iconClicked="goRight(idx)"></myp-icon>
-								<text v-if="right.text" :style="actionTextStyle">{{right.text}}</text>
-							</view>
-						</block>
+						<view v-if="rights && rights.length > 0" v-for="(right, idx) in rights" :key="idx" class="myp-nav-rights-item" bubble="true" @tap="goRight(idx)">
+							<myp-icon v-if="right.icon" :name="right.icon" :iconStyle="mrActionIconStyle" @iconClicked="goRight(idx)"></myp-icon>
+							<text v-if="right.text" :style="actionTextStyle">{{right.text}}</text>
+						</view>
 					</slot>
 				</view>
 			</view>
@@ -161,53 +157,68 @@
 	}
 </script>
 
-<style scoped>
-	.myp-nav-box {
-		width: 750rpx;
-		left: 0;
-		top: 0;
-	}
-	.myp-nav-fixed {
-		position: fixed;
-	}
-	.myp-nav-content {
-		flex-direction: row;
-		flex-wrap: nowrap;
-		align-items: center;
-	}
-	.myp-nav-lefts {
-		padding-left: 30rpx;
-		width: 200rpx;
-		flex-direction: row;
-		flex-wrap: nowrap;
-		align-items: center;
-		justify-content: flex-start;
-	}
-	.myp-nav-title {
-		width: 350rpx;
-		flex-direction: row;
-		flex-wrap: nowrap;
-		justify-content: center;
-		align-items: center;
-	}
-	.myp-nav-rights {
-		padding-right: 30rpx;
-		width: 200rpx;
-		flex-direction: row;
-		flex-wrap: nowrap;
-		align-items: center;
-		justify-content: flex-end;
-	}
-	.myp-nav-title-text {
-		font-size: 16px;
-		color: #000000;
-		overflow: hidden;
-		text-overflow: ellipsis;
-		/* #ifdef APP-NVUE */
-		lines: 1;
-		/* #endif */
-		/* #ifndef APP-NVUE */
-		white-space: nowrap;
-		/* #endif */
+<style lang="scss" scoped>
+	.myp-nav {
+		&-box {
+			width: 750rpx;
+			left: 0;
+			top: 0;
+		}
+		&-fixed {
+			position: fixed;
+		}
+		&-content {
+			flex-direction: row;
+			flex-wrap: nowrap;
+			align-items: center;
+		}
+		&-lefts {
+			padding-left: 30rpx;
+			width: 200rpx;
+			flex-direction: row;
+			flex-wrap: nowrap;
+			align-items: center;
+			justify-content: flex-start;
+			
+			&-item {
+				flex-direction: row;
+				align-items: center;
+			}
+		}
+		&-title {
+			width: 350rpx;
+			flex-direction: row;
+			flex-wrap: nowrap;
+			justify-content: center;
+			align-items: center;
+			
+			&-text {
+				font-size: 16px;
+				color: #000000;
+				overflow: hidden;
+				text-overflow: ellipsis;
+				/* #ifdef APP-NVUE */
+				lines: 1;
+				/* #endif */
+				/* #ifndef APP-NVUE */
+				white-space: nowrap;
+				/* #endif */
+			}
+		}
+		&-rights {
+			padding-right: 30rpx;
+			width: 200rpx;
+			flex-direction: row;
+			flex-wrap: nowrap;
+			align-items: center;
+			justify-content: flex-end;
+			
+			&-item {
+				flex-direction: row;
+				align-items: center;
+				flex-wrap: nowrap;
+				justify-content: flex-end;
+			}
+		}
 	}
 </style>

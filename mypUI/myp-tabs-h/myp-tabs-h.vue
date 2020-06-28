@@ -1,5 +1,5 @@
 <template>
-	<scroll-view ref="scroll" id="scroll" :scroll-x="true" :scroll-left="scrollLeft" :scroll-with-animation="true" :show-scrollbar="false" :class="['myp-bg-'+bgType, 'myp-tabs-scroll']" :style="mrScrollStyle">
+	<scroll-view ref="scroll" id="scroll" :scroll-x="true" :scroll-left="scrollLeft" :scroll-with-animation="true" :show-scrollbar="false" :class="['myp-bg-'+bgType, 'myp-border-'+border, 'myp-tabs-scroll']" :style="mrScrollStyle">
 		<view style="flex-direction: column;">
 			<view :style="mrTabsStyle">
 				<view v-for="(item, index) in items" :key="index" :ref="'item'+index" :id="'item'+index" class="myp-tab-item" :style="mrItemStyle + (index===value ? activeItemStyle:'')" @click="changeTab(index)">
@@ -100,6 +100,10 @@
 			space: {
 				type: String,
 				default: '16rpx'
+			},
+			border: {
+				type: String,
+				default: 'none'
 			},
 			hasIndicator: {
 				type: Boolean,

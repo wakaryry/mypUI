@@ -1,5 +1,5 @@
 <template>
-	<view :class="['myp-tag-box', 'myp-height-'+height, 'myp-bg-'+mrBgType, 'myp-border-'+mrBorder, 'myp-border-color-'+mrBorderType, 'myp-radius-'+radius, disabled && 'myp-disabled']" :style="mrBoxStyle" @tap="toSelect">
+	<view :class="['myp-tag-box', 'myp-height-'+height, 'myp-bg-'+mrBgType, 'myp-border-'+mrBorder, 'myp-radius-'+radius, disabled && 'myp-disabled']" :style="mrBoxStyle" @tap="toSelect">
 		<slot>
 			<text :class="['myp-size-'+textSize, 'myp-color-'+mrTextType]" :style="mrTextStyle">{{text}}</text>
 		</slot>
@@ -65,14 +65,6 @@
 				type: String,
 				default: 'all'
 			},
-			borderType: {
-				type: String,
-				default: 'border'
-			},
-			selectedBorderType: {
-				type: String,
-				default: 'border'
-			},
 			radius: {
 				type: String,
 				default: 'base'
@@ -120,12 +112,6 @@
 					return this.selectedBorder
 				}
 				return this.border
-			},
-			mrBorderType() {
-				if (this.selected) {
-					return this.selectedBorderType
-				}
-				return this.borderType
 			},
 			mrBgType() {
 				if (this.selected) {

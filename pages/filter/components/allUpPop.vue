@@ -2,7 +2,7 @@
 	<myp-popup-always :show="show" pos="bottom">
 		<myp-navbar :fixed="false" :lefts="leftIcon" title="院校筛选" @leftAction="toCancel"></myp-navbar>
 		<view :hack="toHack"></view>
-		<myp-list-simple bgType="inverse" :includeXBar="false">
+		<myp-list-simple bgType="inverse">
 			<myp-list-cell>
 				<view style="height: 8rpx;"></view>
 			</myp-list-cell>
@@ -11,7 +11,7 @@
 					<myp-title :title1="filter.name" title1Size="ll" boxStyle="height:90rpx;"></myp-title>
 					<view class="ap-tags">
 						<view class="ap-tags-item" v-for="(tag, index) in filter.list" :key="index" :style="{'margin-right': (index%3===2)?'0':'21rpx'}">
-							<myp-tag :selected="tag['active']" border="none" selectedBorderType="primary" :text="tag.name" textSize="l" bgType="page" textType="text" :boxStyle="tagStyle" :selectedBgType="index===0?'inverse':'primary'" :selectedTextType="index===0?'text':'inverse'" @tagClicked="toToggleTag(tag, filter.type)"></myp-tag>
+							<myp-tag :selected="tag['active']" border="none" selectedBorder="all-primary" :text="tag.name" textSize="l" bgType="page" textType="text" :boxStyle="tagStyle" :selectedBgType="index===0?'inverse':'primary'" :selectedTextType="index===0?'text':'inverse'" @tagClicked="toToggleTag(tag, filter.type)"></myp-tag>
 						</view>
 					</view>
 				</view>

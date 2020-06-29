@@ -21,6 +21,7 @@
 		data() {
 			return {
 				mypTabHeight: 50,
+				mypIncludeXBar: false,
 				items: [{
 					uid: 1,
 					nickname: '章鱼哥哥很爱你直到天荒地老章鱼哥哥很爱你直到天荒地老',

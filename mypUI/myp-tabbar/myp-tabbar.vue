@@ -111,12 +111,6 @@
 					// try again
 					_height = this.mypGetScreenHeight()
 				}
-				if (!this.includeStatus) {
-					_height = _height - this.mypGetStatusBarHeight()
-				}
-				if (!this.includeNav) {
-					_height = _height - this.mypGetNavHeight()
-				}
 				if (_height === 0) {
 					return 0
 				}

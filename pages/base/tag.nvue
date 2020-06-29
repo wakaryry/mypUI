@@ -7,7 +7,7 @@
 			</myp-list-cell>
 			<myp-list-cell>
 				<view class="tag-items">
-					<myp-tag :selected="uAndMeState" selectedBorderType="success" text="我和你" boxStyle="width:160rpx;margin-right:15rpx;margin-bottom:16rpx;" @tagClicked="toToggleState"></myp-tag>
+					<myp-tag :selected="uAndMeState" selectedBorder="all-success" text="我和你" boxStyle="width:160rpx;margin-right:15rpx;margin-bottom:16rpx;" @tagClicked="toToggleState"></myp-tag>
 					<myp-tag text="之间" height="s" textSize="s" boxStyle="width:160rpx;margin-right:15rpx;margin-bottom:16rpx;"></myp-tag>
 					<myp-tag text="的距离" height="ll" textType="error" boxStyle="width:160rpx;margin-right:15rpx;margin-bottom:16rpx;"></myp-tag>
 					<myp-tag text="明明是" radius="ll" boxStyle="width:160rpx;margin-right:0rpx;margin-bottom:16rpx;"></myp-tag>
@@ -27,7 +27,7 @@
 				<myp-title bgType="none" title1="多选标签群:支持配置各种样式" title1Type="text" boxStyle="padding-left:32rpx;"></myp-title>
 			</myp-list-cell>
 			<myp-list-cell>
-				<myp-tag-group v-model="threeSelect" :limits="3" :column="4" :items="selections" titleLabel="title" valueLabel="id" disabledLabel="disabled" bgType="none" tagSelectedTextType="error" tagSelectedBorderType="error" boxStyle="margin-left:32rpx;margin-right:32rpx;"></myp-tag-group>
+				<myp-tag-group v-model="threeSelect" :limits="3" :column="4" :items="selections" titleLabel="title" valueLabel="id" disabledLabel="disabled" bgType="none" tagSelectedTextType="error" tagSelectedBorder="all-error" boxStyle="margin-left:32rpx;margin-right:32rpx;"></myp-tag-group>
 			</myp-list-cell>
 			<myp-list-cell>
 				<view class="tag-foot">

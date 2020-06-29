@@ -1,21 +1,8 @@
-const bem = require('./bem.js').bem;
-const memoize = require('./memoize.js').memoize;
-let systemInfo = ''
-try {
-	// it will run every time imported since it's isolated
-	systemInfo = uni.getSystemInfoSync();
-} catch (e) {
-	systemInfo = {}
-}
-
 function isSrc(url) {
 	return url.indexOf('http') === 0 || url.indexOf('data:image') === 0 || url.indexOf('//') === 0;
 }
 
-import UrlParser from 'url-parse';
-
 const Utils = {
-	UrlParser: UrlParser,
 	_typeof(obj) {
 		return Object.prototype.toString
 			.call(obj)
@@ -84,18 +71,6 @@ const Utils = {
 		const parsedUrl = new UrlParser(url, true);
 		return parsedUrl.toString();
 	},
-	// only works in app-weex env, do not use it in mp/h5 of uni-app
-	goToH5Page(jumpUrl, animated = false, callback = null) {
-		const Navigator = weex.requireModule('navigator');
-		const jumpUrlObj = new Utils.UrlParser(jumpUrl, true);
-		const url = Utils.appendProtocol(jumpUrlObj.toString());
-		Navigator.push({
-				url: Utils.encodeURLParams(url),
-				animated: animated.toString()
-			},
-			callback
-		);
-	},
 	deepCopy(obj) {
 		var newobj = {}
 		for (arr in obj) {
@@ -106,63 +81,6 @@ const Utils = {
 			}
 		}
 		return newobj
-	},
-	env: {
-		isIOS() {
-			return systemInfo.platform === 'ios';
-		},
-		/**
-		 * 是否为 iPhone X or iPhoneXS or iPhoneXR or iPhoneXS Max
-		 * @returns {boolean}
-		 */
-		isIPhoneX() {
-			const deviceHeight = systemInfo.screenHeight * 1
-			return (
-				Utils.env.isIOS() && (deviceHeight === 812 || deviceHeight === 896)
-			);
-		},
-		isAndroid() {
-			return systemInfo.platform === 'android';
-		},
-		/**
-		 * 获取竖屏正方向下的安全区域
-		 * @returns {Object}
-		 */
-		getPageSafeArea() {
-			return systemInfo.safeArea
-		},
-		/**
-		 * 获取屏幕安全高度
-		 * @returns {Number}
-		 */
-		getPageSafeHeight() {
-			return systemInfo.safeArea.height
-		},
-		/**
-		 * 获取屏幕真实的设置高度
-		 * @returns {Number}
-		 */
-		getScreenHeight() {
-			return systemInfo.screenHeight
-		},
-		// 可使用窗口宽度
-		getWindowHeight() {
-			return systemInfo.windowHeight
-		},
-		/**
-		 * 判断当前是否为沉浸式状态栏模式
-		 * @returns {Boolean}
-		 */
-		isImmersedStatusbar() {
-			return plus.navigator.isImmersedStatusbar();
-		},
-		/**
-		 * 查询设备是否为刘海屏
-		 * @returns {Boolean}
-		 */
-		hasNotchInScreen() {
-			return plus.navigator.hasNotchInScreen();
-		},
 	},
 	/**
 	 * 版本号比较
@@ -277,61 +195,10 @@ const Utils = {
 			console.log(e);
 		}
 		return obj;
-	},
-	animation: {
-		/**
-		 * 返回定义页面转场动画起初的位置
-		 * @param ref
-		 * @param transform 运动类型
-		 * @param status
-		 * @param callback 回调函数
-		 */
-		pageTransitionAnimation(ref, transform, status, callback) {
-			const animation = weex.requireModule('animation');
-			animation.transition(
-				ref, {
-					styles: {
-						transform: transform
-					},
-					duration: status ? 250 : 300, // ms
-					timingFunction: status ? 'ease-in' : 'ease-out',
-					delay: 0 // ms
-				},
-				function() {
-					callback && callback();
-				}
-			);
-		}
-	},
-	uiStyle: {
-		/**
-		 * 返回定义页面转场动画起初的位置
-		 * @param animationType 页面转场动画的类型 push，model
-		 * @param size 分割数组的长度
-		 * @returns {}
-		 */
-		pageTransitionAnimationStyle(animationType) {
-			if (animationType === 'push') {
-				return {
-					left: '750rpx',
-					top: '0px',
-					height: (weex.config.env.deviceHeight / weex.config.env.deviceWidth) * 750 + 'rpx'
-				};
-			} else if (animationType === 'model') {
-				return {
-					top: (weex.config.env.deviceHeight / weex.config.env.deviceWidth) * 750 + 'rpx',
-					left: '0px',
-					height: (weex.config.env.deviceHeight / weex.config.env.deviceWidth) * 750 + 'rpx'
-				};
-			}
-			return {};
-		}
 	}
-};
+}
 
 module.exports = {
-	bem: memoize(bem),
 	isSrc: isSrc,
-	memoize: memoize,
 	Utils
-};
+}

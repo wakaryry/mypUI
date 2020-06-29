@@ -52,7 +52,7 @@
 			</swiper>
 		</scroll-view>
 		<!-- #endif -->
-		<view class="ch-foot">
+		<myp-position :fixed="true" boxStyle="left:0;width:750rpx;">
 			<view class="ch-foot-content">
 				<view class="ch-foot-token"></view>
 				<view class="ch-foot-body">
@@ -67,7 +67,8 @@
 					<image class="ch-foot-avatar-avatar" src="/static/bear.jpg" mode="aspectFill" @tap.stop.prevent="toFootUser"></image>
 				</view>
 			</view>
-		</view>
+			<myp-x-bar bgType="inverse" boxStyle="width:750rpx;"></myp-x-bar>
+		</myp-position>
 		<circle-head-pop :show="headVisible" :apps="apps" @cancel="toHideHead" @select="toPage"></circle-head-pop>
 		<myp-loading :show="mypLoading"></myp-loading>
 		<myp-toast ref="myp-toast"></myp-toast>
@@ -97,6 +98,7 @@
 		data() {
 			return {
 				mypExtra: 100,
+				mypIncludeXBar: false,
 				numbers: [
 					{num: 1, name: '贴子', badge: 6, page: 'album_list'}, {num: 28, name: '成员', badge: 7, page: 'member_list'}, {num: 35, name: '访客', badge: 49, page: 'message_visitor'}
 				],
@@ -226,14 +228,10 @@
 			}
 		}
 		&-foot {
-			position: fixed;
-			left: 0;
-			width: 750rpx;
-			height: 132rpx;
-			bottom: 0;
-			background-color: transparent;
 			
 			&-content {
+				width: 750rpx;
+				height: 132rpx;
 				position: relative;
 			}
 			&-token {

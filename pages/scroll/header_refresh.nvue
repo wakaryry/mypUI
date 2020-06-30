@@ -162,7 +162,12 @@
 		},
 		onReady() {
 			this.mypHeaderHeight = uni.upx2px(442) //去除了status-nav的高度
-			this.mypAllHeight = this.mypHeaderHeight
+			this.platform = this.mypGetPlatform()
+			if (this.platform === 'android') {
+				this.mypAllHeight = this.mypHeaderHeight - uni.upx2px(140)
+			} else {
+				this.mypAllHeight = this.mypHeaderHeight
+			}
 			setTimeout(() => {
 				this.toInitSpecial()
 			}, 20)

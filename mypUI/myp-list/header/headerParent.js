@@ -167,7 +167,6 @@ export default {
 		},
 		mypHandleParentScroll(e) {
 			const scrollTop = e.detail.scrollTop
-			console.log(scrollTop - this.mypAllHeight + 8)
 			// 缓冲8px
 			if (scrollTop >= this.mypAllHeight - 8) {
 				// #ifdef H5

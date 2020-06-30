@@ -226,6 +226,9 @@
 			},
 			mrTabsStyle() {
 				let _style = `flex-direction:row;justify-content:${this.justify};flex-wrap:nowrap;`
+				// #ifdef APP-NVUE
+				_style += "width:" + this.scrollSize + ';'
+				// #endif
 				return _style
 			},
 			mrItemStyle() {

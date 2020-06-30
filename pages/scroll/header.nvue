@@ -120,6 +120,7 @@
 				// #ifndef APP-NVUE
 				const scrollTop = e.detail.scrollTop
 				let spg = scrollTop / this.mypAllHeight
+				// H5下也可能处于0.9-0.99之间，而且设置的8px安全距离可能不够
 				if (spg >= 0.98) {
 					this.titleVisible = true
 				} else {

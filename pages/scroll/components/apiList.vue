@@ -2,9 +2,7 @@
 	<view>
 		<!-- #ifdef APP-NVUE -->
 		<list class="myp-bg-inverse" ref="myp-list" :bounce="true" isSwiperList="true" :style="mypContentHeightStyle+'width:750rpx;'">
-			<cell>
-				<myp-title title1="我喜欢的"></myp-title>
-			</cell>
+			
 		</list>
 		<!-- #endif -->
 		<!-- #ifndef APP-NVUE -->

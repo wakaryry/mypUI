@@ -15,7 +15,7 @@
 							<intro-list ref="intro" :parentId="mypListId" :current="currentTab" :index="0"></intro-list>
 						</swiper-item>
 						<swiper-item>
-							<component-list ref="component" :parentId="mypListId" :current="currentTab" :index="1"></component-list>
+							<component-list ref="component" :parentId="mypListId" :current="currentTab" :index="1" @page="toPage"></component-list>
 						</swiper-item>
 						<swiper-item>
 							<api-list ref="api" :parentId="mypListId" :current="currentTab" :index="2"></api-list>
@@ -35,7 +35,7 @@
 						<intro-list :scrollable="mypChildScrollable" :current="currentTab" :index="0" @move="mypChildTouchMove" @end="mypChildTouchEnd"></intro-list>
 					</swiper-item>
 					<swiper-item>
-						<component-list :scrollable="mypChildScrollable" :current="currentTab" :index="1" @move="mypChildTouchMove" @end="mypChildTouchEnd"></component-list>
+						<component-list :scrollable="mypChildScrollable" :current="currentTab" :index="1" @move="mypChildTouchMove" @end="mypChildTouchEnd" @page="toPage"></component-list>
 					</swiper-item>
 					<swiper-item>
 						<api-list :scrollable="mypChildScrollable" :current="currentTab" :index="2" @move="mypChildTouchMove" @end="mypChildTouchEnd"></api-list>
@@ -103,6 +103,9 @@
 			}
 		},
 		methods: {
+			toPage(name) {
+				this.navigateTo(name)
+			},
 			handleParentScroll(e) {
 				// #ifdef APP-NVUE
 				const offsetY = e.contentOffset.y

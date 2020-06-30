@@ -20,7 +20,6 @@
 		data() {
 			return {
 				items: [
-					{name: 'header-list', page: 'scroll_test_header', icon: 'triangle', desc: 'refresh/loadMore'},
 					{name: '不封装list', page: 'scroll_raw', icon: 'class', desc: 'refresh/loading'},
 					{name: '不封装list', page: 'scroll_raw_one', icon: 'class', desc: 'r/l,内容不足一页'},
 					{name: '不封装list', page: 'scroll_custom', icon: 'topic', desc: '自定义refresh/loading'},

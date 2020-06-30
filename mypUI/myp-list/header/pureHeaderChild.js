@@ -23,6 +23,7 @@ export default {
 	},
 	data() {
 		return {
+			mypInited: false,
 			// #ifndef APP-NVUE
 			mypStartPoint: null,
 			mypLastPoint: null,

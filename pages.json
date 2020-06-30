@@ -299,12 +299,6 @@
 			}
 		},
 		{
-			"path": "pages/scroll/test/header",
-			"style": {
-				"disableScroll": true
-			}
-		},
-		{
 			"path": "pages/scroll/h",
 			"style": {
 				"disableScroll": true

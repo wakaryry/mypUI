@@ -39,7 +39,7 @@ export default {
 	filter_all_up: '/pages/filter/all_up',
 	// swiper
 	swiper_index: '/pages/swiper/index',
-	// scroll
+	// scroll-test
 	scroll_test: '/pages/scroll/test/test',
 	scroll_raw: '/pages/scroll/test/raw',
 	scroll_raw_one: '/pages/scroll/test/raw_one',
@@ -53,7 +53,7 @@ export default {
 	scroll_load_more_one: '/pages/scroll/test/load_more_one',
 	scroll_load_more_wrap: '/pages/scroll/test/load_more_wrap',
 	scroll_load_more_one_wrap: '/pages/scroll/test/load_more_one_wrap',
-	scroll_test_header: '/pages/scroll/test/header',
+	// scroll
 	scroll_index: '/pages/scroll/index',
 	scroll_h: '/pages/scroll/h',
 	scroll_header: '/pages/scroll/header',

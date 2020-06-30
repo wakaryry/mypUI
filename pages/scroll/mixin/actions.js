@@ -1,14 +1,5 @@
 export default {
 	methods: {
-		toPage(val) {
-			this.headVisible = false
-		},
-		toShowHead() {
-			this.headVisible = true
-		},
-		toHideHead() {
-			this.headVisible = false
-		},
 		toHanderLogin() {
 			this.toShowLoginPop(true)
 		},

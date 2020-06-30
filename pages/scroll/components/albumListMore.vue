@@ -33,7 +33,7 @@
 	import albumRichCell from './albumRichCell.vue'
 	
 	import contentBoxMixin from '@/mypUI/myp-mixin/contentBoxMixin.js'
-	import childMixin from '../mixin/headerChild.js'
+	import childMixin from '@/mypUI/myp-list/header/headerChild.js'
 	
 	import {thumbAlbum, cancelThumbAlbum, getAlbumList} from '@/api/album.js'
 	

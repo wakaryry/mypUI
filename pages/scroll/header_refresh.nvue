@@ -1,28 +1,13 @@
 <template>
 	<view class="big-page">
-		<myp-navbar bgType="primary" titleStyle="color:#FFFFFF;" iconStyle="color:#FFFFFF;" title="欢迎光临" :lefts="leftIcons" @leftAction="navLeftAction">
-			<view class="ch-nav" slot="title">
-				<view class="ch-nav-box" v-if="titleVisible">
-					<text class="ch-nav-title" @tap.stop="toShowHead">欢迎光临</text>
-					<myp-icon name="down" type="inverse" @iconClicked="toShowHead"></myp-icon>
-				</view>
-				<view v-else class="ch-nav-tabs">
-					<text :class="['ch-nav-tabs-item', currentTab===0&&'ch-nav-tabs-item-current']" @tap="toChangeTab(0)">新贴</text>
-					<text :class="['ch-nav-tabs-item', currentTab===1&&'ch-nav-tabs-item-current']" @tap="toChangeTab(1)">热门</text>
-				</view>
-			</view>
-		</myp-navbar>
 		<!-- #ifdef APP-NVUE -->
 		<list :id="mypListId" :bounce="true" isSwiperList="true" ref="myp-scroller" :style="'width:750rpx;'+mypContentHeightStyle" @scroll="handleParentScroll">
 			<myp-refresher-n ref="myp-refresher" scroller-ref="myp-scroller" @refresh="handleRefresh"></myp-refresher-n>
 			<cell>
-				<circle-head :numbers="numbers" @page="toPage"></circle-head>
+				<swiper-head></swiper-head>
 			</cell>
 			<cell>
-				<view class="ch-tabs">
-					<text :class="['ch-tabs-item', currentTab===0&&'ch-tabs-item-current']" @tap="toChangeTab(0)">新贴</text>
-					<text :class="['ch-tabs-item', currentTab===1&&'ch-tabs-item-current']" @tap="toChangeTab(1)">热门</text>
-				</view>
+				<myp-tabs-h :value="currentTab" :items="tabs" titleLabel="name" activeType="primary" indicatorType="primary" indicatorWidth="64rpx" scrollSize="750rpx" justify="center" @change="toChangeTab"></myp-tabs-h>
 			</cell>
 			<cell>
 				<swiper id="swiper" ref="swiper" :current="currentTab" :style="'width:750rpx;'+mypContentHeightStyle" @change="onSwiperChange">
@@ -42,11 +27,8 @@
 				<view :style="mypMrRefreshStyle">
 					<myp-refresher :refreshing="mypIsDownLoading" :couldUnLash="mypCouldUnLash" :rate="mypDownRate"></myp-refresher>
 				</view>
-				<circle-head :numbers="numbers" @page="toPage"></circle-head>
-				<view class="ch-tabs">
-					<text :class="['ch-tabs-item', currentTab===0&&'ch-tabs-item-current']" @tap="toChangeTab(0)">新贴</text>
-					<text :class="['ch-tabs-item', currentTab===1&&'ch-tabs-item-current']" @tap="toChangeTab(1)">热门</text>
-				</view>
+				<swiper-head></swiper-head>
+				<myp-tabs-h :value="currentTab" :items="tabs" titleLabel="name" activeType="primary" indicatorType="primary" indicatorWidth="64rpx" scrollSize="750rpx" justify="center" @change="toChangeTab"></myp-tabs-h>
 				<swiper :current="currentTab" :style="'width:750rpx;'+mypContentHeightStyle" @change="onSwiperChange">
 					<swiper-item>
 						<album-list :scrollable="mypChildScrollable" :current="currentTab" :index="0" @move="mypChildTouchMove" @end="mypChildTouchEnd" @user="toUser" @detail="toDetail" @comment="toComment" @moreComment="toMoreComment" @share="toShare" @login="toHanderLogin" @error="toError"></album-list>
@@ -75,16 +57,15 @@
 			</view>
 			<myp-x-bar bgType="inverse" boxStyle="width:750rpx;"></myp-x-bar>
 		</myp-position>
-		<circle-head-pop :show="headVisible" :apps="apps" @cancel="toHideHead" @select="toPage"></circle-head-pop>
-		<myp-loading :show="mypLoading"></myp-loading>
+		<myp-navbar :fixed="true" :isSeize="false" :bgType="titleVisible?'primary':'none'" :title="titleVisible?'欢迎光临':''" iconStyle="color:#FFFFFF;" titleStyle="color:#FFFFFF;" :lefts="leftIcons" @leftAction="navLeftAction"></myp-navbar>
+		<myp-loading ref="myp-loading"></myp-loading>
 		<myp-toast ref="myp-toast"></myp-toast>
 	</view>
 </template>
 
 <script>
-	import circleHead from './components/circleHead.vue'
+	import swiperHead from './components/swiperHead.vue'
 	import albumList from './components/albumListMore.vue'
-	import circleHeadPop from './components/circleHeadPop.vue'
 	
 	import contentBoxMixin from '@/mypUI/myp-mixin/contentBoxMixin.js'
 	import navHelper from '@/router/navHelper.js'
@@ -92,29 +73,26 @@
 	import loadingMixin from '@/mypUI/myp-mixin/loadingMixin.js'
 	import systemMixin from '@/mypUI/myp-mixin/systemMixin.js'
 	
-	import parentMixin from './mixin/headerParent.js'
+	import parentMixin from '@/mypUI/myp-list/header/headerParent.js'
 	import actionsMixin from './mixin/actions.js'
 	
 	export default {
 		components: {
-			circleHead,
-			albumList,
-			circleHeadPop
+			swiperHead,
+			albumList
 		},
 		mixins: [contentBoxMixin, systemMixin, navHelper, toastMixin, loadingMixin, parentMixin, actionsMixin],
 		data() {
 			return {
 				mypIncludeXBar: false,
+				mypIncludeStatus: true,
+				mypIncludeNav: true,
 				mypExtra: 100,
-				numbers: [
-					{num: 1, name: '贴子', badge: 6, page: 'album_list'}, {num: 28, name: '成员', badge: 7, page: 'member_list'}, {num: 35, name: '访客', badge: 49, page: 'message_visitor'}
-				],
-				apps: [
-					{logo: '/static/c-member.png', name: '成员小组', badge: 6, page: 'circle_teams'}, {logo: '/static/c-notify.png', name: '圈子公告', badge: 35, page: 'circle_notify'}, {logo: '/static/c-photo.png', name: '圈子相册', badge: 0, page: 'circle_gallery'}, {logo: '/static/c-set.png', name: '圈子设置', badge: 0, page: 'circle_set'}
+				tabs: [
+					{name: '介绍'},{name: '组件'},{name: '接口'}
 				],
 				currentTab: 0,
-				titleVisible: true,
-				headVisible: false,
+				titleVisible: false,
 				platform: ''
 			}
 		},
@@ -140,9 +118,9 @@
 				}
 				let pg = offY / this.mypAllHeight
 				if (pg >= 0.92) {
-					this.titleVisible = false
-				} else {
 					this.titleVisible = true
+				} else {
+					this.titleVisible = false
 				}
 				// #endif
 				// #ifndef APP-NVUE
@@ -150,9 +128,9 @@
 				const scrollTop = e.detail.scrollTop
 				let spg = scrollTop / this.mypAllHeight
 				if (spg >= 0.99) {
-					this.titleVisible = false
-				} else {
 					this.titleVisible = true
+				} else {
+					this.titleVisible = false
 				}
 				// #endif
 			},
@@ -179,6 +157,8 @@
 			}
 		},
 		onReady() {
+			this.mypHeaderHeight = uni.upx2px(442) //去除了status-nav的高度
+			this.mypAllHeight = this.mypHeaderHeight
 			setTimeout(() => {
 				this.toInitSpecial()
 			}, 20)

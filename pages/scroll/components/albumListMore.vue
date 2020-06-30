@@ -2,9 +2,6 @@
 	<view>
 		<!-- #ifdef APP-NVUE -->
 		<list class="myp-bg-page" ref="myp-list" :bounce="true" isSwiperList="true" :style="mypContentHeightStyle+'width:750rpx;'" :loadmoreoffset="60" @loadmore="toGetAlbums">
-			<cell v-if="items.length===0">
-				<view style="width: 750rpx;height: 30rpx;background-color: #FFFFFF;"></view>
-			</cell>
 			<cell v-for="(item,idx) in items" :key="idx">
 				<album-rich-cell :item="item" @user="toUser" @detail="toDetail" @thumb="toThumb" @comment="toComment" @moreComment="toMoreComment" @share="toShare"></album-rich-cell>
 				<view style="height: 20rpx;"></view>
@@ -16,9 +13,6 @@
 		<!-- #endif -->
 		<!-- #ifndef APP-NVUE -->
 		<scroll-view class="myp-bg-page" :scroll-y="scrollable" :style="mypContentHeightStyle+'width:750rpx;'" @touchstart="mypOnTouchStart" @touchmove="mypOnTouchMove" @touchend="mypOnTouchEnd" @touchcancel="mypOnTouchEnd" @scroll="mypOnScroll" @scrolltolower="toGetAlbums">
-			<view v-if="items.length===0">
-				<view style="width: 750rpx;height: 30rpx;background-color: #FFFFFF;"></view>
-			</view>
 			<view v-for="(item,idx) in items" :key="idx">
 				<album-rich-cell :item="item" @user="toUser" @detail="toDetail" @thumb="toThumb" @comment="toComment" @moreComment="toMoreComment" @share="toShare"></album-rich-cell>
 				<view style="height: 20rpx;"></view>
@@ -45,7 +39,7 @@
 		data() {
 			return {
 				mypIncludeXBar: false,
-				mypExtra: 100,
+				mypExtra: 180,
 				items: []
 			}
 		},

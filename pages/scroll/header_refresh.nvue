@@ -7,7 +7,7 @@
 				<swiper-head></swiper-head>
 			</cell>
 			<cell>
-				<myp-tabs-h :value="currentTab" :items="tabs" titleLabel="name" activeType="primary" indicatorType="primary" indicatorWidth="64rpx" scrollSize="750rpx" justify="center" @change="toChangeTab"></myp-tabs-h>
+				<myp-tabs-h :value="currentTab" :items="tabs" :isTap="true" titleLabel="name" activeType="primary" indicatorType="primary" indicatorWidth="64rpx" scrollSize="750rpx" justify="center" @change="toChangeTab"></myp-tabs-h>
 			</cell>
 			<cell>
 				<swiper id="swiper" ref="swiper" :current="currentTab" :style="'width:750rpx;'+mypContentHeightStyle" @change="onSwiperChange">
@@ -28,7 +28,7 @@
 					<myp-refresher :refreshing="mypIsDownLoading" :couldUnLash="mypCouldUnLash" :rate="mypDownRate"></myp-refresher>
 				</view>
 				<swiper-head></swiper-head>
-				<myp-tabs-h :value="currentTab" :items="tabs" titleLabel="name" activeType="primary" indicatorType="primary" indicatorWidth="64rpx" scrollSize="750rpx" justify="center" @change="toChangeTab"></myp-tabs-h>
+				<myp-tabs-h :value="currentTab" :items="tabs" :isTap="true" titleLabel="name" activeType="primary" indicatorType="primary" indicatorWidth="64rpx" scrollSize="750rpx" justify="center" @change="toChangeTab"></myp-tabs-h>
 				<swiper :current="currentTab" :style="'width:750rpx;'+mypContentHeightStyle" @change="onSwiperChange">
 					<swiper-item>
 						<album-list :scrollable="mypChildScrollable" :current="currentTab" :index="0" @move="mypChildTouchMove" @end="mypChildTouchEnd" @user="toUser" @detail="toDetail" @comment="toComment" @moreComment="toMoreComment" @share="toShare" @login="toHanderLogin" @error="toError"></album-list>
@@ -89,7 +89,7 @@
 				mypIncludeNav: true,
 				mypExtra: 100,
 				tabs: [
-					{name: '介绍'},{name: '组件'},{name: '接口'}
+					{name: '广场'},{name: '关注'}
 				],
 				currentTab: 0,
 				titleVisible: false,
@@ -127,7 +127,7 @@
 				this.mypScroll(e)
 				const scrollTop = e.detail.scrollTop
 				let spg = scrollTop / this.mypAllHeight
-				if (spg >= 0.99) {
+				if (spg >= 0.98) {
 					this.titleVisible = true
 				} else {
 					this.titleVisible = false

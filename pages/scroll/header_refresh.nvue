@@ -10,14 +10,16 @@
 				<myp-tabs-h :value="currentTab" :items="tabs" :isTap="true" titleLabel="name" activeType="primary" indicatorType="primary" indicatorWidth="64rpx" scrollSize="750rpx" justify="center" @change="toChangeTab"></myp-tabs-h>
 			</cell>
 			<cell>
-				<swiper id="swiper" ref="swiper" :current="currentTab" :style="'width:750rpx;'+mypContentHeightStyle" @change="onSwiperChange">
-					<swiper-item>
-						<album-list ref="recent" :parentId="mypListId" :current="currentTab" :index="0" @user="toUser" @detail="toDetail" @comment="toComment" @moreComment="toMoreComment" @share="toShare" @login="toHanderLogin" @error="toError"></album-list>
-					</swiper-item>
-					<swiper-item>
-						<album-list ref="hot" :parentId="mypListId" :current="currentTab" :index="1" @user="toUser" @detail="toDetail" @comment="toComment" @moreComment="toMoreComment" @share="toShare" @login="toHanderLogin" @error="toError"></album-list>
-					</swiper-item>
-				</swiper>
+				<myp-content-box :includeStatus="false" :includeNav="false" :includeXBar="false" extra="180rpx">
+					<swiper id="swiper" ref="swiper" :current="currentTab" style="width:750rpx;flex:1;" @change="onSwiperChange">
+						<swiper-item>
+							<album-list ref="recent" :parentId="mypListId" :current="currentTab" :index="0" @user="toUser" @detail="toDetail" @comment="toComment" @moreComment="toMoreComment" @share="toShare" @login="toHanderLogin" @error="toError"></album-list>
+						</swiper-item>
+						<swiper-item>
+							<album-list ref="hot" :parentId="mypListId" :current="currentTab" :index="1" @user="toUser" @detail="toDetail" @comment="toComment" @moreComment="toMoreComment" @share="toShare" @login="toHanderLogin" @error="toError"></album-list>
+						</swiper-item>
+					</swiper>
+				</myp-content-box>
 			</cell>
 		</list>
 		<!-- #endif -->
@@ -29,14 +31,16 @@
 				</view>
 				<swiper-head></swiper-head>
 				<myp-tabs-h :value="currentTab" :items="tabs" :isTap="true" titleLabel="name" activeType="primary" indicatorType="primary" indicatorWidth="64rpx" scrollSize="750rpx" justify="center" @change="toChangeTab"></myp-tabs-h>
-				<swiper :current="currentTab" :style="'width:750rpx;'+mypContentHeightStyle" @change="onSwiperChange">
-					<swiper-item>
-						<album-list :scrollable="mypChildScrollable" :current="currentTab" :index="0" @move="mypChildTouchMove" @end="mypChildTouchEnd" @user="toUser" @detail="toDetail" @comment="toComment" @moreComment="toMoreComment" @share="toShare" @login="toHanderLogin" @error="toError"></album-list>
-					</swiper-item>
-					<swiper-item>
-						<album-list :scrollable="mypChildScrollable" :current="currentTab" :index="1" @move="mypChildTouchMove" @end="mypChildTouchEnd" @user="toUser" @detail="toDetail" @comment="toComment" @moreComment="toMoreComment" @share="toShare" @login="toHanderLogin" @error="toError"></album-list>
-					</swiper-item>
-				</swiper>
+				<myp-content-box :includeStatus="false" :includeNav="false" :includeXBar="false" extra="180rpx">
+					<swiper :current="currentTab" style="width:750rpx;flex:1;" @change="onSwiperChange">
+						<swiper-item>
+							<album-list :scrollable="mypChildScrollable" :current="currentTab" :index="0" @move="mypChildTouchMove" @end="mypChildTouchEnd" @user="toUser" @detail="toDetail" @comment="toComment" @moreComment="toMoreComment" @share="toShare" @login="toHanderLogin" @error="toError"></album-list>
+						</swiper-item>
+						<swiper-item>
+							<album-list :scrollable="mypChildScrollable" :current="currentTab" :index="1" @move="mypChildTouchMove" @end="mypChildTouchEnd" @user="toUser" @detail="toDetail" @comment="toComment" @moreComment="toMoreComment" @share="toShare" @login="toHanderLogin" @error="toError"></album-list>
+						</swiper-item>
+					</swiper>
+				</myp-content-box>
 			</view>
 		</scroll-view>
 		<!-- #endif -->

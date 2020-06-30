@@ -38,6 +38,8 @@
 		mixins: [contentBoxMixin, childMixin],
 		data() {
 			return {
+				mypIncludeStatus: false,
+				mypIncludeNav: false,
 				mypIncludeXBar: false,
 				mypExtra: 180,
 				items: []

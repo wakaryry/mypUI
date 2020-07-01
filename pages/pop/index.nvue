@@ -195,7 +195,6 @@ export default {
 	},
 	methods: {
 		toShowPicker(val) {
-			console.log(val)
 			this[val.name+'Visible'] = true
 		},
 		confirmPicker(val) {

@@ -69,6 +69,13 @@
 			opacity: $myp-opacity-disabled;
 		}
 	}
+	&-link {
+		background-color: $myp-color-link;
+		&-disabled {
+			background-color: $myp-color-link;
+			opacity: $myp-opacity-disabled;
+		}
+	}
 	&-none {
 		background-color: transparent;
 	}
@@ -95,6 +102,9 @@
 	}
 	&-custom {
 		color: $myp-color-custom;
+	}
+	&-link {
+		color: $myp-color-link;
 	}
 	&-primary {
 		color: $myp-color-primary;
@@ -215,6 +225,11 @@
 			border-style: solid;
 			border-color: $myp-color-custom;
 		}
+		&-link {
+			border-width: $myp-border-width;
+			border-style: solid;
+			border-color: $myp-color-link;
+		}
 	}
 	&-top {
 		border-top-color: $myp-border-color;
@@ -257,6 +272,11 @@
 		}
 		&-custom {
 			border-top-color: $myp-color-custom;
+			border-top-width: $myp-border-width;
+			border-top-style: solid;
+		}
+		&-link {
+			border-top-color: $myp-color-link;
 			border-top-width: $myp-border-width;
 			border-top-style: solid;
 		}
@@ -305,6 +325,11 @@
 			border-bottom-width: $myp-border-width;
 			border-bottom-style: solid;
 		}
+		&-link {
+			border-bottom-color: $myp-color-link;
+			border-bottom-width: $myp-border-width;
+			border-bottom-style: solid;
+		}
 	}
 	&-left {
 		border-left-color: $myp-border-color;
@@ -350,6 +375,11 @@
 			border-left-width: $myp-border-width;
 			border-left-style: solid;
 		}
+		&-link {
+			border-left-color: $myp-color-link;
+			border-left-width: $myp-border-width;
+			border-left-style: solid;
+		}
 	}
 	&-right {
 		border-right-color: $myp-border-color;
@@ -392,6 +422,11 @@
 		}
 		&-custom {
 			border-right-color: $myp-color-custom;
+			border-right-width: $myp-border-width;
+			border-right-style: solid;
+		}
+		&-link {
+			border-right-color: $myp-color-link;
 			border-right-width: $myp-border-width;
 			border-right-style: solid;
 		}
@@ -467,6 +502,14 @@
 			border-top-width: $myp-border-width;
 			border-top-style: solid;
 		}
+		&-link {
+			border-bottom-color: $myp-color-link;
+			border-bottom-width: $myp-border-width;
+			border-bottom-style: solid;
+			border-top-color: $myp-color-link;
+			border-top-width: $myp-border-width;
+			border-top-style: solid;
+		}
 	}
 	&-none {
 		border-width: 0;
@@ -496,6 +539,218 @@
 	}
 	&-none {
 		border-radius: 0;
+	}
+	&-top {
+		border-top-left-radius: $myp-border-radius-base;
+		border-top-right-radius: $myp-border-radius-base;
+		overflow: hidden;
+		
+		&-ss {
+			border-top-left-radius: $myp-border-radius-ss;
+			border-top-right-radius: $myp-border-radius-ss;
+			overflow: hidden;
+		}
+		&-s {
+			border-top-left-radius: $myp-border-radius-s;
+			border-top-right-radius: $myp-border-radius-s;
+			overflow: hidden;
+		}
+		&-base {
+			border-top-left-radius: $myp-border-radius-base;
+			border-top-right-radius: $myp-border-radius-base;
+			overflow: hidden;
+		}
+		&-l {
+			border-top-left-radius: $myp-border-radius-l;
+			border-top-right-radius: $myp-border-radius-l;
+			overflow: hidden;
+		}
+		&-ll {
+			border-top-left-radius: $myp-border-radius-ll;
+			border-top-right-radius: $myp-border-radius-ll;
+			overflow: hidden;
+		}
+		&-left {
+			&-ss {
+				border-top-left-radius: $myp-border-radius-ss;
+				overflow: hidden;
+			}
+			&-s {
+				border-top-left-radius: $myp-border-radius-s;
+				overflow: hidden;
+			}
+			&-base {
+				border-top-left-radius: $myp-border-radius-base;
+				overflow: hidden;
+			}
+			&-l {
+				border-top-left-radius: $myp-border-radius-l;
+				overflow: hidden;
+			}
+			&-ll {
+				border-top-left-radius: $myp-border-radius-ll;
+				overflow: hidden;
+			}
+		}
+		&-right {
+			&-ss {
+				border-top-right-radius: $myp-border-radius-ss;
+				overflow: hidden;
+			}
+			&-s {
+				border-top-right-radius: $myp-border-radius-s;
+				overflow: hidden;
+			}
+			&-base {
+				border-top-right-radius: $myp-border-radius-base;
+				overflow: hidden;
+			}
+			&-l {
+				border-top-right-radius: $myp-border-radius-l;
+				overflow: hidden;
+			}
+			&-ll {
+				border-top-right-radius: $myp-border-radius-ll;
+				overflow: hidden;
+			}
+		}
+	}
+	&-bottom {
+		border-bottom-left-radius: $myp-border-radius-base;
+		border-bottom-right-radius: $myp-border-radius-base;
+		overflow: hidden;
+		
+		&-ss {
+			border-bottom-left-radius: $myp-border-radius-ss;
+			border-bottom-right-radius: $myp-border-radius-ss;
+			overflow: hidden;
+		}
+		&-s {
+			border-bottom-left-radius: $myp-border-radius-s;
+			border-bottom-right-radius: $myp-border-radius-s;
+			overflow: hidden;
+		}
+		&-base {
+			border-bottom-left-radius: $myp-border-radius-base;
+			border-bottom-right-radius: $myp-border-radius-base;
+			overflow: hidden;
+		}
+		&-l {
+			border-bottom-left-radius: $myp-border-radius-l;
+			border-bottom-right-radius: $myp-border-radius-l;
+			overflow: hidden;
+		}
+		&-ll {
+			border-bottom-left-radius: $myp-border-radius-ll;
+			border-bottom-right-radius: $myp-border-radius-ll;
+			overflow: hidden;
+		}
+		&-left {
+			&-ss {
+				border-bottom-left-radius: $myp-border-radius-ss;
+				overflow: hidden;
+			}
+			&-s {
+				border-bottom-left-radius: $myp-border-radius-s;
+				overflow: hidden;
+			}
+			&-base {
+				border-bottom-left-radius: $myp-border-radius-base;
+				overflow: hidden;
+			}
+			&-l {
+				border-bottom-left-radius: $myp-border-radius-l;
+				overflow: hidden;
+			}
+			&-ll {
+				border-bottom-left-radius: $myp-border-radius-ll;
+				overflow: hidden;
+			}
+		}
+		&-right {
+			&-ss {
+				border-bottom-right-radius: $myp-border-radius-ss;
+				overflow: hidden;
+			}
+			&-s {
+				border-bottom-right-radius: $myp-border-radius-s;
+				overflow: hidden;
+			}
+			&-base {
+				border-bottom-right-radius: $myp-border-radius-base;
+				overflow: hidden;
+			}
+			&-l {
+				border-bottom-right-radius: $myp-border-radius-l;
+				overflow: hidden;
+			}
+			&-ll {
+				border-bottom-right-radius: $myp-border-radius-ll;
+				overflow: hidden;
+			}
+		}
+	}
+	&-left {
+		border-top-left-radius: $myp-border-radius-base;
+		border-bottom-left-radius: $myp-border-radius-base;
+		overflow: hidden;
+		
+		&-ss {
+			border-top-left-radius: $myp-border-radius-ss;
+			border-bottom-left-radius: $myp-border-radius-ss;
+			overflow: hidden;
+		}
+		&-s {
+			border-top-left-radius: $myp-border-radius-s;
+			border-bottom-left-radius: $myp-border-radius-s;
+			overflow: hidden;
+		}
+		&-base {
+			border-top-left-radius: $myp-border-radius-base;
+			border-bottom-left-radius: $myp-border-radius-base;
+			overflow: hidden;
+		}
+		&-l {
+			border-top-left-radius: $myp-border-radius-l;
+			border-bottom-left-radius: $myp-border-radius-l;
+			overflow: hidden;
+		}
+		&-ll {
+			border-top-left-radius: $myp-border-radius-ll;
+			border-bottom-left-radius: $myp-border-radius-ll;
+			overflow: hidden;
+		}
+	}
+	&-right {
+		border-top-right-radius: $myp-border-radius-base;
+		border-bottom-right-radius: $myp-border-radius-base;
+		overflow: hidden;
+		
+		&-ss {
+			border-top-right-radius: $myp-border-radius-ss;
+			border-bottom-right-radius: $myp-border-radius-ss;
+			overflow: hidden;
+		}
+		&-s {
+			border-top-right-radius: $myp-border-radius-s;
+			border-bottom-right-radius: $myp-border-radius-s;
+			overflow: hidden;
+		}
+		&-base {
+			border-top-right-radius: $myp-border-radius-base;
+			border-bottom-right-radius: $myp-border-radius-base;
+			overflow: hidden;
+		}
+		&-l {
+			border-top-right-radius: $myp-border-radius-l;
+			border-bottom-right-radius: $myp-border-radius-l;
+			overflow: hidden;
+		}
+		&-ll {
+			border-top-right-radius: $myp-border-radius-ll;
+			border-bottom-right-radius: $myp-border-radius-ll;
+			overflow: hidden;
+		}
 	}
 }
 

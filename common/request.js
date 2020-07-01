@@ -170,6 +170,8 @@ function _responseLog(res, conf={}, describe=null) {
 }
 
 function _toRefreshAccess() {
+	const app = getApp({allowDefault: true})
+	const refresh = app.globalData.refresh
 	return new Promise((resolve, reject)=>{
 		uni.request({
 			url: baseUrl + '/token/refresh/',

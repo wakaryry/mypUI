@@ -1,159 +1,111 @@
 <template>
 	<view :class="['myp-picker-box', 'myp-bg-'+bgType]" :style="mrBoxStyle">
-		<picker-view v-if="mode==='half' || mode==='date' || mode==='yearMonth' || mode==='dateTime' || mode=='time'" class="myp-picker-view" :indicator-style="mrIndicatorStyle" :value="pickVal" @change="bindChange">
+		<picker-view v-if="mode==='date' || mode==='yearMonth' || mode==='dateTime' || mode=='time'" class="myp-picker-view" :indicator-style="mrIndicatorStyle" :value="pickVal" @change="bindChange">
 			<picker-view-column v-if="mode !== 'time'">
-				<view class="myp-picker-item" :style="mrItemStyle" v-for="(item,index) in data.years" :key="index">
+				<view class="myp-picker-item" :style="mrItemStyle" v-for="(item,index) in items.years" :key="index">
 					<text :class="['myp-picker-item-text', 'myp-color-'+type, 'myp-size-'+size]" :style="itemTextStyle">{{item}}年</text>
 				</view>
 			</picker-view-column>
 			<picker-view-column v-if="mode !== 'time'">
-				<view class="myp-picker-item" :style="mrItemStyle" v-for="(item,index) in data.months" :key="index">
+				<view class="myp-picker-item" :style="mrItemStyle" v-for="(item,index) in items.months" :key="index">
 					<text :class="['myp-picker-item-text', 'myp-color-'+type, 'myp-size-'+size]" :style="itemTextStyle">{{item}}月</text>
 				</view>
 			</picker-view-column>
-			<picker-view-column v-if="(mode==='half' || mode==='date' || mode==='dateTime') && mode!=='time'">
-				<view class="myp-picker-item" :style="mrItemStyle" v-for="(item,index) in data.days" :key="index">
+			<picker-view-column v-if="(mode==='date' || mode==='dateTime') && mode!=='time'">
+				<view class="myp-picker-item" :style="mrItemStyle" v-for="(item,index) in items.days" :key="index">
 					<text :class="['myp-picker-item-text', 'myp-color-'+type, 'myp-size-'+size]" :style="itemTextStyle">{{item}}日</text>
 				</view>
 			</picker-view-column>
-			<picker-view-column v-if="mode==='half'">
-				<view class="myp-picker-item" :style="mrItemStyle" v-for="(item,index) in data.areas" :key="index">
-					<text :class="['myp-picker-item-text', 'myp-color-'+type, 'myp-size-'+size]" :style="itemTextStyle">{{item.label}}</text>
-				</view>
-			</picker-view-column>
 			<picker-view-column v-if="mode==='dateTime' || mode==='time'">
-				<view class="myp-picker-item" :style="mrItemStyle" v-for="(item,index) in data.hours" :key="index">
+				<view class="myp-picker-item" :style="mrItemStyle" v-for="(item,index) in items.hours" :key="index">
 					<text :class="['myp-picker-item-text', 'myp-color-'+type, 'myp-size-'+size]" :style="itemTextStyle">{{item}}时</text>
 				</view>
 			</picker-view-column>
 			<picker-view-column v-if="mode==='dateTime' || mode==='time'">
-				<view class="myp-picker-item" :style="mrItemStyle" v-for="(item,index) in data.minutes" :key="index">
+				<view class="myp-picker-item" :style="mrItemStyle" v-for="(item,index) in items.minutes" :key="index">
 					<text :class="['myp-picker-item-text', 'myp-color-'+type, 'myp-size-'+size]" :style="itemTextStyle">{{item}}分</text>
 				</view>
 			</picker-view-column>
-			<picker-view-column v-if="mode==='dateTime' || mode==='time'">
-				<view class="myp-picker-item" :style="mrItemStyle" v-for="(item,index) in data.seconds" :key="index">
-					<text :class="['myp-picker-item-text', 'myp-color-'+type, 'myp-size-'+size]" :style="itemTextStyle">{{item}}秒</text>
-				</view>
-			</picker-view-column>
 		</picker-view>
-		<picker-view v-if="mode==='range'" class="myp-picker-view" :indicator-style="mrIndicatorStyle" :value="pickVal" @change="bindChange">
+		<picker-view v-if="mode==='dateRange'||mode==='yearMonthRange'" class="myp-picker-view" :indicator-style="mrIndicatorStyle" :value="pickVal" @change="bindChange">
 			<picker-view-column>
-				<view class="myp-picker-item" :style="mrItemStyle" v-for="(item,index) in data.fyears" :key="index">
+				<view class="myp-picker-item" :style="mrItemStyle" v-for="(item,index) in items.fYears" :key="index">
 					<text :class="['myp-picker-item-text', 'myp-color-'+type, 'myp-size-'+size]" :style="itemTextStyle">{{item}}</text>
 				</view>
 			</picker-view-column>
 			<picker-view-column>
-				<view class="myp-picker-item" :style="mrItemStyle" v-for="(item,index) in data.fmonths" :key="index">
+				<view class="myp-picker-item" :style="mrItemStyle" v-for="(item,index) in items.fMonths" :key="index">
+					<text :class="['myp-picker-item-text', 'myp-color-'+type, 'myp-size-'+size]" :style="itemTextStyle">{{item}}</text>
+				</view>
+			</picker-view-column>
+			<picker-view-column v-if="mode==='dateRange'">
+				<view class="myp-picker-item" :style="mrItemStyle" v-for="(item,index) in items.fDays" :key="index">
 					<text :class="['myp-picker-item-text', 'myp-color-'+type, 'myp-size-'+size]" :style="itemTextStyle">{{item}}</text>
 				</view>
 			</picker-view-column>
 			<picker-view-column>
-				<view class="myp-picker-item" :style="mrItemStyle" v-for="(item,index) in data.fdays" :key="index">
+				<view class="myp-picker-item">
+					<text>{{rangeIndicator}}</text>
+				</view>
+			</picker-view-column>
+			<picker-view-column>
+				<view class="myp-picker-item" :style="mrItemStyle" v-for="(item,index) in items.tYears" :key="index">
 					<text :class="['myp-picker-item-text', 'myp-color-'+type, 'myp-size-'+size]" :style="itemTextStyle">{{item}}</text>
 				</view>
 			</picker-view-column>
 			<picker-view-column>
-				<view class="myp-picker-item">-</view>
-			</picker-view-column>
-			<picker-view-column>
-				<view class="myp-picker-item" :style="mrItemStyle" v-for="(item,index) in data.tyears" :key="index">
+				<view class="myp-picker-item" :style="mrItemStyle" v-for="(item,index) in items.tMonths" :key="index">
 					<text :class="['myp-picker-item-text', 'myp-color-'+type, 'myp-size-'+size]" :style="itemTextStyle">{{item}}</text>
 				</view>
 			</picker-view-column>
-			<picker-view-column>
-				<view class="myp-picker-item" :style="mrItemStyle" v-for="(item,index) in data.tmonths" :key="index">
-					<text :class="['myp-picker-item-text', 'myp-color-'+type, 'myp-size-'+size]" :style="itemTextStyle">{{item}}</text>
-				</view>
-			</picker-view-column>
-			<picker-view-column>
-				<view class="myp-picker-item" :style="mrItemStyle" v-for="(item,index) in data.tdays" :key="index">
+			<picker-view-column v-if="mode==='dateRange'">
+				<view class="myp-picker-item" :style="mrItemStyle" v-for="(item,index) in items.tDays" :key="index">
 					<text :class="['myp-picker-item-text', 'myp-color-'+type, 'myp-size-'+size]" :style="itemTextStyle">{{item}}</text>
 				</view>
 			</picker-view-column>
 		</picker-view>
-		<picker-view v-if="mode==='yearMonthRange'" class="myp-picker-view" :indicator-style="mrIndicatorStyle" :value="pickVal" @change="bindChange">
+		<picker-view v-if="mode==='timeRange'" class="myp-picker-view" :indicator-style="mrIndicatorStyle" :value="pickVal" @change="bindChange">
 			<picker-view-column>
-				<view class="myp-picker-item" :style="mrItemStyle" v-for="(item,index) in data.fyears" :key="index">
-					<text :class="['myp-picker-item-text', 'myp-color-'+type, 'myp-size-'+size]" :style="itemTextStyle">{{item}}</text>
+				<view class="myp-picker-item" :style="mrItemStyle" v-for="(item,index) in items.fHours" :key="index">
+					<text :class="['myp-picker-item-text', 'myp-color-'+type, 'myp-size-'+size]" :style="itemTextStyle">{{item}}时</text>
 				</view>
 			</picker-view-column>
 			<picker-view-column>
-				<view class="myp-picker-item" :style="mrItemStyle" v-for="(item,index) in data.fmonths" :key="index">
-					<text :class="['myp-picker-item-text', 'myp-color-'+type, 'myp-size-'+size]" :style="itemTextStyle">{{item}}</text>
+				<view class="myp-picker-item" :style="mrItemStyle" v-for="(item,index) in items.fMinutes" :key="index">
+					<text :class="['myp-picker-item-text', 'myp-color-'+type, 'myp-size-'+size]" :style="itemTextStyle">{{item}}分</text>
 				</view>
 			</picker-view-column>
 			<picker-view-column>
-				<view class="myp-picker-item">-</view>
-			</picker-view-column>
-			<picker-view-column>
-				<view class="myp-picker-item" :style="mrItemStyle" v-for="(item,index) in data.tyears" :key="index">
-					<text :class="['myp-picker-item-text', 'myp-color-'+type, 'myp-size-'+size]" :style="itemTextStyle">{{item}}</text>
+				<view class="myp-picker-item">
+					<text>{{rangeIndicator}}</text>
 				</view>
 			</picker-view-column>
 			<picker-view-column>
-				<view class="myp-picker-item" :style="mrItemStyle" v-for="(item,index) in data.tmonths" :key="index">
-					<text :class="['myp-picker-item-text', 'myp-color-'+type, 'myp-size-'+size]" :style="itemTextStyle">{{item}}</text>
+				<view class="myp-picker-item" :style="mrItemStyle" v-for="(item,index) in items.tHours" :key="index">
+					<text :class="['myp-picker-item-text', 'myp-color-'+type, 'myp-size-'+size]" :style="itemTextStyle">{{item}}时</text>
 				</view>
 			</picker-view-column>
-		</picker-view>
-		<!-- 根据数据，动态级数 -->
-		<picker-view v-if="mode==='linkage'" class="myp-picker-view" :indicator-style="mrIndicatorStyle" :value="pickVal" @change="bindChange">
-			<picker-view-column v-for="(col,colIndex) in data" :key="colIndex">
-				<view class="myp-picker-item" :style="mrItemStyle" v-for="(item,index) in col" :key="index">
-					<text :class="['myp-picker-item-text', 'myp-color-'+type, 'myp-size-'+size]" :style="itemTextStyle">{{item.label}}</text>
+			<picker-view-column>
+				<view class="myp-picker-item" :style="mrItemStyle" v-for="(item,index) in items.tMinutes" :key="index">
+					<text :class="['myp-picker-item-text', 'myp-color-'+type, 'myp-size-'+size]" :style="itemTextStyle">{{item}}分</text>
 				</view>
 			</picker-view-column>
 		</picker-view>
 		<!-- s1/s2/s3:linkage. 动态数据/动态标签。支持1/2/3级 -->
 		<picker-view v-if="mode==='s3' || mode==='s2' || mode==='s1'" class="myp-picker-view" :indicator-style="mrIndicatorStyle" :value="pickVal" @change="bindChange">
 			<picker-view-column>
-				<view class="myp-picker-item" :style="mrItemStyle" v-for="(item,index) in data.p" :key="index">
+				<view class="myp-picker-item" :style="mrItemStyle" v-for="(item,index) in items.p" :key="index">
 					<text :class="['myp-picker-item-text', 'myp-color-'+type, 'myp-size-'+size]" :style="itemTextStyle">{{item[pl]}}</text>
 				</view>
 			</picker-view-column>
 			<picker-view-column v-if="mode==='s2' || mode==='s3'">
-				<view class="myp-picker-item" :style="mrItemStyle" v-for="(item,index) in data.c" :key="index">
+				<view class="myp-picker-item" :style="mrItemStyle" v-for="(item,index) in items.c" :key="index">
 					<text :class="['myp-picker-item-text', 'myp-color-'+type, 'myp-size-'+size]" :style="itemTextStyle">{{item[cl]}}</text>
 				</view>
 			</picker-view-column>
 			<picker-view-column v-if="mode==='s3'">
-				<view class="myp-picker-item" :style="mrItemStyle" v-for="(item,index) in data.a" :key="index">
+				<view class="myp-picker-item" :style="mrItemStyle" v-for="(item,index) in items.a" :key="index">
 					<text :class="['myp-picker-item-text', 'myp-color-'+type, 'myp-size-'+size]" :style="itemTextStyle">{{item[al]}}</text>
-				</view>
-			</picker-view-column>
-		</picker-view>
-		<picker-view v-if="mode==='limit'" class="myp-picker-view" :indicator-style="mrIndicatorStyle" :value="pickVal" @change="bindChange">
-			<picker-view-column>
-				<view class="myp-picker-item" :style="mrItemStyle" v-for="(item,index) in data.date" :key="index">
-					<text :class="['myp-picker-item-text', 'myp-color-'+type, 'myp-size-'+size]" :style="itemTextStyle">{{item.label}}</text>
-				</view>
-			</picker-view-column>
-			<picker-view-column>
-				<view class="myp-picker-item" :style="mrItemStyle" v-for="(item,index) in data.hours" :key="index">
-					<text :class="['myp-picker-item-text', 'myp-color-'+type, 'myp-size-'+size]" :style="itemTextStyle">{{item.label}}时</text>
-				</view>
-			</picker-view-column>
-			<picker-view-column>
-				<view class="myp-picker-item" :style="mrItemStyle" v-for="(item,index) in data.minutes" :key="index">
-					<text :class="['myp-picker-item-text', 'myp-color-'+type, 'myp-size-'+size]" :style="itemTextStyle">{{item.label}}分</text>
-				</view>
-			</picker-view-column>
-		</picker-view>
-		<picker-view v-if="mode==='limitHour'" class="myp-picker-view" :indicator-style="mrIndicatorStyle" :value="pickVal" @change="bindChange">
-			<picker-view-column>
-				<view class="myp-picker-item" :style="mrItemStyle" v-for="(item,index) in data.date" :key="index">
-					<text :class="['myp-picker-item-text', 'myp-color-'+type, 'myp-size-'+size]" :style="itemTextStyle">{{item.label}}</text>
-				</view>
-			</picker-view-column>
-			<picker-view-column>
-				<view class="myp-picker-item" :style="mrItemStyle" v-for="(item,index) in data.areas" :key="index">
-					<text :class="['myp-picker-item-text', 'myp-color-'+type, 'myp-size-'+size]" :style="itemTextStyle">{{item.label}}</text>
-				</view>
-			</picker-view-column>
-			<picker-view-column>
-				<view class="myp-picker-item" :style="mrItemStyle" v-for="(item,index) in data.hours" :key="index">
-					<text :class="['myp-picker-item-text', 'myp-color-'+type, 'myp-size-'+size]" :style="itemTextStyle">{{item.label}}时</text>
 				</view>
 			</picker-view-column>
 		</picker-view>
@@ -161,78 +113,71 @@
 </template>
 
 <script>
-	//处理方法来自于： 日期选择插件 https://ext.dcloud.net.cn/plugin?id=273
 	import selectionMixin from './sMixin.js'
 	import handlerMixin from './handlerMixin.js'
-	
-	function oneOf(value, validList) {
-		for (let i = 0; i < validList.length; i++) {
-			if (value === validList[i]) {
-				return true;
-			}
-		}
-		throw new Error('mode无效，请选择有效的mode!');
-		return false;
-	}
 	
 	export default {
 		mixins: [selectionMixin, handlerMixin],
 		props: {
+			// ['date'/年月日, 'dateTime'/年月日时分, 'yearMonth'/年月, 'time'/时分, 's3', 's2', 's1', 'dateRange'/年月日, 'yearMonthRange'/年月, 'timeRange'/时分]
 			mode: {
 				type: String,
-				validator(mode) {
-					let modeList = ['half', 'date', 'dateTime', 'yearMonth', 'time', 'linkage', 's3', 's2', 's1', 'limit', 'limitHour', 'range', 'yearMonthRange']; //过滤无效mode;
-					return oneOf(mode, modeList);
-				},
 				default: "date"
 			},
-			startYear: {
-				type: String,
-				default: "1970"
-			},
-			endYear: {
-				type: String,
-				default: new Date().getFullYear() + ''
-			},
-			// it's value of all selected-items, not the index of the items. max length is 7
+			// value, not index of column
 			value: {
 				type: Array,
 				default: ()=>{
 					return [0,0,0,0,0,0,0]
 				}
 			},
-			step: {
-				type: Number,
-				default: 1
-			},
-			current: {
+			useCurrent: {
 				type: Boolean,
 				default: false
 			},
-			//以下参数仅对mode==limit有效
-			dayStep: {
-				type: Number,
-				default: 7
+			startY: {
+				type: String,
+				default: "1970"
 			},
-			startHour: {
-				type: Number,
-				default: 8
+			endY: {
+				type: String,
+				default: new Date().getFullYear() + ''
 			},
-			endHour: {
-				type: Number,
-				default: 20
+			startM: {
+				type: String,
+				default: "1"
 			},
-			minuteStep: {
-				type: Number,
-				default: 10
+			endM: {
+				type: String,
+				default: '12'
 			},
-			afterStep: {
-				type: Number,
-				default: 30
+			startD: {
+				type: String,
+				default: "1"
 			},
-			disabledAfter: {
-				type: Boolean,
-				default: false
+			endD: {
+				type: String,
+				default: '0'
+			},
+			startHH: {
+				type: String,
+				default: "0"
+			},
+			endHH: {
+				type: String,
+				default: '23'
+			},
+			startMM: {
+				type: String,
+				default: "0"
+			},
+			endMM: {
+				type: String,
+				default: '59'
+			},
+			rangeIndicator: {
+				type: String,
+				default: ''
 			},
 			// styles
 			bgType: {
@@ -285,7 +230,7 @@
 		},
 		data() {
 			return {
-				data: {},
+				items: {},
 				// value of prop label
 				checkArr: [],
 				// value of prop value
@@ -298,7 +243,7 @@
 			mode() {
 				this.initData()
 			},
-			// s1/s2/s3/linkage
+			// s1/s2/s3
 			selections() {
 				this.initData()
 			}

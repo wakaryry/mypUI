@@ -37,33 +37,36 @@ export default {
 					break
 				case "dateRange":
 				case "yearMonthRange":
-					data = dateMaker.range.init(mode, this.value, this.useCurrent, this.startY, this.endY, this.startM, this.endM, this.startD, this.endD, this.startHH, this.endHH, this.startMM, this.endMM)
+				case "timeRange":
+					data = dateMaker.range.init(mode, this.now, this.value, this.useCurrent, this.start, this.end, this.includeBefore, this.includeAfter)
 					dVal = data.defaultArr
 					break
 				default:
-					data = dateMaker.date.init(mode, this.value, this.useCurrent, this.startY, this.endY, this.startM, this.endM, this.startD, this.endD, this.startHH, this.endHH, this.startMM, this.endMM)
+					data = dateMaker.date.init(mode, this.now, this.value, this.useCurrent, this.start, this.end, this.includeBefore, this.includeAfter)
 					dVal = data.defaultArr
 					break
 			}
 			this.items = data
 			switch (mode) {
 				case "dateRange":
-					let fYear = data.fyears[dVal[0]] || data.fyears[data.fyears.length - 1]
-					let fmonth = data.fmonths[dVal[1]] || data.fmonths[data.fmonths.length - 1]
-					let fday = data.fdays[dVal[2]] || data.fdays[data.fdays.length - 1]
-					let tYear = data.tyears[dVal[4]] || data.tyears[data.tyears.length - 1]
-					let tmonth = data.tmonths[dVal[5]] || data.tmonths[data.tmonths.length - 1]
-					let tday = data.tdays[dVal[6]] || data.tdays[data.tdays.length - 1]
-					this.checkArr = [fYear, fmonth, fday, tYear, tmonth, tday]
-					this.resultStr = `${fYear+'-'+fmonth+'-'+fday+'至'+tYear+'-'+tmonth+'-'+tday}`
+					let fYear = data.fYears[dVal[0]] || data.fYears[data.fYears.length - 1]
+					let fMonth = data.fMonths[dVal[1]] || data.fMonths[data.fMonths.length - 1]
+					let fDay = data.fDays[dVal[2]] || data.fDays[data.fDays.length - 1]
+					let tYear = data.tYears[dVal[4]] || data.tYears[data.tYears.length - 1]
+					let tMonth = data.tMonths[dVal[5]] || data.tMonths[data.tMonths.length - 1]
+					let tDay = data.tDays[dVal[6]] || data.tDays[data.tDays.length - 1]
+					this.checkArr = [fYear, fMonth, fDay, tYear, tMonth, tDay]
+					this.resultStr = `${fYear+'-'+fMonth+'-'+fDay+'至'+tYear+'-'+tMonth+'-'+tDay}`
 					break
 				case "yearMonthRange":
-					let _fYear = data.fyears[dVal[0]] || data.fyears[data.fyears.length - 1]
-					let _fmonth = data.fmonths[dVal[1]] || data.fmonths[data.fmonths.length - 1]
-					let _tYear = data.tyears[dVal[3]] || data.tyears[data.tyears.length - 1]
-					let _tmonth = data.tmonths[dVal[4]] || data.tmonths[data.tmonths.length - 1]
-					this.checkArr = [_fYear, _fmonth, _tYear, _tmonth]
-					this.resultStr = `${_fYear+'-'+_fmonth+'至'+_tYear+'-'+_tmonth}`
+					let _fYear = data.fYears[dVal[0]] || data.fYears[data.fYears.length - 1]
+					let _fMonth = data.fMonths[dVal[1]] || data.fMonths[data.fMonths.length - 1]
+					let _tYear = data.tYears[dVal[3]] || data.tYears[data.tYears.length - 1]
+					let _tMonth = data.tMonths[dVal[4]] || data.tMonths[data.tMonths.length - 1]
+					this.checkArr = [_fYear, _fMonth, _tYear, _tMonth]
+					this.resultStr = `${_fYear+'-'+_fMonth+'至'+_tYear+'-'+_tMonth}`
+					break
+				case "timeRange":
 					break
 				case "date":
 					year = data.years[dVal[0]] || data.years[data.years.length - 1]
@@ -127,7 +130,7 @@ export default {
 			})
 		},
 		bindChange(val) {
-			let arr = val.detail.value
+			let arr = Object.assign([], val.detail.value)
 			console.log(arr)
 			let year = "",
 				month = "",
@@ -142,14 +145,24 @@ export default {
 			switch (mode) {
 				case "date":
 					year = this.items.years[arr[0]] || this.items.years[this.items.years.length - 1]
-					month = this.items.months[arr[1]] || this.items.months[this.items.months.length - 1]
 					if (year != checkArr[0]) {
-						days = dateMaker.date.initDays(year, month, this.startD, this.endD)
-						this.items.days = days
+						months = dateMaker.date.initMonths(this.now, year, this.items.years, this.includeBefore, this.includeAfter)
+						this.items.months = months
+						// #ifdef APP-NVUE
+						if (arr[1] > (months.length-1)) {
+							arr[1] = months.length - 1
+						}
+						// #endif
 					}
-					if (month != checkArr[1]) {
-						days = dateMaker.date.initDays(year, month, this.startD, this.endD)
+					month = this.items.months[arr[1]] || this.items.months[this.items.months.length - 1]
+					if (year != checkArr[0] || month != checkArr[1]) {
+						days = dateMaker.date.initDays(this.now, year, month, this.items.years, this.items.months, this.includeBefore, this.includeAfter)
 						this.items.days = days
+						// #ifdef APP-NVUE
+						if (arr[2] > (days.length - 1)) {
+							arr[2] = days.length - 1
+						}
+						// #endif
 					}
 					day = this.items.days[arr[2]] || this.items.days[this.items.days.length - 1]
 					this.checkArr = [year, month, day]
@@ -157,66 +170,104 @@ export default {
 					break
 				case "yearMonth":
 					year = this.items.years[arr[0]] || this.items.years[this.items.years.length - 1]
+					if (year != checkArr[0]) {
+						months = dateMaker.date.initMonths(this.now, year, this.items.years, this.includeBefore, this.includeAfter)
+						this.items.months = months
+						// #ifdef APP-NVUE
+						if (arr[1] > (months.length - 1)) {
+							arr[1] = months.length - 1
+						}
+						// #endif
+					}
 					month = this.items.months[arr[1]] || this.items.months[this.items.months.length - 1]
 					this.checkArr = [year, month]
 					this.resultStr = `${year+'-'+month}`
 					break
 				case "dateTime":
 					year = this.items.years[arr[0]] || this.items.years[this.items.years.length - 1]
+					if (year !== checkArr[0]) {
+						months = dateMaker.date.initMonths(this.now, year, this.items.years, this.includeBefore, this.includeAfter)
+						this.items.months = months
+						// #ifdef APP-NVUE
+						if (arr[1] > (months.length - 1)) {
+							arr[1] = months.length - 1
+						}
+						// #endif
+					}
 					month = this.items.months[arr[1]] || this.items.months[this.items.months.length - 1]
+					if (year != checkArr[0] || month != checkArr[1]) {
+						days = dateMaker.date.initDays(this.now, year, month, this.items.years, this.items.months, this.includeBefore, this.includeAfter)
+						this.items.days = days
+						// #ifdef APP-NVUE
+						if (arr[2] > (days.length - 1)) {
+							arr[2] = days.length - 1
+						}
+						// #endif
+					}
 					day = this.items.days[arr[2]] || this.items.days[this.items.days.length - 1]
+					if (year != checkArr[0] || month != checkArr[1] || day != checkArr[2]) {
+						const hms = dateMaker.date.initHoursMinutes(this.now, year, month, day, this.items.years, this.items.months, this.items.days, this.includeBefore, this.includeAfter)
+						this.items.hours = hms.hours
+						this.items.minutes = hms.minutes
+						// #ifdef APP-NVUE
+						if (arr[3] > (hms.hours.length - 1)) {
+							arr[3] = hms.hours.length - 1
+						}
+						// #endif
+					}
 					hour = this.items.hours[arr[3]] || this.items.hours[this.items.hours.length - 1]
 					minute = this.items.minutes[arr[4]] || this.items.minutes[this.items.minutes.length - 1]
-					if (year != checkArr[0]) {
-						days = dateMaker.date.initDays(year, month, this.startD, this.endD)
-						this.items.days = days
-					}
-					if (month != checkArr[1]) {
-						days = dateMaker.date.initDays(year, month, this.startD, this.endD)
-						this.items.days = days
-					}
 					this.checkArr = [year, month, day, hour, minute]
 					this.resultStr = `${year+'-'+month+'-'+day+' '+hour+':'+minute}`
 					break
 				case "time":
 					hour = this.items.hours[arr[0]] || this.items.hours[this.items.hours.length - 1]
+					if (hour !== checkArr[0]) {
+						const mns = dateMaker.date.initMinutes(this.now, hour, this.items.hours, this.includeBefore, this.includeAfter)
+						this.items.minutes = mns
+						// #ifdef APP-NVUE
+						if (arr[1] > (mns.length - 1)) {
+							arr[1] = mns.length - 1
+						}
+						// #endif
+					}
 					minute = this.items.minutes[arr[1]] || this.items.minutes[this.items.minutes.length - 1]
 					this.checkArr = [hour, minute]
 					this.resultStr = `${hour+':'+minute}`
 					break
 				case "dateRange":
-					let fyear = this.items.fyears[arr[0]] || this.items.fyears[this.items.fyears.length - 1]
-					let fmonth = this.items.fmonths[arr[1]] || this.items.fmonths[this.items.fmonths.length - 1]
-					let fday = this.items.fdays[arr[2]] || this.items.fdays[this.items.fdays.length - 1]
-					let tyear = this.items.tyears[arr[4]] || this.items.tyears[this.items.tyears.length - 1]
-					let tmonth = this.items.tmonths[arr[5]] || this.items.tmonths[this.items.tmonths.length - 1]
-					let tday = this.items.tdays[arr[6]] || this.items.tdays[this.items.tdays.length - 1]
-					if (fyear != checkArr[0]) {
-						days = dateMaker.range.initDays(fyear, fmonth)
-						this.items.fdays = days
+					let fYear = this.items.fYears[arr[0]] || this.items.fYears[this.items.fYears.length - 1]
+					let fMonth = this.items.fMonths[arr[1]] || this.items.fMonths[this.items.fMonths.length - 1]
+					let fDay = this.items.fDays[arr[2]] || this.items.fDays[this.items.fDays.length - 1]
+					let tYear = this.items.tYears[arr[4]] || this.items.tYears[this.items.tYears.length - 1]
+					let tMonth = this.items.tMonths[arr[5]] || this.items.tMonths[this.items.tMonths.length - 1]
+					let tDay = this.items.tDays[arr[6]] || this.items.tDays[this.items.tDays.length - 1]
+					if (fYear != checkArr[0]) {
+						days = dateMaker.range.initDays(fYear, fMonth)
+						this.items.fDays = days
 					}
-					if (fmonth != checkArr[1]) {
-						days = dateMaker.range.initDays(fyear, fmonth)
-						this.items.fdays = days
+					if (fMonth != checkArr[1]) {
+						days = dateMaker.range.initDays(fYear, fMonth)
+						this.items.fDays = days
 					}
-					if (tyear != checkArr[3]) {
-						days = dateMaker.range.initDays(tyear, tmonth)
-						this.items.tdays = days
+					if (tYear != checkArr[3]) {
+						days = dateMaker.range.initDays(tYear, tMonth)
+						this.items.tDays = days
 					}
-					if (tmonth != checkArr[4]) {
-						days = dateMaker.range.initDays(tyear, tmonth)
-						this.items.tdays = days
+					if (tMonth != checkArr[4]) {
+						days = dateMaker.range.initDays(tYear, tMonth)
+						this.items.tDays = days
 					}
-					this.checkArr = [fyear, fmonth, fday, tyear, tmonth, tday]
-					this.resultStr = `${fyear+'-'+fmonth+'-'+fday+'至'+tyear+'-'+tmonth+'-'+tday}`
+					this.checkArr = [fYear, fMonth, fDay, tYear, tMonth, tDay]
+					this.resultStr = `${fYear+'-'+fMonth+'-'+fDay+'至'+tYear+'-'+tMonth+'-'+tDay}`
 					break
 				case "yearMonthRange":
-					let _fyear = this.items.fyears[arr[0]] || this.items.fyears[this.items.fyears.length - 1]
-					let _fmonth = this.items.fmonths[arr[1]] || this.items.fmonths[this.items.fmonths.length - 1]
-					let _tyear = this.items.tyears[arr[3]] || this.items.tyears[this.items.tyears.length - 1]
-					let _tmonth = this.items.tmonths[arr[4]] || this.items.tmonths[this.items.tmonths.length - 1]
-					this.checkArr = [_fyear, _fmonth, _tyear, _tmonth]
-					this.resultStr = `${_fyear+'-'+_fmonth+'至'+_tyear+'-'+_tmonth}`
+					let _fYear = this.items.fYears[arr[0]] || this.items.fYears[this.items.fYears.length - 1]
+					let _fMonth = this.items.fMonths[arr[1]] || this.items.fMonths[this.items.fMonths.length - 1]
+					let _tYear = this.items.tYears[arr[3]] || this.items.tYears[this.items.tYears.length - 1]
+					let _tMonth = this.items.tMonths[arr[4]] || this.items.tMonths[this.items.tMonths.length - 1]
+					this.checkArr = [_fYear, _fMonth, _tYear, _tMonth]
+					this.resultStr = `${_fYear+'-'+_fMonth+'至'+_tYear+'-'+_tMonth}`
 					break
 				case 'timeRange':
 					break

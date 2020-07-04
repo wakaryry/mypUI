@@ -44,8 +44,8 @@
 				</view>
 			</picker-view-column>
 			<picker-view-column>
-				<view class="myp-picker-item">
-					<text>{{rangeIndicator}}</text>
+				<view class="myp-picker-item" :style="mrItemRangeStyle">
+					<text :class="['myp-picker-item-text', 'myp-color-'+rangeType, 'myp-size-'+rangeSize]">{{rangeIndicator}}</text>
 				</view>
 			</picker-view-column>
 			<picker-view-column>
@@ -76,8 +76,8 @@
 				</view>
 			</picker-view-column>
 			<picker-view-column>
-				<view class="myp-picker-item">
-					<text>{{rangeIndicator}}</text>
+				<view class="myp-picker-item" :style="mrItemRangeStyle">
+					<text :class="['myp-picker-item-text', 'myp-color-'+rangeType, 'myp-size-'+rangeSize]">{{rangeIndicator}}</text>
 				</view>
 			</picker-view-column>
 			<picker-view-column>
@@ -135,49 +135,27 @@
 				type: Boolean,
 				default: false
 			},
-			startY: {
+			// 表示年份year的开始或者小时hour的开始
+			start: {
 				type: String,
 				default: "1970"
 			},
-			endY: {
+			end: {
 				type: String,
 				default: new Date().getFullYear() + ''
 			},
-			startM: {
-				type: String,
-				default: "1"
+			// 仅仅只是用在带年份选择的mode上
+			includeBefore: {
+				type: Boolean,
+				default: true
 			},
-			endM: {
-				type: String,
-				default: '12'
-			},
-			startD: {
-				type: String,
-				default: "1"
-			},
-			endD: {
-				type: String,
-				default: '0'
-			},
-			startHH: {
-				type: String,
-				default: "0"
-			},
-			endHH: {
-				type: String,
-				default: '23'
-			},
-			startMM: {
-				type: String,
-				default: "0"
-			},
-			endMM: {
-				type: String,
-				default: '59'
+			includeAfter: {
+				type: Boolean,
+				default: true
 			},
 			rangeIndicator: {
 				type: String,
-				default: ''
+				default: '-'
 			},
 			// styles
 			bgType: {
@@ -215,6 +193,18 @@
 			indicatorStyle: {
 				type: String,
 				default: ''
+			},
+			rangeType: {
+				type: String,
+				default: 'text'
+			},
+			rangeSize: {
+				type: String,
+				default: 'base'
+			},
+			rangeIndicatorStyle: {
+				type: String,
+				default: ''
 			}
 		},
 		computed: {
@@ -226,6 +216,9 @@
 			},
 			mrItemStyle() {
 				return `height:${this.itemHeight};` + this.itemStyle
+			},
+			mrItemRangeStyle() {
+				return `height:${this.itemHeight};` + this.rangeIndicatorStyle
 			}
 		},
 		data() {
@@ -236,7 +229,8 @@
 				// value of prop value
 				checkValue: [],
 				pickVal: [],
-				resultStr: ''
+				resultStr: '',
+				now: new Date()
 			}
 		},
 		watch: {
@@ -246,13 +240,25 @@
 			// s1/s2/s3
 			selections() {
 				this.initData()
+			},
+			show(newV) {
+				if (newV) {
+					if (!this.includeBefore || !this.includeAfter) {
+						this.now = new Date() // refresh time
+						this.initData()  // re-init
+					}
+				}
 			}
 		},
 		created() {
 			this.initData()
 		},
 		methods: {
-			
+			// ref method to init data
+			init() {
+				this.now = new Date() // refresh time
+				this.initData()
+			}
 		}
 	}
 </script>
@@ -270,6 +276,7 @@
 		&-item {
 			justify-content: center;
 			align-items: center;
+			
 			&-text {
 				text-align: center;
 				overflow: hidden;

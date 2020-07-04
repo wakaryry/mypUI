@@ -7,7 +7,7 @@
 				<text :class="['myp-color-'+confirmType, 'myp-size-'+confirmSize]" :style="confirmStyle" @tap="toConfirm">{{confirmText}}</text>
 			</view>
 		</slot>
-		<myp-picker-content :mode="mode" @inited="pickerInited" @change="selectChanged"></myp-picker-content>
+		<myp-picker-content :mode="mode" :value="value" :useCurrent="useCurrent" :start="start" :end="end" :includeBefore="includeBefore" :includeAfter="includeAfter" :rangeIndicator="rangeIndicator" :bgType="bgType" :type="type" :size="size" :height="height" :itemHeight="itemHeight" :boxStyle="boxStyle" :itemStyle="itemStyle" :itemTextStyle="itemTextStyle" :indicatorStyle="indicatorStyle" :rangeType="rangeType" :rangeSize="rangeSize" :rangeStyle="rangeStyle" @inited="pickerInited" @change="pickerChanged"></myp-picker-content>
 	</myp-popup-always>
 </template>
 
@@ -85,11 +85,94 @@
 			headerStyle: {
 				type: String,
 				default: ''
+			},
+			// content about
+			// value, not index of column
+			value: {
+				type: Array,
+				default: ()=>{
+					return [0,0,0,0,0,0,0]
+				}
+			},
+			useCurrent: {
+				type: Boolean,
+				default: false
+			},
+			// 表示年份year的开始或者小时hour的开始
+			start: {
+				type: String,
+				default: "1970"
+			},
+			end: {
+				type: String,
+				default: new Date().getFullYear() + ''
+			},
+			// 仅仅只是用在带年份选择的mode上
+			includeBefore: {
+				type: Boolean,
+				default: true
+			},
+			includeAfter: {
+				type: Boolean,
+				default: true
+			},
+			rangeIndicator: {
+				type: String,
+				default: '-'
+			},
+			// styles
+			bgType: {
+				type: String,
+				default: 'inverse'
+			},
+			type: {
+				type: String,
+				default: 'text'
+			},
+			size: {
+				type: String,
+				default: 'base'
+			},
+			height: {
+				type: String,
+				default: '500rpx'
+			},
+			itemHeight: {
+				type: String,
+				default: '100rpx'
+			},
+			boxStyle: {
+				type: String,
+				default: ''
+			},
+			itemStyle: {
+				type: String,
+				default: ''
+			},
+			itemTextStyle: {
+				type: String,
+				default: ''
+			},
+			indicatorStyle: {
+				type: String,
+				default: ''
+			},
+			rangeType: {
+				type: String,
+				default: 'text'
+			},
+			rangeSize: {
+				type: String,
+				default: 'base'
+			},
+			rangeStyle: {
+				type: String,
+				default: ''
 			}
 		},
 		data() {
 			return {
-				
+				result: null
 			}
 		},
 		methods: {
@@ -100,10 +183,12 @@
 				this.$emit("cancel")
 			},
 			pickerInited(val) {
-				console.log(val)
+				// console.log(val)
+				this.result = JSON.parse(JSON.stringify(val))
 			},
-			selectChanged(val) {
-				console.log(val)
+			pickerChanged(val) {
+				// console.log(val)
+				this.result = JSON.parse(JSON.stringify(val))
 			}
 		}
 	}

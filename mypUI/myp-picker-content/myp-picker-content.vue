@@ -44,7 +44,7 @@
 				</view>
 			</picker-view-column>
 			<picker-view-column>
-				<view class="myp-picker-item" :style="mrItemRangeStyle">
+				<view class="myp-picker-item" :style="mrRangeStyle">
 					<text :class="['myp-picker-item-text', 'myp-color-'+rangeType, 'myp-size-'+rangeSize]">{{rangeIndicator}}</text>
 				</view>
 			</picker-view-column>
@@ -76,7 +76,7 @@
 				</view>
 			</picker-view-column>
 			<picker-view-column>
-				<view class="myp-picker-item" :style="mrItemRangeStyle">
+				<view class="myp-picker-item" :style="mrRangeStyle">
 					<text :class="['myp-picker-item-text', 'myp-color-'+rangeType, 'myp-size-'+rangeSize]">{{rangeIndicator}}</text>
 				</view>
 			</picker-view-column>
@@ -202,7 +202,7 @@
 				type: String,
 				default: 'base'
 			},
-			rangeIndicatorStyle: {
+			rangeStyle: {
 				type: String,
 				default: ''
 			}
@@ -217,8 +217,8 @@
 			mrItemStyle() {
 				return `height:${this.itemHeight};` + this.itemStyle
 			},
-			mrItemRangeStyle() {
-				return `height:${this.itemHeight};` + this.rangeIndicatorStyle
+			mrRangeStyle() {
+				return `height:${this.itemHeight};` + this.rangeStyle
 			}
 		},
 		data() {

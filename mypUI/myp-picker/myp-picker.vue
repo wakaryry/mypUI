@@ -177,7 +177,7 @@
 		},
 		methods: {
 			toConfirm() {
-				this.$emit("confirm")
+				this.$emit("confirm", this.result)
 			},
 			toCancel() {
 				this.$emit("cancel")

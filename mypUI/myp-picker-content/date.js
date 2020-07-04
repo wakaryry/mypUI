@@ -109,8 +109,10 @@ const generateDateTimeArr = (now, year, month, day, years, months, days, include
 const generateHoursArr = (now, start, end, includeBefore, includeAfter) => {
 	let _start = start
 	let _end = end
-	if (start.length > 2 || end.length > 2) {
+	if (start.length > 2) {
 		_start = 0
+	}
+	if (end.length > 2) {
 		_end = 23
 	}
 	if (includeBefore && includeAfter) return generateNumArr(_start, _end);
@@ -256,6 +258,9 @@ const dateMaker = {
 	}
 }
 
+// 暂时比较粗糙
+// TODO: 限制右侧的数据使其与左侧更加符合范围选择
+// 优先级：1-一般优先级，等待其它业务完成之后
 const rangeMaker = {
 	// dateRange/yearMonthRange,timeRange
 	init(mode='dateRange', now, value, useCurrent, start, end, includeBefore, includeAfter) {

@@ -237,39 +237,142 @@ export default {
 					break
 				case "dateRange":
 					let fYear = this.items.fYears[arr[0]] || this.items.fYears[this.items.fYears.length - 1]
+					if (fYear != checkArr[0]) {
+						const drms = dateMaker.date.initMonths(this.now, fYear, this.items.fYears, this.includeBefore, this.includeAfter)
+						this.items.fMonths = drms
+						// #ifdef APP-NVUE
+						if (arr[1] > (drms.length - 1)) {
+							arr[1] = drms.length - 1
+						}
+						// #endif
+					}
 					let fMonth = this.items.fMonths[arr[1]] || this.items.fMonths[this.items.fMonths.length - 1]
+					if (fYear != checkArr[0] || fMonth != checkArr[1]) {
+						const drds = dateMaker.date.initDays(this.now, fYear, fMonth, this.items.fYears, this.items.fMonths, this.includeBefore, this.includeAfter)
+						this.items.fDays = drds
+						// #ifdef APP-NVUE
+						if (arr[2] > (drds.length - 1)) {
+							arr[2] = drds.length - 1
+						}
+						// #endif
+					}
 					let fDay = this.items.fDays[arr[2]] || this.items.fDays[this.items.fDays.length - 1]
+					
 					let tYear = this.items.tYears[arr[4]] || this.items.tYears[this.items.tYears.length - 1]
 					let tMonth = this.items.tMonths[arr[5]] || this.items.tMonths[this.items.tMonths.length - 1]
 					let tDay = this.items.tDays[arr[6]] || this.items.tDays[this.items.tDays.length - 1]
-					if (fYear != checkArr[0]) {
-						days = dateMaker.range.initDays(fYear, fMonth)
-						this.items.fDays = days
-					}
-					if (fMonth != checkArr[1]) {
-						days = dateMaker.range.initDays(fYear, fMonth)
-						this.items.fDays = days
-					}
-					if (tYear != checkArr[3]) {
-						days = dateMaker.range.initDays(tYear, tMonth)
-						this.items.tDays = days
-					}
-					if (tMonth != checkArr[4]) {
-						days = dateMaker.range.initDays(tYear, tMonth)
-						this.items.tDays = days
+					if (fYear != checkArr[0] || fMonth != checkArr[1] || fDay != checkArr[2]) {
+						const abc = dateMaker.date.init('date', this.now, arr.slice(4), false, fYear, this.end, this.includeBefore, this.includeAfter)
+						this.items.tYears = abc.years
+						this.items.tMonths = abc.months
+						this.items.tDays = abc.days
+						arr[4] = abc.defaultArr[0]
+						arr[5] = abc.defaultArr[1]
+						arr[6] = abc.defaultArr[2]
+						tYear = this.items.tYears[arr[4]] || this.items.tYears[this.items.tYears.length - 1]
+						tMonth = this.items.tMonths[arr[5]] || this.items.tMonths[this.items.tMonths.length - 1]
+						tDay = this.items.tDays[arr[6]] || this.items.tDays[this.items.tDays.length - 1]
+					} else {
+						if (tYear != checkArr[4]) {
+							const drms = dateMaker.date.initMonths(this.now, tYear, this.items.tYears, this.includeBefore, this.includeAfter)
+							this.items.tMonths = drms
+							// #ifdef APP-NVUE
+							if (arr[5] > (drms.length - 1)) {
+								arr[5] = drms.length - 1
+							}
+							// #endif
+						}
+						tMonth = this.items.tMonths[arr[5]] || this.items.tMonths[this.items.tMonths.length - 1]
+						if (tYear != checkArr[4] || tMonth != checkArr[5]) {
+							const drds = dateMaker.date.initDays(this.now, tYear, tMonth, this.items.tYears, this.items.tMonths, this.includeBefore, this.includeAfter)
+							this.items.tDays = drds
+							// #ifdef APP-NVUE
+							if (arr[6] > (drds.length - 1)) {
+								arr[6] = drds.length - 1
+							}
+							// #endif
+						}
+						tDay = this.items.tDays[arr[6]] || this.items.tDays[this.items.tDays.length - 1]
 					}
 					this.checkArr = [fYear, fMonth, fDay, tYear, tMonth, tDay]
 					this.resultStr = `${fYear+'-'+fMonth+'-'+fDay+'至'+tYear+'-'+tMonth+'-'+tDay}`
 					break
 				case "yearMonthRange":
 					let _fYear = this.items.fYears[arr[0]] || this.items.fYears[this.items.fYears.length - 1]
+					if (_fYear != checkArr[0]) {
+						const drms = dateMaker.date.initMonths(this.now, _fYear, this.items.fYears, this.includeBefore, this.includeAfter)
+						this.items.fMonths = drms
+						// #ifdef APP-NVUE
+						if (arr[1] > (drms.length - 1)) {
+							arr[1] = drms.length - 1
+						}
+						// #endif
+					}
 					let _fMonth = this.items.fMonths[arr[1]] || this.items.fMonths[this.items.fMonths.length - 1]
+					
 					let _tYear = this.items.tYears[arr[3]] || this.items.tYears[this.items.tYears.length - 1]
 					let _tMonth = this.items.tMonths[arr[4]] || this.items.tMonths[this.items.tMonths.length - 1]
+					if (_fYear != checkArr[0] || _fMonth != checkArr[1]) {
+						const abc = dateMaker.date.init('yearMonth', this.now, arr.slice(3), false, _fYear, this.end, this.includeBefore, this.includeAfter)
+						this.items.tYears = abc.years
+						this.items.tMonths = abc.months
+						arr[3] = abc.defaultArr[0]
+						arr[4] = abc.defaultArr[1]
+						_tYear = this.items.tYears[arr[3]] || this.items.tYears[this.items.tYears.length - 1]
+						_tMonth = this.items.tMonths[arr[4]] || this.items.tMonths[this.items.tMonths.length - 1]
+					} else {
+						if (_tYear != checkArr[3]) {
+							const drms = dateMaker.date.initMonths(this.now, _tYear, this.items.tYears, this.includeBefore, this.includeAfter)
+							this.items.tMonths = drms
+							// #ifdef APP-NVUE
+							if (arr[4] > (drms.length - 1)) {
+								arr[4] = drms.length - 1
+							}
+							// #endif
+						}
+						_tMonth = this.items.tMonths[arr[4]] || this.items.tMonths[this.items.tMonths.length - 1]
+					}
 					this.checkArr = [_fYear, _fMonth, _tYear, _tMonth]
 					this.resultStr = `${_fYear+'-'+_fMonth+'至'+_tYear+'-'+_tMonth}`
 					break
 				case 'timeRange':
+					let fHour = this.items.fHours[arr[0]] || this.items.fHours[this.items.fHours.length - 1]
+					if (fHour != checkArr[0]) {
+						const trms = dateMaker.date.initMinutes(this.now, fHour, this.items.fHours, this.includeBefore, this.includeAfter)
+						this.items.fMinutes = trms
+						// #ifdef APP-NVUE
+						if (arr[1] > (trms.length - 1)) {
+							arr[1] = trms.length - 1
+						}
+						// #endif
+					}
+					let fMinute = this.items.fMinutes[arr[1]] || this.items.fMinutes[this.items.fMinutes.length - 1]
+					
+					let tHour = this.items.tHours[arr[3]] || this.items.tHours[this.items.tHours.length - 1]
+					let tMinute = this.items.tMinutes[arr[4]] || this.items.tMinutes[this.items.tMinutes.length - 1]
+					if (fHour != checkArr[0] || fMinute != checkArr[1]) {
+						const abc = dateMaker.date.init('time', this.now, arr.slice(3), false, fHour, this.end, this.includeBefore, this.includeAfter)
+						console.log(abc)
+						this.items.tHours = abc.hours
+						this.items.tMinutes = abc.minutes
+						arr[3] = abc.defaultArr[0]
+						arr[4] = abc.defaultArr[1]
+						tHour = this.items.tHours[arr[3]] || this.items.tHours[this.items.tHours.length - 1]
+						tMinute = this.items.tMinutes[arr[4]] || this.items.tMinutes[this.items.tMinutes.length - 1]
+					} else {
+						if (tHour != checkArr[3]) {
+							const drms = dateMaker.date.initMinutes(this.now, tHour, this.items.tHours, this.includeBefore, this.includeAfter)
+							this.items.tMinutes = drms
+							// #ifdef APP-NVUE
+							if (arr[4] > (drms.length - 1)) {
+								arr[4] = drms.length - 1
+							}
+							// #endif
+						}
+						tMinute = this.items.tMinutes[arr[4]] || this.items.tMinutes[this.items.tMinutes.length - 1]
+					}
+					this.checkArr = [fHour, fMinute, tHour, tMinute]
+					this.resultStr = `${fHour+'-'+fMinute+'至'+tHour+'-'+tMinute}`
 					break
 				case "s3":
 					province = this.items.p[arr[0]][this.pl]

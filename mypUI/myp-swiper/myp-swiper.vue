@@ -1,10 +1,19 @@
 <template>
-	<view></view>
+	<view ref="myp-swiper">
+		<view></view>
+	</view>
 </template>
 
 <script>
 	export default {
-		
+		props: {
+			items: {
+				type: Array,
+				default: ()=>{
+					return []
+				}
+			}
+		}
 	}
 </script>
 

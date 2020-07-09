@@ -147,7 +147,7 @@
 				this.$emit("leftAction", i)
 			},
 			clickCenter(e) {
-				e.stopPropagation && e.stopPropagation()
+				e && e.stopPropagation && e.stopPropagation()
 				this.$emit("centerAction")
 			},
 			goRight(i) {

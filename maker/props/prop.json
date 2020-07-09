@@ -1,0 +1,17 @@
+{
+    "myp_raw": ["bgType", "border", "radius", "hover", "items-Array-[]", "item-Object-{}"],
+    "myp_state": [],
+    "myp_common": ["desc"],
+    "myp_state_common": [],
+    "title": {
+        "rules": ["type", "size", "style"]
+    },
+    "icon": {
+        "state": ["disabled", "selected"],
+        "pre": ["left", "right"],
+        "rules": ["type", "size-ll", "style"]
+    },
+    "myp_special": {
+        "leftIconDiasbled": "place-ll-"
+    }
+}

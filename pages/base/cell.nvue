@@ -5,20 +5,20 @@
 			<view style="height: 24rpx;"></view>
 			<myp-cell icon="book" title="我的知识" boxStyle="padding-left:32rpx;"></myp-cell>
 			<view style="height: 24rpx;"></view>
-			<myp-cell icon="star-two" title="我的收藏" value="查看更多收藏" valueStyle="text-align:right;" :showIndicator="true" indicator="right" boxStyle="padding-left:32rpx;padding-right:32rpx;"></myp-cell>
+			<myp-cell icon="star-two" title="我的收藏" value="查看更多收藏" valueStyle="text-align:right;" indicator="right" boxStyle="padding-left:32rpx;padding-right:32rpx;"></myp-cell>
 			<view style="height: 24rpx;"></view>
-			<myp-cell icon="setting" title="通用设置" border="all" radius="s" :showIndicator="true" indicator="right" boxStyle="padding-left:32rpx;padding-right:32rpx;margin-left:32rpx;margin-right:32rpx;"></myp-cell>
+			<myp-cell icon="setting" title="通用设置" border="all" radius="s" indicator="right" boxStyle="padding-left:32rpx;padding-right:32rpx;margin-left:32rpx;margin-right:32rpx;"></myp-cell>
 			<view style="height: 24rpx;"></view>
-			<myp-cell bgType="error" icon="setting" title="通用设置" value="更多设置请查看源码以及文档" border="all" radius="s" :showIndicator="true" indicator="right" boxStyle="padding-left:32rpx;padding-right:32rpx;margin-left:32rpx;margin-right:32rpx;"></myp-cell>
+			<myp-cell bgType="error" icon="setting" title="通用设置" value="更多设置请查看源码以及文档" border="all" radius="s" indicator="right" boxStyle="padding-left:32rpx;padding-right:32rpx;margin-left:32rpx;margin-right:32rpx;"></myp-cell>
 			<view style="height: 24rpx;"></view>
-			<myp-cell icon="bold-refresh" title="软件更新" :showIndicator="true" space="24rpx" boxStyle="padding-left:38rpx;padding-right:48rpx;">
+			<myp-cell icon="bold-refresh" title="软件更新" indicator="right" space="24rpx" boxStyle="padding-left:38rpx;padding-right:48rpx;">
 				<view slot="extra" class="cell-upload">
 					<myp-icon name="solid-up" type="inverse" size="l"></myp-icon>
 					<text class="cell-upload-text">有新版本</text>
 				</view>
 			</myp-cell>
 			<view style="height: 24rpx;"></view>
-			<myp-cell icon="solid-about" title="关于我们" :showIndicator="true" space="24rpx" boxStyle="padding-left:38rpx;padding-right:48rpx;" @selected="toAbout"></myp-cell>
+			<myp-cell icon="solid-about" title="关于我们" indicator="right" space="24rpx" boxStyle="padding-left:38rpx;padding-right:48rpx;" @selected="toAbout"></myp-cell>
 		</scroll-view>
 		<myp-toast ref="myp-toast"></myp-toast>
 	</view>

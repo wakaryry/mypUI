@@ -6,7 +6,7 @@
 				<view style="height: 20rpx;"></view>
 			</myp-list-cell>
 			<myp-list-cell v-for="(item,idx) in items" :key="idx">
-				<myp-cell :title="item.title" :value="item.desc" valueStyle="text-align:right;" border="bottom" radius="none" boxStyle="padding-left:32rpx;padding-right:32rpx;" @cellClicked="toShowPicker(item)"></myp-cell>
+				<myp-cell :title="item.title" :value="item.desc" valueStyle="text-align:right;" border="bottom" radius="none" indicator="right" boxStyle="padding-left:32rpx;padding-right:32rpx;" @cellClicked="toShowPicker(item)"></myp-cell>
 			</myp-list-cell>
 		</myp-list-simple>
 		<myp-picker :show="pickerVisible" :mode="temp.mode" @cancel="toHidePicker"></myp-picker>

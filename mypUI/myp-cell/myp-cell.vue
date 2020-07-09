@@ -33,7 +33,7 @@
 			},
 			indicator: {
 				type: String,
-				default: "right"
+				default: ""
 			},
 			bgType: {
 				type: String,

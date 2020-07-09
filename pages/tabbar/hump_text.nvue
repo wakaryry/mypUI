@@ -33,12 +33,14 @@
 						icon: '/static/tabs/home.png',
 						selectedIcon: '/static/tabs/homeH.png',
 						title: '首页',
+						selectedTitle: '首页',
 						badge: '12'
 					},
 					{
 						icon: '/static/tabs/plus.png',
 						selectedIcon: '/static/tabs/plus.png',
 						title: '发现',
+						selectedTitle: '发现',
 						badge: '8',
 						isHump: true,
 						noPage: true,
@@ -54,6 +56,7 @@
 						icon: '/static/tabs/mine.png',
 						selectedIcon: '/static/tabs/mineH.png',
 						title: '我的',
+						selectedTitle: '我的',
 						dot: true
 					}
 				],

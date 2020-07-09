@@ -16,7 +16,7 @@
 						</view>
 						<view v-if="item.dot && !item.badge" class="myp-tabs-item-dot" :style="(tabStyle.dotStyle||'')+(item.dotStyle||'')"></view>
 					</view>
-					<text v-if="!item.isHump" :class="['myp-tabs-item-text', currentPage===idx&&'myp-tabs-item-text-selected']" :style="currentPage===idx?((tabStyle.selectedTitleStyle||'')+(item.selectedTitleStyle||'')):((tabStyle.titleStyle||'')+(item.titleStyle||''))">{{currentPage===idx ? (item.selectedTitle||item.title) : item.title}}</text>
+					<text v-if="!item.isHump" :class="['myp-tabs-item-text', currentPage===idx&&'myp-tabs-item-text-selected']" :style="currentPage===idx?((tabStyle.selectedTitleStyle||'')+(item.selectedTitleStyle||'')):((tabStyle.titleStyle||'')+(item.titleStyle||''))">{{currentPage===idx ? item.selectedTitle : item.title}}</text>
 				</view>
 			</view>
 			<!-- hump -->
@@ -28,7 +28,7 @@
 					</view>
 					<view v-if="humpItem.dot && !humpItem.badge" class="myp-tabs-item-dot" :style="(tabStyle.dotStyle||'')+(humpItem.dotStyle||'')"></view>
 				</view>
-				<text v-if="humpItem.title" :class="['myp-tabs-item-text', currentPage===humpIndex&&'myp-tabs-item-text-selected']" :style="currentPage===humpIndex?((tabStyle.selectedTitleStyle||'')+(humpItem.selectedTitleStyle||'')):((tabStyle.titleStyle||'')+(humpItem.titleStyle||''))">{{currentPage===humpIndex ? (humpItem.selectedTitle||humpItem.title) : humpItem.title}}</text>
+				<text v-if="humpItem.title" :class="['myp-tabs-item-text', currentPage===humpIndex&&'myp-tabs-item-text-selected']" :style="currentPage===humpIndex?((tabStyle.selectedTitleStyle||'')+(humpItem.selectedTitleStyle||'')):((tabStyle.titleStyle||'')+(humpItem.titleStyle||''))">{{currentPage===humpIndex ? humpItem.selectedTitle : humpItem.title}}</text>
 			</view>
 		</slot>
 	</view>

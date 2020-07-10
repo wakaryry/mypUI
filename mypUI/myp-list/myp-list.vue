@@ -89,6 +89,7 @@
 <style lang="scss" scoped>
 	.myp-list {
 		position: relative;
+		flex-direction: column;
 		
 		&-foot {
 			position: absolute;

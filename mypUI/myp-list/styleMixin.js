@@ -26,6 +26,10 @@ export default {
 			type: [Number, String],
 			default: '0'
 		},
+		useFlex: {
+			type: Boolean,
+			default: false
+		},
 		width: {
 			type: String,
 			default: '750rpx'
@@ -64,6 +68,7 @@ export default {
 	},
 	computed: {
 		mypScrollHeight() {
+			if (this.useFlex) return 0;
 			if (this.heightPx !== 0) {
 				return this.heightPx
 			}
@@ -92,6 +97,9 @@ export default {
 			return this.mypToPx(this.height)
 		},
 		mrScrollStyle() {
+			if (this.useFlex) {
+				return `width:${this.width};`+this.scrollStyle
+			}
 			return `width:${this.width};height:${this.mypScrollHeight}px;`+this.scrollStyle
 		},
 		extraPx() {

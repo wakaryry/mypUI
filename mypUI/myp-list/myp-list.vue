@@ -89,6 +89,9 @@
 <style lang="scss" scoped>
 	.myp-list {
 		position: relative;
+		/* #ifndef APP-NVUE */
+		display: flex;
+		/* #endif */
 		flex-direction: column;
 		
 		&-foot {

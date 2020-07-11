@@ -208,9 +208,11 @@ export default {
 		width: 70rpx;
 		
 		&-key {
+			width: 70rpx;
 			text-align: center;
 			font-size: 24rpx;
 			height: 36rpx;
+			line-height: 36rpx;
 			color: $myp-text-color-second;
 		}
 	}

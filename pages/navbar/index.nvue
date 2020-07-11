@@ -1,7 +1,8 @@
 <template>
 	<view>
 		<myp-navbar :lefts="leftIcons" title="导航栏" @leftAction="navLeftAction"></myp-navbar>
-		<myp-list-simple bgType="page"></myp-list-simple>
+		<myp-list-simple bgType="page">
+		</myp-list-simple>
 	</view>
 </template>
 
@@ -13,6 +14,8 @@
 		data() {
 			return {
 			}
+		},
+		methods: {
 		}
 	}
 </script>

@@ -2,6 +2,9 @@
 	<view>
 		<myp-navbar :lefts="leftIcons" title="导航栏" @leftAction="navLeftAction"></myp-navbar>
 		<myp-list-simple bgType="page">
+			<myp-list-cell>
+				<myp-navbar></myp-navbar>
+			</myp-list-cell>
 		</myp-list-simple>
 	</view>
 </template>
@@ -13,6 +16,7 @@
 		mixins: [navHelper],
 		data() {
 			return {
+				
 			}
 		},
 		methods: {

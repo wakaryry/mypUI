@@ -4,6 +4,9 @@
 	&- {
 		background-color: $myp-bg-color-inverse;
 	}
+	&-nav {
+		background-color: $myp-nav-bg-color;
+	}
 	&-primary {
 		background-color: $myp-color-primary;
 		&-disabled {
@@ -97,6 +100,17 @@
 	&- {
 		color: $myp-text-color;
 	}
+	&-nav {
+		&-title {
+			color: $myp-nav-title-color;
+		}
+		&-icon {
+			color: $myp-nav-icon-color;
+		}
+		&-item {
+			color: $myp-nav-item-color;
+		}
+	}
 	&-text {
 		color: $myp-text-color;
 	}
@@ -141,6 +155,17 @@
 .myp-size {
 	&- {
 		font-size: $myp-font-size-base;
+	}
+	&-nav {
+		&-title {
+			font-size: $myp-nav-title-size;
+		}
+		&-icon {
+			font-size: $myp-nav-icon-size;
+		}
+		&-item {
+			font-size: $myp-nav-item-size;
+		}
 	}
 	&-ss {
 		font-size: $myp-font-size-ss;

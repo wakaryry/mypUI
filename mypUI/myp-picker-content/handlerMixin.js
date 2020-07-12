@@ -33,7 +33,7 @@ export default {
 					break
 				case "s1":
 					dVal = this.getSelectionsIndex(this.value)
-					data = this.selections
+					data = {p: this.selections}
 					break
 				case "dateRange":
 				case "yearMonthRange":
@@ -112,8 +112,8 @@ export default {
 					this.resultStr = province[this.pl] + city[this.cl]
 					break
 				case "s1":
-				    province = data[dVal[0]] || data[data.length - 1]
-					this.checkArr = province
+				    province = data.p[dVal[0]] || data.p[data.p.length - 1]
+					this.checkArr = province[this.pl]
 					this.checkValue = province[this.pv]
 					this.resultStr = province[this.pl]
 					break
@@ -131,7 +131,6 @@ export default {
 		},
 		bindChange(val) {
 			let arr = Object.assign([], val.detail.value)
-			console.log(arr)
 			let year = "",
 				month = "",
 				day = "",
@@ -408,8 +407,10 @@ export default {
 					this.resultStr = province + city
 					break
 				case "s1":
-					this.checkArr = this.items[arr[0]] || this.items[this.items.length - 1]
-					this.resultStr = this.items[arr[0]][this.pl] || this.items[this.items.length - 1][this.pl]
+					province = this.items.p[arr[0]] || this.items.p[this.items.p.length - 1]
+					this.checkArr = province[this.pl]
+					this.checkValue = province[this.pv]
+					this.resultStr = province[this.pl]
 					break
 			}
 			this.pickVal = arr

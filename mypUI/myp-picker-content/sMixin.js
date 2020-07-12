@@ -81,7 +81,7 @@ export default {
 					}
 				}
 				if (!pf) {
-					return val
+					return [0,0,0]
 				}
 				for (const i in cs) {
 					const _c = cs[i]
@@ -93,7 +93,7 @@ export default {
 					}
 				}
 				if (!cf) {
-					return val
+					return [p, 0, 0]
 				}
 				for (const i in ass) {
 					const _a = ass[i]
@@ -104,7 +104,7 @@ export default {
 					}
 				}
 				if (!af) {
-					return val
+					return [p,c,0]
 				}
 				return [p, c, a]
 			} else if (this.mode === 's2') {
@@ -124,7 +124,7 @@ export default {
 					}
 				}
 				if (!pf) {
-					return val
+					return [0,0]
 				}
 				for (const i in cs) {
 					const _c = cs[i]
@@ -135,7 +135,7 @@ export default {
 					}
 				}
 				if (!cf) {
-					return val
+					return [p,0]
 				}
 				return [p, c]
 			} else {
@@ -151,7 +151,7 @@ export default {
 					}
 				}
 				if (!pf) {
-					return val
+					return [0]
 				}
 				return [p]
 			}

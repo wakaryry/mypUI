@@ -6,38 +6,177 @@
 				<view style="height: 20rpx;"></view>
 			</myp-list-cell>
 			<myp-list-cell v-for="(item,idx) in items" :key="idx">
-				<myp-cell :title="item.title" :value="item.desc" valueStyle="text-align:right;" border="bottom" radius="none" indicator="right" boxStyle="padding-left:32rpx;padding-right:32rpx;" @cellClicked="toShowPicker(item)"></myp-cell>
+				<myp-cell :title="item.title" :value="item.value||item.desc" valueStyle="text-align:right;" border="bottom" radius="none" indicator="right" boxStyle="padding-left:32rpx;padding-right:32rpx;" @cellClicked="toShowPicker(item)"></myp-cell>
+			</myp-list-cell>
+			<myp-list-cell>
+				<myp-cell title="自定义动态数据" :value="pcaText||'省市区动态与缓存'" valueStyle="text-align:right;" border="bottom" radius="none" indicator="right" boxStyle="padding-left:32rpx;padding-right:32rpx;" @cellClicked="toShowPca"></myp-cell>
 			</myp-list-cell>
 		</myp-list-simple>
-		<myp-picker :show="pickerVisible" :mode="temp.mode" @cancel="toHidePicker"></myp-picker>
+		<myp-picker :show="pickerVisible" :value="temp.val" :mode="temp.mode" @cancel="toHidePicker" @confirm="toConfirmPicker"></myp-picker>
+		<myp-picker :show="s1Visible" :value="s1Val" :selections="s1" mode="s1" @cancel="toHideS" @confirm="toConfirmS1"></myp-picker>
+		<myp-picker :show="s2Visible" :value="s2Val" :selections="updatedS2" mode="s2" :labelProps="labelTags" @cancel="toHideS" @confirm="toConfirmS2"></myp-picker>
+		<myp-picker :show="s3Visible" :value="s3Val" :selections="pcas" mode="s3" :labelProps="labelTags" @cancel="toHideS" @confirm="toConfirmS3"></myp-picker>
+		<pca-picker :show="pcaVisible" @cancel="toHidePca" @confirm="toConfirmPca"></pca-picker>
+		<myp-loading ref="myp-loading"></myp-loading>
+		<myp-toast ref="myp-toast"></myp-toast>
 	</view>
 </template>
 
 <script>
+	import {mapGetters} from 'vuex'
+	import pcaPicker from './components/pcaPick.vue'
+	
 	import navHelper from '@/router/navHelper.js'
+	import toastMixin from '@/mypUI/myp-mixin/toastMixin.js'
+	import loadingMixin from '@/mypUI/myp-mixin/loadingMixin.js'
 	
 	export default {
-		mixins: [navHelper],
+		components: {
+			pcaPicker
+		},
+		mixins: [navHelper, toastMixin, loadingMixin],
 		data() {
 			return {
 				pickerVisible: false,
+				s1Visible: false,
+				s2Visible: false,
+				s3Visible: false,
+				s1Val: [],
+				s2Val: [],
+				s3Val: [],
 				temp: {mode: 'date', title: 'date', desc: '年月日'},
 				items: [
-					{mode: 'yearMonth', title: 'yearMonth', desc: '年月'},
-					{mode: 'date', title: 'date', desc: '年月日'},
-					{mode: 'dateTime', title: 'dateTime', desc: '年月日时分'},
-					{mode: 'time', title: 'time', desc: '时分'},
-					{mode: 'yearMonthRange', title: 'yearMonthRange', desc: '年月范围'},
-					{mode: 'dateRange', title: 'dateRange', desc: '年月日范围'},
-					{mode: 'timeRange', title: 'timeRange', desc: '时分范围'},
-					{mode: 's1', title: 's1', desc: '一栏'},
-					{mode: 's2', title: 's2', desc: '两栏'},
-					{mode: 's3', title: 's3', desc: '三栏'}
-				]
+					{mode: 'yearMonth', title: 'yearMonth', desc: '年月', value: null, val: []},
+					{mode: 'date', title: 'date', desc: '年月日', value: null, val: []},
+					{mode: 'dateTime', title: 'dateTime', desc: '年月日时分', value: null, val: []},
+					{mode: 'time', title: 'time', desc: '时分', value: null, val: []},
+					{mode: 'yearMonthRange', title: 'yearMonthRange', desc: '年月范围', value: null, val: []},
+					{mode: 'dateRange', title: 'dateRange', desc: '年月日范围', value: null, val: []},
+					{mode: 'timeRange', title: 'timeRange', desc: '时分范围', value: null, val: []},
+					{mode: 's1', title: 's1', desc: '一栏', value: null, val: []},
+					{mode: 's2', title: 's2', desc: '两栏', value: null, val: []},
+					{mode: 's3', title: 's3', desc: '三栏', value: null, val: []}
+				],
+				s1: [{name: '杜甫', id: 1}, {name: '李白', id: 2}, {name: '王昌龄', id: 3}, {name: '许仙', id: 4}, {name: '王安石', id: 5}],
+				labelTags: {
+					s1: {
+						label: 'name',
+						value: 'code'
+					},
+					s2: {
+						label: 'name',
+						value: 'code',
+						// the tag is for to get s2 selections in s1
+						tag: "cities"
+					},
+					s3: {
+						label: 'name',
+						value: 'code',
+						tag: 'areas'
+					}
+				},
+				addAll: true,
+				pcaVisible: false,
+				pcaText: ''
+			}
+		},
+		computed: {
+			...mapGetters(['pcs', 'pcas', 'isLoadingPcs', 'isLoadingPcas']),
+			updatedS2() {
+				let _default = []
+				if (this.addAll) {
+					_default = [{name: "全国", code: "-1", cities: [{name: "全国", code: "-1"}]}]
+				}
+				const allPcs = JSON.parse(JSON.stringify(this.pcs||[]))
+				allPcs.forEach(item => {
+					if (!item.cities) {
+						item["cities"] = []
+					}
+					if (this.addAll) {
+						item.cities.unshift({name: "全部", code: "-1"})
+					}
+				})
+				_default = _default.concat(allPcs)
+				return _default
 			}
 		},
 		methods: {
+			toConfirmPicker(val, s) {
+				console.log(val)
+				for (const i in this.items) {
+					const theI = this.items[i]
+					if (s && theI.mode === s) {
+						theI.value = val.result
+						break
+					}
+					if (!s && theI.mode === this.temp.mode) {
+						theI.value = val.result
+						theI.val = Object.assign([], val.checkArr)
+						this.temp.val = Object.assign([], val.checkArr)
+						break
+					}
+				}
+				this.pickerVisible = false
+			},
+			toConfirmS1(val) {
+				this.s1Val = [val.checkValue]
+				this.toConfirmPicker(val, 's1')
+				this.toHideS()
+			},
+			toConfirmS2(val) {
+				this.s2Val = Object.assign([], val.checkValue)
+				this.toConfirmPicker(val, 's2')
+				this.toHideS()
+			},
+			toConfirmS3(val) {
+				this.s3Val = Object.assign([], val.checkValue)
+				this.toConfirmPicker(val, 's3')
+				this.toHideS()
+			},
 			toShowPicker(val) {
+				console.log(val.mode)
+				if (val.mode === 's1' || val.mode === 's2' || val.mode === 's3') {
+					if (val.mode === 's2' && this.pcs.length === 0) {
+						if (this.isLoadingPcs) {
+							this.mypShowToast({
+								text: '正在请求数据',
+								type: 'warning',
+								mode: 'big'
+							})
+						} else {
+							this.mypShowLoading({needMask: true})
+							this.$store.dispatch("common/provinceCity").then(()=>{
+								this.mypHideLoading()
+								this.s2Visible = true
+							}).catch(err => {
+								this.mypHideLoading()
+								this.mypShowToast(err)
+							})
+						}
+						return
+					}
+					if (val.mode === 's3' && this.pcas.length === 0) {
+						if (this.isLoadingPcas) {
+							this.mypShowToast({
+								text: '正在请求数据',
+								type: 'warning',
+								mode: 'big'
+							})
+						} else {
+							this.mypShowLoading({needMask: true})
+							this.$store.dispatch("common/provinceCityArea").then(()=>{
+								this.mypHideLoading()
+								this.s3Visible = true
+							}).catch(err => {
+								this.mypHideLoading()
+								this.mypShowToast(err)
+							})
+						}
+						return
+					}
+					this[val.mode+'Visible'] = true
+					return
+				}
 				this.temp = val
 				setTimeout(()=>{
 					this.pickerVisible = true
@@ -45,6 +184,21 @@
 			},
 			toHidePicker() {
 				this.pickerVisible = false
+			},
+			toHideS() {
+				this.s1Visible = false
+				this.s2Visible = false
+				this.s3Visible = false
+			},
+			toConfirmPca(val) {
+				this.pcaText = val.p.name + val.c.name + val.a.name
+				this.pcaVisible = false
+			},
+			toShowPca() {
+				this.pcaVisible = true
+			},
+			toHidePca() {
+				this.pcaVisible = false
 			}
 		}
 	}

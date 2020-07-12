@@ -94,17 +94,17 @@
 		<!-- s1/s2/s3:linkage. 动态数据/动态标签。支持1/2/3级 -->
 		<picker-view v-if="mode==='s3' || mode==='s2' || mode==='s1'" class="myp-picker-view" :indicator-style="mrIndicatorStyle" :value="pickVal" @change="bindChange">
 			<picker-view-column>
-				<view class="myp-picker-item" :style="mrItemStyle" v-for="(item,index) in items.p" :key="index">
+				<view class="myp-picker-item" :style="mrItemStyle" v-for="(item,index) in items.p||[]" :key="index">
 					<text :class="['myp-picker-item-text', 'myp-color-'+type, 'myp-size-'+size]" :style="itemTextStyle">{{item[pl]}}</text>
 				</view>
 			</picker-view-column>
 			<picker-view-column v-if="mode==='s2' || mode==='s3'">
-				<view class="myp-picker-item" :style="mrItemStyle" v-for="(item,index) in items.c" :key="index">
+				<view class="myp-picker-item" :style="mrItemStyle" v-for="(item,index) in items.c||[]" :key="index">
 					<text :class="['myp-picker-item-text', 'myp-color-'+type, 'myp-size-'+size]" :style="itemTextStyle">{{item[cl]}}</text>
 				</view>
 			</picker-view-column>
 			<picker-view-column v-if="mode==='s3'">
-				<view class="myp-picker-item" :style="mrItemStyle" v-for="(item,index) in items.a" :key="index">
+				<view class="myp-picker-item" :style="mrItemStyle" v-for="(item,index) in items.a||[]" :key="index">
 					<text :class="['myp-picker-item-text', 'myp-color-'+type, 'myp-size-'+size]" :style="itemTextStyle">{{item[al]}}</text>
 				</view>
 			</picker-view-column>
@@ -239,6 +239,7 @@
 			},
 			// s1/s2/s3
 			selections() {
+				console.log('watch selections')
 				this.initData()
 			},
 			show(newV) {

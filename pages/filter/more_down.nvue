@@ -1,16 +1,25 @@
 <template>
 	<view>
 		<myp-navbar :lefts="leftIcons" title="Filter" @leftAction="navLeftAction"></myp-navbar>
-		<myp-list-simple bgType="page">
+		<head-query-view></head-query-view>
+		<myp-list-simple bgType="page" extra="100rpx">
 			
 		</myp-list-simple>
 	</view>
 </template>
 
 <script>
+	//
+	// 实际上如果你只想公用一个overlay，也比较简单，直接添加一个overlay即可。然后合理的控制该overlay的打开与关闭
+	//
+	import headQueryView from './components/headQueryView.vue'
+	
 	import navHelper from '@/router/navHelper.js'
 	
 	export default {
+		components: {
+			headQueryView
+		},
 		mixins: [navHelper]
 	}
 </script>

@@ -1,20 +1,201 @@
 <template>
 	<view>
 		<myp-navbar :lefts="leftIcons" title="Filter" @leftAction="navLeftAction"></myp-navbar>
-		<myp-list-simple bgType="page">
+		<myp-list-simple bgType="page" :includeXBar="false" extra="100rpx">
 			
 		</myp-list-simple>
+		<myp-popup-always :show="selectedQuery === 1" :width="214" :height="gradesHeight" pos="bottom" :overlay="overlay" leftOffset="16" bottom="x-100" @overlayClicked="toGrade">
+			<view class="mu-grades">
+				<view class="mu-grades-item" v-for="(item, idx) in grades" :key="idx" @tap="toSelectedGrade(item)">
+					<text class="mu-grades-text">{{ item.name }}</text>
+				</view>
+			</view>
+		</myp-popup-always>
+		<myp-popup-always :show="selectedQuery === 2" :width="214" :height="publishersHeight" pos="bottom" :overlay="overlay" leftOffset="120" bottom="x-100" @overlayClicked="toPublisher">
+			<view class="mu-grades">
+				<view class="mu-grades-item" v-for="(item, idx) in publishers" :key="idx" @tap="toSelectedPublisher(item)">
+					<text class="mu-grades-text">{{ item.name }}</text>
+				</view>
+			</view>
+		</myp-popup-always>
+		<myp-popup-always :show="selectedQuery === 3" :width="214" :height="subjectsHeight" pos="bottom" :overlay="overlay" leftOffset="230" bottom="x-100" @overlayClicked="toSubject">
+			<view class="mu-grades">
+				<view class="mu-grades-item" v-for="(item, idx) in subjects" :key="idx" @tap="toSelectedSubject(item)">
+					<text class="mu-grades-text">{{ item.name }}</text>
+				</view>
+			</view>
+		</myp-popup-always>
+		<myp-position :fixed="true" boxStyle="width:750rpx;left:0;">
+			<book-query-view
+				:grade="grade"
+				:publisher="publisher"
+				:subject="subject"
+				:selectedQuery="selectedQuery"
+				@clear="toClearQuery"
+				@grade="toGrade"
+				@publisher="toPublisher"
+				@subject="toSubject"
+			></book-query-view>
+			<myp-x-bar></myp-x-bar>
+		</myp-position>
 	</view>
 </template>
 
 <script>
+	import bookQueryView from './components/bookQueryView.vue'
+	
 	import navHelper from '@/router/navHelper.js'
 	
 	export default {
-		mixins: [navHelper]
+		components: {
+			bookQueryView
+		},
+		mixins: [navHelper],
+		data() {
+			return {
+				grade: {
+					id: 0,
+					name: ''
+				},
+				publisher: {
+					id: 0,
+					name: ''
+				},
+				subject: {
+					id: 0,
+					name: ''
+				},
+				selectedQuery: 0, // 1,2,3
+				overlay: {
+					timingFunction: ['ease-in', 'ease-out'],
+					duration: 300,
+					bg: '',
+					bgType: 'none'
+				},
+				grades: [],
+				publishers: [],
+				subjects: []
+			}
+		},
+		computed: {
+			gradesHeight() {
+				return this.grades.length * 100
+			},
+			publishersHeight() {
+				return this.publishers.length * 100
+			},
+			subjectsHeight() {
+				return this.subjects.length * 100
+			}
+		},
+		methods: {
+			toSelectedGrade(val) {
+				if (this.grade.id*1 === val.id*1) {
+					this.selectedQuery = 0
+					return
+				}
+				this.grade = {
+					id: val.id*1,
+					name: val.name
+				}
+				this.selectedQuery = 0
+			},
+			toSelectedPublisher(val) {
+				if (this.publisher === val) {
+					this.selectedQuery = 0
+					return
+				}
+				this.publisher = val.name
+				this.selectedQuery = 0
+			},
+			toSelectedSubject(val) {
+				if (this.subject.id*1 === val.id*1) {
+					this.selectedQuery = 0
+					return
+				}
+				this.subject = {
+					id: val.id*1,
+					name: val.name
+				}
+				this.selectedQuery = 0
+			},
+			toGrade() {
+				if (this.selectedQuery === 1) {
+				    this.selectedQuery = 0
+				    return
+				}
+				this.selectedQuery = 1;
+			},
+			toPublisher() {
+				if (this.selectedQuery === 2) {
+				    this.selectedQuery = 0
+				    return
+				}
+				this.selectedQuery = 2;
+			},
+			toSubject() {
+				if (this.selectedQuery === 3) {
+				    this.selectedQuery = 0
+				    return
+				}
+				this.selectedQuery = 3;
+			},
+			toClearQuery() {
+				this.selectedQuery = 0;
+				let same = true
+				if (this.grade.id*1 !== 0) {
+					same = false
+				} else if (this.publisher.length !== 0) {
+					same = false
+				} else if (this.subject.id*1 !== 0) {
+					same = false
+				}
+				this.grade = {
+					id: 0,
+					name: ''
+				}
+				this.publisher = ''
+				this.subject = {
+					id: 0,
+					name: ''
+				}
+				if (!same) {
+				}
+			}
+		},
+		onLoad() {
+			this.grades = [{id: 1, name: '一年级'},{id: 2, name: '二年级'},{id: 3, name: '三年级'},{id: 4, name: '四年级'},{id: 5, name: '五年级'},{id: 6, name: '六年级'},{id: 7, name: '七年级'},{id: 8, name: '八年级'},{id: 9, name: '九年级'}]
+			this.subjects = [{id: 1, name: '语文'},{id: 2, name: '数学'},{id: 3, name: '地理'},{id: 4, name: '物理'},{id: 5, name: '政治'},{id: 6, name: '生物'}]
+			this.publishers = [{id: 1, name: '人教版'},{id: 2, name: '苏教版'},{id: 3, name: '大众版'}]
+		}
 	}
 </script>
 
-<style>
-
+<style lang="scss">
+	@import '@/mypUI/mypui.scss';
+	
+	.mu {
+		&-grades {
+			width: 214rpx;
+			padding-left: 26rpx;
+			padding-right: 26rpx;
+			border-width: 1px;
+			border-radius: 12rpx;
+			border-color: $myp-color-primary;
+			background-color: #ffffff;
+		
+			&-item {
+				justify-content: center;
+				align-items: center;
+				height: 100rpx;
+				border-bottom-width: 1px;
+				border-bottom-color: $myp-border-color-light;
+				border-bottom-style: solid;
+			}
+			&-text {
+				font-size: 32rpx;
+				color: $myp-text-color;
+			}
+		}
+	}
 </style>

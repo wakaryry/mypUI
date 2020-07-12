@@ -1,5 +1,5 @@
 <template>
-	<myp-popup pos="bottom" :show="show" :height="600" @overlayClicked="toCancel">
+	<myp-popup-always pos="bottom" :show="show" :height="600" @overlayClicked="toCancel">
 		<view class="pp-header">
 			<text class="pp-header-cancel" @tap="toCancel">取消</text>
 			<text class="pp-header-title">选择城市</text>
@@ -28,10 +28,11 @@
 				</picker-view-column>
 			</picker-view>
 		</view>
-	</myp-popup>
+	</myp-popup-always>
 </template>
 
 <script>
+	// TODO: 完善数据
 	import {mapGetters} from 'vuex'
 	
 	export default {

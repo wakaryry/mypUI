@@ -101,11 +101,14 @@
 				this.selectedQuery = 0
 			},
 			toSelectedPublisher(val) {
-				if (this.publisher === val) {
+				if (this.publisher.id*1 === val.id*1) {
 					this.selectedQuery = 0
 					return
 				}
-				this.publisher = val.name
+				this.publisher = {
+					id: val.id*1,
+					name: val.name
+				}
 				this.selectedQuery = 0
 			},
 			toSelectedSubject(val) {
@@ -145,7 +148,7 @@
 				let same = true
 				if (this.grade.id*1 !== 0) {
 					same = false
-				} else if (this.publisher.length !== 0) {
+				} else if (this.publisher.id*1 !== 0) {
 					same = false
 				} else if (this.subject.id*1 !== 0) {
 					same = false
@@ -154,7 +157,10 @@
 					id: 0,
 					name: ''
 				}
-				this.publisher = ''
+				this.publisher = {
+					id: 0,
+					name: ''
+				}
 				this.subject = {
 					id: 0,
 					name: ''

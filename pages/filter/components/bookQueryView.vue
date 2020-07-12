@@ -5,7 +5,7 @@
 			<myp-icon :name="selectedQuery===1?'up':'down'" :type="(grade.id!==0||selectedQuery===1) ? 'primary' : 'text'" @iconClicked="toGrade"></myp-icon>
 		</view>
 		<view class="bqv-item bqv-margin" bubble="true" @tap="toPublisher">
-			<text :class="['bqv-item-text', (publisher.id!==0||selectedQuery===2)&&'bqv-item-current']">{{publisher.id===0?'版本':publisher}}</text>
+			<text :class="['bqv-item-text', (publisher.id!==0||selectedQuery===2)&&'bqv-item-current']">{{publisher.id===0?'版本':publisher.name}}</text>
 			<myp-icon :name="selectedQuery===2?'up':'down'" :type="(publisher.id!==0||selectedQuery===2) ? 'primary' : 'text'" @iconClicked="toPublisher"></myp-icon>
 		</view>
 		<view class="bqv-item bqv-margin" bubble="true" @tap="toSubject">
@@ -32,8 +32,13 @@
 				}
 			},
 			publisher: {
-				type: String,
-				default: ''
+				type: Object,
+				default: ()=>{
+					return {
+						id: 0,
+						name: ''
+					}
+				}
 			},
 			subject: {
 				type: Object,
@@ -58,7 +63,7 @@
 				if (this.grade && this.grade.id*1 !== 0) {
 					return true
 				}
-				if (this.publisher && this.publisher.length > 0) {
+				if (this.publisher && this.publisher.id*1 != 0) {
 					return true
 				}
 				if (this.subject && this.subject.id*1 !== 0) {

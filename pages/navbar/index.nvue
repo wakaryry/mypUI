@@ -3,7 +3,72 @@
 		<myp-navbar :lefts="leftIcons" title="导航栏" @leftAction="navLeftAction"></myp-navbar>
 		<myp-list-simple bgType="page">
 			<myp-list-cell>
-				<myp-navbar></myp-navbar>
+				<view style="height: 20rpx;"></view>
+			</myp-list-cell>
+			<myp-list-cell>
+				<myp-navbar :fixed="false" :includeStatus="false" bgType="primary" itemIconType="inverse" titleType="inverse" :lefts="lefts" title="普通导航栏"></myp-navbar>
+				<view style="height: 20rpx;"></view>
+			</myp-list-cell>
+			<myp-list-cell>
+				<myp-navbar :fixed="false" :includeStatus="false" :lefts="lefts1" title="item带图标与文字"></myp-navbar>
+				<view style="height: 20rpx;"></view>
+			</myp-list-cell>
+			<myp-list-cell>
+				<myp-navbar :fixed="false" :includeStatus="false" :lefts="lefts1" :rights="rights1" title="右侧按钮文字"></myp-navbar>
+				<view style="height: 20rpx;"></view>
+			</myp-list-cell>
+			<myp-list-cell>
+				<myp-navbar :fixed="false" :includeStatus="false" :lefts="lefts1" :rights="rights2" title="右侧按钮图标"></myp-navbar>
+				<view style="height: 20rpx;"></view>
+			</myp-list-cell>
+			<myp-list-cell>
+				<myp-navbar :fixed="false" :includeStatus="false" :lefts="lefts1" :rights="rights3" title="右侧按钮图标文字"></myp-navbar>
+				<view style="height: 20rpx;"></view>
+			</myp-list-cell>
+			<myp-list-cell>
+				<myp-navbar :fixed="false" :includeStatus="false" :lefts="lefts2" title="左侧多个item" leftItemStyle="width:46rpx;"></myp-navbar>
+				<view style="height: 20rpx;"></view>
+			</myp-list-cell>
+			<myp-list-cell>
+				<myp-navbar :fixed="false" :includeStatus="false" :lefts="lefts2" :rights="rights" title="左右两侧多个item" leftItemStyle="width:46rpx;" rightItemStyle="width:46rpx;"></myp-navbar>
+				<view style="height: 20rpx;"></view>
+			</myp-list-cell>
+			<myp-list-cell>
+				<myp-navbar :fixed="false" :includeStatus="false" :lefts="lefts3" title="特殊样式" leftItemStyle="width:46rpx;"></myp-navbar>
+				<view style="height: 20rpx;"></view>
+			</myp-list-cell>
+			<myp-list-cell>
+				<myp-navbar :fixed="false" :includeStatus="false" :lefts="lefts4" title="按钮式" leftItemStyle="width:46rpx;"></myp-navbar>
+				<view style="height: 20rpx;"></view>
+			</myp-list-cell>
+			<myp-list-cell>
+				<myp-navbar :fixed="false" :includeStatus="false" :lefts="lefts5" title="一体式" leftBgType="primary" leftStyle="margin-left:24rpx;padding-left:26rpx;padding-right:26rpx;width:140rpx;border-radius:20px;height:30px;justify-content:space-between;" rightStyle="width:164rpx;" centerStyle="width:422rpx;"></myp-navbar>
+				<view style="height: 20rpx;"></view>
+			</myp-list-cell>
+			<myp-list-cell>
+				<myp-navbar :fixed="false" :includeStatus="false" :lefts="lefts1" title="标题带图标" icon="down"></myp-navbar>
+				<view style="height: 20rpx;"></view>
+			</myp-list-cell>
+			<myp-list-cell>
+				<myp-navbar :fixed="false" :includeStatus="false" :lefts="lefts1" title="很长的标题是自动截断的,不会超出屏幕范围,也不会自动换行"></myp-navbar>
+				<view style="height: 20rpx;"></view>
+			</myp-list-cell>
+			<myp-list-cell>
+				<myp-navbar :fixed="false" :includeStatus="false" :lefts="lefts1" title="很长的标题是自动截断的,不会超出屏幕范围,也不会自动换行" icon="down" titleStyle="max-width:300rpx;"></myp-navbar>
+				<view style="height: 20rpx;"></view>
+			</myp-list-cell>
+			<myp-list-cell>
+				<myp-navbar :fixed="false" :includeStatus="false" :lefts="lefts" leftStyle="width:72rpx;" centerStyle="width:478rpx;justify-content:flex-start;">
+					<view class="nav-nav" slot="title">
+						<image class="nav-nav-img" mode="aspectFill" src="/static/bear.jpg"></image>
+						<text class="nav-nav-text">山有木兮木有枝，心悦君兮君不知</text>
+					</view>
+				</myp-navbar>
+				<view style="height: 20rpx;"></view>
+			</myp-list-cell>
+			<myp-list-cell>
+				<myp-navbar :fixed="false" :includeStatus="false" :lefts="lefts1" title="渐变背景色" boxStyle="background-image: linear-gradient(to right, #FFF000, #F8F8F8);"></myp-navbar>
+				<view style="height: 20rpx;"></view>
 			</myp-list-cell>
 		</myp-list-simple>
 	</view>
@@ -16,7 +81,16 @@
 		mixins: [navHelper],
 		data() {
 			return {
-				
+				lefts: [{icon: 'left'}],
+				rights: [{icon: 'plus'}, {icon: 'close'}],
+				lefts1: [{icon: 'left', text: '返回'}],
+				rights1: [{text: '发布', bgType: 'primary', textType: 'inverse', style: 'width:56px;height:24px;border-radius:20px;justify-content:center;'}],
+				lefts2: [{icon: 'left'}, {icon: 'home'}],
+				rights2: [{icon: 'upload', iconType: 'inverse', bgType: 'primary', style: 'width: 52px;height:24px;border-radius:20px;justify-content:center;'}],
+				lefts3: [{icon: 'left'}, {icon: 'home', iconType: 'inverse', bgType: 'primary', style: 'width: 24px;height:24px;border-radius:20px;justify-content:center;'}],
+				rights3: [{icon: 'upload', text: '发布', iconType: 'inverse', textType: 'inverse', textStyle: 'margin-left:6px;', bgType: 'primary', style: 'justify-content:center;border-radius:20px;height:30px;width:72px;'}],
+				lefts4: [{icon: 'left'}, {icon: 'home', text: '首页', iconType: 'inverse', textType: 'inverse', textStyle: 'margin-left:6px;', bgType: 'primary', style: 'justify-content:center;border-radius:20px;height:30px;width:72px;'}],
+				lefts5: [{icon: 'left', iconType: 'inverse'}, {icon: 'home', iconType: 'inverse'}]
 			}
 		},
 		methods: {
@@ -25,5 +99,24 @@
 </script>
 
 <style lang="scss">
-
+	@import '@/mypUI/mypui.scss';
+	
+	.nav {
+		&-nav {
+			flex-direction: row;
+			align-items: center;
+			
+			&-img {
+				width: 30px;
+				height: 30px;
+				border-radius: 30px;
+				border-width: 1px;
+				border-color: $myp-border-color-light;
+			}
+			&-text {
+				font-size: $myp-nav-title-size;
+				color: $myp-nav-title-color;
+			}
+		}
+	}
 </style>

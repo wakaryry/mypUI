@@ -4,11 +4,11 @@
 		<view :class="['myp-bg-'+bgType, 'myp-nav-box', fixed&&'myp-nav-fixed']" :style="boxStyle" @tap.stop="toPrevent">
 			<view v-if="includeStatus" :style="{width: '750rpx', height: statusHeight + 'px'}"></view>
 			<view class="myp-nav-content" :style="mrNavStyle">
-				<view class="myp-nav-lefts" :style="leftStyle">
+				<view :class="['myp-nav-lefts', leftBgType&&('myp-bg-'+leftBgType)]" :style="leftStyle">
 					<slot name="left">
-						<view v-if="lefts && lefts.length > 0" v-for="(left, idx) in lefts" :key="idx" class="myp-nav-lefts-item" :style="leftItemStyle+(left.style||'')" bubble="true" @tap="goLeft(idx)">
-							<myp-icon v-if="left.icon" :name="left.icon" :type="itemIconType" :size="itemIconSize" :iconStyle="itemIconStyle+(left.iconStyle||'')" @iconClicked="goLeft(idx)"></myp-icon>
-							<text v-if="left.text" :class="['myp-color-'+itemTextType, 'myp-size-'+itemTextSize]" :style="itemTextStyle+(left.textStyle||'')">{{left.text}}</text>
+						<view v-if="lefts && lefts.length > 0" v-for="(left, idx) in lefts" :key="idx" :class="['myp-nav-lefts-item', left.bgType&&('myp-bg-'+left.bgType)]" :style="leftItemStyle+(left.style||'')" bubble="true" @tap="goLeft(idx)">
+							<myp-icon v-if="left.icon" :name="left.icon" :type="left.iconType||itemIconType" :size="left.iconSize||itemIconSize" :iconStyle="itemIconStyle+(left.iconStyle||'')" @iconClicked="goLeft(idx)"></myp-icon>
+							<text v-if="left.text" :class="['myp-color-'+(left.textType||itemTextType), 'myp-size-'+(left.textSize||itemTextSize)]" :style="itemTextStyle+(left.textStyle||'')">{{left.text}}</text>
 						</view>
 					</slot>
 				</view>
@@ -18,11 +18,11 @@
 						<myp-icon v-if="icon" :name="icon" :type="iconType" :size="iconSize" :iconStyle="iconStyle" @iconClicked="clickCenter"></myp-icon>
 					</slot>
 				</view>
-				<view class="myp-nav-rights" :style="rightStyle">
+				<view :class="['myp-nav-rights', rightBgType&&('myp-bg-'+rightBgType)]" :style="rightStyle">
 					<slot name="right">
-						<view v-if="rights && rights.length > 0" v-for="(right, idx) in rights" :key="idx" class="myp-nav-rights-item" :style="rightItemStyle+(right.style||'')" bubble="true" @tap="goRight(idx)">
-							<myp-icon v-if="right.icon" :name="right.icon" :type="itemIconType" :size="itemIconSize" :iconStyle="itemIconSize+(right.iconStyle||'')" @iconClicked="goRight(idx)"></myp-icon>
-							<text v-if="right.text" :class="['myp-color-'+itemTextType, 'myp-size-'+itemTextSize]" :style="itemTextStyle+(right.textStyle||'')">{{right.text}}</text>
+						<view v-if="rights && rights.length > 0" v-for="(right, idx) in rights" :key="idx" :class="['myp-nav-rights-item', right.bgType&&('myp-bg-'+right.bgType)]" :style="rightItemStyle+(right.style||'')" bubble="true" @tap="goRight(idx)">
+							<myp-icon v-if="right.icon" :name="right.icon" :type="right.iconType||itemIconType" :size="right.iconSize||itemIconSize" :iconStyle="itemIconSize+(right.iconStyle||'')" @iconClicked="goRight(idx)"></myp-icon>
+							<text v-if="right.text" :class="['myp-color-'+(right.textType||itemTextType), 'myp-size-'+(right.textSize||itemTextSize)]" :style="itemTextStyle+(right.textStyle||'')">{{right.text}}</text>
 						</view>
 					</slot>
 				</view>
@@ -126,12 +126,20 @@
 				type: String,
 				default: ''
 			},
+			leftBgType: {
+				type: String,
+				default: ''
+			},
 			leftItemStyle: {
 				type: String,
 				default: ''
 			},
 			// 右侧一般不修改
 			rightStyle: {
+				type: String,
+				default: ''
+			},
+			rightBgType: {
 				type: String,
 				default: ''
 			},
@@ -227,6 +235,7 @@
 			align-items: center;
 			
 			&-text {
+				max-width: 350rpx;
 				overflow: hidden;
 				text-overflow: ellipsis;
 				/* #ifdef APP-NVUE */

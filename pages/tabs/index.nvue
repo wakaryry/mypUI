@@ -36,21 +36,21 @@
 					{
 						icon: '/static/tabs/home.png',
 						selectedIcon: '/static/tabs/homeH.png',
-						title: '首页',
-						selectedTitle: '首页'
+						title: '组件',
+						selectedTitle: '组件'
 					},
 					{
 						icon: '/static/tabs/discovery.png',
 						selectedIcon: '/static/tabs/discoveryH.png',
-						title: '发现',
-						selectedTitle: '发现',
+						title: '模板',
+						selectedTitle: '模板',
 						badge: 12
 					},
 					{
 						icon: '/static/tabs/mine.png',
 						selectedIcon: '/static/tabs/mineH.png',
-						title: '我的',
-						selectedTitle: '我的',
+						title: '接口',
+						selectedTitle: '接口',
 						dot: true
 					}
 				],

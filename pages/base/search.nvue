@@ -2,7 +2,61 @@
 	<view>
 		<myp-navbar :lefts="leftIcons" title="搜索框" @leftAction="navLeftAction"></myp-navbar>
 		<myp-list-simple bgType="page">
-			
+			<myp-list-cell>
+				<view style="height: 20rpx;"></view>
+			</myp-list-cell>
+			<myp-list-cell>
+				<view style="margin-left: 32rpx; margin-right: 32rpx;">
+					<myp-search></myp-search>
+				</view>
+				<view style="height: 20rpx;"></view>
+			</myp-list-cell>
+			<myp-list-cell>
+				<view style="margin-left: 32rpx; margin-right: 32rpx;">
+					<myp-search position="center"></myp-search>
+				</view>
+				<view style="height: 20rpx;"></view>
+			</myp-list-cell>
+			<myp-list-cell>
+				<view style="margin-left: 32rpx; margin-right: 32rpx;">
+					<myp-search bgType="error" valueType="inverse" iconType="inverse" placeType="inverse" placeIconType="inverse"></myp-search>
+				</view>
+				<view style="height: 20rpx;"></view>
+			</myp-list-cell>
+			<myp-list-cell>
+				<view style="margin-left: 32rpx; margin-right: 32rpx;">
+					<myp-search border="all-primary" position="center"></myp-search>
+				</view>
+				<view style="height: 20rpx;"></view>
+			</myp-list-cell>
+			<myp-list-cell>
+				<view style="margin-left: 32rpx; margin-right: 32rpx;">
+					<myp-search :fixIcon="true" iconType="error" placeIconType="error" border="all-error"></myp-search>
+				</view>
+				<view style="height: 20rpx;"></view>
+			</myp-list-cell>
+			<myp-list-cell>
+				<view style="margin-left: 32rpx; margin-right: 32rpx;">
+					<myp-search :fixIcon="true" iconType="error" placeIconType="place" value="还可以提供默认的value"></myp-search>
+				</view>
+				<view style="height: 20rpx;"></view>
+			</myp-list-cell>
+			<myp-list-cell>
+				<view style="margin-left: 32rpx; margin-right: 32rpx;">
+					<myp-search position="center" :icon="null" bgType="primary" valueType="inverse" iconType="inverse" placeType="inverse" placeIconType="inverse"></myp-search>
+				</view>
+				<view style="height: 20rpx;"></view>
+			</myp-list-cell>
+			<myp-list-cell>
+				<view style="margin-left: 32rpx; margin-right: 32rpx;">
+					<myp-search :icon="null">
+						<view slot="extra" class="search-button">
+							<myp-button bgType="error" text="搜索" textType="inverse" border="none" radius="ll" boxStyle="width:160rpx;height:60rpx;"></myp-button>
+						</view>
+					</myp-search>
+				</view>
+				<view style="height: 20rpx;"></view>
+			</myp-list-cell>
 		</myp-list-simple>
 		<myp-toast ref="myp-toast"></myp-toast>
 	</view>
@@ -25,5 +79,15 @@ export default {
 
 <style lang="scss" scoped>
 @import '@/mypUI/mypui.scss';
-
+.search {
+	
+	&-button {
+		position: absolute;
+		top: 0;
+		right: 32rpx;
+		bottom: 0;
+		flex-direction: row;
+		align-items: center;
+	}
+}
 </style>

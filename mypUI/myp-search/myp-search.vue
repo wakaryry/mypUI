@@ -1,28 +1,30 @@
 <template>
-	<view :class="['myp-search', 'myp-bg-'+bgType, 'myp-border-'+border, 'myp-radius-'+radius]" :style="mrBoxStyle">
-		<view v-if="position==='left'&&fixIcon" :class="['myp-height-'+height, 'myp-search-flex-row']">
+	<view>
+		<view v-if="position==='left'&&fixIcon" :class="['myp-search', 'myp-bg-'+bgType, 'myp-border-'+border, 'myp-radius-'+radius, 'myp-height-'+height, 'myp-search-fix']" :style="boxStyle">
 			<view v-if="icon&&icon.length>0" :style="{'margin-right': iconTextSpace}">
-				<myp-icon :name="icon" :type="mrFixedIconType" :size="iconSize" :iconStyle="iconStyle"></myp-icon>
+				<myp-icon :name="icon" :type="showPlaceholder?placeIconType:iconType" :size="iconSize" :iconStyle="iconStyle"></myp-icon>
 			</view>
-			<view class="myp-search-flex-full">
-				<view v-if="showPlaceholder" :class="['myp-search-place']">
-					<text :class="['myp-color-'+mrPlaceType, 'myp-size-'+placeSize]" :style="placeStyle">{{placeholder}}</text>
+			<view :class="['myp-search-fix-full', 'myp-height-'+height]" :style="fixBoxStyle">
+				<view :class="['myp-search-place']" :style="placeBoxStyle">
+					<text :class="['myp-search-place-text', 'myp-color-'+placeType, 'myp-size-'+placeSize]" :style="placeStyle">{{showPlaceholder?placeholder:''}}</text>
 				</view>
-				<view :class="['myp-search-input-box', 'myp-height-'+height]" :style="inputBoxStyle">
-					<input :value="inputValue" :class="['myp-search-input', 'myp-color-'+mrValueType, 'myp-size-'+valueSize]" :style="inputStyle" @input="toInput" @confirm="toConfirm" />
+				<view :class="['myp-search-input', 'myp-height-'+height]" :style="inputBoxStyle">
+					<input :value="inputValue" :class="['myp-search-input-input', 'myp-color-'+valueType, 'myp-size-'+valueSize]" :style="inputStyle" @input="toInput" @confirm="toConfirm" />
 				</view>
 			</view>
+			<slot name="extra"></slot>
 		</view>
-		<view v-else :class="['myp-height-'+height]">
-			<view v-if="showPlaceholder" :class="['myp-search-place', 'myp-search-place-'+position]">
-				<view v-if="icon&&icon.length>0" :style="{'margin-right': iconTextSpace}">
-					<myp-icon :name="icon" :type="mrIconType" :size="iconSize" :iconStyle="iconStyle"></myp-icon>
+		<view v-else :class="['myp-search', 'myp-bg-'+bgType, 'myp-border-'+border, 'myp-radius-'+radius, 'myp-height-'+height]" :style="mrBoxStyle">
+			<view :class="['myp-search-place', 'myp-search-place-'+position]" :style="mrPlaceBoxStyle">
+				<view v-if="showPlaceholder&&icon&&icon.length>0" :style="{'margin-right': iconTextSpace}">
+					<myp-icon :name="icon" :type="placeIconType" :size="iconSize" :iconStyle="iconStyle"></myp-icon>
 				</view>
-				<text :class="['myp-color-'+mrPlaceType, 'myp-size-'+placeSize]" :style="placeStyle">{{placeholder}}</text>
+				<text :class="['myp-color-'+placeType, 'myp-size-'+placeSize]" :style="placeStyle">{{showPlaceholder?placeholder:''}}</text>
 			</view>
-			<view :class="['myp-search-input-box', 'myp-height-'+height]" :style="inputBoxStyle">
-				<input :value="inputValue" :class="['myp-search-input', 'myp-search-input-'+position, 'myp-color-'+mrValueType, 'myp-size-'+valueSize]" :style="inputStyle" @input="toInput" @confirm="toConfirm" />
+			<view :class="['myp-search-input', 'myp-height-'+height]" :style="mrInputBoxStyle">
+				<input :value="inputValue" :class="['myp-search-input-input', 'myp-search-input-'+position, 'myp-color-'+valueType, 'myp-size-'+valueSize]" :style="inputStyle" @input="toInput" @confirm="toConfirm" />
 			</view>
+			<slot name="extra"></slot>
 		</view>
 	</view>
 </template>
@@ -52,15 +54,6 @@
 				type: Boolean,
 				default: false
 			},
-			// 只是占位，没有输入框
-			isToken: {
-				type: Boolean,
-				default: false
-			},
-			space: {
-				type: String,
-				default: '32rpx'
-			},
 			iconTextSpace: {
 				type: String,
 				default: '12rpx'
@@ -71,11 +64,15 @@
 			},
 			valueType: {
 				type: String,
-				default: ''
+				default: 'text'
+			},
+			placeIconType: {
+				type: String,
+				default: 'place'
 			},
 			iconType: {
 				type: String,
-				default: 'place'
+				default: 'text'
 			},
 			placeType: {
 				type: String,
@@ -93,6 +90,10 @@
 				type: String,
 				default: 'll'
 			},
+			space: {
+				type: String,
+				default: '32rpx'
+			},
 			valueSize: {
 				type: String,
 				default: ''
@@ -106,6 +107,10 @@
 				default: ''
 			},
 			boxStyle: {
+				type: String,
+				default: 'padding-left:32rpx;padding-right:32rpx;'
+			},
+			fixBoxStyle: {
 				type: String,
 				default: ''
 			},
@@ -124,6 +129,10 @@
 			inputStyle: {
 				type: String,
 				default: ''
+			},
+			placeBoxStyle: {
+				type: String,
+				default: ''
 			}
 		},
 		data() {
@@ -132,39 +141,17 @@
 			}
 		},
 		computed: {
-			mrValueType() {
-				if (this.valueType && this.valueType.length > 0) {
-					return this.valueType
-				}
-				return this.bgType && this.bgType.length > 0 ? 'inverse' : 'text'
-			},
-			mrPlaceType() {
-				if (this.placeType && this.placeType.length > 0) {
-					return this.placeType
-				}
-				return this.bgType && this.bgType.length > 0 ? 'inverse' : 'place'
-			},
-			mrIconType() {
-				if (this.iconType && this.iconType.length > 0) {
-					return this.iconType
-				}
-				return this.bgType && this.bgType.length > 0 ? 'inverse' : 'place'
-			},
-			mrFixedIconType() {
-				if (this.showPlaceholder) {
-					if (this.iconType && this.iconType.length > 0) {
-						return this.iconType
-					}
-					return this.mrPlaceType
-				}
-				return this.mrValueType
-			},
 			showPlaceholder() {
 				return !this.inputValue || this.inputValue.length === 0
 			},
 			mrBoxStyle() {
-				let _style = `padding-left:${this.space};padding-right:${this.space};`
-				return _style + this.boxStyle
+				return `padding-left:${this.space};padding-right:${this.space};` + this.boxStyle
+			},
+			mrInputBoxStyle() {
+				return `padding-left:${this.space};padding-right:${this.space};` + this.inputBoxStyle
+			},
+			mrPlaceBoxStyle() {
+				return `padding-left:${this.space};padding-right:${this.space};` + this.placeBoxStyle
 			}
 		},
 		watch: {
@@ -190,15 +177,15 @@
 	.myp-search {
 		position: relative;
 		
-		&-flex-full {
-			flex: 1;
-		}
-		
-		&-flex-row {
+		&-fix {
 			flex-direction: row;
 			align-items: center;
+			
+			&-full {
+				flex: 1;
+				position: relative;
+			}
 		}
-		
 		&-place {
 			flex-direction: row;
 			align-items: center;
@@ -207,7 +194,10 @@
 			top: 0;
 			right: 0;
 			bottom: 0;
-		
+			
+			&-text {
+				flex: 1;
+			}
 			&-left {
 				justify-content: flex-start;
 			}
@@ -215,16 +205,18 @@
 				justify-content: center;
 			}
 		}
-		
-		&-input-box {
-			flex-direction: row;
-			flex: 1;
-			align-items: center;
-		}
-		
 		&-input {
-			flex: 1;
+			position: absolute;
+			flex-direction: row;
+			align-items: center;
+			left: 0;
+			top: 0;
+			right: 0;
+			bottom: 0;
 			
+			&-input {
+				flex: 1;
+			}
 			&-left {
 				text-align: left;
 			}

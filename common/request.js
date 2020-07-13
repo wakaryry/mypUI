@@ -181,10 +181,18 @@ function _toRefreshAccess() {
 			},
 			success: res => {
 				if (res.statusCode >= 200 && res.statusCode < 300) {
-					// continue to request
-					// console.log('Refresh Token: ' + JSON.stringify(res))
-					updateAccess(res.data.access)
-					resolve(res.data.access)
+					if (process.env.NODE_ENV === 'development' && isMockServer) {
+						updateAccess(res.data.access)
+						resolve(res.data.access)
+					} else {
+						if (response.data.code === 200) {
+							updateAccess(res.data.data.access)
+							resolve(res.data.data.access)
+						} else {
+							updateAccessRefresh(null, null)
+							reject("get error")
+						}
+					}
 				} else {
 					// TODO: handle error info
 					// here we clear all token info, we need to login again

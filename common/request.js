@@ -185,7 +185,7 @@ function _toRefreshAccess() {
 						updateAccess(res.data.access)
 						resolve(res.data.access)
 					} else {
-						if (response.data.code === 200) {
+						if (res.data.code === 200) {
 							updateAccess(res.data.data.access)
 							resolve(res.data.data.access)
 						} else {

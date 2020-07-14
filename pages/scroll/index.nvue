@@ -23,6 +23,7 @@
 					{name: '实验室', page: 'scroll_test', icon: 'class', desc: '测试入口'},
 					{name: 'header-swiper', page: 'scroll_header', icon: 'headphone', desc: '简单header-swiper'},
 					{name: 'header-swiper', page: 'scroll_header_refresh', icon: 'headphone', desc: 'header-swiper，带下拉/上提'},
+					{name: 'chat-list', page: 'scroll_chat_list', icon: 'subject', desc: '聊天消息列表/下拉更多'},
 					{name: '横向scroll', page: 'scroll_h', icon: 'book', desc: '横向滚动scroll'},
 					{name: 'list', page: 'scroll_list_simple', icon: 'topic', desc: '简单list'},
 					{name: 'list', page: 'scroll_list_loading', icon: 'topic', desc: 'list，带下拉/上提'},

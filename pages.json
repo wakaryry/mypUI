@@ -317,6 +317,12 @@
 			}
 		},
 		{
+			"path": "pages/scroll/chat_list",
+			"style": {
+				"disableScroll": true
+			}
+		},
+		{
 			"path": "pages/scroll/list_simple",
 			"style": {
 				"disableScroll": true

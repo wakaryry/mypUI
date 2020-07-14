@@ -1,0 +1,69 @@
+<template>
+	<view>
+		<myp-navbar :lefts="leftIcons" title="chat-list" @leftAction="navLeftAction"></myp-navbar>
+		<myp-list-chat bgType="page" ref="myp-list" :includeXBar="false" :autoUpdate="true" @down="toLoadData" @up="toLoadData">
+			<myp-list-cell v-for="(item, idx) in items" :key="idx">
+				<view :class="['slo-content', item.uid===1?'slo-content-left':'slo-content-right']" style="transform:rotateZ(180deg);">
+					<myp-message-time v-if="idx===0 || idx ===5" :time="idx===0?'10:46':'11:05'" boxStyle="width:686rpx;"></myp-message-time>
+					<myp-message-text :direction="item.uid===1?'left':'right'" :nickname="item.nickname" :avatar="item.avatar" :text="item.text" :bgType="item.uid===1?'':'error'" :textType="item.uid===1?'':'inverse'"></myp-message-text>
+					<view style="height: 32rpx;"></view>
+				</view>
+			</myp-list-cell>
+		</myp-list-chat>
+	</view>
+</template>
+
+<script>
+	import data from './mixin/data.js'
+	
+	import navHelper from '@/router/navHelper.js'
+	
+	export default {
+		mixins: [navHelper],
+		data() {
+			return {
+				items: []
+			}
+		},
+		methods: {
+			toLoadData() {
+				const ins = this.$refs['myp-list']
+				const cp = ins.mypCurrentPage
+				const that = this
+				setTimeout(()=>{
+					if (cp === 1) {
+						that.items = Object.assign([], data)
+						ins.mypEndSuccess(true)
+					} else {
+						that.items = Object.assign([], data).concat(that.items)
+						if (cp >= 4) {
+							ins.mypEndSuccess(false)
+						} else {
+							ins.mypEndSuccess(true)
+						}
+					}
+				}, 2000)
+			}
+		}
+	}
+</script>
+
+<style lang="scss" scoped>
+	.slo {
+		width: 750rpx;
+		
+		&-content {
+			padding-left: 32rpx;
+			padding-right: 32rpx;
+			flex-direction: column;
+			
+			&-left {
+				align-items: flex-start;
+			}
+			
+			&-right {
+				align-items: flex-end;
+			}
+		}
+	}
+</style>

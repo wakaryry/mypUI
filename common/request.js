@@ -1,5 +1,5 @@
 import Request from '@/mypUI/myp-request/index.js'
-import {isAccessExpired, isRefreshExpired, updateAccess} from '@/common/token.js'
+import {isAccessExpired, isRefreshExpired, updateAccess, updateAccessRefresh} from '@/common/token.js'
 
 import {
 	baseUrl, isMockServer

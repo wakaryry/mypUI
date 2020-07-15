@@ -3,7 +3,8 @@
 		<myp-navbar :lefts="leftIcons" title="chat-list" @leftAction="navLeftAction"></myp-navbar>
 		<myp-list-down bgType="page" ref="myp-list" :includeXBar="false" :autoUpdate="true" @down="toLoadData">
 			<myp-list-cell v-for="(item, idx) in items" :key="idx">
-				<view :class="['slo-content', item.uid===1?'slo-content-left':'slo-content-right']">
+				<view v-if="item.myp_page" :ref="'chat_page_'+item.myp_page"></view>
+				<view v-else :class="['slo-content', item.uid===1?'slo-content-left':'slo-content-right']">
 					<myp-message-time v-if="idx===0 || idx ===5" :time="idx===0?'10:46':'11:05'" boxStyle="width:686rpx;"></myp-message-time>
 					<myp-message-text :direction="item.uid===1?'left':'right'" :nickname="item.nickname" :avatar="item.avatar" :text="item.text" :bgType="item.uid===1?'':'error'" :textType="item.uid===1?'':'inverse'"></myp-message-text>
 					<view style="height: 32rpx;"></view>
@@ -32,18 +33,28 @@
 				const that = this
 				setTimeout(()=>{
 					if (cp === 1) {
+						// #ifdef APP-NVUE
+						that.items = [{'myp_page': cp}].concat(Object.assign([], data))
+						// #endif
+						// #ifndef APP-NVUE
 						that.items = Object.assign([], data)
+						// #endif
 						ins.mypEndSuccess(true)
 						that.$nextTick(function(){
 							ins.mypScrollToBottom()
 						})
 					} else {
-						that.items = Object.assign([], data).concat(that.items)
+						that.items = [{'myp_page': cp}].concat(Object.assign([], data).concat(that.items))
 						if (cp >= 4) {
 							ins.mypEndSuccess(false)
 						} else {
 							ins.mypEndSuccess(true)
 						}
+						// #ifdef APP-NVUE
+						that.$nextTick(function(){
+							ins.mypScrollToElement(that.$refs['chat_page_'+(cp-1)][0])
+						})
+						// #endif
 					}
 				}, 2000)
 			}

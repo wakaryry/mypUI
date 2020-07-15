@@ -176,6 +176,10 @@ export default {
 			
 		},
 		mypRefresh() {
+			if (!this.mypHasMore) {
+				this.mypEndDownScroll()
+				return
+			}
 			this.mypPrePage = this.mypCurrentPage
 			this.mypCurrentPage += 1
 			this.mypGetContentList()

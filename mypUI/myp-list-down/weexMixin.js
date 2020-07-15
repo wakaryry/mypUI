@@ -31,6 +31,17 @@ export default {
 			this.$emit("scroll", e)
 		},
 		mypRefresh() {
+			if (!this.mypHasMore) {
+				if (this.platform === 'ios') {
+					this.$refs['myp-refresher'] && this.$refs['myp-refresher'].cancel()
+					return
+				}
+				const that = this
+				setTimeout(()=>{
+					that.$refs['myp-refresher'] && that.$refs['myp-refresher'].cancel()
+				}, 0)
+				return
+			}
 			this.mypPrePage = this.mypCurrentPage
 			this.mypCurrentPage += 1
 			this.mypIsDownLoading = true

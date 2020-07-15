@@ -2,6 +2,13 @@ export default {
 	data() {
 		return {
 			mypScrollable: true,
+			// 设置scrollTop使scroll滚动到某个位置
+			mypScrollTop: 0,
+			mypCurrentView: null,
+			mypOldHeight: 0,
+			mypNewHeight: 0,
+			mypOldScrollTop: 0,
+			// down
 			mypDownHeight: 0,
 			mypStartPoint: null,
 			mypLastPoint: null,
@@ -65,6 +72,9 @@ export default {
 	methods: {
 		// 手指开始触摸屏幕
 		mypTouchstartEvent(e) {
+			if (this.mypCurrentView) {
+				this.mypCurrentView = null
+			}
 			// if (!this.down.use) return;
 			this.mypStartPoint = this.mypGetPoint(e)
 			this.mypStartTop = this.mypTheScrollTop || 0
@@ -144,6 +154,7 @@ export default {
 		// scrollview滚动事件
 		mypScroll(e) {
 			this.$emit('scroll', e)
+			this.mypRecordChatPosition(e)
 			this.mypTheScrollTop = e.detail.scrollTop
 			this.mypTheScrollHeight = e.detail.scrollHeight
 			this.mypPreScrollY = e.detail.scrollTop;
@@ -191,15 +202,39 @@ export default {
 			this.mypIsDownLoading = false
 			this.mypDownHeight = 0
 		},
-		mypEndSuccess(hasMore=true) {
+		mypEndSuccess(hasMore=true, needReset=true) {
 			this.mypHasMore = hasMore
 			this.mypEndDownScroll()
+			// reset position
+			if (needReset) {
+				this.mypResetToLastPosition()
+			}
 		},
 		// 下拉刷新/上提加载，失败之后使用
 		mypEndError() {
 			// reback the current page
 			this.mypCurrentPage = this.mypPrePage
 			this.mypEndDownScroll()
+		},
+		mypRecordChatPosition(e) {
+			const newH = e.detail.scrollHeight
+			if (this.mypNewHeight === 0){
+				this.mypNewHeight = newH
+			} else if (this.mypNewHeight != newH){
+				this.mypOldHeight = newH - this.mypNewHeight
+				this.mypNewHeight = newH
+			}
+			console.log(this.mypNewHeight, this.mypOldHeight)
+			this.mypOldScrollTop = e.detail.scrollTop
+		},
+		mypResetToLastPosition() {
+			const that = this
+			this.mypScrollTop = this.mypOldScrollTop
+			console.log("1", this.mypScrollTop)
+			this.$nextTick(function() {
+				that.mypScrollTop = that.mypOldHeight
+				console.log("2", this.mypScrollTop)
+			})
 		},
 		mypGetPoint(e) {
 			if (!e) {

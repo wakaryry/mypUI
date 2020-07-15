@@ -1,7 +1,7 @@
 <template>
 	<view class="myp-list" :style="boxStyle">
 		<!-- #ifdef APP-NVUE -->
-		<list :class="'myp-bg-'+bgType" :style="mrScrollStyle" ref="myp-scroller" @scroll="mypScroll">
+		<list :class="'myp-bg-'+bgType" scrollToBegin="false" :style="mrScrollStyle" ref="myp-scroller" @scroll="mypScroll">
 			<myp-refresher-n ref="myp-refresher" scroller-ref="myp-scroller" @refresh="mypRefresh"></myp-refresher-n>
 			<slot></slot>
 			<cell>
@@ -10,10 +10,13 @@
 			<cell>
 				<view v-if="includeXBar&&overrideXBar" :style="mypXBarHeightStyle"></view>
 			</cell>
+			<cell>
+				<view ref="myp-chat-bottom"></view>
+			</cell>
 		</list>
 		<!-- #endif -->
 		<!-- #ifndef APP-NVUE -->
-		<scroll-view :class="'myp-bg-'+bgType" :style="mrScrollStyle" :scroll-y="mypScrollable" :enable-back-to-top="true" @scroll="mypScroll" @touchstart="mypTouchstartEvent" @touchmove="mypTouchmoveEvent" @touchend="mypTouchendEvent" @touchcancel="mypTouchendEvent">
+		<scroll-view :class="'myp-bg-'+bgType" :style="mrScrollStyle" :scroll-y="mypScrollable" :scroll-top="mypScrollTop" :scroll-into-view="mypCurrentView" :scroll-with-animation="true" :enable-back-to-top="true" @scroll="mypScroll" @touchstart="mypTouchstartEvent" @touchmove="mypTouchmoveEvent" @touchend="mypTouchendEvent" @touchcancel="mypTouchendEvent">
 			<view :style="mypMrScrollContentStyle">
 				<view :style="mypMrRefreshStyle">
 					<myp-refresher :refreshing="mypIsDownLoading" :couldUnLash="mypCouldUnLash" :rate="mypDownRate"></myp-refresher>
@@ -22,6 +25,7 @@
 				<slot></slot>
 				<view :style="{height: footToken}"></view>
 				<view v-if="includeXBar&&overrideXBar" :style="mypXBarHeightStyle"></view>
+				<view id="myp-chat-bottom"></view>
 			</view>
 		</scroll-view>
 		<!-- #endif -->
@@ -38,6 +42,7 @@
 	import styleMixin from '../myp-list/styleMixin.js'
 	// #ifdef APP-NVUE
 	import scrollMixin from './weexMixin.js'
+	const dom = uni.requireNativePlugin('dom')
 	// #endif
 	// #ifndef APP-NVUE
 	import scrollMixin from './mixin.js'
@@ -63,6 +68,28 @@
 			}
 		},
 		methods: {
+			mypScrollToBottom() {
+				// #ifdef APP-NVUE
+				const ref = this.$refs['myp-chat-bottom']
+				dom.scrollToElement(ref, {offset: 0, animated: true})
+				// #endif
+				// #ifndef APP-NVUE
+				this.mypCurrentView = 'myp-chat-bottom'
+				// #endif
+			},
+			mypScrollToElement(ref, options={offset: 0, animated: true}) {
+				// #ifdef APP-NVUE
+				dom.scrollToElement(ref, options)
+				// #endif
+				// #ifndef APP-NVUE
+				this.mypCurrentView = null
+				if (this.mypScrollTop === ref) {
+					this.mypScrollTop = ref + 0.1
+				} else {
+					this.mypScrollTop = ref
+				}
+				// #endif
+			}
 		}
 	}
 </script>

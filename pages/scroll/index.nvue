@@ -9,14 +9,16 @@
 				<myp-cell :icon="item.icon" :title="item.name" :value="item.desc" indicator="right" radius="none" border="bottom" height="ll" valueStyle="text-align:right;" boxStyle="padding-left:30rpx;padding-right:30rpx;" @cellClicked="toDetailScroll(item)"></myp-cell>
 			</myp-list-cell>
 		</myp-list-simple>
+		<myp-loading ref="myp-loading"></myp-loading>
 	</view>
 </template>
 
 <script>
 	import navHelper from '@/router/navHelper.js'
+	import loadingMixin from '@/mypUI/myp-mixin/loadingMixin.js'
 	
 	export default {
-		mixins: [navHelper],
+		mixins: [navHelper, loadingMixin],
 		data() {
 			return {
 				items: [
@@ -35,6 +37,17 @@
 		},
 		methods: {
 			toDetailScroll(val) {
+				// #ifdef APP-NVUE
+				if (val.page === 'scroll_chat_list') {
+					this.mypShowLoading({needMask: true})
+					const that = this
+					uni.preloadPage({url: "/pages/scroll/chat_list", complete: ()=>{
+						that.navigateTo(val.page)
+						that.mypHideLoading()
+					}});
+					return
+				}
+				// #endif
 				this.navigateTo(val.page)
 			}
 		}

@@ -12,7 +12,7 @@
 		</slot>
 		<view v-if="direction==='right'" :style="{'margin-left': space}">
 			<slot name="radio">
-				<myp-icon :name="mrIcon" :type="mrIconType" :size="iconSize" :mode="iconMode" :iconStyle="mrIconStyle" @iconCLicked="toToggle"></myp-icon>
+				<myp-icon :name="mrIcon" :type="mrIconType" :size="iconSize" :mode="iconMode" :iconStyle="mrIconStyle" @iconClicked="toToggle"></myp-icon>
 			</slot>
 		</view>
 	</view>

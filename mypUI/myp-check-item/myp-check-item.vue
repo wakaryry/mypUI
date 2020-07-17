@@ -1,8 +1,8 @@
 <template>
-	<view class="myp-radio-box" :style="boxStyle" @tap="toToggle">
+	<view class="myp-radio-box" :style="boxStyle" bubble="true" @tap="toToggle">
 		<view v-if="direction==='left'" :style="{'margin-right': space}">
 			<slot name="radio">
-				<myp-icon :name="mrIcon" :type="mrIconType" :size="iconSize" :mode="iconMode" :iconStyle="mrIconStyle"></myp-icon>
+				<myp-icon :name="mrIcon" :type="mrIconType" :size="iconSize" :mode="iconMode" :iconStyle="mrIconStyle" @iconClicked="toToggle"></myp-icon>
 			</slot>
 		</view>
 		<slot>
@@ -12,7 +12,7 @@
 		</slot>
 		<view v-if="direction==='right'" :style="{'margin-left': space}">
 			<slot name="radio">
-				<myp-icon :name="mrIcon" :type="mrIconType" :size="iconSize" :mode="iconMode" :iconStyle="mrIconStyle"></myp-icon>
+				<myp-icon :name="mrIcon" :type="mrIconType" :size="iconSize" :mode="iconMode" :iconStyle="mrIconStyle" @iconCLicked="toToggle"></myp-icon>
 			</slot>
 		</view>
 	</view>

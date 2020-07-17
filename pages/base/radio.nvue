@@ -2,7 +2,24 @@
 	<view>
 		<myp-navbar :lefts="leftIcons" title="单/多选" @leftAction="navLeftAction"></myp-navbar>
 		<myp-list-simple bgType="page">
-			
+			<myp-list-cell>
+				<view style="height: 20rpx;"></view>
+			</myp-list-cell>
+			<myp-list-cell>
+				<view style="margin: 32rpx;">
+					<myp-check v-model="model" mode="check" :items="items1" direction="right" :isBetween="true" itemBoxStyle="background-color:#F5F7F9;padding-left:32rpx;padding-right:32rpx;" boxStyle="border-radius:16rpx;overflow:hidden;"></myp-check>
+				</view>
+			</myp-list-cell>
+			<myp-list-cell>
+				<view style="margin: 32rpx;">
+					<myp-check type="success" v-model="model1" mode="box-fill-check" :limits="3" :items="items1" direction="right" :isBetween="true" itemBoxStyle="border-bottom-width:1px;border-bottom-color:#F5F7F9;"></myp-check>
+				</view>
+			</myp-list-cell>
+			<myp-list-cell>
+				<view style="margin: 32rpx;">
+					<myp-check type="error" v-model="model2" flex="column" :limits="2" :items="items2" titleLabel="title" valueLabel="value" disabledLabel="disabled" itemSpace="16rpx"></myp-check>
+				</view>
+			</myp-list-cell>
 		</myp-list-simple>
 		<myp-toast ref="myp-toast"></myp-toast>
 	</view>
@@ -16,6 +33,11 @@ export default {
 	mixins: [toastMixin, navHelper],
 	data() {
 		return {
+			model: ['南瓜'],
+			items1: ['香蕉', '苹果', '西红柿', '南瓜'],
+			model1: ['苹果'],
+			items2: [{title: '猪肉', value: 0}, {title: '牛肉', value: 1, disabled: true}, {title: '羊肉', value: 2}, {title: '狗肉', value: 3}],
+			model2: [2]
 		}
 	},
 	methods: {

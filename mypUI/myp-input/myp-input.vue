@@ -13,8 +13,8 @@
 			<input :type="mode" :maxlength="maxlength" :value="inputValue||''" :password="isSecret" :class="['myp-color-'+mrInputType, 'myp-size-'+inputSize]" :style="mrInputStyle" @input="inputedText" @confirm="confirmText" />
 		</view>
 		<slot name="extra"></slot>
-		<view v-if="action&&action.length>0" @tap="rightTapped" :style="{'margin-left': space}">
-			<myp-icon :name="action" :type="actionType" :size="actionSize" :iconStyle="actionStyle"></myp-icon>
+		<view v-if="action&&action.length>0" bubble="true" @tap="rightTapped" :style="{'margin-left': space}">
+			<myp-icon :name="action" :type="actionType" :size="actionSize" :iconStyle="actionStyle" @iconClicked="rightTapped"></myp-icon>
 		</view>
 	</view>
 </template>

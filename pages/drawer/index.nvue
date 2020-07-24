@@ -12,7 +12,7 @@
 		<!--
 		<stand-bottom :show="standBottomVisible" @cancel="toHide"></stand-bottom> -->
 		<pop-bottom :show="popBottomVisible" @cancel="toHide"></pop-bottom>
-		<drawer-bottom></drawer-bottom>
+		<drawer-bottom ref="drawerBottom"></drawer-bottom>
 		<myp-toast ref="myp-toast"></myp-toast>
 		<myp-loading ref="myp-loading"></myp-loading>
 	</view>
@@ -50,6 +50,7 @@
 				this.popBottomVisible = false
 				this.drawerBottomVisible = false
 				this.standBottomVisible = false
+				this.$refs['drawerBottom'].hide()
 			}
 		}
 	}

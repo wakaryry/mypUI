@@ -1,5 +1,5 @@
 <template>
-	<myp-drawer pos="bottom" standout="60px" width="750rpx" height="x-1000rpx">
+	<myp-drawer ref="drawer-bottom" pos="bottom" standout="60px" width="750rpx" height="x-1000rpx" @overlayClicked="hide">
 		<view class="pb-title" slot="standout">
 			<text class="pb-title-text">题都城南庄</text>
 		</view>
@@ -23,6 +23,14 @@
 	export default {
 		components: {
 			bottom
+		},
+		methods: {
+			hide(duration) {
+				this.$refs['drawer-bottom'].hide(duration)
+			},
+			show(duration) {
+				this.$refs['drawer-bottom'].show(duration)
+			}
 		}
 	}
 </script>

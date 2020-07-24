@@ -29,10 +29,6 @@
 	export default {
 		mixins: [windowMixin],
 		props: {
-			show: {
-				type: Boolean,
-				default: false
-			},
 			pos: {
 				type: String,
 				default: 'bottom'
@@ -116,11 +112,6 @@
 				overlayNoWeexAni: '',
 				noWeexAni: '',
 				isShow: false
-			}
-		},
-		watch: {
-			show(newV) {
-				this.toHackShow(newV)
 			}
 		},
 		computed: {
@@ -262,6 +253,22 @@
 			}
 		},
 		methods: {
+			// ref method to open
+			show(duration) {
+				if (typeof duration === 'undefined') {
+					this.toHackShow(true, this.duration)
+				} else {
+					this.toHackShow(true, duration)
+				}
+			},
+			// ref method to close
+			hide(duration) {
+				if (typeof duration === 'undefined') {
+					this.toHackShow(false, this.duration)
+				} else {
+					this.toHackShow(false, duration)
+				}
+			},
 			onTouchStart(e) {
 				if (!this.isShow) {
 					this.openWithDrag()
@@ -289,11 +296,11 @@
 				}, (res) => {
 					console.log(res)
 					if (res.state === 'end' && !that.isShow) {
-					    let offset = res.deltaY;
+					    let offset = -1 * res.deltaY;
 					    if (offset < maxSize / 2 && offset > 0) {
-					        
+					        this.toHackShow(false)
 					    } else if (offset >= maxSize / 2) {
-					        
+					        this.toHackShow(true)
 					    }
 					    if (result) {
 							console.log('hhhh')

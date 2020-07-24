@@ -4,7 +4,7 @@
 			<slot name="overlay"></slot>
 		</view>
 		<view ref="myp-popo" @tap.stop="toPrevent" :class="['myp-popo', 'myp-bg-'+bgType]" :style="boxStyle+mrPopStyle + noWeexAni">
-			<view ref="myp-standout" bubble="true" @touchstart="onTouchStart">
+			<view ref="myp-standout" bubble="true" @touchstart="onTouchStart" @touchmove="onTouchMove" @touchcancel="onTouchCancel" @touchend="onTouchEnd">
 				<!-- 名为standout，但是不一定露出的全是standout，也不一定要求standout一定全部露出 -->
 				<!-- 露出多少实际还是受standout这个props控制 -->
 				<slot name="standout"></slot>
@@ -23,11 +23,19 @@
 	const animation = weex.requireModule('animation');
 	const bindingX = uni.requireNativePlugin('bindingx');
 	// #endif
+	// #ifndef APP-NVUE
+	import touchMixin from '../myp-mixin/touchMixin.js'
+	// #endif
 	
 	import windowMixin from '../myp-mixin/windowMixin.js'
 	// TODO: add height animation: height-0->height
 	export default {
+		// #ifdef APP-NVUE
 		mixins: [windowMixin],
+		// #endif
+		// #ifndef APP-NVUE
+		mixins: [windowMixin, touchMixin],
+		// #endif
 		props: {
 			pos: {
 				type: String,
@@ -270,11 +278,38 @@
 				}
 			},
 			onTouchStart(e) {
+				// #ifdef APP-NVUE
 				if (!this.isShow) {
 					this.openWithDrag()
 				} else {
 					this.closeWithDrag()
 				}
+				// #endif
+				// #ifndef APP-NVUE
+				this.startPoint = this.mypGetPoint(e)
+				// #endif
+			},
+			onTouchMove(e) {
+				const nowPoint = this.mypGetPoint(e)
+				const offsetY = nowPoint.y - this.startPoint.y
+				if (offsetY >= 0) {
+					
+				} else {
+					this.noWeexAni = `transition-property: transform; transform: translateY(${offsetY}px);transition-duration: 0;`
+				}
+			},
+			onTouchEnd(e) {
+				const nowPoint = this.mypGetPoint(e)
+				const offsetY = nowPoint.y - this.startPoint.y
+				if (offsetY >= 0) {
+					this.noWeexAni = ""
+				} else {
+					this.noWeexAni = ""
+					this.toHackShow(true)
+				}
+			},
+			onTouchCancel(e) {
+				
 			},
 			openWithDrag() {
 				const that = this
@@ -294,7 +329,6 @@
 						expression: exp
 					}]
 				}, (res) => {
-					console.log(res)
 					if (res.state === 'end' && !that.isShow) {
 					    let offset = -1 * res.deltaY;
 					    if (offset < maxSize / 2 && offset > 0) {
@@ -303,7 +337,6 @@
 					        this.toHackShow(true)
 					    }
 					    if (result) {
-							console.log('hhhh')
 					        bindingX.unbind({
 					            token: result.token,
 					            eventType: 'pan'

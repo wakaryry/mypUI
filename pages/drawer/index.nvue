@@ -1,0 +1,60 @@
+<template>
+	<view>
+		<myp-navbar title="抽屉/拖动" :lefts="leftIcons" @leftAction="navLeftAction"></myp-navbar>
+		<myp-list-simple>
+			<myp-list-cell>
+				<view style="height: 20rpx;"></view>
+			</myp-list-cell>
+			<myp-list-cell v-for="(item,idx) in items" :key="idx">
+				<myp-cell :title="item.title" :value="item.desc" valueStyle="text-align:right;" border="bottom" indicator="right" indicatorType="third" boxStyle="padding-left:32rpx;padding-right:32rpx;" @cellClicked="toPop(item)"></myp-cell>
+			</myp-list-cell>
+		</myp-list-simple>
+		<!--
+		<stand-bottom :show="standBottomVisible" @cancel="toHide"></stand-bottom> -->
+		<pop-bottom :show="popBottomVisible" @cancel="toHide"></pop-bottom>
+		<drawer-bottom></drawer-bottom>
+		<myp-toast ref="myp-toast"></myp-toast>
+		<myp-loading ref="myp-loading"></myp-loading>
+	</view>
+</template>
+
+<script>
+	import popBottom from './components/popBottom.vue'
+	import standBottom from './components/standBottom.vue'
+	import drawerBottom from './components/drawerBottom.vue'
+	
+	import navHelper from '@/router/navHelper.js'
+	import toastMixin from '@/mypUI/myp-mixin/toastMixin.js'
+	import loadingMixin from '@/mypUI/myp-mixin/loadingMixin.js'
+	
+	export default {
+		components: {
+			popBottom,
+			standBottom,
+			drawerBottom
+		},
+		mixins: [navHelper, toastMixin, loadingMixin],
+		data() {
+			return {
+				items: [{title: '抽屉', desc: '底部出现', type: 'drawerBottom'}, {title: '当作popup', desc: '底部出现', type: 'popBottom'}, {title: '支持standout', desc: '底部出现', type: 'standBottom'}],
+				popBottomVisible: false,
+				drawerBottomVisible: false,
+				standBottomVisible: false
+			}
+		},
+		methods: {
+			toPop(val) {
+				this[val.type+'Visible'] = true
+			},
+			toHide() {
+				this.popBottomVisible = false
+				this.drawerBottomVisible = false
+				this.standBottomVisible = false
+			}
+		}
+	}
+</script>
+
+<style>
+
+</style>

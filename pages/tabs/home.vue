@@ -67,6 +67,13 @@
 					intro: '选择filter/dropdown，等',
 					hint: '马上感受'
 				}, {
+					icon: 'task',
+					name: '抽屉/拖动',
+					type: 'drawer_index',
+					title: '抽屉/拖动',
+					intro: '抽屉，拉出，拖动，回收，等',
+					hint: '现在就看'
+				}, {
 					icon: 'topic',
 					name: 'Picker',
 					type: 'picker_index',

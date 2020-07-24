@@ -16,6 +16,7 @@ export default {
 	base_tabs: '/pages/base/tabs',
 	base_grid: '/pages/base/grid',
 	base_countdown: '/pages/base/countdown',
+	base_indexlist: '/pages/base/indexlist',
 	// pop
 	pop_index: '/pages/pop/index',
 	// navbar
@@ -37,6 +38,8 @@ export default {
 	filter_up: '/pages/filter/up',
 	filter_more_up: '/pages/filter/more_up',
 	filter_all_up: '/pages/filter/all_up',
+	// drawer
+	drawer_index: '/pages/drawer/index',
 	// swiper
 	swiper_index: '/pages/swiper/index',
 	// scroll-test

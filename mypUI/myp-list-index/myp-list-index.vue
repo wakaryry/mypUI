@@ -1,15 +1,17 @@
 <template>
-	<view>
+	<view class="myp-index" :style="boxStyle">
 		<!-- #ifdef APP-NVUE -->
-		<list class="myp-index" :style="{height: heightPx + 'px'}">
+		<list :class="'myp-bg-'+bgType" :style="mrScrollStyle" @scroll="toScroll">
 			<cell>
 				<slot name="head"></slot>
 			</cell>
-			<cell v-for="(v, i) in formatList" :key="i" :ref="'myp-index-title-' + v.title">
-				<text :class="['myp-index-title', v.type && v.type === 'group' && 'myp-group-title']" v-if="!onlyShowList">{{ v.title }}</text>
-				<view v-if="v.type && v.type === 'group' && !onlyShowList" class="myp-group">
-					<view v-for="(group, index) in v.data" :key="index" class="myp-group-list">
-						<view v-for="(item, i) in group" :key="i" @click="itemClicked(item)" class="myp-group-item">
+			<cell v-for="(v, i) in formatList" :key="i" :ref="'myp-index-title-' + (v.id||v.title)">
+				<view :class="[(v.type && v.type === 'group')?'myp-index-label-group':'myp-index-label', 'myp-bg-'+((v.type && v.type === 'group')?groupLabelBgType:labelBgType), 'myp-height-'+((v.type && v.type === 'group')?groupLabelHeight:labelHeight)]" :style="(v.type && v.type === 'group')?groupLabelStyle:labelStyle" v-if="!onlyShowList">
+					<text :class="['myp-color-'+((v.type && v.type === 'group')?groupLabelTextType:labelTextType), 'myp-size-'+((v.type && v.type === 'group')?groupLabelTextSize:labelTextSize)]" :style="(v.type && v.type === 'group')?groupLabelTextStyle:labelTextStyle">{{ v.title }}</text>
+				</view>
+				<view v-if="v.type && v.type === 'group' && !onlyShowList" class="myp-index-group">
+					<view v-for="(group, index) in v.data" :key="index" class="myp-index-group-list">
+						<view v-for="(item, i) in group" :key="i" class="myp-index-group-item" bubble="true" @click="itemClicked(item)">
 							<image v-if="item.isLocation" class="location-icon" src="https://gw.alicdn.com/tfs/TB1JUiUPFXXXXXUXXXXXXXXXXXX-32-32.png"></image>
 							<view>
 								<text class="myp-group-item-name">{{ item.name }}</text>
@@ -25,12 +27,18 @@
 					</view>
 				</view>
 			</cell>
+			<cell>
+				<view :style="{height: footToken}"></view>
+			</cell>
+			<cell>
+				<view v-if="includeXBar&&overrideXBar" :style="mypXBarHeightStyle"></view>
+			</cell>
 		</list>
 		<!-- #endif -->
 		<!-- #ifndef APP-NVUE -->
-		<scroll-view :scroll-y="true" :scroll-with-animation="true" :scroll-into-view="viewId" class="myp-index" :style="{height: heightPx + 'px'}">
+		<scroll-view :scroll-y="true" :scroll-with-animation="true" :scroll-into-view="viewId" :class="'myp-bg-'+bgType" :style="mrScrollStyle" @scroll="toScroll">
 			<slot name="head"></slot>
-			<view v-for="(v, i) in formatList" :key="i" :id="'myp-index-title-' + v.title">
+			<view v-for="(v, i) in formatList" :key="i" :id="'myp-index-title-' + (v.id||v.title)">
 				<text :class="['myp-index-title', v.type && v.type === 'group' && 'myp-group-title']" v-if="!onlyShowList">{{ v.title }}</text>
 				<view v-if="v.type && v.type === 'group' && !onlyShowList" class="myp-group">
 					<view v-for="(group, index) in v.data" :key="index" class="myp-group-list">
@@ -50,12 +58,18 @@
 					</view>
 				</view>
 			</view>
+			<view :style="{height: footToken}"></view>
+			<view v-if="includeXBar&&overrideXBar" :style="mypXBarHeightStyle"></view>
 		</scroll-view>
 		<!-- #endif -->
-		<view class="myp-index-nav" v-if="showIndex && !onlyShowList" :style="indexBoxStyle">
-			<text v-for="(item, index) in formatList" :key="index" :title="item.title" @click="go2Key(item.title)" class="myp-index-nav-key">
-				{{ item.title }}
-			</text>
+		<!-- xBar -->
+		<view v-if="includeXBar&&!overrideXBar" :class="['myp-bg-'+xBarBgType]" :style="mypXBarStyle"></view>
+		<!-- foot -->
+		<view class="myp-index-foot" :style="mrFootStyle">
+			<slot name="foot"></slot>
+		</view>
+		<view class="myp-index-nav" v-if="showIndex && !onlyShowList" :style="indexBoxStyle" bubble="true" @tap="toPrevent">
+			<text v-for="(item, index) in formatList" :key="index" :title="item.title" @tap.stop="go2Key(item.id||item.title, item.title)" class="myp-index-nav-key">{{ item.title }}</text>
 		</view>
 		<view class="myp-index-pop" v-if="popKeyShow">
 			<text class="myp-index-pop-text">{{ popKey }}</text>
@@ -65,21 +79,19 @@
 
 <script>
 // indexlist比较简单，weex是dom.scrollToElement, uni直接scroll-into-view即可
-// 只提供简单的示范，不提供适配
+// 完全可以在页面里面自由使用mypUI的list组件，搭配完成各种list，比如可以刷新和加载更多，等等
+// 该indexlist只是为了最常用的indexlist的快速使用
 
 // #ifdef APP-NVUE
 const dom = weex.requireModule('dom');
 // #endif
+import styleMixin from '../myp-list/styleMixin.js'
 
-import * as Format from './format';
+import * as Format from './format.js';
 
 export default {
+	mixins: [styleMixin],
 	props: {
-		// 默认 number是 px
-		height: {
-			type: [Number, String],
-			default: 0
-		},
 		normalList: {
 			type: Array,
 			default: () => []
@@ -100,10 +112,33 @@ export default {
 			type: Object,
 			default: () => ({})
 		},
-		// 城市选择子组件 特殊情况支持
-		cityLocationConfig: {
+		specialListConfig: {
 			type: Object,
 			default: () => ({})
+		},
+		groupHeight: {
+			type: String,
+			default: 's'
+		},
+		groupBgType: {
+			type: String,
+			default: 'page'
+		},
+		groupStyle: {
+			type: String,
+			default: ''
+		},
+		groupTitleType: {
+			type: String,
+			default: 'second'
+		},
+		groupTitleSize: {
+			type: String,
+			default: ''
+		},
+		groupTitleStyle: {
+			type: String,
+			default: ''
 		},
 		indexBoxStyle: {
 			type: String,
@@ -112,8 +147,8 @@ export default {
 	},
 	computed: {
 		formatList() {
-			const { normalList, hotListConfig, cityLocationConfig } = this;
-			return Format.totalList(normalList, hotListConfig, cityLocationConfig);
+			const { normalList, hotListConfig, specialListConfig } = this;
+			return Format.totalList(normalList, hotListConfig, specialListConfig);
 		},
 		heightPx() {
 			if (typeof this.height === 'number') {
@@ -132,10 +167,18 @@ export default {
 		timer: null
 	}),
 	methods: {
+		toScroll(e) {
+			// #ifndef APP-NVUE
+			if (this.viewId) {
+				this.viewId = null
+			}
+			// #endif
+			this.$emit("scroll", e)
+		},
 		itemClicked(item) {
 			this.$emit('selected', item);
 		},
-		go2Key(key) {
+		go2Key(key, title) {
 			// #ifdef APP-NVUE
 			const keyEl = this.$refs['myp-index-title-' + key][0];
 			keyEl &&
@@ -148,12 +191,15 @@ export default {
 			const qId = 'myp-index-title-' + key
 			this.viewId = qId
 			// #endif
-			this.popKey = key;
+			this.popKey = title;
 			this.popKeyShow = true;
 			this.timer && clearTimeout(this.timer);
 			this.timer = setTimeout(() => {
 				this.popKeyShow = false;
 			}, 600);
+		},
+		toPrevent(e) {
+			e && e.stopPropagation && e.stopPropagation()
 		}
 	}
 };
@@ -163,7 +209,7 @@ export default {
 @import '../base.scss';
 
 .myp-index {
-	width: 750rpx;
+	position: relative;
 	
 	&-title {
 		border-bottom-width: 1px;
@@ -176,7 +222,6 @@ export default {
 		padding-left: 32rpx;
 		width: 750rpx;
 	}
-	
 	&-item {
 		width: 750rpx;
 		flex-direction: row;
@@ -191,21 +236,20 @@ export default {
 			font-size: 32rpx;
 			color: $myp-text-color;
 		}
-		
 		&-desc {
 			font-size: 24rpx;
 			color: $myp-text-color-third;
 			margin-left: 24rpx;
 		}
 	}
-	
 	&-nav {
 		position: absolute;
-		top: 0;
+		top: 32rpx;
+		bottom: 32rpx;
 		right: 0;
-		margin-bottom: 32rpx;
-		margin-top: 32rpx;
 		width: 70rpx;
+		flex-direction: column;
+		align-items: center;
 		
 		&-key {
 			width: 70rpx;
@@ -216,7 +260,6 @@ export default {
 			color: $myp-text-color-second;
 		}
 	}
-	
 	&-pop {
 		position: fixed;
 		top: 550rpx;
@@ -235,6 +278,11 @@ export default {
 			text-align: center;
 			color: #ffffff;
 		}
+	}
+	&-foot {
+		position: absolute;
+		left: 0;
+		bottom: 0;
 	}
 }
 

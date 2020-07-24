@@ -136,6 +136,15 @@ export default {
 				badge: 16,
 				identity: '钟点工',
 				page: 'base_countdown'
+			}, {
+				name: 'indexList',
+				avatar: 'https://cdn.img.wenhairu.com/images/2020/05/23/YTafR.jpg',
+				desc: '26.6万粉丝',
+				content: '右侧出现index的list',
+				cover: 'https://cdn.img.wenhairu.com/images/2020/05/23/YOS9D.jpg',
+				badge: 4,
+				identity: '风水师',
+				page: 'base_indexlist'
 			}]
 		}
 	}

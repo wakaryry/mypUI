@@ -105,9 +105,22 @@
 				"disableScroll": true
 			}
 		},
+		{
+			"path": "pages/base/indexlist",
+			"style": {
+				"disableScroll": true
+			}
+		},
 		// pop
 		{
 			"path": "pages/pop/index",
+			"style": {
+				"disableScroll": true
+			}
+		},
+		// drawer
+		{
+			"path": "pages/drawer/index",
 			"style": {
 				"disableScroll": true
 			}

@@ -290,26 +290,60 @@
 				// #endif
 			},
 			onTouchMove(e) {
+				if (!this.startPoint) return;
 				const nowPoint = this.mypGetPoint(e)
 				const offsetY = nowPoint.y - this.startPoint.y
-				if (offsetY >= 0) {
-					
+				if (!this.isShow) {
+					if (offsetY >= 0) {
+						
+					} else {
+						const maxSize = this.getTransformSize(this.pos, false)
+						const y = (-offsetY >= maxSize) ? (-1*maxSize) : offsetY
+						this.noWeexAni = `transition-property: transform; transform: translateY(${y}px);transition-duration: 0;`
+					}
 				} else {
-					this.noWeexAni = `transition-property: transform; transform: translateY(${offsetY}px);transition-duration: 0;`
+					
 				}
 			},
 			onTouchEnd(e) {
+				if (!this.startPoint) return;
 				const nowPoint = this.mypGetPoint(e)
 				const offsetY = nowPoint.y - this.startPoint.y
-				if (offsetY >= 0) {
-					this.noWeexAni = ""
+				if (!this.isShow) {
+					if (offsetY >= 0) {
+						this.noWeexAni = ""
+					} else {
+						this.noWeexAni = ""
+						const maxSize = this.getTransformSize(this.pos, false)
+						if (offsetY > -0.5*maxSize) {
+							this.toHackShow(false)
+						} else {
+							this.toHackShow(true)
+						}
+					}
 				} else {
-					this.noWeexAni = ""
-					this.toHackShow(true)
+					
 				}
 			},
 			onTouchCancel(e) {
-				
+				if (!this.startPoint) return;
+				const nowPoint = this.mypGetPoint(e)
+				const offsetY = nowPoint.y - this.startPoint.y
+				if (!this.isShow) {
+					if (offsetY >= 0) {
+						this.noWeexAni = ""
+					} else {
+						this.noWeexAni = ""
+						const maxSize = this.getTransformSize(this.pos, false)
+						if (offsetY > -0.5*maxSize) {
+							this.toHackShow(false)
+						} else {
+							this.toHackShow(true)
+						}
+					}
+				} else {
+					
+				}
 			},
 			openWithDrag() {
 				const that = this

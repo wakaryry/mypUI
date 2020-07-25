@@ -1,30 +1,34 @@
 <template>
 	<view>
-		<myp-navbar title="底部抽屉/支持拉出" :lefts="leftIcons" @leftAction="navLeftAction"></myp-navbar>
+		<myp-height height="status-nav"></myp-height>
 		<myp-list-simple>
 			<myp-list-cell>
-				<blank-card @action="toShow"></blank-card>
+				<view style="height: 50px;"></view>
+			</myp-list-cell>
+			<myp-list-cell>
+				<blank-card desc="语文考试打了100分,真是太高兴了" btn="寻找灵感" @action="toShow"></blank-card>
 			</myp-list-cell>
 		</myp-list-simple>
-		<drawer-bottom ref="drawerBottom"></drawer-bottom>
+		<drawer-top ref="drawerTop"></drawer-top>
+		<myp-navbar title="顶部抽屉/支持拉出" :fixed="true" :isSeize="false" :lefts="leftIcons" bgType="primary" itemIconType="inverse" itemTextType="inverse" titleType="inverse" @leftAction="navLeftAction"></myp-navbar>
 	</view>
 </template>
 
 <script>
-	import drawerBottom from './components/drawerBottom.vue'
+	import drawerTop from './components/drawerTop.vue'
 	import blankCard from '@/pages/components/blankCard.vue'
 	
 	import navHelper from '@/router/navHelper.js'
 	
 	export default {
 		components: {
-			drawerBottom,
+			drawerTop,
 			blankCard
 		},
 		mixins: [navHelper],
 		methods: {
 			toShow() {
-				this.$refs['drawerBottom'].show()
+				this.$refs['drawerTop'].show()
 			}
 		}
 	}

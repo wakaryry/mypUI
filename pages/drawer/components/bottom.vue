@@ -24,7 +24,7 @@
 	@import '@/mypUI/mypui.scss';
 	
 	.pb {
-		background-color: #FFFFFF;
+		background-color: $myp-color-primary;
 		width: 750rpx;
 		height: 1000rpx;
 		border-top-left-radius: 24rpx;
@@ -46,51 +46,51 @@
 			
 			&-text {
 				font-size: 36rpx;
-				color: $myp-text-color;
+				color: #FFFFFF;
 				font-weight: 600;
 			}
 		}
 		&-one {
 			margin-top: 40rpx;
 			font-size: 30rpx;
-			color: $myp-text-color;
+			color: #FFFFFF;
 			line-height: 42rpx;
 		}
 		&-two {
 			margin-top: 16rpx;
 			font-size: 30rpx;
-			color: $myp-color-error;
+			color: #FFFFFF;
 			line-height: 42rpx;
 		}
 		&-three {
 			margin-top: 16rpx;
 			font-size: 30rpx;
-			color: $myp-text-color;
+			color: #FFFFFF;
 			line-height: 42rpx;
 		}
 		&-four {
 			margin-top: 16rpx;
 			font-size: 30rpx;
-			color: $myp-color-error;
+			color: #FFFFFF;
 			line-height: 42rpx;
 		}
 		&-label {
 			margin-top: 24rpx;
 			font-size: 32rpx;
-			color: $myp-text-color;
+			color: #FFFFFF;
 			line-height: 46rpx;
 			font-weight: 600;
 		}
 		&-author {
 			margin-top: 16rpx;
 			font-size: 30rpx;
-			color: $myp-text-color;
+			color: #FFFFFF;
 			line-height: 42rpx;
 		}
 		&-desc {
 			margin-top: 24rpx;
 			font-size: 30rpx;
-			color: $myp-text-color-second;
+			color: #FFFFFF;
 			line-height: 42rpx;
 		}
 	}

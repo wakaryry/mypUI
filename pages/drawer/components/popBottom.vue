@@ -1,7 +1,7 @@
 <template>
 	<myp-drawer ref="pop" pos="bottom" width="750rpx" height="x-1000rpx" @overlayClicked="hide">
 		<bottom></bottom>
-		<myp-x-bar bgType="inverse" boxStyle="width:750rpx;"></myp-x-bar>
+		<myp-x-bar bgType="primary" boxStyle="width:750rpx;"></myp-x-bar>
 	</myp-drawer>
 </template>
 

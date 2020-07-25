@@ -207,337 +207,337 @@
 
 .myp-border {
 	&-all {
-		border-width: $myp-border-width;
-		border-style: solid;
-		border-color: $myp-border-color;
+		border-width: $myp-border-width !important;
+		border-style: solid !important;
+		border-color: $myp-border-color !important;
 		&-light {
-			border-width: $myp-border-width;
-			border-style: solid;
-			border-color: $myp-border-color-light;
+			border-width: $myp-border-width !important;
+			border-style: solid !important;
+			border-color: $myp-border-color-light !important;
 		}
 		&-dark {
-			border-width: $myp-border-width;
-			border-style: solid;
-			border-color: $myp-border-color-dark;
+			border-width: $myp-border-width !important;
+			border-style: solid !important;
+			border-color: $myp-border-color-dark !important;
 		}
 		&-primary {
-			border-width: $myp-border-width;
-			border-style: solid;
-			border-color: $myp-color-primary;
+			border-width: $myp-border-width !important;
+			border-style: solid !important;
+			border-color: $myp-color-primary !important;
 		}
 		&-success {
-			border-width: $myp-border-width;
-			border-style: solid;
-			border-color: $myp-color-success;
+			border-width: $myp-border-width !important;
+			border-style: solid !important;
+			border-color: $myp-color-success !important;
 		}
 		&-warning {
-			border-width: $myp-border-width;
-			border-style: solid;
-			border-color: $myp-color-warning;
+			border-width: $myp-border-width !important;
+			border-style: solid !important;
+			border-color: $myp-color-warning !important;
 		}
 		&-error {
-			border-width: $myp-border-width;
-			border-style: solid;
-			border-color: $myp-color-error;
+			border-width: $myp-border-width !important;
+			border-style: solid !important;
+			border-color: $myp-color-error !important;
 		}
 		&-inverse {
-			border-width: $myp-border-width;
-			border-style: solid;
-			border-color: $myp-border-color-inverse;
+			border-width: $myp-border-width !important;
+			border-style: solid !important;
+			border-color: $myp-border-color-inverse !important;
 		}
 		&-custom {
-			border-width: $myp-border-width;
-			border-style: solid;
-			border-color: $myp-color-custom;
+			border-width: $myp-border-width !important;
+			border-style: solid !important;
+			border-color: $myp-color-custom !important;
 		}
 		&-link {
-			border-width: $myp-border-width;
-			border-style: solid;
-			border-color: $myp-color-link;
+			border-width: $myp-border-width !important;
+			border-style: solid !important;
+			border-color: $myp-color-link !important;
 		}
 	}
 	&-top {
-		border-top-color: $myp-border-color;
-		border-top-width: $myp-border-width;
-		border-top-style: solid;
+		border-top-color: $myp-border-color !important;
+		border-top-width: $myp-border-width !important;
+		border-top-style: solid !important;
 		&-light {
-			border-top-color: $myp-border-color-light;
-			border-top-width: $myp-border-width;
-			border-top-style: solid;
+			border-top-color: $myp-border-color-light !important;
+			border-top-width: $myp-border-width !important;
+			border-top-style: solid !important;
 		}
 		&-dark {
-			border-top-color: $myp-border-color-dark;
-			border-top-width: $myp-border-width;
-			border-top-style: solid;
+			border-top-color: $myp-border-color-dark !important;
+			border-top-width: $myp-border-width !important;
+			border-top-style: solid !important;
 		}
 		&-primary {
-			border-top-color: $myp-color-primary;
-			border-top-width: $myp-border-width;
-			border-top-style: solid;
+			border-top-color: $myp-color-primary !important;
+			border-top-width: $myp-border-width !important;
+			border-top-style: solid !important;
 		}
 		&-success {
-			border-top-color: $myp-color-success;
-			border-top-width: $myp-border-width;
-			border-top-style: solid;
+			border-top-color: $myp-color-success !important;
+			border-top-width: $myp-border-width !important;
+			border-top-style: solid !important;
 		}
 		&-warning {
-			border-top-color: $myp-color-warning;
-			border-top-width: $myp-border-width;
-			border-top-style: solid;
+			border-top-color: $myp-color-warning !important;
+			border-top-width: $myp-border-width !important;
+			border-top-style: solid !important;
 		}
 		&-error {
-			border-top-color: $myp-color-error;
-			border-top-width: $myp-border-width;
-			border-top-style: solid;
+			border-top-color: $myp-color-error !important;
+			border-top-width: $myp-border-width !important;
+			border-top-style: solid !important;
 		}
 		&-inverse {
-			border-top-color: $myp-border-color-inverse;
-			border-top-width: $myp-border-width;
-			border-top-style: solid;
+			border-top-color: $myp-border-color-inverse !important;
+			border-top-width: $myp-border-width !important;
+			border-top-style: solid !important;
 		}
 		&-custom {
-			border-top-color: $myp-color-custom;
-			border-top-width: $myp-border-width;
-			border-top-style: solid;
+			border-top-color: $myp-color-custom !important;
+			border-top-width: $myp-border-width !important;
+			border-top-style: solid !important;
 		}
 		&-link {
-			border-top-color: $myp-color-link;
-			border-top-width: $myp-border-width;
-			border-top-style: solid;
+			border-top-color: $myp-color-link !important;
+			border-top-width: $myp-border-width !important;
+			border-top-style: solid !important;
 		}
 	}
 	&-bottom {
-		border-bottom-color: $myp-border-color;
-		border-bottom-width: $myp-border-width;
-		border-bottom-style: solid;
+		border-bottom-color: $myp-border-color !important;
+		border-bottom-width: $myp-border-width !important;
+		border-bottom-style: solid !important;
 		&-light {
-			border-bottom-color: $myp-border-color-light;
-			border-bottom-width: $myp-border-width;
-			border-bottom-style: solid;
+			border-bottom-color: $myp-border-color-light !important;
+			border-bottom-width: $myp-border-width !important;
+			border-bottom-style: solid !important;
 		}
 		&-dark {
-			border-bottom-color: $myp-border-color-dark;
-			border-bottom-width: $myp-border-width;
-			border-bottom-style: solid;
+			border-bottom-color: $myp-border-color-dark !important;
+			border-bottom-width: $myp-border-width !important;
+			border-bottom-style: solid !important;
 		}
 		&-primary {
-			border-bottom-color: $myp-color-primary;
-			border-bottom-width: $myp-border-width;
-			border-bottom-style: solid;
+			border-bottom-color: $myp-color-primary !important;
+			border-bottom-width: $myp-border-width !important;
+			border-bottom-style: solid !important;
 		}
 		&-success {
-			border-bottom-color: $myp-color-success;
-			border-bottom-width: $myp-border-width;
-			border-bottom-style: solid;
+			border-bottom-color: $myp-color-success !important;
+			border-bottom-width: $myp-border-width !important;
+			border-bottom-style: solid !important;
 		}
 		&-warning {
-			border-bottom-color: $myp-color-warning;
-			border-bottom-width: $myp-border-width;
-			border-bottom-style: solid;
+			border-bottom-color: $myp-color-warning !important;
+			border-bottom-width: $myp-border-width !important;
+			border-bottom-style: solid !important;
 		}
 		&-error {
-			border-bottom-color: $myp-color-error;
-			border-bottom-width: $myp-border-width;
-			border-bottom-style: solid;
+			border-bottom-color: $myp-color-error !important;
+			border-bottom-width: $myp-border-width !important;
+			border-bottom-style: solid !important;
 		}
 		&-inverse {
-			border-bottom-color: $myp-border-color-inverse;
-			border-bottom-width: $myp-border-width;
-			border-bottom-style: solid;
+			border-bottom-color: $myp-border-color-inverse !important;
+			border-bottom-width: $myp-border-width !important;
+			border-bottom-style: solid !important;
 		}
 		&-custom {
-			border-bottom-color: $myp-color-custom;
-			border-bottom-width: $myp-border-width;
-			border-bottom-style: solid;
+			border-bottom-color: $myp-color-custom !important;
+			border-bottom-width: $myp-border-width !important;
+			border-bottom-style: solid !important;
 		}
 		&-link {
-			border-bottom-color: $myp-color-link;
-			border-bottom-width: $myp-border-width;
-			border-bottom-style: solid;
+			border-bottom-color: $myp-color-link !important;
+			border-bottom-width: $myp-border-width !important;
+			border-bottom-style: solid !important;
 		}
 	}
 	&-left {
-		border-left-color: $myp-border-color;
-		border-left-width: $myp-border-width;
-		border-left-style: solid;
+		border-left-color: $myp-border-color !important;
+		border-left-width: $myp-border-width !important;
+		border-left-style: solid !important;
 		&-light {
-			border-left-color: $myp-border-color-light;
-			border-left-width: $myp-border-width;
-			border-left-style: solid;
+			border-left-color: $myp-border-color-light !important;
+			border-left-width: $myp-border-width !important;
+			border-left-style: solid !important;
 		}
 		&-dark {
-			border-left-color: $myp-border-color-dark;
-			border-left-width: $myp-border-width;
-			border-left-style: solid;
+			border-left-color: $myp-border-color-dark !important;
+			border-left-width: $myp-border-width !important;
+			border-left-style: solid !important;
 		}
 		&-primary {
-			border-left-color: $myp-color-primary;
-			border-left-width: $myp-border-width;
-			border-left-style: solid;
+			border-left-color: $myp-color-primary !important;
+			border-left-width: $myp-border-width !important;
+			border-left-style: solid !important;
 		}
 		&-success {
-			border-left-color: $myp-color-success;
-			border-left-width: $myp-border-width;
-			border-left-style: solid;
+			border-left-color: $myp-color-success !important;
+			border-left-width: $myp-border-width !important;
+			border-left-style: solid !important;
 		}
 		&-warning {
-			border-left-color: $myp-color-warning;
-			border-left-width: $myp-border-width;
-			border-left-style: solid;
+			border-left-color: $myp-color-warning !important;
+			border-left-width: $myp-border-width !important;
+			border-left-style: solid !important;
 		}
 		&-error {
-			border-left-color: $myp-color-error;
-			border-left-width: $myp-border-width;
-			border-left-style: solid;
+			border-left-color: $myp-color-error !important;
+			border-left-width: $myp-border-width !important;
+			border-left-style: solid !important;
 		}
 		&-inverse {
-			border-left-color: $myp-border-color-inverse;
-			border-left-width: $myp-border-width;
-			border-left-style: solid;
+			border-left-color: $myp-border-color-inverse !important;
+			border-left-width: $myp-border-width !important;
+			border-left-style: solid !important;
 		}
 		&-custom {
-			border-left-color: $myp-color-custom;
-			border-left-width: $myp-border-width;
-			border-left-style: solid;
+			border-left-color: $myp-color-custom !important;
+			border-left-width: $myp-border-width !important;
+			border-left-style: solid !important;
 		}
 		&-link {
-			border-left-color: $myp-color-link;
-			border-left-width: $myp-border-width;
-			border-left-style: solid;
+			border-left-color: $myp-color-link !important;
+			border-left-width: $myp-border-width !important;
+			border-left-style: solid !important;
 		}
 	}
 	&-right {
-		border-right-color: $myp-border-color;
-		border-right-width: $myp-border-width;
-		border-right-style: solid;
+		border-right-color: $myp-border-color !important;
+		border-right-width: $myp-border-width !important;
+		border-right-style: solid !important;
 		&-light {
-			border-right-color: $myp-border-color-light;
-			border-right-width: $myp-border-width;
-			border-right-style: solid;
+			border-right-color: $myp-border-color-light !important;
+			border-right-width: $myp-border-width !important;
+			border-right-style: solid !important;
 		}
 		&-dark {
-			border-right-color: $myp-border-color-dark;
-			border-right-width: $myp-border-width;
-			border-right-style: solid;
+			border-right-color: $myp-border-color-dark !important;
+			border-right-width: $myp-border-width !important;
+			border-right-style: solid !important;
 		}
 		&-primary {
-			border-right-color: $myp-color-primary;
-			border-right-width: $myp-border-width;
-			border-right-style: solid;
+			border-right-color: $myp-color-primary !important;
+			border-right-width: $myp-border-width !important;
+			border-right-style: solid !important;
 		}
 		&-success {
-			border-right-color: $myp-color-success;
-			border-right-width: $myp-border-width;
-			border-right-style: solid;
+			border-right-color: $myp-color-success !important;
+			border-right-width: $myp-border-width !important;
+			border-right-style: solid !important;
 		}
 		&-warning {
-			border-right-color: $myp-color-warning;
-			border-right-width: $myp-border-width;
-			border-right-style: solid;
+			border-right-color: $myp-color-warning !important;
+			border-right-width: $myp-border-width !important;
+			border-right-style: solid !important;
 		}
 		&-error {
-			border-right-color: $myp-color-error;
-			border-right-width: $myp-border-width;
-			border-right-style: solid;
+			border-right-color: $myp-color-error !important;
+			border-right-width: $myp-border-width !important;
+			border-right-style: solid !important;
 		}
 		&-inverse {
-			border-right-color: $myp-border-color-inverse;
-			border-right-width: $myp-border-width;
-			border-right-style: solid;
+			border-right-color: $myp-border-color-inverse !important;
+			border-right-width: $myp-border-width !important;
+			border-right-style: solid !important;
 		}
 		&-custom {
-			border-right-color: $myp-color-custom;
-			border-right-width: $myp-border-width;
-			border-right-style: solid;
+			border-right-color: $myp-color-custom !important;
+			border-right-width: $myp-border-width !important;
+			border-right-style: solid !important;
 		}
 		&-link {
-			border-right-color: $myp-color-link;
-			border-right-width: $myp-border-width;
-			border-right-style: solid;
+			border-right-color: $myp-color-link !important;
+			border-right-width: $myp-border-width !important;
+			border-right-style: solid !important;
 		}
 	}
 	&-tb {
-		border-bottom-color: $myp-border-color;
-		border-bottom-width: $myp-border-width;
-		border-bottom-style: solid;
-		border-top-color: $myp-border-color;
-		border-top-width: $myp-border-width;
-		border-top-style: solid;
+		border-bottom-color: $myp-border-color !important;
+		border-bottom-width: $myp-border-width !important;
+		border-bottom-style: solid !important;
+		border-top-color: $myp-border-color !important;
+		border-top-width: $myp-border-width !important;
+		border-top-style: solid !important;
 		&-light {
-			border-bottom-color: $myp-border-color-light;
-			border-bottom-width: $myp-border-width;
-			border-bottom-style: solid;
-			border-top-color: $myp-border-color-light;
-			border-top-width: $myp-border-width;
-			border-top-style: solid;
+			border-bottom-color: $myp-border-color-light !important;
+			border-bottom-width: $myp-border-width !important;
+			border-bottom-style: solid !important;
+			border-top-color: $myp-border-color-light !important;
+			border-top-width: $myp-border-width !important;
+			border-top-style: solid !important;
 		}
 		&-dark {
-			border-bottom-color: $myp-border-color-dark;
-			border-bottom-width: $myp-border-width;
-			border-bottom-style: solid;
-			border-top-color: $myp-border-color-dark;
-			border-top-width: $myp-border-width;
-			border-top-style: solid;
+			border-bottom-color: $myp-border-color-dark !important;
+			border-bottom-width: $myp-border-width !important;
+			border-bottom-style: solid !important;
+			border-top-color: $myp-border-color-dark !important;
+			border-top-width: $myp-border-width !important;
+			border-top-style: solid !important;
 		}
 		&-primary {
-			border-bottom-color: $myp-color-primary;
-			border-bottom-width: $myp-border-width;
-			border-bottom-style: solid;
-			border-top-color: $myp-color-primary;
-			border-top-width: $myp-border-width;
-			border-top-style: solid;
+			border-bottom-color: $myp-color-primary !important;
+			border-bottom-width: $myp-border-width !important;
+			border-bottom-style: solid !important;
+			border-top-color: $myp-color-primary !important;
+			border-top-width: $myp-border-width !important;
+			border-top-style: solid !important;
 		}
 		&-success {
-			border-bottom-color: $myp-color-success;
-			border-bottom-width: $myp-border-width;
-			border-bottom-style: solid;
-			border-top-color: $myp-color-success;
-			border-top-width: $myp-border-width;
-			border-top-style: solid;
+			border-bottom-color: $myp-color-success !important;
+			border-bottom-width: $myp-border-width !important;
+			border-bottom-style: solid !important;
+			border-top-color: $myp-color-success !important;
+			border-top-width: $myp-border-width !important;
+			border-top-style: solid !important;
 		}
 		&-warning {
-			border-bottom-color: $myp-color-warning;
-			border-bottom-width: $myp-border-width;
-			border-bottom-style: solid;
-			border-top-color: $myp-color-warning;
-			border-top-width: $myp-border-width;
-			border-top-style: solid;
+			border-bottom-color: $myp-color-warning !important;
+			border-bottom-width: $myp-border-width !important;
+			border-bottom-style: solid !important;
+			border-top-color: $myp-color-warning !important;
+			border-top-width: $myp-border-width !important;
+			border-top-style: solid !important;
 		}
 		&-error {
-			border-bottom-color: $myp-color-error;
-			border-bottom-width: $myp-border-width;
-			border-bottom-style: solid;
-			border-top-color: $myp-color-error;
-			border-top-width: $myp-border-width;
-			border-top-style: solid;
+			border-bottom-color: $myp-color-error !important;
+			border-bottom-width: $myp-border-width !important;
+			border-bottom-style: solid !important;
+			border-top-color: $myp-color-error !important;
+			border-top-width: $myp-border-width !important;
+			border-top-style: solid !important;
 		}
 		&-inverse {
-			border-bottom-color: $myp-border-color-inverse;
-			border-bottom-width: $myp-border-width;
-			border-bottom-style: solid;
-			border-top-color: $myp-border-color-inverse;
-			border-top-width: $myp-border-width;
-			border-top-style: solid;
+			border-bottom-color: $myp-border-color-inverse !important;
+			border-bottom-width: $myp-border-width !important;
+			border-bottom-style: solid !important;
+			border-top-color: $myp-border-color-inverse !important;
+			border-top-width: $myp-border-width !important;
+			border-top-style: solid !important;
 		}
 		&-custom {
-			border-bottom-color: $myp-color-custom;
-			border-bottom-width: $myp-border-width;
-			border-bottom-style: solid;
-			border-top-color: $myp-color-custom;
-			border-top-width: $myp-border-width;
-			border-top-style: solid;
+			border-bottom-color: $myp-color-custom !important;
+			border-bottom-width: $myp-border-width !important;
+			border-bottom-style: solid !important;
+			border-top-color: $myp-color-custom !important;
+			border-top-width: $myp-border-width !important;
+			border-top-style: solid !important;
 		}
 		&-link {
-			border-bottom-color: $myp-color-link;
-			border-bottom-width: $myp-border-width;
-			border-bottom-style: solid;
-			border-top-color: $myp-color-link;
-			border-top-width: $myp-border-width;
-			border-top-style: solid;
+			border-bottom-color: $myp-color-link !important;
+			border-bottom-width: $myp-border-width !important;
+			border-bottom-style: solid !important;
+			border-top-color: $myp-color-link !important;
+			border-top-width: $myp-border-width !important;
+			border-top-style: solid !important;
 		}
 	}
 	&-none {
-		border-width: 0;
+		border-width: 0 !important;
 	}
 }
 

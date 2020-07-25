@@ -1,6 +1,6 @@
 ## mypUI
 
-**第一个高效强悍的nvue开源组件库，实实在在打磨核心组件，不堆砌假把戏，不玩虚的**
+**第一个高效且强悍的nvue开源组件库。做最好、最顺手的nvue组件库**
 
 - 适用于`nvue`页面的组件与工具（app端对应weex，不再是webview）；
 - 纯`flex`布局，符合`weex`规范（兼容Vue页面只需要加几个display:flex即可）；
@@ -11,7 +11,7 @@
 - 页面内容完全自己控制，移除掉了系统自带的navbar和tabbar，以及外层自动包裹的scroll；
 - 页面排版更加灵活。遮罩层全屏覆盖。status/nav/xBar处理也非常灵活与方便；
 - 精简`page.json`的配置，减少独立配置；
-- 已在`Android`/`iOS`/`mp-wexin`/`mp-qq`/`mp-toutiao`上面有实际应用；
+- 已在`Android`/`iOS`/`mp-wexin`/`mp-qq`/`mp-toutiao`等上面有实际应用；
 
 mypUI 是基于 uniapp 的一套组件库与工具集，可以 **高效且规范** 地开发出 uniapp 支持的各端应用（APP/各家小程序/H5/快应用）。兼容 nvue 页面 和 vue 页面。nvue 页面对应的 app端 依托 weex 编译为原生，具备良好的性能与体验。mypUI 绝对能为您带来 **稳定、高效、规范** 的开发体验。
 

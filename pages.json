@@ -125,6 +125,30 @@
 				"disableScroll": true
 			}
 		},
+		{
+			"path": "pages/drawer/top",
+			"style": {
+				"disableScroll": true
+			}
+		},
+		{
+			"path": "pages/drawer/right",
+			"style": {
+				"disableScroll": true
+			}
+		},
+		{
+			"path": "pages/drawer/bottom",
+			"style": {
+				"disableScroll": true
+			}
+		},
+		{
+			"path": "pages/drawer/left",
+			"style": {
+				"disableScroll": true
+			}
+		},
 		// picker
 		{
 			"path": "pages/picker/index",

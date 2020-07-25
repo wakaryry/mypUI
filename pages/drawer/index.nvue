@@ -9,10 +9,8 @@
 				<myp-cell :title="item.title" :value="item.desc" valueStyle="text-align:right;" border="bottom" indicator="right" indicatorType="third" boxStyle="padding-left:32rpx;padding-right:32rpx;" @cellClicked="toPop(item)"></myp-cell>
 			</myp-list-cell>
 		</myp-list-simple>
-		<!--
-		<stand-bottom :show="standBottomVisible" @cancel="toHide"></stand-bottom> -->
-		<pop-bottom :show="popBottomVisible" @cancel="toHide"></pop-bottom>
-		<drawer-bottom ref="drawerBottom"></drawer-bottom>
+		<stand-bottom ref="standBottom"></stand-bottom>
+		<pop-bottom ref="popBottom"></pop-bottom>
 		<myp-toast ref="myp-toast"></myp-toast>
 		<myp-loading ref="myp-loading"></myp-loading>
 	</view>
@@ -21,7 +19,6 @@
 <script>
 	import popBottom from './components/popBottom.vue'
 	import standBottom from './components/standBottom.vue'
-	import drawerBottom from './components/drawerBottom.vue'
 	
 	import navHelper from '@/router/navHelper.js'
 	import toastMixin from '@/mypUI/myp-mixin/toastMixin.js'
@@ -30,27 +27,26 @@
 	export default {
 		components: {
 			popBottom,
-			standBottom,
-			drawerBottom
+			standBottom
 		},
 		mixins: [navHelper, toastMixin, loadingMixin],
 		data() {
 			return {
-				items: [{title: '抽屉', desc: '底部出现', type: 'drawerBottom'}, {title: '当作popup', desc: '底部出现', type: 'popBottom'}, {title: '支持standout', desc: '底部出现', type: 'standBottom'}],
-				popBottomVisible: false,
-				drawerBottomVisible: false,
-				standBottomVisible: false
+				items: [{title: '抽屉', desc: '底部出现', type: 'drawerBottom', page: 'drawer_bottom'}, 
+				{title: '抽屉', desc: '顶部出现', type: 'drawerTop', page: 'drawer_top'}, 
+				{title: '抽屉', desc: '左侧出现', type: 'drawerLeft', page: 'drawer_left'}, 
+				{title: '抽屉', desc: '右侧出现', type: 'drawerRight', page: 'drawer_right'}, 
+				{title: '当作popup', desc: '底部出现', type: 'popBottom'}, 
+				{title: '支持standout', desc: '底部出现', type: 'standBottom'}]
 			}
 		},
 		methods: {
 			toPop(val) {
-				this[val.type+'Visible'] = true
-			},
-			toHide() {
-				this.popBottomVisible = false
-				this.drawerBottomVisible = false
-				this.standBottomVisible = false
-				this.$refs['drawerBottom'].hide()
+				if (val.page) {
+					this.navigateTo(val.page)
+					return
+				}
+				this.$refs[val.type].show()
 			}
 		}
 	}

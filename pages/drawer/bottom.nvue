@@ -1,0 +1,35 @@
+<template>
+	<view>
+		<myp-navbar title="底部抽屉/支持拉出" :lefts="leftIcons" @leftAction="navLeftAction"></myp-navbar>
+		<myp-list-simple>
+			<myp-list-cell>
+				<blank-card desc="可以从底部弹出,也可以拉出" btn="直接弹出" @action="toShow"></blank-card>
+			</myp-list-cell>
+		</myp-list-simple>
+		<drawer-bottom ref="drawerBottom"></drawer-bottom>
+	</view>
+</template>
+
+<script>
+	import drawerBottom from './components/drawerBottom.vue'
+	import blankCard from '@/pages/components/blankCard.vue'
+	
+	import navHelper from '@/router/navHelper.js'
+	
+	export default {
+		components: {
+			drawerBottom,
+			blankCard
+		},
+		mixins: [navHelper],
+		methods: {
+			toShow() {
+				this.$refs['drawerBottom'].show()
+			}
+		}
+	}
+</script>
+
+<style>
+
+</style>

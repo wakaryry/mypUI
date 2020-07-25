@@ -1,8 +1,8 @@
 <template>
-	<myp-popup-always :show="show" pos="bottom" standout="60px" width="750rpx" height="x-1000rpx" @overlayClicked="toCancel">
+	<myp-drawer ref="stand" pos="bottom" standout="60px" width="750rpx" height="x-1000rpx" @overlayClicked="hide">
 		<bottom></bottom>
 		<myp-x-bar bgType="inverse" boxStyle="width:750rpx;"></myp-x-bar>
-	</myp-popup-always>
+	</myp-drawer>
 </template>
 
 <script>
@@ -12,15 +12,12 @@
 		components: {
 			bottom
 		},
-		props: {
-			show: {
-				type: Boolean,
-				default: false
-			}
-		},
 		methods: {
-			toCancel() {
-				this.$emit("cancel")
+			hide() {
+				this.$refs['stand'].hide()
+			},
+			show() {
+				this.$refs['stand'].show()
 			}
 		}
 	}

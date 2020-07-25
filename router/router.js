@@ -40,6 +40,10 @@ export default {
 	filter_all_up: '/pages/filter/all_up',
 	// drawer
 	drawer_index: '/pages/drawer/index',
+	drawer_top: '/pages/drawer/top',
+	drawer_left: '/pages/drawer/left',
+	drawer_right: '/pages/drawer/right',
+	drawer_bottom: '/pages/drawer/bottom',
 	// swiper
 	swiper_index: '/pages/swiper/index',
 	// scroll-test

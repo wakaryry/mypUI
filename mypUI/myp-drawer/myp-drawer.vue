@@ -28,6 +28,7 @@
 	// #endif
 	
 	import windowMixin from '../myp-mixin/windowMixin.js'
+	let iosHack = null
 	// TODO: add height animation: height-0->height
 	export default {
 		// #ifdef APP-NVUE
@@ -293,6 +294,7 @@
 				if (!this.startPoint) return;
 				const nowPoint = this.mypGetPoint(e)
 				const offsetY = nowPoint.y - this.startPoint.y
+				const offsetX = nowPoint.x - this.startPoint.x
 				if (!this.isShow) {
 					if (offsetY >= 0) {
 						
@@ -559,6 +561,35 @@
 			},
 			toPrevent(e) {
 				e.stopPropagation && e.stopPropagation()
+			}
+		},
+		created() {
+			// #ifdef APP-NVUE
+			if (this.mypGetPlatform() === 'ios') {
+				setTimeout(()=>{
+					iosHack = bindingX.bind({
+						eventType: 'pan',
+						anchor: this.$refs['myp-standout'].ref,
+						props: [
+							{
+								element: this.$refs['myp-popo'].ref,
+								property: 'transform.translateY',
+								expression: 'y+0'
+							}
+						]
+					})
+				}, 10)
+			}
+			// #endif
+		},
+		beforeDestroy() {
+			if (iosHack) {
+				// #ifdef APP-NVUE
+				bindingX.unbind({
+				    token: iosHack.token,
+				    eventType: 'pan'
+				})
+				// #endif
 			}
 		}
 	}

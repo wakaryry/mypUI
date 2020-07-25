@@ -1,30 +1,30 @@
 <template>
 	<view>
-		<myp-navbar title="底部抽屉/支持拉出" :lefts="leftIcons" @leftAction="navLeftAction"></myp-navbar>
+		<myp-navbar title="左侧抽屉/支持拉出" :lefts="leftIcons" @leftAction="navLeftAction"></myp-navbar>
 		<myp-list-simple>
 			<myp-list-cell>
 				<blank-card @action="toShow"></blank-card>
 			</myp-list-cell>
 		</myp-list-simple>
-		<drawer-bottom ref="drawerBottom"></drawer-bottom>
+		<drawer-left ref="drawerLeft"></drawer-left>
 	</view>
 </template>
 
 <script>
-	import drawerBottom from './components/drawerBottom.vue'
+	import drawerLeft from './components/drawerLeft.vue'
 	import blankCard from '@/pages/components/blankCard.vue'
 	
 	import navHelper from '@/router/navHelper.js'
 	
 	export default {
 		components: {
-			drawerBottom,
+			drawerLeft,
 			blankCard
 		},
 		mixins: [navHelper],
 		methods: {
 			toShow() {
-				this.$refs['drawerBottom'].show()
+				this.$refs['drawerLeft'].show()
 			}
 		}
 	}

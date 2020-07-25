@@ -13,6 +13,7 @@
 	//
 	// 一直存在，不通过v-if控制，直接控制是否在可见屏幕内
 	// 支持standout
+	// 只适配left/top/bottom/right的drawer特性
 	//
 	// #ifdef APP-NVUE
 	const animation = weex.requireModule('animation');
@@ -288,12 +289,12 @@
 			onTouchMove(e) {
 				if (!this.startPoint) return;
 				const nowPoint = this.mypGetPoint(e)
+				const maxSize = this.getTransformSize(this.pos, false)
 				const offsetY = nowPoint.y - this.startPoint.y
 				const offsetX = nowPoint.x - this.startPoint.x
 				if (!this.isShow) {
 					if (this.pos === 'top') {
-						if (offsetY >= 0) {
-							const maxSize = this.getTransformSize(this.pos, false)
+						if (offsetY > 0) {
 							const y = (offsetY >= maxSize) ? maxSize : offsetY
 							this.noWeexAni = `transition-property: transform; transform: translateY(${y}px);transition-duration: 0;`
 						} else {
@@ -302,9 +303,22 @@
 						if (offsetY >= 0) {
 							
 						} else {
-							const maxSize = this.getTransformSize(this.pos, false)
 							const y = (-offsetY >= maxSize) ? (-1*maxSize) : offsetY
 							this.noWeexAni = `transition-property: transform; transform: translateY(${y}px);transition-duration: 0;`
+						}
+					} else if (this.pos === 'left') {
+						if (offsetX > 0) {
+							const x = (offsetX >= maxSize) ? maxSize : offsetX
+							this.noWeexAni = `transition-property: transform; transform: translateX(${x}px);transition-duration: 0;`
+						} else {
+							
+						}
+					} else if (this.pos === 'right') {
+						if (offsetX < 0) {
+							const x = (-offsetX >= maxSize) ? (-1*maxSize) : offsetX
+							this.noWeexAni = `transition-property: transform; transform: translateX(${x}px);transition-duration: 0;`
+						} else {
+							
 						}
 					}
 				} else {
@@ -314,18 +328,32 @@
 			onTouchEnd(e) {
 				if (!this.startPoint) return;
 				const nowPoint = this.mypGetPoint(e)
+				const maxSize = this.getTransformSize(this.pos, false)
 				const offsetY = nowPoint.y - this.startPoint.y
 				const offsetYAbs = Math.abs(offsetY)
+				const offsetX = nowPoint.x - this.startPoint.x
+				const offsetXAbs = Math.abs(offsetX)
 				if (!this.isShow) {
+					this.noWeexAni = ""
 					if (this.pos === 'bottom' || this.pos === 'top') {
-						this.noWeexAni = ""
-						const maxSize = this.getTransformSize(this.pos, false)
 						if (offsetYAbs >= 0.5*maxSize) {
 							if (this.pos === 'top' && offsetY > 0) {
 								this.toHackShow(true)
 								return
 							}
 							if (this.pos === 'bottom' && offsetY < 0) {
+								this.toHackShow(true)
+								return
+							}
+						}
+						this.toHackShow(false)
+					} else if (this.pos === 'left' || this.pos === 'right') {
+						if (offsetXAbs >= 0.5*maxSize) {
+							if (this.pos === 'left' && offsetX > 0) {
+								this.toHackShow(true)
+								return
+							}
+							if (this.pos === 'right' && offsetX < 0) {
 								this.toHackShow(true)
 								return
 							}
@@ -350,20 +378,32 @@
 					exp = `(y >= 0) ? 0 : ((y > (-${maxSize})) ? (y+0) : (-${maxSize}))`
 				} else if (this.pos === 'top') {
 					exp = `(y > 0) ? ((y > ${maxSize}) ? ${maxSize} : (y+0)) : 0`
+				} else if (this.pos === 'left') {
+					exp = `(x > 0) ? ((x > ${maxSize}) ? ${maxSize} : (x+0)) : 0`
+				} else if (this.pos === 'right') {
+					exp = `(x >= 0) ? 0 : ((x > (-${maxSize})) ? (x+0) : (-${maxSize}))`
 				}
 				const result = bindingX.bind({
 					eventType: 'pan',
 					anchor: standEl,
 					props: [{
 						element: popoEl,
-						property: 'transform.translateY',
+						property: this.pos === 'top' || this.pos === 'bottom' ? 'transform.translateY' : 'transform.translateX',
 						expression: exp
 					}]
 				}, (res) => {
 					if (res.state === 'end' && !that.isShow) {
-					    let offset = res.deltaY;
-						let offsetAbs = Math.abs(res.deltaY)
 						if (this.pos === 'top' || this.pos === 'bottom') {
+							let offset = res.deltaY
+							let offsetAbs = Math.abs(res.deltaY)
+							if (offsetAbs < maxSize / 2) {
+							    this.toHackShow(false)
+							} else if (offsetAbs >= maxSize / 2) {
+							    this.toHackShow(true)
+							}
+						} else if (this.pos === 'left' || this.pos === 'right') {
+							let offset = res.deltaX
+							let offsetAbs = Math.abs(res.deltaX)
 							if (offsetAbs < maxSize / 2) {
 							    this.toHackShow(false)
 							} else if (offsetAbs >= maxSize / 2) {

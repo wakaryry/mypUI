@@ -96,11 +96,14 @@ export default {
 		heightPx() {
 			return this.mypToPx(this.height)
 		},
+		widthPx() {
+			return this.mypGetHeight(this.width)
+		},
 		mrScrollStyle() {
 			if (this.useFlex) {
-				return `width:${this.width};`+this.scrollStyle
+				return `width:${this.widthPx}px;`+this.scrollStyle
 			}
-			return `width:${this.width};height:${this.mypScrollHeight}px;`+this.scrollStyle
+			return `width:${this.widthPx}px;height:${this.mypScrollHeight}px;`+this.scrollStyle
 		},
 		extraPx() {
 			return this.mypToPx(this.extra)

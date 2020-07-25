@@ -29,7 +29,12 @@ $myp-border-color-light: #F7F5F5;
 $myp-border-color-dark: #EBEBEB;
 $myp-border-color-inverse: #FFFFFF;
 
+/* #ifdef APP-NVUE */
 $myp-border-width: 1px;
+/* #endif */
+/* #ifndef APP-NVUE */
+$myp-border-width: 1px;
+/* #endif */
 
 $myp-height-ss: 40rpx;
 $myp-height-s: 60rpx;

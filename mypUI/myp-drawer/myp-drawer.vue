@@ -3,12 +3,7 @@
 		<view ref="myp-popo-overlay" :class="['myp-popo-over', 'myp-bg-'+overlay.bgType]" @tap.stop="overlayClose" :style="mrOverlayStyle + overlayNoWeexAni">
 			<slot name="overlay"></slot>
 		</view>
-		<view ref="myp-popo" @tap.stop="toPrevent" :class="['myp-popo', 'myp-bg-'+bgType]" :style="boxStyle+mrPopStyle + noWeexAni">
-			<view ref="myp-standout" bubble="true" @touchstart="onTouchStart" @touchmove="onTouchMove" @touchcancel="onTouchCancel" @touchend="onTouchEnd">
-				<!-- 名为standout，但是不一定露出的全是standout，也不一定要求standout一定全部露出 -->
-				<!-- 露出多少实际还是受standout这个props控制 -->
-				<slot name="standout"></slot>
-			</view>
+		<view ref="myp-popo" bubble="true" @touchstart="onTouchStart" @touchmove="onTouchMove" @touchcancel="onTouchCancel" @touchend="onTouchEnd" @tap.stop="toPrevent" :class="['myp-popo', 'myp-bg-'+bgType]" :style="boxStyle+mrPopStyle + noWeexAni">
 			<slot></slot>
 		</view>
 	</view>
@@ -350,11 +345,13 @@
 			openWithDrag() {
 				const that = this
 				const maxSize = this.getTransformSize(this.pos, false)
-				const standEl = this.$refs['myp-standout'].ref
+				const standEl = this.$refs['myp-popo'].ref
 				const popoEl = this.$refs['myp-popo'].ref
 				let exp = ''
 				if (this.pos === 'bottom') {
 					exp = `(y >= 0) ? 0 : ((y > (-${maxSize})) ? (y+0) : (-${maxSize}))`
+				} else if (this.pos === 'top') {
+					exp = `(y > 0) ? ((y > ${maxSize}) ? ${maxSize} : (y+0)) : 0`
 				}
 				const result = bindingX.bind({
 					eventType: 'pan',
@@ -366,12 +363,15 @@
 					}]
 				}, (res) => {
 					if (res.state === 'end' && !that.isShow) {
-					    let offset = -1 * res.deltaY;
-					    if (offset < maxSize / 2 && offset > 0) {
-					        this.toHackShow(false)
-					    } else if (offset >= maxSize / 2) {
-					        this.toHackShow(true)
-					    }
+					    let offset = res.deltaY;
+						let offsetAbs = Math.abs(res.deltaY)
+						if (this.pos === 'top' || this.pos === 'bottom') {
+							if (offsetAbs < maxSize / 2) {
+							    this.toHackShow(false)
+							} else if (offsetAbs >= maxSize / 2) {
+							    this.toHackShow(true)
+							}
+						}
 					    if (result) {
 					        bindingX.unbind({
 					            token: result.token,
@@ -569,7 +569,7 @@
 				setTimeout(()=>{
 					iosHack = bindingX.bind({
 						eventType: 'pan',
-						anchor: this.$refs['myp-standout'].ref,
+						anchor: this.$refs['myp-popo'].ref,
 						props: [
 							{
 								element: this.$refs['myp-popo'].ref,

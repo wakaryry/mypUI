@@ -3,10 +3,10 @@
 		<myp-height height="status-nav"></myp-height>
 		<myp-list-simple>
 			<myp-list-cell>
-				<view style="height: 50px;"></view>
+				<view style="height: 50px; background-color: #FFFFFF;"></view>
 			</myp-list-cell>
 			<myp-list-cell>
-				<blank-card desc="语文考试打了100分,真是太高兴了" btn="寻找灵感" @action="toShow"></blank-card>
+				<blank-card desc="语文考试打了满分😄真是太高兴了" btn="寻找灵感" @action="toShow"></blank-card>
 			</myp-list-cell>
 		</myp-list-simple>
 		<drawer-top ref="drawerTop"></drawer-top>

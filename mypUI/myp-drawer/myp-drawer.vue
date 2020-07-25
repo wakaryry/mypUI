@@ -291,12 +291,21 @@
 				const offsetY = nowPoint.y - this.startPoint.y
 				const offsetX = nowPoint.x - this.startPoint.x
 				if (!this.isShow) {
-					if (offsetY >= 0) {
-						
-					} else {
-						const maxSize = this.getTransformSize(this.pos, false)
-						const y = (-offsetY >= maxSize) ? (-1*maxSize) : offsetY
-						this.noWeexAni = `transition-property: transform; transform: translateY(${y}px);transition-duration: 0;`
+					if (this.pos === 'top') {
+						if (offsetY >= 0) {
+							const maxSize = this.getTransformSize(this.pos, false)
+							const y = (offsetY >= maxSize) ? maxSize : offsetY
+							this.noWeexAni = `transition-property: transform; transform: translateY(${y}px);transition-duration: 0;`
+						} else {
+						}
+					} else if (this.pos === 'bottom') {
+						if (offsetY >= 0) {
+							
+						} else {
+							const maxSize = this.getTransformSize(this.pos, false)
+							const y = (-offsetY >= maxSize) ? (-1*maxSize) : offsetY
+							this.noWeexAni = `transition-property: transform; transform: translateY(${y}px);transition-duration: 0;`
+						}
 					}
 				} else {
 					
@@ -306,41 +315,30 @@
 				if (!this.startPoint) return;
 				const nowPoint = this.mypGetPoint(e)
 				const offsetY = nowPoint.y - this.startPoint.y
+				const offsetYAbs = Math.abs(offsetY)
 				if (!this.isShow) {
-					if (offsetY >= 0) {
-						this.noWeexAni = ""
-					} else {
+					if (this.pos === 'bottom' || this.pos === 'top') {
 						this.noWeexAni = ""
 						const maxSize = this.getTransformSize(this.pos, false)
-						if (offsetY > -0.5*maxSize) {
-							this.toHackShow(false)
-						} else {
-							this.toHackShow(true)
+						if (offsetYAbs >= 0.5*maxSize) {
+							if (this.pos === 'top' && offsetY > 0) {
+								this.toHackShow(true)
+								return
+							}
+							if (this.pos === 'bottom' && offsetY < 0) {
+								this.toHackShow(true)
+								return
+							}
 						}
+						this.toHackShow(false)
 					}
 				} else {
 					
 				}
 			},
 			onTouchCancel(e) {
-				if (!this.startPoint) return;
-				const nowPoint = this.mypGetPoint(e)
-				const offsetY = nowPoint.y - this.startPoint.y
-				if (!this.isShow) {
-					if (offsetY >= 0) {
-						this.noWeexAni = ""
-					} else {
-						this.noWeexAni = ""
-						const maxSize = this.getTransformSize(this.pos, false)
-						if (offsetY > -0.5*maxSize) {
-							this.toHackShow(false)
-						} else {
-							this.toHackShow(true)
-						}
-					}
-				} else {
-					
-				}
+				// 直接关闭
+				this.toHackShow(false)
 			},
 			openWithDrag() {
 				const that = this

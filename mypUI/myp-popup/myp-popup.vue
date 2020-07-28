@@ -50,6 +50,10 @@
 				type: [Number, String],
 				default: 0
 			},
+			extra: {
+				type: [Number, String],
+				default: 0
+			},
 			leftOffset: {
 				type: [Number, String],
 				default: -1
@@ -194,12 +198,15 @@
 			heightPx() {
 				const h = this.mypGetHeight(this.height)
 				if (h > 1) {
-					return h
+					return h - this.extraPx
 				}
 				if (h <= 0) {
-					return this.screenHeight - this.topPx - this.bottomPx - (this.topOffsetPx>=0?this.topOffsetPx:0) - (this.bottomOffsetPx>=0?this.bottomOffsetPx:0)
+					return this.screenHeight - this.topPx - this.bottomPx - (this.topOffsetPx>=0?this.topOffsetPx:0) - (this.bottomOffsetPx>=0?this.bottomOffsetPx:0) - this.extraPx
 				}
-				return this.screenHeight * h
+				return this.screenHeight * h - this.extraPx
+			},
+			extraPx() {
+				return this.mypGetHeight(this.extra)
 			},
 			widthPx() {
 				const w = this.mypToPx(this.width)

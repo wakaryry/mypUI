@@ -8,6 +8,7 @@
 				<myp-icon :name="icon" :type="mrIconType" :mode="iconMode" :size="iconSize" :boxStyle="iconBoxStyle" :iconStyle="mrIconStyle" @iconClicked="clickedButton"></myp-icon>
 			</view>
 			<text v-if="text&&text.length>0" :class="['myp-color-'+mrTextType, 'myp-size-'+textSize]" :style="mrTextStyle">{{text}}</text>
+			<myp-icon v-if="icon2 && icon2.length > 0" :name="icon2" :type="mrIcon2Type" :mode="icon2Mode" :size="icon2Size" :boxStyle="mrIcon2BoxStyle" :iconStyle="mrIcon2Style" @iconClicked="clickedButton"></myp-icon>
 		</slot>
 	</view>
 </template>
@@ -24,6 +25,10 @@
 				default: '确定'
 			},
 			icon: {
+				type: String,
+				default: ''
+			},
+			icon2: {
 				type: String,
 				default: ''
 			},
@@ -84,6 +89,18 @@
 				type: String,
 				default: 'l'
 			},
+			icon2Mode: {
+				type: String,
+				default: 'aspectFill'
+			},
+			icon2Type: {
+				type: String,
+				default: ''
+			},
+			icon2Size: {
+				type: String,
+				default: 'l'
+			},
 			boxStyle: {
 				type: String,
 				default: ''
@@ -116,6 +133,14 @@
 				type: String,
 				default: ''
 			},
+			icon2BoxStyle: {
+				type: String,
+				default: ''
+			},
+			icon2Style: {
+				type: String,
+				default: ''
+			},
 			disabledIconStyle: {
 				type: String,
 				default: ''
@@ -137,6 +162,12 @@
 			mrIconType() {
 				if (this.iconType&&this.iconType.length>0) {
 					return this.iconType
+				}
+				return this.bgType&&this.bgType.length>0 ? 'inverse' : ''
+			},
+			mrIcon2Type() {
+				if (this.icon2Type&&this.icon2Type.length>0) {
+					return this.icon2Type
 				}
 				return this.bgType&&this.bgType.length>0 ? 'inverse' : ''
 			},
@@ -182,6 +213,20 @@
 					_style += this.highlightIconStyle
 				}
 				return _style
+			},
+			mrIcon2Style() {
+				let _style = this.icon2Style
+				if (this.loading || this.disabled) {
+					_style += this.disabledIcon2Style
+				} else if (this.highlight) {
+					_style += this.highlightIcon2Style
+				}
+				return _style
+			},
+			mrIcon2BoxStyle() {
+				let _style = ''
+				_style += `margin-left: ${this.space};`
+				return _style + this.icon2BoxStyle
 			}
 		},
 		methods: {

@@ -166,6 +166,10 @@
 		
 		&-content {
 			position: fixed;
+			/* #ifndef APP-NVUE */
+			display: flex;
+			box-sizing: border-box;
+			/* #endif */
 			left: 375rpx;
 			flex-direction: column;
 			align-items: center;

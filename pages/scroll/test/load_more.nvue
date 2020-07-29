@@ -63,6 +63,7 @@
 				}, 300)
 			},
 			toLoad() {
+				console.log("ttttoLoad")
 				if (this.display === 'show') {
 					this.displayLoading = 'hide'
 					return

@@ -277,6 +277,10 @@
 			position: fixed;
 			
 			&-box {
+				/* #ifndef APP-NVUE */
+				display: flex;
+				box-sizing: border-box;
+				/* #endif */
 				flex-direction: column;
 				align-items: center;
 				justify-content: center;
@@ -307,6 +311,10 @@
 			position: fixed;
 			
 			&-box {
+				/* #ifndef APP-NVUE */
+				display: flex;
+				box-sizing: border-box;
+				/* #endif */
 				flex-direction: row;
 				align-items: center;
 				border-radius: 20rpx;

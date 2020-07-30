@@ -264,12 +264,20 @@
 		
 		&-container {
 			width: 750rpx;
+			/* #ifndef APP-NVUE */
+			display: flex;
+			box-sizing: border-box;
+			/* #endif */
 			flex-direction: row;
 		}
 	}
 
 	.myp-tabs {
 		width: 750rpx;
+		/* #ifndef APP-NVUE */
+		display: flex;
+		box-sizing: border-box;
+		/* #endif */
 		flex-direction: row;
 		background-color: #FFFFFF;
 		
@@ -280,6 +288,10 @@
 		}
 		
 		&-item {
+			/* #ifndef APP-NVUE */
+			display: flex;
+			box-sizing: border-box;
+			/* #endif */
 			flex-direction: column;
 			justify-content: space-between;
 			align-items: center;
@@ -291,12 +303,20 @@
 				left: 375rpx;
 				bottom: 0;
 				transform: translateX(-50%);
+				/* #ifndef APP-NVUE */
+				display: flex;
+				box-sizing: border-box;
+				/* #endif */
 				justify-content: center;
 				align-items: center;
 			}
 			
 			&-icon {
 				position: relative;
+				/* #ifndef APP-NVUE */
+				display: flex;
+				box-sizing: border-box;
+				/* #endif */
 				flex-direction: row;
 				justify-content: center;
 				align-items: center;

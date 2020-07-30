@@ -129,6 +129,11 @@ const Utils = {
 		}
 		return groups;
 	},
+	// 乱序array. 原地打乱。需要注意会覆盖传入的数组
+	derangeArray(arr=[]) {
+		for(var j, x, i = arr.length; i; j = parseInt(Math.random() * i), x = arr[--i], arr[i] = arr[j], arr[j] = x);
+		return arr
+	},
 	/*
 	 * 截断字符串
 	 * @param str 传入字符串

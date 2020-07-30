@@ -51,7 +51,6 @@ export default {
 			type: String,
 			default: 'page'
 		},
-		// foot会导致xBar区域不可点击
 		hasFoot: {
 			type: Boolean,
 			default: false

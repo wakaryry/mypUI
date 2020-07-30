@@ -91,6 +91,7 @@
 		position: relative;
 		/* #ifndef APP-NVUE */
 		display: flex;
+		box-sizing: border-box;
 		/* #endif */
 		flex-direction: column;
 		

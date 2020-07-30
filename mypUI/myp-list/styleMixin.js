@@ -106,7 +106,7 @@ export default {
 			return `width:${this.widthPx}px;height:${this.mypScrollHeight}px;`+this.scrollStyle
 		},
 		extraPx() {
-			return this.mypToPx(this.extra)
+			return this.mypGetHeight(this.extra)
 		},
 		mrFootStyle() {
 			let bt = this.mypToPx(this.footBottom)

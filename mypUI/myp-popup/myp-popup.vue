@@ -414,5 +414,10 @@
 	.myp-popup {
 		position: fixed;
 		width: 750rpx;
+		flex-direction: column;
+		/* #ifndef APP-NVUE */
+		display: flex;
+		box-sizing: border-box;
+		/* #endif */
 	}
 </style>

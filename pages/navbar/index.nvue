@@ -82,7 +82,7 @@
 		data() {
 			return {
 				lefts: [{icon: 'left'}],
-				rights: [{icon: 'plus'}, {icon: 'close'}],
+				rights: [{icon: 'plus', iconStyle: 'color:#FF6699;'}, {icon: 'close', iconStyle:'color:#F3F600'}],
 				lefts1: [{icon: 'left', text: '返回'}],
 				rights1: [{text: '发布', bgType: 'primary', textType: 'inverse', style: 'width:56px;height:24px;border-radius:20px;justify-content:center;'}],
 				lefts2: [{icon: 'left'}, {icon: 'home'}],

@@ -250,6 +250,12 @@
 				"disableScroll": true
 			}
 		},
+		{
+			"path": "pages/swiper/list",
+			"style": {
+				"disableScroll": true
+			}
+		},
 		// scroll
 		{
 			"path": "pages/scroll/index",

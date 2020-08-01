@@ -1,0 +1,47 @@
+<template>
+	<view class="sl-all">
+		<myp-height bgType="inverse" height="status-nav" boxStyle="width:750rpx;">
+			<!-- #ifdef MP -->
+			<myp-search boxStyle="margin-left:32rpx;width:518rpx;"></myp-search>
+			<!-- #endif -->
+			<!-- #ifndef MP -->
+			<myp-search boxStyle="margin-left:32rpx;width:686rpx"></myp-search>
+			<!-- #endif -->
+		</myp-height>
+		<myp-tabs-h :items="tabs"></myp-tabs-h>
+		<swiper class="sl-swiper">
+			<swiper-item>
+				
+			</swiper-item>
+			<swiper-item>
+				
+			</swiper-item>
+			<swiper-item>
+				
+			</swiper-item>
+		</swiper>
+	</view>
+</template>
+
+<script>
+	export default {
+		data() {
+			return {
+				tabs: ['精选', '分类', '排行']
+			}
+		}
+	}
+</script>
+
+<style lang="scss" scoped>
+	.sl {
+		&-all {
+			flex: 1;
+			flex-direction: column;
+		}
+		&-swiper {
+			width: 750rpx;
+			flex: 1;
+		}
+	}
+</style>

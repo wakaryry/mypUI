@@ -1,5 +1,7 @@
 <template>
-	<view :class="['myp-bg-'+bgType]" :style="mrBoxStyle"></view>
+	<view :class="['myp-bg-'+bgType]" :style="mrBoxStyle">
+		<slot></slot>
+	</view>
 </template>
 
 <script>

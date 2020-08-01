@@ -1,6 +1,7 @@
 <template>
 	<view class="sl-all">
-		<myp-height bgType="inverse" height="status-nav" boxStyle="width:750rpx;">
+		<myp-x-status bgType="inverse" boxStyle="width:750rpx;"></myp-x-status>
+		<myp-height bgType="inverse" height="nav" boxStyle="width:750rpx;flex-direction:column;justify-content:center;">
 			<!-- #ifdef MP -->
 			<myp-search boxStyle="margin-left:32rpx;width:518rpx;"></myp-search>
 			<!-- #endif -->
@@ -8,7 +9,7 @@
 			<myp-search boxStyle="margin-left:32rpx;width:686rpx"></myp-search>
 			<!-- #endif -->
 		</myp-height>
-		<myp-tabs-h :items="tabs"></myp-tabs-h>
+		<myp-tabs-h :items="tabs" indicatorType="primary" width="160rpx" justify="center"></myp-tabs-h>
 		<swiper class="sl-swiper">
 			<swiper-item>
 				
@@ -27,7 +28,8 @@
 	export default {
 		data() {
 			return {
-				tabs: ['精选', '分类', '排行']
+				tabs: ['精选', '分类', '排行'],
+				current: 0
 			}
 		}
 	}

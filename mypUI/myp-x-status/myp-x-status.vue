@@ -1,5 +1,5 @@
 <template>
-	<view :class="['myp-bg-'+bgType]" :style="xBarStyle">
+	<view :class="['myp-bg-'+bgType]" :style="xStatusStyle">
 		<slot></slot>
 	</view>
 </template>
@@ -20,7 +20,7 @@
 			}
 		},
 		computed: {
-			xBarStyle() {
+			xStatusStyle() {
 				const h = this.mypGetStatusBarHeight()
 				return `height: ${h}px;` + this.boxStyle
 			}

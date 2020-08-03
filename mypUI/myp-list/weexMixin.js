@@ -50,6 +50,9 @@ export default {
 		}
 	},
 	methods: {
+		mypResetLoadMore() {
+			this.$refs['myp-scroller'].resetLoadmore()
+		},
 		mypScroll(e) {
 			this.$emit("scroll", e)
 		},
@@ -112,6 +115,8 @@ export default {
 			if (this.mypIsDownLoading) {
 				this.$refs['myp-refresher'] && this.$refs['myp-refresher'].cancel()
 				this.mypIsDownLoading = false
+				// 重置 loadMore 
+				this.mypResetLoadMore()
 			}
 			if (this.mypIsUpLoading) {
 				this.$refs['myp-loader'] && this.$refs['myp-loader'].cancel()

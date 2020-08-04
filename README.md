@@ -132,9 +132,9 @@ UI内部使用了 `easycom` 的组件自动引入，所以您必须在项目中�
 
 - [mypUI-uniapp插件市场](https://ext.dcloud.net.cn/plugin?id=2190) 需要您的好评
 
-- [mypUI-文档开源](https://github.com/wakaryry/mypui-doc)
+- [mypUI-文档开源地址](https://github.com/wakaryry/mypui-doc)
 
-- [mypUI-文档地址](https://www.mypui.cn)
+- [mypUI-文档线上地址](https://mypui.asnowsoft.cn)
 
 - 作者wx：`pptpdf`
 

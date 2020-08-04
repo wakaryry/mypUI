@@ -1,6 +1,6 @@
 <template>
 	<refresh class="myp-refresher" @refresh="onRefresh" @pullingdown="onPullingDown" :display="refreshing ? 'show' : 'hide'">
-		<view v-if="!usingDefault" class="myp-cycle-container" ref="cycle">
+		<view class="myp-cycle-container" ref="cycle">
 			<view class="myp-u-cover myp-u-c1" ref="cover1">
 				<view class="myp-u-cover-cycle myp-u-cover1"></view>
 			</view>
@@ -8,8 +8,7 @@
 				<view class="myp-u-cover-cycle" ref="cover-cycle"></view>
 			</view>
 		</view>
-		<image v-if="!usingDefault" class="myp-arrow-down" ref="arrow" :src="downIcon" mode="aspectFill"></image>
-		<loading-indicator v-if="usingDefault&&refreshing" class="myp-indicator" :animating="refreshing"></loading-indicator>
+		<image class="myp-arrow-down" ref="arrow" :src="downIcon" mode="aspectFill"></image>
 		<text class="myp-u-txt">{{ refresherText }}</text>
 	</refresh>
 </template>
@@ -52,11 +51,6 @@
 			downIcon: {
 				type: String,
 				default: '/static/ui/down.png'
-			},
-			// 非default样式需要支持bindingX
-			usingDefault: {
-				type: Boolean,
-				default: false
 			}
 		},
 		data() {
@@ -77,7 +71,7 @@
 		created() {
 			const system = this.mypGetPlatform()
 			this.isAndroid = system === 'android';
-			!this.usingDefault && this.animationBinding();
+			this.animationBinding();
 		},
 		beforeDestroy() {
 			this.bindingsDestroy();
@@ -89,7 +83,7 @@
 				// 在onRefresh阶段，再次下拉不会二次触发onRefresh，不需要做保护
 				this.$emit('refresh', event);
 				this.refreshing = true;
-				!this.usingDefault && this.cycleGoRound();
+				this.cycleGoRound();
 				if (this.maxTime <= 0) return;
 				this.timeoutSto && clearTimeout(this.timeoutSto);
 				const that = this

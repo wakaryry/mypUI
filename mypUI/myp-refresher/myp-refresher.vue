@@ -5,19 +5,15 @@
 				<view class="myp-u-cover-cycle" :style="coverCycleStyle"></view>
 			</view>
 		</view>
-		<image v-if="!refreshing" class="myp-arrow-down" ref="arrow" :src="ICON_ARROW_DOWN" mode="aspectFill"></image>
 		<text class="myp-u-txt">{{ refresherText }}</text>
 	</view>
 </template>
 
 <script>
-	// it could only be used in mp/h5, please use refresh.vue in app
-	const ICON_ARROW_DOWN = 'https://img.alicdn.com/tfs/TB1A8faeTtYBeNjy1XdXXXXyVXa-48-48.png';
 	const HEIGHT = uni.upx2px(140)
 	
 	export default {
 		props: {
-			scrollerRef: String,
 			maxTime: {
 				type: Number,
 				default: 0
@@ -49,8 +45,7 @@
 		},
 		data() {
 			return {
-				ICON_ARROW_DOWN
-			};
+			}
 		},
 		computed: {
 			refresherText() {

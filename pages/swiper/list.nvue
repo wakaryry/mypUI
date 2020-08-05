@@ -40,10 +40,24 @@
 		&-all {
 			flex: 1;
 			flex-direction: column;
+			background-color: #027AFF;
+			/* #ifndef APP-NVUE */
+			height: 100%;
+			/* #endif */
 		}
 		&-swiper {
 			width: 750rpx;
 			flex: 1;
 		}
 	}
+	/* #ifndef APP-NVUE */
+	page {
+		height: 100%;
+		height: 1000rpx;
+		flex: 1;
+		display: flex;
+		flex-direction: column;
+		background-color: #027AFF;
+	}
+	/* #endif */
 </style>

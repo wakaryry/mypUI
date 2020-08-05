@@ -21,8 +21,10 @@
 	const dom = weex.requireModule('dom');
 	const animation = weex.requireModule('animation')
 	// #endif
+	import windowMixin from '../myp-mixin/windowMixin.js'
 	
 	export default {
+		mixins: [windowMixin],
 		props: {
 			items: {
 				type: Array,
@@ -62,7 +64,7 @@
 				type: String,
 				default: 'flex-start'
 			},
-			// width or height of the scroll-view
+			// width of the scroll-view
 			scrollSize: {
 				type: String,
 				default: '750rpx'
@@ -123,6 +125,14 @@
 				default: '4rpx'
 			},
 			indicatorRadius: {
+				type: String,
+				default: '4rpx'
+			},
+			indicatorPos: {
+				type: String,
+				default: 'bottom'
+			},
+			indicatorOffset: {
 				type: String,
 				default: '4rpx'
 			},
@@ -447,7 +457,7 @@
 
 <style lang="scss" scoped>
 	
-	/* #ifndef APP-NVUE */
+	/* #ifdef H5 */
 	.myp-tabs-scroll ::-webkit-scrollbar {
 	    display: none;
 	    width: 0 !important;

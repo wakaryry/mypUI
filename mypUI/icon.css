@@ -11,7 +11,7 @@
 /* #endif */
 
 .myp-iconfont {
-	font-family: "mypiconfont" !important;
+	font-family: mypiconfont;
 	text-decoration: none;
 	text-align: center;
 }

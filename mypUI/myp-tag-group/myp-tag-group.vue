@@ -20,7 +20,7 @@
 	// 和checks是一样的，只不过换了一个组件而已
 	// 只是示范，自己可以定制更加灵活的样式
 	
-	import {Utils} from '../utils/utils.js'
+	import {arrayChunk} from '../utils/utils.js'
 	export default {
 		props: {
 			items: {
@@ -169,7 +169,7 @@
 					return this.updatedItems
 				}
 				const _length = this.updatedItems.length
-				const _array = Utils.arrayChunk(this.updatedItems, this.column)
+				const _array = arrayChunk(this.updatedItems, this.column)
 				const mod = _length % this.column
 				if (mod !== 0) {
 					const _size = Math.ceil(_length / this.column)

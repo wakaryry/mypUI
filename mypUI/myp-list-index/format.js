@@ -1,6 +1,4 @@
-import {
-	Utils
-} from '../utils/utils.js';
+import {arrayChunk} from '../utils/utils.js';
 
 /**
  * 根据26个字母取每一项首字母对数据进行排序,处理数据变换
@@ -54,7 +52,7 @@ export function getSpecialData(data) {
 			title,
 			id: data.id ? data.id : null,
 			type,
-			data: type === 'group' ? Utils.arrayChunk(list) : list
+			data: type === 'group' ? arrayChunk(list) : list
 		};
 	} else {
 		return null;

@@ -9,7 +9,7 @@
 					<text :class="['myp-search-place-text', 'myp-color-'+placeType, 'myp-size-'+placeSize]" :style="placeStyle">{{showPlaceholder?placeholder:''}}</text>
 				</view>
 				<view :class="['myp-search-input', 'myp-height-'+height]" :style="inputBoxStyle">
-					<input :value="inputValue" :class="['myp-search-input-input', 'myp-color-'+valueType, 'myp-size-'+valueSize]" :style="inputStyle" @input="toInput" @confirm="toConfirm" />
+					<input :value="inputValue" confirm-type="search" :class="['myp-search-input-input', 'myp-color-'+valueType, 'myp-size-'+valueSize]" :style="inputStyle" @input="toInput" @confirm="toConfirm" />
 				</view>
 			</view>
 			<slot name="extra"></slot>
@@ -22,7 +22,7 @@
 				<text :class="['myp-color-'+placeType, 'myp-size-'+placeSize]" :style="placeStyle">{{showPlaceholder?placeholder:''}}</text>
 			</view>
 			<view :class="['myp-search-input', 'myp-height-'+height]" :style="mrInputBoxStyle">
-				<input :value="inputValue" :class="['myp-search-input-input', 'myp-search-input-'+position, 'myp-color-'+valueType, 'myp-size-'+valueSize]" :style="inputStyle" @input="toInput" @confirm="toConfirm" />
+				<input :value="inputValue" confirm-type="search" :class="['myp-search-input-input', 'myp-search-input-'+position, 'myp-color-'+valueType, 'myp-size-'+valueSize]" :style="inputStyle" @input="toInput" @confirm="toConfirm" />
 			</view>
 			<slot name="extra"></slot>
 		</view>

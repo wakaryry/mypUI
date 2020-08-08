@@ -8,13 +8,21 @@
 		mixins: [systemMixin],
 		onLaunch: function() {
 			console.log('App Launch')
-			// #ifdef APP-NVUE || H5
+			// #ifdef APP-PLUS || H5
 			this.mypInitSystemInfo()
 			// #endif
-			// #ifndef APP-NVUE || H5
+			// #ifndef APP-PLUS || H5
 			setTimeout(()=>{
 				this.mypInitSystemInfo()
 			}, 0)
+			// #endif
+			// #ifdef APP-PLUS
+			plus.screen.lockOrientation('portrait-primary'); //锁定屏幕
+			const dom = weex.requireModule('dom');
+			dom.addRule('fontFace', {
+				'fontFamily': "mypiconfont",
+				'src': "url('https://at.alicdn.com/t/font_1994281_a83sr011dzg.ttf')"
+			})
 			// #endif
 		},
 		onShow: function() {
@@ -27,6 +35,6 @@
 </script>
 
 <style lang="scss">
+	@import '@/mypUI/icon.css';
 	@import '@/mypUI/base.scss';
-	
 </style>

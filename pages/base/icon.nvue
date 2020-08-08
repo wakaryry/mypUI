@@ -36,7 +36,7 @@ import contentBoxMixin from '@/mypUI/myp-mixin/contentBoxMixin.js'
 import toastMixin from '@/mypUI/myp-mixin/toastMixin.js'
 import navHelper from '@/router/navHelper.js'
 
-import icons from '@/mypUI/myp-icon/type.js'
+import icons from '@/mypUI/icons.js'
 
 export default {
 	mixins: [contentBoxMixin, toastMixin, navHelper],

@@ -1,0 +1,17 @@
+/* #ifndef APP-PLUS */
+@font-face {
+  font-family: 'mypiconfont';  /* project id 1994281 */
+  src: url('https://at.alicdn.com/t/font_1994281_a83sr011dzg.eot');
+  src: url('https://at.alicdn.com/t/font_1994281_a83sr011dzg.eot?#iefix') format('embedded-opentype'),
+  url('https://at.alicdn.com/t/font_1994281_a83sr011dzg.woff2') format('woff2'),
+  url('https://at.alicdn.com/t/font_1994281_a83sr011dzg.woff') format('woff'),
+  url('https://at.alicdn.com/t/font_1994281_a83sr011dzg.ttf') format('truetype'),
+  url('https://at.alicdn.com/t/font_1994281_a83sr011dzg.svg#mypiconfont') format('svg');
+}
+/* #endif */
+
+.myp-iconfont {
+	font-family: "mypiconfont" !important;
+	text-decoration: none;
+	text-align: center;
+}

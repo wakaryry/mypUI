@@ -1,19 +1,13 @@
 <template>
 	<view bubble="true" class="myp-icon-box" :style="boxStyle" :hover-class="'myp-hover-'+hover" @tap.stop="toClickIcon">
 		<image v-if="isImageSrc" class="myp-image" :src="name" :mode="mode" :style="iconStyle"></image>
-		<text v-else :class="['myp-icon-font', 'myp-color-'+type, 'myp-size-'+size]" :style="iconStyle">{{icons[name]}}</text>
+		<text v-else :class="['myp-iconfont', 'myp-color-'+type, 'myp-size-'+size]" :style="iconStyle">{{icons[name]}}</text>
 	</view>
 </template>
 
 <script>
-	import icons from './type.js'
-	// #ifdef APP-NVUE
-	const dom = weex.requireModule('dom');
-	dom.addRule('fontFace', {
-		'fontFamily': "mypiconfont",
-		'src': "url('https://at.alicdn.com/t/font_1617480_yqw892z522l.ttf')"
-	})
-	// #endif
+	import icons from '../icons.js'
+	
 	import {isSrc} from '../utils/utils.js'
 	export default {
 		props: {

@@ -2,7 +2,7 @@
 	<view>
 		<myp-navbar :lefts="leftIcons" @leftAction="navLeftAction">
 			<view slot="title" class="tabs-nav">
-				<myp-tabs-h :value="current2" :isTap="true" :items="tabs2" width="86rpx" titleLabel="title" titleType="second" activeType="text" textStyle="font-size:14px;" activeTextStyle="font-size:16px;" indicatorWidth="42rpx" indicatorType="primary" indicatorBottom="6px" scrollSize="350rpx" justify="center" height="44px" @change="toChangeNavTabs"></myp-tabs-h>
+				<myp-tabs-h :value="current2" :isTap="true" :items="tabs2" width="86rpx" textLabel="title" textType="second" activeTextType="text" textStyle="font-size:14px;" activeTextStyle="font-size:16px;" indicatorWidth="42rpx" indicatorType="primary" scrollSize="350rpx" justify="center" height="44px" @change="toChangeNavTabs"></myp-tabs-h>
 			</view>
 		</myp-navbar>
 		<myp-list-simple bgType="page">
@@ -10,31 +10,31 @@
 				<view style="height: 24rpx;"></view>
 			</myp-list-cell>
 			<myp-list-cell>
-				<myp-tabs-h :value="current" :isTap="true" :items="tabs1" activeType="warning" indicatorType="warning" @change="toChange1"></myp-tabs-h>
+				<myp-tabs-h :value="current" :isTap="true" :items="tabs1" activeTextType="warning" indicatorType="warning" @change="toChange1"></myp-tabs-h>
 			</myp-list-cell>
 			<myp-list-cell>
 				<view style="height: 24rpx;"></view>
 			</myp-list-cell>
 			<myp-list-cell>
-				<myp-tabs-h :value="current" :isTap="true" :items="tabs1" justify="center" activeType="error" indicatorType="error" @change="toChange1"></myp-tabs-h>
+				<myp-tabs-h :value="current" :isTap="true" :items="tabs1" justify="center" activeTextType="error" indicatorType="error" @change="toChange1"></myp-tabs-h>
 			</myp-list-cell>
 			<myp-list-cell>
 				<view style="height: 24rpx;"></view>
 			</myp-list-cell>
 			<myp-list-cell>
-				<myp-tabs-h :value="current" :isTap="true" :items="tabs1" justify="space-between" activeType="warning" indicatorType="warning" @change="toChange1"></myp-tabs-h>
+				<myp-tabs-h :value="current" :isTap="true" :items="tabs1" justify="space-between" activeTextType="warning" indicatorType="warning" @change="toChange1"></myp-tabs-h>
 			</myp-list-cell>
 			<myp-list-cell>
 				<view style="height: 24rpx;"></view>
 			</myp-list-cell>
 			<myp-list-cell>
-				<myp-tabs-h :value="current3" :isTap="true" :items="tabs3" activeType="error" indicatorType="error" @change="toChange3"></myp-tabs-h>
+				<myp-tabs-h :value="current3" :isTap="true" :items="tabs3" activeTextType="error" indicatorType="error" @change="toChange3"></myp-tabs-h>
 			</myp-list-cell>
 			<myp-list-cell>
 				<view style="height: 24rpx;"></view>
 			</myp-list-cell>
 			<myp-list-cell>
-				<myp-tabs-h :value="current4" :isTap="true" :items="tabs4" activeType="warning" width="0" indicatorWidth="0" indicatorType="warning" @change="toChange4"></myp-tabs-h>
+				<myp-tabs-h :value="current4" :isTap="true" :items="tabs4" space="24rpx" activeTextType="warning" width="0" indicatorWidth="0" indicatorType="warning" @change="toChange4"></myp-tabs-h>
 			</myp-list-cell>
 			<myp-list-cell>
 				<view style="height: 24rpx;"></view>
@@ -54,10 +54,6 @@
 </template>
 
 <script>
-//
-// tabs 不再绑定v-model
-//
-
 import toastMixin from '@/mypUI/myp-mixin/toastMixin.js'
 import navHelper from '@/router/navHelper.js'
 

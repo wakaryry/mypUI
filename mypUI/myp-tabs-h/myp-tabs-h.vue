@@ -3,11 +3,11 @@
 		<view style="flex-direction: column;">
 			<view :style="mrTabsStyle">
 				<view v-for="(item, index) in items" :key="index" :ref="'item'+index" :id="'item'+index" class="myp-tab-item" :style="mrItemStyle + (index===value ? activeItemStyle:'')" @click="changeTab(index)">
-					<text :class="['myp-color-'+(index===value?activeType:titleType), 'myp-size-'+(index===value?activeSize:titleSize)]" :style="textStyle + (index===value ? activeTextStyle : '')">{{ titleLabel ? item[titleLabel] : item }}</text>
+					<text :class="['myp-color-'+(index===value?activeTextType:textType), 'myp-size-'+(index===value?activeTextSize:textSize)]" :style="textStyle + (index===value ? activeTextStyle : '')">{{ textLabel ? item[textLabel] : item }}</text>
 				</view>
 			</view>
 			<view v-if="hasIndicator" :class="['myp-tab-item-indicator']" :style="{height: indicatorHeight}">
-				<view ref="myp-underline" :class="['myp-tab-item-underline', 'myp-bg-'+(indicatorType&&indicatorType.length>0?indicatorType:'text'), isTap?'myp-tab-item-animation':'']" :style="mrIndStyle"></view>
+				<view ref="myp-underline" :class="['myp-tab-item-underline', 'myp-bg-'+indicatorType, isTap?'myp-tab-item-animation':'']" :style="mrIndStyle"></view>
 			</view>
 		</view>
 	</scroll-view>
@@ -42,7 +42,7 @@
 				type: Number,
 				default: 0
 			},
-			titleLabel: {
+			textLabel: {
 				type: String,
 				default: null
 			},
@@ -69,11 +69,11 @@
 				type: String,
 				default: '750rpx'
 			},
-			titleSize: {
+			textSize: {
 				type: String,
 				default: ''
 			},
-			activeSize: {
+			activeTextSize: {
 				type: String,
 				default: ''
 			},
@@ -81,11 +81,11 @@
 				type: String,
 				default: ''
 			},
-			titleType: {
+			textType: {
 				type: String,
 				default: ''
 			},
-			activeType: {
+			activeTextType: {
 				type: String,
 				default: ''
 			},
@@ -101,7 +101,7 @@
 			},
 			space: {
 				type: String,
-				default: '16rpx'
+				default: '0px'
 			},
 			border: {
 				type: String,
@@ -129,6 +129,10 @@
 				default: '4rpx'
 			},
 			boxStyle: {
+				type: String,
+				default: ''
+			},
+			tabsStyle: {
 				type: String,
 				default: ''
 			},
@@ -171,19 +175,16 @@
 				return _style + this.indicatorStyle
 			},
 			spacePx() {
-				return uni.upx2px(parseInt(this.space||0))
+				return this.mypToPx(this.space)
 			},
 			scrollSizePx() {
-				if (this.scrollSize.indexOf('rpx') > 0) {
-					return uni.upx2px(parseInt(this.scrollSize||0))
-				}
-				return parseInt(this.scrollSize||0)
+				return this.mypToPx(this.scrollSize)
+			},
+			widthPx() {
+				return this.mypToPx(this.width)
 			},
 			heightPx() {
-				if (this.height.indexOf('rpx') > 0) {
-					return uni.upx2px(parseInt(this.height||0))
-				}
-				return parseInt(this.height||0)
+				return this.mypToPx(this.height)
 			},
 			fixedInd() {
 				const indW = parseInt(this.indicatorWidth)
@@ -208,12 +209,11 @@
 				return '0'
 			},
 			fixedIndWidthPx() {
-				const indW = parseInt(this.fixedIndWidth)
-				return uni.upx2px(indW)
+				return this.mypToPx(this.fixedIndWidth)
 			},
 			mrScrollStyle() {
 				let _style = "flex-direction:row;"
-				_style += "width:" + this.scrollSize + ';'
+				_style += "width:" + this.scrollSizePx + 'px;'
 				return _style + this.boxStyle
 			},
 			mrTabsStyle() {
@@ -221,24 +221,21 @@
 				if (this.justify != 'flex-start') {
 					_style += "width:" + this.scrollSizePx + 'px;'
 				}
-				return _style
+				return _style + this.tabsStyle
 			},
 			mrItemStyle() {
-				let _style = `height:${this.height};`
+				let _style = `height:${this.heightPx}px;`
 				const w = parseInt(this.width)
 				if (w > 0) {
-					_style += `width:${this.width};margin-right:${this.space};margin-left:${this.space};`
+					_style += `width:${this.widthPx}px;margin-right:${this.spacePx}px;margin-left:${this.spacePx}px;`
 				} else {
-					_style += `margin-right:${this.space};margin-left:${this.space};`
+					_style += `margin-right:${this.spacePx}px;margin-left:${this.spacePx}px;`
 				}
 				_style += "justify-content:center;align-items:center;"
 				return _style + this.itemStyle
 			},
 			swiperWidthPx() {
-				if (this.swiperWidth.indexOf('rpx') > 0) {
-					return uni.upx2px(parseInt(this.swiperWidth||0))
-				}
-				return parseInt(this.swiperWidth||0)
+				return this.mypToPx(this.swiperWidth)
 			}
 		},
 		mounted() {
@@ -270,8 +267,6 @@
 		},
 		methods: {
 			changeTab(index) {
-				// 不再支持v-model，因为我们需要在点击之后做额外的处理
-				// this.$emit("input", index)
 				this.$emit('change', index)
 			},
 			async toCurrentIndex(index) {

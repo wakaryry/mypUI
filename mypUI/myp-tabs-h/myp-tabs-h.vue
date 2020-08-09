@@ -3,7 +3,7 @@
 		<view style="flex-direction: column;">
 			<view :style="mrTabsStyle">
 				<view v-for="(item, index) in items" :key="index" :ref="'item'+index" :id="'item'+index" class="myp-tab-item" :style="mrItemStyle + (index===value ? activeItemStyle:'')" @click="changeTab(index)">
-					<text :class="['myp-color-'+(index===value?activeType:mrTitleType), 'myp-size-'+(index===value?activeSize:titleSize)]" :style="textStyle + (index===value ? activeTextStyle : '')">{{ titleLabel ? item[titleLabel] : item }}</text>
+					<text :class="['myp-color-'+(index===value?activeType:titleType), 'myp-size-'+(index===value?activeSize:titleSize)]" :style="textStyle + (index===value ? activeTextStyle : '')">{{ titleLabel ? item[titleLabel] : item }}</text>
 				</view>
 			</view>
 			<view v-if="hasIndicator" :class="['myp-tab-item-indicator']" :style="{height: indicatorHeight}">
@@ -128,18 +128,6 @@
 				type: String,
 				default: '4rpx'
 			},
-			indicatorPos: {
-				type: String,
-				default: 'bottom'
-			},
-			indicatorOffset: {
-				type: String,
-				default: '4rpx'
-			},
-			indicatorBottom: {
-				type: String,
-				default: '4rpx'
-			},
 			boxStyle: {
 				type: String,
 				default: ''
@@ -176,12 +164,6 @@
 			}
 		},
 		computed: {
-			mrTitleType() {
-				if (this.titleType && this.titleType.length > 0) {
-					return this.titleType
-				}
-				return this.bgType && this.bgType.length > 0 ? 'inverse' : ''
-			},
 			mrIndStyle() {
 				let _style = `border-radius:${this.indicatorRadius};`
 				_style += `width:${this.dyIndicatorWidth}px;`

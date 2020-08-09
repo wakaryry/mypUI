@@ -6,7 +6,7 @@
 				<swiper-head></swiper-head>
 			</cell>
 			<cell>
-				<myp-tabs-h :value="currentTab" :items="tabs" :isTap="true" titleLabel="name" activeType="primary" width="128rpx" indicatorType="primary" indicatorWidth="64rpx" scrollSize="750rpx" justify="center" @change="toChangeTab"></myp-tabs-h>
+				<myp-tabs-h :value="currentTab" :items="tabs" :isTap="true" textLabel="name" activeTextType="primary" width="128rpx" indicatorType="primary" indicatorWidth="64rpx" scrollSize="750rpx" justify="center" @change="toChangeTab"></myp-tabs-h>
 			</cell>
 			<cell>
 				<myp-content-box :includeStatus="false" :includeNav="false" :includeXBar="false" extra="180rpx">
@@ -28,7 +28,7 @@
 		<!-- #ifndef APP-NVUE -->
 		<scroll-view :scroll-y="mypParentScrollable" :scroll-top="mypParentScrollTop" :scroll-with-animation="true" :style="'width:750rpx;'+mypContentHeightStyle" @scroll="handleParentScroll">
 			<swiper-head></swiper-head>
-			<myp-tabs-h :value="currentTab" :items="tabs" :isTap="true" titleLabel="name" activeType="primary" width="128rpx" indicatorType="primary" indicatorWidth="64rpx" scrollSize="750rpx" justify="center" @change="toChangeTab"></myp-tabs-h>
+			<myp-tabs-h :value="currentTab" :items="tabs" :isTap="true" textLabel="name" activeTextType="primary" width="128rpx" indicatorType="primary" indicatorWidth="64rpx" scrollSize="750rpx" justify="center" @change="toChangeTab"></myp-tabs-h>
 			<myp-content-box :includeStatus="false" :includeNav="false" :includeXBar="false" extra="180rpx">
 				<swiper :current="currentTab" style="width:750rpx;flex:1;" @change="onSwiperChange">
 					<swiper-item>

@@ -7,7 +7,7 @@
 				<swiper-head></swiper-head>
 			</cell>
 			<cell>
-				<myp-tabs-h :value="currentTab" :items="tabs" :isTap="true" titleLabel="name" activeType="primary" indicatorType="primary" indicatorWidth="64rpx" scrollSize="750rpx" justify="center" @change="toChangeTab"></myp-tabs-h>
+				<myp-tabs-h :value="currentTab" :items="tabs" :isTap="true" textLabel="name" activeTextType="primary" indicatorType="primary" indicatorWidth="64rpx" scrollSize="750rpx" justify="center" @change="toChangeTab"></myp-tabs-h>
 			</cell>
 			<cell>
 				<myp-content-box :includeStatus="false" :includeNav="false" :includeXBar="false" extra="180rpx">
@@ -30,7 +30,7 @@
 					<myp-refresher :refreshing="mypIsDownLoading" :couldUnLash="mypCouldUnLash" :rate="mypDownRate"></myp-refresher>
 				</view>
 				<swiper-head></swiper-head>
-				<myp-tabs-h :value="currentTab" :items="tabs" :isTap="true" titleLabel="name" activeType="primary" indicatorType="primary" indicatorWidth="64rpx" scrollSize="750rpx" justify="center" @change="toChangeTab"></myp-tabs-h>
+				<myp-tabs-h :value="currentTab" :items="tabs" :isTap="true" textLabel="name" activeTextType="primary" indicatorType="primary" indicatorWidth="64rpx" scrollSize="750rpx" justify="center" @change="toChangeTab"></myp-tabs-h>
 				<myp-content-box :includeStatus="false" :includeNav="false" :includeXBar="false" extra="180rpx">
 					<swiper :current="currentTab" style="width:750rpx;flex:1;" @change="onSwiperChange">
 						<swiper-item>

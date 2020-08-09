@@ -20,7 +20,8 @@
 		data() {
 			return {
 				items: [
-					{title: 'swiper-list', desc: 'swiper列表', page: 'swiper_list'},
+					{title: 'swiper-list', desc: 'swiper-tabs', page: 'swiper_list'},
+					{title: 'swiper-inter-list', desc: 'swiper与tabs联动', page: 'swiper_inter_list'},
 					{title: 'swiper-header-list', desc: '无刷新加载', page: 'scroll_header'},
 					{title: 'swiper-header-list', desc: '带刷新加载', page: 'scroll_header_refresh'}
 				]

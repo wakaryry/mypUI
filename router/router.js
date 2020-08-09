@@ -47,6 +47,7 @@ export default {
 	// swiper
 	swiper_index: '/pages/swiper/index',
 	swiper_list: '/pages/swiper/list',
+	swiper_inter_list: '/pages/swiper/inter_list',
 	// scroll-test
 	scroll_test: '/pages/scroll/test/test',
 	scroll_raw: '/pages/scroll/test/raw',

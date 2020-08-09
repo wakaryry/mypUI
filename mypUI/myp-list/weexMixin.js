@@ -121,6 +121,8 @@ export default {
 			if (this.mypIsUpLoading) {
 				this.$refs['myp-loader'] && this.$refs['myp-loader'].cancel()
 				this.mypIsUpLoading = false
+				// 重置 loadMore
+				// this.mypResetLoadMore()
 			}
 		},
 		// ref method: call when refresh/load fail

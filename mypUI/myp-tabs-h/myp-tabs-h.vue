@@ -113,7 +113,7 @@
 			},
 			indicatorType: {
 				type: String,
-				default: ''
+				default: 'primary'
 			},
 			// 0的时候动态宽度，自适应宽度
 			indicatorWidth: {

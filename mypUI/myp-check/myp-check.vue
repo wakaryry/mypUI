@@ -193,7 +193,7 @@
 						return
 					}
 				}
-				const _vals = []
+				let _vals = []
 				if (this.limits === 1) {
 					if (isToCheck) {
 						this.updatedItems.forEach(item => {

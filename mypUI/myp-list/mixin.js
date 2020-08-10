@@ -199,6 +199,11 @@ export default {
 			this.mypCurrentPage += 1
 			this.mypGetContentList('load')
 		},
+		mypReload() {
+			this.mypPrePage = this.mypCurrentPage
+			this.mypCurrentPage = 1
+			this.mypGetContentList('load')
+		},
 		mypInitContentList() {
 			this.mypPrePage = 0
 			this.mypCurrentPage = 1

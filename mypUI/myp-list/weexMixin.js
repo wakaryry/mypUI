@@ -108,6 +108,30 @@ export default {
 			}
 			this.mypGetContentList('load')
 		},
+		mypReload() {
+			if (!this.up.use) return;
+			if (this.mypIsDownLoading) {
+				if (this.platform === 'ios') {
+					this.$refs['myp-loader'] && this.$refs['myp-loader'].cancel()
+					return
+				}
+				const that = this
+				setTimeout(()=>{
+					that.$refs['myp-loader'] && that.$refs['myp-loader'].cancel()
+				}, 0)
+				return
+			}
+			if (this.mypIsUpLoading) {
+				return
+			}
+			this.mypPrePage = this.mypCurrentPage
+			this.mypCurrentPage = 1
+			
+			if (this.up.use) {
+				this.mypIsUpLoading = true
+			}
+			this.mypGetContentList('load')
+		},
 		// default has no more
 		// ref method: call when refresh/load success
 		mypEndSuccess(hasMore=false) {

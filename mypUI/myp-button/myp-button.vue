@@ -1,14 +1,10 @@
 <template>
-	<view bubble="true" :class="['myp-button', 'myp-border-'+border, 'myp-bg-'+bgType, 'myp-height-'+height, 'myp-radius-'+radius, (disabled||loading)?'myp-disabled':'']" :style="mrBtnStyle" :hover-class="(!disabled && !loading) ? ('myp-hover-'+hover): ''" @click.stop="clickedButton">
+	<view bubble="true" :class="['myp-button', 'myp-border-'+border, 'myp-bg-'+bgType, 'myp-height-'+height, 'myp-radius-'+radius, (disabled||loading)?'myp-disabled':'']" :style="boxStyle" :hover-class="(!disabled && !loading) ? ('myp-hover-'+hover): ''" @click.stop="clickedButton">
 		<slot>
-			<view v-if="loading" :style="{width: loadingWidth, height: loadingHeight}">
-				<myp-loading-indicator :width="loadingWidth" :height="loadingHeight" :src="loadingSrc"></myp-loading-indicator>
-			</view>
-			<view v-if="!loading && icon && icon.length > 0">
-				<myp-icon :name="icon" :type="mrIconType" :mode="iconMode" :size="iconSize" :boxStyle="iconBoxStyle" :iconStyle="mrIconStyle" @iconClicked="clickedButton"></myp-icon>
-			</view>
-			<text v-if="text&&text.length>0" :class="['myp-color-'+mrTextType, 'myp-size-'+textSize]" :style="mrTextStyle">{{text}}</text>
-			<myp-icon v-if="icon2 && icon2.length > 0" :name="icon2" :type="mrIcon2Type" :mode="icon2Mode" :size="icon2Size" :boxStyle="mrIcon2BoxStyle" :iconStyle="mrIcon2Style" @iconClicked="clickedButton"></myp-icon>
+			<myp-loading-indicator v-if="loading" :width="loadingWidth" :height="loadingHeight" :src="loadingSrc"></myp-loading-indicator>
+			<myp-icon v-if="!loading && icon && icon.length > 0" :name="icon" :type="iconType" :mode="iconMode" :size="iconSize" :boxStyle="iconBoxStyle" :iconStyle="iconStyle" @iconClicked="clickedButton"></myp-icon>
+			<text v-if="text&&text.length>0" :class="['myp-color-'+textType, 'myp-size-'+textSize]" :style="mrTextStyle">{{text}}</text>
+			<myp-icon v-if="icon2 && icon2.length > 0" :name="icon2" :type="icon2Type" :mode="icon2Mode" :size="icon2Size" :boxStyle="mrIcon2BoxStyle" :iconStyle="icon2Style" @iconClicked="clickedButton"></myp-icon>
 		</slot>
 	</view>
 </template>
@@ -105,23 +101,7 @@
 				type: String,
 				default: ''
 			},
-			disabledStyle: {
-				type: String,
-				default: ''
-			},
-			highlightStyle: {
-				type: String,
-				default: ''
-			},
 			textStyle: {
-				type: String,
-				default: ''
-			},
-			disabledTextStyle: {
-				type: String,
-				default: ''
-			},
-			highlightTextStyle: {
 				type: String,
 				default: ''
 			},
@@ -141,14 +121,6 @@
 				type: String,
 				default: ''
 			},
-			disabledIconStyle: {
-				type: String,
-				default: ''
-			},
-			highlightIconStyle: {
-				type: String,
-				default: ''
-			},
 			loadingWidth: {
 				type: String,
 				default: '36rpx'
@@ -159,33 +131,6 @@
 			}
 		},
 		computed: {
-			mrIconType() {
-				if (this.iconType&&this.iconType.length>0) {
-					return this.iconType
-				}
-				return this.bgType&&this.bgType.length>0 ? 'inverse' : ''
-			},
-			mrIcon2Type() {
-				if (this.icon2Type&&this.icon2Type.length>0) {
-					return this.icon2Type
-				}
-				return this.bgType&&this.bgType.length>0 ? 'inverse' : ''
-			},
-			mrTextType() {
-				if (this.textType&&this.textType.length>0) {
-					return this.textType
-				}
-				return this.bgType&&this.bgType.length>0 ? 'inverse' : ''
-			},
-			mrBtnStyle() {
-				let _style = this.boxStyle
-				if (this.loading || this.disabled) {
-					_style += this.disabledStyle
-				} else if (this.highlight) {
-					_style += this.highlightStyle
-				}
-				return _style
-			},
 			mrTextStyle() {
 				let _style = ''
 				if (this.text && this.text.length > 0) {
@@ -198,29 +143,6 @@
 					}
 				}
 				_style += this.textStyle
-				if (this.loading || this.disabled) {
-					_style += this.disabledTextStyle
-				} else if (this.highlight) {
-					_style += this.highlightTextStyle
-				}
-				return _style
-			},
-			mrIconStyle() {
-				let _style = this.iconStyle
-				if (this.loading || this.disabled) {
-					_style += this.disabledIconStyle
-				} else if (this.highlight) {
-					_style += this.highlightIconStyle
-				}
-				return _style
-			},
-			mrIcon2Style() {
-				let _style = this.icon2Style
-				if (this.loading || this.disabled) {
-					_style += this.disabledIcon2Style
-				} else if (this.highlight) {
-					_style += this.highlightIcon2Style
-				}
 				return _style
 			},
 			mrIcon2BoxStyle() {

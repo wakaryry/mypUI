@@ -1,18 +1,13 @@
 <template>
-	<view :class="['myp-cell', 'myp-bg-'+bgType, 'myp-height-'+height, 'myp-radius-'+radius, 'myp-border-'+border]" :style="boxStyle" :hover-class="'myp-hover-'+hover" @tap.stop="toSelect">
-		<view v-if="icon && icon.length > 0" :style="{'margin-right': space}">
-			<myp-icon :name="icon" :type="mrIconType" :size="iconSize" :mode="iconMode" :iconStyle="iconStyle"></myp-icon>
-		</view>
-		<!-- custom title and value view -->
+	<view :class="['myp-cell', 'myp-bg-'+bgType, 'myp-height-'+height, 'myp-radius-'+radius, 'myp-border-'+border]" :style="boxStyle" :hover-class="'myp-hover-'+hover" bubble="true" @tap.stop="toSelect">
+		<myp-icon v-if="icon&&icon.length > 0" :name="icon" :type="iconType" :size="iconSize" :mode="iconMode" :iconStyle="iconStyle" :boxStyle="'margin-right:'+space+';'+iconBoxStyle" @iconClicked="toSelect"></myp-icon>
 		<slot>
-			<text v-if="title&&title.length>0" :class="['myp-color-'+mrTitleType, 'myp-size-'+titleSize]" :style="mrTitleStyle">{{title}}</text>
-			<text :class="['myp-cell-value', 'myp-color-'+mrValueType, 'myp-size-'+valueSize]" :style="valueStyle">{{value}}</text>
+			<text v-if="title&&title.length>0" :class="['myp-color-'+titleType, 'myp-size-'+titleSize]" :style="'margin-right:'+space+';'+titleStyle">{{title}}</text>
+			<text :class="['myp-cell-value', 'myp-color-'+valueType, 'myp-size-'+valueSize]" :style="valueStyle">{{value}}</text>
 		</slot>
 		<!-- custom right extra view -->
 		<slot name="extra"></slot>
-		<view v-if="indicator&&indicator.length>0" :style="{'margin-left': space}">
-			<myp-icon :name="indicator" :type="mrIndicatorType" :size="indicatorSize" :mode="indicatorMode" :iconStyle="indicatorStyle"></myp-icon>
-		</view>
+		<myp-icon v-if="indicator&&indicator.length>0" :name="indicator" :type="indicatorType" :size="indicatorSize" :mode="indicatorMode" :iconStyle="indicatorStyle" :boxStyle="'margin-left:'+space+';'+indicatorBoxStyle" @iconClicked="toSelect"></myp-icon>
 	</view>
 </template>
 
@@ -118,41 +113,20 @@
 			valueStyle: {
 				type: String,
 				default: ''
-			}
-		},
-		computed: {
-			mrIconType() {
-				if (this.iconType && this.iconType.length > 0) {
-					return this.iconType
-				}
-				return (this.bgType&&this.bgType.length>0)?'inverse':''
 			},
-			mrTitleType() {
-				if (this.titleType&&this.titleType.length>0) {
-					return this.titleType
-				}
-				return (this.bgType&&this.bgType.length>0)?'inverse':''
+			iconBoxStyle: {
+				type: String,
+				default: ''
 			},
-			mrValueType() {
-				if (this.valueType&&this.valueType.length>0) {
-					return this.valueType
-				}
-				return (this.bgType&&this.bgType.length>0)?'inverse':'second'
-			},
-			mrIndicatorType() {
-				if (this.indicatorType&&this.indicatorType.length>0) {
-					return this.indicatorType
-				}
-				return (this.bgType&&this.bgType.length>0)?'inverse':'second'
-			},
-			mrTitleStyle() {
-				const _style = `margin-right:${this.space};`
-				return _style + this.titleStyle
+			indicatorBoxStyle: {
+				type: String,
+				default: ''
 			}
 		},
 		methods: {
-			toSelect() {
+			toSelect(e) {
 				this.$emit("cellClicked")
+				e.stopPropagation && e.stopPropagation()
 			}
 		}
 	}
@@ -167,6 +141,8 @@
 		flex-direction: row;
 		flex-wrap: nowrap;
 		align-items: center;
+		padding-left: 32rpx;
+		padding-right: 32rpx;
 		
 		&-value {
 			flex: 1;

@@ -18,7 +18,7 @@
 			},
 			text: {
 				type: String,
-				default: '确定'
+				default: ''
 			},
 			icon: {
 				type: String,

@@ -40,7 +40,7 @@
 			},
 			valueType: {
 				type: String,
-				default: ''
+				default: 'second'
 			},
 			iconType: {
 				type: String,
@@ -48,7 +48,7 @@
 			},
 			indicatorType: {
 				type: String,
-				default: ''
+				default: 'second'
 			},
 			titleSize: {
 				type: String,
@@ -148,6 +148,7 @@
 			flex: 1;
 			overflow: hidden;
 			text-overflow: ellipsis;
+			text-align: right;
 			/* #ifdef APP-NVUE */
 			lines: 1;
 			/* #endif */

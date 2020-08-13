@@ -106,6 +106,19 @@ function derangeArray(arr=[]) {
 	return arr
 }
 
+// 使用reduce对数组去重
+function removeArrayRepeat(arr=[], key=null) {
+	if (key) {
+		const obj = {}
+		return arr.reduce((cur,next) => {
+		    obj[next[key]] ? "" : obj[next[key]] = true && cur.push(next)
+		    return cur
+		},[])
+	} else {
+		return [...(new Set(arr))]
+	}
+}
+
 /*
  * 截断字符串
  * @param str 传入字符串

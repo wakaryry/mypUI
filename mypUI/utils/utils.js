@@ -107,7 +107,7 @@ function derangeArray(arr=[]) {
 }
 
 // 使用reduce对数组去重
-function removeArrayRepeat(arr=[], key=null) {
+function derepeatArray(arr=[], key=null) {
 	if (key) {
 		const obj = {}
 		return arr.reduce((cur,next) => {
@@ -202,6 +202,7 @@ module.exports = {
 	compareVersion,
 	arrayChunk,
 	derangeArray,
+	derepeatArray,
 	truncateString,
 	objToParams,
 	paramsToObj

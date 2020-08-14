@@ -38,7 +38,7 @@
 			},
 			mainText: {
 				type: String,
-				default: '下拉即可刷新...'
+				default: '下拉触发刷新...'
 			},
 			pullingText: {
 				type: String,
@@ -46,7 +46,7 @@
 			},
 			refreshingText: {
 				type: String,
-				default: '加载中...'
+				default: '正在努力加载...'
 			},
 			downIcon: {
 				type: String,

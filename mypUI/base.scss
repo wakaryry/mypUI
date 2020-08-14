@@ -785,6 +785,10 @@
 	}
 	&-bg {
 		background-color: $myp-bg-color-hover;
+		
+		&-dark {
+			background-color: $myp-bg-color-hover-dark;
+		}
 	}
 	&-bg-opacity {
 		background-color: $myp-bg-color-hover;

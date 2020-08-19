@@ -1,5 +1,5 @@
 //
-// 用于tabs-swiper参考
+// 用于tabs-swiper联动参考
 //
 export default {
 	data() {

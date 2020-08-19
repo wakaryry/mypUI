@@ -170,8 +170,10 @@
 		computed: {
 			mrIndStyle() {
 				let _style = `border-radius:${this.indicatorRadius};`
+				// #ifndef APP-NVUE
 				_style += `width:${this.dyIndicatorWidth}px;`
 				_style += `left:${this.dyIndicatorLeft}px;`
+				// #endif
 				return _style + this.indicatorStyle
 			},
 			spacePx() {
@@ -240,7 +242,7 @@
 		},
 		mounted() {
 			setTimeout(()=>{
-				this.toCurrentIndex(this.value)
+				this.toCurrentIndex(this.value, true)
 				// 这样的话要求mounted之后，所有item的宽度不会变化
 				// 所以适用于固定宽度的，或者动态宽度，但是元素生成之后宽度不变的
 				this.toCacheItemsSize()
@@ -269,7 +271,7 @@
 			changeTab(index) {
 				this.$emit('change', index)
 			},
-			async toCurrentIndex(index) {
+			async toCurrentIndex(index, isInit=false) {
 				let nowWidth = 0
 				let _left = 0
 				let indWidth = 0
@@ -315,6 +317,28 @@
 				// 移动indicator
 				this.dyIndicatorWidth = indWidth
 				this.dyIndicatorLeft = indLeft
+				// #ifdef APP-NVUE
+				console.log(this.dyIndicatorLeft)
+				const indEl = this.$refs['myp-underline']
+				if (isInit) {
+					// ios下刚打开时发现总是靠最左侧。去掉duration就好了
+					animation.transition(indEl, {
+						styles: {
+							width: `${this.dyIndicatorWidth}px`,
+							transform: `translateX(${this.dyIndicatorLeft}px)`
+						},
+						duration: 0
+					})
+				} else {
+					animation.transition(indEl, {
+						styles: {
+							width: `${this.dyIndicatorWidth}px`,
+							transform: `translateX(${this.dyIndicatorLeft}px)`
+						},
+						duration: 200
+					})
+				}
+				// #endif
 				// 居中当前item
 				const scrollWidth = this.scrollSizePx
 				const offset = _width - (nowWidth / 2 + this.spacePx) - scrollWidth / 2
@@ -361,6 +385,16 @@
 				
 				this.dyIndicatorLeft = theItem.indLeft + (nextItem.indLeft - theItem.indLeft) / pg
 				this.dyIndicatorWidth = theItem.ind + (nextItem.ind - theItem.ind) / pg
+				
+				// #ifdef APP-NVUE
+				const indEl = this.$refs['myp-underline']
+				animation.transition(indEl, {
+					styles: {
+						width: `${this.dyIndicatorWidth}px`,
+						transform: `translateX(${this.dyIndicatorLeft}px)`
+					}
+				})
+				// #endif
 			},
 			async toCacheItemsSize() {
 				let scrollL = 0
@@ -450,20 +484,13 @@
 			position: relative;
 			background-color: transparent;
 		}
-		
 		&-underline {
 			position: absolute;
 			top: 0;
 			bottom: 0;
 			left: 0;
 			width: 0;
-			/* #ifdef APP-NVUE */
-			transition-property: left, width;
-			transition-duration: 0.2s;
-			transition-timing-function: ease;
-			/* #endif */
 		}
-		
 		&-animation {
 			/* #ifndef APP-NVUE */
 			transition-property: left, width;

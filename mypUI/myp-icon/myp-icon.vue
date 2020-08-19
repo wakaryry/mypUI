@@ -6,6 +6,20 @@
 </template>
 
 <script>
+	// 
+	// 部分机型在这种情况下引入字体文件不显示
+	// 我们在 app.vue 下也会引入字体文件，试图解决部分机型不显示的问题
+	// 只在 app.vue 下引入字体文件，打包后可能不显示图标
+	// 或许一个 app 需要换一个独特的 fontFamily 名字吧
+	// 
+	// #ifdef APP-NVUE
+	const dom = weex.requireModule('dom');
+	dom.addRule('fontFace', {
+		'fontFamily': "mypiconfont",
+		'src': "url('https://at.alicdn.com/t/font_1994281_a83sr011dzg.ttf')"
+	})
+	// #endif
+	
 	import icons from '../icons.js'
 	
 	import {isSrc} from '../utils/utils.js'

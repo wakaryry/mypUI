@@ -318,7 +318,6 @@
 				this.dyIndicatorWidth = indWidth
 				this.dyIndicatorLeft = indLeft
 				// #ifdef APP-NVUE
-				console.log(this.dyIndicatorLeft)
 				const indEl = this.$refs['myp-underline']
 				if (isInit) {
 					// ios下刚打开时发现总是靠最左侧。去掉duration就好了

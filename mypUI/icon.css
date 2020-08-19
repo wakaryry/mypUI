@@ -1,4 +1,3 @@
-/* #ifndef APP-PLUS */
 @font-face {
   font-family: 'mypiconfont';  /* project id 1994281 */
   src: url('https://at.alicdn.com/t/font_1994281_a83sr011dzg.eot');
@@ -8,7 +7,6 @@
   url('https://at.alicdn.com/t/font_1994281_a83sr011dzg.ttf') format('truetype'),
   url('https://at.alicdn.com/t/font_1994281_a83sr011dzg.svg#mypiconfont') format('svg');
 }
-/* #endif */
 
 .myp-iconfont {
 	font-family: mypiconfont;

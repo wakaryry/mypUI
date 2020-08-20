@@ -10,7 +10,7 @@
 			<view class="myp-tabs" :style="mrTabsBoxStyle">
 				<view bubble="true" class="myp-tabs-item" v-for="(item, idx) in tabs" :key="idx" :ref="'myp-tab-'+idx" :style="mrItemStyle" @tap="setPage(idx)">
 					<view v-if="!item.isHump" class="myp-tabs-item-icon" :style="'width:'+(item.iconBoxWidth||mrIconWidth)+';'">
-						<myp-icon :name="currentPage===idx?(item.selectedIcon || item.icon):item.icon" :iconStyle="currentPage===idx?((tabStyle.selectedIconStyle||'')+(item.selectedIconStyle||'')):((tabStyle.iconStyle||'')+(item.iconStyle||''))" @iconClicked="setPage(idx)"></myp-icon>
+						<image :src="currentPage===idx?item.selectedIcon:item.icon" :style="currentPage===idx?((tabStyle.selectedIconStyle||'')+(item.selectedIconStyle||'')):((tabStyle.iconStyle||'')+(item.iconStyle||''))"></image>
 						<view v-if="item.badge" class="myp-tabs-item-badge" :style="(tabStyle.badgeStyle||'')+(item.badgeStyle||'')">
 							<text class="myp-tabs-item-badge-text" :style="(tabStyle.badgeTextStyle||'')+(item.badgeTextStyle||'')">{{item.badge}}</text>
 						</view>
@@ -22,7 +22,7 @@
 			<!-- hump -->
 			<view bubble="true" v-if="hasHump" class="myp-tabs-item-hump" :style="mrHumpStyle||''" @tap="setPage(humpIndex)">
 				<view class="myp-tabs-item-icon" :style="'width:'+(humpItem.iconBoxWidth||mrIconWidth)+';'">
-					<myp-icon :name="currentPage===humpIndex?(humpItem.selectedIcon || humpItem.icon):humpItem.icon" :iconStyle="currentPage===humpIndex?((tabStyle.selectedIconStyle||'')+(humpItem.selectedIconStyle||'')):((tabStyle.iconStyle||'')+(humpItem.iconStyle||''))" @iconClicked="setPage(humpIndex)"></myp-icon>
+					<image :src="currentPage===humpIndex?humpItem.selectedIcon:humpItem.icon" :style="currentPage===humpIndex?((tabStyle.selectedIconStyle||'')+(humpItem.selectedIconStyle||'')):((tabStyle.iconStyle||'')+(humpItem.iconStyle||''))"></image>
 					<view v-if="humpItem.badge" class="myp-tabs-item-badge" :style="(tabStyle.badgeStyle||'')+(humpItem.badgeStyle||'')">
 						<text class="myp-tabs-item-badge-text" :style="(tabStyle.badgeTextStyle||'')+(humpItem.badgeTextStyle||'')">{{humpItem.badge}}</text>
 					</view>

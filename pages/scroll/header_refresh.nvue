@@ -2,7 +2,7 @@
 	<view class="big-page">
 		<!-- #ifdef APP-NVUE -->
 		<list :id="mypListId" :bounce="true" isSwiperList="true" ref="myp-scroller" :style="'width:750rpx;'+mypContentHeightStyle" @scroll="handleParentScroll">
-			<myp-refresher-n ref="myp-refresher" scroller-ref="myp-scroller" @refresh="handleRefresh"></myp-refresher-n>
+			<myp-refresher-n ref="myp-refresher" scrollerRef="myp-scroller" @refresh="handleRefresh"></myp-refresher-n>
 			<cell>
 				<swiper-head></swiper-head>
 			</cell>

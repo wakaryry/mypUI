@@ -163,6 +163,7 @@ UI内部使用了 `easycom` 的组件自动引入，所以您必须在项目中�
 
 - [免费图片压缩](https://tinypng.com/)
 - [免费图片托管](https://img.wenhairu.com/)
+- [字体文件转base64](https://transfonter.org/)
 - [mescroll](https://ext.dcloud.net.cn/plugin?id=343)。我最开始的scroll刷新和加载更多处理参考了mescroll
 
 如果您发现我们使用了您的`设计`或者`图片`资源，如有侵权，恳请告知，我们一定第一时间删除或者按照您的要求添加申明。

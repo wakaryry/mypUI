@@ -13,8 +13,8 @@
 		<view class="myp-title-right" :style="rightStyle" bubble="true" @tap="rightClicked">
 			<myp-icon v-if="!rightBtn&&rightIcon1&&rightIcon1.length>0" :name="rightIcon1" :type="rightIcon1Type" :size="rightIcon1Size" :style="rightIcon1Style" :mode="rightIcon1Mode" @iconClicked="rightClicked"></myp-icon>
 			<text v-if="!rightBtn" :class="['myp-size-'+title3Size, 'myp-color-'+mrTitle3Type]" :style="mrTitle3Style">{{title3}}</text>
-			<myp-button v-if="rightBtn" :icon="rightIcon1" :text="title3" :bgType="btnBgType" :textType="title3Type" :textStyle="title3Style" :textSize="title3Size" :space="space" :iconType="rightIcon1Type" :iconSize="rightIcon1Size" :iconStyle="rightIcon1Style" :iconMode="rightIcon1Mode" :boxStyle="btnStyle" :border="btnBorder" :radius="btnRadius" @buttonClicked="rightClicked"></myp-button>
 			<myp-icon v-if="rightIcon2&&rightIcon2.length>0" :name="rightIcon2" :type="rightIcon2Type" :size="rightIcon2Size" :style="rightIcon2Style" :mode="rightIcon2Mode" @iconClicked="rightClicked"></myp-icon>
+			<slot></slot>
 		</view>
 	</view>
 </template>

@@ -1,0 +1,52 @@
+<template>
+	<view :class="['myp-bg-'+bgType, 'myp-border-'+border]" :style="mrBoxStyle">
+		<text :class="['myp-color-'+textType, 'myp-size-'+textSize]" :style="textStyle">{{text}}</text>
+	</view>
+</template>
+
+<script>
+	export default {
+		props: {
+			size: {
+				type: String,
+				default: '12rpx'
+			},
+			bgType: {
+				type: String,
+				default: 'error'
+			},
+			text: {
+				type: String,
+				default: ''
+			},
+			border: {
+				type: String,
+				default: 'none'
+			},
+			textType: {
+				type: String,
+				default: 'inverse'
+			},
+			textSize: {
+				type: String,
+				default: 'ss'
+			},
+			textStyle: {
+				type: String,
+				default: ''
+			},
+			boxStyle: {
+				type: String,
+				default: ''
+			}
+		},
+		computed: {
+			mrBoxStyle() {
+				return `width:${this.size};height:${this.size};border-radius:${this.size};` + this.boxStyle
+			}
+		}
+	}
+</script>
+
+<style lang="scss" scoped>
+</style>

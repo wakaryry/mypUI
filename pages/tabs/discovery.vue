@@ -2,38 +2,7 @@
 	<view>
 		<myp-navbar :fixed="false" title="发现"></myp-navbar>
 		<myp-list-simple bgType="page" :includeXBar="false">
-			<myp-list-cell>
-				<view v-for="(cats,i) in selections" :key="i" style="flex-direction: row;">
-					<text>{{cats.name}}</text>
-					<view v-if="cats.hasLabel">
-						<view v-for="(cat,j) in cats.children" :key="j" style="flex-direction: row;">
-							<text>{{cat.label}}</text>
-							<view v-for="(tag,k) in cat.children" :key="k" style="flex-direction: row;">
-								<text>{{tag.name}}</text>
-							</view>
-						</view>
-					</view>
-					<view v-else>
-						<view style="flex-direction: row;">
-							<text v-for="(cat,j) in cats.children" :key="j">{{cat.name}}</text>
-						</view>
-					</view>
-				</view>
-			</myp-list-cell>
-			<myp-list-cell>
-				<picker-view :value="pickVal" @change="bindChange" style="height: 300rpx;flex-direction: row;" indicator-style="height:100rpx;">
-					<picker-view-column>
-						<view style="height: 100rpx;justify-content: center;align-items: center;" v-for="(item,idx) in items.months" :key="idx">
-							<text>{{item}}</text>
-						</view>
-					</picker-view-column>
-					<picker-view-column>
-						<view style="height: 100rpx;flex-direction: row; justify-content: center;align-items: center;" v-for="(item,idx) in items.days" :key="idx">
-							<text>{{item}}</text>
-						</view>
-					</picker-view-column>
-				</picker-view>
-			</myp-list-cell>
+			
 		</myp-list-simple>
 	</view>
 </template>

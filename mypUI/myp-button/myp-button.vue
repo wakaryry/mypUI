@@ -6,6 +6,7 @@
 			<text v-if="text&&text.length>0" :class="['myp-color-'+textType, 'myp-size-'+textSize]" :style="mrTextStyle">{{text}}</text>
 			<myp-icon v-if="icon2 && icon2.length > 0" :name="icon2" :type="icon2Type" :mode="icon2Mode" :size="icon2Size" :boxStyle="mrIcon2BoxStyle" :iconStyle="icon2Style" @iconClicked="clickedButton"></myp-icon>
 		</slot>
+		<slot name="extra"></slot>
 	</view>
 </template>
 

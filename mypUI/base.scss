@@ -544,23 +544,18 @@
 .myp-radius {
 	&-ss {
 		border-radius: $myp-border-radius-ss;
-		overflow: hidden;
 	}
 	&-s {
 		border-radius: $myp-border-radius-s;
-		overflow: hidden;
 	}
 	&-base {
 		border-radius: $myp-border-radius-base;
-		overflow: hidden;
 	}
 	&-l {
 		border-radius: $myp-border-radius-l;
-		overflow: hidden;
 	}
 	&-ll {
 		border-radius: $myp-border-radius-ll;
-		overflow: hidden;
 	}
 	&-none {
 		border-radius: 0;
@@ -568,214 +563,176 @@
 	&-top {
 		border-top-left-radius: $myp-border-radius-base;
 		border-top-right-radius: $myp-border-radius-base;
-		overflow: hidden;
 		
 		&-ss {
 			border-top-left-radius: $myp-border-radius-ss;
 			border-top-right-radius: $myp-border-radius-ss;
-			overflow: hidden;
 		}
 		&-s {
 			border-top-left-radius: $myp-border-radius-s;
 			border-top-right-radius: $myp-border-radius-s;
-			overflow: hidden;
 		}
 		&-base {
 			border-top-left-radius: $myp-border-radius-base;
 			border-top-right-radius: $myp-border-radius-base;
-			overflow: hidden;
 		}
 		&-l {
 			border-top-left-radius: $myp-border-radius-l;
 			border-top-right-radius: $myp-border-radius-l;
-			overflow: hidden;
 		}
 		&-ll {
 			border-top-left-radius: $myp-border-radius-ll;
 			border-top-right-radius: $myp-border-radius-ll;
-			overflow: hidden;
 		}
 		&-left {
 			&-ss {
 				border-top-left-radius: $myp-border-radius-ss;
-				overflow: hidden;
 			}
 			&-s {
 				border-top-left-radius: $myp-border-radius-s;
-				overflow: hidden;
 			}
 			&-base {
 				border-top-left-radius: $myp-border-radius-base;
-				overflow: hidden;
 			}
 			&-l {
 				border-top-left-radius: $myp-border-radius-l;
-				overflow: hidden;
 			}
 			&-ll {
 				border-top-left-radius: $myp-border-radius-ll;
-				overflow: hidden;
 			}
 		}
 		&-right {
 			&-ss {
 				border-top-right-radius: $myp-border-radius-ss;
-				overflow: hidden;
 			}
 			&-s {
 				border-top-right-radius: $myp-border-radius-s;
-				overflow: hidden;
 			}
 			&-base {
 				border-top-right-radius: $myp-border-radius-base;
-				overflow: hidden;
 			}
 			&-l {
 				border-top-right-radius: $myp-border-radius-l;
-				overflow: hidden;
 			}
 			&-ll {
 				border-top-right-radius: $myp-border-radius-ll;
-				overflow: hidden;
 			}
 		}
 	}
 	&-bottom {
 		border-bottom-left-radius: $myp-border-radius-base;
 		border-bottom-right-radius: $myp-border-radius-base;
-		overflow: hidden;
 		
 		&-ss {
 			border-bottom-left-radius: $myp-border-radius-ss;
 			border-bottom-right-radius: $myp-border-radius-ss;
-			overflow: hidden;
 		}
 		&-s {
 			border-bottom-left-radius: $myp-border-radius-s;
 			border-bottom-right-radius: $myp-border-radius-s;
-			overflow: hidden;
 		}
 		&-base {
 			border-bottom-left-radius: $myp-border-radius-base;
 			border-bottom-right-radius: $myp-border-radius-base;
-			overflow: hidden;
 		}
 		&-l {
 			border-bottom-left-radius: $myp-border-radius-l;
 			border-bottom-right-radius: $myp-border-radius-l;
-			overflow: hidden;
 		}
 		&-ll {
 			border-bottom-left-radius: $myp-border-radius-ll;
 			border-bottom-right-radius: $myp-border-radius-ll;
-			overflow: hidden;
 		}
 		&-left {
 			&-ss {
 				border-bottom-left-radius: $myp-border-radius-ss;
-				overflow: hidden;
 			}
 			&-s {
 				border-bottom-left-radius: $myp-border-radius-s;
-				overflow: hidden;
 			}
 			&-base {
 				border-bottom-left-radius: $myp-border-radius-base;
-				overflow: hidden;
 			}
 			&-l {
 				border-bottom-left-radius: $myp-border-radius-l;
-				overflow: hidden;
 			}
 			&-ll {
 				border-bottom-left-radius: $myp-border-radius-ll;
-				overflow: hidden;
 			}
 		}
 		&-right {
 			&-ss {
 				border-bottom-right-radius: $myp-border-radius-ss;
-				overflow: hidden;
 			}
 			&-s {
 				border-bottom-right-radius: $myp-border-radius-s;
-				overflow: hidden;
 			}
 			&-base {
 				border-bottom-right-radius: $myp-border-radius-base;
-				overflow: hidden;
 			}
 			&-l {
 				border-bottom-right-radius: $myp-border-radius-l;
-				overflow: hidden;
 			}
 			&-ll {
 				border-bottom-right-radius: $myp-border-radius-ll;
-				overflow: hidden;
 			}
 		}
 	}
 	&-left {
 		border-top-left-radius: $myp-border-radius-base;
 		border-bottom-left-radius: $myp-border-radius-base;
-		overflow: hidden;
 		
 		&-ss {
 			border-top-left-radius: $myp-border-radius-ss;
 			border-bottom-left-radius: $myp-border-radius-ss;
-			overflow: hidden;
 		}
 		&-s {
 			border-top-left-radius: $myp-border-radius-s;
 			border-bottom-left-radius: $myp-border-radius-s;
-			overflow: hidden;
 		}
 		&-base {
 			border-top-left-radius: $myp-border-radius-base;
 			border-bottom-left-radius: $myp-border-radius-base;
-			overflow: hidden;
 		}
 		&-l {
 			border-top-left-radius: $myp-border-radius-l;
 			border-bottom-left-radius: $myp-border-radius-l;
-			overflow: hidden;
 		}
 		&-ll {
 			border-top-left-radius: $myp-border-radius-ll;
 			border-bottom-left-radius: $myp-border-radius-ll;
-			overflow: hidden;
 		}
 	}
 	&-right {
 		border-top-right-radius: $myp-border-radius-base;
 		border-bottom-right-radius: $myp-border-radius-base;
-		overflow: hidden;
 		
 		&-ss {
 			border-top-right-radius: $myp-border-radius-ss;
 			border-bottom-right-radius: $myp-border-radius-ss;
-			overflow: hidden;
 		}
 		&-s {
 			border-top-right-radius: $myp-border-radius-s;
 			border-bottom-right-radius: $myp-border-radius-s;
-			overflow: hidden;
 		}
 		&-base {
 			border-top-right-radius: $myp-border-radius-base;
 			border-bottom-right-radius: $myp-border-radius-base;
-			overflow: hidden;
 		}
 		&-l {
 			border-top-right-radius: $myp-border-radius-l;
 			border-bottom-right-radius: $myp-border-radius-l;
-			overflow: hidden;
 		}
 		&-ll {
 			border-top-right-radius: $myp-border-radius-ll;
 			border-bottom-right-radius: $myp-border-radius-ll;
-			overflow: hidden;
 		}
+	}
+}
+
+.myp-overflow {
+	&-hidden {
+		overflow: hidden;
 	}
 }
 

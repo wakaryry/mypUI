@@ -31,4 +31,7 @@
 
 <style lang="scss">
 	@import '@/mypUI/base.scss';
+	/* #ifdef H5 */
+	@import '@/mypUI/h5.scss';
+	/* #endif */
 </style>

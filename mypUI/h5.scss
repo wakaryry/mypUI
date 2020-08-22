@@ -1,0 +1,207 @@
+// 
+// nvue页面编译到H5，uni默认的样式层级比较高，会覆盖掉我们的全局class
+// 为了兼容H5，我们需要提高部分属性的层级
+// 如果您需要考虑H5，请引入该文件，并且在覆盖这些属性的时候记得加上 !important
+//
+
+@import './mypui.scss';
+
+.myp-flex {
+	&-row {
+		/* #ifndef APP-NVUE */
+		display: flex;
+		box-sizing: border-box;
+		/* #endif */
+		flex-direction: row !important;
+	}
+	&-column {
+		/* #ifndef APP-NVUE */
+		display: flex;
+		box-sizing: border-box;
+		/* #endif */
+		flex-direction: column !important;
+	}
+}
+.myp-justify {
+	&-start {
+		justify-content: flex-start !important;
+	}
+	&-center {
+		justify-content: center !important;
+	}
+	&-end {
+		justify-content: flex-end !important;
+	}
+	&-between {
+		justify-content: space-between !important;
+	}
+}
+.myp-align {
+	&-start {
+		align-items: flex-start !important;
+	}
+	&-center {
+		align-items: center !important;
+	}
+	&-end {
+		align-items: flex-end !important;
+	}
+	&-between {
+		align-items: space-between !important;
+	}
+}
+.myp-border {
+	&-all {
+		border-width: $myp-border-width !important;
+		border-style: solid !important;
+		border-color: $myp-border-color !important;
+		&-light {
+			border-width: $myp-border-width !important;
+			border-style: solid !important;
+			border-color: $myp-border-color-light !important;
+		}
+		&-dark {
+			border-width: $myp-border-width !important;
+			border-style: solid !important;
+			border-color: $myp-border-color-dark !important;
+		}
+		&-primary {
+			border-width: $myp-border-width !important;
+			border-style: solid !important;
+			border-color: $myp-color-primary !important;
+		}
+		&-success {
+			border-width: $myp-border-width !important;
+			border-style: solid !important;
+			border-color: $myp-color-success !important;
+		}
+		&-warning {
+			border-width: $myp-border-width !important;
+			border-style: solid !important;
+			border-color: $myp-color-warning !important;
+		}
+		&-error {
+			border-width: $myp-border-width !important;
+			border-style: solid !important;
+			border-color: $myp-color-error !important;
+		}
+		&-inverse {
+			border-width: $myp-border-width !important;
+			border-style: solid !important;
+			border-color: $myp-border-color-inverse !important;
+		}
+		&-custom {
+			border-width: $myp-border-width !important;
+			border-style: solid !important;
+			border-color: $myp-color-custom !important;
+		}
+		&-link {
+			border-width: $myp-border-width !important;
+			border-style: solid !important;
+			border-color: $myp-color-link !important;
+		}
+	}
+	&-top {
+		border-top-color: $myp-border-color !important;
+		border-top-width: $myp-border-width !important;
+		border-top-style: solid !important;
+		&-light {
+			border-top-color: $myp-border-color-light !important;
+			border-top-width: $myp-border-width !important;
+			border-top-style: solid !important;
+		}
+		&-dark {
+			border-top-color: $myp-border-color-dark !important;
+			border-top-width: $myp-border-width !important;
+			border-top-style: solid !important;
+		}
+		&-primary {
+			border-top-color: $myp-color-primary !important;
+			border-top-width: $myp-border-width !important;
+			border-top-style: solid !important;
+		}
+		&-success {
+			border-top-color: $myp-color-success !important;
+			border-top-width: $myp-border-width !important;
+			border-top-style: solid !important;
+		}
+		&-warning {
+			border-top-color: $myp-color-warning !important;
+			border-top-width: $myp-border-width !important;
+			border-top-style: solid !important;
+		}
+		&-error {
+			border-top-color: $myp-color-error !important;
+			border-top-width: $myp-border-width !important;
+			border-top-style: solid !important;
+		}
+		&-inverse {
+			border-top-color: $myp-border-color-inverse !important;
+			border-top-width: $myp-border-width !important;
+			border-top-style: solid !important;
+		}
+		&-custom {
+			border-top-color: $myp-color-custom !important;
+			border-top-width: $myp-border-width !important;
+			border-top-style: solid !important;
+		}
+		&-link {
+			border-top-color: $myp-color-link !important;
+			border-top-width: $myp-border-width !important;
+			border-top-style: solid !important;
+		}
+	}
+	&-bottom {
+		border-bottom-color: $myp-border-color !important;
+		border-bottom-width: $myp-border-width !important;
+		border-bottom-style: solid !important;
+		&-light {
+			border-bottom-color: $myp-border-color-light !important;
+			border-bottom-width: $myp-border-width !important;
+			border-bottom-style: solid !important;
+		}
+		&-dark {
+			border-bottom-color: $myp-border-color-dark !important;
+			border-bottom-width: $myp-border-width !important;
+			border-bottom-style: solid !important;
+		}
+		&-primary {
+			border-bottom-color: $myp-color-primary !important;
+			border-bottom-width: $myp-border-width !important;
+			border-bottom-style: solid !important;
+		}
+		&-success {
+			border-bottom-color: $myp-color-success !important;
+			border-bottom-width: $myp-border-width !important;
+			border-bottom-style: solid !important;
+		}
+		&-warning {
+			border-bottom-color: $myp-color-warning !important;
+			border-bottom-width: $myp-border-width !important;
+			border-bottom-style: solid !important;
+		}
+		&-error {
+			border-bottom-color: $myp-color-error !important;
+			border-bottom-width: $myp-border-width !important;
+			border-bottom-style: solid !important;
+		}
+		&-inverse {
+			border-bottom-color: $myp-border-color-inverse !important;
+			border-bottom-width: $myp-border-width !important;
+			border-bottom-style: solid !important;
+		}
+		&-custom {
+			border-bottom-color: $myp-color-custom !important;
+			border-bottom-width: $myp-border-width !important;
+			border-bottom-style: solid !important;
+		}
+		&-link {
+			border-bottom-color: $myp-color-link !important;
+			border-bottom-width: $myp-border-width !important;
+			border-bottom-style: solid !important;
+		}
+	}
+	&-none {
+		border-width: 0 !important;
+	}
+}

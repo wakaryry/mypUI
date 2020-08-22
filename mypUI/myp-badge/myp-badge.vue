@@ -1,5 +1,5 @@
 <template>
-	<view :class="['myp-bg-'+bgType, 'myp-border-'+border]" :style="mrBoxStyle">
+	<view :class="['myp-justfy-center', 'myp-align-center', 'myp-bg-'+bgType, 'myp-border-'+border]" :style="mrBoxStyle">
 		<text :class="['myp-color-'+textType, 'myp-size-'+textSize]" :style="textStyle">{{text}}</text>
 	</view>
 </template>
@@ -16,7 +16,7 @@
 				default: 'error'
 			},
 			text: {
-				type: String,
+				type: [String, Number],
 				default: ''
 			},
 			border: {

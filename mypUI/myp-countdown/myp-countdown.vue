@@ -1,31 +1,31 @@
 <template>
 	<view class="myp-time" :style="boxStyle">
-		<view v-if="tplIndexOfDays !== -1" :class="['myp-time-box', 'myp-height-'+height, 'myp-bg-'+type, 'myp-border-'+border, 'myp-radius-'+radius]" :style="mrTimeBoxStyle">
+		<view v-if="indexOfDays !== -1" :class="['myp-time-box', 'myp-height-'+height, 'myp-bg-'+type, 'myp-border-'+border, 'myp-radius-'+radius]" :style="mrTimeBoxStyle">
 			<text :class="['myp-color-'+(type&&type.length>0?'inverse':''), 'myp-size-'+size]" :style="timeTextStyle">{{countDownData.day}}</text>
 		</view>
-		<view v-if="tplIndexOfDays !== -1" class="myp-time-dot-box" :style="mrDotBoxStyle">
-			<text :class="['myp-color-'+type, 'myp-size-'+size]" :style="dotTextStyle">{{getDot(tplIndexOfDays, tplIndexOfHours)}}</text>
+		<view v-if="indexOfDays !== -1" class="myp-time-dot-box" :style="mrDotBoxStyle">
+			<text :class="['myp-color-'+type, 'myp-size-'+size]" :style="dotTextStyle">{{getDot(indexOfDays, indexOfHours)}}</text>
 		</view>
 		
-		<view v-if="tplIndexOfHours !== -1" :class="['myp-time-box', 'myp-height-'+height, 'myp-bg-'+type, 'myp-border-'+border, 'myp-radius-'+radius]" :style="mrTimeBoxStyle">
+		<view v-if="indexOfHours !== -1" :class="['myp-time-box', 'myp-height-'+height, 'myp-bg-'+type, 'myp-border-'+border, 'myp-radius-'+radius]" :style="mrTimeBoxStyle">
 			<text :class="['myp-color-'+(type&&type.length>0?'inverse':''), 'myp-size-'+size]" :style="timeTextStyle">{{countDownData.hour}}</text>
 		</view>
-		<view v-if="tplIndexOfHours !== -1" class="myp-time-dot-box" :style="mrDotBoxStyle">
-			<text :class="['myp-color-'+type, 'myp-size-'+size]" :style="dotTextStyle">{{getDot(tplIndexOfHours, tplIndexOfMinutes)}}</text>
+		<view v-if="indexOfHours !== -1" class="myp-time-dot-box" :style="mrDotBoxStyle">
+			<text :class="['myp-color-'+type, 'myp-size-'+size]" :style="dotTextStyle">{{getDot(indexOfHours, indexOfMinutes)}}</text>
 		</view>
 		
-		<view v-if="tplIndexOfMinutes !== -1" :class="['myp-time-box', 'myp-height-'+height, 'myp-bg-'+type, 'myp-border-'+border, 'myp-radius-'+radius]" :style="mrTimeBoxStyle">
+		<view v-if="indexOfMinutes !== -1" :class="['myp-time-box', 'myp-height-'+height, 'myp-bg-'+type, 'myp-border-'+border, 'myp-radius-'+radius]" :style="mrTimeBoxStyle">
 			<text :class="['myp-color-'+(type&&type.length>0?'inverse':''), 'myp-size-'+size]" :style="timeTextStyle">{{countDownData.minute}}</text>
 		</view>
-		<view v-if="tplIndexOfMinutes !== -1" class="myp-time-dot-box" :style="mrDotBoxStyle">
-			<text :class="['myp-color-'+type, 'myp-size-'+size]" :style="dotTextStyle">{{getDot(tplIndexOfMinutes, tplIndexOfSeconds)}}</text>
+		<view v-if="indexOfMinutes !== -1" class="myp-time-dot-box" :style="mrDotBoxStyle">
+			<text :class="['myp-color-'+type, 'myp-size-'+size]" :style="dotTextStyle">{{getDot(indexOfMinutes, indexOfSeconds)}}</text>
 		</view>
 		
-		<view v-if="tplIndexOfSeconds !== -1" :class="['myp-time-box', 'myp-height-'+height, 'myp-bg-'+type, 'myp-border-'+border, 'myp-radius-'+radius]" :style="mrTimeBoxStyle">
+		<view v-if="indexOfSeconds !== -1" :class="['myp-time-box', 'myp-height-'+height, 'myp-bg-'+type, 'myp-border-'+border, 'myp-radius-'+radius]" :style="mrTimeBoxStyle">
 			<text :class="['myp-color-'+(type&&type.length>0?'inverse':''), 'myp-size-'+size]" :style="timeTextStyle">{{countDownData.second}}</text>
 		</view>
-		<view v-if="tplIndexOfSeconds !== -1" class="myp-time-dot-box" :style="mrDotBoxStyle">
-			<text :class="['myp-color-'+type, 'myp-size-'+size]" :style="dotTextStyle">{{getDot(tplIndexOfSeconds, -1)}}</text>
+		<view v-if="indexOfSeconds !== -1" class="myp-time-dot-box" :style="mrDotBoxStyle">
+			<text :class="['myp-color-'+type, 'myp-size-'+size]" :style="dotTextStyle">{{getDot(indexOfSeconds, -1)}}</text>
 		</view>
 	</view>
 </template>
@@ -105,20 +105,20 @@
 		data: () => ({
 			NOW_DATE: new Date().getTime(),
 			completed: false,
-			tplIndexOfDays: -1,
-			tplIndexOfHours: -1,
-			tplIndexOfMinutes: -1,
-			tplIndexOfSeconds: -1
+			indexOfDays: -1,
+			indexOfHours: -1,
+			indexOfMinutes: -1,
+			indexOfSeconds: -1
 		}),
 		mounted() {
 			setInterval(() => {
 				this.NOW_DATE = new Date().getTime();
 			}, this.interval);
 
-			this.tplIndexOfDays = this.tpl.indexOf('d');
-			this.tplIndexOfHours = this.tpl.indexOf('h');
-			this.tplIndexOfMinutes = this.tpl.indexOf('m');
-			this.tplIndexOfSeconds = this.tpl.indexOf('s');
+			this.indexOfDays = this.tpl.indexOf('d');
+			this.indexOfHours = this.tpl.indexOf('h');
+			this.indexOfMinutes = this.tpl.indexOf('m');
+			this.indexOfSeconds = this.tpl.indexOf('s');
 		},
 		computed: {
 			countDownData() {
@@ -143,7 +143,7 @@
 				let minute = 0;
 				let second = 0;
 
-				if (this.tplIndexOfDays !== -1) {
+				if (this.indexOfDays !== -1) {
 					day = Math.floor(timeSpacing / (24 * 60 * 60 * 1000));
 					hour = Math.floor(timeSpacing % (24 * 60 * 60 * 1000) / (60 * 60 * 1000));
 				} else {
@@ -151,7 +151,7 @@
 					hour = Math.floor(timeSpacing / (60 * 60 * 1000));
 				}
 
-				if (this.tplIndexOfHours !== -1) {
+				if (this.indexOfHours !== -1) {
 					hour = Math.floor((timeSpacing - day * 24 * 60 * 60 * 1000) / (60 * 60 * 1000));
 					minute = Math.floor((timeSpacing - day * 24 * 60 * 60 * 1000) % (60 * 60 * 1000) / (60 * 1000));
 				} else {
@@ -159,7 +159,7 @@
 					minute = Math.floor((timeSpacing - day * 24 * 60 * 60 * 1000) / (60 * 1000));
 				}
 
-				if (this.tplIndexOfMinutes !== -1) {
+				if (this.indexOfMinutes !== -1) {
 					minute = Math.floor((timeSpacing - day * 24 * 60 * 60 * 1000 - hour * 60 * 60 * 1000) / (60 * 1000));
 					second = Math.floor((timeSpacing - day * 24 * 60 * 60 * 1000 - hour * 60 * 60 * 1000) % (60 * 1000) / 1000);
 				} else {
@@ -188,7 +188,6 @@
 				return `width:${this.dotWidth};` + this.dotBoxStyle
 			}
 		},
-
 		methods: {
 			getDot(prevTagIndex, nextTagIndex = -1) {
 				if (nextTagIndex === -1) {

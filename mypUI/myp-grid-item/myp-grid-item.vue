@@ -1,8 +1,8 @@
 <template>
 	<view :class="['myp-item', flexDirection==='row' ? 'myp-item-row':'myp-item-column']" :hover-class="'myp-hover-'+hover" :style="boxStyle" bubble="true" @tap="clickedItem">
 		<text v-if="textFirst" :class="['myp-color-'+textType, 'myp-size-'+textSize]" :style="mrTextStyle">{{text}}</text>
-		<myp-icon v-if="iconKind!=='text'" :name="icon" :type="iconType" :size="iconSize" :mode="iconMode" :iconStyle="iconStyle" @iconClicked="clickedItem"></myp-icon>
-		<text v-if="iconKind==='text'" :class="['myp-color-'+iconType, 'myp-size-'+iconSize]" :style="iconStyle">{{icon}}</text>
+		<myp-icon v-if="isIcon" :name="icon" :type="iconType" :size="iconSize" :mode="iconMode" :iconStyle="iconStyle" :boxStyle="iconBoxStyle" @iconClicked="clickedItem"></myp-icon>
+		<text v-if="!isIcon" :class="['myp-color-'+iconType, 'myp-size-'+iconSize]" :style="iconStyle">{{icon}}</text>
 		<text v-if="!textFirst" :class="['myp-color-'+textType, 'myp-size-'+textSize]" :style="mrTextStyle">{{text}}</text>
 	</view>
 </template>
@@ -15,10 +15,9 @@
 				type: [String, Number],
 				default: ''
 			},
-			// icon/text
-			iconKind: {
-				type: String,
-				default: 'icon'
+			isIcon: {
+				type: Boolean,
+				default: true
 			},
 			text: {
 				type: [String, Number],
@@ -35,19 +34,19 @@
 			},
 			textType: {
 				type: String,
-				default: ''
+				default: 'text'
 			},
 			textSize: {
 				type: String,
-				default: ''
+				default: 'base'
 			},
 			iconType: {
 				type: String,
-				default: ''
+				default: 'text'
 			},
 			iconSize: {
 				type: String,
-				default: 'l'
+				default: 'll'
 			},
 			iconMode: {
 				type: String,
@@ -63,6 +62,10 @@
 			},
 			// 文字/图片/图标的样式设置
 			iconStyle: {
+				type: String,
+				default: ''
+			},
+			iconBoxStyle: {
 				type: String,
 				default: ''
 			},
@@ -85,7 +88,7 @@
 				return true
 			},
 			mrTextStyle() {
-				let _space = "margin-" + this.mode + ':' + this.space + ';'
+				const _space = "margin-" + this.mode + ':' + this.space + ';'
 				return _space + this.textStyle
 			}
 		},
@@ -101,6 +104,8 @@
 	.myp-item {
 		justify-content: center;
 		align-items: center;
+		position: relative;
+		
 		&-row {
 			flex-direction: row;
 			flex-wrap: nowrap;

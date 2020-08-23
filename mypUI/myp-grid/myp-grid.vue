@@ -2,7 +2,7 @@
 	<view :class="['myp-grid', 'myp-border-'+border, 'myp-radius-'+radius]" :style="boxStyle">
 		<view v-for="(rows, idx) in rowArr" class="myp-grid-rows" :style="mrRowStyle" :key="idx">
 			<view v-for="(item, index)  in rows" :class="['myp-grid-item', isGrid&&'myp-grid-grid', index !==0 && hasLine && 'myp-grid-item-left', idx !== 0 && hasLine && 'myp-grid-item-top']" :key="index" :style="mrItemStyle+((index===rows.length-1)?mrNoSpaceStyle:'')">
-				<myp-grid-item v-if="item" :icon="item[iconLabel]" :text="item[textLabel]" :textType="textType" :textSize="textSize" :iconType="iconType" :iconSize="iconSize" :hover="hover" :iconKind="iconKind" :mode="mode" :iconMode="iconMode" :space="iconTextSpace" :boxClass="itemBoxClass" :boxStyle="itemBoxStyle" :iconStyle="itemIconStyle" :textStyle="itemTextStyle" @itemClicked="clickedItem(idx, index, item)"></myp-grid-item>
+				<myp-grid-item v-if="item" :icon="item[iconLabel]" :text="item[textLabel]" :textType="textType" :textSize="textSize" :iconType="iconType" :iconSize="iconSize" :hover="hover" :isIcon="isIcon" :mode="mode" :iconMode="iconMode" :space="space" :boxStyle="itemBoxStyle" :iconStyle="iconStyle" :iconBoxStyle="iconBoxStyle" :textStyle="textStyle" @itemClicked="clickedItem(idx, index, item)"></myp-grid-item>
 			</view>
 		</view>
 	</view>
@@ -15,9 +15,6 @@
 				type: Array,
 				default: ()=>{return []}
 			},
-			// 为了广大福利群众可以直接使用grid组件实现items的各种布局
-			// 特意增加flex属性，来实现其它布局。默认grid是各个item等分一行的宽度。
-			// 有时候您可能不需要等宽占满的情况，比如space-between，或者center等
 			flex: {
 				type: String,
 				default: 'grid'
@@ -49,7 +46,7 @@
 				type: Boolean,
 				default: true
 			},
-			iconTextSpace: {
+			space: {
 				type: String,
 				default: '12rpx'
 			},
@@ -89,9 +86,9 @@
 				type: String,
 				default: 'text'
 			},
-			iconKind: {
-				type: String,
-				default: 'icon'
+			isIcon: {
+				type: Boolean,
+				default: true
 			},
 			// icon为图片时的mode
 			iconMode: {
@@ -102,21 +99,19 @@
 				type: String,
 				default: ''
 			},
-			// item
-			itemBoxClass: {
-				type: String,
-				default: ''
-			},
 			itemBoxStyle: {
 				type: String,
 				default: ''
 			},
-			// 文字/图片/图标的样式设置
-			itemIconStyle: {
+			iconStyle: {
 				type: String,
 				default: ''
 			},
-			itemTextStyle: {
+			iconBoxStyle: {
+				type: String,
+				default: ''
+			},
+			textStyle: {
 				type: String,
 				default: ''
 			}

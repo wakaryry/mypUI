@@ -11,7 +11,7 @@
 			<view style="height: 24rpx;"></view>
 			<myp-grid :hasLine="false" border="none" flex="center" itemWidth="160rpx" :items="itemsTwo" :columns="3" iconLabel="icon" iconType="warning" textLabel="name" itemHeight="160rpx" boxStyle="margin-left:32rpx;margin-right:32rpx;background-color:#FFFFFF;"></myp-grid>
 			<view style="height: 24rpx;"></view>
-			<myp-grid :hasLine="false" border="none" flex="center" itemWidth="160rpx" :items="itemsThree" :columns="3" iconKind="text" iconLabel="icon" iconType="third" iconSize="ll" textLabel="name" iconTextSpace="24rpx" itemHeight="160rpx" boxStyle="margin-left:32rpx;margin-right:32rpx;background-color:#FFFFFF;"></myp-grid>
+			<myp-grid :hasLine="false" border="none" flex="center" itemWidth="160rpx" :items="itemsThree" :columns="3" :isIcon="false" iconLabel="icon" iconType="third" iconSize="ll" textLabel="name" space="24rpx" itemHeight="160rpx" boxStyle="margin-left:32rpx;margin-right:32rpx;background-color:#FFFFFF;"></myp-grid>
 			<view style="height: 24rpx;"></view>
 		</scroll-view>
 		<myp-toast ref="myp-toast"></myp-toast>

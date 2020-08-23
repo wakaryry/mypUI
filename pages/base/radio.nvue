@@ -7,17 +7,17 @@
 			</myp-list-cell>
 			<myp-list-cell>
 				<view style="margin: 32rpx;">
-					<myp-check v-model="model" mode="check" :items="items1" direction="right" :isBetween="true" itemBoxStyle="background-color:#F5F7F9;padding-left:32rpx;padding-right:32rpx;" boxStyle="border-radius:16rpx;overflow:hidden;"></myp-check>
+					<myp-check v-model="model" icon="circle" checkedIcon="radio" :items="items1" direction="right" :isBetween="true" itemBoxStyle="background-color:#F5F7F9;padding-left:32rpx;padding-right:32rpx;" boxStyle="border-radius:16rpx;overflow:hidden;"></myp-check>
 				</view>
 			</myp-list-cell>
 			<myp-list-cell>
 				<view style="margin: 32rpx;">
-					<myp-check type="success" v-model="model1" mode="box-fill-check" :limits="3" :items="items1" direction="right" :isBetween="true" itemBoxStyle="border-bottom-width:1px;border-bottom-color:#F5F7F9;"></myp-check>
+					<myp-check v-model="model1" icon="circle" checkedIcon="radio" :limits="3" :items="items1" direction="right" :isBetween="true" itemBoxStyle="border-bottom-width:1px;border-bottom-color:#F5F7F9;"></myp-check>
 				</view>
 			</myp-list-cell>
 			<myp-list-cell>
 				<view style="margin: 32rpx;">
-					<myp-check type="error" v-model="model2" flex="column" :limits="2" :items="items2" titleLabel="title" valueLabel="value" disabledLabel="disabled" itemSpace="16rpx"></myp-check>
+					<myp-check v-model="model2" icon="circle" checkedIcon="radio" flex="column" :limits="2" :items="items2" textLabel="title" valueLabel="value" disabledLabel="disabled" itemSpace="16rpx"></myp-check>
 				</view>
 			</myp-list-cell>
 		</myp-list-simple>

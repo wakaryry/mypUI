@@ -1,8 +1,8 @@
 <template>
 	<view :class="flex === 'row' ? 'myp-row-radio' : 'myp-column-radio'" :style="boxStyle">
-		<view v-for="(item, idx) in updatedItems" :key="idx" :class="['myp-radios-item', 'myp-height-'+height]" :style="'margin-right:'+((flex==='column'&&idx !== updatedItems.length-1) ? itemSpace : '0')+';'+itemBoxStyle">
+		<view v-for="(item, idx) in updatedItems" :key="idx" :class="['myp-radios-item', 'myp-height-'+height]" :style="'margin-right:'+((flex==='column'&&idx !== updatedItems.length-1) ? itemSpace : '0')+';'+itemBoxStyle" @tap.stop="toUpdateItemCheck(idx)">
 			<view style="flex: 1;">
-				<myp-check-item :titleType="titleType" :checkedTitleType="checkedTitleType" :disabledTitleType="disabledTitleType" :iconType="iconType" :checkedIconType="checkedIconType" :disabledIconType="disabledIconType" :titleSize="titleSize" :space="iconTitleSpace" :iconSize="iconSize" :boxStyle="itemStyle" :iconStyle="iconStyle" :checkedIconStyle="checkedIconStyle" :disabledIconStyle="disabledIconStyle" :titleStyle="titleStyle" :checkedTitleStyle="checkedTitleStyle" :disabledTitleStyle="disabledTitleStyle" :mode="mode" :direction="direction" :title="item[tl]" :value="item[vl]" :disabled="disabled || item[dl]" :checked="item['myp-checked']" :isBetween="isBetween" @radioClicked="toUpdateItemCheck(idx)"></myp-check-item>
+				<myp-check-item :textType="textType" :checkedTextType="checkedTextType" :disabledTextType="disabledTextType" :iconType="iconType" :checkedIconType="checkedIconType" :disabledIconType="disabledIconType" :textSize="textSize" :space="space" :iconSize="iconSize" :boxStyle="itemStyle" :iconStyle="iconStyle" :iconBoxStyle="iconBoxStyle" :checkedIconStyle="checkedIconStyle" :disabledIconStyle="disabledIconStyle" :textStyle="textStyle" :checkedTextStyle="checkedTextStyle" :disabledTextStyle="disabledTextStyle" :direction="direction" :icon="icon" :checkedIcon="checkedIcon" :text="item[tl]" :value="item[vl]" :disabled="disabled || item[dl]" :checked="item['myp-checked']" :isBetween="isBetween" @radioClicked="toUpdateItemCheck(idx)"></myp-check-item>
 			</view>
 		</view>
 	</view>
@@ -11,12 +11,14 @@
 <script>
 	export default {
 		props: {
-			// radio/radio-fill/circle-check/box-check/circle-fill-check/box-fill-check/check
-			mode: {
+			icon: {
 				type: String,
-				default: 'radio'
+				default: ''
 			},
-			// radio logo in left or right
+			checkedIcon: {
+				type: String,
+				default: ''
+			},
 			direction: {
 				type: String,
 				default: 'left'
@@ -53,16 +55,15 @@
 				type: Boolean,
 				default: false
 			},
-			// 我们可以直接使用titleLabel获取title内容
-			titleLabel: {
+			// 我们可以直接使用textLabel获取text内容
+			textLabel: {
 				type: String,
 				default: null
 			},
-			// 我们也可以利用格式化来决定title内容
+			// 我们也可以利用格式化来决定text内容
 			// 这样可以一次性输出几个key的内容
 			// 比如 '{name} (ID:{id})'
-			// 我们将解析该字符串，然后插入举腿数据
-			titleFormat: {
+			textFormat: {
 				type: String,
 				default: ''
 			},
@@ -86,15 +87,15 @@
 				type: String,
 				default: '16rpx'
 			},
-			titleType: {
+			textType: {
 				type: String,
 				default: ''
 			},
-			checkedTitleType: {
+			checkedTextType: {
 				type: String,
 				default: ''
 			},
-			disabledTitleType: {
+			disabledTextType: {
 				type: String,
 				default: 'disabled'
 			},
@@ -110,7 +111,7 @@
 				type: String,
 				default: 'disabled'
 			},
-			titleSize: {
+			textSize: {
 				type: String,
 				default: ''
 			},
@@ -118,19 +119,19 @@
 				type: String,
 				default: ''
 			},
-			iconTitleSpace: {
+			space: {
 				type: String,
 				default: '12rpx'
 			},
-			titleStyle: {
+			textStyle: {
 				type: String,
 				default: ''
 			},
-			disabledTitleStyle: {
+			disabledTextStyle: {
 				type: String,
 				default: ''
 			},
-			checkedTitleStyle: {
+			checkedTextStyle: {
 				type: String,
 				default: ''
 			},
@@ -139,6 +140,10 @@
 				default: 'l'
 			},
 			iconStyle: {
+				type: String,
+				default: ''
+			},
+			iconBoxStyle: {
 				type: String,
 				default: ''
 			},
@@ -157,7 +162,7 @@
 		},
 		computed: {
 			tl() {
-				return 'title'
+				return 'text'
 			},
 			vl() {
 				return 'value'
@@ -231,22 +236,22 @@
 							break
 						}
 					}
-					if (that.titleFormat) {
-						const title_str = that.titleFormat.replace(/{\w+}/g, result => {
+					if (that.textFormat) {
+						const text_str = that.textFormat.replace(/{\w+}/g, result => {
 							const key = result.substring(1, result.length-1)
 							const _str = item[key]
 							return _str || ''
 						})
 						upList.push({
-							[this.tl]: title_str,
+							[this.tl]: text_str,
 							[this.vl]: item[that.valueLabel],
 							[this.dl]: item[that.disabledLabel],
 							'myp-checked': flag
 						})
 					} else {
-						if (that.titleLabel) {
+						if (that.textLabel) {
 							upList.push({
-								[this.tl]: item[that.titleLabel],
+								[this.tl]: item[that.textLabel],
 								[this.vl]: item[that.valueLabel],
 								[this.dl]: item[that.disabledLabel],
 								'myp-checked': flag

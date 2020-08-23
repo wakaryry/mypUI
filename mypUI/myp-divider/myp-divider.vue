@@ -1,6 +1,6 @@
 <template>
-	<view :style="mrBoxStyle">
-		<view :class="['myp-bg-'+(type&&type.length>0?type:'border')]" :style="mrDividerStyle"></view>
+	<view :class="['myp-bg-'+boxBgType]" :style="mrBoxStyle">
+		<view :class="['myp-bg-'+bgType]" :style="mrDividerStyle"></view>
 	</view>
 </template>
 
@@ -11,15 +11,19 @@
 				type: Boolean,
 				default: false
 			},
+			bgType: {
+				type: String,
+				default: 'border'
+			},
+			boxBgType: {
+				type: String,
+				default: 'inverse'
+			},
 			boxBg: {
 				type: String,
 				default: ''
 			},
 			bg: {
-				type: String,
-				default: ''
-			},
-			type: {
 				type: String,
 				default: ''
 			},

@@ -250,8 +250,6 @@
 </script>
 
 <style lang="scss" scoped>
-	@import '../base.scss';
-	
 	.myp-stepper {
 		flex-direction: row;
 		

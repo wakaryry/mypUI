@@ -265,7 +265,6 @@
 </script>
 
 <style lang="scss" scoped>
-	@import '../base.scss';
 	.myp-picker {
 		&-box {
 			overflow: hidden;

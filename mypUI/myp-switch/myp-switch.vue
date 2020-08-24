@@ -161,5 +161,4 @@
 </script>
 
 <style lang="scss" scoped>
-	@import '../base.scss';
 </style>

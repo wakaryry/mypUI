@@ -206,7 +206,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import '../base.scss';
+@import '../mypui.scss';
 
 .myp-index {
 	position: relative;

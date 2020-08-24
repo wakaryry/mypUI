@@ -189,6 +189,21 @@ function paramsToObj(str) {
 	return obj;
 }
 
+// only simple css to js
+function cssToJs(str) {
+	const arr = (str||'').split(';')
+	const a = {}
+	arr.forEach(val => {
+		if (val && val.length >= 3) {
+			const b = val.trim().split(':')
+			const attr = b[0].trim()
+			const value = b[1].trim()
+			a[attr] = value
+		}
+	})
+	return a
+}
+
 module.exports = {
 	isSrc,
 	isPlainObject,
@@ -205,5 +220,6 @@ module.exports = {
 	derepeatArray,
 	truncateString,
 	objToParams,
-	paramsToObj
+	paramsToObj,
+	cssToJs
 }

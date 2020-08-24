@@ -11,8 +11,7 @@
 
 <script>
 	// animation的transtion中 needLayout (boolean)：动画执行是否影响布局，默认值是false
-	// 当然考虑到低端机器的兼容（打开会卡），暂时关闭，配合style来处理占位问题
-	// 后期考虑直接使用needLayout
+	// 考虑到低端机器的兼容（打开会卡），使用false，配合style来处理占位问题
 	// 
 	// #ifdef APP-NVUE
 	const dom = weex.requireModule('dom');

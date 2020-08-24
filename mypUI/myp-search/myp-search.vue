@@ -172,8 +172,6 @@
 </script>
 
 <style lang="scss" scoped>
-	@import '../base.scss';
-	
 	.myp-search {
 		position: relative;
 		

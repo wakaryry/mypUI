@@ -56,7 +56,7 @@
 			</myp-list-cell>
 			<myp-list-cell>
 				<view class="bi-margin">
-					<myp-input bgType="success" label="您的名字" valueAlign="right" placeholder="请输入您的名字" boxStyle="padding-left:10rpx;padding-right:10rpx" radius="base" border="none"></myp-input>
+					<myp-input bgType="success" label="您的名字" valueAlign="right" placeholder="请输入您的名字" placeType="inverse" boxStyle="padding-left:10rpx;padding-right:10rpx" radius="base" border="none"></myp-input>
 				</view>
 			</myp-list-cell>
 			<myp-list-cell>

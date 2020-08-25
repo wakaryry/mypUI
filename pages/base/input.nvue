@@ -8,7 +8,7 @@
 			<myp-list-cell>
 				<view class="bi-margin">
 					<myp-input v-model="phone" mode="number" :maxlength="11" icon="phone" height="l" placeholder="输入手机号" space="20rpx" boxStyle="padding-left:10rpx;padding-right:10rpx;"></myp-input>
-					<myp-input v-model="password" :maxlength="24" :isSecret="pwdNoVisible" :action="rightEye" icon="lock" height="l" placeholder="密码" space="20rpx" boxStyle="padding-left:10rpx;padding-right:10rpx;" @rightAction="togglePwdVisible"></myp-input>
+					<myp-input v-model="password" :maxlength="24" :password="pwdNoVisible" :indicator="rightEye" icon="lock" height="l" placeholder="密码" space="20rpx" boxStyle="padding-left:10rpx;padding-right:10rpx;" @indicatorClicked="togglePwdVisible"></myp-input>
 				</view>
 			</myp-list-cell>
 			<myp-list-cell>
@@ -28,7 +28,7 @@
 			</myp-list-cell>
 			<myp-list-cell>
 				<view class="bi-margin">
-					<myp-input v-model="phone2" :maxlength="13" icon="phone" iconSize="ll" height="l" :format="[3,4,4]" placeholder="输入手机号" separator="-" space="20rpx" boxStyle="padding-left:10rpx;padding-right:10rpx;" inputStyle="font-size:36rpx;font-weight:500;"></myp-input>
+					<myp-input v-model="phone2" :maxlength="13" icon="phone" iconSize="ll" height="l" :format="[3,4,4]" placeholder="输入手机号" separator="-" space="20rpx" boxStyle="padding-left:10rpx;padding-right:10rpx;" valueStyle="font-size:36rpx;font-weight:700;"></myp-input>
 				</view>
 			</myp-list-cell>
 			<myp-list-cell>

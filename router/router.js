@@ -8,7 +8,6 @@ export default {
 	base_tag: '/pages/base/tag',
 	base_radio: '/pages/base/radio',
 	base_search: '/pages/base/search',
-	base_segment: '/pages/base/segment',
 	base_stepper: '/pages/base/stepper',
 	base_switch: '/pages/base/switch',
 	base_title: '/pages/base/title',

@@ -92,15 +92,6 @@ export default {
 				identity: '鬼畜大叔',
 				page: 'base_stepper'
 			}, {
-				name: '分段器',
-				avatar: 'https://cdn.img.wenhairu.com/images/2020/05/23/YT7Qg.jpg',
-				desc: '16.2万粉丝',
-				content: 'segment',
-				cover: 'https://cdn.img.wenhairu.com/images/2020/05/23/YOX8A.jpg',
-				badge: 4,
-				identity: '作词填取',
-				page: 'base_segment'
-			}, {
 				name: '搜索框',
 				avatar: 'https://cdn.img.wenhairu.com/images/2020/05/23/YT54T.jpg',
 				desc: '36.9万粉丝',

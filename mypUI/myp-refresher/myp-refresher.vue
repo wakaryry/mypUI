@@ -28,7 +28,7 @@
 			},
 			refreshingText: {
 				type: String,
-				default: '加载中...'
+				default: '正在努力加载...'
 			},
 			refreshing: {
 				type: Boolean,

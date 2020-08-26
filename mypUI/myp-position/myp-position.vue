@@ -1,5 +1,5 @@
 <template>
-	<view :class="['myp-foot', fixed&&'myp-foot-fixed']" :style="mrBoxStyle">
+	<view :class="['myp-foot', 'myp-bg-'+bgType, fixed&&'myp-foot-fixed']" :style="mrBoxStyle">
 		<slot></slot>
 	</view>
 </template>
@@ -21,6 +21,10 @@
 			offset: {
 				type: String,
 				default: '0px'
+			},
+			bgType: {
+				type: String,
+				default: ''
 			},
 			boxStyle: {
 				type: String,

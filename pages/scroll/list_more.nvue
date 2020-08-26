@@ -1,13 +1,13 @@
 <template>
 	<view>
 		<myp-navbar :lefts="leftIcons" title="myp-list with loadmore" @leftAction="navLeftAction"></myp-navbar>
-		<myp-list-more ref="myp-list" :autoUpdate="true" @down="toLoadData" @up="toLoadData">
+		<myp-list ref="myp-list" :autoUpdate="true" @down="toLoadData" @up="toLoadData">
 			<myp-list-cell v-for="(item,idx) in items" :key="idx">
 				<view class="slthree-item">
 					<text class="slthree-item-text">{{item}}</text>
 				</view>
 			</myp-list-cell>
-		</myp-list-more>
+		</myp-list>
 	</view>
 </template>
 

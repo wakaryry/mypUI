@@ -1,9 +1,16 @@
 <template>
 	<view class="myp-result" :style="boxStyle">
 		<view :style="{height: top}"></view>
-		<image :src="icon" mode="aspectFill" :style="iconStyle"></image>
-		<view :style="{height: space}"></view>
-		<text :class="['myp-color-'+descType, 'myp-size-'+descSize]" :style="descStyle"></text>
+		<slot name="icon">
+			<myp-icon :name="icon" :type="iconType" :size="iconSize" :iconStyle="iconStyle" :boxStyle="iconBoxStyle"></myp-icon>
+		</slot>
+		<slot name="title">
+			<text :class="['myp-color-'+titleType, 'myp-size-'+titleSize]" :style="titleStyle">{{title}}</text>
+		</slot>
+		<slot name="desc">
+			<text :class="['myp-color-'+descType, 'myp-size-'+descSize]" :style="descStyle">{{desc}}</text>
+		</slot>
+		<slot name="extra"></slot>
 	</view>
 </template>
 
@@ -14,17 +21,29 @@
 				type: String,
 				default: '260rpx'
 			},
-			space: {
-				type: String,
-				default: '50rpx'
-			},
 			icon: {
+				type: String,
+				default: ''
+			},
+			title: {
 				type: String,
 				default: ''
 			},
 			desc: {
 				type: String,
 				default: '暂时还没有数据'
+			},
+			titleType: {
+				type: String,
+				default: 'second'
+			},
+			titleSize: {
+				type: String,
+				default: 'll'
+			},
+			titleStyle: {
+				type: String,
+				default: ''
 			},
 			descType: {
 				type: String,
@@ -34,11 +53,23 @@
 				type: String,
 				default: 'base'
 			},
+			descStyle: {
+				type: String,
+				default: ''
+			},
+			iconType: {
+				type: String,
+				default: 'second'
+			},
+			iconSize: {
+				type: String,
+				default: 'll'
+			},
 			iconStyle: {
 				type: String,
 				default: ''
 			},
-			descStyle: {
+			iconBoxStyle: {
 				type: String,
 				default: ''
 			},

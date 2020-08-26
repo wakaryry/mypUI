@@ -7,10 +7,7 @@
 </template>
 
 <script>
-	import pxMixin from '../myp-mixin/pxMixin.js'
-	
 	export default {
-		mixins: [pxMixin],
 		props: {
 			bgType: {
 				type: String,
@@ -21,11 +18,11 @@
 				default: 'flex-start'
 			},
 			width: {
-				type: [String, Number],
+				type: String,
 				default: '750rpx'
 			},
 			height: {
-				type: [String, Number],
+				type: String,
 				default: '260px'
 			},
 			boxStyle: {
@@ -39,8 +36,8 @@
 		},
 		computed: {
 			mrScrollStyle() {
-				let _style = "width:" + this.widthPx + 'px;'
-				_style += "height:" + this.heightPx + 'px;'
+				let _style = "width:" + this.width + ';'
+				_style += "height:" + this.height + ';'
 				// #ifdef APP-NVUE
 				_style += `flex-direction:row;justify-content:${this.justify};`
 				// #endif
@@ -49,15 +46,9 @@
 			mrContentStyle() {
 				let _style = `flex-direction:row;justify-content:${this.justify};flex-wrap:nowrap;`
 				if (this.justify != 'flex-start') {
-					_style += "width:" + this.widthPx + 'px;'
+					_style += "width:" + this.width + ';'
 				}
 				return _style + this.contentStyle
-			},
-			widthPx() {
-				return this.mypToPx(this.width)
-			},
-			heightPx() {
-				return this.mypToPx(this.height)
 			}
 		}
 	}

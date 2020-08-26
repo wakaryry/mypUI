@@ -1,35 +1,27 @@
 <template>
-	<view v-if="showing" bubble="true" :class="['myp-noticebar', 'myp-bg-'+bgType, 'myp-height-'+height, 'myp-border-'+border, 'myp-radius-'+radius]" :style="boxStyle" @tap.stop="noticeBarClicked">
-		<view v-if="icon" :style="{'margin-right': space}">
-			<myp-icon :name="icon" :type="mrIconType" :size="iconSize" :iconStyle="iconStyle" @iconClicked="noticeBarClicked"></myp-icon>
-		</view>
-		<text :class="['myp-noticebar-text', 'myp-size-'+textSize, 'myp-color-'+mrTextType]" :style="textStyle">{{text}}</text>
-		<view v-if="indicator" bubble="true" :style="{'margin-left': space}" @tap.stop="indicatorClicked">
-			<myp-icon :name="indicator" :type="mrIndicatorType" :size="indicatorSize" :iconStyle="indicatorStyle" @iconClicked="indicatorClicked"></myp-icon>
-		</view>
+	<view v-if="showing" :class="['myp-noticebar', 'myp-bg-'+bgType, 'myp-height-'+height, 'myp-border-'+border, 'myp-radius-'+radius]" :style="boxStyle" bubble="true" @tap.stop="noticeBarClicked">
+		<myp-icon v-if="icon" :name="icon" :type="iconType" :size="iconSize" :iconStyle="iconStyle" :boxStyle="'margin-right:'+space+';'+iconBoxStyle" @iconClicked="noticeBarClicked"></myp-icon>
+		<text :class="['myp-noticebar-text', 'myp-size-'+textSize, 'myp-color-'+textType]" :style="textStyle">{{text}}</text>
+		<myp-icon v-if="indicator" :name="indicator" :type="indicatorType" :size="indicatorSize" :iconStyle="indicatorStyle" :boxStyle="'margin-left:'+space+';'+indicatorBoxStyle" @iconClicked="indicatorClicked"></myp-icon>
 	</view>
 </template>
 
 <script>
 	export default {
 		props: {
+			icon: {
+				type: String,
+				default: null
+			},
 			text: {
 				type: String,
 				default: ''
 			},
-			textSize: {
+			indicator: {
 				type: String,
-				default: 'base'
+				default: null
 			},
 			bgType: {
-				type: String,
-				default: ''
-			},
-			textType: {
-				type: String,
-				default: ''
-			},
-			iconType: {
 				type: String,
 				default: ''
 			},
@@ -45,9 +37,17 @@
 				type: String,
 				default: ''
 			},
-			icon: {
+			textType: {
 				type: String,
-				default: null
+				default: ''
+			},
+			textSize: {
+				type: String,
+				default: 'base'
+			},
+			iconType: {
+				type: String,
+				default: ''
 			},
 			iconSize: {
 				type: String,
@@ -56,10 +56,6 @@
 			iconStyle: {
 				type: String,
 				default: ''
-			},
-			indicator: {
-				type: String,
-				default: null
 			},
 			indicatorType: {
 				type: String,
@@ -77,12 +73,19 @@
 				type: String,
 				default: '12rpx'
 			},
-			// color, lines, text-align...
 			textStyle: {
 				type: String,
 				default: ''
 			},
 			boxStyle: {
+				type: String,
+				default: ''
+			},
+			iconBoxStyle: {
+				type: String,
+				default: ''
+			},
+			indicatorBoxStyle: {
 				type: String,
 				default: ''
 			},
@@ -94,26 +97,6 @@
 		data: () => ({
 			showing: true
 		}),
-		computed: {
-			mrTextType() {
-				if (this.textType && this.textType.length > 0) {
-					return this.textType
-				}
-				return this.bgType && this.bgType.length > 0 ? 'inverse' : 'text'
-			},
-			mrIconType() {
-				if (this.iconType && this.iconType.length > 0) {
-					return this.iconType
-				}
-				return this.bgType && this.bgType.length > 0 ? 'inverse' : 'text'
-			},
-			mrIndicatorType() {
-				if (this.indicatorType && this.indicatorType.length > 0) {
-					return this.indicatorType
-				}
-				return this.bgType && this.bgType.length > 0 ? 'inverse' : 'text'
-			}
-		},
 		methods: {
 			show() {
 				this.showing = true

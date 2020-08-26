@@ -1,17 +1,13 @@
 <template>
-	<view :class="['myp-sl', 'myp-bg-'+bgType, 'myp-height-'+height, 'myp-border-'+border, 'myp-radius-'+radius]" :hover-class="'myp-hover-'+hover" :style="boxStyle" @tap="toSelect">
-		<view v-if="icon&&icon.length>0" :style="{'margin-right': space}">
-			<myp-icon :name="icon" :type="mrIconType" :size="iconSize" :iconStyle="iconStyle"></myp-icon>
-		</view>
+	<view :class="['myp-sl', 'myp-bg-'+bgType, 'myp-height-'+height, 'myp-border-'+border, 'myp-radius-'+radius]" :hover-class="'myp-hover-'+hover" :style="boxStyle" @tap.stop="toSelect">
+		<myp-icon v-if="icon&&icon.length>0" :name="icon" :type="iconType" :size="iconSize" :iconStyle="iconStyle" :boxStyle="'margin-right:'+space+';'+iconBoxStyle" @iconClicked="toSelect"></myp-icon>
 		<slot name="label">
-			<text v-if="label&&label.length>0" :class="['myp-color-'+mrLabelType, 'myp-size-'+labelSize]" :style="mrLabelStyle">{{label||''}}</text>
+			<text v-if="label&&label.length>0" :class="['myp-color-'+labelType, 'myp-size-'+labelSize]" :style="'margin-right:'+space+';'+labelStyle">{{label}}</text>
 		</slot>
-		<text v-if="shouldShowPlace" :class="['myp-sl-value', 'myp-color-'+mrPlaceType, 'myp-size-'+placeSize]" :style="mrPlaceStyle">{{placeholder||''}}</text>
-		<text v-else :class="['myp-sl-value', 'myp-color-'+mrValueType, 'myp-size-'+valueSize]" :style="mrValueStyle">{{value||''}}</text>
+		<text v-if="shouldShowPlace" :class="['myp-sl-value', 'myp-color-'+placeType, 'myp-size-'+placeSize]" :style="'text-align:'+valueAlign+';'+placeStyle">{{placeholder}}</text>
+		<text v-else :class="['myp-sl-value', 'myp-color-'+valueType, 'myp-size-'+valueSize]" :style="'text-align:'+valueAlign+';'+valueStyle">{{value}}</text>
 		<slot name="extra"></slot>
-		<view v-if="indicator&&indicator.length>0" :style="{'margin-left': space}">
-			<myp-icon :name="indicator" :type="mrIndicatorType" :size="indicatorSize" :iconStyle="indicatorStyle"></myp-icon>
-		</view>
+		<myp-icon v-if="indicator&&indicator.length>0" :name="indicator" :type="indicatorType" :size="indicatorSize" :iconStyle="indicatorStyle" :boxStyle="'margin-left:'+space+';'+indicatorBoxStyle" @iconClicked="toSelect"></myp-icon>
 	</view>
 </template>
 
@@ -126,6 +122,14 @@
 			indicatorStyle: {
 				type: String,
 				default: ''
+			},
+			iconBoxStyle: {
+				type: String,
+				default: ''
+			},
+			indicatorBoxStyle: {
+				type: String,
+				default: ''
 			}
 		},
 		computed: {
@@ -134,50 +138,11 @@
 					return true
 				}
 				return false
-			},
-			mrIconType() {
-				if (this.iconType && this.iconType.length > 0) {
-					return this.iconType
-				}
-				return this.bgType&&this.bgType.length>0 ? 'inverse':''
-			},
-			mrLabelType() {
-				if (this.labelType && this.labelType.length > 0) {
-					return this.labelType
-				}
-				return this.bgType&&this.bgType.length>0 ? 'inverse':''
-			},
-			mrLabelStyle() {
-				let _style = `margin-right:${this.space};`
-				return _style + this.labelStyle
-			},
-			mrValueType() {
-				if (this.valueType && this.valueType.length > 0) {
-					return this.valueType
-				}
-				return this.bgType&&this.bgType.length>0 ? 'inverse':''
-			},
-			mrPlaceType() {
-				if (this.placeType && this.placeType.length > 0) {
-					return this.placeType
-				}
-				return this.bgType&&this.bgType.length>0 ? 'inverse':'place'
-			},
-			mrIndicatorType() {
-				if (this.indicatorType&&this.indicatorType.length>0) {
-					return this.indicatorType
-				}
-				return this.bgType&&this.bgType.length>0 ? 'inverse':''
-			},
-			mrPlaceStyle() {
-				return `text-align:${this.valueAlign};` + this.placeStyle
-			},
-			mrValueStyle() {
-				return `text-align:${this.valueAlign};` + this.valueStyle
 			}
 		},
 		methods: {
-			toSelect() {
+			toSelect(e) {
+				e.stopPropagation && e.stopPropagation()
 				this.$emit("selected")
 			}
 		}
@@ -185,7 +150,6 @@
 </script>
 
 <style lang="scss" scoped>
-	@import '../base.scss';
 	.myp-sl {
 		flex-direction: row;
 		align-items: center;

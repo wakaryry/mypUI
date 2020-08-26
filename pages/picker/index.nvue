@@ -12,7 +12,7 @@
 				<myp-cell title="自定义动态数据" :value="pcaText||'省市区动态与缓存'" valueStyle="text-align:right;" border="bottom" radius="none" indicator="right" boxStyle="padding-left:32rpx;padding-right:32rpx;" @cellClicked="toShowPca"></myp-cell>
 			</myp-list-cell>
 		</myp-list-simple>
-		<myp-picker :show="pickerVisible" :value="temp.val" :mode="temp.mode" @cancel="toHidePicker" @confirm="toConfirmPicker"></myp-picker>
+		<myp-picker-time :show="pickerVisible" :value="temp.val" :mode="temp.mode" @cancel="toHidePicker" @confirm="toConfirmPicker"></myp-picker-time>
 		<myp-picker :show="s1Visible" :value="s1Val" :selections="s1" mode="s1" @cancel="toHideS" @confirm="toConfirmS1"></myp-picker>
 		<myp-picker :show="s2Visible" :value="s2Val" :selections="updatedS2" mode="s2" :labelProps="labelTags" @cancel="toHideS" @confirm="toConfirmS2"></myp-picker>
 		<myp-picker :show="s3Visible" :value="s3Val" :selections="pcas" mode="s3" :labelProps="labelTags" @cancel="toHideS" @confirm="toConfirmS3"></myp-picker>

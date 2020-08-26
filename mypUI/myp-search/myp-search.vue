@@ -1,15 +1,13 @@
 <template>
 	<view>
 		<view v-if="position==='left'&&fixIcon" :class="['myp-search', 'myp-bg-'+bgType, 'myp-border-'+border, 'myp-radius-'+radius, 'myp-height-'+height, 'myp-search-fix']" :style="boxStyle">
-			<view v-if="icon&&icon.length>0" :style="{'margin-right': iconTextSpace}">
-				<myp-icon :name="icon" :type="showPlaceholder?placeIconType:iconType" :size="iconSize" :iconStyle="iconStyle"></myp-icon>
-			</view>
-			<view :class="['myp-search-fix-full', 'myp-height-'+height]" :style="fixBoxStyle">
+			<myp-icon v-if="icon&&icon.length>0" :name="icon" :type="showPlaceholder?placeIconType:iconType" :size="iconSize" :iconStyle="iconStyle" :boxStyle="'margin-right:'+iconTextSpace+';'"></myp-icon>
+			<view :class="['myp-search-fix-full', 'myp-height-'+height]" :style="mrFixBoxStyle">
 				<view :class="['myp-search-place']" :style="placeBoxStyle">
 					<text :class="['myp-search-place-text', 'myp-color-'+placeType, 'myp-size-'+placeSize]" :style="placeStyle">{{showPlaceholder?placeholder:''}}</text>
 				</view>
-				<view :class="['myp-search-input', 'myp-height-'+height]" :style="inputBoxStyle">
-					<input :value="inputValue" confirm-type="search" :class="['myp-search-input-input', 'myp-color-'+valueType, 'myp-size-'+valueSize]" :style="inputStyle" @input="toInput" @confirm="toConfirm" />
+				<view :class="['myp-search-input', 'myp-height-'+height]" :style="valueBoxStyle">
+					<input :value="inputValue" confirm-type="search" :class="['myp-search-input-input', 'myp-color-'+valueType, 'myp-size-'+valueSize]" :style="valueStyle" @input="toInput" @confirm="toConfirm" />
 				</view>
 			</view>
 			<slot name="extra"></slot>
@@ -21,8 +19,8 @@
 				</view>
 				<text :class="['myp-color-'+placeType, 'myp-size-'+placeSize]" :style="placeStyle">{{showPlaceholder?placeholder:''}}</text>
 			</view>
-			<view :class="['myp-search-input', 'myp-height-'+height]" :style="mrInputBoxStyle">
-				<input :value="inputValue" confirm-type="search" :class="['myp-search-input-input', 'myp-search-input-'+position, 'myp-color-'+valueType, 'myp-size-'+valueSize]" :style="inputStyle" @input="toInput" @confirm="toConfirm" />
+			<view :class="['myp-search-input', 'myp-height-'+height]" :style="mrValueBoxStyle">
+				<input :value="inputValue" confirm-type="search" :class="['myp-search-input-input', 'myp-search-input-'+position, 'myp-color-'+valueType, 'myp-size-'+valueSize]" :style="valueStyle" @input="toInput" @confirm="toConfirm" />
 			</view>
 			<slot name="extra"></slot>
 		</view>
@@ -30,6 +28,8 @@
 </template>
 
 <script>
+	import {cssToJs} from '../utils/utils.js'
+	
 	export default {
 		props: {
 			value: {
@@ -110,10 +110,6 @@
 				type: String,
 				default: 'padding-left:32rpx;padding-right:32rpx;'
 			},
-			fixBoxStyle: {
-				type: String,
-				default: ''
-			},
 			iconStyle: {
 				type: String,
 				default: ''
@@ -122,11 +118,11 @@
 				type: String,
 				default: ''
 			},
-			inputBoxStyle: {
+			valueBoxStyle: {
 				type: String,
 				default: ''
 			},
-			inputStyle: {
+			valueStyle: {
 				type: String,
 				default: ''
 			},
@@ -148,10 +144,21 @@
 				return `padding-left:${this.space};padding-right:${this.space};` + this.boxStyle
 			},
 			mrInputBoxStyle() {
-				return `padding-left:${this.space};padding-right:${this.space};` + this.inputBoxStyle
+				return `padding-left:${this.space};padding-right:${this.space};` + this.valueBoxStyle
 			},
 			mrPlaceBoxStyle() {
 				return `padding-left:${this.space};padding-right:${this.space};` + this.placeBoxStyle
+			},
+			mrFixBoxStyle() {
+				if (this.fixIcon) {
+					if (this.boxStyle && this.boxStyle.length >= 10) {
+						const cssJs = cssToJs(this.boxStyle)
+						if (cssJs.height) {
+							return `height:${cssJs.height};`
+						}
+					}
+				}
+				return ''
 			}
 		},
 		watch: {

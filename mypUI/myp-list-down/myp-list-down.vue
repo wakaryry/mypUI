@@ -39,6 +39,7 @@
 </template>
 
 <script>
+	// 下拉是加载更多
 	import styleMixin from '../myp-list/styleMixin.js'
 	// #ifdef APP-NVUE
 	import scrollMixin from './weexMixin.js'

@@ -43,6 +43,7 @@
 </template>
 
 <script>
+	// 反向列表
 	// loading with no loadMore for list
 	import styleMixin from '../myp-list/styleMixin.js'
 	// #ifdef APP-NVUE

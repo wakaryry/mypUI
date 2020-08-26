@@ -7,7 +7,7 @@
 				<text :class="['myp-color-'+confirmType, 'myp-size-'+confirmSize]" :style="confirmStyle" @tap="toConfirm">{{confirmText}}</text>
 			</view>
 		</slot>
-		<myp-picker-content :mode="mode" :selections="selections" :labelProps="labelProps" :value="value" :bgType="bgType" :textType="type" :textSize="size" :height="height" :itemHeight="itemHeight" :boxStyle="boxStyle" :itemStyle="itemStyle" :textStyle="textStyle" :indicatorStyle="indicatorStyle" @inited="pickerInited" @change="pickerChanged"></myp-picker-content>
+		<myp-picker-time-content :mode="mode" :value="value" :useCurrent="useCurrent" :start="start" :end="end" :includeBefore="includeBefore" :includeAfter="includeAfter" :range="range" :bgType="bgType" :textType="textType" :textSize="textSize" :height="height" :itemHeight="itemHeight" :boxStyle="boxStyle" :itemStyle="itemStyle" :textStyle="textStyle" :indicatorStyle="indicatorStyle" :rangeType="rangeType" :rangeSize="rangeSize" :rangeStyle="rangeStyle" :rangeBoxStyle="rangeBoxStyle" @inited="pickerInited" @change="pickerChanged"></myp-picker-time-content>
 	</myp-popup-always>
 </template>
 
@@ -94,6 +94,32 @@
 					return [0,0,0,0,0,0,0]
 				}
 			},
+			useCurrent: {
+				type: Boolean,
+				default: false
+			},
+			// 表示年份year的开始或者小时hour的开始
+			start: {
+				type: String,
+				default: "1970"
+			},
+			end: {
+				type: String,
+				default: new Date().getFullYear() + ''
+			},
+			// 仅仅只是用在带年份选择的mode上
+			includeBefore: {
+				type: Boolean,
+				default: true
+			},
+			includeAfter: {
+				type: Boolean,
+				default: true
+			},
+			range: {
+				type: String,
+				default: '-'
+			},
 			// styles
 			bgType: {
 				type: String,
@@ -131,36 +157,21 @@
 				type: String,
 				default: ''
 			},
-			// for s1/s2/s3
-			selections: {
-				type: Array,
-				default: () => {
-					return []
-				}
+			rangeType: {
+				type: String,
+				default: 'text'
 			},
-			// for s1/s2/s3 to get right prop value
-			labelProps: {
-				type: Object,
-				default: () => {
-					return {
-						s1: {
-							label: 'name',
-							value: 'id'
-						},
-						s2: {
-							label: 'name',
-							value: 'id',
-							// the tag is for to get s2 selections in s1
-							tag: "c"
-						},
-						s3: {
-							label: 'name',
-							value: 'id',
-							// the tag is for to get get s3 in selections in s2
-							tag: "a"
-						}
-					}
-				}
+			rangeSize: {
+				type: String,
+				default: 'base'
+			},
+			rangeStyle: {
+				type: String,
+				default: ''
+			},
+			rangeBoxStyle: {
+				type: String,
+				default: ''
 			}
 		},
 		data() {

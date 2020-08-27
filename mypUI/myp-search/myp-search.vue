@@ -7,7 +7,7 @@
 					<text :class="['myp-search-place-text', 'myp-color-'+placeType, 'myp-size-'+placeSize]" :style="placeStyle">{{showPlaceholder?placeholder:''}}</text>
 				</view>
 				<view :class="['myp-search-input', 'myp-height-'+height]" :style="valueBoxStyle">
-					<input :value="inputValue" confirm-type="search" :class="['myp-search-input-input', 'myp-color-'+valueType, 'myp-size-'+valueSize]" :style="valueStyle" @input="toInput" @confirm="toConfirm" />
+					<input :value="inputValue" :focus="focus" :adjust-position="adjust" confirm-type="search" :class="['myp-search-input-input', 'myp-color-'+valueType, 'myp-size-'+valueSize]" :style="valueStyle" @input="toInput" @confirm="toConfirm" @focus="toFocus" @blur="toBlur" @keyboardheightchange="toChangeKb" />
 				</view>
 			</view>
 			<slot name="extra"></slot>
@@ -20,7 +20,7 @@
 				<text :class="['myp-color-'+placeType, 'myp-size-'+placeSize]" :style="placeStyle">{{showPlaceholder?placeholder:''}}</text>
 			</view>
 			<view :class="['myp-search-input', 'myp-height-'+height]" :style="mrValueBoxStyle">
-				<input :value="inputValue" confirm-type="search" :class="['myp-search-input-input', 'myp-search-input-'+position, 'myp-color-'+valueType, 'myp-size-'+valueSize]" :style="valueStyle" @input="toInput" @confirm="toConfirm" />
+				<input :value="inputValue" :focus="focus" :adjust-position="adjust" confirm-type="search" :class="['myp-search-input-input', 'myp-search-input-'+position, 'myp-color-'+valueType, 'myp-size-'+valueSize]" :style="valueStyle" @input="toInput" @confirm="toConfirm" @focus="toFocus" @blur="toBlur" @keyboardheightchange="toChangeKb" />
 			</view>
 			<slot name="extra"></slot>
 		</view>
@@ -48,6 +48,14 @@
 			position: {
 				type: String,
 				default: 'left'
+			},
+			focus: {
+				type: Boolean,
+				default: false
+			},
+			adjust: {
+				type: Boolean,
+				default: true
 			},
 			// position left 时可以将icon固定在左侧
 			fixIcon: {
@@ -173,6 +181,15 @@
 			},
 			toConfirm(e) {
 				this.$emit("confirm", e.detail.value)
+			},
+			toFocus(e) {
+				this.$emit("focus", e)
+			},
+			toBlur(e) {
+				this.$emit("blur", e)
+			},
+			toChangeKb(e) {
+				this.$emit("keyboardheightchange", e)
 			}
 		}
 	}

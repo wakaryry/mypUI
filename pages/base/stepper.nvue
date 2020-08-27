@@ -7,7 +7,7 @@
 			</myp-list-cell>
 			<myp-list-cell>
 				<view>
-					<myp-stepper></myp-stepper>
+					<myp-stepper v-model="value1"></myp-stepper>
 				</view>
 			</myp-list-cell>
 		</myp-list-simple>
@@ -23,6 +23,7 @@ export default {
 	mixins: [toastMixin, navHelper],
 	data() {
 		return {
+			value1: 9
 		}
 	},
 	methods: {

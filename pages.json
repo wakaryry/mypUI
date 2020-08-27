@@ -270,6 +270,12 @@
 			}
 		},
 		{
+			"path": "pages/scroll/test/list_top",
+			"style": {
+				"disableScroll": true
+			}
+		},
+		{
 			"path": "pages/scroll/test/raw",
 			"style": {
 				"disableScroll": true

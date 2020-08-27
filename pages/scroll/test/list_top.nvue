@@ -1,0 +1,52 @@
+<template>
+	<view>
+		<!-- #ifdef APP-NVUE -->
+		<list>
+			<cell>
+				<view ref="top"></view>
+			</cell>
+			<cell v-for="i in [1,2,3,4,5,6,7,8,9,10]" :key="i">
+				<view style="background-color: #007AFF; height: 200rpx; align-items: center; justify-content: center;">
+					<text style="color: #FFFFFF; font-size: 52rpx;">{{i}}</text>
+				</view>
+				<view style="height: 20rpx;"></view>
+			</cell>
+		</list>
+		<!-- #endif -->
+		<view class="lt-top" bubble="true" @tap.stop="toTop">
+			<text style="color: #FFFFFF;">Top</text>
+		</view>
+	</view>
+</template>
+
+<script>
+	// #ifdef APP-NVUE
+	const dom = uni.requireNativePlugin('dom')
+	// #endif
+	
+	export default {
+		methods: {
+			toTop() {
+				// #ifdef APP-NVUE
+				const ref = this.$refs['top']
+				dom.scrollToElement(ref, {offset: 0, animated: true})
+				// #endif
+			}
+		}
+	}
+</script>
+
+<style lang="scss" scoped>
+	.lt {
+		&-top {
+			width: 100rpx;
+			height: 100rpx;
+			justify-content: center;
+			align-items: center;
+			position: fixed;
+			background-color: #2C405A;
+			right: 32rpx;
+			bottom: 200rpx;
+		}
+	}
+</style>

@@ -2,7 +2,7 @@
 	<scroll-view ref="scroll" id="scroll" :scroll-y="true" :scroll-top="scrollTop" :scroll-with-animation="true" :show-scrollbar="false" :class="['myp-bg-'+bgType, 'myp-tabs-scroll']" :style="mrScrollStyle">
 		<view class="myp-tabs" :style="mrTabsStyle">
 			<view v-for="(item, index) in items" :key="index" :ref="'item'+index" :id="'item'+index" class="myp-tab-item" :style="mrItemStyle + (index===value ? activeItemStyle:'')" @click="changeTab(index)">
-				<text :class="['myp-color-'+(index===value?activeType:mrTitleType), 'myp-size-'+(index===value?activeSize:titleSize)]" :style="textStyle + (index===value ? activeTextStyle : '')">{{ titleLabel ? item[titleLabel] : item }}</text>
+				<text :class="['myp-color-'+(index===value?activeTextType:textType), 'myp-size-'+(index===value?activeTextSize:textSize)]" :style="textStyle + (index===value ? activeTextStyle : '')">{{ textLabel ? item[textLabel] : item }}</text>
 			</view>
 			<view v-if="hasIndicator" :class="['myp-tab-item-indicator', 'myp-bg-'+(indicatorType&&indicatorType.length>0?indicatorType:'text')]" :style="mrIndStyle"></view>
 		</view>
@@ -31,7 +31,7 @@
 				type: Number,
 				default: 0
 			},
-			titleLabel: {
+			textLabel: {
 				type: String,
 				default: null
 			},
@@ -45,11 +45,11 @@
 				type: String,
 				default: 'flex-start'
 			},
-			titleSize: {
+			textSize: {
 				type: String,
 				default: ''
 			},
-			activeSize: {
+			activeTextSize: {
 				type: String,
 				default: ''
 			},
@@ -57,11 +57,11 @@
 				type: String,
 				default: ''
 			},
-			titleType: {
+			textType: {
 				type: String,
 				default: ''
 			},
-			activeType: {
+			activeTextType: {
 				type: String,
 				default: ''
 			},
@@ -137,12 +137,6 @@
 			}
 		},
 		computed: {
-			mrTitleType() {
-				if (this.titleType && this.titleType.length > 0) {
-					return this.titleType
-				}
-				return this.bgType && this.bgType.length > 0 ? 'inverse' : ''
-			},
 			mrIndStyle() {
 				let _style = `width:${this.indicatorWidth};border-radius:${this.indicatorRadius};`
 				_style += `top:${this.dyIndicatorTop}px;`

@@ -1,21 +1,19 @@
 <template>
-	<view :class="['myp-tag-box', 'myp-height-'+height, 'myp-bg-'+mrBgType, 'myp-border-'+mrBorder, 'myp-radius-'+radius, disabled && 'myp-disabled']" :style="mrBoxStyle" @tap="toSelect">
+	<view :class="['myp-tag-box', 'myp-height-'+height, 'myp-bg-'+mrBgType, 'myp-border-'+mrBorder, 'myp-radius-'+radius, disabled && 'myp-disabled']" :style="mrBoxStyle" @tap.stop="toSelect">
 		<slot>
 			<text :class="['myp-size-'+textSize, 'myp-color-'+mrTextType]" :style="mrTextStyle">{{text}}</text>
 		</slot>
+		<slot name="extra"></slot>
 	</view>
 </template>
 
 <script>
-	// 默认是动态宽度的，在flex-direction为row的时候
-	// 事实上这只是一个壳子，您可以任意添加内容
 	export default {
 		props: {
 			text: {
 				type: [Number, String],
 				default: ""
 			},
-			// 独一无二
 			value: {
 				type: [String, Number],
 				default: ''
@@ -85,7 +83,6 @@
 				type: String,
 				default: ''
 			},
-			// width/height等可以在这里设置
 			boxStyle: {
 				type: String,
 				default: ''
@@ -101,9 +98,6 @@
 		},
 		data() {
 			return {
-				// 如果一个组件的状态应该依赖外部来改变，而不能自身响应改变的时候，我们不需要提供内部响应的状态。
-				// 这种情况下，如果外部不绑定状态，用户操作是无响应的。
-				// 这类组件，适用于 单选/多选 类组件。而不是 能够直接自己更改状态的 toggle
 			}
 		},
 		computed: {
@@ -166,21 +160,25 @@
 			}
 		},
 		methods: {
-			toSelect() {
+			toSelect(e) {
 				if (!this.disabled) {
 					this.$emit("tagClicked", {
 						selected: this.selected,
 						value: this.value
 					})
 				}
+				e.stopPropagation && e.stopPropagation()
 			}
 		}
 	}
 </script>
 
 <style lang="scss" scoped>
-	
 	.myp-tag-box {
+		/* #ifndef APP-NVUE */
+		display: flex;
+		box-sizing: border-box;
+		/* #endif */
 		justify-content: center;
 		align-items: center;
 	}

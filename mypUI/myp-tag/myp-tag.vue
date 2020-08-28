@@ -183,4 +183,3 @@
 		align-items: center;
 	}
 </style>
- 

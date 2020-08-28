@@ -1,5 +1,5 @@
 <template>
-	<view :class="['myp-bg-'+bgType]" :style="boxStyle">
+	<view :class="['myp-bg-'+bgType, 'myp-border-'+border, 'myp-radius-'+radius]" :style="boxStyle">
 		<view v-if="column === 0" class="myp-tag-group" :style="dyBoxStyle">
 			<view v-for="(item, idx) in updatedItems" :key="idx" :style="{'margin-right': idx !== updatedItems.length-1 ? columnSpace : '0', 'margin-bottom': rowSpace}">
 				<myp-tag :text="item[tl]" :value="item[vl]" :disabled="disabled || item[dl]" :selected="item['myp-checked']" :bgType="tagBgType" :selectedBgType="tagSelectedBgType" :textType="tagTextType" :selectedTextType="tagSelectedTextType" :height="tagHeight" :textSize="tagTextSize" :border="tagBorder" :selectedBorder="tagSelectedBorder" :radius="tagRadius" :space="tagSpace" :textStyle="textStyle" :selectedTextStyle="selectedTextStyle" :disabledTextStyle="disabledTextStyle" :boxStyle="tagStyle" :selectedBoxStyle="selectedTagStyle" :disabledBoxStyle="disabledTagStyle" @tagClicked="toUpdateItemCheck(idx)"></myp-tag>
@@ -16,10 +16,6 @@
 </template>
 
 <script>
-	// 示范非check/radio下的单选/多选
-	// 和checks是一样的，只不过换了一个组件而已
-	// 只是示范，自己可以定制更加灵活的样式
-	
 	import {arrayChunk} from '../utils/utils.js'
 	export default {
 		props: {
@@ -62,7 +58,7 @@
 				type: Boolean,
 				default: false
 			},
-			titleLabel: {
+			textLabel: {
 				type: String,
 				default: null
 			},
@@ -77,6 +73,14 @@
 			bgType: {
 				type: String,
 				default: ''
+			},
+			border: {
+				type: String,
+				default: 'none'
+			},
+			radius: {
+				type: String,
+				default: 'none'
 			},
 			boxStyle: {
 				type: String,
@@ -156,7 +160,7 @@
 		},
 		computed: {
 			tl() {
-				return this.titleLabel || 'title'
+				return this.textLabel || 'title'
 			},
 			vl() {
 				return this.valueLabel || 'value'
@@ -190,8 +194,6 @@
 			this.toGenerateUpdatedItems()
 		},
 		watch: {
-			// 我们不通过直接watch value/items 来对updatedItems进行更新
-			// 通过updatedTime来进行强制更新/手动更新
 			updatedTime() {
 				this.toGenerateUpdatedItems()
 			}
@@ -244,9 +246,9 @@
 							break
 						}
 					}
-					if (that.titleLabel) {
+					if (that.textLabel) {
 						upList.push({
-							[that.titleLabel]: item[that.titleLabel],
+							[that.textLabel]: item[that.textLabel],
 							[that.valueLabel]: item[that.valueLabel],
 							[that.disabledLabel]: item[that.disabledLabel],
 							'myp-checked': flag
@@ -268,10 +270,18 @@
 
 <style lang="scss" scoped>
 	.myp-tag-group {
+		/* #ifndef APP-NVUE */
+		display: flex;
+		box-sizing: border-box;
+		/* #endif */
 		flex-direction: row;
 		flex-wrap: wrap;
 	}
 	.myp-item-row {
+		/* #ifndef APP-NVUE */
+		display: flex;
+		box-sizing: border-box;
+		/* #endif */
 		flex-direction: row;
 		flex-wrap: nowrap;
 	}

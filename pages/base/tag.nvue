@@ -21,13 +21,13 @@
 				<myp-title bgType="none" title1="单选标签群:支持配置各种样式" title1Type="text" boxStyle="padding-left:32rpx;"></myp-title>
 			</myp-list-cell>
 			<myp-list-cell>
-				<myp-tag-group v-model="oneSelect" :limits="1" :column="4" :items="selections" titleLabel="title" valueLabel="id" disabledLabel="disabled" bgType="none" tagSelectedBgType="error" tagSelectedTextType="inverse" boxStyle="margin-left:32rpx;margin-right:32rpx;"></myp-tag-group>
+				<myp-tag-group v-model="oneSelect" :limits="1" :column="4" :items="selections" textLabel="title" valueLabel="id" disabledLabel="disabled" bgType="none" tagSelectedBgType="error" tagSelectedTextType="inverse" boxStyle="margin-left:32rpx;margin-right:32rpx;"></myp-tag-group>
 			</myp-list-cell>
 			<myp-list-cell>
 				<myp-title bgType="none" title1="多选标签群:支持配置各种样式" title1Type="text" boxStyle="padding-left:32rpx;"></myp-title>
 			</myp-list-cell>
 			<myp-list-cell>
-				<myp-tag-group v-model="threeSelect" :limits="3" :column="4" :items="selections" titleLabel="title" valueLabel="id" disabledLabel="disabled" bgType="none" tagSelectedTextType="error" tagSelectedBorder="all-error" boxStyle="margin-left:32rpx;margin-right:32rpx;"></myp-tag-group>
+				<myp-tag-group v-model="threeSelect" :limits="3" :column="4" :items="selections" textLabel="title" valueLabel="id" disabledLabel="disabled" bgType="none" tagSelectedTextType="error" tagSelectedBorder="all-error" boxStyle="margin-left:32rpx;margin-right:32rpx;"></myp-tag-group>
 			</myp-list-cell>
 			<myp-list-cell>
 				<view class="tag-foot">

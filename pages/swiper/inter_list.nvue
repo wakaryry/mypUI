@@ -3,7 +3,7 @@
 		<myp-navbar :lefts="leftIcons" title="联动swiper-tabs" @leftAction="navLeftAction"></myp-navbar>
 		<myp-tabs-h :value="mypCurrentTab" :items="tabs" :isTap="mypIsTap" :offset="mypDx" :last="mypLastTabIndex" textType="second" activeTextType="text" activeTextStyle="font-weight:700;" width="100rpx" height="80rpx" @change="mypToTabTab"></myp-tabs-h>
 		<myp-content-box extra="80rpx">
-			<swiper :current="mypCurrentTab" style="width: 750rpx;flex: 1;" @change="mypOnSwiperChange" @animationfinish="mypOnSwiperAnimationFinish" @transition="mypOnSwiperScroll">
+			<swiper :current="mypCurrentTab" style="width: 750rpx;flex: 1;" @change="mypOnSwiperChange" @animationfinish="mypOnSwiperAnimationFinish" @onAnimationEnd="mypOnSwiperAnimationFinish" @transition="mypOnSwiperScroll">
 				<swiper-item v-for="(tab,idx) in tabs" :key="idx">
 					<album-list :current='mypCurrentTab' :index="idx"></album-list>
 				</swiper-item>

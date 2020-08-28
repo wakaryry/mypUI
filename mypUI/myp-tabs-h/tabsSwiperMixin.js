@@ -12,6 +12,7 @@ export default {
 		}
 	},
 	methods: {
+		// @change
 		mypOnSwiperChange(e) {
 			// this.current = e.detail.current
 			// #ifndef APP-PLUS || H5 || MP-WEIXIN || MP-QQ
@@ -19,6 +20,7 @@ export default {
 			this.mypToSwitchTab(index)
 			// #endif
 		},
+		// @transition
 		mypOnSwiperScroll(e) {
 			if (this.mypIsTap) return;
 			// #ifdef APP-PLUS || H5 || MP-WEIXIN || MP-QQ
@@ -26,6 +28,7 @@ export default {
 			this.mypDx = offsetX
 			// #endif
 		},
+		// @onAnimationEnd and @animationfinish
 		mypOnSwiperAnimationFinish(e) {
 			// #ifdef APP-PLUS || H5 || MP-WEIXIN || MP-QQ
 			const index = e.detail.current
@@ -36,6 +39,7 @@ export default {
 			}
 			// #endif
 		},
+		// @change for myp-tabs-h
 		mypToTabTab(i) {
 			this.mypIsTap = true
 			this.mypTapIndex = i

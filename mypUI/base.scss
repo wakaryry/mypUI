@@ -15,6 +15,9 @@
 		/* #endif */
 		flex-direction: column;
 	}
+	&-one {
+		flex: 1;
+	}
 }
 .myp-justify {
 	&-start {
@@ -39,6 +42,14 @@
 	}
 	&-end {
 		align-items: flex-end;
+	}
+}
+.myp-wrap {
+	&-wrap {
+		flex-wrap: wrap;
+	}
+	&-nowrap {
+		flex-wrap: nowrap;
 	}
 }
 .myp-bg {
@@ -224,6 +235,50 @@
 	}
 	&-ll {
 		line-height: $myp-lh-ll;
+	}
+}
+.myp-wing {
+	&-ss {
+		margin-left: $myp-wing-ss;
+		margin-right: $myp-wing-ss;
+	}
+	&-s {
+		margin-left: $myp-wing-s;
+		margin-right: $myp-wing-s;
+	}
+	&-base {
+		margin-left: $myp-wing-base;
+		margin-right: $myp-wing-base;
+	}
+	&-l {
+		margin-left: $myp-wing-l;
+		margin-right: $myp-wing-l;
+	}
+	&-ll {
+		margin-left: $myp-wing-ll;
+		margin-right: $myp-wing-ll;
+	}
+}
+.myp-space {
+	&-ss {
+		margin-top: $myp-space-ss;
+		margin-bottom: $myp-space-ss;
+	}
+	&-s {
+		margin-top: $myp-space-s;
+		margin-bottom: $myp-space-s;
+	}
+	&-base {
+		margin-top: $myp-space-base;
+		margin-bottom: $myp-space-base;
+	}
+	&-l {
+		margin-top: $myp-space-l;
+		margin-bottom: $myp-space-l;
+	}
+	&-ll {
+		margin-top: $myp-space-ll;
+		margin-bottom: $myp-space-ll;
 	}
 }
 .myp-lines {

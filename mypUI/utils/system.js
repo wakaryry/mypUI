@@ -107,7 +107,7 @@ export function getXBarHeight() {
 	return app.globalData.safeBottom
 }
 
-export function toPx(val) {
+export function getPx(val) {
 	if (typeof val === 'number') {
 		return uni.upx2px(val)
 	}
@@ -147,7 +147,7 @@ export function getHeight(val) {
 			} else if (t === 'nav') {
 				h += getNavHeight()
 			} else {
-				h += toPx(t)
+				h += getPx(t)
 			}
 		}
 		return h
@@ -160,10 +160,10 @@ export function getHeight(val) {
 			if (t === 'x') {
 				h += getXBarHeight()
 			} else {
-				h += toPx(t)
+				h += getPx(t)
 			}
 		}
 		return h
 	}
-	return toPx(val)
+	return getPx(val)
 }

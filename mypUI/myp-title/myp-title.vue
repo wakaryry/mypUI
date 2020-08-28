@@ -2,20 +2,21 @@
 	<view :class="['myp-title', 'myp-bg-'+bgType, 'myp-height-'+height]" :style="boxStyle" :hover-class="'myp-hover-'+hover">
 		<view class="myp-title-left" :style="leftStyle" bubble="true" @tap="leftClicked">
 			<myp-icon v-if="leftIcon1&&leftIcon1.length>0" :name="leftIcon1" :type="leftIcon1Type" :size="leftIcon1Size" :style="leftIcon1Style" :mode="leftIcon1Mode" @iconClicked="leftClicked"></myp-icon>
-			<text :class="['myp-size-'+title1Size, 'myp-color-'+mrTitle1Type]" :style="mrTitle1Style">{{title1}}</text>
+			<text :class="['myp-size-'+title1Size, 'myp-color-'+title1Type]" :style="mrTitle1Style">{{title1}}</text>
 			<myp-icon v-if="leftIcon2&&leftIcon2.length>0" :name="leftIcon2" :type="leftIcon2Type" :size="leftIcon2Size" :style="leftIcon2Style" :mode="leftIcon2Mode" @iconClicked="leftClicked"></myp-icon>
 		</view>
 		<view class="myp-title-center" :style="centerStyle" bubble="true" @tap="centerClicked">
 			<myp-icon v-if="centerIcon1&&centerIcon1.length>0" :name="centerIcon1" :type="centerIcon1Type" :size="centerIcon1Size" :style="centerIcon1Style" :mode="centerIcon1Mode" @iconClicked="centerClicked"></myp-icon>
-			<text :class="['myp-size-'+title2Size, 'myp-color-'+mrTitle2Type]" :style="mrTitle2Style">{{title2}}</text>
+			<text :class="['myp-size-'+title2Size, 'myp-color-'+title2Type]" :style="mrTitle2Style">{{title2}}</text>
 			<myp-icon v-if="centerIcon2&&centerIcon2.length>0" :name="centerIcon2" :type="centerIcon2Type" :size="centerIcon2Size" :style="centerIcon2Style" :mode="centerIcon2Mode" @iconClicked="centerClicked"></myp-icon>
 		</view>
 		<view class="myp-title-right" :style="rightStyle" bubble="true" @tap="rightClicked">
-			<myp-icon v-if="!rightBtn&&rightIcon1&&rightIcon1.length>0" :name="rightIcon1" :type="rightIcon1Type" :size="rightIcon1Size" :style="rightIcon1Style" :mode="rightIcon1Mode" @iconClicked="rightClicked"></myp-icon>
-			<text v-if="!rightBtn" :class="['myp-size-'+title3Size, 'myp-color-'+mrTitle3Type]" :style="mrTitle3Style">{{title3}}</text>
+			<myp-icon v-if="rightIcon1&&rightIcon1.length>0" :name="rightIcon1" :type="rightIcon1Type" :size="rightIcon1Size" :style="rightIcon1Style" :mode="rightIcon1Mode" @iconClicked="rightClicked"></myp-icon>
+			<text :class="['myp-size-'+title3Size, 'myp-color-'+title3Type]" :style="mrTitle3Style">{{title3}}</text>
 			<myp-icon v-if="rightIcon2&&rightIcon2.length>0" :name="rightIcon2" :type="rightIcon2Type" :size="rightIcon2Size" :style="rightIcon2Style" :mode="rightIcon2Mode" @iconClicked="rightClicked"></myp-icon>
 			<slot></slot>
 		</view>
+		<slot name="extra"></slot>
 	</view>
 </template>
 
@@ -57,10 +58,6 @@
 			rightIcon2: {
 				type: String,
 				default: ''
-			},
-			rightBtn: {
-				type: Boolean,
-				default: false
 			},
 			// icon-text-icon 之间的space
 			space: {
@@ -227,57 +224,9 @@
 			rightStyle: {
 				type: String,
 				default: ''
-			},
-			titleStyle: {
-				type: String,
-				default: ''
-			},
-			// right btn
-			btnBgType: {
-				type: String,
-				default: ''
-			},
-			btnStyle: {
-				type: String,
-				default: ''
-			},
-			btnBorder: {
-				type: String,
-				default: 'all'
-			},
-			btnRadius: {
-				type: String,
-				default: 'base'
 			}
 		},
 		computed: {
-			mrTitle1Type() {
-				if (this.title1Type && this.title1Type.length > 0) {
-					return this.title1Type
-				}
-				if (this.bgType === 'none') {
-					return ''
-				}
-				return this.bgType&&this.bgType.length>0 ?'inverse':''
-			},
-			mrTitle2Type() {
-				if (this.title2Type && this.title2Type.length > 0) {
-					return this.title2Type
-				}
-				if (this.bgType === 'none') {
-					return ''
-				}
-				return this.bgType&&this.bgType.length>0 ?'inverse':''
-			},
-			mrTitle3Type() {
-				if (this.title3Type && this.title3Type.length > 0) {
-					return this.title3Type
-				}
-				if (this.bgType === 'none') {
-					return ''
-				}
-				return this.bgType&&this.bgType.length>0 ?'inverse':''
-			},
 			mrTitle1Style() {
 				let style = ''
 				if (this.title1 && this.title1.length > 0) {

@@ -8,9 +8,9 @@
 			<myp-list-cell>
 				<view class="switch-items">
 					<myp-switch></myp-switch>
-					<myp-switch :value="true"></myp-switch>
-					<myp-switch :value="true" :disabled="true"></myp-switch>
-					<myp-switch :value="true" checkedType="error"></myp-switch>
+					<myp-switch v-model="value1"></myp-switch>
+					<myp-switch v-model="value2" :disabled="true"></myp-switch>
+					<myp-switch v-model="value3" onBgType="error"></myp-switch>
 				</view>
 			</myp-list-cell>
 			<myp-list-cell>
@@ -18,7 +18,7 @@
 			</myp-list-cell>
 			<myp-list-cell>
 				<view class="switch-items">
-					<myp-switch bgType="border" checkedType="warning" animateType="primary" ballType="third" width="200rpx"></myp-switch>
+					<myp-switch bgType="border" onBgType="warning" animateBgType="primary" ballBgType="third" width="200rpx"></myp-switch>
 					<myp-switch :value="true" width="200rpx" height="60rpx" ballSize="56rpx"></myp-switch>
 				</view>
 			</myp-list-cell>
@@ -35,6 +35,9 @@ export default {
 	mixins: [toastMixin, navHelper],
 	data() {
 		return {
+			value1: true,
+			value2: true,
+			value3: true
 		}
 	},
 	methods: {

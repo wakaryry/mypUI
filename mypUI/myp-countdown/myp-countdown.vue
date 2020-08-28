@@ -1,31 +1,28 @@
 <template>
-	<view class="myp-time" :style="boxStyle">
-		<view v-if="indexOfDays !== -1" :class="['myp-time-box', 'myp-height-'+height, 'myp-bg-'+type, 'myp-border-'+border, 'myp-radius-'+radius]" :style="mrTimeBoxStyle">
-			<text :class="['myp-color-'+(type&&type.length>0?'inverse':''), 'myp-size-'+size]" :style="timeTextStyle">{{countDownData.day}}</text>
+	<view :class="['myp-time', 'myp-bg-'+bgType, 'myp-border-'+border, 'myp-radius-'+radius]" :style="boxStyle">
+		<view v-if="indexOfDays !== -1" :class="['myp-time-box', 'myp-height-'+itemHeight, 'myp-bg-'+itemBgType, 'myp-border-'+itemBorder, 'myp-radius-'+itemRadius]" :style="mrItemBoxStyle">
+			<text :class="['myp-color-'+itemTextType, 'myp-size-'+itemTextSize]" :style="itemTextStyle">{{countDownData.day}}</text>
 		</view>
-		<view v-if="indexOfDays !== -1" class="myp-time-dot-box" :style="mrDotBoxStyle">
-			<text :class="['myp-color-'+type, 'myp-size-'+size]" :style="dotTextStyle">{{getDot(indexOfDays, indexOfHours)}}</text>
+		<view v-if="indexOfDays !== -1" class="myp-time-dot-box" :style="mrIndicatorBoxStyle">
+			<text :class="['myp-color-'+indicatorTextType, 'myp-size-'+indicatorTextSize]" :style="indicatorTextStyle">{{getDot(indexOfDays, indexOfHours)}}</text>
 		</view>
-		
-		<view v-if="indexOfHours !== -1" :class="['myp-time-box', 'myp-height-'+height, 'myp-bg-'+type, 'myp-border-'+border, 'myp-radius-'+radius]" :style="mrTimeBoxStyle">
-			<text :class="['myp-color-'+(type&&type.length>0?'inverse':''), 'myp-size-'+size]" :style="timeTextStyle">{{countDownData.hour}}</text>
+		<view v-if="indexOfHours !== -1" :class="['myp-time-box', 'myp-height-'+itemHeight, 'myp-bg-'+itemBgType, 'myp-border-'+itemBorder, 'myp-radius-'+itemRadius]" :style="mrItemBoxStyle">
+			<text :class="['myp-color-'+itemTextType, 'myp-size-'+itemTextSize]" :style="itemTextStyle">{{countDownData.hour}}</text>
 		</view>
-		<view v-if="indexOfHours !== -1" class="myp-time-dot-box" :style="mrDotBoxStyle">
-			<text :class="['myp-color-'+type, 'myp-size-'+size]" :style="dotTextStyle">{{getDot(indexOfHours, indexOfMinutes)}}</text>
+		<view v-if="indexOfHours !== -1" class="myp-time-dot-box" :style="mrIndicatorBoxStyle">
+			<text :class="['myp-color-'+indicatorTextType, 'myp-size-'+indicatorTextSize]" :style="indicatorTextStyle">{{getDot(indexOfHours, indexOfMinutes)}}</text>
 		</view>
-		
-		<view v-if="indexOfMinutes !== -1" :class="['myp-time-box', 'myp-height-'+height, 'myp-bg-'+type, 'myp-border-'+border, 'myp-radius-'+radius]" :style="mrTimeBoxStyle">
-			<text :class="['myp-color-'+(type&&type.length>0?'inverse':''), 'myp-size-'+size]" :style="timeTextStyle">{{countDownData.minute}}</text>
+		<view v-if="indexOfMinutes !== -1" :class="['myp-time-box', 'myp-height-'+itemHeight, 'myp-bg-'+itemBgType, 'myp-border-'+itemBorder, 'myp-radius-'+itemRadius]" :style="mrItemBoxStyle">
+			<text :class="['myp-color-'+itemTextType, 'myp-size-'+itemTextSize]" :style="itemTextStyle">{{countDownData.minute}}</text>
 		</view>
-		<view v-if="indexOfMinutes !== -1" class="myp-time-dot-box" :style="mrDotBoxStyle">
-			<text :class="['myp-color-'+type, 'myp-size-'+size]" :style="dotTextStyle">{{getDot(indexOfMinutes, indexOfSeconds)}}</text>
+		<view v-if="indexOfMinutes !== -1" class="myp-time-dot-box" :style="mrIndicatorBoxStyle">
+			<text :class="['myp-color-'+indicatorTextType, 'myp-size-'+indicatorTextSize]" :style="indicatorTextStyle">{{getDot(indexOfMinutes, indexOfSeconds)}}</text>
 		</view>
-		
-		<view v-if="indexOfSeconds !== -1" :class="['myp-time-box', 'myp-height-'+height, 'myp-bg-'+type, 'myp-border-'+border, 'myp-radius-'+radius]" :style="mrTimeBoxStyle">
-			<text :class="['myp-color-'+(type&&type.length>0?'inverse':''), 'myp-size-'+size]" :style="timeTextStyle">{{countDownData.second}}</text>
+		<view v-if="indexOfSeconds !== -1" :class="['myp-time-box', 'myp-height-'+itemHeight, 'myp-bg-'+itemBgType, 'myp-border-'+itemBorder, 'myp-radius-'+itemRadius]" :style="mrItemBoxStyle">
+			<text :class="['myp-color-'+itemTextType, 'myp-size-'+itemTextSize]" :style="itemTextStyle">{{countDownData.second}}</text>
 		</view>
-		<view v-if="indexOfSeconds !== -1" class="myp-time-dot-box" :style="mrDotBoxStyle">
-			<text :class="['myp-color-'+type, 'myp-size-'+size]" :style="dotTextStyle">{{getDot(indexOfSeconds, -1)}}</text>
+		<view v-if="indexOfSeconds !== -1" class="myp-time-dot-box" :style="mrIndicatorBoxStyle">
+			<text :class="['myp-color-'+indicatorTextType, 'myp-size-'+indicatorTextSize]" :style="indicatorTextStyle">{{getDot(indexOfSeconds, -1)}}</text>
 		</view>
 	</view>
 </template>
@@ -33,28 +30,21 @@
 <script>
 	export default {
 		props: {
-			// 时间戳
 			time: {
 				type: Number,
 				default: 1600000000000
 			},
-			// 倒计时的间隔,单位为"毫秒"
 			interval: {
 				type: Number,
 				default: 1000
 			},
-			// template 模版
 			tpl: {
 				type: String,
 				default: '{h}:{m}:{s}'
 			},
-			type: {
+			bgType: {
 				type: String,
-				default: ''
-			},
-			size: {
-				type: String,
-				default: 'l'
+				default: 'none'
 			},
 			border: {
 				type: String,
@@ -62,9 +52,29 @@
 			},
 			radius: {
 				type: String,
+				default: 'none'
+			},
+			itemBgType: {
+				type: String,
+				default: ''
+			},
+			itemBorder: {
+				type: String,
+				default: 'none'
+			},
+			itemRadius: {
+				type: String,
 				default: 's'
 			},
-			height: {
+			itemTextType: {
+				type: String,
+				default: 'text'
+			},
+			itemTextSize: {
+				type: String,
+				default: 'l'
+			},
+			itemHeight: {
 				type: String,
 				default: 'base'
 			},
@@ -72,38 +82,41 @@
 				type: String,
 				default: '0'
 			},
-			dotWidth: {
+			indicatorTextType: {
+				type: String,
+				default: 'text'
+			},
+			indicatorTextSize: {
+				type: String,
+				default: 'l'
+			},
+			indicatorWidth: {
 				type: String,
 				default: '60rpx'
 			},
-			// 最外层包裹 style
 			boxStyle: {
 				type: String,
 				default: ''
 			},
-			// 数字盒子 style
-			timeBoxStyle: {
+			itemBoxStyle: {
 				type: String,
 				default: ''
 			},
-			// 盒子Style
-			dotBoxStyle: {
+			indicatorBoxStyle: {
 				type: String,
 				default: ''
 			},
-			// 数字文字 Style
-			timeTextStyle: {
+			itemTextStyle: {
 				type: String,
 				default: ''
 			},
-			// 文字Style
-			dotTextStyle: {
+			indicatorTextStyle: {
 				type: String,
 				default: ''
 			}
 		},
 		data: () => ({
-			NOW_DATE: new Date().getTime(),
+			NOW_DATE: Date.now(),
 			completed: false,
 			indexOfDays: -1,
 			indexOfHours: -1,
@@ -112,7 +125,7 @@
 		}),
 		mounted() {
 			setInterval(() => {
-				this.NOW_DATE = new Date().getTime();
+				this.NOW_DATE = Date.now();
 			}, this.interval);
 
 			this.indexOfDays = this.tpl.indexOf('d');
@@ -174,7 +187,7 @@
 					second: second < 10 ? '0' + second : '' + second
 				}
 			},
-			mrTimeBoxStyle() {
+			mrItemBoxStyle() {
 				const _width = parseInt(this.itemWidth)
 				let _style = ''
 				if (_width <= 0) {
@@ -182,10 +195,14 @@
 				} else {
 					_style += `width:${this.itemWidth};`
 				}
-				return _style + this.timeBoxStyle
+				return _style + this.itemBoxStyle
 			},
-			mrDotBoxStyle() {
-				return `width:${this.dotWidth};` + this.dotBoxStyle
+			mrIndicatorBoxStyle() {
+				let _style = ''
+				if (this.indicatorWidth && this.indicatorWidth.length > 0) {
+					_style = `width:${this.indicatorWidth};`
+				}
+				return _style + this.indicatorBoxStyle
 			}
 		},
 		methods: {
@@ -204,15 +221,27 @@
 
 <style lang="scss" scoped>
 	.myp-time {
+		/* #ifndef APP-NVUE */
+		display: flex;
+		box-sizing: border-box;
+		/* #endif */
 		flex-direction: row;
 		align-items: center;
 		
 		&-box {
+			/* #ifndef APP-NVUE */
+			display: flex;
+			box-sizing: border-box;
+			/* #endif */
 			flex-direction: row;
 			justify-content: center;
 			align-items: center;
 		}
 		&-dot-box {
+			/* #ifndef APP-NVUE */
+			display: flex;
+			box-sizing: border-box;
+			/* #endif */
 			flex-direction: row;
 			justify-content: center;
 			align-items: center;

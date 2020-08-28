@@ -1,20 +1,51 @@
 <template>
 	<view>
 		<myp-navbar :lefts="leftIcons" title="倒计时" @leftAction="navLeftAction"></myp-navbar>
-		<scroll-view class="myp-bg-page" :scroll-y="true" :style="mypContentHeightStyle">
-			
-		</scroll-view>
+		<myp-list-simple>
+			<myp-list-cell>
+				<view style="height: 20rpx;"></view>
+				<view style="flex-direction: row;align-items: center;justify-content: center;">
+					<myp-countdown bgType="error" itemBgType="none" itemTextType="inverse" indicatorTextType="inverse" radius="base"></myp-countdown>
+				</view>
+				<view style="height: 20rpx;"></view>
+			</myp-list-cell>
+			<myp-list-cell>
+				<view style="flex-direction: row;align-items: center;justify-content: center;">
+					<text class="myp-color-text myp-size-ll">距离高考只有</text>
+					<myp-countdown :time="(new Date('2021-06-07')).getTime()" tpl="{d}天"></myp-countdown>
+				</view>
+				<view style="height: 20rpx;"></view>
+			</myp-list-cell>
+			<myp-list-cell>
+				<view style="flex-direction: row;align-items: center;justify-content: center;">
+					<text class="myp-color-text myp-size-ll">距离高考只有</text>
+					<myp-countdown :time="(new Date('2021-06-07')).getTime()" tpl="{d}天{h}时"></myp-countdown>
+				</view>
+				<view style="height: 20rpx;"></view>
+			</myp-list-cell>
+			<myp-list-cell>
+				<view style="flex-direction: row;align-items: center;justify-content: center;">
+					<myp-countdown :time="(new Date('2021-06-07')).getTime()" tpl="{d}天{h}时{m}分"></myp-countdown>
+				</view>
+				<view style="height: 20rpx;"></view>
+			</myp-list-cell>
+			<myp-list-cell>
+				<view style="flex-direction: row;align-items: center;justify-content: center;">
+					<myp-countdown :time="(new Date('2021-06-07')).getTime()" tpl="{d}天{h}时{m}分{s}秒"></myp-countdown>
+				</view>
+				<view style="height: 20rpx;"></view>
+			</myp-list-cell>
+		</myp-list-simple>
 		<myp-toast ref="myp-toast"></myp-toast>
 	</view>
 </template>
 
 <script>
-import contentBoxMixin from '@/mypUI/myp-mixin/contentBoxMixin.js'
 import toastMixin from '@/mypUI/myp-mixin/toastMixin.js'
 import navHelper from '@/router/navHelper.js'
 
 export default {
-	mixins: [contentBoxMixin, toastMixin, navHelper],
+	mixins: [toastMixin, navHelper],
 	data() {
 		return {
 		}

@@ -33,7 +33,7 @@
 					</view>
 				</view>
 				<view>
-					<myp-button bgType="warning" text="查看详情" radius="ll" height="base" boxStyle="width:240rpx;"></myp-button>
+					<myp-button bgType="warning" text="查看详情" textType="inverse" border="none" radius="ll" height="base" boxStyle="width:240rpx;"></myp-button>
 				</view>
 			</view>
 		</view>

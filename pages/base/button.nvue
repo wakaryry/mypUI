@@ -7,50 +7,52 @@
 				<myp-button text="默认样式"></myp-button>
 				<view class="bb-row">
 					<view style="flex: 1;">
-						<myp-button bgType="primary" text="primary"></myp-button>
+						<myp-button bgType="primary" textType="inverse" border="none" text="primary"></myp-button>
 					</view>
 					<view style="flex: 1;">
-						<myp-button bgType="success" text="success"></myp-button>
+						<myp-button bgType="success" textType="inverse" border="none" text="success"></myp-button>
 					</view>
 				</view>
 				<view class="bb-row">
 					<view style="flex: 1;">
-						<myp-button bgType="warning" text="warning"></myp-button>
+						<myp-button bgType="warning" textType="inverse" border="none" text="warning"></myp-button>
 					</view>
 					<view style="flex: 1;">
-						<myp-button bgType="error" text="error"></myp-button>
+						<myp-button bgType="error" textType="inverse" border="none" text="error"></myp-button>
 					</view>
 				</view>
 				<myp-title bgType="none" centerIcon1="primary" centerIcon1Type="primary" centerIcon2="triangle-right" title2="带图标/图片" centerIcon2Type="third" centerStyle="padding-left:16rpx;padding-right:16rpx;background-color:#FFFFFF;border-radius:12rpx;height:60rpx;"></myp-title>
 				<myp-button icon="plus" text="左侧带图标"></myp-button>
+				<myp-button icon2="arrow-right" text="右侧带图标"></myp-button>
+				<myp-button icon="plus" icon2="arrow-right" text="左右侧带图标"></myp-button>
 				<view class="bb-row">
 					<view style="flex: 1;">
-						<myp-button bgType="warning" icon="/static/bear.jpg" iconStyle="width: 60rpx; height: 60rpx; border-radius:8rpx;" text="带图片/可以网络图片"></myp-button>
+						<myp-button bgType="warning" icon="/static/bear.jpg" iconStyle="width: 60rpx; height: 60rpx; border-radius:8rpx;" text="带图片/可以网络图片" textType="inverse" border="none"></myp-button>
 					</view>
 				</view>
 				<myp-title bgType="none" centerIcon1="primary" centerIcon1Type="primary" centerIcon2="triangle-right" title2="带loading切换" centerIcon2Type="third" centerStyle="padding-left:16rpx;padding-right:16rpx;background-color:#FFFFFF;border-radius:12rpx;height:60rpx;"></myp-title>
 				<myp-button :loading="true" text="正在为您准备"></myp-button>
 				<view class="bb-row">
 					<view style="flex: 1;">
-						<myp-button :loading="loadingVisible" bgType="success" icon="wechat" text="点击切换加载状态" @buttonClicked="toggleLoading"></myp-button>
+						<myp-button :loading="loadingVisible" bgType="success" icon="wechat" text="点击切换加载状态" iconType="inverse" textType="inverse" border="none" @buttonClicked="toggleLoading"></myp-button>
 					</view>
 				</view>
 				<myp-title bgType="none" centerIcon1="primary" centerIcon1Type="primary" centerIcon2="triangle-right" title2="禁用状态" centerIcon2Type="third" centerStyle="padding-left:16rpx;padding-right:16rpx;background-color:#FFFFFF;border-radius:12rpx;height:60rpx;"></myp-title>
 				<view style="flex-direction: row;">
 					<view style="flex: 1;">
-						<myp-button bgType="error" :disabled="true" icon="solid-plus" text="禁用状态"></myp-button>
+						<myp-button bgType="error" border="none" :disabled="true" icon="solid-plus" text="禁用状态" iconType="inverse" textType="inverse"></myp-button>
 					</view>
 					<view style="flex: 1;">
-						<myp-button bgType="error" icon="solid-plus" text="可用状态"></myp-button>
+						<myp-button bgType="error" icon="solid-plus" text="可用状态" border="none" iconType="inverse" textType="inverse"></myp-button>
 					</view>
 				</view>
 				<myp-title bgType="none" centerIcon1="primary" centerIcon1Type="primary" centerIcon2="triangle-right" title2="样式配置" centerIcon2Type="third" centerStyle="padding-left:16rpx;padding-right:16rpx;background-color:#FFFFFF;border-radius:12rpx;height:60rpx;"></myp-title>
 				<view style="flex-direction: row;">
 					<view style="flex: 1;">
-						<myp-button bgType="primary" text="高度" height="s"></myp-button>
+						<myp-button bgType="primary" text="高度" height="s" textType="inverse" border="none"></myp-button>
 					</view>
 					<view style="flex: 1;">
-						<myp-button bgType="error" text="圆角" height="s" radius="ll"></myp-button>
+						<myp-button bgType="error" text="圆角" height="s" radius="ll" textType="inverse" border="none"></myp-button>
 					</view>
 					<view style="flex: 1;">
 						<myp-button text="边框" height="s" border="all-error"></myp-button>
@@ -59,7 +61,7 @@
 				<myp-title bgType="none" centerIcon1="primary" centerIcon1Type="primary" centerIcon2="triangle-right" title2="其它" centerIcon2Type="third" centerStyle="padding-left:16rpx;padding-right:16rpx;background-color:#FFFFFF;border-radius:12rpx;height:60rpx;"></myp-title>
 				<view style="flex-direction: row;">
 					<view style="flex: 1;">
-						<myp-button bgType="primary" icon="wechat" text="微信登录"></myp-button>
+						<myp-button bgType="primary" icon="wechat" text="微信登录" iconType="inverse" textType="inverse" border="none"></myp-button>
 					</view>
 					<view style="flex: 1;">
 						<button class="bb-button">

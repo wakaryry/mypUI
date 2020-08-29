@@ -20,7 +20,7 @@
 			</view>
 			<image class="cp-logo" src="/static/logo.png" mode="aspectFill"></image>
 			<view class="cp-action">
-				<myp-button bgType="error" border="none" radius="ll" text="下次再来" height="base" boxStyle="width:320rpx;" @buttonClicked="toCancel"></myp-button>
+				<myp-button bgType="error" textType="inverse" border="none" radius="ll" text="下次再来" height="base" boxStyle="width:320rpx;" @buttonClicked="toCancel"></myp-button>
 			</view>
 		</view>
 	</myp-popup>

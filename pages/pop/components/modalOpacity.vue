@@ -5,7 +5,7 @@
 			<text class="mo-desc">删除之后，将无法恢复，请谨慎操作。</text>
 			<view class="mo-foot">
 				<myp-button border="all" radius="ll" bgType="inverse" text="取消" height="base" textType="text" boxStyle="width:240rpx;" @buttonClicked="toCancel"></myp-button>
-				<myp-button border="none" radius="ll" bgType="error" text="确认" height="base" boxStyle="width:240rpx;" @buttonClicked="toConfirm"></myp-button>
+				<myp-button border="none" radius="ll" bgType="error" text="确认" textType="inverse" height="base" boxStyle="width:240rpx;" @buttonClicked="toConfirm"></myp-button>
 			</view>
 		</view>
 	</myp-popup>

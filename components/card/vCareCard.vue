@@ -4,7 +4,7 @@
 		<text class="vcc-name">{{name}}</text>
 		<text class="vcc-cares">{{cares}}</text>
 		<text class="vcc-intro">{{intro}}</text>
-		<myp-button bgType="error" icon="plus" text="关 注" iconSize="base" textSize="base" height="s" radius="ll" boxStyle="width:180rpx;" @buttonClicked="toCare"></myp-button>
+		<myp-button bgType="error" icon="plus" text="关 注" textType="inverse" iconType="inverse" iconSize="base" textSize="base" height="s" border="none" radius="ll" boxStyle="width:180rpx;" @buttonClicked="toCare"></myp-button>
 		<view class="vcc-close">
 			<myp-icon name="close" type="third" size="base" @iconClicked="toClose"></myp-icon>
 		</view>

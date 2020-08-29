@@ -5,7 +5,7 @@
 			<text class="tp-title">mypUI</text>
 			<text class="tp-sign">傲来雾,花果香,定海一棒万妖朝。东海外,水帘中,齐天比高仙折腰。素衣着,泪情诗,待你未归人潮逝。初相识,唇上血,千古第一为红颜。</text>
 			<view class="tp-pay">
-				<myp-button bgType="primary" text="打赏" border="none" radius="ll" boxStyle="width:420rpx;" @buttonClicked="toPay"></myp-button>
+				<myp-button bgType="primary" text="打赏" textType="inverse" border="none" radius="ll" boxStyle="width:420rpx;" @buttonClicked="toPay"></myp-button>
 			</view>
 		</view>
 	</myp-popup>

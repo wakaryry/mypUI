@@ -12,7 +12,7 @@
 				</view>
 			</view>
 			<view>
-				<myp-button icon="plus" text="关 注" bgType="error" radius="ll" iconSize="base" textSize="base" height="s" boxStyle="width:180rpx;"></myp-button>
+				<myp-button icon="plus" text="关 注" bgType="error" iconType="inverse" textType="inverse" border="none" radius="ll" iconSize="base" textSize="base" height="s" boxStyle="width:180rpx;"></myp-button>
 			</view>
 		</view>
 		<myp-divider type="border-dark"></myp-divider>

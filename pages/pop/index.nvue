@@ -46,10 +46,10 @@
 			<view class="pop-overlay" v-if="overlayOptions.hasBg">
 				<image class="pop-overlay-bg" mode="aspectFill" src="/static/logo.png"></image>
 				<view style="height: 32rpx;"></view>
-				<myp-button border="none" radius="ll" bgType="error" text="点我关闭" boxStyle="width:420rpx;" @buttonClicked="toHidePop"></myp-button>
+				<myp-button border="none" radius="ll" bgType="error" text="点我关闭" textType="inverse" boxStyle="width:420rpx;" @buttonClicked="toHidePop"></myp-button>
 			</view>
 			<view class="pop-overlay" v-if="!overlayOptions.canAutoClose&&!overlayOptions.hasBg">
-				<myp-button border="none" radius="ll" bgType="error" text="点我关闭" boxStyle="width:420rpx;" @buttonClicked="toHidePop"></myp-button>
+				<myp-button border="none" radius="ll" bgType="error" text="点我关闭" textType="inverse" boxStyle="width:420rpx;" @buttonClicked="toHidePop"></myp-button>
 			</view>
 		</myp-overlay>
 		<modal-opacity :show="modalOpacityVisible" @cancel="toHidePop" @confirm="toHidePop"></modal-opacity>

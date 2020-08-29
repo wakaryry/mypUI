@@ -1,7 +1,7 @@
 <template>
 	<myp-popup :show="show" pos="bottom" width="600rpx" height="116px" bottomOffset="x" @overlayClicked="toCancel">
 		<view class="ac">
-			<myp-button text="退出登录" bgType="error" textType="text" border="none" radius="ll" boxStyle="width:600rpx;height:50px;" @buttonClicked="toSelect(0)"></myp-button>
+			<myp-button text="退出登录" bgType="error" textType="inverse" border="none" radius="ll" boxStyle="width:600rpx;height:50px;" @buttonClicked="toSelect(0)"></myp-button>
 			<view style="height: 8px;"></view>
 			<myp-button text="取消" bgType="inverse" textType="text" border="none" radius="ll" boxStyle="width:600rpx;height:50px;" @buttonClicked="toCancel"></myp-button>
 			<view style="height: 8px;"></view>

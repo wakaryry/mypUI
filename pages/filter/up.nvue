@@ -7,7 +7,7 @@
 		<up-pop :show="upVisible" :current="current" @cancel="toToggleUp" @select="selectedUp"></up-pop>
 		<myp-position :fixed="true" boxStyle="left:0;width:750rpx;">
 			<view class="up-btn">
-				<myp-button text="选择您的爱好" bgType="primary" border="none" radius="ll" boxStyle="width:420rpx;height:40px;" @buttonClicked="toToggleUp"></myp-button>
+				<myp-button text="选择您的爱好" bgType="primary" textType="inverse" border="none" radius="ll" boxStyle="width:420rpx;height:40px;" @buttonClicked="toToggleUp"></myp-button>
 			</view>
 			<myp-x-bar bgType="inverse" boxStyle="width:750rpx;"></myp-x-bar>
 		</myp-position>

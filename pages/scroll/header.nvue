@@ -49,7 +49,7 @@
 				<view class="ch-foot-token"></view>
 				<view class="ch-foot-body">
 					<view class="ch-foot-left"></view>
-					<myp-button text="欢迎光临" textType="text" bgType="primary" border="none" radius="ll" boxStyle="width:316rpx;height:76rpx;" @buttonClicked="toFootJoin"></myp-button>
+					<myp-button text="欢迎光临" textType="inverse" bgType="primary" border="none" radius="ll" boxStyle="width:316rpx;height:76rpx;" @buttonClicked="toFootJoin"></myp-button>
 					<view class="ch-foot-right">
 						<myp-icon name="share" size="base" @iconClicked="toShareCircle"></myp-icon>
 						<text class="ch-foot-right-text" @tap.stop="toShareCircle">分享</text>

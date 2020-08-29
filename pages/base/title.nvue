@@ -51,10 +51,15 @@
 </template>
 
 <script>
+import hEntryCard from '@/components/card/hEntryCard.vue'
+
 import toastMixin from '@/mypUI/myp-mixin/toastMixin.js'
 import navHelper from '@/router/navHelper.js'
 
 export default {
+	components: {
+		hEntryCard
+	},
 	mixins: [toastMixin, navHelper],
 	data() {
 		return {

@@ -151,7 +151,7 @@
 			mrBoxStyle() {
 				return `padding-left:${this.space};padding-right:${this.space};` + this.boxStyle
 			},
-			mrInputBoxStyle() {
+			mrValueBoxStyle() {
 				return `padding-left:${this.space};padding-right:${this.space};` + this.valueBoxStyle
 			},
 			mrPlaceBoxStyle() {

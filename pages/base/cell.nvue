@@ -9,7 +9,7 @@
 			<view style="height: 24rpx;"></view>
 			<myp-cell icon="setting" title="通用设置" border="all" radius="s" indicator="right" boxStyle="padding-left:32rpx;padding-right:32rpx;margin-left:32rpx;margin-right:32rpx;"></myp-cell>
 			<view style="height: 24rpx;"></view>
-			<myp-cell bgType="error" icon="setting" title="通用设置" value="更多设置请查看源码以及文档" border="all" radius="s" indicator="right" boxStyle="padding-left:32rpx;padding-right:32rpx;margin-left:32rpx;margin-right:32rpx;"></myp-cell>
+			<myp-cell bgType="error" icon="setting" title="通用设置" value="更多设置请查看源码以及文档" iconType="inverse" titleType="inverse" valueType="inverse" indicatorType="inverse" border="none" radius="s" indicator="right" boxStyle="padding-left:32rpx;padding-right:32rpx;margin-left:32rpx;margin-right:32rpx;"></myp-cell>
 			<view style="height: 24rpx;"></view>
 			<myp-cell icon="bold-refresh" title="软件更新" indicator="right" space="24rpx" boxStyle="padding-left:38rpx;padding-right:48rpx;">
 				<view slot="extra" class="cell-upload">

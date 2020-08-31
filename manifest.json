@@ -76,5 +76,13 @@
     },
     "uniStatistics" : {
         "enable" : false
+    },
+    "h5" : {
+        "title" : "mypUI-做最顺手的UI",
+        "router" : {
+            "mode" : "hash",
+            "base" : "/h5/"
+        },
+        "domain" : "https://mypui.asnowsoft.cn"
     }
 }

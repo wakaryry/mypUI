@@ -1,0 +1,32 @@
+{
+  "name": "@mypui/myp-ui",
+  "version": "1.0.0",
+  "description": "第一个高效且强悍的nvue开源组件库。做最好、最顺手的nvue组件库",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/wakaryry/mypUI"
+  },
+  "keywords": [
+    "uni",
+    "uni-ui",
+    "myp",
+    "mypUI",
+    "myp-ui",
+    "mypui",
+    "nvue",
+    "uniapp",
+    "ui",
+    "vue"
+  ],
+  "author": "https://github.com/wakaryry",
+  "license": "ISC",
+  "private": false,
+  "bugs": {
+    "url": "https://github.com/wakaryry/mypUI/issues"
+  },
+  "homepage": "https://github.com/wakaryry/mypUI#readme"
+}

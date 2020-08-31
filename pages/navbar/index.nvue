@@ -1,6 +1,9 @@
 <template>
 	<view>
-		<myp-navbar :lefts="leftIcons" title="导航栏" @leftAction="navLeftAction"></myp-navbar>
+		<myp-height height="status-nav" boxStyle="width:750rpx;position:relative;">
+			<image src="https://cdn.img.wenhairu.com/images/2020/05/23/YO0sR.md.jpg" style="position: absolute;left: 0;top: 0;bottom: 0;width: 750rpx;" mode="aspectFill"></image>
+			<myp-navbar bgType="none" :fixed="false" :lefts="leftIcons" title="导航栏" @leftAction="navLeftAction" boxStyle="position:absolute;left:0;bottom:0;top:0;width:750rpx;"></myp-navbar>
+		</myp-height>
 		<myp-list-simple bgType="page">
 			<myp-list-cell>
 				<view style="height: 20rpx;"></view>
@@ -38,7 +41,7 @@
 				<view style="height: 20rpx;"></view>
 			</myp-list-cell>
 			<myp-list-cell>
-				<myp-navbar :fixed="false" :includeStatus="false" :lefts="lefts4" title="按钮式" leftItemStyle="width:46rpx;"></myp-navbar>
+				<myp-navbar :fixed="false" :includeStatus="false" :lefts="lefts4" title="按钮式" leftStyle="width:300rpx;" centerStyle="width:150rpx;" rightStyle="width:300rpx;" leftItemStyle="width:46rpx;"></myp-navbar>
 				<view style="height: 20rpx;"></view>
 			</myp-list-cell>
 			<myp-list-cell>
@@ -67,7 +70,7 @@
 				<view style="height: 20rpx;"></view>
 			</myp-list-cell>
 			<myp-list-cell>
-				<myp-navbar :fixed="false" :includeStatus="false" :lefts="lefts1" title="渐变背景色" boxStyle="background-image: linear-gradient(to right, #FFF000, #F8F8F8);"></myp-navbar>
+				<myp-navbar :fixed="false" :includeStatus="false" :lefts="lefts1" title="渐变背景色" bgType="none" boxStyle="background-image: linear-gradient(to right, #FFF000, #F8F8F8);"></myp-navbar>
 				<view style="height: 20rpx;"></view>
 			</myp-list-cell>
 		</myp-list-simple>

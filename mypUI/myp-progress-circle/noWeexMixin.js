@@ -1,5 +1,6 @@
 export default {
 	methods: {
+		// #ifndef APP-NVUE
 		twoWayZeroProgress(pr, lastPr, duration) {
 			let delay = 0
 			if (this.aniToZero) {
@@ -87,5 +88,6 @@ export default {
 				}
 			}
 		}
+		// #endif
 	}
 }

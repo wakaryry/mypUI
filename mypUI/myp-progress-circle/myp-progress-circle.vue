@@ -11,21 +11,12 @@
 </template>
 
 <script>
-	// #ifdef APP-NVUE
 	import weexMixin from './weexMixin.js'
-	// #endif
-	// #ifndef APP-NVUE
 	import noWeexMixin from './noWeexMixin.js'
-	// #endif
-	import pxMixin from '@/mypUI/myp-mixin/pxMixin.js'
+	import pxMixin from '../myp-mixin/pxMixin.js'
 	
 	export default {
-		// #ifdef APP-NVUE
-		mixins: [pxMixin, weexMixin],
-		// #endif
-		// #ifndef APP-NVUE
-		mixins: [pxMixin, noWeexMixin],
-		// #endif
+		mixins: [pxMixin, weexMixin, noWeexMixin],
 		props: {
 			progress: {
 				type: Number,

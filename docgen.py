@@ -11,7 +11,7 @@ def genDoc(path='/Users/wakary/GitHub/uni/myp-ui/mypUI'):
 			new_files = os.listdir(path+'/'+f)
 			# print(new_files)
 			for ff in new_files:
-				if os.path.isfile(path+'/'+f+'/'+ff) and ff.endswith('.vue'):
+				if os.path.isfile(path+'/'+f+'/'+ff) and ff.endswith('.vue') and ff != 'myp-list-cell.vue':
 					print(ff)
 					os.system('cd /Users/wakary/GitHub/uni/myp-ui')
 					cmd = 'yarn vue-docgen mypUI/'+f+'/'+ff+' docs'

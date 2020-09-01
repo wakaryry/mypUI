@@ -4,6 +4,7 @@ const animation = weex.requireModule('animation');
 
 export default {
 	methods: {
+		// #ifdef APP-NVUE
 		twoWayZeroProgress(pr, lastPr, duration) {
 			const rightEl = this.$refs['myp-right']
 			const leftEl = this.$refs['myp-left']
@@ -182,5 +183,6 @@ export default {
 				}
 			}
 		}
+		// #endif
 	}
 }

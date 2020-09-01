@@ -117,6 +117,28 @@
 			}
 		},
 		methods: {
+			mypScrollToBottom() {
+				// #ifdef APP-NVUE
+				const ref = this.$refs['myp-chat-bottom']
+				dom.scrollToElement(ref, {offset: 0, animated: true})
+				// #endif
+				// #ifndef APP-NVUE
+				this.mypCurrentView = 'myp-chat-bottom'
+				// #endif
+			},
+			mypScrollToElement(ref, options={offset: 0, animated: true}) {
+				// #ifdef APP-NVUE
+				dom.scrollToElement(ref, options)
+				// #endif
+				// #ifndef APP-NVUE
+				this.mypCurrentView = null
+				if (this.mypScrollTop === ref) {
+					this.mypScrollTop = ref + 0.1
+				} else {
+					this.mypScrollTop = ref
+				}
+				// #endif
+			}
 		}
 	}
 </script>

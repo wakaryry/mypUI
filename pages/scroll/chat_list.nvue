@@ -1,7 +1,7 @@
 <template>
 	<view>
 		<myp-navbar :lefts="leftIcons" title="chat-list" @leftAction="navLeftAction"></myp-navbar>
-		<myp-list-down bgType="page" ref="myp-list" :includeXBar="false" :autoUpdate="true" @down="toLoadData">
+		<myp-list-chat bgType="page" ref="myp-list" :includeXBar="false" :autoUpdate="true" @down="toLoadData">
 			<myp-list-cell v-for="(item, idx) in items" :key="idx">
 				<view v-if="item.myp_page" :ref="'chat_page_'+item.myp_page"></view>
 				<view v-else :class="['slo-content', item.uid===1?'slo-content-left':'slo-content-right']">
@@ -10,7 +10,7 @@
 					<view style="height: 32rpx;"></view>
 				</view>
 			</myp-list-cell>
-		</myp-list-down>
+		</myp-list-chat>
 	</view>
 </template>
 
@@ -40,9 +40,6 @@
 						that.items = Object.assign([], data)
 						// #endif
 						ins.mypEndSuccess(true)
-						that.$nextTick(function(){
-							ins.mypScrollToBottom()
-						})
 					} else {
 						that.items = [{'myp_page': cp}].concat(Object.assign([], data).concat(that.items))
 						if (cp >= 4) {
@@ -50,11 +47,6 @@
 						} else {
 							ins.mypEndSuccess(true)
 						}
-						// #ifdef APP-NVUE
-						that.$nextTick(function(){
-							ins.mypScrollToElement(that.$refs['chat_page_'+(cp-1)][0])
-						})
-						// #endif
 					}
 				}, 2000)
 			}

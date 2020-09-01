@@ -4,6 +4,10 @@ import pxMixin from '../myp-mixin/pxMixin.js'
 export default {
 	mixins: [xBarMixin, pxMixin],
 	props: {
+		showScrollbar: {
+			type: Boolean,
+			default: true
+		},
 		includeStatus: {
 			type: Boolean,
 			default: false

@@ -1,7 +1,7 @@
 <template>
 	<view class="myp-simple" :style="boxStyle">
 		<!-- #ifdef APP-NVUE -->
-		<list :class="'myp-bg-'+bgType" :style="mrScrollStyle" @scroll="toScroll">
+		<list :class="'myp-bg-'+bgType" :style="mrScrollStyle" :show-scrollbar="showScrollbar" @scroll="toScroll">
 			<slot></slot>
 			<cell>
 				<view :style="{height: footToken}"></view>
@@ -12,7 +12,7 @@
 		</list>
 		<!-- #endif -->
 		<!-- #ifndef APP-NVUE -->
-		<scroll-view :scroll-y="true" :class="'myp-bg-'+bgType" :style="mrScrollStyle" @scroll="toScroll">
+		<scroll-view :scroll-y="true" :class="'myp-bg-'+bgType" :style="mrScrollStyle" :show-scrollbar="showScrollbar" @scroll="toScroll">
 			<slot></slot>
 			<view :style="{height: footToken}"></view>
 			<view v-if="includeXBar&&overrideXBar" :style="mypXBarHeightStyle"></view>

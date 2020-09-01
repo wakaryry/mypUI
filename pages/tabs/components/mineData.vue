@@ -1,10 +1,11 @@
 <template>
 	<view class="md">
-		<myp-item v-for="(item,idx) in items" :key="idx" :icon="item.icon" :text="item.name" textType="text" iconType="primary" iconStyle="font-size: 52rpx;" space="20rpx" boxStyle="flex:1;height:180rpx;"></myp-item>
+		<myp-item v-for="(item,idx) in items" :key="idx" :icon="item.icon" :text="item.name" textType="text" iconType="primary" iconStyle="font-size: 52rpx;" space="20rpx" style="flex: 1;" boxStyle="flex:1;height:180rpx;"></myp-item>
 	</view>
 </template>
 
 <script>
+	// 我们注意到上面代码中有个 style="flex: 1;" 主要是小程序自定义组件里面boxStyle中设置无效，需要在style上设置
 	export default {
 		data() {
 			return {

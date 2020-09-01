@@ -1,7 +1,7 @@
 <template>
 	<view :style="boxStyle">
 		<view v-if="fixed&&isSeize" :style="{height: seizeHeight + 'px', width: '750rpx'}"></view>
-		<view :class="['myp-bg-'+bgType, 'myp-nav-box', fixed&&'myp-nav-fixed']" :style="statusNavStyle" @tap.stop="toPrevent">
+		<view :class="['myp-bg-'+bgType, 'myp-border-'+border, 'myp-nav-box', fixed&&'myp-nav-fixed']" :style="statusNavStyle" @tap.stop="toPrevent">
 			<view v-if="includeStatus" :style="{width: '750rpx', height: statusHeight + 'px'}"></view>
 			<view class="myp-nav-content" :style="mrNavStyle">
 				<view :class="['myp-nav-lefts', leftBgType&&('myp-bg-'+leftBgType)]" :style="leftStyle">
@@ -56,6 +56,10 @@
 			bgType: {
 				type: String,
 				default: 'nav'
+			},
+			border: {
+				type: String,
+				default: 'none'
 			},
 			titleType: {
 				type: String,

@@ -4,6 +4,7 @@
 		<myp-icon v-if="isIcon" :name="icon" :type="iconType" :size="iconSize" :mode="iconMode" :iconStyle="iconStyle" :boxStyle="iconBoxStyle" @iconClicked="clickedItem"></myp-icon>
 		<text v-if="!isIcon" :class="['myp-color-'+iconType, 'myp-size-'+iconSize]" :style="iconStyle">{{icon}}</text>
 		<text v-if="!textFirst" :class="['myp-color-'+textType, 'myp-size-'+textSize]" :style="mrTextStyle">{{text}}</text>
+		<slot name="extra"></slot>
 	</view>
 </template>
 

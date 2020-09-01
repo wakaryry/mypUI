@@ -3,6 +3,7 @@
 		<view v-for="(rows, idx) in rowArr" class="myp-grid-rows" :style="mrRowStyle" :key="idx">
 			<view v-for="(item, index)  in rows" :class="['myp-grid-item', isGrid&&'myp-grid-grid', index !==0 && hasLine && 'myp-grid-item-left', idx !== 0 && hasLine && 'myp-grid-item-top']" :key="index" :style="mrItemStyle+((index===rows.length-1)?mrNoSpaceStyle:'')">
 				<myp-grid-item v-if="item" :icon="item[iconLabel]" :text="item[textLabel]" :textType="textType" :textSize="textSize" :iconType="iconType" :iconSize="iconSize" :hover="hover" :isIcon="isIcon" :mode="mode" :iconMode="iconMode" :space="space" :boxStyle="itemBoxStyle" :iconStyle="iconStyle" :iconBoxStyle="iconBoxStyle" :textStyle="textStyle" @itemClicked="clickedItem(idx, index, item)"></myp-grid-item>
+				<myp-badge v-if="item.badge&&typeof item.badge.text!='undefined'" :size="item.badge.size||badgeConfig.size||'12rpx'" :bgType="item.badge.bgType||badgeConfig.bgType||'error'" :text="item.badge.text||''" :border="item.badge.border||badgeConfig.border||'none'" :textType="item.badge.textType||badgeConfig.textType||'inverse'" :textSize="item.badge.textSize||badgeConfig.textSize||'ss'" :textStyle="item.badge.textStyle||badgeConfig.textStyle||''" :boxStyle="item.badge.boxStyle||badgeConfig.boxStyle||''"></myp-badge>
 			</view>
 		</view>
 	</view>
@@ -94,6 +95,12 @@
 			iconMode: {
 				type: String,
 				default: 'aspectFill'
+			},
+			badgeConfig: {
+				type: Object,
+				default: ()=>{
+					return {}
+				}
 			},
 			boxStyle: {
 				type: String,
@@ -193,6 +200,7 @@
 		&-item {
 			justify-content: center;
 			align-items: center;
+			position: relative;
 			
 			&-left {
 				border-left-color: $myp-border-color;

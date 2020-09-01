@@ -42,6 +42,9 @@
 		},
 		computed: {
 			mrBoxStyle() {
+				if (!this.size || this.size.length === 0 || parseInt(this.size)===0) {
+					return this.boxStyle
+				}
 				return `width:${this.size};height:${this.size};border-radius:${this.size};` + this.boxStyle
 			}
 		}

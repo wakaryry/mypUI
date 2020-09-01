@@ -3,6 +3,10 @@
 export default {
 	data() {
 		return {
+			// #ifdef APP-NVUE
+			platform: '',
+			// #endif
+			// #ifndef APP-NVUE
 			mypScrollable: true,
 			mypDownHeight: 0,
 			mypStartPoint: null,
@@ -17,6 +21,10 @@ export default {
 			mypMoveTime: 0,
 			mypMoveTimeDiff: 0,
 			mypScrollTopDeviation: 100,  // scroll-view滚动到顶部时,此时的scroll-top不一定为0, 此值用于控制最大的误差
+			mypIsMoveDown: false,
+			mypDownMoveType: 0,
+			mypIsDownReset: false,  // 下拉刷新，是否显示重置的过渡动画
+			// #endif
 			mypIsDownLoading: false,  // 是否正在下拉刷新中
 			mypIsUpLoading: false,  // 是否正在上提加载
 			// down
@@ -26,9 +34,6 @@ export default {
 				inRate: 0.8,  // 下拉的距离小于offset时,改变下拉区域高度比例;0-1,越小,越难拉
 				outRate: 0.2  // 下拉的距离大于offset时,改变下拉区域高度比例;0-1,越小,越难拉
 			},
-			mypIsMoveDown: false,
-			mypDownMoveType: 0,
-			mypIsDownReset: false,  // 下拉刷新，是否显示重置的过渡动画
 			// up
 			mypUp: {
 				use: true,
@@ -40,6 +45,7 @@ export default {
 			mypPrePage: 0
 		}
 	},
+	// #ifndef APP-NVUE
 	computed: {
 		mypMrScrollContentStyle() {
 			let _style = 'position: relative;'
@@ -57,26 +63,9 @@ export default {
 			return this.mypDownHeight / (this.mypDown.offset || 80)
 		}
 	},
-	created() {
-		// config the down/up
-		this.mypDown = Object.assign({use: true,offset: uni.upx2px(140),inRate: 0.8,outRate: 0.2}, this.down)
-		this.mypUp = Object.assign({use: true,offset: 80}, this.up)
-		// emit this 会在mp端报错，且不建议
-		// this.$emit("inited", this)
-		// 注意：如果直接emit，外部监听到inited的时候，还不能通过ref获取到实例
-		// this.$emit("inited")
-		setTimeout(()=>{
-			this.$emit("inited")
-		}, 0)
-		if (this.autoUpdate) {
-			const that = this
-			setTimeout(() => {
-				// to refresh data
-				this.mypInitContentList()
-			}, 10)
-		}
-	},
+	// #endif
 	methods: {
+		// #ifndef APP-NVUE
 		// 手指开始触摸屏幕
 		mypTouchstartEvent(e) {
 			// if (!this.down.use) return;
@@ -199,6 +188,11 @@ export default {
 			this.mypCurrentPage += 1
 			this.mypGetContentList('load')
 		},
+		mypReload() {
+			this.mypPrePage = this.mypCurrentPage
+			this.mypCurrentPage = 1
+			this.mypGetContentList('load')
+		},
 		mypInitContentList() {
 			this.mypPrePage = 0
 			this.mypCurrentPage = 1
@@ -293,5 +287,6 @@ export default {
 			}
 			return contentHeight - this.mypTheScrollTop - this.mypScrollHeight
 		}
+		// #endif
 	}
 }

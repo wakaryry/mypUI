@@ -2,10 +2,10 @@
 	<view :class="['myp-cp', 'myp-bg-'+bgType]" :style="mrBoxStyle">
 		<slot></slot>
 		<view class="myp-cp-right" :style="{width: (evenWidth/2)+'px', height: evenWidth+'px'}">
-			<view ref="myp-right" class="myp-cp-right-rotate" :style="mrRightStyle+noWeexRightAni"></view>
+			<view ref="myp-right" class="myp-cp-right-rotate" :style="mrRightStyle+noWeexRightAni+noWeexRightOpacity"></view>
 		</view>
 		<view class="myp-cp-left" :style="{width: (evenWidth/2)+'px', height: evenWidth+'px'}">
-			<view ref="myp-left" class="myp-cp-left-rotate" :style="mrLeftStyle+noWeexLeftAni"></view>
+			<view ref="myp-left" class="myp-cp-left-rotate" :style="mrLeftStyle+noWeexLeftAni+noWeexLeftOpacity"></view>
 		</view>
 		<slot name="extra"></slot>
 	</view>
@@ -70,7 +70,9 @@
 				evenWidth: 0,
 				lastPr: 0,
 				noWeexLeftAni: '',
-				noWeexRightAni: ''
+				noWeexRightAni: '',
+				noWeexLeftOpacity: '',
+				noWeexRightOpacity: ''
 			}
 		},
 		computed: {

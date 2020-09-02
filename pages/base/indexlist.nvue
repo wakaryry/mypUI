@@ -1,7 +1,7 @@
 <template>
 	<view>
 		<myp-navbar :lefts="leftIcons" title="indexlist" @leftAction="navLeftAction"></myp-navbar>
-		<myp-list-index :normalList="cities" :hotListConfig="hotListConfig" :specialListConfig="specialListConfig"></myp-list-index>
+		<myp-list-index :normalList="cities" :hotList="hotList" :specialList="specialList"></myp-list-index>
 		<myp-toast ref="myp-toast"></myp-toast>
 		<myp-loading ref="myp-loading"></myp-loading>
 	</view>
@@ -15,13 +15,13 @@
 		mixins: [navHelper],
 		data() {
 			return {
-				hotListConfig: {
+				hotList: {
 					title: '热门',
 					id: 'hot',
 					type: 'group',
 					list: [{name: '武夷山'}, {name: '九寨沟'}, {name: '西双版纳'}, {name: '北京'}, {name: '上海'}, {name: '武冈'}]
 				},
-				specialListConfig: {
+				specialList: {
 					title: '最近',
 					id: 'recent',
 					type: 'list',

@@ -1,0 +1,28 @@
+<template>
+	<view>
+		<myp-navbar :lefts="leftIcons" title="环形进度条" @leftAction="navLeftAction"></myp-navbar>
+		<myp-list-simple bgType="page">
+			
+		</myp-list-simple>
+		<myp-toast ref="myp-toast"></myp-toast>
+	</view>
+</template>
+
+<script>
+import toastMixin from '@/mypUI/myp-mixin/toastMixin.js'
+import navHelper from '@/router/navHelper.js'
+
+export default {
+	mixins: [toastMixin, navHelper],
+	data() {
+		return {
+		}
+	},
+	methods: {
+	}
+};
+</script>
+
+<style lang="scss" scoped>
+
+</style>

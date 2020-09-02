@@ -58,6 +58,12 @@
 			}
 		},
 		{
+			"path": "pages/base/progress_circle",
+			"style": {
+				"disableScroll": true
+			}
+		},
+		{
 			"path": "pages/base/radio",
 			"style": {
 				"disableScroll": true

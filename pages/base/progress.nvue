@@ -2,7 +2,27 @@
 	<view>
 		<myp-navbar :lefts="leftIcons" title="进度条" @leftAction="navLeftAction"></myp-navbar>
 		<myp-list-simple bgType="page">
-			
+			<myp-list-cell>
+				<view style="height: 60rpx;"></view>
+				<myp-progress boxStyle="margin-left:75rpx;"></myp-progress>
+				<view style="height: 60rpx;"></view>
+			</myp-list-cell>
+			<myp-list-cell>
+				<myp-progress :progress="0.2" progressBgType="error" boxStyle="margin-left:75rpx;"></myp-progress>
+				<view style="height: 60rpx;"></view>
+			</myp-list-cell>
+			<myp-list-cell>
+				<myp-progress :progress="0.6" bgType="warning" boxStyle="margin-left:75rpx;"></myp-progress>
+				<view style="height: 60rpx;"></view>
+			</myp-list-cell>
+			<myp-list-cell>
+				<myp-progress :progress="1.0" boxStyle="margin-left:75rpx;"></myp-progress>
+				<view style="height: 60rpx;"></view>
+			</myp-list-cell>
+			<myp-list-cell>
+				<myp-progress :progress="progress" boxStyle="margin-left:75rpx;"></myp-progress>
+				<view style="height: 60rpx;"></view>
+			</myp-list-cell>
 		</myp-list-simple>
 		<myp-toast ref="myp-toast"></myp-toast>
 	</view>
@@ -12,13 +32,31 @@
 import toastMixin from '@/mypUI/myp-mixin/toastMixin.js'
 import navHelper from '@/router/navHelper.js'
 
+let intervalTimer = null
+
 export default {
 	mixins: [toastMixin, navHelper],
 	data() {
 		return {
+			progress: 0
 		}
 	},
 	methods: {
+		toProgress() {
+			const that = this
+			intervalTimer = setInterval(()=>{
+				if (that.progress >= 1.0) {
+					intervalTimer && clearInterval(intervalTimer)
+					that.progress = 0
+					that.toProgress()
+				} else {
+					that.progress += 0.1
+				}
+			}, 100)
+		}
+	},
+	onLoad() {
+		this.toProgress()
 	}
 };
 </script>

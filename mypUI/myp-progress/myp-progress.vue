@@ -1,6 +1,6 @@
 <template>
-	<view :class="['myp-bg-'+bgType]" :style="boxStyle+'width:'+width+';'">
-		<view :class="['myp-bg-'+progressBgType]" :style="progressStyle+runStyle"></view>
+	<view :class="['myp-flex-row', 'myp-align-center', 'myp-bg-'+bgType]" :style="boxStyle+'width:'+width+';'+'height:'+height+';'">
+		<view :class="['myp-bg-'+progressBgType]" :style="progressStyle+'height:'+progressHeight+';'+runStyle"></view>
 	</view>
 </template>
 
@@ -15,9 +15,17 @@
 				type: String,
 				default: '600rpx'
 			},
+			height: {
+				type: String,
+				default: '12rpx'
+			},
 			bgType: {
 				type: String,
 				default: 'light'
+			},
+			progressHeight: {
+				type: String,
+				default: '12rpx'
 			},
 			progressBgType: {
 				type: String,

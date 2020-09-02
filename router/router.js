@@ -12,6 +12,7 @@ export default {
 	base_switch: '/pages/base/switch',
 	base_title: '/pages/base/title',
 	base_progress: '/pages/base/progress',
+	base_progress_circle: '/pages/base/progress_circle',
 	base_tabs: '/pages/base/tabs',
 	base_grid: '/pages/base/grid',
 	base_countdown: '/pages/base/countdown',

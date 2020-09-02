@@ -110,6 +110,15 @@ export default {
 				identity: '厨师',
 				page: 'base_progress'
 			}, {
+				name: '环形进度条',
+				avatar: 'https://cdn.img.wenhairu.com/images/2020/05/23/YTnhG.jpg',
+				desc: '16.8万粉丝',
+				content: 'progress',
+				cover: 'https://cdn.img.wenhairu.com/images/2020/05/23/YOOyB.jpg',
+				badge: 2,
+				identity: '渔民',
+				page: 'base_progress_circle'
+			}, {
 				name: '单/多选',
 				avatar: 'https://cdn.img.wenhairu.com/images/2020/05/23/YTQc0.jpg',
 				desc: '66.6万粉丝',

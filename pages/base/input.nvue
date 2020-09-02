@@ -47,11 +47,6 @@
 				<myp-title bgType="none" title1="可自增多行输入框" title1Type="third" boxStyle="padding-left:32rpx;padding-right:32rpx;"></myp-title>
 			</myp-list-cell>
 			<myp-list-cell>
-				<view class="bi-margin">
-					<myp-input-grow value="我开始输入一些内容,让他看上去有质感一些.您可以继续输入或者删除掉这些内容"></myp-input-grow>
-				</view>
-			</myp-list-cell>
-			<myp-list-cell>
 				<myp-title bgType="none" title1="高度/边框/圆角/等" title1Type="third" boxStyle="padding-left:32rpx;padding-right:32rpx;"></myp-title>
 			</myp-list-cell>
 			<myp-list-cell>

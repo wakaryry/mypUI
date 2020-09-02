@@ -5,6 +5,20 @@ const animation = weex.requireModule('animation');
 export default {
 	methods: {
 		// #ifdef APP-NVUE
+		initOpacityState() {
+			const rightEl = this.$refs['myp-right']
+			const leftEl = this.$refs['myp-left']
+			animation.transition(rightEl, {
+				styles: {
+					opacity: 0
+				}
+			})
+			animation.transition(leftEl, {
+				styles: {
+					opacity: 0
+				}
+			})
+		},
 		twoWayZeroProgress(pr, lastPr, duration) {
 			const rightEl = this.$refs['myp-right']
 			const leftEl = this.$refs['myp-left']
@@ -29,6 +43,37 @@ export default {
 				duration: delay,
 				delay: 0
 			}, ()=>{
+				if (pr > 0.5) {
+					animation.transition(leftEl, {
+						styles: {
+							opacity: 1
+						}
+					})
+					animation.transition(rightEl, {
+						styles: {
+							opacity: 1
+						}
+					})
+				} else {
+					animation.transition(leftEl, {
+						styles: {
+							opacity: 0
+						}
+					})
+					if (pr <= 0) {
+						animation.transition(rightEl, {
+							styles: {
+								opacity: 0
+							}
+						})
+					} else {
+						animation.transition(rightEl, {
+							styles: {
+								opacity: 1
+							}
+						})
+					}
+				}
 				// forward
 				const newDur = this.getDuration(pr, duration)
 				const dur = newDur.left > newDur.right ? newDur.left : newDur.right
@@ -58,6 +103,24 @@ export default {
 				const lastDur = this.getBackDuration(lastPr, this.duration)
 				dur = Math.max(Math.abs(newDur.left - lastDur.left), Math.abs(newDur.right - lastDur.right))
 			}
+			if (lastPr > 0.5) {
+				
+			} else {
+				if (pr > 0.5) {
+					animation.transition(leftEl, {
+						styles: {
+							opacity: 1
+						}
+					})
+				}
+				if (pr > 0) {
+					animation.transition(rightEl, {
+						styles: {
+							opacity: 1
+						}
+					})
+				}
+			}
 			animation.transition(leftEl, {
 				styles: {
 					transform: `rotate(${newDeg.left}deg)`
@@ -69,6 +132,21 @@ export default {
 					transform: `rotate(${newDeg.right}deg)`
 				},
 				duration: dur
+			}, ()=>{
+				if (pr <= 0.5) {
+					animation.transition(leftEl, {
+						styles: {
+							opacity: 0
+						}
+					})
+				}
+				if (pr <= 0) {
+					animation.transition(rightEl, {
+						styles: {
+							opacity: 0
+						}
+					})
+				}
 			})
 		},
 		oneWayZeroProgress(pr, lastPr, duration) {
@@ -89,12 +167,30 @@ export default {
 				},
 				duration: leftDelay
 			}, ()=>{
+				animation.transition(leftEl, {
+					styles: {
+						opacity: 0
+					}
+				})
 				animation.transition(rightEl, {
 					styles: {
 						transform: 'rotate(45deg)'
 					},
 					duration: rightDelay
 				}, ()=>{
+					if (pr <= 0) {
+						animation.transition(rightEl, {
+							styles: {
+								opacity: 0
+							}
+						})
+					} else {
+						animation.transition(rightEl, {
+							styles: {
+								opacity: 1
+							}
+						})
+					}
 					// forward
 					const newDur = that.getDuration(pr, duration)
 					const newDeg = that.getDeg(pr)
@@ -104,6 +200,19 @@ export default {
 						},
 						duration: newDur.right
 					}, ()=>{
+						if (pr > 0.5) {
+							animation.transition(leftEl, {
+								styles: {
+									opacity: 1
+								}
+							})
+						} else {
+							animation.transition(leftEl, {
+								styles: {
+									opacity: 0
+								}
+							})
+						}
 						animation.transition(leftEl, {
 							styles: {
 								transform: `rotate(${newDeg.left}deg)`
@@ -120,6 +229,13 @@ export default {
 			const that = this
 			const newDur = this.getDuration(pr, duration)
 			const newDeg = this.getDeg(pr)
+			if (pr > 0) {
+				animation.transition(rightEl, {
+					styles: {
+						opacity: 1
+					}
+				})
+			}
 			if (duration) {
 				if (pr >= lastPr) {
 					animation.transition(rightEl, {
@@ -128,6 +244,20 @@ export default {
 						},
 						duration: newDur.right
 					}, ()=>{
+						if (pr <= 0) {
+							animation.transition(rightEl, {
+								styles: {
+									opacity: 0
+								}
+							})
+						}
+						if (pr > 0.5 && lastPr <= 0.5) {
+							animation.transition(leftEl, {
+								styles: {
+									opacity: 1
+								}
+							})
+						}
 						animation.transition(leftEl, {
 							styles: {
 								transform: `rotate(${newDeg.left}deg)`
@@ -142,11 +272,26 @@ export default {
 						},
 						duration: newDur.left
 					}, ()=>{
+						if (pr < 0.5) {
+							animation.transition(leftEl, {
+								styles: {
+									opacity: 0
+								}
+							})
+						}
 						animation.transition(rightEl, {
 							styles: {
 								transform: `rotate(${newDeg.right}deg)`
 							},
 							duration: newDur.right
+						}, ()=>{
+							if (pr <= 0) {
+								animation.transition(rightEl, {
+									styles: {
+										opacity: 0
+									}
+								})
+							}
 						})
 					})
 				}
@@ -159,6 +304,20 @@ export default {
 						},
 						duration: newDur.right - lastDur.right
 					}, ()=>{
+						if (pr <= 0) {
+							animation.transition(rightEl, {
+								styles: {
+									opacity: 0
+								}
+							})
+						}
+						if (pr > 0.5 && lastPr <= 0.5) {
+							animation.transition(leftEl, {
+								styles: {
+									opacity: 1
+								}
+							})
+						}
 						animation.transition(leftEl, {
 							styles: {
 								transform: `rotate(${newDeg.left}deg)`
@@ -173,11 +332,26 @@ export default {
 						},
 						duration: lastDur.left - newDur.left
 					}, ()=>{
+						if (pr < 0.5) {
+							animation.transition(leftEl, {
+								styles: {
+									opacity: 0
+								}
+							})
+						}
 						animation.transition(rightEl, {
 							styles: {
 								transform: `rotate(${newDeg.right}deg)`
 							},
 							duration: lastDur.right - newDur.right
+						}, ()=>{
+							if (pr <= 0) {
+								animation.transition(rightEl, {
+									styles: {
+										opacity: 0
+									}
+								})
+							}
 						})
 					})
 				}

@@ -1,12 +1,13 @@
 <template>
 	<view :class="['myp-cp', 'myp-bg-'+bgType]" :style="mrBoxStyle">
+		<slot></slot>
 		<view class="myp-cp-right" :style="{width: (evenWidth/2)+'px', height: evenWidth+'px'}">
 			<view ref="myp-right" class="myp-cp-right-rotate" :style="mrRightStyle+noWeexRightAni"></view>
 		</view>
 		<view class="myp-cp-left" :style="{width: (evenWidth/2)+'px', height: evenWidth+'px'}">
 			<view ref="myp-left" class="myp-cp-left-rotate" :style="mrLeftStyle+noWeexLeftAni"></view>
 		</view>
-		<slot></slot>
+		<slot name="extra"></slot>
 	</view>
 </template>
 
@@ -74,7 +75,7 @@
 		},
 		computed: {
 			mrBoxStyle() {
-				const style = `width:${this.evenWidth}px;height:${this.evenWidth}px;padding-top:${this.borderWidth};padding-right:${this.borderWidth};padding-bottom:${this.borderWidth};padding-left:${this.borderWidth};border-radius:${this.evenWidth}px;`
+				const style = `width:${this.evenWidth}px;height:${this.evenWidth}px;border-radius:${this.evenWidth}px;`
 				return style + this.boxStyle
 			},
 			mrRightStyle() {
@@ -182,6 +183,9 @@
 			const w = this.mypToPx(this.width)
 			this.evenWidth = parseInt(w/2)*2
 			setTimeout(()=>{
+				// #ifdef APP-NVUE
+				this.initOpacityState()
+				// #endif
 				this.toProgress(this.progress)
 			}, 0)
 		},
@@ -219,6 +223,9 @@
 			
 			&-rotate {
 				position: absolute;
+				/* #ifndef APP-NVUE */
+				opacity: 0;
+				/* #endif */
 				top: 0;
 				right: 0;
 				border-top-color: transparent;
@@ -236,6 +243,9 @@
 			
 			&-rotate {
 				position: absolute;
+				/* #ifndef APP-NVUE */
+				opacity: 0;
+				/* #endif */
 				top: 0;
 				left: 0;
 				border-top-color: transparent;

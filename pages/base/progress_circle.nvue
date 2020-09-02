@@ -2,7 +2,43 @@
 	<view>
 		<myp-navbar :lefts="leftIcons" title="环形进度条" @leftAction="navLeftAction"></myp-navbar>
 		<myp-list-simple bgType="page">
-			
+			<myp-list-cell>
+				<view style="height: 60rpx;"></view>
+				<view style="flex-direction: row;align-items: center;margin-left:60rpx;">
+					<myp-progress-circle :progress="progress1"></myp-progress-circle>
+					<view style="margin-left: 32rpx; flex: 1; flex-direction: row; flex-wrap: wrap;">
+						<myp-button v-for="(item,idx) in items" :key="idx" :text="item+''" boxStyle="width:80rpx;height:60rpx;margin-right:20rpx;margin-top:10rpx;margin-bottom:10rpx;" @buttonClicked="toProgress(1, item)"></myp-button>
+					</view>
+				</view>
+				<view style="height: 60rpx;"></view>
+			</myp-list-cell>
+			<myp-list-cell>
+				<view style="flex-direction: row;align-items: center;margin-left:60rpx;">
+					<myp-progress-circle :progress="progress2" :fromZero="true"></myp-progress-circle>
+					<view style="margin-left: 32rpx; flex: 1; flex-direction: row; flex-wrap: wrap;">
+						<myp-button v-for="(item,idx) in items" :key="idx" :text="item+''" boxStyle="width:80rpx;height:60rpx;margin-right:20rpx;margin-top:10rpx;margin-bottom:10rpx;" @buttonClicked="toProgress(2, item)"></myp-button>
+					</view>
+				</view>
+				<view style="height: 60rpx;"></view>
+			</myp-list-cell>
+			<myp-list-cell>
+				<view style="flex-direction: row;align-items: center;margin-left:60rpx;">
+					<myp-progress-circle :progress="progress3" :twoWay="true"></myp-progress-circle>
+					<view style="margin-left: 32rpx; flex: 1; flex-direction: row; flex-wrap: wrap;">
+						<myp-button v-for="(item,idx) in items" :key="idx" :text="item+''" boxStyle="width:80rpx;height:60rpx;margin-right:20rpx;margin-top:10rpx;margin-bottom:10rpx;" @buttonClicked="toProgress(3, item)"></myp-button>
+					</view>
+				</view>
+				<view style="height: 60rpx;"></view>
+			</myp-list-cell>
+			<myp-list-cell>
+				<view style="flex-direction: row;align-items: center;margin-left:60rpx;">
+					<myp-progress-circle :progress="progress4" :fromZero="true" :twoWay="true"></myp-progress-circle>
+					<view style="margin-left: 32rpx; flex: 1; flex-direction: row; flex-wrap: wrap;">
+						<myp-button v-for="(item,idx) in items" :key="idx" :text="item+''" boxStyle="width:80rpx;height:60rpx;margin-right:20rpx;margin-top:10rpx;margin-bottom:10rpx;" @buttonClicked="toProgress(4, item)"></myp-button>
+					</view>
+				</view>
+				<view style="height: 60rpx;"></view>
+			</myp-list-cell>
 		</myp-list-simple>
 		<myp-toast ref="myp-toast"></myp-toast>
 	</view>
@@ -16,13 +52,25 @@ export default {
 	mixins: [toastMixin, navHelper],
 	data() {
 		return {
+			items: [0, 0.3, 0.5, 0.6, 0.8, 1.0],
+			progress1: 0.4,
+			progress2: 0.6,
+			progress3: 0.4,
+			progress4: 0.6,
 		}
 	},
 	methods: {
+		toProgress(idx, val) {
+			this['progress'+idx] = val
+		}
 	}
 };
 </script>
 
 <style lang="scss" scoped>
-
+	@import '@/mypUI/mypui.scss';
+	
+	.pc {
+		
+	}
 </style>

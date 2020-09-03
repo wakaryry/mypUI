@@ -46,30 +46,35 @@ export default {
 				if (pr > 0.5) {
 					animation.transition(leftEl, {
 						styles: {
-							opacity: 1
+							opacity: 1,
+							transform: 'rotate(225deg)'
 						}
 					})
 					animation.transition(rightEl, {
 						styles: {
-							opacity: 1
+							opacity: 1,
+							transform: 'rotate(45deg)'
 						}
 					})
 				} else {
 					animation.transition(leftEl, {
 						styles: {
-							opacity: 0
+							opacity: 0,
+							transform: 'rotate(225deg)'
 						}
 					})
 					if (pr <= 0) {
 						animation.transition(rightEl, {
 							styles: {
-								opacity: 0
+								opacity: 0,
+								transform: 'rotate(45deg)'
 							}
 						})
 					} else {
 						animation.transition(rightEl, {
 							styles: {
-								opacity: 1
+								opacity: 1,
+								transform: 'rotate(45deg)'
 							}
 						})
 					}
@@ -109,14 +114,16 @@ export default {
 				if (pr > 0.5) {
 					animation.transition(leftEl, {
 						styles: {
-							opacity: 1
+							opacity: 1,
+							transform: 'rotate(225deg)'
 						}
 					})
 				}
-				if (pr > 0) {
+				if (lastPr <=0 && pr > 0) {
 					animation.transition(rightEl, {
 						styles: {
-							opacity: 1
+							opacity: 1,
+							transform: 'rotate(45deg)'
 						}
 					})
 				}
@@ -136,14 +143,16 @@ export default {
 				if (pr <= 0.5) {
 					animation.transition(leftEl, {
 						styles: {
-							opacity: 0
+							opacity: 0,
+							transform: 'rotate(225deg)'
 						}
 					})
 				}
 				if (pr <= 0) {
 					animation.transition(rightEl, {
 						styles: {
-							opacity: 0
+							opacity: 0,
+							transform: 'rotate(45deg)'
 						}
 					})
 				}
@@ -169,7 +178,8 @@ export default {
 			}, ()=>{
 				animation.transition(leftEl, {
 					styles: {
-						opacity: 0
+						opacity: 0,
+						transform: 'rotate(225deg)'
 					}
 				})
 				animation.transition(rightEl, {
@@ -181,13 +191,15 @@ export default {
 					if (pr <= 0) {
 						animation.transition(rightEl, {
 							styles: {
-								opacity: 0
+								opacity: 0,
+								transform: 'rotate(45deg)'
 							}
 						})
 					} else {
 						animation.transition(rightEl, {
 							styles: {
-								opacity: 1
+								opacity: 1,
+								transform: 'rotate(45deg)'
 							}
 						})
 					}
@@ -203,13 +215,15 @@ export default {
 						if (pr > 0.5) {
 							animation.transition(leftEl, {
 								styles: {
-									opacity: 1
+									opacity: 1,
+									transform: 'rotate(225deg)'
 								}
 							})
 						} else {
 							animation.transition(leftEl, {
 								styles: {
-									opacity: 0
+									opacity: 0,
+									transform: 'rotate(225deg)'
 								}
 							})
 						}
@@ -229,10 +243,11 @@ export default {
 			const that = this
 			const newDur = this.getDuration(pr, duration)
 			const newDeg = this.getDeg(pr)
-			if (pr > 0) {
+			if (lastPr <=0 && pr > 0) {
 				animation.transition(rightEl, {
 					styles: {
-						opacity: 1
+						opacity: 1,
+						transform: 'rotate(45deg)'
 					}
 				})
 			}
@@ -247,14 +262,16 @@ export default {
 						if (pr <= 0) {
 							animation.transition(rightEl, {
 								styles: {
-									opacity: 0
+									opacity: 0,
+									transform: 'rotate(45deg)'
 								}
 							})
 						}
 						if (pr > 0.5 && lastPr <= 0.5) {
 							animation.transition(leftEl, {
 								styles: {
-									opacity: 1
+									opacity: 1,
+									transform: 'rotate(225deg)'
 								}
 							})
 						}
@@ -275,7 +292,8 @@ export default {
 						if (pr < 0.5) {
 							animation.transition(leftEl, {
 								styles: {
-									opacity: 0
+									opacity: 0,
+									transform: 'rotate(225deg)'
 								}
 							})
 						}
@@ -288,7 +306,8 @@ export default {
 							if (pr <= 0) {
 								animation.transition(rightEl, {
 									styles: {
-										opacity: 0
+										opacity: 0,
+										transform: 'rotate(45deg)'
 									}
 								})
 							}
@@ -307,14 +326,16 @@ export default {
 						if (pr <= 0) {
 							animation.transition(rightEl, {
 								styles: {
-									opacity: 0
+									opacity: 0,
+									transform: 'rotate(45deg)'
 								}
 							})
 						}
 						if (pr > 0.5 && lastPr <= 0.5) {
 							animation.transition(leftEl, {
 								styles: {
-									opacity: 1
+									opacity: 1,
+									transform: 'rotate(225deg)'
 								}
 							})
 						}
@@ -335,7 +356,8 @@ export default {
 						if (pr < 0.5) {
 							animation.transition(leftEl, {
 								styles: {
-									opacity: 0
+									opacity: 0,
+									transform: 'rotate(225deg)'
 								}
 							})
 						}
@@ -348,7 +370,8 @@ export default {
 							if (pr <= 0) {
 								animation.transition(rightEl, {
 									styles: {
-										opacity: 0
+										opacity: 0,
+										transform: 'rotate(45deg)'
 									}
 								})
 							}

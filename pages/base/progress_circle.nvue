@@ -8,7 +8,7 @@
 				<view style="flex-direction: row;align-items: center;margin-left:60rpx;">
 					<myp-progress-circle :progress="progress1"></myp-progress-circle>
 					<view style="margin-left: 32rpx; flex: 1; flex-direction: row; flex-wrap: wrap;">
-						<myp-button v-for="(item,idx) in items" :key="idx" :text="item+''" boxStyle="width:80rpx;height:60rpx;margin-right:20rpx;margin-top:10rpx;margin-bottom:10rpx;" @buttonClicked="toProgress(1, item)"></myp-button>
+						<myp-button v-for="(item,idx) in items" :key="idx" :text="item+''" textType="third" boxStyle="width:80rpx;height:60rpx;margin-right:20rpx;margin-top:10rpx;margin-bottom:10rpx;" @buttonClicked="toProgress(1, item)"></myp-button>
 					</view>
 				</view>
 				<view style="height: 60rpx;"></view>
@@ -16,9 +16,9 @@
 			<myp-list-cell>
 				<text style="margin-left: 60rpx;color: #999999;font-size: 28rpx;line-height: 60rpx;">twoWay:false - fromZero:true</text>
 				<view style="flex-direction: row;align-items: center;margin-left:60rpx;">
-					<myp-progress-circle :progress="progress2" :fromZero="true"></myp-progress-circle>
+					<myp-progress-circle :progress="progress2" :fromZero="true" borderColor="#8FDAFF"></myp-progress-circle>
 					<view style="margin-left: 32rpx; flex: 1; flex-direction: row; flex-wrap: wrap;">
-						<myp-button v-for="(item,idx) in items" :key="idx" :text="item+''" boxStyle="width:80rpx;height:60rpx;margin-right:20rpx;margin-top:10rpx;margin-bottom:10rpx;" @buttonClicked="toProgress(2, item)"></myp-button>
+						<myp-button v-for="(item,idx) in items" :key="idx" :text="item+''" textType="third" boxStyle="width:80rpx;height:60rpx;margin-right:20rpx;margin-top:10rpx;margin-bottom:10rpx;" @buttonClicked="toProgress(2, item)"></myp-button>
 					</view>
 				</view>
 				<view style="height: 60rpx;"></view>
@@ -26,9 +26,9 @@
 			<myp-list-cell>
 				<text style="margin-left: 60rpx;color: #999999;font-size: 28rpx;line-height: 60rpx;">twoWay:true - fromZero:false</text>
 				<view style="flex-direction: row;align-items: center;margin-left:60rpx;">
-					<myp-progress-circle :progress="progress3" :twoWay="true"></myp-progress-circle>
+					<myp-progress-circle :progress="progress3" :twoWay="true" borderColor="#FFD666"></myp-progress-circle>
 					<view style="margin-left: 32rpx; flex: 1; flex-direction: row; flex-wrap: wrap;">
-						<myp-button v-for="(item,idx) in items" :key="idx" :text="item+''" boxStyle="width:80rpx;height:60rpx;margin-right:20rpx;margin-top:10rpx;margin-bottom:10rpx;" @buttonClicked="toProgress(3, item)"></myp-button>
+						<myp-button v-for="(item,idx) in items" :key="idx" :text="item+''" textType="third" boxStyle="width:80rpx;height:60rpx;margin-right:20rpx;margin-top:10rpx;margin-bottom:10rpx;" @buttonClicked="toProgress(3, item)"></myp-button>
 					</view>
 				</view>
 				<view style="height: 60rpx;"></view>
@@ -36,9 +36,29 @@
 			<myp-list-cell>
 				<text style="margin-left: 60rpx;color: #999999;font-size: 28rpx;line-height: 60rpx;">twoWay:true - fromZero:true</text>
 				<view style="flex-direction: row;align-items: center;margin-left:60rpx;">
-					<myp-progress-circle :progress="progress4" :fromZero="true" :twoWay="true"></myp-progress-circle>
+					<myp-progress-circle :progress="progress4" :fromZero="true" :twoWay="true" borderColor="#FF9090"></myp-progress-circle>
 					<view style="margin-left: 32rpx; flex: 1; flex-direction: row; flex-wrap: wrap;">
-						<myp-button v-for="(item,idx) in items" :key="idx" :text="item+''" boxStyle="width:80rpx;height:60rpx;margin-right:20rpx;margin-top:10rpx;margin-bottom:10rpx;" @buttonClicked="toProgress(4, item)"></myp-button>
+						<myp-button v-for="(item,idx) in items" :key="idx" :text="item+''" textType="third" boxStyle="width:80rpx;height:60rpx;margin-right:20rpx;margin-top:10rpx;margin-bottom:10rpx;" @buttonClicked="toProgress(4, item)"></myp-button>
+					</view>
+				</view>
+				<view style="height: 60rpx;"></view>
+			</myp-list-cell>
+			<myp-list-cell>
+				<view style="flex-direction: row;align-items: center;justify-content: center;flex-wrap: nowrap;">
+					<myp-progress-circle :progress="0.75" width="80px">
+						<view :style="innerBoxStyle"></view>
+					</myp-progress-circle>
+					<view style="margin-left: 32rpx; transition-property: transform;transform: rotate(225deg);">
+						<myp-progress-circle :progress="0.75" width="80px">
+							<view :style="innerBoxStyle"></view>
+						</myp-progress-circle>
+					</view>
+					<view style="margin-left: 32rpx; transition-property: transform;transform: rotate(-135deg);">
+						<myp-progress-circle :progress="0.75" width="80px">
+							<view :style="innerBoxStyle+'transition-property: transform;transform: rotate(135deg);'">
+								<text style="font-size: 28rpx; color: #333333;">75%</text>
+							</view>
+						</myp-progress-circle>
 					</view>
 				</view>
 				<view style="height: 60rpx;"></view>
@@ -61,12 +81,15 @@ export default {
 			progress2: 0.6,
 			progress3: 0.4,
 			progress4: 0.6,
+			innerBoxStyle: 'width:80px;height:80px;border-radius:80px;border-width:6px;border-color:#EEEEEE;justify-content:center;align-items:center;'
 		}
 	},
 	methods: {
 		toProgress(idx, val) {
 			this['progress'+idx] = val
 		}
+	},
+	onLoad() {
 	}
 };
 </script>

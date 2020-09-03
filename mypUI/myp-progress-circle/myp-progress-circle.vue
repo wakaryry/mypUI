@@ -25,7 +25,7 @@
 			},
 			width: {
 				type: String,
-				default: '100px'
+				default: '80px'
 			},
 			borderWidth: {
 				type: String,
@@ -33,7 +33,7 @@
 			},
 			borderColor: {
 				type: String,
-				default: '#FF0000'
+				default: '#8F9CFF'
 			},
 			bgType: {
 				type: String,

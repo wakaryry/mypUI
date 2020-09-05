@@ -217,6 +217,34 @@
 		height: $myp-height-ll;
 	}
 }
+.myp-full {
+	&-width {
+		width: 750rpx;
+	}
+	&-height {
+		flex: 1;
+		/* #ifndef APP-NVUE */
+		height: 100%;
+		/* #endif */
+	}
+	&-flex {
+		flex: 1;
+	}
+}
+.myp-weight {
+	&-light {
+		font-weight: 300;
+	}
+	&-normal {
+		font-weight: 400;
+	}
+	&-bold {
+		font-weight: 600;
+	}
+	&-bolder {
+		font-weight: 700;
+	}
+}
 .myp-lh {
 	&- {
 		line-height: $myp-lh-base;

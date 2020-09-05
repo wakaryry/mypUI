@@ -215,11 +215,17 @@
 			},
 			mrScrollStyle() {
 				let _style = "flex-direction:row;"
+				// #ifndef APP-NVUE
+				_style += 'display:flex;box-sizing:border-box;'
+				// #endif
 				_style += "width:" + this.scrollSizePx + 'px;'
 				return _style + this.boxStyle
 			},
 			mrTabsStyle() {
 				let _style = `flex-direction:row;justify-content:${this.justify};flex-wrap:nowrap;`
+				// #ifndef APP-NVUE
+				_style += 'display:flex;box-sizing:border-box;'
+				// #endif
 				if (this.justify != 'flex-start') {
 					_style += "width:" + this.scrollSizePx + 'px;'
 				}
@@ -234,6 +240,9 @@
 					_style += `margin-right:${this.spacePx}px;margin-left:${this.spacePx}px;`
 				}
 				_style += "justify-content:center;align-items:center;"
+				// #ifndef APP-NVUE
+				_style += 'display:flex;box-sizing:border-box;flex-direction:column;'
+				// #endif
 				return _style + this.itemStyle
 			},
 			swiperWidthPx() {

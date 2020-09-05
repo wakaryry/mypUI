@@ -24,7 +24,7 @@
 			},
 			bgType: {
 				type: String,
-				default: ''
+				default: 'none'
 			},
 			boxStyle: {
 				type: String,

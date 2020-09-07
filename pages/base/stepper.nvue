@@ -10,6 +10,11 @@
 					<myp-stepper v-model="value1"></myp-stepper>
 				</view>
 			</myp-list-cell>
+			<myp-list-cell>
+				<view>
+					<myp-stepper v-model="value2" minusType="primary" plusType="primary" :min="0" radius="none" :minusBoxStyle="minusBoxStyle" :plusBoxStyle="plusBoxStyle" :valueStyle="valueStyle"></myp-stepper>
+				</view>
+			</myp-list-cell>
 		</myp-list-simple>
 		<myp-toast ref="myp-toast"></myp-toast>
 	</view>
@@ -23,7 +28,11 @@ export default {
 	mixins: [toastMixin, navHelper],
 	data() {
 		return {
-			value1: 9
+			value1: 9,
+			value2: 2,
+			minusBoxStyle: 'border-width:1px;border-top-left-radius: 6rpx;border-bottom-left-radius:6rpx;border-color:#EBEBEB;width:68rpx;height:68rpx;',
+			plusBoxStyle: 'border-width:1px;border-top-right-radius: 6rpx;border-bottom-right-radius:6rpx;border-color:#EBEBEB;width:68rpx;height:68rpx;',
+			valueStyle: 'border-top-width:1px;border-top-color:#EBEBEB;border-bottom-width:1px;border-bottom-color:#EBEBEB;height:68rpx;'
 		}
 	},
 	methods: {

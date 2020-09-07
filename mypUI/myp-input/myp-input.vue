@@ -149,7 +149,7 @@
 			},
 			valueStyle: {
 				type: String,
-				default: ''
+				default: 'flex:1;'
 			},
 			indicatorStyle: {
 				type: String,

@@ -119,11 +119,11 @@
 		},
 		methods: {
 			toToggle(e) {
-				e.stopPropagation && e.stopPropagation()
+				e && e.stopPropagation && e.stopPropagation()
 				if (this.disabled) {
 					return
 				}
-				this.$emit("radioClicked", this.value)
+				this.$emit("itemClicked", this.value)
 			}
 		},
 		computed: {

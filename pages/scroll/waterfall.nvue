@@ -1,17 +1,81 @@
 <template>
 	<view>
 		<myp-navbar :lefts="leftIcons" title="waterfall" @leftAction="navLeftAction"></myp-navbar>
+		<myp-waterfall ref="myp-list" :columnCount="2" columnGap="20rpx" leftGap="32rpx" rightGap="32rpx" :autoUpdate="true" @down="toLoadData" @up="toLoadData">
+			<view slot="header" style="height: 20rpx;"></view>
+			<myp-list-cell v-for="(item,idx) in items" :key="idx">
+				<view :class="['water-item', 'water-item-'+(idx%4)]">
+					<text class="myp-color-inverse myp-size-ll">{{item}}</text>
+				</view>
+			</myp-list-cell>
+		</myp-waterfall>
 	</view>
 </template>
 
 <script>
+	const rawItems = [1,2,3,4,5,6,7,8,9,10]
+	
 	import navHelper from '@/router/navHelper.js'
 	
 	export default {
-		mixins: [navHelper]
+		mixins: [navHelper],
+		data() {
+			return {
+				items: []
+			}
+		},
+		methods: {
+			toLoadData() {
+				const ins = this.$refs['myp-list']
+				const cp = ins.mypCurrentPage
+				const that = this
+				setTimeout(()=>{
+					if (cp===1) {
+						that.items = rawItems
+						ins.mypEndSuccess(true)
+					} else {
+						const newItems = []
+						rawItems.forEach(val => {
+							newItems.push(val+(cp-1)*10)
+						})
+						this.items = this.items.concat(newItems)
+						if (cp >= 4) {
+							ins.mypEndSuccess(false)
+						} else {
+							ins.mypEndSuccess(true)
+						}
+					}
+				}, 300)
+			}
+		}
 	}
 </script>
 
-<style>
-
+<style lang="scss" scoped>
+	@import '@/mypUI/mypui.scss';
+	
+	.water {
+		&-item {
+			justify-content: center;
+			align-items: center;
+			margin-bottom: 20rpx;
+			
+			&-0 {
+				background-color: $myp-color-primary;
+				height: 400rpx;
+			}
+			&-1 {
+				background-color: $myp-color-warning;
+				height: 280rpx;
+			}
+			&-2 {
+				background-color: $myp-color-error;
+				height: 340rpx;
+			}
+			&-3 {
+				background-color: $myp-color-success;
+				height: 320rpx;
+			}
+		}
+	}
 </style>

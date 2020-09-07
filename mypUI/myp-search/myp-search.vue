@@ -189,7 +189,7 @@
 				this.$emit("blur", e)
 			},
 			toChangeKb(e) {
-				this.$emit("keyboardheightchange", e)
+				this.$emit("keyboardHeightChange", e)
 			}
 		}
 	}

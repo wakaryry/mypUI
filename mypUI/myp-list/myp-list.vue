@@ -43,7 +43,6 @@
 </template>
 
 <script>
-	// loading with no loadMore for list
 	import styleMixin from './styleMixin.js'
 	import scrollMixin from './mixin.js'
 	import weexActions from './weexActions.js'

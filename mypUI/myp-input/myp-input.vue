@@ -10,7 +10,7 @@
 				<text v-if="showPlaceholder" :class="['myp-size-'+placeSize, 'myp-color-'+placeType]" :style="placeStyle">{{placeholder||''}}</text>
 			</view>
 			<view class="myp-input-input">
-				<input :type="type" :maxlength="maxlength" :value="inputValue||''" :password="password" :class="['myp-color-'+valueType, 'myp-size-'+valueSize]" :style="'text-align:'+valueAlign+';'+valueStyle" @input="handleInputedText" @confirm="handleConfirmText" />
+				<input :type="type" :adjust-position="adjust" :confirm-type="confirmType" :maxlength="maxlength" :value="inputValue||''" :password="password" :class="['myp-color-'+valueType, 'myp-size-'+valueSize]" :style="'text-align:'+valueAlign+';'+valueStyle" @input="handleInputedText" @confirm="handleConfirmText" @focus="toFocus" @blur="toBlur" @keyboardheightchange="toChangeKb" />
 			</view>
 		</view>
 		<!-- #endif -->
@@ -19,7 +19,7 @@
 			<view :class="['myp-input-place', 'myp-input-place-'+valueAlign]">
 				<text v-if="showPlaceholder" :class="['myp-size-'+placeSize, 'myp-color-'+placeType]" :style="placeStyle">{{placeholder||''}}</text>
 			</view>
-			<input :type="type" :maxlength="maxlength" :value="inputValue||''" :password="password" :class="['myp-color-'+valueType, 'myp-size-'+valueSize]" :style="'text-align:'+valueAlign+';'+valueStyle" @input="handleInputedText" @confirm="handleConfirmText" />
+			<input :type="type" :adjust-position="adjust" :confirm-type="confirmType" :maxlength="maxlength" :value="inputValue||''" :password="password" :class="['myp-color-'+valueType, 'myp-size-'+valueSize]" :style="'text-align:'+valueAlign+';'+valueStyle" @input="handleInputedText" @confirm="handleConfirmText" @focus="toFocus" @blur="toBlur" @keyboardheightchange="toChangeKb" />
 		</view>
 		<!-- #endif -->
 		<slot name="extra"></slot>
@@ -135,6 +135,14 @@
 				type: String,
 				default: ''
 			},
+			adjust: {
+				type: Boolean,
+				default: true
+			},
+			confirmType: {
+				type: String,
+				default: 'done'
+			},
 			iconStyle: {
 				type: String,
 				default: ''
@@ -227,6 +235,15 @@
 			}
 		},
 		methods: {
+			toFocus(e) {
+				this.$emit("focus", e)
+			},
+			toBlur(e) {
+				this.$emit("blur", e)
+			},
+			toChangeKb(e) {
+				this.$emit("keyboardHeightChange", e)
+			},
 			handleInputedText(e) {
 				const _val = e.detail.value || ''
 				if (this.formatable) {

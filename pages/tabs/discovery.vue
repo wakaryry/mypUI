@@ -47,7 +47,6 @@
 				this.toLoadData()
 			},
 			toLoadData() {
-				console.log('aaaaaaa')
 				if (!this.hasNext) return;
 				if (this.cp === 1) {
 					this.isUpLoading = false
@@ -56,9 +55,7 @@
 				}
 				const that = this
 				const cp = this.cp
-				console.log('jjjjjj')
 				setTimeout(()=>{
-					console.log('kkkkkkkk')
 					that.cp += 1
 					if (cp===1) {
 						that.items = rawItems

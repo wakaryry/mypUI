@@ -2,331 +2,331 @@
 	"myp-flex": {
 		"type": "guide",
 		"order": 30,
-		"title": "：myp-flex"
+		"title": "布局：myp-flex"
 	},
 	"myp-wing": {
 		"type": "guide",
 		"order": 31,
-		"title": "：myp-wing"
+		"title": "测距：myp-wing"
 	},
 	"myp-space": {
 		"type": "guide",
 		"order": 32,
-		"title": "：myp-space"
+		"title": "间距：myp-space"
 	},
 	"myp-list": {
 		"type": "guide",
 		"order": 60,
-		"title": "：myp-list"
+		"title": "列表：myp-list"
 	},
 	"myp-list-simple": {
 		"type": "guide",
 		"order": 61,
-		"title": "：myp-list-simple"
+		"title": "列表：myp-list-simple"
 	},
 	"myp-list-cell": {
 		"type": "guide",
 		"order": 62,
-		"title": "：myp-list-cell"
+		"title": "列表单元：myp-list-cell"
 	},
 	"myp-waterfall": {
 		"type": "guide",
 		"order": 63,
-		"title": "：myp-waterfall"
+		"title": "瀑布流：myp-waterfall"
 	},
 	"myp-scroll-h": {
 		"type": "guide",
 		"order": 64,
-		"title": "：myp-scroll-h"
+		"title": "横向列表：myp-scroll-h"
 	},
 	"myp-scroll-scale": {
 		"type": "guide",
 		"order": 65,
-		"title": "：myp-scroll-scale"
+		"title": "伸缩列表：myp-scroll-scale"
 	},
 	"myp-list-chat": {
 		"type": "guide",
 		"order": 66,
-		"title": "：myp-list-chat"
+		"title": "聊天列表：myp-list-chat"
 	},
 	"myp-list-index": {
 		"type": "guide",
 		"order": 67,
-		"title": "：myp-list-index"
+		"title": "索引列表：myp-list-index"
 	},
 	"myp-content-box": {
 		"type": "guide",
 		"order": 68,
-		"title": "：myp-content-box"
+		"title": "盒子：myp-content-box"
 	},
 	"myp-height": {
 		"type": "guide",
 		"order": 69,
-		"title": "：myp-height"
+		"title": "高度：myp-height"
 	},
 	"myp-x-status": {
 		"type": "guide",
 		"order": 70,
-		"title": "：myp-x-status"
+		"title": "状态栏：myp-x-status"
 	},
 	"myp-x-bar": {
 		"type": "guide",
 		"order": 71,
-		"title": "：myp-x-bar"
+		"title": "底部安全区：myp-x-bar"
 	},
 	"myp-position": {
 		"type": "guide",
 		"order": 72,
-		"title": "：myp-position"
+		"title": "定位：myp-position"
 	},
 	"myp-navbar": {
 		"type": "guide",
 		"order": 100,
-		"title": "：myp-navbar"
+		"title": "导航栏：myp-navbar"
 	},
 	"myp-tabbar": {
 		"type": "guide",
 		"order": 101,
-		"title": "：myp-tabbar"
+		"title": "tabbar：myp-tabbar"
 	},
 	"myp-tabs-h": {
 		"type": "guide",
 		"order": 102,
-		"title": "：myp-tabs-h"
+		"title": "横向tabs：myp-tabs-h"
 	},
 	"myp-tabs-v": {
 		"type": "guide",
 		"order": 103,
-		"title": "：myp-tabs-v"
+		"title": "竖向tabs：myp-tabs-v"
 	},
 	"myp-drawer": {
 		"type": "guide",
 		"order": 104,
-		"title": "：myp-drawer"
+		"title": "抽屉：myp-drawer"
 	},
 	"myp-popover": {
 		"type": "guide",
 		"order": 105,
-		"title": "：myp-popover"
+		"title": "气泡：myp-popover"
 	},
 	"myp-button": {
 		"type": "guide",
 		"order": 150,
-		"title": "：myp-button"
+		"title": "按钮：myp-button"
 	},
 	"myp-input": {
 		"type": "guide",
 		"order": 151,
-		"title": "：myp-input"
+		"title": "输入框：myp-input"
 	},
 	"myp-input-one": {
 		"type": "guide",
 		"order": 152,
-		"title": "：myp-input-one"
+		"title": "验证码输入：myp-input-one"
 	},
 	"myp-switch": {
 		"type": "guide",
 		"order": 153,
-		"title": "：myp-switch"
+		"title": "开关：myp-switch"
 	},
 	"myp-check": {
 		"type": "guide",
 		"order": 154,
-		"title": "：myp-check"
+		"title": "单多选：myp-check"
 	},
 	"myp-check-item": {
 		"type": "guide",
 		"order": 155,
-		"title": "：myp-check-item"
+		"title": "单多选：myp-check-item"
 	},
 	"myp-select": {
 		"type": "guide",
 		"order": 156,
-		"title": "：myp-select"
+		"title": "选择：myp-select"
 	},
 	"myp-stepper": {
 		"type": "guide",
 		"order": 157,
-		"title": "：myp-stepper"
+		"title": "步进器：myp-stepper"
 	},
 	"myp-slider": {
 		"type": "guide",
 		"order": 158,
-		"title": "：myp-slider"
+		"title": "区间：myp-slider"
 	},
 	"myp-search": {
 		"type": "guide",
 		"order": 159,
-		"title": "：myp-search"
+		"title": "搜索框：myp-search"
 	},
 	"myp-picker-time": {
 		"type": "guide",
 		"order": 160,
-		"title": "：myp-picker-time"
+		"title": "时间选择：myp-picker-time"
 	},
 	"myp-picker-time-content": {
 		"type": "guide",
 		"order": 161,
-		"title": "：myp-picker-time-content"
+		"title": "时间内容：myp-picker-time-content"
 	},
 	"myp-picker": {
 		"type": "guide",
 		"order": 162,
-		"title": "：myp-picker"
+		"title": "选择器：myp-picker"
 	},
 	"myp-picker-content": {
 		"type": "guide",
 		"order": 163,
-		"title": "：myp-picker-content"
+		"title": "选择内容：myp-picker-content"
 	},
 	"myp-grid": {
 		"type": "guide",
 		"order": 200,
-		"title": "：myp-grid"
+		"title": "宫格：myp-grid"
 	},
 	"myp-grid-item": {
 		"type": "guide",
 		"order": 201,
-		"title": "：myp-grid-item"
+		"title": "宫格item：myp-grid-item"
 	},
 	"myp-cell": {
 		"type": "guide",
 		"order": 202,
-		"title": "：myp-cell"
+		"title": "单元：myp-cell"
 	},
 	"myp-item": {
 		"type": "guide",
 		"order": 203,
-		"title": "：myp-item"
+		"title": "item：myp-item"
 	},
 	"myp-icon": {
 		"type": "guide",
 		"order": 204,
-		"title": "：myp-icon"
+		"title": "图标：myp-icon"
 	},
 	"myp-title": {
 		"type": "guide",
 		"order": 205,
-		"title": "：myp-title"
+		"title": "标题：myp-title"
 	},
 	"myp-tag": {
 		"type": "guide",
 		"order": 206,
-		"title": "：myp-tag"
+		"title": "标签：myp-tag"
 	},
 	"myp-tag-group": {
 		"type": "guide",
 		"order": 207,
-		"title": "：myp-tag-group"
+		"title": "标签群：myp-tag-group"
 	},
 	"myp-badge": {
 		"type": "guide",
 		"order": 208,
-		"title": "：myp-badge"
+		"title": "badge：myp-badge"
 	},
 	"myp-countdown": {
 		"type": "guide",
 		"order": 209,
-		"title": "：myp-countdown"
+		"title": "倒计时：myp-countdown"
 	},
 	"myp-divider": {
 		"type": "guide",
 		"order": 210,
-		"title": "：myp-divider"
+		"title": "分割器：myp-divider"
 	},
 	"myp-progress-circle": {
 		"type": "guide",
 		"order": 211,
-		"title": "：myp-progress-circle"
+		"title": "环状进度条：myp-progress-circle"
 	},
 	"myp-progress": {
 		"type": "guide",
 		"order": 212,
-		"title": "：myp-progress"
+		"title": "进度条：myp-progress"
 	},
 	"myp-message-text": {
 		"type": "guide",
 		"order": 213,
-		"title": "：myp-message-text"
+		"title": "聊天文字：myp-message-text"
 	},
 	"myp-message-time": {
 		"type": "guide",
 		"order": 214,
-		"title": "：myp-message-time"
+		"title": "聊天时间：myp-message-time"
 	},
 	"myp-message-image": {
 		"type": "guide",
 		"order": 215,
-		"title": "：myp-message-image"
+		"title": "聊天图片：myp-message-image"
 	},
 	"myp-result": {
 		"type": "guide",
 		"order": 216,
-		"title": "：myp-result"
+		"title": "结果展示：myp-result"
 	},
 	"myp-popup": {
 		"type": "guide",
 		"order": 250,
-		"title": "：myp-popup"
+		"title": "弹窗1：myp-popup"
 	},
 	"myp-popup-always": {
 		"type": "guide",
 		"order": 251,
-		"title": "：myp-popup-always"
+		"title": "弹窗2：myp-popup-always"
 	},
 	"myp-toast": {
 		"type": "guide",
 		"order": 252,
-		"title": "：myp-toast"
+		"title": "toast提示：myp-toast"
 	},
 	"myp-loading": {
 		"type": "guide",
 		"order": 253,
-		"title": "：myp-loading"
+		"title": "加载中：myp-loading"
 	},
 	"myp-notice": {
 		"type": "guide",
 		"order": 254,
-		"title": "：myp-notice"
+		"title": "提示：myp-notice"
 	},
 	"myp-notice-dynamic": {
 		"type": "guide",
 		"order": 255,
-		"title": "：myp-notice-dynamic"
+		"title": "动态提示：myp-notice-dynamic"
 	},
 	"myp-loading-indicator": {
 		"type": "guide",
 		"order": 256,
-		"title": "：myp-loading-indicator"
+		"title": "loading指示：myp-loading-indicator"
 	},
 	"myp-fold": {
 		"type": "guide",
 		"order": 257,
-		"title": "：myp-fold"
+		"title": "收展：myp-fold"
 	},
 	"myp-overlay": {
 		"type": "guide",
 		"order": 258,
-		"title": "：myp-overlay"
+		"title": "遮罩层：myp-overlay"
 	},
 	"myp-refresher": {
 		"type": "guide",
 		"order": 300,
-		"title": "：myp-refresher"
+		"title": "刷新：myp-refresher"
 	},
 	"myp-refresher-n": {
 		"type": "guide",
 		"order": 301,
-		"title": "：myp-refresher-n"
+		"title": "刷新：myp-refresher-n"
 	},
 	"myp-loader": {
 		"type": "guide",
 		"order": 302,
-		"title": "：myp-loader"
+		"title": "加载：myp-loader"
 	},
 	"myp-loader-n": {
 		"type": "guide",
 		"order": 303,
-		"title": "：myp-loader-n"
+		"title": "加载：myp-loader-n"
 	}
 }

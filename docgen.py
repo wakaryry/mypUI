@@ -14,7 +14,7 @@ def genDoc(path='/Users/wakary/GitHub/uni/myp-ui/mypUI'):
 				if os.path.isfile(path+'/'+f+'/'+ff) and ff.endswith('.vue') and ff != 'myp-list-cell.vue':
 					print(ff)
 					os.system('cd /Users/wakary/GitHub/uni/myp-ui')
-					cmd = 'yarn vue-docgen mypUI/'+f+'/'+ff+' docs'
+					cmd = 'yarn vue-docgen mypUI/'+f+'/'+ff+' docsAuto'
 					os.system(cmd)
 	# cmd = 'cd /Users/wakary/GitHub/uni/myp-ui'
 	# os.system(cmd)

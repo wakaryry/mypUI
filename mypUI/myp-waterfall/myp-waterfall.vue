@@ -1,48 +1,40 @@
 <template>
-	<view class="myp-list" :style="boxStyle">
-		<!-- #ifdef APP-NVUE -->
-		<waterfall :class="'myp-bg-'+bgType" :style="mrScrollStyle" ref="myp-scroller" :show-scrollbar="showScrollbar" :column-count="columnCount" :column-width="columnWidthPx" :column-gap="columnGapPx" :left-gap="leftGapPx" :right-gap="rightGapPx" :loadmoreoffset="(mypUp.use&&!useLoading)?loadMoreOffset:0" @loadmore="mypMoreLoad" @scroll="mypScroll">
-			<myp-refresher-n v-if="mypDown.use" ref="myp-refresher" scroller-ref="myp-scroller" @refresh="mypRefresh"></myp-refresher-n>
-			<header>
-				<slot name="header"></slot>
-			</header>
-			<slot></slot>
-			<header>
-				<view :style="{height: footToken}"></view>
-			</header>
-			<header>
-				<view v-if="includeXBar&&overrideXBar" :style="mypXBarHeightStyle"></view>
-			</header>
-			<!-- in android, we must put loading in the last, or it will not trigger loading next page. --> 
-			<!-- it's the same in loadMore with loadMoreOffset -->
-			<!-- or we could put the foot-token after loading -->
-			<header v-if="mypUp.use&&!useLoading">
-				<myp-loader :isLoading="mypIsUpLoading" :hasMore="mypHasMore"></myp-loader>
-			</header>
-			<myp-loader-n v-if="mypUp.use&&useLoading" ref="myp-loader" :hasMore="mypHasMore" @loading="mypLoad"></myp-loader-n>
-		</waterfall>
-		<!-- #endif -->
-		<!-- #ifndef APP-NVUE -->
-		<scroll-view :class="'myp-bg-'+bgType" :style="mrScrollStyle" :scroll-y="mypScrollable" :show-scrollbar="showScrollbar" :enable-back-to-top="true" @scroll="mypScroll" @touchstart="mypTouchstartEvent" @touchmove="mypTouchmoveEvent" @touchend="mypTouchendEvent" @touchcancel="mypTouchendEvent">
-			<view :style="mypMrScrollContentStyle">
-				<view v-if="mypDown.use" :style="mypMrRefreshStyle">
-					<myp-refresher :refreshing="mypIsDownLoading" :couldUnLash="mypCouldUnLash" :rate="mypDownRate"></myp-refresher>
-				</view>
-				<!-- content of scroll -->
-				<slot></slot>
-				<myp-loader v-if="mypUp.use" :isLoading="mypIsUpLoading" :hasMore="mypHasMore"></myp-loader>
-				<view :style="{height: footToken}"></view>
-				<view v-if="includeXBar&&overrideXBar" :style="mypXBarHeightStyle"></view>
+	<!-- #ifdef APP-NVUE -->
+	<waterfall :class="'myp-bg-'+bgType" :style="mrScrollStyle" ref="myp-scroller" :show-scrollbar="showScrollbar" :column-count="columnCount" :column-width="columnWidthPx" :column-gap="columnGapPx" :left-gap="leftGapPx" :right-gap="rightGapPx" :loadmoreoffset="(mypUp.use&&!useLoading)?loadMoreOffset:0" @loadmore="mypMoreLoad" @scroll="mypScroll">
+		<myp-refresher-n v-if="mypDown.use" ref="myp-refresher" scroller-ref="myp-scroller" @refresh="mypRefresh"></myp-refresher-n>
+		<header>
+			<slot name="header"></slot>
+		</header>
+		<slot></slot>
+		<header>
+			<view :style="{height: footToken}"></view>
+		</header>
+		<header>
+			<view v-if="includeXBar&&overrideXBar" :style="mypXBarHeightStyle"></view>
+		</header>
+		<!-- in android, we must put loading in the last, or it will not trigger loading next page. --> 
+		<!-- it's the same in loadMore with loadMoreOffset -->
+		<!-- or we could put the foot-token after loading -->
+		<header v-if="mypUp.use&&!useLoading">
+			<myp-loader :isLoading="mypIsUpLoading" :hasMore="mypHasMore"></myp-loader>
+		</header>
+		<myp-loader-n v-if="mypUp.use&&useLoading" ref="myp-loader" :hasMore="mypHasMore" @loading="mypLoad"></myp-loader-n>
+	</waterfall>
+	<!-- #endif -->
+	<!-- #ifndef APP-NVUE -->
+	<scroll-view :class="'myp-bg-'+bgType" :style="mrScrollStyle" :scroll-y="mypScrollable" :show-scrollbar="showScrollbar" :enable-back-to-top="true" @scroll="mypScroll" @touchstart="mypTouchstartEvent" @touchmove="mypTouchmoveEvent" @touchend="mypTouchendEvent" @touchcancel="mypTouchendEvent">
+		<view :style="mypMrScrollContentStyle">
+			<view v-if="mypDown.use" :style="mypMrRefreshStyle">
+				<myp-refresher :refreshing="mypIsDownLoading" :couldUnLash="mypCouldUnLash" :rate="mypDownRate"></myp-refresher>
 			</view>
-		</scroll-view>
-		<!-- #endif -->
-		<!-- xBar -->
-		<view v-if="includeXBar&&!overrideXBar" :class="['myp-bg-'+xBarBgType]" :style="mypXBarStyle"></view>
-		<!-- foot -->
-		<view class="myp-simple-foot" :style="mrFootStyle">
-			<slot name="foot"></slot>
+			<!-- content of scroll -->
+			<slot></slot>
+			<myp-loader v-if="mypUp.use" :isLoading="mypIsUpLoading" :hasMore="mypHasMore"></myp-loader>
+			<view :style="{height: footToken}"></view>
+			<view v-if="includeXBar&&overrideXBar" :style="mypXBarHeightStyle"></view>
 		</view>
-	</view>
+	</scroll-view>
+	<!-- #endif -->
 </template>
 
 <script>

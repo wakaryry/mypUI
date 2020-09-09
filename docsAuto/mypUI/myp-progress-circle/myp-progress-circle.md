@@ -5,9 +5,9 @@
 | Prop name      | Description | Type    | Values | Default    |
 | -------------- | ----------- | ------- | ------ | ---------- |
 | progress       |             | number  | -      | 0          |
-| width          |             | string  | -      | '100px'    |
+| width          |             | string  | -      | '80px'     |
 | borderWidth    |             | string  | -      | '6px'      |
-| borderColor    |             | string  | -      | '#FF0000'  |
+| borderColor    |             | string  | -      | '#8F9CFF'  |
 | bgType         |             | string  | -      | 'inverse'  |
 | boxStyle       |             | string  | -      | ''         |
 | fromZero       |             | boolean | -      | false      |
@@ -21,5 +21,6 @@
 | Name    | Description | Bindings |
 | ------- | ----------- | -------- |
 | default |             |          |
+| extra   |             |          |
 
 ---

@@ -29,10 +29,12 @@
 | indicatorSize     |             | string  | -      | 'l'          |
 | placeType         |             | string  | -      | 'place'      |
 | placeSize         |             | string  | -      | ''           |
+| adjust            |             | boolean | -      | true         |
+| confirmType       |             | string  | -      | 'done'       |
 | iconStyle         |             | string  | -      | ''           |
 | iconBoxStyle      |             | string  | -      | ''           |
 | labelStyle        |             | string  | -      | ""           |
-| valueStyle        |             | string  | -      | ''           |
+| valueStyle        |             | string  | -      | 'flex:1;'    |
 | indicatorStyle    |             | string  | -      | ''           |
 | indicatorBoxStyle |             | string  | -      | ''           |
 | boxStyle          |             | string  | -      | ""           |
@@ -41,12 +43,15 @@
 
 ## Events
 
-| Event name       | Type      | Description |
-| ---------------- | --------- | ----------- |
-| input            | undefined |
-| formated         | undefined |
-| confirm          | undefined |
-| indicatorClicked |           |
+| Event name           | Type      | Description |
+| -------------------- | --------- | ----------- |
+| focus                | undefined |
+| blur                 | undefined |
+| keyboardHeightChange | undefined |
+| input                | undefined |
+| formated             | undefined |
+| confirm              | undefined |
+| indicatorClicked     |           |
 
 ## Slots
 

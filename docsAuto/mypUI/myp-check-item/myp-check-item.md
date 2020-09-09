@@ -33,8 +33,8 @@
 
 ## Events
 
-| Event name   | Type      | Description |
-| ------------ | --------- | ----------- |
-| radioClicked | undefined |
+| Event name  | Type      | Description |
+| ----------- | --------- | ----------- |
+| itemClicked | undefined |
 
 ---

@@ -1,3 +1,332 @@
 {
-	
+	"myp-flex": {
+		"type": "guide",
+		"order": 30,
+		"title": "：myp-flex"
+	},
+	"myp-wing": {
+		"type": "guide",
+		"order": 31,
+		"title": "：myp-wing"
+	},
+	"myp-space": {
+		"type": "guide",
+		"order": 32,
+		"title": "：myp-space"
+	},
+	"myp-list": {
+		"type": "guide",
+		"order": 60,
+		"title": "：myp-list"
+	},
+	"myp-list-simple": {
+		"type": "guide",
+		"order": 61,
+		"title": "：myp-list-simple"
+	},
+	"myp-list-cell": {
+		"type": "guide",
+		"order": 62,
+		"title": "：myp-list-cell"
+	},
+	"myp-waterfall": {
+		"type": "guide",
+		"order": 63,
+		"title": "：myp-waterfall"
+	},
+	"myp-scroll-h": {
+		"type": "guide",
+		"order": 64,
+		"title": "：myp-scroll-h"
+	},
+	"myp-scroll-scale": {
+		"type": "guide",
+		"order": 65,
+		"title": "：myp-scroll-scale"
+	},
+	"myp-list-chat": {
+		"type": "guide",
+		"order": 66,
+		"title": "：myp-list-chat"
+	},
+	"myp-list-index": {
+		"type": "guide",
+		"order": 67,
+		"title": "：myp-list-index"
+	},
+	"myp-content-box": {
+		"type": "guide",
+		"order": 68,
+		"title": "：myp-content-box"
+	},
+	"myp-height": {
+		"type": "guide",
+		"order": 69,
+		"title": "：myp-height"
+	},
+	"myp-x-status": {
+		"type": "guide",
+		"order": 70,
+		"title": "：myp-x-status"
+	},
+	"myp-x-bar": {
+		"type": "guide",
+		"order": 71,
+		"title": "：myp-x-bar"
+	},
+	"myp-position": {
+		"type": "guide",
+		"order": 72,
+		"title": "：myp-position"
+	},
+	"myp-navbar": {
+		"type": "guide",
+		"order": 100,
+		"title": "：myp-navbar"
+	},
+	"myp-tabbar": {
+		"type": "guide",
+		"order": 101,
+		"title": "：myp-tabbar"
+	},
+	"myp-tabs-h": {
+		"type": "guide",
+		"order": 102,
+		"title": "：myp-tabs-h"
+	},
+	"myp-tabs-v": {
+		"type": "guide",
+		"order": 103,
+		"title": "：myp-tabs-v"
+	},
+	"myp-drawer": {
+		"type": "guide",
+		"order": 104,
+		"title": "：myp-drawer"
+	},
+	"myp-popover": {
+		"type": "guide",
+		"order": 105,
+		"title": "：myp-popover"
+	},
+	"myp-button": {
+		"type": "guide",
+		"order": 150,
+		"title": "：myp-button"
+	},
+	"myp-input": {
+		"type": "guide",
+		"order": 151,
+		"title": "：myp-input"
+	},
+	"myp-input-one": {
+		"type": "guide",
+		"order": 152,
+		"title": "：myp-input-one"
+	},
+	"myp-switch": {
+		"type": "guide",
+		"order": 153,
+		"title": "：myp-switch"
+	},
+	"myp-check": {
+		"type": "guide",
+		"order": 154,
+		"title": "：myp-check"
+	},
+	"myp-check-item": {
+		"type": "guide",
+		"order": 155,
+		"title": "：myp-check-item"
+	},
+	"myp-select": {
+		"type": "guide",
+		"order": 156,
+		"title": "：myp-select"
+	},
+	"myp-stepper": {
+		"type": "guide",
+		"order": 157,
+		"title": "：myp-stepper"
+	},
+	"myp-slider": {
+		"type": "guide",
+		"order": 158,
+		"title": "：myp-slider"
+	},
+	"myp-search": {
+		"type": "guide",
+		"order": 159,
+		"title": "：myp-search"
+	},
+	"myp-picker-time": {
+		"type": "guide",
+		"order": 160,
+		"title": "：myp-picker-time"
+	},
+	"myp-picker-time-content": {
+		"type": "guide",
+		"order": 161,
+		"title": "：myp-picker-time-content"
+	},
+	"myp-picker": {
+		"type": "guide",
+		"order": 162,
+		"title": "：myp-picker"
+	},
+	"myp-picker-content": {
+		"type": "guide",
+		"order": 163,
+		"title": "：myp-picker-content"
+	},
+	"myp-grid": {
+		"type": "guide",
+		"order": 200,
+		"title": "：myp-grid"
+	},
+	"myp-grid-item": {
+		"type": "guide",
+		"order": 201,
+		"title": "：myp-grid-item"
+	},
+	"myp-cell": {
+		"type": "guide",
+		"order": 202,
+		"title": "：myp-cell"
+	},
+	"myp-item": {
+		"type": "guide",
+		"order": 203,
+		"title": "：myp-item"
+	},
+	"myp-icon": {
+		"type": "guide",
+		"order": 204,
+		"title": "：myp-icon"
+	},
+	"myp-title": {
+		"type": "guide",
+		"order": 205,
+		"title": "：myp-title"
+	},
+	"myp-tag": {
+		"type": "guide",
+		"order": 206,
+		"title": "：myp-tag"
+	},
+	"myp-tag-group": {
+		"type": "guide",
+		"order": 207,
+		"title": "：myp-tag-group"
+	},
+	"myp-badge": {
+		"type": "guide",
+		"order": 208,
+		"title": "：myp-badge"
+	},
+	"myp-countdown": {
+		"type": "guide",
+		"order": 209,
+		"title": "：myp-countdown"
+	},
+	"myp-divider": {
+		"type": "guide",
+		"order": 210,
+		"title": "：myp-divider"
+	},
+	"myp-progress-circle": {
+		"type": "guide",
+		"order": 211,
+		"title": "：myp-progress-circle"
+	},
+	"myp-progress": {
+		"type": "guide",
+		"order": 212,
+		"title": "：myp-progress"
+	},
+	"myp-message-text": {
+		"type": "guide",
+		"order": 213,
+		"title": "：myp-message-text"
+	},
+	"myp-message-time": {
+		"type": "guide",
+		"order": 214,
+		"title": "：myp-message-time"
+	},
+	"myp-message-image": {
+		"type": "guide",
+		"order": 215,
+		"title": "：myp-message-image"
+	},
+	"myp-result": {
+		"type": "guide",
+		"order": 216,
+		"title": "：myp-result"
+	},
+	"myp-popup": {
+		"type": "guide",
+		"order": 250,
+		"title": "：myp-popup"
+	},
+	"myp-popup-always": {
+		"type": "guide",
+		"order": 251,
+		"title": "：myp-popup-always"
+	},
+	"myp-toast": {
+		"type": "guide",
+		"order": 252,
+		"title": "：myp-toast"
+	},
+	"myp-loading": {
+		"type": "guide",
+		"order": 253,
+		"title": "：myp-loading"
+	},
+	"myp-notice": {
+		"type": "guide",
+		"order": 254,
+		"title": "：myp-notice"
+	},
+	"myp-notice-dynamic": {
+		"type": "guide",
+		"order": 255,
+		"title": "：myp-notice-dynamic"
+	},
+	"myp-loading-indicator": {
+		"type": "guide",
+		"order": 256,
+		"title": "：myp-loading-indicator"
+	},
+	"myp-fold": {
+		"type": "guide",
+		"order": 257,
+		"title": "：myp-fold"
+	},
+	"myp-overlay": {
+		"type": "guide",
+		"order": 258,
+		"title": "：myp-overlay"
+	},
+	"myp-refresher": {
+		"type": "guide",
+		"order": 300,
+		"title": "：myp-refresher"
+	},
+	"myp-refresher-n": {
+		"type": "guide",
+		"order": 301,
+		"title": "：myp-refresher-n"
+	},
+	"myp-loader": {
+		"type": "guide",
+		"order": 302,
+		"title": "：myp-loader"
+	},
+	"myp-loader-n": {
+		"type": "guide",
+		"order": 303,
+		"title": "：myp-loader-n"
+	}
 }

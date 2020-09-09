@@ -10,6 +10,7 @@
 | position      |             | string         | -      | 'left'                                    |
 | focus         |             | boolean        | -      | false                                     |
 | adjust        |             | boolean        | -      | true                                      |
+| confirmType   |             | string         | -      | 'search'                                  |
 | fixIcon       |             | boolean        | -      | false                                     |
 | iconTextSpace |             | string         | -      | '12rpx'                                   |
 | bgType        |             | string         | -      | ''                                        |
@@ -39,7 +40,7 @@
 | confirm              | undefined |
 | focus                | undefined |
 | blur                 | undefined |
-| keyboardheightchange | undefined |
+| keyboardHeightChange | undefined |
 
 ## Slots
 

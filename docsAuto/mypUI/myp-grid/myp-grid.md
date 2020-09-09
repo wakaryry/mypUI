@@ -24,6 +24,7 @@
 | textLabel    |             | string  | -      | 'text'       |
 | isIcon       |             | boolean | -      | true         |
 | iconMode     |             | string  | -      | 'aspectFill' |
+| badgeConfig  |             | object  | -      | {}           |
 | boxStyle     |             | string  | -      | ''           |
 | itemBoxStyle |             | string  | -      | ''           |
 | iconStyle    |             | string  | -      | ''           |

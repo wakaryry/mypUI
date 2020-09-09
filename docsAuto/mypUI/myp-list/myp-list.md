@@ -8,6 +8,7 @@
 | overrideXBar   |             | boolean        | -      | true                                                                                 |
 | xBarBgType     |             | string         | -      | ''                                                                                   |
 | xBarStyle      |             | string         | -      | ''                                                                                   |
+| showScrollbar  |             | boolean        | -      | true                                                                                 |
 | includeStatus  |             | boolean        | -      | false                                                                                |
 | includeNav     |             | boolean        | -      | false                                                                                |
 | tabHeight      |             | number         | -      | 0                                                                                    |

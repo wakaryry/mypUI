@@ -26,4 +26,10 @@
 | ----------- | ---- | ----------- |
 | itemClicked |      |
 
+## Slots
+
+| Name  | Description | Bindings |
+| ----- | ----------- | -------- |
+| extra |             |          |
+
 ---

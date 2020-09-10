@@ -17,3 +17,4 @@ order: 300
 | rate           |             | number  | -      | 0                 |
 
 ---
+

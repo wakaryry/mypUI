@@ -57,6 +57,18 @@
 				</view>
 				<view style="height: 20rpx;"></view>
 			</myp-list-cell>
+			<myp-list-cell>
+				<view style="margin-left: 32rpx; margin-right: 32rpx;">
+					<myp-search position="center" bgType="primary" valueType="inverse" iconType="inverse" placeType="inverse" placeIconType="inverse" boxStyle="height:126rpx;"></myp-search>
+				</view>
+				<view style="height: 20rpx;"></view>
+			</myp-list-cell>
+			<myp-list-cell>
+				<view style="margin-left: 32rpx; margin-right: 32rpx;">
+					<myp-search :fixIcon="true" bgType="primary" valueType="inverse" iconType="inverse" placeType="inverse" placeIconType="inverse" boxStyle="height:126rpx;padding-left:32rpx;padding-right:32rpx;"></myp-search>
+				</view>
+				<view style="height: 20rpx;"></view>
+			</myp-list-cell>
 		</myp-list-simple>
 		<myp-toast ref="myp-toast"></myp-toast>
 	</view>

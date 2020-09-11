@@ -1,14 +1,13 @@
 <template>
-	<view :class="['myp-bg-'+bgType]" :style="xBarStyle">
+	<view :class="['myp-bg-'+bgType]" :style="mrBoxStyle">
 		<slot></slot>
 	</view>
 </template>
 
 <script>
-	import windowMixin from '../myp-mixin/windowMixin.js'
+	import {getXBarHeight} from '../utils/system.js'
 	
 	export default {
-		mixins: [windowMixin],
 		props: {
 			bgType: {
 				type: String,
@@ -20,8 +19,8 @@
 			}
 		},
 		computed: {
-			xBarStyle() {
-				const h = this.mypGetXBarHeight()
+			mrBoxStyle() {
+				const h = getXBarHeight()
 				return `height: ${h}px;` + this.boxStyle
 			}
 		}

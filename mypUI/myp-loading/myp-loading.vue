@@ -1,142 +1,83 @@
 <template>
-	<view v-if="showLoading" :class="['myp-loading', showLoading&&itemNeedMask&&'myp-bg-'+itemMaskType, showLoading&&itemNeedMask&&'myp-loading-mask']" @tap.stop="maskClicked" :style="itemMaskStyle">
-		<view :class="['myp-loading-content', 'myp-bg-'+itemBgType]" :style="mrContentStyle">
-			<image :src="itemIcon" mode="aspectFill" class="myp-loading-content-image" :style="itemIconStyle"></image>
-			<text v-if="itemText" :class="['myp-loading-content-text', 'myp-color-'+itemTextType, 'myp-size-'+itemTextSize]" :style="itemTextStyle">{{itemText}}</text>
+	<view v-if="showLoading" :class="['myp-loading', showLoading&&needMask&&'myp-bg-'+maskType, showLoading&&needMask&&'myp-loading-mask']" @tap.stop="maskClicked" :style="maskStyle">
+		<view :class="['myp-loading-content', 'myp-bg-'+bgType]" :style="mrContentStyle">
+			<image :src="icon" mode="aspectFill" class="myp-loading-content-image" :style="iconStyle"></image>
+			<text v-if="text" :class="['myp-loading-content-text', 'myp-color-'+textType, 'myp-size-'+textSize]" :style="textStyle">{{text}}</text>
 		</view>
 	</view>
 </template>
 
 <script>
-	import windowMixin from '../myp-mixin/windowMixin.js'
+	import {getHeight, getScreenHeight} from '../utils/system.js'
 
 	export default {
-		mixins: [windowMixin],
-		props: {
-			pos: {
-				type: String,
-				default: 'center'
-			},
-			offset: {
-				type: String,
-				default: '0'
-			},
-			icon: {
-				type: String,
-				default: '/static/ui/loading.gif'
-			},
-			text: {
-				type: String,
-				default: ''
-			},
-			delay: {
-				type: Number,
-				default: 0
-			},
-			bgType: {
-				type: String,
-				default: 'mask-dark'
-			},
-			needMask: {
-				type: Boolean,
-				default: false
-			},
-			maskType: {
-				type: String,
-				default: 'mask'
-			},
-			maskStyle: {
-				type: String,
-				default: ''
-			},
-			contentStyle: {
-				type: String,
-				default: ''
-			},
-			iconStyle: {
-				type: String,
-				default: ''
-			},
-			textType: {
-				type: String,
-				default: 'inverse'
-			},
-			textSize: {
-				type: String,
-				default: 'ss'
-			},
-			textStyle: {
-				type: String,
-				default: ''
-			}
-		},
 		data() {
 			return {
 				showLoading: false,
-				itemPos: 'center',
-				itemOffset: '0',
-				itemNeedMask: false,
-				itemMaskType: '',
-				itemMaskStyle: '',
-				itemBgType: '',
-				itemIcon: '',
-				itemText: '',
-				itemIconStyle: '',
-				itemTextType: '',
-				itemTextSize: '',
-				itemTextStyle: '',
-				itemContentStyle: '',
-				itemDelay: 0,
+				pos: 'center',
+				offset: '0',
+				needMask: false,
+				maskType: '',
+				maskStyle: '',
+				bgType: '',
+				icon: '',
+				text: '',
+				iconStyle: '',
+				textType: '',
+				textSize: '',
+				textStyle: '',
+				contentStyle: '',
+				delay: 0,
 				tid: 0
 			}
 		},
 		computed: {
 			screenHeight() {
-				return this.mypGetScreenHeight()
+				return getScreenHeight()
 			},
 			offsetPx() {
-				return this.mypGetHeight(this.itemOffset)
+				return getHeight(this.offset)
 			},
 			mrContentStyle() {
 				let style = ''
-				if (this.itemPos === 'center') {
+				if (this.pos === 'center') {
 					style += 'transform:translate(-50%,-50%);'
 					style += `top:${this.screenHeight*0.5+this.offsetPx}px;`
-				} else if (this.itemPos === 'bottom') {
+				} else if (this.pos === 'bottom') {
 					style += 'transform:translateX(-50%);'
 					style += `bottom:${this.offsetPx}px;`
 				} else {
 					style += 'transform:translateX(-50%);'
 					style += `top:${this.offsetPx}px;`
 				}
-				return this.itemContentStyle + style
+				return this.contentStyle + style
 			}
 		},
 		methods: {
 			show(options) {
 				this.tid && clearTimeout(this.tid)
 				const opts = Object.assign({}, options)
-				this.itemPos = opts.pos || this.pos
-				this.itemOffset = opts.offset || this.offset
-				this.itemNeedMask = (typeof opts.needMask === 'boolean') ? opts.needMask : this.needMask
-				this.itemMaskType = opts.maskType || this.maskType
-				this.itemMaskStyle = opts.maskStyle || this.maskStyle
-				this.itemBgType = opts.bgType || this.bgType
-				this.itemIcon = opts.icon || this.icon
-				this.itemText = opts.text || this.text
-				this.itemTextType = opts.textType || this.textType
-				this.itemTextSize = opts.textSize || this.textSize
-				this.itemTextStyle = opts.textStyle || this.textStyle
-				this.itemIconStyle = opts.iconStyle || this.iconStyle
-				this.itemContentStyle = opts.contentStyle || this.contentStyle
-				this.itemDelay = opts.delay || this.delay
-				if (this.itemDelay === 0) {
+				this.pos = opts.pos || 'center'
+				this.offset = opts.offset || '0px'
+				this.needMask = (typeof opts.needMask === 'boolean') ? opts.needMask : false
+				this.maskType = opts.maskType || 'mask'
+				this.maskStyle = opts.maskStyle || ''
+				this.bgType = opts.bgType || 'mask-dark'
+				this.icon = opts.icon || '/static/ui/loading.gif'
+				this.text = opts.text || ''
+				this.textType = opts.textType || 'inverse'
+				this.textSize = opts.textSize || 'ss'
+				this.textStyle = opts.textStyle || ''
+				this.iconStyle = opts.iconStyle || ''
+				this.contentStyle = opts.contentStyle || ''
+				this.delay = opts.delay || 0
+				if (this.delay === 0) {
 					this.showLoading = true
 				} else {
 					const that = this
 					this.tid = setTimeout(() => {
 						that.showLoading = true
-					}, this.itemDelay)
+					}, this.delay)
 				}
 			},
 			hide() {
@@ -144,15 +85,13 @@
 			},
 			maskClicked(e) {
 				e.stopPropagation && e.stopPropagation()
-				this.itemNeedMask && (this.$emit('maskClicked', {}))
+				this.needMask && (this.$emit('maskClicked', {}))
 			}
 		}
 	}
 </script>
 
 <style lang="scss" scoped>
-	@import '../mypui.scss';
-	
 	.myp-loading {
 		position: relative;
 		

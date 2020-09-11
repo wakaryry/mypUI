@@ -1,11 +1,11 @@
 <template>
-	<view :class="['myp-bg-'+bgType]" :style="mrBoxStyle">
+	<view :class="['myp-bg-'+bgType, 'myp-border-'+border, 'myp-radius-'+radius]" :style="'height:'+heightPx+'px;'+boxStyle">
 		<slot></slot>
 	</view>
 </template>
 
 <script>
-	import windowMixin from '../myp-mixin/windowMixin.js'
+	import {getHeight} from '../utils/system.js'
 	
 	export default {
 		props: {
@@ -17,18 +17,22 @@
 				type: String,
 				default: 'none'
 			},
+			border: {
+				type: String,
+				default: 'none'
+			},
+			radius: {
+				type: String,
+				default: 'none'
+			},
 			boxStyle: {
 				type: String,
 				default: ''
 			}
 		},
-		mixins: [windowMixin],
 		computed: {
 			heightPx() {
-				return this.mypGetHeight(this.height)
-			},
-			mrBoxStyle() {
-				return `height:${this.heightPx}px;` + this.boxStyle
+				return getHeight(this.height)
 			}
 		}
 	}

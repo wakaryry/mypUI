@@ -481,6 +481,15 @@
 	    display: none;
 	    width: 0 !important;
 	    height: 0 !important;
+		color: transparent;
+	    -webkit-appearance: none;
+	    background: transparent;
+	}
+	::-webkit-scrollbar {
+	    display: none;
+	    width: 0 !important;
+	    height: 0 !important;
+		color: transparent;
 	    -webkit-appearance: none;
 	    background: transparent;
 	}

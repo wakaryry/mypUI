@@ -30,6 +30,11 @@
 </script>
 
 <style lang="scss">
+	/* #ifndef APP-NVUE */
+	page {
+		height: 100%;
+	}
+	/* #endif */
 	@import '@/mypUI/base.scss';
 	/* #ifdef H5 */
 	@import '@/mypUI/h5.scss';

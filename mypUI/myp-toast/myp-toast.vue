@@ -1,104 +1,55 @@
 <template>
-	<view v-if="showing" :class="['myp-toast', itemNeedMask&&'myp-toast-mask', itemNeedMask&&'myp-bg-'+maskType]" @click.stop="toPrevent" :style="maskStyle">
+	<view v-if="showing" :class="['myp-toast', needMask&&'myp-toast-mask', needMask&&'myp-bg-'+maskType]" @click.stop="toPrevent" :style="maskStyle">
 		<view v-if="mode==='big'" class="myp-toast-content" :style="mrContentStyle">
-			<view :class="['myp-toast-content-box', 'myp-bg-'+(bgType&&bgType.length>0?bgType:'text')]" :style="contentStyle+itemContentStyle">
-				<myp-icon v-if="icon&&icon.length>0" :name="icon" :type="mrIconType" :size="mrIconSize" :iconStyle="bigIconStyle+iconStyle+itemIconStyle"></myp-icon>
-				<text v-if="text" :class="['myp-toast-content-text', 'myp-color-'+mrTextType, 'myp-size-'+mrTextSize]" :style="textStyle+itemTextStyle">{{text}}</text>
+			<view :class="['myp-toast-content-box', 'myp-bg-'+bgType]" :style="contentStyle">
+				<myp-icon v-if="icon" :name="icon" :type="iconType" :size="iconSize" :iconStyle="'font-size:60rpx;'+iconStyle"></myp-icon>
+				<text v-if="text" :class="['myp-toast-content-text', 'myp-color-'+textType, 'myp-size-'+textSize]" :style="textStyle">{{text}}</text>
 			</view>
 		</view>
 		<view v-else class="myp-toast-small" :style="mrContentStyle">
-			<view :class="['myp-toast-small-box', 'myp-bg-'+(bgType&&bgType.length>0?bgType:'text')]" :style="contentStyle+itemContentStyle">
-				<view v-if="icon&&icon.length>0" style="margin-right: 24rpx;">
-					<myp-icon :name="icon" :type="mrIconType" :size="mrIconSize" :iconStyle="iconStyle+itemIconStyle"></myp-icon>
+			<view :class="['myp-toast-small-box', 'myp-bg-'+bgType]" :style="contentStyle">
+				<view v-if="icon" style="margin-right: 24rpx;">
+					<myp-icon :name="icon" :type="iconType" :size="iconSize" :iconStyle="iconStyle"></myp-icon>
 				</view>
-				<text v-if="text" :class="['myp-toast-small-text', 'myp-color-'+mrTextType, 'myp-size-'+mrTextSize]" :style="textStyle+itemTextStyle">{{text}}</text>
+				<text v-if="text" :class="['myp-toast-small-text', 'myp-color-'+textType, 'myp-size-'+textSize]" :style="textStyle">{{text}}</text>
 			</view>
 		</view>
 	</view>
 </template>
 
 <script>
-	import windowMixin from '../myp-mixin/windowMixin.js';
+	import {getScreenHeight, getHeight} from '../utils/system.js'
 
 	export default {
-		mixins: [windowMixin],
-		props: {
-			interval: {
-				type: [Number, String],
-				default: 2000
-			},
-			needMask: {
-				type: Boolean,
-				default: false
-			},
-			maskType: {
-				type: String,
-				default: 'mask'
-			},
-			maskStyle: {
-				type: String,
-				default: ''
-			},
-			contentStyle: {
-				type: String,
-				default: ''
-			},
-			iconType: {
-				type: String,
-				default: 'inverse'
-			},
-			iconSize: {
-				type: String,
-				default: 'll'
-			},
-			iconStyle: {
-				type: String,
-				default: ''
-			},
-			bigIconStyle: {
-				type: String,
-				default: 'font-size:60rpx;'
-			},
-			textType: {
-				type: String,
-				default: 'inverse'
-			},
-			textSize: {
-				type: String,
-				default: 'base'
-			},
-			textStyle: {
-				type: String,
-				default: ''
-			}
-		},
 		data() {
 			return {
-				itemNeedMask: false,  // just a helper
+				needMask: false,
+				maskType: 'mask',
+				maskStyle: '',
 				pos: 'center',   // top/center/bottom
 				offset: '0',     // status/nav-status/status-nav/x/...
 				mode: 'small',   // big/small. big is big icon, small is small icon
-				type: null,
-				bgType: null,
-				icon: null,
-				text: null,
-				itemTextType: 'inverse',
-				itemTextSize: 'base',
-				itemIconType: 'inverse',
-				itemIconSize: 'll',
-				itemContentStyle: '',
-				itemIconStyle: '',
-				itemTextStyle: '',
+				type: '',
+				bgType: '',
+				icon: '',
+				text: '',
+				textType: 'inverse',
+				textSize: 'base',
+				iconType: 'inverse',
+				iconSize: 'll',
+				contentStyle: '',
+				iconStyle: '',
+				textStyle: '',
 				showing: false,
 				tid: 0
 			}
 		},
 		computed: {
 			screenHeight() {
-				return this.mypGetScreenHeight()
+				return getScreenHeight()
 			},
 			offsetPx() {
-				return this.mypGetHeight(this.offset)
+				return getHeight(this.offset)
 			},
 			mrContentStyle() {
 				let style = 'left:375rpx;'
@@ -111,22 +62,6 @@
 					style += `top:${this.offsetPx}px;transform:translateX(-50%);`
 				}
 				return style
-			},
-			mrIconType() {
-				if (this.itemIconType && this.itemIconType.length > 0) return this.itemIconType;
-				return this.iconType
-			},
-			mrIconSize() {
-				if (this.itemIconSize && this.itemIconSize.length > 0) return this.itemIconSize;
-				return this.iconSize
-			},
-			mrTextType() {
-				if (this.itemTextType && this.itemTextType.length > 0) return this.itemTextType;
-				return this.textType
-			},
-			mrTextSize() {
-				if (this.itemTextSize && this.itemTextSize.length > 0) return this.itemTextSize;
-				return this.textSize
 			}
 		},
 		methods: {
@@ -135,7 +70,7 @@
 				if (this.showing) {
 					this.showing = false
 				}
-				let _interval = this.interval
+				let _interval = 2000  // default 2000
 				let _finish = null
 				let _info = {}
 				// Error
@@ -167,10 +102,10 @@
 					delete _info.finish
 				}
 				if (typeof _info.needMask === 'boolean') {
-					this.itemNeedMask = _info.needMask
+					this.needMask = _info.needMask
 					delete _info.needMask
 				} else {
-					this.itemNeedMask = this.needMask
+					this.needMask = false
 				}
 				if (_info.mode) {
 					this.mode = _info.mode
@@ -179,47 +114,47 @@
 					this.mode = 'small'
 				}
 				if (_info.contentStyle) {
-					this.itemContentStyle = _info.contentStyle
+					this.contentStyle = _info.contentStyle
 					delete _info.contentStyle
 				} else {
 					// reset to clear the before-set
-					this.itemContentStyle = ''
+					this.contentStyle = ''
 				}
 				if (_info.iconStyle) {
-					this.itemIconStyle = _info.iconStyle
+					this.iconStyle = _info.iconStyle
 					delete _info.iconStyle
 				} else {
-					this.itemIconStyle = ''
+					this.iconStyle = ''
 				}
 				if (_info.iconType) {
-					this.itemIconType = _info.iconType
+					this.iconType = _info.iconType
 					delete _info.iconType
 				} else {
-					this.itemIconType = ''
+					this.iconType = 'inverse'
 				}
 				if (_info.iconSize) {
-					this.itemIconSize = _info.iconSize
+					this.iconSize = _info.iconSize
 					delete _info.iconSize
 				} else {
-					this.itemIconSize = ''
+					this.iconSize = 'll'
 				}
 				if (_info.textStyle) {
-					this.itemTextStyle = _info.textStyle
+					this.textStyle = _info.textStyle
 					delete _info.textStyle
 				} else {
-					this.itemTextStyle = ''
+					this.textStyle = ''
 				}
 				if (_info.textType) {
-					this.itemTextType = _info.textType
+					this.textType = _info.textType
 					delete _info.textType
 				} else {
-					this.itemTextType = ''
+					this.textType = 'inverse'
 				}
 				if (_info.textSize) {
-					this.itemTextSize = _info.textSize
+					this.textSize = _info.textSize
 					delete _info.textSize
 				} else {
-					this.itemTextSize = ''
+					this.textSize = 'base'
 				}
 				// type/bgType/icon/text/pos/offset
 				for (const i in _info) {
@@ -230,6 +165,9 @@
 				}
 				if (!_info.bgType || _info.bgType.length === 0) {
 					this.bgType = this.type
+					if (this.type === 'default') {
+						this.bgType = 'mask-dark'
+					}
 				}
 				if (!_info.icon || _info.icon.length === 0) {
 					this.icon = this.type
@@ -261,8 +199,6 @@
 </script>
 
 <style lang="scss" scoped>
-	@import '../mypui.scss';
-	
 	.myp-toast {
 		position: relative;
 		

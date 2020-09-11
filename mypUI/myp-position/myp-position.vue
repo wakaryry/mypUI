@@ -41,12 +41,5 @@
 	}
 </script>
 
-<style lang="scss" scoped>
-	.myp-foot {
-		position: absolute;
-		
-		&-fixed {
-			position: fixed;
-		}
-	}
+<style>
 </style>

@@ -1,14 +1,13 @@
 <template>
-	<view :class="['myp-foot', 'myp-bg-'+bgType, fixed&&'myp-foot-fixed']" :style="mrBoxStyle">
+	<view :class="[fixed?'myp-position-fixed':'myp-position-absolute', 'myp-bg-'+bgType]" :style="mrBoxStyle">
 		<slot></slot>
 	</view>
 </template>
 
 <script>
-	import windowMixin from '../myp-mixin/windowMixin.js'
+	import {getHeight} from '../utils/system.js'
 	
 	export default {
-		mixins: [windowMixin],
 		props: {
 			fixed: {
 				type: Boolean,
@@ -33,10 +32,10 @@
 		},
 		computed: {
 			offsetPx() {
-				return this.mypGetHeight(this.offset)
+				return getHeight(this.offset)
 			},
 			mrBoxStyle() {
-				return this.boxStyle + (this.pos === 'top' ? `top:${this.offsetPx}px;` : `bottom:${this.offsetPx}px;`)
+				return (this.pos === 'top' ? `top:${this.offsetPx}px;` : `bottom:${this.offsetPx}px;`) + this.boxStyle
 			}
 		}
 	}

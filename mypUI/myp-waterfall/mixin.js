@@ -1,3 +1,5 @@
+import {getPx} from '../utils/system.js'
+
 export default {
 	props: {
 		columnCount: {
@@ -5,7 +7,7 @@ export default {
 			default: 'auto'
 		},
 		columnWidth: {
-			type: [String, Number],
+			type: String,
 			default: 'auto'
 		},
 		columnGap: {
@@ -23,16 +25,19 @@ export default {
 	},
 	computed: {
 		columnWidthPx() {
-			return this.mypToPx(this.columnWidth)
+			if (this.columnWidth === 'auto') {
+				return 'auto'
+			}
+			return getPx(this.columnWidth)
 		},
 		columnGapPx() {
-			return this.mypToPx(this.columnGap)
+			return getPx(this.columnGap)
 		},
 		leftGapPx() {
-			return this.mypToPx(this.leftGap)
+			return getPx(this.leftGap)
 		},
 		rightGapPx() {
-			return this.mypToPx(this.rightGap)
+			return getPx(this.rightGap)
 		}
 	}
 }

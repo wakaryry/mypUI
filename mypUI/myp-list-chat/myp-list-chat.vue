@@ -1,18 +1,9 @@
 <template>
 	<view class="myp-list" :style="boxStyle">
 		<!-- #ifdef APP-NVUE -->
-		<list :class="'myp-bg-'+bgType" :style="mrScrollStyle" ref="myp-scroller" :show-scrollbar="showScrollbar" :loadmoreoffset="(mypUp.use&&!useLoading)?loadMoreOffset:0" @loadmore="mypMoreLoad" @scroll="mypScroll">
+		<list :class="'myp-bg-'+bgType" :style="boxStyle" ref="myp-scroller" :show-scrollbar="showScrollbar" :loadmoreoffset="(mypUp.use&&!useLoading)?loadMoreOffset:0" @loadmore="mypMoreLoad" @scroll="mypScroll">
 			<myp-refresher-n v-if="mypDown.use" ref="myp-refresher" scroller-ref="myp-scroller" @refresh="mypRefresh"></myp-refresher-n>
 			<slot></slot>
-			<cell>
-				<view :style="{height: footToken}"></view>
-			</cell>
-			<cell>
-				<view v-if="includeXBar&&overrideXBar" :style="mypXBarHeightStyle"></view>
-			</cell>
-			<!-- in android, we must put loading in the last, or it will not trigger loading next page. --> 
-			<!-- it's the same in loadMore with loadMoreOffset -->
-			<!-- or we could put the foot-token after loading -->
 			<cell v-if="mypUp.use&&!useLoading">
 				<myp-loader :isLoading="mypIsUpLoading" :hasMore="mypHasMore"></myp-loader>
 			</cell>
@@ -20,7 +11,7 @@
 		</list>
 		<!-- #endif -->
 		<!-- #ifndef APP-NVUE -->
-		<scroll-view :class="'myp-bg-'+bgType" :style="mrScrollStyle" :scroll-y="mypScrollable" :show-scrollbar="showScrollbar" :enable-back-to-top="true" @scroll="mypScroll" @touchstart="mypTouchstartEvent" @touchmove="mypTouchmoveEvent" @touchend="mypTouchendEvent" @touchcancel="mypTouchendEvent">
+		<scroll-view :class="'myp-bg-'+bgType" :style="boxStyle" :scroll-y="mypScrollable" :show-scrollbar="showScrollbar" :enable-back-to-top="true" @scroll="mypScroll" @touchstart="mypTouchstartEvent" @touchmove="mypTouchmoveEvent" @touchend="mypTouchendEvent" @touchcancel="mypTouchendEvent">
 			<view :style="mypMrScrollContentStyle">
 				<view v-if="mypDown.use" :style="mypMrRefreshStyle">
 					<myp-refresher :refreshing="mypIsDownLoading" :couldUnLash="mypCouldUnLash" :rate="mypDownRate"></myp-refresher>
@@ -28,17 +19,9 @@
 				<!-- content of scroll -->
 				<slot></slot>
 				<myp-loader v-if="mypUp.use" :isLoading="mypIsUpLoading" :hasMore="mypHasMore"></myp-loader>
-				<view :style="{height: footToken}"></view>
-				<view v-if="includeXBar&&overrideXBar" :style="mypXBarHeightStyle"></view>
 			</view>
 		</scroll-view>
 		<!-- #endif -->
-		<!-- xBar -->
-		<view v-if="includeXBar&&!overrideXBar" :class="['myp-bg-'+xBarBgType]" :style="mypXBarStyle"></view>
-		<!-- foot -->
-		<view class="myp-simple-foot" :style="mrFootStyle">
-			<slot name="foot"></slot>
-		</view>
 	</view>
 </template>
 
@@ -47,6 +30,7 @@
 	// loading with no loadMore for list
 	import scrollMixin from './mixin.js'
 	import weexActions from './weexActions.js'
+	import {getPlatform} from '../utils/system.js'
 	
 	export default {
 		mixins: [scrollMixin, weexActions],
@@ -98,7 +82,7 @@
 			// #ifdef APP-NVUE
 			this.mypDown = Object.assign(this.down)
 			this.mypUp = Object.assign(this.up)
-			this.platform = this.mypGetPlatform()
+			this.platform = getPlatform()
 			// #endif
 			// emit this 会在mp端报错，且不建议
 			// this.$emit("inited", this)

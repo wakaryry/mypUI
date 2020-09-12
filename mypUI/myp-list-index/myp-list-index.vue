@@ -1,7 +1,7 @@
 <template>
 	<view class="myp-index" :style="boxStyle">
 		<!-- #ifdef APP-NVUE -->
-		<list :class="'myp-bg-'+bgType" :style="mrScrollStyle" @scroll="toScroll">
+		<list :class="'myp-bg-'+bgType" :style="scrollStyle" @scroll="toScroll">
 			<cell>
 				<slot name="head"></slot>
 			</cell>
@@ -22,16 +22,10 @@
 					</view>
 				</view>
 			</cell>
-			<cell>
-				<view :style="{height: footToken}"></view>
-			</cell>
-			<cell>
-				<view v-if="includeXBar&&overrideXBar" :style="mypXBarHeightStyle"></view>
-			</cell>
 		</list>
 		<!-- #endif -->
 		<!-- #ifndef APP-NVUE -->
-		<scroll-view :scroll-y="true" :scroll-with-animation="true" :scroll-into-view="viewId" :class="'myp-bg-'+bgType" :style="mrScrollStyle" @scroll="toScroll">
+		<scroll-view :scroll-y="true" :scroll-with-animation="true" :scroll-into-view="viewId" :class="'myp-bg-'+bgType" :style="scrollStyle" @scroll="toScroll">
 			<slot name="head"></slot>
 			<view v-for="(v, i) in formatList" :key="i" :id="'myp-index-title-' + (v.id||v.title)">
 				<text v-if="!onlyShowList" :class="['myp-index-title', v.type && v.type === 'group' && 'myp-index-title-group']" :style="(v.type && v.type === 'group')?groupTitleStyle:titleStyle">{{ v.title }}</text>
@@ -50,16 +44,8 @@
 					</view>
 				</block>
 			</view>
-			<view :style="{height: footToken}"></view>
-			<view v-if="includeXBar&&overrideXBar" :style="mypXBarHeightStyle"></view>
 		</scroll-view>
 		<!-- #endif -->
-		<!-- xBar -->
-		<view v-if="includeXBar&&!overrideXBar" :class="['myp-bg-'+xBarBgType]" :style="mypXBarStyle"></view>
-		<!-- foot -->
-		<view class="myp-index-foot" :style="mrFootStyle">
-			<slot name="foot"></slot>
-		</view>
 		<view class="myp-index-nav" v-if="showIndex && !onlyShowList" :style="indexBoxStyle" bubble="true" @tap="toPrevent">
 			<text v-for="(item, index) in formatList" :key="index" :title="item.title" @tap.stop="go2Key(item.id||item.title, item.title)" class="myp-index-nav-key" :style="indexTextStyle">{{ item.title }}</text>
 		</view>
@@ -143,6 +129,10 @@ export default {
 			default: ''
 		},
 		boxStyle: {
+			type: String,
+			default: ''
+		},
+		scrollStyle: {
 			type: String,
 			default: ''
 		}

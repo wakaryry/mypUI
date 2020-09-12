@@ -238,14 +238,21 @@
 		left: 0;
 		right: 0;
 		bottom: 0;
+		flex-direction: column;
+		/* #ifndef APP-NVUE */
+		display: flex;
+		box-sizing: border-box;
+		/* #endif */
 		
 		&-container {
 			width: 750rpx;
+			flex: 1;
 			/* #ifndef APP-NVUE */
 			display: flex;
 			box-sizing: border-box;
 			/* #endif */
 			flex-direction: row;
+			position: relative;
 		}
 	}
 

@@ -59,7 +59,7 @@
 					<image class="ch-foot-avatar-avatar" src="/static/bear.jpg" mode="aspectFill" @tap.stop.prevent="toFootUser"></image>
 				</view>
 			</view>
-			<myp-x-bar bgType="inverse" boxStyle="width:750rpx;"></myp-x-bar>
+			<myp-xbar bgType="inverse" boxStyle="width:750rpx;"></myp-xbar>
 		</myp-position>
 		<myp-navbar :fixed="true" :isSeize="false" :bgType="titleVisible?'primary':'none'" :title="titleVisible?'欢迎光临':''" iconStyle="color:#FFFFFF;" titleStyle="color:#FFFFFF;" :lefts="leftIcons" @leftAction="navLeftAction"></myp-navbar>
 		<myp-loading ref="myp-loading"></myp-loading>
@@ -75,17 +75,18 @@
 	import navHelper from '@/router/navHelper.js'
 	import toastMixin from '@/mypUI/myp-mixin/toastMixin.js'
 	import loadingMixin from '@/mypUI/myp-mixin/loadingMixin.js'
-	import systemMixin from '@/mypUI/myp-mixin/systemMixin.js'
 	
 	import parentMixin from '@/mypUI/myp-list/header/headerParent.js'
 	import actionsMixin from './mixin/actions.js'
+	
+	import {getPlatform} from '@/mypUI/utils/system.js'
 	
 	export default {
 		components: {
 			swiperHead,
 			albumList
 		},
-		mixins: [contentBoxMixin, systemMixin, navHelper, toastMixin, loadingMixin, parentMixin, actionsMixin],
+		mixins: [contentBoxMixin, navHelper, toastMixin, loadingMixin, parentMixin, actionsMixin],
 		data() {
 			return {
 				mypIncludeXBar: false,
@@ -162,7 +163,7 @@
 		},
 		onReady() {
 			this.mypHeaderHeight = uni.upx2px(442) //去除了status-nav的高度
-			this.platform = this.mypGetPlatform()
+			this.platform = getPlatform()
 			if (this.platform === 'android') {
 				this.mypAllHeight = this.mypHeaderHeight - uni.upx2px(140)
 			} else {
@@ -173,7 +174,7 @@
 			}, 20)
 		},
 		onLoad() {
-			this.platform = this.mypGetPlatform()
+			this.platform = getPlatform()
 		}
 	}
 </script>

@@ -45,12 +45,11 @@
 <script>
 	// 反向列表
 	// loading with no loadMore for list
-	import styleMixin from '../myp-list/styleMixin.js'
 	import scrollMixin from './mixin.js'
 	import weexActions from './weexActions.js'
 	
 	export default {
-		mixins: [styleMixin, scrollMixin, weexActions],
+		mixins: [scrollMixin, weexActions],
 		props: {
 			// #ifdef APP-NVUE
 			// 是否启用loading组件，而不是loadmoreofset触发

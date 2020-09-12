@@ -73,12 +73,10 @@
 // #ifdef APP-NVUE
 const dom = weex.requireModule('dom');
 // #endif
-import styleMixin from '../myp-list/styleMixin.js'
 
 import * as Format from './format.js';
 
 export default {
-	mixins: [styleMixin],
 	props: {
 		normalList: {
 			type: Array,

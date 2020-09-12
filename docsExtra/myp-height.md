@@ -37,6 +37,6 @@ myp-height 是有一个有趣的组件。它给予了您快速决策特殊高度
 
 其它相关文档：
 
-- [myp-x-status](/doc/guide/myp-x-status.html) 
-- [myp-x-bar](/doc/guide/myp-x-bar.html) 
+- [myp-status](/doc/guide/myp-status.html) 
+- [myp-xbar](/doc/guide/myp-xbar.html) 
 - [myp-navbar](/doc/guide/myp-navbar.html)

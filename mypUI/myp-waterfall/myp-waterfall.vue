@@ -38,13 +38,12 @@
 </template>
 
 <script>
-	import styleMixin from '../myp-list/styleMixin.js'
 	import scrollMixin from '../myp-list/mixin.js'
 	import weexActions from '../myp-list/weexActions.js'
 	import waterfallMixin from './mixin.js'
 	
 	export default {
-		mixins: [styleMixin, scrollMixin, weexActions, waterfallMixin],
+		mixins: [scrollMixin, weexActions, waterfallMixin],
 		props: {
 			// #ifdef APP-NVUE
 			// 是否启用loading组件，而不是loadmoreofset触发

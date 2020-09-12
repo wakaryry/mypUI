@@ -1,4 +1,4 @@
-# myp-x-bar
+# myp-xbar
 
 ## Props
 

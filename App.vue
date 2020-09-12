@@ -1,19 +1,18 @@
 <script>
-	import systemMixin from '@/mypUI/myp-mixin/systemMixin.js'
+	import {initSystemInfo} from '@/mypUI/utils/system.js'
 	
 	export default {
 		globalData: {
 			currentTab: 0
 		},
-		mixins: [systemMixin],
 		onLaunch: function() {
 			console.log('App Launch')
 			// #ifdef APP-PLUS || H5
-			this.mypInitSystemInfo()
+			initSystemInfo()
 			// #endif
 			// #ifndef APP-PLUS || H5
 			setTimeout(()=>{
-				this.mypInitSystemInfo()
+				initSystemInfo()
 			}, 0)
 			// #endif
 			// #ifdef APP-PLUS

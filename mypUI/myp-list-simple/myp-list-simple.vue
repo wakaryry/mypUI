@@ -28,10 +28,7 @@
 </template>
 
 <script>
-	import styleMixin from '../myp-list/styleMixin.js'
-	
 	export default {
-		mixins: [styleMixin],
 		methods: {
 			toScroll(e) {
 				this.$emit("scroll", e)

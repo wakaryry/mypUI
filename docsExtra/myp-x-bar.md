@@ -1,5 +1,5 @@
 
-myp-x-bar 为您提供了快速决策 x-bar 高度的能力。您可以在需要使用 xbar 高度的地方快速调用。
+myp-xbar 为您提供了快速决策 x-bar 高度的能力。您可以在需要使用 xbar 高度的地方快速调用。
 
 ## bgType
 
@@ -12,5 +12,5 @@ myp-x-bar 为您提供了快速决策 x-bar 高度的能力。您可以在需要
 其它相关文档：
 
 - [myp-height](/doc/guide/myp-height.html) 
-- [myp-x-status](/doc/guide/myp-x-status.html) 
+- [myp-status](/doc/guide/myp-status.html) 
 - [myp-navbar](/doc/guide/myp-navbar.html)

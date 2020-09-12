@@ -39,11 +39,9 @@
 	const animation = weex.requireModule('animation');
 	// #endif
 	
-	import xBarMixin from '../myp-mixin/xBarMixin.js'
-	import pxMixin from '../myp-mixin/pxMixin.js'
-
+	import {getPx, getXBarHeight, getHeight, getStatusBarHeight, getNavbarHeight} from '../utils/system.js'
+	
 	export default {
-		mixins: [xBarMixin, pxMixin],
 		props: {
 			// 可以为每一个tab单独设置
 			// isHump 表示是否凸起, noPage 表示点击当前tab时不切换，依然停留在原tab内容, hump具备humpStyle,hump有humpBottom(就是距离底部的距离px)
@@ -76,15 +74,6 @@
 					}
 				}
 			},
-			// 高度计算时是否包含statusBar
-			includeStatus: {
-				type: Boolean,
-				default: true
-			},
-			includeNav: {
-				type: Boolean,
-				default: true
-			},
 			duration: {
 				type: [Number, String],
 				default: 300
@@ -105,22 +94,10 @@
 			defaultIconBoxWidth: '46px'
 		}),
 		computed: {
-			containerHeight() {
-				let _height = this.mypGetScreenHeight()
-				if (_height === 0) {
-					// try again
-					_height = this.mypGetScreenHeight()
-				}
-				if (_height === 0) {
-					return 0
-				}
-				const xBarHeight = this.includeXBar ? this.mypGetXBarHeight() : 0
-				return _height - this.tabHeightPx - xBarHeight - this.topPx
-			},
 			mrHumpStyle() {
 				if (!this.humpItem) return '';
 				let btm = this.humpItem.humpBottom || 12
-				btm += this.mypGetXBarHeight()
+				btm += getXBarHeight()
 				const style = this.humpItem.humpStyle || ''
 				return style + `bottom:${btm}px;`
 			},
@@ -152,9 +129,9 @@
 				return -1
 			},
 			topPx() {
-				const st = this.includeStatus ? 0 : this.mypGetStatusBarHeight()
-				const nh = this.includeNav ? 0 : this.mypGetNavHeight()
-				return this.mypToPx(this.top) + st + nh
+				const st = this.includeStatus ? 0 : getStatusBarHeight()
+				const nh = this.includeNav ? 0 : getNavbarHeight()
+				return getPx(this.top) + st + nh
 			},
 			tabHeightPx() {
 				if (this.tabStyle && this.tabStyle.height) {
@@ -171,7 +148,7 @@
 				}
 				const width = (_length || 1) * 750
 				let _style = `width:${width}rpx;`
-				return _style + `height:${this.containerHeight}px;`
+				return _style
 			},
 			mrItemStyle() {
 				const _height = this.tabHeightPx
@@ -185,12 +162,12 @@
 			},
 			mrTabsBoxStyle() {
 				let _style = (this.tabStyle && this.tabStyle.boxStyle) || ''
-				_style += `padding-bottom:${this.mypGetXBarHeight()}px;`
+				_style += `padding-bottom:${getXBarHeight()}px;`
 				return _style
 			},
 			mrTabsImageBoxStyle() {
 				let _style = (this.tabStyle && this.tabStyle.imageBoxStyle) || ''
-				_style += `padding-bottom:${this.mypGetXBarHeight()}px;`
+				_style += `padding-bottom:${getXBarHeight()}px;`
 				return _style
 			}
 		},

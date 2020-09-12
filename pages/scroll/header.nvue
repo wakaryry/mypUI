@@ -59,7 +59,7 @@
 					<image class="ch-foot-avatar-avatar" src="/static/bear.jpg" mode="aspectFill" @tap.stop.prevent="toFootUser"></image>
 				</view>
 			</view>
-			<myp-x-bar bgType="inverse" boxStyle="width:750rpx;"></myp-x-bar>
+			<myp-xbar bgType="inverse" boxStyle="width:750rpx;"></myp-xbar>
 		</myp-position>
 		<myp-navbar :fixed="true" :isSeize="false" :bgType="titleVisible?'primary':'none'" :title="titleVisible?'欢迎光临':''" iconStyle="color:#FFFFFF;" titleStyle="color:#FFFFFF;" :lefts="leftIcons" @leftAction="navLeftAction"></myp-navbar>
 		<myp-loading ref="myp-loading"></myp-loading>

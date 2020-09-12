@@ -48,7 +48,7 @@
 				</view>
 			</cell>
 			<cell>
-				<myp-x-bar></myp-x-bar>
+				<myp-xbar></myp-xbar>
 			</cell>
 		</list>
 		<!-- #endif -->
@@ -87,7 +87,7 @@
 			<view class="ti-more">
 				<text class="ti-more-text">更多动画，敬请期待</text>
 			</view>
-			<myp-x-bar></myp-x-bar>
+			<myp-xbar></myp-xbar>
 		</scroll-view>
 		<!-- #endif -->
 	</view>

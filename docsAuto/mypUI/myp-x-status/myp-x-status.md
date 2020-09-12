@@ -1,4 +1,4 @@
-# myp-x-status
+# myp-status
 
 ## Props
 

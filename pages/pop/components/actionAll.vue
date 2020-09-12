@@ -5,7 +5,7 @@
 			<text class="aa-item aa-split aa-text" @tap="toSelect(0)">男</text>
 			<text class="aa-item aa-text" @tap="toSelect(1)">女</text>
 		</view>
-		<myp-x-bar bgType="inverse" boxStyle="width:750rpx;"></myp-x-bar>
+		<myp-xbar bgType="inverse" boxStyle="width:750rpx;"></myp-xbar>
 	</myp-popup>
 </template>
 

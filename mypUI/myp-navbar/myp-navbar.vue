@@ -32,10 +32,9 @@
 </template>
 
 <script>
-	import windowMixin from '../myp-mixin/windowMixin.js'
+	import {getStatusBarHeight} from '../utils/system.js'
 	
 	export default {
-		mixins: [windowMixin],
 		props: {
 			lefts: {
 				type: Array,
@@ -176,7 +175,7 @@
 		computed: {
 			statusHeight() {
 				if (this.includeStatus) {
-					return this.mypGetStatusBarHeight()
+					return getStatusBarHeight()
 				}
 				return 0
 			},

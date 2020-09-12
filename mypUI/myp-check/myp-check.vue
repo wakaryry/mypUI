@@ -47,8 +47,8 @@
 				default: 0
 			},
 			updatedTime: {
-				type: [String, Number],
-				default: ''
+				type: Number,
+				default: 0
 			},
 			// we do not calculate disabled via value, just set by user
 			disabled: {

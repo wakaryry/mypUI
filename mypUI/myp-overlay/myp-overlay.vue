@@ -21,7 +21,7 @@
 				default: true
 			},
 			duration: {
-				type: [Number, String],
+				type: Number,
 				default: 400
 			},
 			timingFunction: {

@@ -63,6 +63,20 @@
 		position: fixed;
 	}
 }
+.myp-full {
+	&-width {
+		width: 750rpx;
+	}
+	&-height {
+		flex: 1;
+		/* #ifndef APP-NVUE */
+		height: 100%;
+		/* #endif */
+	}
+	&-flex {
+		flex: 1;
+	}
+}
 .myp-bg {
 	&- {
 		background-color: $myp-bg-color-inverse;
@@ -226,20 +240,6 @@
 	}
 	&-ll {
 		height: $myp-height-ll;
-	}
-}
-.myp-full {
-	&-width {
-		width: 750rpx;
-	}
-	&-height {
-		flex: 1;
-		/* #ifndef APP-NVUE */
-		height: 100%;
-		/* #endif */
-	}
-	&-flex {
-		flex: 1;
 	}
 }
 .myp-weight {

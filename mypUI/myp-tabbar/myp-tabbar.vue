@@ -3,24 +3,31 @@
 		<view class="myp-tab-page-container" ref="tab-container" :style="mrTabContainerStyle+noWeexTransform">
 			<slot></slot>
 		</view>
-		<slot name="tabs">
-			<view v-if="tabStyle.image" class="myp-tabs-img" :style="mrTabsImageBoxStyle">
-				<image :src="tabStyle.image" :style="tabStyle.imageStyle" mode="aspectFill"></image>
+		<!-- tabs bg -->
+		<slot name="bg">
+			<view v-if="tabStyle.image" class="myp-tabs-img" :style="tabStyle.imageBoxStyle||''">
+				<image :src="tabStyle.image" :style="tabStyle.imageStyle||''" mode="aspectFill"></image>
+				<myp-xbar v-if="considerXBar&&!tabStyle.imageWidthXBar" :bgType="xBarBgType" :boxStyle="xBarStyle"></myp-xbar>
 			</view>
-			<view class="myp-tabs" :style="mrTabsBoxStyle">
-				<view bubble="true" class="myp-tabs-item" v-for="(item, idx) in tabs" :key="idx" :ref="'myp-tab-'+idx" :style="mrItemStyle" @tap="setPage(idx)">
-					<view v-if="!item.isHump" class="myp-tabs-item-icon" :style="'width:'+(item.iconBoxWidth||mrIconWidth)+';'">
-						<image :src="currentPage===idx?item.selectedIcon:item.icon" :style="currentPage===idx?((tabStyle.selectedIconStyle||'')+(item.selectedIconStyle||'')):((tabStyle.iconStyle||'')+(item.iconStyle||''))"></image>
-						<view v-if="item.badge" class="myp-tabs-item-badge" :style="(tabStyle.badgeStyle||'')+(item.badgeStyle||'')">
-							<text class="myp-tabs-item-badge-text" :style="(tabStyle.badgeTextStyle||'')+(item.badgeTextStyle||'')">{{item.badge}}</text>
+		</slot>
+		<slot name="tabs">
+			<view class="myp-tabs" :style="tabStyle.boxStyle||''">
+				<view class="myp-tabs-items" :style="tabStyle.tabsStyle||''">
+					<view bubble="true" class="myp-tabs-item" v-for="(item, idx) in tabs" :key="idx" :ref="'myp-tab-'+idx" :style="mrItemStyle" @tap="setPage(idx)">
+						<view v-if="!item.isHump" class="myp-tabs-item-icon" :style="'width:'+(item.iconBoxWidth||mrIconWidth)+';'">
+							<image :src="currentPage===idx?item.selectedIcon:item.icon" :style="currentPage===idx?((tabStyle.selectedIconStyle||'')+(item.selectedIconStyle||'')):((tabStyle.iconStyle||'')+(item.iconStyle||''))"></image>
+							<view v-if="item.badge" class="myp-tabs-item-badge" :style="(tabStyle.badgeStyle||'')+(item.badgeStyle||'')">
+								<text class="myp-tabs-item-badge-text" :style="(tabStyle.badgeTextStyle||'')+(item.badgeTextStyle||'')">{{item.badge}}</text>
+							</view>
+							<view v-if="item.dot && !item.badge" class="myp-tabs-item-dot" :style="(tabStyle.dotStyle||'')+(item.dotStyle||'')"></view>
 						</view>
-						<view v-if="item.dot && !item.badge" class="myp-tabs-item-dot" :style="(tabStyle.dotStyle||'')+(item.dotStyle||'')"></view>
+						<text v-if="!item.isHump" :class="['myp-tabs-item-text', currentPage===idx&&'myp-tabs-item-text-selected']" :style="currentPage===idx?((tabStyle.selectedTitleStyle||'')+(item.selectedTitleStyle||'')):((tabStyle.titleStyle||'')+(item.titleStyle||''))">{{currentPage===idx ? item.selectedTitle : item.title}}</text>
 					</view>
-					<text v-if="!item.isHump" :class="['myp-tabs-item-text', currentPage===idx&&'myp-tabs-item-text-selected']" :style="currentPage===idx?((tabStyle.selectedTitleStyle||'')+(item.selectedTitleStyle||'')):((tabStyle.titleStyle||'')+(item.titleStyle||''))">{{currentPage===idx ? item.selectedTitle : item.title}}</text>
 				</view>
+				<myp-xbar v-if="considerXBar&&!tabStyle.imageWidthXBar" :bgType="xBarBgType" :boxStyle="xBarStyle"></myp-xbar>
 			</view>
 			<!-- hump -->
-			<view bubble="true" v-if="hasHump" class="myp-tabs-item-hump" :style="mrHumpStyle||''" @tap="setPage(humpIndex)">
+			<view bubble="true" v-if="hasHump" class="myp-tabs-hump" :style="mrHumpStyle||''" @tap="setPage(humpIndex)">
 				<view class="myp-tabs-item-icon" :style="'width:'+(humpItem.iconBoxWidth||mrIconWidth)+';'">
 					<image :src="currentPage===humpIndex?humpItem.selectedIcon:humpItem.icon" :style="currentPage===humpIndex?((tabStyle.selectedIconStyle||'')+(humpItem.selectedIconStyle||'')):((tabStyle.iconStyle||'')+(humpItem.iconStyle||''))"></image>
 					<view v-if="humpItem.badge" class="myp-tabs-item-badge" :style="(tabStyle.badgeStyle||'')+(humpItem.badgeStyle||'')">
@@ -61,6 +68,7 @@
 						titleStyle: '',
 						selectedTitleStyle: '',
 						boxStyle: '',
+						tabsStyle: '',
 						itemStyle: '',
 						height: 50,  // px
 						badgeStyle: '',
@@ -71,6 +79,7 @@
 						image: null,
 						imageStyle: '',
 						imageBoxStyle: '',
+						imageWidthXBar: false
 					}
 				}
 			},
@@ -85,6 +94,18 @@
 			top: {
 				type: [Number, String],
 				default: 0
+			},
+			considerXBar: {
+				type: Boolean,
+				default: true
+			},
+			xBarBgType: {
+				type: String,
+				default: 'inverse'
+			},
+			xBarStyle: {
+				type: String,
+				default: ''
 			}
 		},
 		data: () => ({
@@ -97,7 +118,9 @@
 			mrHumpStyle() {
 				if (!this.humpItem) return '';
 				let btm = this.humpItem.humpBottom || 12
-				btm += getXBarHeight()
+				if (this.considerXBar) {
+					btm += getXBarHeight()
+				}
 				const style = this.humpItem.humpStyle || ''
 				return style + `bottom:${btm}px;`
 			},
@@ -129,9 +152,7 @@
 				return -1
 			},
 			topPx() {
-				const st = this.includeStatus ? 0 : getStatusBarHeight()
-				const nh = this.includeNav ? 0 : getNavbarHeight()
-				return getPx(this.top) + st + nh
+				return getHeight(this.top)
 			},
 			tabHeightPx() {
 				if (this.tabStyle && this.tabStyle.height) {
@@ -159,16 +180,6 @@
 					return this.tabStyle.iconBoxWidth
 				}
 				return this.defaultIconBoxWidth
-			},
-			mrTabsBoxStyle() {
-				let _style = (this.tabStyle && this.tabStyle.boxStyle) || ''
-				_style += `padding-bottom:${getXBarHeight()}px;`
-				return _style
-			},
-			mrTabsImageBoxStyle() {
-				let _style = (this.tabStyle && this.tabStyle.imageBoxStyle) || ''
-				_style += `padding-bottom:${getXBarHeight()}px;`
-				return _style
 			}
 		},
 		methods: {
@@ -250,27 +261,50 @@
 			/* #ifndef APP-NVUE */
 			display: flex;
 			box-sizing: border-box;
+			height: 100%;
 			/* #endif */
 			flex-direction: row;
 			position: relative;
 		}
 	}
-
 	.myp-tabs {
+		position: fixed;
+		left: 0;
+		bottom: 0;
 		width: 750rpx;
 		/* #ifndef APP-NVUE */
 		display: flex;
 		box-sizing: border-box;
 		/* #endif */
-		flex-direction: row;
-		background-color: #FFFFFF;
+		flex-direction: column;
 		
 		&-img {
 			position: fixed;
 			width: 750rpx;
 			left: 0;
+			bottom: 0;
 		}
-		
+		&-items {
+			width: 750rpx;
+			/* #ifndef APP-NVUE */
+			display: flex;
+			box-sizing: border-box;
+			/* #endif */
+			flex-direction: row;
+			background-color: #FFFFFF;
+		}
+		&-hump {
+			position: fixed;
+			left: 375rpx;
+			bottom: 0;
+			transform: translateX(-50%);
+			/* #ifndef APP-NVUE */
+			display: flex;
+			box-sizing: border-box;
+			/* #endif */
+			justify-content: center;
+			align-items: center;
+		}
 		&-item {
 			/* #ifndef APP-NVUE */
 			display: flex;
@@ -282,19 +316,6 @@
 			flex: 1;
 			padding: 5px;
 			
-			&-hump {
-				position: fixed;
-				left: 375rpx;
-				bottom: 0;
-				transform: translateX(-50%);
-				/* #ifndef APP-NVUE */
-				display: flex;
-				box-sizing: border-box;
-				/* #endif */
-				justify-content: center;
-				align-items: center;
-			}
-			
 			&-icon {
 				position: relative;
 				/* #ifndef APP-NVUE */
@@ -305,7 +326,6 @@
 				justify-content: center;
 				align-items: center;
 			}
-			
 			&-text {
 				font-size: 13px;
 				color: #333232;
@@ -314,7 +334,6 @@
 					color: #01A9F0;
 				}
 			}
-			
 			&-badge {
 				position: absolute;
 				right: 0;
@@ -324,7 +343,6 @@
 					font-size: 12px;
 				}
 			}
-			
 			&-dot {
 				position: absolute;
 				right: 6px;

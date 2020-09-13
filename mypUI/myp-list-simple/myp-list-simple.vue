@@ -1,11 +1,11 @@
 <template>
 	<!-- #ifdef APP-NVUE -->
-	<list :class="['myp-bg-'+bgType, 'myp-position-'+position]" :style="mrBoxStyle" :show-scrollbar="showScrollbar" @scroll="toScroll">
+	<list :class="['myp-full-flex', 'myp-bg-'+bgType, 'myp-position-'+position]" :style="mrBoxStyle" :show-scrollbar="showScrollbar" @scroll="toScroll">
 		<slot></slot>
 	</list>
 	<!-- #endif -->
 	<!-- #ifndef APP-NVUE -->
-	<scroll-view :scroll-y="true" :class="['myp-bg-'+bgType, 'myp-position-'+position]" :style="mrBoxStyle" :show-scrollbar="showScrollbar" @scroll="toScroll">
+	<scroll-view :scroll-y="true" :class="['myp-full-flex', 'myp-bg-'+bgType, 'myp-position-'+position]" :style="mrBoxStyle" :show-scrollbar="showScrollbar" @scroll="toScroll">
 		<slot></slot>
 	</scroll-view>
 	<!-- #endif -->
@@ -24,8 +24,5 @@
 	}
 </script>
 
-<style lang="scss" scoped>
-	.myp-simple {
-		position: relative;
-	}
+<style>
 </style>

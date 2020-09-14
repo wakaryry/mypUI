@@ -1,6 +1,6 @@
 <template>
 	<view class="myp-full-height myp-flex-column myp-position-relative">
-		<myp-tabbar ref="tabbar" :tabs="tabs" :tabStyle="tabStyle" @selected="tabbarSwitched">
+		<myp-tabbar ref="tabbar" :tabs="tabs" :tabStyle="tabStyle" @tabClicked="tabbarSwitched">
 			<home-tab></home-tab>
 			<discovery-tab></discovery-tab>
 			<mine-tab></mine-tab>

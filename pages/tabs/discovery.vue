@@ -76,7 +76,9 @@
 			}
 		},
 		created() {
+			// #ifdef APP-NVUE
 			this.toLoadData()
+			// #endif
 		}
 	}
 </script>

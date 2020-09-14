@@ -1,5 +1,5 @@
 <template>
-	<view class="myp-full-height myp-flex-column">
+	<view class="myp-full-flex myp-flex-column">
 		<myp-navbar :fixed="false" title="mypUI"></myp-navbar>
 		<myp-list-simple bgType="page">
 			<myp-list-cell>

@@ -35,6 +35,9 @@
 	}
 	/* #endif */
 	@import '@/mypUI/base.scss';
+	/* #ifdef MP */
+	@import '@/mypUI/mp.scss';
+	/* #endif */
 	/* #ifdef H5 */
 	@import '@/mypUI/h5.scss';
 	/* #endif */

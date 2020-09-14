@@ -3,6 +3,10 @@
 		<view class="myp-tab-page-container" ref="tab-container" :style="mrTabContainerStyle+noWeexTransform">
 			<slot></slot>
 		</view>
+		<view v-if="isSeize">
+			<view :style="{height: tabHeightPx + 'px'}"></view>
+			<myp-xbar v-if="considerXBar" bgType="none"></myp-xbar>
+		</view>
 		<!-- tabs bg -->
 		<slot name="bg">
 			<view v-if="tabStyle.image" class="myp-tabs-img" :style="tabStyle.imageBoxStyle||''">
@@ -94,6 +98,10 @@
 			top: {
 				type: [Number, String],
 				default: 0
+			},
+			isSeize: {
+				type: Boolean,
+				default: true
 			},
 			considerXBar: {
 				type: Boolean,
@@ -261,7 +269,6 @@
 			/* #ifndef APP-NVUE */
 			display: flex;
 			box-sizing: border-box;
-			height: 100%;
 			/* #endif */
 			flex-direction: row;
 			position: relative;

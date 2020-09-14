@@ -15,10 +15,6 @@
 				<component-list-item :item="item" @selected="toItem(item.type)"></component-list-item>
 				<view style="height: 24rpx;"></view>
 			</myp-list-cell>
-			<myp-list-cell>
-				<view style="height: 50px;"></view>
-				<myp-xbar bgType="none"></myp-xbar>
-			</myp-list-cell>
 		</myp-list-simple>
 	</view>
 </template>

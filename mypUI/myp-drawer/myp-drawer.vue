@@ -273,12 +273,12 @@
 				}
 				// #endif
 				// #ifndef APP-NVUE
-				this.startPoint = this.mypGetPoint(e)
+				this.startPoint = getTouchPoint(e)
 				// #endif
 			},
 			onTouchMove(e) {
 				if (!this.startPoint) return;
-				const nowPoint = this.mypGetPoint(e)
+				const nowPoint = getTouchPoint(e)
 				const maxSize = this.getTransformSize(this.pos, false)
 				const offsetY = nowPoint.y - this.startPoint.y
 				const offsetX = nowPoint.x - this.startPoint.x
@@ -317,7 +317,7 @@
 			},
 			onTouchEnd(e) {
 				if (!this.startPoint) return;
-				const nowPoint = this.mypGetPoint(e)
+				const nowPoint = getTouchPoint(e)
 				const maxSize = this.getTransformSize(this.pos, false)
 				const offsetY = nowPoint.y - this.startPoint.y
 				const offsetYAbs = Math.abs(offsetY)
@@ -593,7 +593,7 @@
 		},
 		created() {
 			// #ifdef APP-NVUE
-			if (this.mypGetPlatform() === 'ios') {
+			if (getPlatform() === 'ios') {
 				setTimeout(()=>{
 					iosHack = bindingX.bind({
 						eventType: 'pan',

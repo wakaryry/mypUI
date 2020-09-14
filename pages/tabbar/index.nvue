@@ -45,7 +45,7 @@
 	import navHelper from '@/router/navHelper.js'
 	import parentMixin from '@/mypUI/myp-list/header/pureHeaderParent.js'
 	import contentBoxMixin from '@/mypUI/myp-mixin/contentBoxMixin.js'
-	
+	import {getStatusBarHeight, getNavbarHeight} from '@/mypUI/utils/system.js'
 	export default {
 		components: {
 			tabbarList
@@ -72,7 +72,7 @@
 			},
 			toInitSpecial() {
 				this.mypHeaderHeight = uni.upx2px(600)
-				this.mypAllHeight = this.mypHeaderHeight - this.mypGetStatusBarHeight() - this.mypGetNavHeight() - uni.upx2px(90)
+				this.mypAllHeight = this.mypHeaderHeight - getStatusBarHeight() - getNavbarHeight() - uni.upx2px(90)
 				// #ifdef APP-NVUE
 				this.mypSetScrollRef(this.$refs['tabbar-list'])
 				// #endif

@@ -18,6 +18,7 @@
 	import contentBoxMixin from '@/mypUI/myp-mixin/contentBoxMixin.js'
 	
 	const rawItems = [1]
+	import {getPlatform} from '@/mypUI/utils/system.js'
 	
 	export default {
 		props: {
@@ -50,7 +51,7 @@
 			toLoad() {
 				if (!this.hasMore) {
 					console.log('没有更多辣')
-					const platform = this.mypGetPlatform()
+					const platform = getPlatform()
 					if (platform === 'ios') {
 						this.$refs['myp-loader'].cancel()
 					} else {

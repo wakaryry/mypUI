@@ -42,6 +42,8 @@
 	import weexActions from '../myp-list/weexActions.js'
 	import waterfallMixin from './mixin.js'
 	
+	import {getPlatform} from '../utils/system.js'
+	
 	export default {
 		mixins: [scrollMixin, weexActions, waterfallMixin],
 		props: {
@@ -92,7 +94,7 @@
 			// #ifdef APP-NVUE
 			this.mypDown = Object.assign(this.down)
 			this.mypUp = Object.assign(this.up)
-			this.platform = this.mypGetPlatform()
+			this.platform = getPlatform()
 			// #endif
 			// emit this 会在mp端报错，且不建议
 			// this.$emit("inited", this)

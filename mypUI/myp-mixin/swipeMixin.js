@@ -1,7 +1,6 @@
-import touchMixin from './touchMixin.js'
+import {getTouchPoint} from '../utils/element.js'
 
 export default {
-	mixins: [touchMixin],
 	data() {
 		return {
 			mypSwipeMinTime: 60, // ms
@@ -13,10 +12,10 @@ export default {
 	methods: {
 		mypSwipeTouchStart(e) {
 			this.mypSwipeStartTime = Date.now()
-			this.mypSwipeStartPoint = this.mypGetPoint(e)
+			this.mypSwipeStartPoint = getTouchPoint(e)
 		},
 		mypSwipeTouchEnd(e) {
-			const end = this.mypGetPoint(e)
+			const end = getTouchPoint(e)
 			const endX = end.x
 			const endY = end.y
 			const time = Date.now() - this.mypSwipeStartTime

@@ -207,12 +207,12 @@
 			},
 			setPage(page, animated = true) {
 				if (page === this.noPageIndex) {
-					this.$emit('selected', {page})
+					this.$emit('tabClicked', {page})
 					return
 				}
 				this.currentPage = page;
 				this._animateTransformX(page, animated);
-				this.$emit('selected', {
+				this.$emit('tabClicked', {
 					page
 				});
 			},

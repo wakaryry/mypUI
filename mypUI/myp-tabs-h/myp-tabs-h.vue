@@ -475,7 +475,7 @@
 
 <style lang="scss" scoped>
 	
-	/* #ifdef H5 */
+	/* #ifndef APP-NVUE */
 	.myp-tabs-scroll ::-webkit-scrollbar {
 	    display: none;
 	    width: 0 !important;

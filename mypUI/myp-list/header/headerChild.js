@@ -113,6 +113,9 @@ export default {
 				uni.$emit("swiperScrollRefreshSuc")
 				// #endif
 				this.mypIsDownLoading = false
+				// #ifdef APP-NVUE
+				ref && ref.resetLoadmore()
+				// #endif
 			} else {
 				this.mypIsUpLoading = false
 			}

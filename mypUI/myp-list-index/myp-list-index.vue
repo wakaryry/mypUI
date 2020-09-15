@@ -1,7 +1,7 @@
 <template>
-	<view class="myp-index" :style="boxStyle">
+	<view class="myp-full-flex myp-index" :style="boxStyle">
 		<!-- #ifdef APP-NVUE -->
-		<list :class="'myp-bg-'+bgType" :style="scrollStyle" @scroll="toScroll">
+		<list :class="['myp-full-flex', 'myp-bg-'+bgType]" :style="scrollStyle" @scroll="toScroll">
 			<cell>
 				<slot name="head"></slot>
 			</cell>
@@ -127,6 +127,10 @@ export default {
 		indexTextStyle: {
 			type: String,
 			default: ''
+		},
+		bgType: {
+			type: String,
+			default: 'page'
 		},
 		boxStyle: {
 			type: String,

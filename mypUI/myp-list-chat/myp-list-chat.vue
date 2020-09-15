@@ -1,7 +1,7 @@
 <template>
-	<view class="myp-list" :style="boxStyle">
+	<view class="myp-list">
 		<!-- #ifdef APP-NVUE -->
-		<list :class="'myp-bg-'+bgType" :style="boxStyle" ref="myp-scroller" :show-scrollbar="showScrollbar" :loadmoreoffset="(mypUp.use&&!useLoading)?loadMoreOffset:0" @loadmore="mypMoreLoad" @scroll="mypScroll">
+		<list :class="'myp-bg-'+bgType" :style="mrBoxStyle" ref="myp-scroller" :show-scrollbar="showScrollbar" :loadmoreoffset="(mypUp.use&&!useLoading)?loadMoreOffset:0" @loadmore="mypMoreLoad" @scroll="mypScroll">
 			<myp-refresher-n v-if="mypDown.use" ref="myp-refresher" scroller-ref="myp-scroller" @refresh="mypRefresh"></myp-refresher-n>
 			<slot></slot>
 			<cell v-if="mypUp.use&&!useLoading">
@@ -11,7 +11,7 @@
 		</list>
 		<!-- #endif -->
 		<!-- #ifndef APP-NVUE -->
-		<scroll-view :class="'myp-bg-'+bgType" :style="boxStyle" :scroll-y="mypScrollable" :show-scrollbar="showScrollbar" :enable-back-to-top="true" @scroll="mypScroll" @touchstart="mypTouchstartEvent" @touchmove="mypTouchmoveEvent" @touchend="mypTouchendEvent" @touchcancel="mypTouchendEvent">
+		<scroll-view :class="'myp-bg-'+bgType" :style="mrBoxStyle" :scroll-y="mypScrollable" :show-scrollbar="showScrollbar" :enable-back-to-top="true" @scroll="mypScroll" @touchstart="mypTouchstartEvent" @touchmove="mypTouchmoveEvent" @touchend="mypTouchendEvent" @touchcancel="mypTouchendEvent">
 			<view :style="mypMrScrollContentStyle">
 				<view v-if="mypDown.use" :style="mypMrRefreshStyle">
 					<myp-refresher :refreshing="mypIsDownLoading" :couldUnLash="mypCouldUnLash" :rate="mypDownRate"></myp-refresher>
@@ -26,14 +26,13 @@
 </template>
 
 <script>
-	// 反向列表
-	// loading with no loadMore for list
+	import styleMixin from '../myp-list/styleMixin.js'
 	import scrollMixin from './mixin.js'
 	import weexActions from './weexActions.js'
 	import {getPlatform} from '../utils/system.js'
 	
 	export default {
-		mixins: [scrollMixin, weexActions],
+		mixins: [styleMixin, scrollMixin, weexActions],
 		props: {
 			// #ifdef APP-NVUE
 			// 是否启用loading组件，而不是loadmoreofset触发

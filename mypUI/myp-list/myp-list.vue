@@ -1,6 +1,6 @@
 <template>
 	<!-- #ifdef APP-NVUE -->
-	<list :class="['myp-full-flex', 'myp-bg-'+bgType]" :style="boxStyle" ref="myp-scroller" :show-scrollbar="showScrollbar" :loadmoreoffset="(mypUp.use&&!useLoading)?loadMoreOffset:0" @loadmore="mypMoreLoad" @scroll="mypScroll">
+	<list :class="['myp-full-flex', 'myp-bg-'+bgType]" :style="mrBoxStyle" ref="myp-scroller" :show-scrollbar="showScrollbar" :loadmoreoffset="(mypUp.use&&!useLoading)?loadMoreOffset:0" @loadmore="mypMoreLoad" @scroll="mypScroll">
 		<myp-refresher-n v-if="mypDown.use" ref="myp-refresher" scroller-ref="myp-scroller" @refresh="mypRefresh"></myp-refresher-n>
 		<slot></slot>
 		<!-- in android, we must put loading in the last, or it will not trigger loading next page. --> 
@@ -12,7 +12,7 @@
 	</list>
 	<!-- #endif -->
 	<!-- #ifndef APP-NVUE -->
-	<scroll-view :class="['myp-full-flex', 'myp-bg-'+bgType]" :style="boxStyle" :scroll-y="mypScrollable" :show-scrollbar="showScrollbar" :enable-back-to-top="true" @scroll="mypScroll" @touchstart="mypTouchstartEvent" @touchmove="mypTouchmoveEvent" @touchend="mypTouchendEvent" @touchcancel="mypTouchendEvent">
+	<scroll-view :class="['myp-full-flex', 'myp-bg-'+bgType]" :style="mrBoxStyle" :scroll-y="mypScrollable" :show-scrollbar="showScrollbar" :enable-back-to-top="true" @scroll="mypScroll" @touchstart="mypTouchstartEvent" @touchmove="mypTouchmoveEvent" @touchend="mypTouchendEvent" @touchcancel="mypTouchendEvent">
 		<view :style="mypMrScrollContentStyle">
 			<view v-if="mypDown.use" :style="mypMrRefreshStyle">
 				<myp-refresher :refreshing="mypIsDownLoading" :couldUnLash="mypCouldUnLash" :rate="mypDownRate"></myp-refresher>
@@ -26,12 +26,13 @@
 </template>
 
 <script>
+	import styleMixin from './styleMixin.js'
 	import scrollMixin from './mixin.js'
 	import weexActions from './weexActions.js'
 	import {getPlatform} from '../utils/system.js'
 	
 	export default {
-		mixins: [scrollMixin, weexActions],
+		mixins: [styleMixin, scrollMixin, weexActions],
 		props: {
 			// #ifdef APP-NVUE
 			// 是否启用loading组件，而不是loadmoreofset触发
@@ -69,18 +70,6 @@
 						offset: 80
 					}
 				}
-			},
-			showScrollbar: {
-				type: Boolean,
-				default: true
-			},
-			boxStyle: {
-				type: String,
-				default: ''
-			},
-			bgType: {
-				type: String,
-				default: 'page'
 			}
 		},
 		created() {

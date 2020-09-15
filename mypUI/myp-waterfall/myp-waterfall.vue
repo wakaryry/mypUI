@@ -1,6 +1,6 @@
 <template>
 	<!-- #ifdef APP-NVUE -->
-	<waterfall :class="'myp-bg-'+bgType" :style="mrScrollStyle" ref="myp-scroller" :show-scrollbar="showScrollbar" :column-count="columnCount" :column-width="columnWidthPx" :column-gap="columnGapPx" :left-gap="leftGapPx" :right-gap="rightGapPx" :loadmoreoffset="(mypUp.use&&!useLoading)?loadMoreOffset:0" @loadmore="mypMoreLoad" @scroll="mypScroll">
+	<waterfall :class="['myp-full-flex', 'myp-bg-'+bgType]" :style="mrBoxStyle" ref="myp-scroller" :show-scrollbar="showScrollbar" :column-count="columnCount" :column-width="columnWidthPx" :column-gap="columnGapPx" :left-gap="leftGapPx" :right-gap="rightGapPx" :loadmoreoffset="(mypUp.use&&!useLoading)?loadMoreOffset:0" @loadmore="mypMoreLoad" @scroll="mypScroll">
 		<myp-refresher-n v-if="mypDown.use" ref="myp-refresher" scroller-ref="myp-scroller" @refresh="mypRefresh"></myp-refresher-n>
 		<header>
 			<slot name="header"></slot>
@@ -22,7 +22,7 @@
 	</waterfall>
 	<!-- #endif -->
 	<!-- #ifndef APP-NVUE -->
-	<scroll-view :class="'myp-bg-'+bgType" :style="mrScrollStyle" :scroll-y="mypScrollable" :show-scrollbar="showScrollbar" :enable-back-to-top="true" @scroll="mypScroll" @touchstart="mypTouchstartEvent" @touchmove="mypTouchmoveEvent" @touchend="mypTouchendEvent" @touchcancel="mypTouchendEvent">
+	<scroll-view :class="'myp-bg-'+bgType" :style="mrBoxStyle" :scroll-y="mypScrollable" :show-scrollbar="showScrollbar" :enable-back-to-top="true" @scroll="mypScroll" @touchstart="mypTouchstartEvent" @touchmove="mypTouchmoveEvent" @touchend="mypTouchendEvent" @touchcancel="mypTouchendEvent">
 		<view :style="mypMrScrollContentStyle">
 			<view v-if="mypDown.use" :style="mypMrRefreshStyle">
 				<myp-refresher :refreshing="mypIsDownLoading" :couldUnLash="mypCouldUnLash" :rate="mypDownRate"></myp-refresher>
@@ -38,6 +38,7 @@
 </template>
 
 <script>
+	import styleMixin from '../myp-list/styleMixin.js'
 	import scrollMixin from '../myp-list/mixin.js'
 	import weexActions from '../myp-list/weexActions.js'
 	import waterfallMixin from './mixin.js'
@@ -45,7 +46,7 @@
 	import {getPlatform} from '../utils/system.js'
 	
 	export default {
-		mixins: [scrollMixin, weexActions, waterfallMixin],
+		mixins: [styleMixin, scrollMixin, weexActions, waterfallMixin],
 		props: {
 			// #ifdef APP-NVUE
 			// 是否启用loading组件，而不是loadmoreofset触发

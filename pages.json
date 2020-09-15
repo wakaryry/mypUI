@@ -368,12 +368,14 @@
 		{
 			"path": "pages/scroll/header",
 			"style": {
+				"navigationBarTextStyle": "white",
 				"disableScroll": true
 			}
 		},
 		{
 			"path": "pages/scroll/header_refresh",
 			"style": {
+				"navigationBarTextStyle": "white",
 				"disableScroll": true
 			}
 		},

@@ -1,6 +1,6 @@
 <template>
 	<view>
-		<myp-navbar :lefts="leftIcons" title="联动swiper-tabs" @leftAction="navLeftAction"></myp-navbar>
+		<myp-navbar :fixed="false" title="我欲乘风归去"></myp-navbar>
 		<myp-tabs-h :value="mypCurrentTab" :items="tabs" :isTap="mypIsTap" :offset="mypDx" :last="mypLastTabIndex" textType="second" activeTextType="text" activeTextStyle="font-weight:700;" width="100rpx" height="80rpx" @change="mypToTabTab"></myp-tabs-h>
 		<swiper :current="mypCurrentTab" style="width: 750rpx;flex: 1;" @change="mypOnSwiperChange" @animationfinish="mypOnSwiperAnimationFinish" @onAnimationEnd="mypOnSwiperAnimationFinish" @transition="mypOnSwiperScroll">
 			<swiper-item v-for="(tab,idx) in tabs" :key="idx">
@@ -11,22 +11,18 @@
 </template>
 
 <script>
-	import albumList from './components/albumList.vue'
-	
-	import navHelper from '@/router/navHelper.js'
+	import albumList from './albumList.vue'
 	import tabsSwiperMixin from '@/mypUI/myp-tabs-h/tabsSwiperMixin.js'
 	
 	export default {
 		components: {
 			albumList
 		},
-		mixins: [navHelper, tabsSwiperMixin],
+		mixins: [tabsSwiperMixin],
 		data() {
 			return {
 				tabs: ['科技','动漫','电影','八卦','新闻','时政','运动','搞笑','音乐','原创','FM','交友','直播']
 			}
-		},
-		methods: {
 		}
 	}
 </script>

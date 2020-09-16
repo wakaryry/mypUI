@@ -52,6 +52,10 @@
 				type: String,
 				default: '0'
 			},
+			extra: {
+				type: String,
+				default: '0'
+			},
 			standout: {
 				type: String,
 				default: '0'
@@ -208,12 +212,15 @@
 			heightPx() {
 				const h = getHeight(this.height)
 				if (h > 1) {
-					return h
+					return h - this.extraPx
 				}
 				if (h <= 0) {
-					return this.screenHeight - this.topPx - this.bottomPx - (this.topOffsetPx>=0?this.topOffsetPx:0) - (this.bottomOffsetPx>=0?this.bottomOffsetPx:0)
+					return this.screenHeight - this.topPx - this.bottomPx - (this.topOffsetPx>=0?this.topOffsetPx:0) - (this.bottomOffsetPx>=0?this.bottomOffsetPx:0) - this.extraPx
 				}
-				return this.screenHeight * h
+				return this.screenHeight * h - this.extraPx
+			},
+			extraPx() {
+				return getHeight(this.extra)
 			},
 			widthPx() {
 				const w = getPx(this.width)

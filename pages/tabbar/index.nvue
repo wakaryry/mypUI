@@ -1,7 +1,7 @@
 <template>
 	<view class="myp-bg-inverse">
 		<view class="ti-head">
-			<image src="https://cdn.img.wenhairu.com/images/2020/05/23/YTFHI.jpg" mode="aspectFill" class="ti-head-bg"></image>
+			<image src="https://mypui.asnowsoft.cn/imgs/house.jpg" mode="aspectFill" class="ti-head-bg"></image>
 		</view>
 		<!-- #ifdef APP-NVUE -->
 		<list class="ti-scroll" :id="mypListId" :bounce="true" isSwiperList="true" :style="'width:750rpx;'+mypContentHeightStyle" @scroll="handleParentScroll">

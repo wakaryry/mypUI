@@ -12,16 +12,16 @@ export default {
 				page: 'base_button'
 			}, {
 				name: '输入框',
-				avatar: 'https://cdn.img.wenhairu.com/images/2020/05/23/YT9eB.jpg',
+				avatar: 'https://mypui.asnowsoft.cn/imgs/a3.jpg',
 				desc: '38.6万粉丝',
 				content: '满足基本样式(图标/输入/提示)，提供样式定制入口。还可以格式化输入内容，验证码/密码等输入',
-				cover: 'https://cdn.img.wenhairu.com/images/2020/05/23/YO76P.jpg',
+				cover: 'https://mypui.asnowsoft.cn/imgs/c2.jpg',
 				badge: 0,
 				identity: '诗人',
 				page: 'base_input'
 			}, {
 				name: '图标',
-				avatar: 'https://cdn.img.wenhairu.com/images/2020/05/23/YTuQN.jpg',
+				avatar: 'https://mypui.asnowsoft.cn/imgs/a1.jpg',
 				desc: '126.6万粉丝',
 				content: '支持图片/字体，并且提供Python脚本工具，快速从css中提取出icons',
 				cover: 'https://mypui.asnowsoft.cn/imgs/c3.jpg',
@@ -30,118 +30,118 @@ export default {
 				page: 'base_icon'
 			}, {
 				name: '单元',
-				avatar: 'https://cdn.img.wenhairu.com/images/2020/05/23/YT1An.jpg',
+				avatar: 'https://mypui.asnowsoft.cn/imgs/a4.jpg',
 				desc: '66.8万粉丝',
 				content: '快速实现各种cell，四段式设计，满足大都数需求。特别复杂的cell应该考虑重新设计，而不是去修改适配。',
-				cover: 'https://cdn.img.wenhairu.com/images/2020/05/23/YOgjS.jpg',
+				cover: 'https://mypui.asnowsoft.cn/imgs/c4.jpg',
 				badge: 9,
 				identity: '建筑师',
 				page: 'base_cell'
 			}, {
 				name: '宫格',
-				avatar: 'https://cdn.img.wenhairu.com/images/2020/05/23/YT54T.jpg',
+				avatar: 'https://mypui.asnowsoft.cn/imgs/a5.jpg',
 				desc: '76.2万粉丝',
 				content: '不仅仅只是规矩的宫格，您可以利用grid快速实现各种排版。越用越灵活',
-				cover: 'https://cdn.img.wenhairu.com/images/2020/05/23/YOPWC.jpg',
+				cover: 'https://mypui.asnowsoft.cn/imgs/c5.jpg',
 				badge: 7,
 				identity: '灵魂画手',
 				page: 'base_grid'
 			}, {
 				name: '标签',
-				avatar: 'https://cdn.img.wenhairu.com/images/2020/05/23/YTnhG.jpg',
+				avatar: 'https://mypui.asnowsoft.cn/imgs/a6.jpg',
 				desc: '166.8万粉丝',
 				content: '带各种状态的标签，还提供单多选模式的示范',
-				cover: 'https://cdn.img.wenhairu.com/images/2020/05/23/YOZ7s.jpg',
+				cover: 'https://mypui.asnowsoft.cn/imgs/c6.jpg',
 				badge: 2,
 				identity: '厨师',
 				page: 'base_tag'
 			}, {
 				name: '标题',
-				avatar: 'https://cdn.img.wenhairu.com/images/2020/05/23/YTHDv.jpg',
+				avatar: 'https://mypui.asnowsoft.cn/imgs/a7.jpg',
 				desc: '16.2万粉丝',
 				content: '各种快速标题。基本满足大都数样式',
-				cover: 'https://cdn.img.wenhairu.com/images/2020/05/23/YO0sR.jpg',
+				cover: 'https://mypui.asnowsoft.cn/imgs/c7.jpg',
 				badge: 3,
 				identity: '歌手',
 				page: 'base_title'
 			}, {
 				name: 'tabs',
-				avatar: 'https://cdn.img.wenhairu.com/images/2020/05/23/YTQc0.jpg',
+				avatar: 'https://mypui.asnowsoft.cn/imgs/a8.jpg',
 				desc: '76.3万粉丝',
 				content: 'tabs，可切换当前，可自动居中。支持多种排版样式',
-				cover: 'https://cdn.img.wenhairu.com/images/2020/05/23/YOIYN.jpg',
+				cover: 'https://mypui.asnowsoft.cn/imgs/c8.jpg',
 				badge: 9,
 				identity: '演员',
 				page: 'base_tabs'
 			}, {
 				name: '开关',
-				avatar: 'https://cdn.img.wenhairu.com/images/2020/05/23/YTR3U.jpg',
+				avatar: 'https://mypui.asnowsoft.cn/imgs/a9.jpg',
 				desc: '66.5万粉丝',
 				content: '状态的切换，所有的内容都可以直接配置',
-				cover: 'https://cdn.img.wenhairu.com/images/2020/05/23/YOOyB.jpg',
+				cover: 'https://mypui.asnowsoft.cn/imgs/c9.jpg',
 				badge: 3,
 				identity: '说唱大师',
 				page: 'base_switch'
 			}, {
 				name: '步进器',
-				avatar: 'https://cdn.img.wenhairu.com/images/2020/05/23/YTofj.jpg',
+				avatar: 'https://mypui.asnowsoft.cn/imgs/a10.jpg',
 				desc: '16.2万粉丝',
 				content: 'stepper',
-				cover: 'https://cdn.img.wenhairu.com/images/2020/05/23/YOTXn.jpg',
+				cover: 'https://mypui.asnowsoft.cn/imgs/c10.jpg',
 				badge: 5,
 				identity: '鬼畜大叔',
 				page: 'base_stepper'
 			}, {
 				name: '搜索框',
-				avatar: 'https://cdn.img.wenhairu.com/images/2020/05/23/YT54T.jpg',
+				avatar: 'https://mypui.asnowsoft.cn/imgs/a11.jpg',
 				desc: '36.9万粉丝',
 				content: '大都数搜索框的样子，可以带icon，可以固定icon',
-				cover: 'https://cdn.img.wenhairu.com/images/2020/05/23/YOe9T.jpg',
+				cover: 'https://mypui.asnowsoft.cn/imgs/c11.jpg',
 				badge: 3,
 				identity: '歌剧演员',
 				page: 'base_search'
 			}, {
 				name: '进度条',
-				avatar: 'https://cdn.img.wenhairu.com/images/2020/05/23/YTnhG.jpg',
+				avatar: 'https://mypui.asnowsoft.cn/imgs/a12.jpg',
 				desc: '116.4万粉丝',
 				content: 'progress',
-				cover: 'https://cdn.img.wenhairu.com/images/2020/05/23/YOOyB.jpg',
+				cover: 'https://mypui.asnowsoft.cn/imgs/c12.jpg',
 				badge: 6,
 				identity: '厨师',
 				page: 'base_progress'
 			}, {
 				name: '环形进度条',
-				avatar: 'https://cdn.img.wenhairu.com/images/2020/05/23/YTnhG.jpg',
+				avatar: 'https://mypui.asnowsoft.cn/imgs/a1.jpg',
 				desc: '16.8万粉丝',
 				content: 'progress',
-				cover: 'https://cdn.img.wenhairu.com/images/2020/05/23/YOOyB.jpg',
+				cover: 'https://mypui.asnowsoft.cn/imgs/c1.jpg',
 				badge: 2,
 				identity: '渔民',
 				page: 'base_progress_circle'
 			}, {
 				name: '单/多选',
-				avatar: 'https://cdn.img.wenhairu.com/images/2020/05/23/YTQc0.jpg',
+				avatar: 'https://mypui.asnowsoft.cn/imgs/a2.jpg',
 				desc: '66.6万粉丝',
 				content: 'radio/check',
-				cover: 'https://cdn.img.wenhairu.com/images/2020/05/23/YTHDv.jpg',
+				cover: 'https://mypui.asnowsoft.cn/imgs/c2.jpg',
 				badge: 6,
 				identity: '京剧大师',
 				page: 'base_radio'
 			}, {
 				name: '倒计时',
-				avatar: 'https://cdn.img.wenhairu.com/images/2020/05/23/YTuQN.jpg',
+				avatar: 'https://mypui.asnowsoft.cn/imgs/a3.jpg',
 				desc: '45.3万粉丝',
 				content: 'countdown。倒计时',
-				cover: 'https://cdn.img.wenhairu.com/images/2020/05/23/YOIYN.jpg',
+				cover: 'https://mypui.asnowsoft.cn/imgs/c3.jpg',
 				badge: 16,
 				identity: '钟点工',
 				page: 'base_countdown'
 			}, {
 				name: 'indexList',
-				avatar: 'https://mypui.asnowsoft.cn/imgs/a2.jpg',
+				avatar: 'https://mypui.asnowsoft.cn/imgs/a4.jpg',
 				desc: '26.6万粉丝',
 				content: '右侧出现index的list',
-				cover: 'https://mypui.asnowsoft.cn/imgs/c1.jpg',
+				cover: 'https://mypui.asnowsoft.cn/imgs/c4.jpg',
 				badge: 4,
 				identity: '风水师',
 				page: 'base_indexlist'

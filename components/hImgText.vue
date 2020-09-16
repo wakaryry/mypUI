@@ -1,6 +1,6 @@
 <template>
 	<view class="hit">
-		<image class="hit-img" src="https://cdn.img.wenhairu.com/images/2020/05/23/YO0sR.md.jpg" mode="aspectFill"></image>
+		<image class="hit-img" src="https://mypui.asnowsoft.cn/imgs/c7.jpg" mode="aspectFill"></image>
 		<view class="hit-body">
 			<text class="hit-title">天真但不傻，才是真的可爱</text>
 			<text class="hit-desc">我想在一个甜甜的午后，享受蜂蜜味的晚风</text>

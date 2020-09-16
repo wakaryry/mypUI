@@ -1,8 +1,8 @@
 <template>
 	<view class="ui">
-		<image class="ui-bg" src="https://cdn.img.wenhairu.com/images/2020/05/23/YOOyB.md.jpg" mode="aspectFill"></image>
+		<image class="ui-bg" src="https://mypui.asnowsoft.cn/imgs/c9.jpg" mode="aspectFill"></image>
 		<view class="ui-body">
-			<image class="ui-av" src="https://cdn.img.wenhairu.com/images/2020/05/23/YTR3U.md.jpg" mode="aspectFill"></image>
+			<image class="ui-av" src="https://mypui.asnowsoft.cn/imgs/a10.jpg" mode="aspectFill"></image>
 			<text class="ui-name">家乡的稻子熟了</text>
 			<text class="ui-sign">找一个安静的地方，过一份清闲生活</text>
 			<view class="ui-num">

@@ -1,7 +1,7 @@
 <template>
 	<view class="vitc">
 		<view class="vitc-top">
-			<image src="https://cdn.img.wenhairu.com/images/2020/05/23/YOS9D.md.jpg" class="vitc-img" mode="aspectFill"></image>
+			<image src="https://mypui.asnowsoft.cn/imgs/c1.jpg" class="vitc-img" mode="aspectFill"></image>
 			<view class="vitc-tag">
 				<myp-icon name="comment-dots" type="inverse" size="s"></myp-icon>
 				<text class="vitc-tag-text">21.4亿</text>

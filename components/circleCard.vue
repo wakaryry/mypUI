@@ -1,6 +1,6 @@
 <template>
 	<view class="cc" :style="boxStyle">
-		<image class="cc-img" src="https://cdn.img.wenhairu.com/images/2020/05/23/YO0sR.md.jpg" mode="aspectFill"></image>
+		<image class="cc-img" src="https://mypui.asnowsoft.cn/imgs/c7.jpg" mode="aspectFill"></image>
 		<text class="cc-title">莫西卡的小村庄</text>
 		<text class="cc-desc">来感受花开花落，云卷云舒</text>
 		<view class="cc-label">

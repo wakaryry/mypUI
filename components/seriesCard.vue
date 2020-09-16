@@ -1,6 +1,6 @@
 <template>
 	<view class="sc" :style="boxStyle">
-		<image src="https://cdn.img.wenhairu.com/images/2020/05/23/YOcZt.md.jpg" class="sc-img" mode="aspectFill"></image>
+		<image src="https://mypui.asnowsoft.cn/imgs/c3.jpg" class="sc-img" mode="aspectFill"></image>
 		<view class="sc-over"></view>
 		<view class="sc-label">
 			<text class="sc-label-text">早饭吃啥</text>
@@ -10,13 +10,13 @@
 		</view>
 		<view class="sc-users">
 			<view class="sc-users-item" style="left: 56rpx;">
-				<image src="https://cdn.img.wenhairu.com/images/2020/05/23/YTQc0.md.jpg" class="sc-users-av" mode="aspectFill"></image>
+				<image src="https://mypui.asnowsoft.cn/imgs/a9.jpg" class="sc-users-av" mode="aspectFill"></image>
 			</view>
 			<view class="sc-users-item" style="left: 28rpx;">
-				<image src="https://cdn.img.wenhairu.com/images/2020/05/23/YTQc0.md.jpg" class="sc-users-av" mode="aspectFill"></image>
+				<image src="https://mypui.asnowsoft.cn/imgs/a9.jpg" class="sc-users-av" mode="aspectFill"></image>
 			</view>
 			<view class="sc-users-item" style="left: 0;">
-				<image src="https://cdn.img.wenhairu.com/images/2020/05/23/YTQc0.md.jpg" class="sc-users-av" mode="aspectFill"></image>
+				<image src="https://mypui.asnowsoft.cn/imgs/a9.jpg" class="sc-users-av" mode="aspectFill"></image>
 			</view>
 		</view>
 	</view>

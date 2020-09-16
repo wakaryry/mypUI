@@ -3,10 +3,10 @@ export default {
 		return {
 			items: [{
 				name: '按钮',
-				avatar: 'https://cdn.img.wenhairu.com/images/2020/05/23/YTafR.jpg',
+				avatar: 'https://mypui.asnowsoft.cn/imgs/a2.jpg',
 				desc: '26.6万粉丝',
 				content: '背景、边框、状态、图标、loading、文字等都可以快速配置。当然，包括交互效果',
-				cover: 'https://cdn.img.wenhairu.com/images/2020/05/23/YOS9D.jpg',
+				cover: 'https://mypui.asnowsoft.cn/imgs/c1.jpg',
 				badge: 4,
 				identity: '演奏家',
 				page: 'base_button'
@@ -24,7 +24,7 @@ export default {
 				avatar: 'https://cdn.img.wenhairu.com/images/2020/05/23/YTuQN.jpg',
 				desc: '126.6万粉丝',
 				content: '支持图片/字体，并且提供Python脚本工具，快速从css中提取出icons',
-				cover: 'https://cdn.img.wenhairu.com/images/2020/05/23/YOcZt.jpg',
+				cover: 'https://mypui.asnowsoft.cn/imgs/c3.jpg',
 				badge: 6,
 				identity: '画家',
 				page: 'base_icon'
@@ -138,10 +138,10 @@ export default {
 				page: 'base_countdown'
 			}, {
 				name: 'indexList',
-				avatar: 'https://cdn.img.wenhairu.com/images/2020/05/23/YTafR.jpg',
+				avatar: 'https://mypui.asnowsoft.cn/imgs/a2.jpg',
 				desc: '26.6万粉丝',
 				content: '右侧出现index的list',
-				cover: 'https://cdn.img.wenhairu.com/images/2020/05/23/YOS9D.jpg',
+				cover: 'https://mypui.asnowsoft.cn/imgs/c1.jpg',
 				badge: 4,
 				identity: '风水师',
 				page: 'base_indexlist'

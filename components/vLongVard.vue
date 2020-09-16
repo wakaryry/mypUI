@@ -1,6 +1,6 @@
 <template>
 	<view class="vlv" :style="boxStyle">
-		<image class="vlv-img" src="https://cdn.img.wenhairu.com/images/2020/05/23/YOOyB.md.jpg" mode="aspectFill"></image>
+		<image class="vlv-img" src="https://mypui.asnowsoft.cn/imgs/c9.jpg" mode="aspectFill"></image>
 		<text class="vlv-title">[未来已来]感受美食的魔力</text>
 		<view class="vlv-label">
 			<text class="vlv-label-text">10086赞</text>

@@ -6,12 +6,6 @@
 			<slot name="header"></slot>
 		</header>
 		<slot></slot>
-		<header>
-			<view :style="{height: footToken}"></view>
-		</header>
-		<header>
-			<view v-if="includeXBar&&overrideXBar" :style="mypXBarHeightStyle"></view>
-		</header>
 		<!-- in android, we must put loading in the last, or it will not trigger loading next page. --> 
 		<!-- it's the same in loadMore with loadMoreOffset -->
 		<!-- or we could put the foot-token after loading -->

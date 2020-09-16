@@ -22,7 +22,7 @@
 	// #ifndef APP-NVUE
 	import {getTouchPoint} from '../utils/element.js'
 	// #endif
-	import {getHeight, getPx, getScreenHeight} from '../utils/system.js'
+	import {getHeight, getPx, getScreenHeight, getPlatform} from '../utils/system.js'
 	
 	let iosHack = null
 	// TODO: add height animation: height-0->height

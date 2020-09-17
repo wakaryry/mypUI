@@ -1,0 +1,46 @@
+<template>
+	<view>
+		<myp-navbar :lefts="leftIcons" title="各种横向scroll" @leftAction="navLeftAction"></myp-navbar>
+		<myp-list-simple>
+			<myp-scroll-scale :width="750" :height="1000" :widthScale="0.827" :heightScale="0.84" :pagingEnabled="false">
+				<myp-scroll-scale-item>
+					<calendar-goods></calendar-goods>
+				</myp-scroll-scale-item>
+				<myp-scroll-scale-item>
+					<calendar-goods></calendar-goods>
+				</myp-scroll-scale-item>
+				<myp-scroll-scale-item>
+					<calendar-goods></calendar-goods>
+				</myp-scroll-scale-item>
+			</myp-scroll-scale>
+			<myp-scroll-scale :width="750" :height="1000" :widthScale="0.827" :heightScale="0.84" :pagingEnabled="true">
+				<myp-scroll-scale-item>
+					<calendar-goods></calendar-goods>
+				</myp-scroll-scale-item>
+				<myp-scroll-scale-item>
+					<calendar-goods></calendar-goods>
+				</myp-scroll-scale-item>
+				<myp-scroll-scale-item>
+					<calendar-goods></calendar-goods>
+				</myp-scroll-scale-item>
+			</myp-scroll-scale>
+		</myp-list-simple>
+	</view>
+</template>
+
+<script>
+	import calendarGoods from '@/components/calendarGoods.vue'
+	
+	import navHelper from '@/router/navHelper.js'
+	
+	export default {
+		components: {
+			calendarGoods
+		},
+		mixins: [navHelper]
+	}
+</script>
+
+<style>
+
+</style>

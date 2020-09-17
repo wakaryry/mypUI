@@ -64,6 +64,8 @@ export default {
 	scroll_load_more_one: '/pages/scroll/test/load_more_one',
 	scroll_load_more_wrap: '/pages/scroll/test/load_more_wrap',
 	scroll_load_more_one_wrap: '/pages/scroll/test/load_more_one_wrap',
+	// scroll-h
+	scroll_h_index: "/pages/scroll-h/index", 
 	// scroll
 	scroll_index: '/pages/scroll/index',
 	scroll_h: '/pages/scroll/h',

@@ -1,7 +1,7 @@
 <template>
-	<scroll-view ref="myp-scroll-banner" class="myp-banner" :scroll-with-animation="true" :scroll-left="toLeft" :scroll-x="true" :show-scrollbar="false" :pagingEnabled="pagingEnabled" @scrollend="ended" :style="mrBoxStyle">
+	<scroller ref="myp-scroll-banner" class="myp-banner" :scroll-with-animation="true" :scroll-left="toLeft" :scroll-x="true" scroll-direction="horizontal" :show-scrollbar="false" :pagingEnabled="pagingEnabled" @scrollend="ended" :style="mrBoxStyle">
 		<slot></slot>
-	</scroll-view>
+	</scroller>
 </template>
 
 <script>
@@ -158,7 +158,9 @@
 		},
 		methods: {
 			ended(e) {
-				const scrollX = e.detail.contentOffset.x
+				console.log("scroll ended", e)
+				// const scrollX = e.detail.contentOffset.x
+				const scrollX = Math.abs(e.contentOffset.x)
 				this.toCenterItem(scrollX)
 			},
 			initLayout() {
@@ -184,7 +186,6 @@
 				    anchor: this.$refs['myp-scroll-banner'].ref,
 				    props: _props
 				}, (state)=>{
-				    // console.log(state)
 				})
 				this.bindToken = bind.token
 			},
@@ -215,7 +216,7 @@
 			}
 		},
 		beforeDestroy() {
-			if (this.bindToken !== 0) {
+			if (this.bindToken) {
 				bindingX.unbind({
 						eventType: 'scroll',
 						token: this.bindToken

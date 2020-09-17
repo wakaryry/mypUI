@@ -16,7 +16,7 @@
 	// 只适配left/top/bottom/right的drawer特性
 	//
 	// #ifdef APP-NVUE
-	const animation = weex.requireModule('animation');
+	const animation = uni.requireNativePlugin('animation');
 	const bindingX = uni.requireNativePlugin('bindingx');
 	// #endif
 	// #ifndef APP-NVUE

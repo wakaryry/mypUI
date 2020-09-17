@@ -19,7 +19,7 @@
 	// list中无此问题
 	//
 	// #ifdef APP-NVUE
-	const animation = weex.requireModule('animation');
+	const animation = uni.requireNativePlugin('animation');
 	const bindingX = uni.requireNativePlugin('bindingx');
 	// #endif
 	

@@ -15,7 +15,7 @@
 	// 支持standout
 	//
 	// #ifdef APP-NVUE
-	const animation = weex.requireModule('animation');
+	const animation = uni.requireNativePlugin('animation');
 	// #endif
 	
 	import {getHeight, getPx, getScreenHeight} from '../utils/system.js'

@@ -18,8 +18,8 @@
 	// item/indicator有固定宽度和动态宽度两种
 	// 
 	// #ifdef APP-NVUE
-	const dom = weex.requireModule('dom');
-	const animation = weex.requireModule('animation')
+	const dom = uni.requireNativePlugin('dom');
+	const animation = uni.requireNativePlugin('animation')
 	// #endif
 	import {getPx} from '../utils/system.js'
 	

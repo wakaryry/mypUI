@@ -57,7 +57,7 @@
 
 <script>
 // #ifdef APP-NVUE
-const dom = weex.requireModule('dom');
+const dom = uni.requireNativePlugin('dom');
 // #endif
 
 import * as Format from './format.js';

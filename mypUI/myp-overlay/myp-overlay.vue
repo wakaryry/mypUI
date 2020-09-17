@@ -6,7 +6,7 @@
 
 <script>
 	// #ifdef APP-NVUE
-	const animation = weex.requireModule('animation');
+	const animation = uni.requireNativePlugin('animation');
 	// #endif
 	import {getPx, getHeight} from '../utils/system.js'
 	

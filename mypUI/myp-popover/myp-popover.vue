@@ -19,7 +19,7 @@
 	// TODO:增加主题配置;增加横向显示buttons
 	
 	// #ifdef APP-NVUE
-	const animation = weex.requireModule('animation');
+	const animation = uni.requireNativePlugin('animation');
 	// #endif
 	export default {
 		props: {

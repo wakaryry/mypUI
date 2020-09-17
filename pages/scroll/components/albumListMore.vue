@@ -1,32 +1,33 @@
 <template>
-	<view>
-		<!-- #ifdef APP-NVUE -->
-		<list class="myp-bg-page" ref="myp-list" :bounce="true" isSwiperList="true" :style="mypContentHeightStyle+'width:750rpx;'" :loadmoreoffset="60" @loadmore="toGetAlbums">
-			<cell v-for="(item,idx) in items" :key="idx">
-				<album-rich-cell :item="item" @user="toUser" @detail="toDetail" @thumb="toThumb" @comment="toComment" @moreComment="toMoreComment" @share="toShare"></album-rich-cell>
-				<view style="height: 20rpx;"></view>
-			</cell>
-			<cell>
-				<myp-loader :isLoading="mypIsUpLoading" :hasMore="mypHasMore"></myp-loader>
-			</cell>
-		</list>
-		<!-- #endif -->
-		<!-- #ifndef APP-NVUE -->
-		<scroll-view class="myp-bg-page" :scroll-y="scrollable" :style="mypContentHeightStyle+'width:750rpx;'" @touchstart="mypOnTouchStart" @touchmove="mypOnTouchMove" @touchend="mypOnTouchEnd" @touchcancel="mypOnTouchEnd" @scroll="mypOnScroll" @scrolltolower="toGetAlbums">
-			<view v-for="(item,idx) in items" :key="idx">
-				<album-rich-cell :item="item" @user="toUser" @detail="toDetail" @thumb="toThumb" @comment="toComment" @moreComment="toMoreComment" @share="toShare"></album-rich-cell>
-				<view style="height: 20rpx;"></view>
-			</view>
+	<!-- #ifdef APP-NVUE -->
+	<list class="myp-bg-page" ref="myp-list" :bounce="true" isSwiperList="true" style="width:750rpx;flex:1;" :loadmoreoffset="60" @loadmore="toGetAlbums">
+		<cell v-for="(item,idx) in items" :key="idx">
+			<album-rich-cell :item="item" @user="toUser" @detail="toDetail" @thumb="toThumb" @comment="toComment" @moreComment="toMoreComment" @share="toShare"></album-rich-cell>
+			<view style="height: 20rpx;"></view>
+		</cell>
+		<cell>
 			<myp-loader :isLoading="mypIsUpLoading" :hasMore="mypHasMore"></myp-loader>
-		</scroll-view>
-		<!-- #endif -->
-	</view>
+		</cell>
+	</list>
+	<!-- #endif -->
+	<!-- #ifndef APP-NVUE -->
+	<scroll-view class="myp-bg-page" :scroll-y="scrollable" :style="mypContentHeightStyle+'width:750rpx;'" @touchstart="mypOnTouchStart" @touchmove="mypOnTouchMove" @touchend="mypOnTouchEnd" @touchcancel="mypOnTouchEnd" @scroll="mypOnScroll" @scrolltolower="toGetAlbums">
+		<view v-for="(item,idx) in items" :key="idx">
+			<album-rich-cell :item="item" @user="toUser" @detail="toDetail" @thumb="toThumb" @comment="toComment" @moreComment="toMoreComment" @share="toShare"></album-rich-cell>
+			<view style="height: 20rpx;"></view>
+		</view>
+		<myp-loader :isLoading="mypIsUpLoading" :hasMore="mypHasMore"></myp-loader>
+	</scroll-view>
+	<!-- #endif -->
 </template>
 
 <script>
 	import albumRichCell from './albumRichCell.vue'
 	
+	// #ifndef APP-NVUE
 	import contentBoxMixin from '@/mypUI/myp-mixin/contentBoxMixin.js'
+	// #endif
+	
 	import childMixin from '@/mypUI/myp-list/header/headerChild.js'
 	
 	import {thumbAlbum, cancelThumbAlbum, getAlbumList} from '@/api/album.js'
@@ -35,13 +36,20 @@
 		components: {
 			albumRichCell
 		},
+		// #ifdef APP-NVUE
+		mixins: [childMixin],
+		// #endif
+		// #ifndef APP-NVUE
 		mixins: [contentBoxMixin, childMixin],
+		// #endif
 		data() {
 			return {
+				// #ifndef APP-NVUE
 				mypIncludeStatus: false,
 				mypIncludeNav: false,
 				mypIncludeXBar: false,
 				mypExtra: 180,
+				// #endif
 				items: []
 			}
 		},

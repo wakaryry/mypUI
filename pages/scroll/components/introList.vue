@@ -1,38 +1,7 @@
 <template>
-	<view>
-		<!-- #ifdef APP-NVUE -->
-		<list class="myp-bg-inverse" ref="myp-list" :bounce="true" isSwiperList="true" :style="mypContentHeightStyle+'width:750rpx;'">
-			<cell>
-				<myp-title title1="我喜欢的" title1Style="font-weight: 600;" rightIcon1="radio-button" rightIcon2="right" rightIcon1Type="third" rightIcon2Type="third" boxStyle="padding-left:32rpx;padding-right:32rpx;"></myp-title>
-				<myp-scroll-h height="280rpx">
-					<view style="width: 32rpx;"></view>
-					<view v-for="(item,idx) in loves" :key="idx" style="flex-direction: row;">
-						<v-bg-card :bgType="item.bgType" :maskType="item.maskType" :img="item.img" :tag="item.tag" :icon="item.icon" :title="item.title" :desc="item.desc" :descIcon="item.descIcon" :iconType="item.iconType" :titleType="item.titleType" :iconStyle="item.iconStyle" :descType="item.descType"></v-bg-card>
-						<view style="width: 12rpx;"></view>
-					</view>
-					<view style="width: 20rpx;"></view>
-				</myp-scroll-h>
-			</cell>
-			<cell>
-				<myp-title title1="最近观看" title1Style="font-weight: 600;" title3="更多" title3Type="third" rightIcon2="right" rightIcon2Type="third" boxStyle="padding-left:32rpx;padding-right:32rpx;"></myp-title>
-			</cell>
-			<cell>
-				<view class="il-items">
-					<h-cover-card v-for="(item,idx) in histories" :key="idx" :img="item.img" :title="item.title" :desc="item.desc" :icon="item.icon" :boxStyle="item.boxStyle+(idx%2===0?'margin-right:24rpx;':'')" :titleStyle="item.titleStyle" :descStyle="item.descStyle" imgIconStyle="left:60rpx;top:60rpx;transform:translate(-50%,-50%);" iconBoxStyle="width:50rpx;height:50rpx;border-radius:30rpx;background-color:rgba(255,255,255,0.8);" iconType="error"></h-cover-card>
-				</view>
-			</cell>
-			<cell>
-				<myp-title title1="其它推荐" title1Style="font-weight: 600;" title3="更多" title3Type="third" rightIcon2="right" rightIcon2Type="third" boxStyle="padding-left:32rpx;padding-right:32rpx;"></myp-title>
-			</cell>
-			<cell>
-				<view class="il-items">
-					<h-cover-card v-for="(item,idx) in hots" :key="idx" :img="item.img" :title="item.title" :desc="item.desc" :boxStyle="item.boxStyle+(idx%2===0?'margin-right:24rpx;':'')" :titleStyle="item.titleStyle" :descStyle="item.descStyle"></h-cover-card>
-				</view>
-			</cell>
-		</list>
-		<!-- #endif -->
-		<!-- #ifndef APP-NVUE -->
-		<scroll-view class="myp-bg-inverse" :scroll-y="scrollable" :style="mypContentHeightStyle+'width:750rpx;'" @touchstart="mypOnTouchStart" @touchmove="mypOnTouchMove" @touchend="mypOnTouchEnd" @touchcancel="mypOnTouchEnd" @scroll="mypOnScroll">
+	<!-- #ifdef APP-NVUE -->
+	<list class="myp-bg-inverse" ref="myp-list" :bounce="true" isSwiperList="true" style="width:750rpx;flex:1;">
+		<cell>
 			<myp-title title1="我喜欢的" title1Style="font-weight: 600;" rightIcon1="radio-button" rightIcon2="right" rightIcon1Type="third" rightIcon2Type="third" boxStyle="padding-left:32rpx;padding-right:32rpx;"></myp-title>
 			<myp-scroll-h height="280rpx">
 				<view style="width: 32rpx;"></view>
@@ -42,24 +11,55 @@
 				</view>
 				<view style="width: 20rpx;"></view>
 			</myp-scroll-h>
+		</cell>
+		<cell>
 			<myp-title title1="最近观看" title1Style="font-weight: 600;" title3="更多" title3Type="third" rightIcon2="right" rightIcon2Type="third" boxStyle="padding-left:32rpx;padding-right:32rpx;"></myp-title>
+		</cell>
+		<cell>
 			<view class="il-items">
 				<h-cover-card v-for="(item,idx) in histories" :key="idx" :img="item.img" :title="item.title" :desc="item.desc" :icon="item.icon" :boxStyle="item.boxStyle+(idx%2===0?'margin-right:24rpx;':'')" :titleStyle="item.titleStyle" :descStyle="item.descStyle" imgIconStyle="left:60rpx;top:60rpx;transform:translate(-50%,-50%);" iconBoxStyle="width:50rpx;height:50rpx;border-radius:30rpx;background-color:rgba(255,255,255,0.8);" iconType="error"></h-cover-card>
 			</view>
+		</cell>
+		<cell>
 			<myp-title title1="其它推荐" title1Style="font-weight: 600;" title3="更多" title3Type="third" rightIcon2="right" rightIcon2Type="third" boxStyle="padding-left:32rpx;padding-right:32rpx;"></myp-title>
+		</cell>
+		<cell>
 			<view class="il-items">
 				<h-cover-card v-for="(item,idx) in hots" :key="idx" :img="item.img" :title="item.title" :desc="item.desc" :boxStyle="item.boxStyle+(idx%2===0?'margin-right:24rpx;':'')" :titleStyle="item.titleStyle" :descStyle="item.descStyle"></h-cover-card>
 			</view>
-		</scroll-view>
-		<!-- #endif -->
-	</view>
+		</cell>
+	</list>
+	<!-- #endif -->
+	<!-- #ifndef APP-NVUE -->
+	<scroll-view class="myp-bg-inverse" :scroll-y="scrollable" :style="mypContentHeightStyle+'width:750rpx;'" @touchstart="mypOnTouchStart" @touchmove="mypOnTouchMove" @touchend="mypOnTouchEnd" @touchcancel="mypOnTouchEnd" @scroll="mypOnScroll">
+		<myp-title title1="我喜欢的" title1Style="font-weight: 600;" rightIcon1="radio-button" rightIcon2="right" rightIcon1Type="third" rightIcon2Type="third" boxStyle="padding-left:32rpx;padding-right:32rpx;"></myp-title>
+		<myp-scroll-h height="280rpx">
+			<view style="width: 32rpx;"></view>
+			<view v-for="(item,idx) in loves" :key="idx" style="flex-direction: row;">
+				<v-bg-card :bgType="item.bgType" :maskType="item.maskType" :img="item.img" :tag="item.tag" :icon="item.icon" :title="item.title" :desc="item.desc" :descIcon="item.descIcon" :iconType="item.iconType" :titleType="item.titleType" :iconStyle="item.iconStyle" :descType="item.descType"></v-bg-card>
+				<view style="width: 12rpx;"></view>
+			</view>
+			<view style="width: 20rpx;"></view>
+		</myp-scroll-h>
+		<myp-title title1="最近观看" title1Style="font-weight: 600;" title3="更多" title3Type="third" rightIcon2="right" rightIcon2Type="third" boxStyle="padding-left:32rpx;padding-right:32rpx;"></myp-title>
+		<view class="il-items">
+			<h-cover-card v-for="(item,idx) in histories" :key="idx" :img="item.img" :title="item.title" :desc="item.desc" :icon="item.icon" :boxStyle="item.boxStyle+(idx%2===0?'margin-right:24rpx;':'')" :titleStyle="item.titleStyle" :descStyle="item.descStyle" imgIconStyle="left:60rpx;top:60rpx;transform:translate(-50%,-50%);" iconBoxStyle="width:50rpx;height:50rpx;border-radius:30rpx;background-color:rgba(255,255,255,0.8);" iconType="error"></h-cover-card>
+		</view>
+		<myp-title title1="其它推荐" title1Style="font-weight: 600;" title3="更多" title3Type="third" rightIcon2="right" rightIcon2Type="third" boxStyle="padding-left:32rpx;padding-right:32rpx;"></myp-title>
+		<view class="il-items">
+			<h-cover-card v-for="(item,idx) in hots" :key="idx" :img="item.img" :title="item.title" :desc="item.desc" :boxStyle="item.boxStyle+(idx%2===0?'margin-right:24rpx;':'')" :titleStyle="item.titleStyle" :descStyle="item.descStyle"></h-cover-card>
+		</view>
+	</scroll-view>
+	<!-- #endif -->
 </template>
 
 <script>
 	import vBgCard from '@/components/card/vBgCard.vue'
 	import hCoverCard from '@/components/card/hCoverTextCard.vue'
 	
+	// #ifndef APP-NVUE
 	import contentBoxMixin from '@/mypUI/myp-mixin/contentBoxMixin.js'
+	// #endif
 	import childMixin from '@/mypUI/myp-list/header/pureHeaderChild.js'
 	
 	export default {
@@ -67,7 +67,12 @@
 			vBgCard,
 			hCoverCard
 		},
+		// #ifdef APP-NVUE
+		mixins: [childMixin],
+		// #endif
+		// #ifndef APP-NVUE
 		mixins: [contentBoxMixin, childMixin],
+		// #endif
 		data() {
 			return {
 				mypIncludeXBar: false,

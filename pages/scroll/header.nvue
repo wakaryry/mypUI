@@ -1,7 +1,7 @@
 <template>
 	<view class="big-page">
 		<!-- #ifdef APP-NVUE -->
-		<list :id="mypListId" :bounce="true" isSwiperList="true" :style="'width:750rpx;'+mypContentHeightStyle" @scroll="handleParentScroll">
+		<list :id="mypListId" :bounce="true" isSwiperList="true" style="width:750rpx;flex:1;" @scroll="handleParentScroll">
 			<cell>
 				<swiper-head></swiper-head>
 			</cell>
@@ -44,6 +44,8 @@
 			</myp-content-box>
 		</scroll-view>
 		<!-- #endif -->
+		<view style="height: 100rpx;"></view>
+		<myp-xbar bgType="none"></myp-xbar>
 		<myp-position :fixed="true" boxStyle="left:0;width:750rpx;">
 			<view class="ch-foot-content">
 				<view class="ch-foot-token"></view>

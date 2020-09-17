@@ -80,6 +80,10 @@ export default {
 		        })
 		    }
 		},
+		mypResetLoadmore() {
+			const ins = this.$refs['myp-list']
+			ins.resetLoadmore()
+		},
 		// #endif
 		toRefresh(ref, sucH,  failH) {
 			// u must override it to do your refresh logic
@@ -114,7 +118,7 @@ export default {
 				// #endif
 				this.mypIsDownLoading = false
 				// #ifdef APP-NVUE
-				ref && ref.resetLoadmore()
+				this.mypResetLoadmore()
 				// #endif
 			} else {
 				this.mypIsUpLoading = false

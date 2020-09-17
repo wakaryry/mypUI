@@ -175,7 +175,7 @@
 		},
 		methods: {
 			clickedItem(row, column, item) {
-				this.$emit("selected", {
+				this.$emit("itemClicked", {
 					row: row,
 					column: column,
 					item: item

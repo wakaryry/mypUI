@@ -1,6 +1,6 @@
 <template>
 	<view class="md">
-		<myp-item v-for="(item,idx) in items" :key="idx" :icon="item.icon" :text="item.name" textType="text" iconType="primary" iconStyle="font-size: 52rpx;" space="20rpx" style="flex: 1;" boxStyle="flex:1;height:180rpx;"></myp-item>
+		<myp-item v-for="(item,idx) in items" :key="idx" :icon="item.icon" :text="item.name" textType="text" iconType="primary" iconStyle="font-size: 46rpx;" space="20rpx" style="flex: 1;" boxStyle="flex:1;height:180rpx;"></myp-item>
 	</view>
 </template>
 

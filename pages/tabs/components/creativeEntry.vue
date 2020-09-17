@@ -7,7 +7,7 @@
 		<view class="ce-grid">
 			<!-- 只是示范，告诉你app/H5端可以这样 -->
 			<!-- #ifdef APP-NVUE || H5 -->
-			<myp-item v-for="(item,idx) in items" :key="idx" :icon="item.icon" :text="item.name" textType="text" iconType="warning" iconStyle="font-size: 52rpx;" space="20rpx" boxStyle="flex:1;height:180rpx;">
+			<myp-item v-for="(item,idx) in items" :key="idx" :icon="item.icon" :text="item.name" textType="text" iconType="warning" iconStyle="font-size: 46rpx;" space="20rpx" boxStyle="flex:1;height:180rpx;">
 				<myp-badge v-if="item.badge" :text="item.number" size="32rpx" boxStyle="position:absolute;right:46rpx;top:8rpx;"></myp-badge>
 			</myp-item>
 			<!-- #endif -->

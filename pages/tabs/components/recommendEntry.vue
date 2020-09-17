@@ -1,7 +1,7 @@
 <template>
 	<view class="re">
 		<myp-title title1="推荐服务" title1Type="text" title1Size="l" title1Style="font-weight: 700;" boxStyle="padding-left: 24rpx;padding-right:24rpx;"></myp-title>
-		<myp-grid :items="items" :columns="4" iconLabel="icon" textLabel="name" iconType="error" iconTextSpace="20rpx" itemIconStyle="font-size:52rpx;" itemHeight="180rpx" :hasLine="false" border="none" radius="none"></myp-grid>
+		<myp-grid :items="items" :columns="4" iconLabel="icon" textLabel="name" iconType="error" space="20rpx" iconStyle="font-size:46rpx;" itemHeight="180rpx" :hasLine="false" border="none" radius="none"></myp-grid>
 	</view>
 </template>
 

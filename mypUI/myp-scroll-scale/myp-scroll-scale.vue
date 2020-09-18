@@ -1,7 +1,16 @@
 <template>
+	<!-- #ifndef APP-NVUE -->
+	<view>
+	<!-- #endif -->
+	<!-- #ifdef APP-NVUE -->
 	<scroller ref="myp-scroll-banner" class="myp-banner" :scroll-with-animation="true" :scroll-left="toLeft" :scroll-x="true" scroll-direction="horizontal" :show-scrollbar="false" :pagingEnabled="pagingEnabled" @scrollend="ended" :style="mrBoxStyle">
 		<slot></slot>
 	</scroller>
+	<!-- #endif -->
+	<!-- #ifndef APP-NVUE -->
+		<slot></slot>
+	</view>
+	<!-- #endif -->
 </template>
 
 <script>
@@ -14,8 +23,9 @@
 	// 常见用法：滚动，停止后自动居中；设置左右偏移量，中心点不一定在中间，停止后自动停靠在所谓的中心点；设置左右偏移量以及各个item之间的间距；
 	// 对应：居中放大的；最左侧距离与items间距不想等的；
 	// 
-	
+	// #ifdef APP-NVUE
 	const bindingX = uni.requireNativePlugin('bindingx');
+	// #endif
 	
 	export default {
 		provide() {
@@ -144,10 +154,11 @@
 			this.children = []
 		},
 		mounted() {
+			const that = this
 			// 初始化排版，mounted时子组件已经准备完毕
 			this.length = this.children.length
+			// #ifdef APP-NVUE
 			this.initLayout()
-			const that = this
 			setTimeout(()=>{
 				that.bindScroll()
 			}, 50)
@@ -155,6 +166,7 @@
 				// 初始化排版
 				that.toLeft = 1
 			}, 60)
+			// #endif
 		},
 		methods: {
 			ended(e) {

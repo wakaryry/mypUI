@@ -1,5 +1,5 @@
 <template>
-	<scroll-view :scroll="false" :scroll-x="true" :scroll-with-animation="true" :show-scrollbar="false" :class="['myp-bg-'+bgType]" :style="mrScrollStyle">
+	<scroll-view :scroll="false" :scroll-x="true" :scroll-left="leftPx" :scroll-with-animation="true" :show-scrollbar="false" :class="['myp-bg-'+bgType]" :style="mrScrollStyle">
 		<view :style="mrContentStyle">
 			<slot></slot>
 		</view>
@@ -7,6 +7,8 @@
 </template>
 
 <script>
+	import {getPx} from '../utils/system.js'
+	
 	export default {
 		props: {
 			bgType: {
@@ -25,6 +27,10 @@
 				type: String,
 				default: '260px'
 			},
+			left: {
+				type: String,
+				default: '0'
+			},
 			boxStyle: {
 				type: String,
 				default: ''
@@ -35,6 +41,9 @@
 			}
 		},
 		computed: {
+			leftPx() {
+				return getPx(this.left)
+			},
 			mrScrollStyle() {
 				let _style = "width:" + this.width + ';'
 				_style += "height:" + this.height + ';'

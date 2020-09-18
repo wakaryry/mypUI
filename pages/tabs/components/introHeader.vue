@@ -27,7 +27,7 @@
 	.hv {
 		&-box {
 			position: relative;
-			width: 750rpx;
+			width: 660rpx;
 		}
 		&-body {
 			margin-top: 68rpx;
@@ -35,7 +35,6 @@
 			border-radius: 32rpx;
 			height: 300rpx;
 			margin-left: 32rpx;
-			margin-right: 32rpx;
 			flex-direction: column;
 			align-items: center;
 			&-title {
@@ -53,7 +52,7 @@
 		&-logo {
 			position: absolute;
 			top: 0;
-			width: 750rpx;
+			width: 660rpx;
 			flex-direction: row;
 			justify-content: center;
 			&-image {

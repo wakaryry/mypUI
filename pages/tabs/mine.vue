@@ -4,7 +4,7 @@
 		<mine-header></mine-header>
 		<mine-statistic></mine-statistic>
 		<mine-vip-card></mine-vip-card>
-		<myp-list-simple bgType="inverse" :includeXBar="false" :tabHeight="50" extra="436rpx">
+		<myp-list-simple bgType="inverse">
 			<myp-list-cell>
 				<mine-data></mine-data>
 			</myp-list-cell>

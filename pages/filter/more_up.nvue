@@ -36,7 +36,7 @@
 				@publisher="toPublisher"
 				@subject="toSubject"
 			></book-query-view>
-			<myp-x-bar></myp-x-bar>
+			<myp-xbar></myp-xbar>
 		</myp-position>
 	</view>
 </template>

@@ -14,8 +14,8 @@
 	// item有固定高度和动态高度两种
 	// 
 	// #ifdef APP-NVUE
-	const dom = weex.requireModule('dom');
-	const animation = weex.requireModule('animation')
+	const dom = uni.requireNativePlugin('dom');
+	const animation = uni.requireNativePlugin('animation')
 	// #endif
 	
 	export default {

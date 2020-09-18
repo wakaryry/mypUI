@@ -1,7 +1,7 @@
 <template>
 	<view class="co">
 		<view class="co-bg">
-			<image src="https://cdn.img.wenhairu.com/images/2020/05/23/YOl0d.png" class="co-bg-cover" mode="aspectFill"></image>
+			<image src="https://mypui.asnowsoft.cn/imgs/cell-bg.png" class="co-bg-cover" mode="aspectFill"></image>
 		</view>
 		<view class="co-body">
 			<text class="co-body-title">弹层  X  物语</text>

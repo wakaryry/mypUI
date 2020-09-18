@@ -71,13 +71,13 @@
 <script>
 	import commentTextCell from './commentTextCell.vue'
 	
-	import filterMixin from '@/mypUI/myp-mixin/filterMixin.js'
+	import timeFilter from '@/mypUI/myp-mixin/timeFilter.js'
 	
 	export default {
 		components: {
 			commentTextCell
 		},
-		mixins: [filterMixin],
+		mixins: [timeFilter],
 		props: {
 			item: {
 				type: Object,

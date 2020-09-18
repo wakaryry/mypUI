@@ -1,7 +1,7 @@
 <template>
-	<view>
+	<view class="myp-full-flex myp-flex-column">
 		<myp-navbar :fixed="false" title="mypUI"></myp-navbar>
-		<myp-list-simple bgType="page" :tabHeight="50" :includeXBar="false">
+		<myp-list-simple bgType="page">
 			<myp-list-cell>
 				<view style="height: 24rpx;"></view>
 			</myp-list-cell>
@@ -89,11 +89,18 @@
 					hint: '马上体验'
 				}, {
 					icon: 'rows',
-					name: 'Banner/Swiper',
+					name: 'Swiper',
 					type: 'swiper_index',
-					title: 'Banner和Swiper',
-					intro: '还有针对app端的余弦放大缩小特效',
+					title: 'Swiper示范',
+					intro: 'swiper列表，带头部的swiper列表',
 					hint: '试下手感'
+				}, {
+					icon: 'headphone',
+					name: 'ScrollScale',
+					type: 'scroll_h_index',
+					title: '滚动缩放，余弦放大，自动居中',
+					intro: '横向滚动，滚动缩放，余弦放大，自动居中',
+					hint: '现在就看'
 				}, {
 					icon: 'radio',
 					name: '其它',

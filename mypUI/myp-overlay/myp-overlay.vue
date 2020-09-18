@@ -6,12 +6,11 @@
 
 <script>
 	// #ifdef APP-NVUE
-	const animation = weex.requireModule('animation');
+	const animation = uni.requireNativePlugin('animation');
 	// #endif
-	import windowMixin from '../myp-mixin/windowMixin.js'
+	import {getPx, getHeight} from '../utils/system.js'
 	
 	export default {
-		mixins: [windowMixin],
 		props: {
 			show: {
 				type: Boolean,
@@ -22,7 +21,7 @@
 				default: true
 			},
 			duration: {
-				type: [Number, String],
+				type: Number,
 				default: 400
 			},
 			timingFunction: {
@@ -69,16 +68,16 @@
 				return _style
 			},
 			leftPx() {
-				return this.mypToPx(this.left)
+				return getPx(this.left)
 			},
 			topPx() {
-				return this.mypGetHeight(this.top)
+				return getHeight(this.top)
 			},
 			rightPx() {
-				return this.mypToPx(this.right)
+				return getPx(this.right)
 			},
 			bottomPx() {
-				return this.mypGetHeight(this.bottom)
+				return getHeight(this.bottom)
 			}
 		},
 		watch: {
@@ -138,6 +137,7 @@
 				this.noWeexAppearOverlay(bool, duration, fromOverlay)
 				// #endif
 			},
+			// #ifndef APP-NVUE
 			// fromOverlay means if clicked the overlay to close
 			noWeexAppearOverlay(bool, duration = this.duration, fromOverlay = false) {
 				const {
@@ -185,6 +185,8 @@
 					}
 				}
 			},
+			// #endif
+			// #ifdef APP-NVUE
 			// fromOverlay means if clicked the overlay to close
 			weexAppearOverlay(bool, duration = this.duration, fromOverlay = false) {
 				const {
@@ -233,6 +235,7 @@
 					}
 				}
 			}
+			// #endif
 		}
 	}
 </script>

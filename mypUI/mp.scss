@@ -1,0 +1,27 @@
+.myp-flex {
+	&-row {
+		/* #ifndef APP-NVUE */
+		display: flex;
+		box-sizing: border-box;
+		/* #endif */
+		flex-direction: row !important;
+	}
+	&-column {
+		/* #ifndef APP-NVUE */
+		display: flex;
+		box-sizing: border-box;
+		/* #endif */
+		flex-direction: column !important;
+	}
+}
+.myp-align {
+	&-start {
+		align-items: flex-start !important;
+	}
+	&-center {
+		align-items: center !important;
+	}
+	&-end {
+		align-items: flex-end !important;
+	}
+}

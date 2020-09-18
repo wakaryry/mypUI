@@ -1,8 +1,8 @@
 <template>
 	<view>
 		<myp-navbar :lefts="leftIcons" title="按钮" @leftAction="navLeftAction"></myp-navbar>
-		<scroll-view class="myp-bg-page" :scroll-y="true" :style="mypContentHeightStyle">
-			<view class="m-margin">
+		<myp-list-simple>
+			<myp-list-cell>
 				<myp-title bgType="none" centerIcon1="primary" centerIcon1Type="primary" centerIcon2="triangle-right" title2="主题配置" centerIcon2Type="third" centerStyle="padding-left:16rpx;padding-right:16rpx;background-color:#FFFFFF;border-radius:12rpx;height:60rpx;"></myp-title>
 				<myp-button text="默认样式"></myp-button>
 				<view class="bb-row">
@@ -21,6 +21,8 @@
 						<myp-button bgType="error" textType="inverse" border="none" text="error"></myp-button>
 					</view>
 				</view>
+			</myp-list-cell>
+			<myp-list-cell>
 				<myp-title bgType="none" centerIcon1="primary" centerIcon1Type="primary" centerIcon2="triangle-right" title2="带图标/图片" centerIcon2Type="third" centerStyle="padding-left:16rpx;padding-right:16rpx;background-color:#FFFFFF;border-radius:12rpx;height:60rpx;"></myp-title>
 				<myp-button icon="plus" text="左侧带图标"></myp-button>
 				<myp-button icon2="arrow-right" text="右侧带图标"></myp-button>
@@ -30,6 +32,8 @@
 						<myp-button bgType="warning" icon="/static/bear.jpg" iconStyle="width: 60rpx; height: 60rpx; border-radius:8rpx;" text="带图片/可以网络图片" textType="inverse" border="none"></myp-button>
 					</view>
 				</view>
+			</myp-list-cell>
+			<myp-list-cell>
 				<myp-title bgType="none" centerIcon1="primary" centerIcon1Type="primary" centerIcon2="triangle-right" title2="带loading切换" centerIcon2Type="third" centerStyle="padding-left:16rpx;padding-right:16rpx;background-color:#FFFFFF;border-radius:12rpx;height:60rpx;"></myp-title>
 				<myp-button :loading="true" text="正在为您准备"></myp-button>
 				<view class="bb-row">
@@ -37,6 +41,8 @@
 						<myp-button :loading="loadingVisible" bgType="success" icon="wechat" text="点击切换加载状态" iconType="inverse" textType="inverse" border="none" @buttonClicked="toggleLoading"></myp-button>
 					</view>
 				</view>
+			</myp-list-cell>
+			<myp-list-cell>
 				<myp-title bgType="none" centerIcon1="primary" centerIcon1Type="primary" centerIcon2="triangle-right" title2="禁用状态" centerIcon2Type="third" centerStyle="padding-left:16rpx;padding-right:16rpx;background-color:#FFFFFF;border-radius:12rpx;height:60rpx;"></myp-title>
 				<view style="flex-direction: row;">
 					<view style="flex: 1;">
@@ -46,6 +52,8 @@
 						<myp-button bgType="error" icon="solid-plus" text="可用状态" border="none" iconType="inverse" textType="inverse"></myp-button>
 					</view>
 				</view>
+			</myp-list-cell>
+			<myp-list-cell>
 				<myp-title bgType="none" centerIcon1="primary" centerIcon1Type="primary" centerIcon2="triangle-right" title2="样式配置" centerIcon2Type="third" centerStyle="padding-left:16rpx;padding-right:16rpx;background-color:#FFFFFF;border-radius:12rpx;height:60rpx;"></myp-title>
 				<view style="flex-direction: row;">
 					<view style="flex: 1;">
@@ -58,6 +66,8 @@
 						<myp-button text="边框" height="s" border="all-error"></myp-button>
 					</view>
 				</view>
+			</myp-list-cell>
+			<myp-list-cell>
 				<myp-title bgType="none" centerIcon1="primary" centerIcon1Type="primary" centerIcon2="triangle-right" title2="其它" centerIcon2Type="third" centerStyle="padding-left:16rpx;padding-right:16rpx;background-color:#FFFFFF;border-radius:12rpx;height:60rpx;"></myp-title>
 				<view style="flex-direction: row;">
 					<view style="flex: 1;">
@@ -76,20 +86,22 @@
 						<myp-icon name="circle-wechat" type="success" iconStyle="font-size: 100rpx;"></myp-icon>
 					</button>
 				</view>
-			</view>
-			<view style="height: 20rpx;"></view>
-		</scroll-view>
+			</myp-list-cell>
+			<myp-list-cell>
+				<view style="height: 20rpx;"></view>
+				<myp-xbar bgType="none"></myp-xbar>
+			</myp-list-cell>
+		</myp-list-simple>
 		<myp-toast ref="myp-toast"></myp-toast>
 	</view>
 </template>
 
 <script>
-import contentBoxMixin from '@/mypUI/myp-mixin/contentBoxMixin.js';
 import toastMixin from '@/mypUI/myp-mixin/toastMixin.js'
 import navHelper from '@/router/navHelper.js'
 
 export default {
-	mixins: [contentBoxMixin, toastMixin, navHelper],
+	mixins: [toastMixin, navHelper],
 	data() {
 		return {
 			loadingVisible: false

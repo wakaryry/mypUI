@@ -19,17 +19,16 @@
 	// list中无此问题
 	//
 	// #ifdef APP-NVUE
-	const animation = weex.requireModule('animation');
+	const animation = uni.requireNativePlugin('animation');
 	const bindingX = uni.requireNativePlugin('bindingx');
 	// #endif
 	
-	import systemMixin from '../myp-mixin/systemMixin.js'
+	import {getPlatform} from '../utils/system.js'
 	
 	const HEIGHT_RPX = 140
 	const HEIGHT = uni.upx2px(140)
 
 	export default {
-		mixins: [systemMixin],
 		props: {
 			scrollerRef: String,
 			maxTime: {
@@ -69,7 +68,7 @@
 			}
 		},
 		created() {
-			const system = this.mypGetPlatform()
+			const system = getPlatform()
 			this.isAndroid = system === 'android';
 			this.animationBinding();
 		},

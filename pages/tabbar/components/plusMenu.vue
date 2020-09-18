@@ -1,6 +1,6 @@
 <template>
-	<myp-popup :show='show' pos="top-center" :width="660" :height="860" @overlayClicked="toClose">
-		<myp-list-simple bgType="inverse" :includeXBar="false" width="660rpx" height="860rpx" scrollStyle="border-radius:24rpx;">
+	<myp-popup :show='show' pos="top-center" width="660rpx" height="860rpx" @overlayClicked="toClose">
+		<myp-list-simple bgType="inverse" boxStyle="border-radius:24rpx;">
 			<myp-list-cell>
 				<view style="height: 32rpx;"></view>
 			</myp-list-cell>

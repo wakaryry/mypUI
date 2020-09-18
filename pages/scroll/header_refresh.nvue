@@ -1,7 +1,7 @@
 <template>
-	<view class="big-page">
+	<view class="myp-bg-page">
 		<!-- #ifdef APP-NVUE -->
-		<list :id="mypListId" :bounce="true" isSwiperList="true" ref="myp-scroller" :style="'width:750rpx;'+mypContentHeightStyle" @scroll="handleParentScroll">
+		<list :id="mypListId" :bounce="true" isSwiperList="true" ref="myp-scroller" style="width:750rpx;flex:1;" @scroll="handleParentScroll">
 			<myp-refresher-n ref="myp-refresher" scrollerRef="myp-scroller" @refresh="handleRefresh"></myp-refresher-n>
 			<cell>
 				<swiper-head></swiper-head>
@@ -44,6 +44,8 @@
 			</view>
 		</scroll-view>
 		<!-- #endif -->
+		<view style="height: 100rpx;"></view>
+		<myp-xbar bgType="none"></myp-xbar>
 		<myp-position :fixed="true" boxStyle="left:0;width:750rpx;">
 			<view class="ch-foot-content">
 				<view class="ch-foot-token"></view>
@@ -59,7 +61,7 @@
 					<image class="ch-foot-avatar-avatar" src="/static/bear.jpg" mode="aspectFill" @tap.stop.prevent="toFootUser"></image>
 				</view>
 			</view>
-			<myp-x-bar bgType="inverse" boxStyle="width:750rpx;"></myp-x-bar>
+			<myp-xbar bgType="inverse" boxStyle="width:750rpx;"></myp-xbar>
 		</myp-position>
 		<myp-navbar :fixed="true" :isSeize="false" :bgType="titleVisible?'primary':'none'" :title="titleVisible?'欢迎光临':''" iconStyle="color:#FFFFFF;" titleStyle="color:#FFFFFF;" :lefts="leftIcons" @leftAction="navLeftAction"></myp-navbar>
 		<myp-loading ref="myp-loading"></myp-loading>
@@ -75,17 +77,18 @@
 	import navHelper from '@/router/navHelper.js'
 	import toastMixin from '@/mypUI/myp-mixin/toastMixin.js'
 	import loadingMixin from '@/mypUI/myp-mixin/loadingMixin.js'
-	import systemMixin from '@/mypUI/myp-mixin/systemMixin.js'
 	
 	import parentMixin from '@/mypUI/myp-list/header/headerParent.js'
 	import actionsMixin from './mixin/actions.js'
+	
+	import {getPlatform} from '@/mypUI/utils/system.js'
 	
 	export default {
 		components: {
 			swiperHead,
 			albumList
 		},
-		mixins: [contentBoxMixin, systemMixin, navHelper, toastMixin, loadingMixin, parentMixin, actionsMixin],
+		mixins: [contentBoxMixin, navHelper, toastMixin, loadingMixin, parentMixin, actionsMixin],
 		data() {
 			return {
 				mypIncludeXBar: false,
@@ -162,7 +165,7 @@
 		},
 		onReady() {
 			this.mypHeaderHeight = uni.upx2px(442) //去除了status-nav的高度
-			this.platform = this.mypGetPlatform()
+			this.platform = getPlatform()
 			if (this.platform === 'android') {
 				this.mypAllHeight = this.mypHeaderHeight - uni.upx2px(140)
 			} else {
@@ -173,7 +176,7 @@
 			}, 20)
 		},
 		onLoad() {
-			this.platform = this.mypGetPlatform()
+			this.platform = getPlatform()
 		}
 	}
 </script>

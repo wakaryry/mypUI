@@ -1,22 +1,22 @@
 <template>
 	<view class="ct">
 		<view class="ct-bg">
-			<image src="https://cdn.img.wenhairu.com/images/2020/05/23/YOiW0.jpg" class="ct-bg-cover" mode="aspectFill"></image>
+			<image src="https://mypui.asnowsoft.cn/imgs/bg-blue.jpg" class="ct-bg-cover" mode="aspectFill"></image>
 		</view>
 		<view class="ct-foot">
-			<image src="https://cdn.img.wenhairu.com/images/2020/05/23/YTWDS.png" class="ct-foot-cover" mode="aspectFill"></image>
+			<image src="https://mypui.asnowsoft.cn/imgs/unb-up.png" class="ct-foot-cover" mode="aspectFill"></image>
 		</view>
 		<view class="ct-title">
 			<text v-for="(item,idx) in ['T-l','o-o','a-a','s-d','t-ing']" :key="idx" class="ct-title-text">{{item}}</text>
 		</view>
 		<view v-for="(item,idx) in items" :key="idx" :class="['ct-'+item.class]">
 			<view v-if="item.left" class="ct-item-title" bubble="true" @tap="toToast(item)">
-				<image src="https://cdn.img.wenhairu.com/images/2020/05/23/YOvLH.png" class="ct-item-hint" mode="aspectFit"></image>
+				<image src="https://mypui.asnowsoft.cn/imgs/drop.png" class="ct-item-hint" mode="aspectFit"></image>
 				<text class="ct-item-title-text">{{item.title}}</text>
 			</view>
 			<view v-else class="ct-item-title" bubble="true" @tap="toToast(item)">
 				<text class="ct-item-title-text">{{item.title}}</text>
-				<image src="https://cdn.img.wenhairu.com/images/2020/05/23/YOvLH.png" class="ct-item-hint" mode="aspectFit"></image>
+				<image src="https://mypui.asnowsoft.cn/imgs/drop.png" class="ct-item-hint" mode="aspectFit"></image>
 			</view>
 		</view>
 	</view>

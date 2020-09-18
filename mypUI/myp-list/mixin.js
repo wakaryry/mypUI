@@ -1,5 +1,7 @@
-// 通过mescroll来的，当时mescroll是一个 new function对象
-// 因为想灵活的控制高度以及方便快速调用，特意改成了mixin形式
+// #ifndef APP-NVUE
+import {getTouchPoint} from '../utils/element.js'
+// #endif
+
 export default {
 	data() {
 		return {
@@ -69,7 +71,7 @@ export default {
 		// 手指开始触摸屏幕
 		mypTouchstartEvent(e) {
 			// if (!this.down.use) return;
-			this.mypStartPoint = this.mypGetPoint(e)
+			this.mypStartPoint = getTouchPoint(e)
 			this.mypStartTop = this.mypTheScrollTop || 0
 			this.mypLastPoint = this.mypStartPoint
 			this.mypInTouchend = false
@@ -89,7 +91,7 @@ export default {
 				this.mypMoveTimeDiff = 1000 / this.mypFps
 			}
 			const scrollTop = this.mypTheScrollTop
-			const currentPoint = this.mypGetPoint(e)
+			const currentPoint = getTouchPoint(e)
 			const moveY = currentPoint.y - this.mypStartPoint.y
 			
 			// (向下拉&&在顶部) scroll-view在滚动时不会触发touchmove,当触顶/底/左/右时,才会触发touchmove
@@ -144,7 +146,7 @@ export default {
 				this.mypDownMoveType = 0;
 				this.mypIsMoveDown = false;
 			} else if (this.mypTheScrollTop === this.mypStartTop) {  // 到顶/左/右/底的滑动事件
-				const isScrollUp = this.mypGetPoint(e).y - this.mypStartPoint.y < 0;  // 和起点比,移动的距离,大于0向下拉,小于0向上拉
+				const isScrollUp = getTouchPoint(e).y - this.mypStartPoint.y < 0;  // 和起点比,移动的距离,大于0向下拉,小于0向上拉
 				// 上滑 && 检查并触发上拉
 				isScrollUp && this.mypTriggerUpScroll();
 			}
@@ -252,30 +254,6 @@ export default {
 			}
 			if (this.mypIsUpLoading) {
 				this.mypEndUpScroll()
-			}
-		},
-		mypGetPoint(e) {
-			if (!e) {
-				return {
-					x: 0,
-					y: 0
-				}
-			}
-			if (e.touches && e.touches[0]) {
-				return {
-					x: e.touches[0].pageX,
-					y: e.touches[0].pageY
-				}
-			} else if (e.changedTouches && e.changedTouches[0]) {
-				return {
-					x: e.changedTouches[0].pageX,
-					y: e.changedTouches[0].pageY
-				}
-			} else {
-				return {
-					x: e.clientX,
-					y: e.clientY
-				}
 			}
 		},
 		mypGetScrollBottom() {

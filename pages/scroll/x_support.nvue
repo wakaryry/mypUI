@@ -16,7 +16,7 @@
 				<myp-button bgType="error" border="none" radius="ll" icon="love" text="发爱心给Ta" iconType="inverse" textType="inverse" boxStyle="width:600rpx;"></myp-button>
 			</view>
 		</myp-list-simple>
-		<myp-x-bar v-if="!includeXBar" :bgType="xBarBgType"></myp-x-bar>
+		<myp-xbar v-if="!includeXBar" :bgType="xBarBgType"></myp-xbar>
 		<myp-position pos="bottom" :fixed="true" offset="x-100px" boxStyle="left:20rpx;">
 			<view class="x-set">
 				<view class="x-set-item">

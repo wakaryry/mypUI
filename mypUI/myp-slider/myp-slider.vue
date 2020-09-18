@@ -23,8 +23,8 @@
 	import BindEnv from '../utils/bind-env';
 	import Binding from 'weex-bindingx/lib/index.weex.js';
 
-	const animation = weex.requireModule('animation');
-	const dom = weex.requireModule('dom');
+	const animation = uni.requireNativePlugin('animation');
+	const dom = uni.requireNativePlugin('dom');
 
 	export default {
 		data: () => ({

@@ -11,13 +11,12 @@
 
 <script>
 	// #ifdef APP-NVUE
-	const animation = weex.requireModule('animation');
+	const animation = uni.requireNativePlugin('animation');
 	// #endif
 	
-	import windowMixin from '../myp-mixin/windowMixin.js'
+	import {getHeight, getPx, getScreenHeight} from '../utils/system.js'
 	// TODO: add height animation: height-0->height
 	export default {
-		mixins: [windowMixin],
 		props: {
 			show: {
 				type: Boolean,
@@ -35,7 +34,6 @@
 				type: Number,
 				default: 300
 			},
-			// in mp, we do not support v-bind="overlay". we need to list it
 			overlay: {
 				type: Object,
 				default: () => ({
@@ -47,32 +45,32 @@
 				})
 			},
 			height: {
-				type: [Number, String],
-				default: 0
+				type: String,
+				default: '0'
 			},
 			extra: {
-				type: [Number, String],
+				type: String,
 				default: 0
 			},
 			leftOffset: {
-				type: [Number, String],
-				default: -1
+				type: String,
+				default: '-1'
 			},
 			rightOffset: {
-				type: [Number, String],
-				default: -1
+				type: String,
+				default: '-1'
 			},
 			bottomOffset: {
-				type: [Number, String],
-				default: -1
+				type: String,
+				default: '-1'
 			},
 			topOffset: {
-				type: [Number, String],
-				default: -1
+				type: String,
+				default: '-1'
 			},
 			width: {
-				type: [Number, String],
-				default: 750
+				type: String,
+				default: '750rpx'
 			},
 			animation: {
 				type: Object,
@@ -103,12 +101,11 @@
 		},
 		data() {
 			return {
-				// we need to add a v-if in overlay, 
-				// or it will show upper on the popup content 
 				overlayShow: false,
 				helpShow: false,
 				noWeexAni: '',
-				isShow: false
+				isShow: false,
+				screenWidth: uni.upx2px(750)
 			}
 		},
 		watch: {
@@ -117,11 +114,8 @@
 			}
 		},
 		computed: {
-			screenWidth() {
-				return uni.upx2px(750)
-			},
 			screenHeight() {
-				return this.mypGetScreenHeight()
+				return getScreenHeight()
 			},
 			mrPopStyle() {
 				let style = {
@@ -196,7 +190,7 @@
 				return _style
 			},
 			heightPx() {
-				const h = this.mypGetHeight(this.height)
+				const h = getHeight(this.height)
 				if (h > 1) {
 					return h - this.extraPx
 				}
@@ -206,42 +200,42 @@
 				return this.screenHeight * h - this.extraPx
 			},
 			extraPx() {
-				return this.mypGetHeight(this.extra)
+				return getHeight(this.extra)
 			},
 			widthPx() {
-				const w = this.mypToPx(this.width)
+				const w = getPx(this.width)
 				if (w <= 0) {
 					return this.screenWidth - this.leftPx - this.rightPx - (this.leftOffsetPx>=0?this.leftOffsetPx:0) - (this.rightOffsetPx>=0?this.rightOffsetPx:0)
 				}
 				return w
 			},
 			leftOffsetPx() {
-				if (this.leftOffset === -1) return -1;
-				return this.mypToPx(this.leftOffset)
+				if (this.leftOffset === '-1') return -1;
+				return getPx(this.leftOffset)
 			},
 			topOffsetPx() {
-				if (this.topOffset === -1) return -1;
-				return this.mypGetHeight(this.topOffset)
+				if (this.topOffset === '-1') return -1;
+				return getHeight(this.topOffset)
 			},
 			rightOffsetPx() {
-				if (this.rightOffset === -1) return -1;
-				return this.mypToPx(this.rightOffset)
+				if (this.rightOffset === '-1') return -1;
+				return getPx(this.rightOffset)
 			},
 			bottomOffsetPx() {
-				if (this.bottomOffset === -1) return -1;
-				return this.mypGetHeight(this.bottomOffset)
+				if (this.bottomOffset === '-1') return -1;
+				return getHeight(this.bottomOffset)
 			},
 			leftPx() {
-				return this.mypToPx(this.left)
+				return getPx(this.left)
 			},
 			topPx() {
-				return this.mypGetHeight(this.top)
+				return getHeight(this.top)
 			},
 			rightPx() {
-				return this.mypToPx(this.right)
+				return getPx(this.right)
 			},
 			bottomPx() {
-				return this.mypGetHeight(this.bottom)
+				return getHeight(this.bottom)
 			}
 		},
 		methods: {

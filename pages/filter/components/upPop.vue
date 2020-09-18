@@ -1,7 +1,7 @@
 <template>
 	<myp-popup-always :show="show" pos="bottom" bottom="x-64px" height="300px" @overlayClicked="toCancel">
 		<view class="up">
-			<myp-tag-group :limits="3" :items="items" :value="current" :column="3" titleLabel="title" valueLabel="id" tagSelectedBgType="primary" tagSelectedTextType="inverse" columnSpace="24rpx" rowSpace="24rpx" boxStyle="margin-top:24rpx;margin-left:32rpx;margin-right:32rpx;" @change="toSelect"></myp-tag-group>
+			<myp-tag-group :limits="3" :items="items" :value="current" :column="3" textLabel="title" valueLabel="id" tagSelectedBgType="primary" tagSelectedTextType="inverse" columnSpace="24rpx" rowSpace="24rpx" boxStyle="margin-top:24rpx;margin-left:32rpx;margin-right:32rpx;" @change="toSelect"></myp-tag-group>
 		</view>
 	</myp-popup-always>
 </template>

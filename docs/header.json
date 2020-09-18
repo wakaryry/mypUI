@@ -64,15 +64,15 @@
 		"order": 69,
 		"title": "高度：myp-height"
 	},
-	"myp-x-status": {
+	"myp-status": {
 		"type": "guide",
 		"order": 70,
-		"title": "状态栏：myp-x-status"
+		"title": "状态栏：myp-status"
 	},
-	"myp-x-bar": {
+	"myp-xbar": {
 		"type": "guide",
 		"order": 71,
-		"title": "底部安全区：myp-x-bar"
+		"title": "底部安全区：myp-xbar"
 	},
 	"myp-position": {
 		"type": "guide",

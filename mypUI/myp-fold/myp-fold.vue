@@ -14,8 +14,8 @@
 	// 考虑到低端机器的兼容（打开会卡），使用false，配合style来处理占位问题
 	// 
 	// #ifdef APP-NVUE
-	const dom = weex.requireModule('dom');
-	const animation = weex.requireModule('animation');
+	const dom = uni.requireNativePlugin('dom');
+	const animation = uni.requireNativePlugin('animation');
 	// #endif
 	
 	export default {

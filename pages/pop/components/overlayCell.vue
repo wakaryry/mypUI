@@ -1,28 +1,28 @@
 <template>
 	<view class="cf">
 		<view class="cf-bg">
-			<image src="https://cdn.img.wenhairu.com/images/2020/05/23/YOrYg.jpg" class="cf-bg-cover" mode="aspectFill"></image>
+			<image src="https://mypui.asnowsoft.cn/imgs/bg-white.jpg" class="cf-bg-cover" mode="aspectFill"></image>
 		</view>
 		<view class="cf-title-bg">
-			<image class="cf-title-bg-cover" src="https://cdn.img.wenhairu.com/images/2020/05/23/YO2sj.png" mode="aspectFit"></image>
+			<image class="cf-title-bg-cover" src="https://mypui.asnowsoft.cn/imgs/bg-slice.png" mode="aspectFit"></image>
 		</view>
 		<view class="cf-title">
 			<text class="cf-title-text">Overlay</text>
-			<image class="cf-title-hint" src="https://cdn.img.wenhairu.com/images/2020/05/23/YOvLH.png" mode="aspectFit"></image>
+			<image class="cf-title-hint" src="https://mypui.asnowsoft.cn/imgs/drop.png" mode="aspectFit"></image>
 		</view>
 		<view class="cf-left">
-			<image src="https://cdn.img.wenhairu.com/images/2020/05/23/YObjv.png" class="cf-left-bg" mode="aspectFit"></image>
+			<image src="https://mypui.asnowsoft.cn/imgs/bed.png" class="cf-left-bg" mode="aspectFit"></image>
 		</view>
 		<view class="cf-body">
 			<view bubble="true" class="cf-item" v-for="(item,idx) in items" :key="idx" @tap="toSelect(item)">
 				<view class="cf-item-bg">
-					<image src="https://cdn.img.wenhairu.com/images/2020/05/23/YOL8o.png" class="cf-item-bg-cover" mode="aspectFit"></image>
+					<image src="https://mypui.asnowsoft.cn/imgs/box.png" class="cf-item-bg-cover" mode="aspectFit"></image>
 				</view>
 				<view class="cf-item-tl">
-					<image src="https://cdn.img.wenhairu.com/images/2020/05/23/YTC4D.png" class="cf-item-tl-bg" mode="aspectFit"></image>
+					<image src="https://mypui.asnowsoft.cn/imgs/top-left.png" class="cf-item-tl-bg" mode="aspectFit"></image>
 				</view>
 				<view class="cf-item-br">
-					<image src="https://cdn.img.wenhairu.com/images/2020/05/23/YOzX3.png" class="cf-item-br-bg" mode="aspectFit"></image>
+					<image src="https://mypui.asnowsoft.cn/imgs/bottom-right.png" class="cf-item-br-bg" mode="aspectFit"></image>
 				</view>
 				<view class="cf-item-title">
 					<text class="cf-item-title-text" v-for="(char,index) in item.title" :key="index">{{char}}</text>

@@ -14,10 +14,10 @@
 <script>
 	import weexMixin from './weexMixin.js'
 	import noWeexMixin from './noWeexMixin.js'
-	import pxMixin from '../myp-mixin/pxMixin.js'
+	import {getPx} from '../utils/system.js'
 	
 	export default {
-		mixins: [pxMixin, weexMixin, noWeexMixin],
+		mixins: [weexMixin, noWeexMixin],
 		props: {
 			progress: {
 				type: Number,
@@ -182,7 +182,7 @@
 			}
 		},
 		created() {
-			const w = this.mypToPx(this.width)
+			const w = getPx(this.width)
 			this.evenWidth = parseInt(w/2)*2
 			setTimeout(()=>{
 				// #ifdef APP-NVUE

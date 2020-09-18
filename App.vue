@@ -1,19 +1,18 @@
 <script>
-	import systemMixin from '@/mypUI/myp-mixin/systemMixin.js'
+	import {initSystemInfo} from '@/mypUI/utils/system.js'
 	
 	export default {
 		globalData: {
 			currentTab: 0
 		},
-		mixins: [systemMixin],
 		onLaunch: function() {
 			console.log('App Launch')
 			// #ifdef APP-PLUS || H5
-			this.mypInitSystemInfo()
+			initSystemInfo()
 			// #endif
 			// #ifndef APP-PLUS || H5
 			setTimeout(()=>{
-				this.mypInitSystemInfo()
+				initSystemInfo()
 			}, 0)
 			// #endif
 			// #ifdef APP-PLUS
@@ -30,7 +29,15 @@
 </script>
 
 <style lang="scss">
+	/* #ifndef APP-NVUE */
+	page {
+		height: 100%;
+	}
+	/* #endif */
 	@import '@/mypUI/base.scss';
+	/* #ifdef MP */
+	@import '@/mypUI/mp.scss';
+	/* #endif */
 	/* #ifdef H5 */
 	@import '@/mypUI/h5.scss';
 	/* #endif */

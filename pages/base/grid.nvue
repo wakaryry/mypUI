@@ -1,30 +1,41 @@
 <template>
 	<view>
 		<myp-navbar :lefts="leftIcons" title="宫格" @leftAction="navLeftAction"></myp-navbar>
-		<scroll-view class="myp-bg-page" :scroll-y="true" :style="mypContentHeightStyle">
-			<view style="height: 24rpx;"></view>
-			<myp-grid :items="items" iconLabel="icon" textLabel="name" itemHeight="160rpx" boxStyle="margin-left:32rpx;margin-right:32rpx;background-color:#FFFFFF;"></myp-grid>
-			<view style="height: 24rpx;"></view>
-			<myp-grid :items="items" iconType="error" mode="left" iconLabel="icon" textLabel="name" itemHeight="160rpx" boxStyle="margin-left:32rpx;margin-right:32rpx;background-color:#FFFFFF;"></myp-grid>
-			<view style="height: 24rpx;"></view>
-			<myp-grid :hasLine="false" border="none" flex="space-between" itemWidth="140rpx" :items="itemsTwo" :columns="3" iconLabel="icon" iconType="primary" textLabel="name" itemHeight="160rpx" boxStyle="margin-left:32rpx;margin-right:32rpx;background-color:#FFFFFF;"></myp-grid>
-			<view style="height: 24rpx;"></view>
-			<myp-grid :hasLine="false" border="none" flex="center" itemWidth="160rpx" :items="itemsTwo" :columns="3" iconLabel="icon" iconType="warning" textLabel="name" itemHeight="160rpx" boxStyle="margin-left:32rpx;margin-right:32rpx;background-color:#FFFFFF;"></myp-grid>
-			<view style="height: 24rpx;"></view>
-			<myp-grid :hasLine="false" border="none" flex="center" itemWidth="160rpx" :items="itemsThree" :columns="3" :isIcon="false" iconLabel="icon" iconType="third" iconSize="ll" textLabel="name" space="24rpx" itemHeight="160rpx" boxStyle="margin-left:32rpx;margin-right:32rpx;background-color:#FFFFFF;"></myp-grid>
-			<view style="height: 24rpx;"></view>
-		</scroll-view>
+		<myp-list-simple>
+			<myp-list-cell>
+				<view style="height: 24rpx;"></view>
+				<myp-grid :items="items" iconLabel="icon" textLabel="name" itemHeight="160rpx" boxStyle="margin-left:32rpx;margin-right:32rpx;background-color:#FFFFFF;"></myp-grid>
+			</myp-list-cell>
+			<myp-list-cell>
+				<view style="height: 24rpx;"></view>
+				<myp-grid :items="items" iconType="error" mode="left" iconLabel="icon" textLabel="name" itemHeight="160rpx" boxStyle="margin-left:32rpx;margin-right:32rpx;background-color:#FFFFFF;"></myp-grid>
+			</myp-list-cell>
+			<myp-list-cell>
+				<view style="height: 24rpx;"></view>
+				<myp-grid :hasLine="false" border="none" flex="space-between" itemWidth="140rpx" :items="itemsTwo" :columns="3" iconLabel="icon" iconType="primary" textLabel="name" itemHeight="160rpx" boxStyle="margin-left:32rpx;margin-right:32rpx;background-color:#FFFFFF;"></myp-grid>
+			</myp-list-cell>
+			<myp-list-cell>
+				<view style="height: 24rpx;"></view>
+				<myp-grid :hasLine="false" border="none" flex="center" itemWidth="160rpx" :items="itemsTwo" :columns="3" iconLabel="icon" iconType="warning" textLabel="name" itemHeight="160rpx" boxStyle="margin-left:32rpx;margin-right:32rpx;background-color:#FFFFFF;"></myp-grid>
+			</myp-list-cell>
+			<myp-list-cell>
+				<view style="height: 24rpx;"></view>
+				<myp-grid :hasLine="false" border="none" flex="center" itemWidth="160rpx" :items="itemsThree" :columns="3" :isIcon="false" iconLabel="icon" iconType="third" iconSize="ll" textLabel="name" space="24rpx" itemHeight="160rpx" boxStyle="margin-left:32rpx;margin-right:32rpx;background-color:#FFFFFF;"></myp-grid>
+			</myp-list-cell>
+			<myp-list-cell>
+				<view style="height: 24rpx;"></view>
+			</myp-list-cell>
+		</myp-list-simple>
 		<myp-toast ref="myp-toast"></myp-toast>
 	</view>
 </template>
 
 <script>
-import contentBoxMixin from '@/mypUI/myp-mixin/contentBoxMixin.js'
 import toastMixin from '@/mypUI/myp-mixin/toastMixin.js'
 import navHelper from '@/router/navHelper.js'
 
 export default {
-	mixins: [contentBoxMixin, toastMixin, navHelper],
+	mixins: [toastMixin, navHelper],
 	data() {
 		return {
 			items: [{

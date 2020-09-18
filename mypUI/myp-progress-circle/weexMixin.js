@@ -1,5 +1,5 @@
 // #ifdef APP-NVUE
-const animation = weex.requireModule('animation');
+const animation = uni.requireNativePlugin('animation');
 // #endif
 
 export default {

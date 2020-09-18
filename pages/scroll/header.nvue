@@ -1,7 +1,7 @@
 <template>
 	<view class="big-page">
 		<!-- #ifdef APP-NVUE -->
-		<list :id="mypListId" :bounce="true" isSwiperList="true" :style="'width:750rpx;'+mypContentHeightStyle" @scroll="handleParentScroll">
+		<list :id="mypListId" :bounce="true" isSwiperList="true" style="width:750rpx;flex:1;" @scroll="handleParentScroll">
 			<cell>
 				<swiper-head></swiper-head>
 			</cell>
@@ -44,6 +44,8 @@
 			</myp-content-box>
 		</scroll-view>
 		<!-- #endif -->
+		<view style="height: 100rpx;"></view>
+		<myp-xbar bgType="none"></myp-xbar>
 		<myp-position :fixed="true" boxStyle="left:0;width:750rpx;">
 			<view class="ch-foot-content">
 				<view class="ch-foot-token"></view>
@@ -59,7 +61,7 @@
 					<image class="ch-foot-avatar-avatar" src="/static/bear.jpg" mode="aspectFill" @tap.stop.prevent="toFootUser"></image>
 				</view>
 			</view>
-			<myp-x-bar bgType="inverse" boxStyle="width:750rpx;"></myp-x-bar>
+			<myp-xbar bgType="inverse" boxStyle="width:750rpx;"></myp-xbar>
 		</myp-position>
 		<myp-navbar :fixed="true" :isSeize="false" :bgType="titleVisible?'primary':'none'" :title="titleVisible?'欢迎光临':''" iconStyle="color:#FFFFFF;" titleStyle="color:#FFFFFF;" :lefts="leftIcons" @leftAction="navLeftAction"></myp-navbar>
 		<myp-loading ref="myp-loading"></myp-loading>

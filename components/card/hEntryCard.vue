@@ -17,10 +17,10 @@
 </template>
 
 <script>
-	import filterMixin from '@/mypUI/myp-mixin/filterMixin.js'
+	import timeFilter from '@/mypUI/myp-mixin/timeFilter.js'
 	
 	export default {
-		mixins: [filterMixin],
+		mixins: [timeFilter],
 		props: {
 			title: {
 				type: String,

@@ -262,6 +262,19 @@
 				"disableScroll": true
 			}
 		},
+		{
+			"path": "pages/swiper/tabbar",
+			"style": {
+				"disableScroll": true
+			}
+		},
+		// scroll-h
+		{
+			"path": "pages/scroll-h/index",
+			"style": {
+				"disableScroll": true
+			}
+		},
 		// scroll
 		{
 			"path": "pages/scroll/index",
@@ -362,12 +375,14 @@
 		{
 			"path": "pages/scroll/header",
 			"style": {
+				"navigationBarTextStyle": "white",
 				"disableScroll": true
 			}
 		},
 		{
 			"path": "pages/scroll/header_refresh",
 			"style": {
+				"navigationBarTextStyle": "white",
 				"disableScroll": true
 			}
 		},

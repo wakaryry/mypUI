@@ -21,7 +21,8 @@
 			return {
 				items: [
 					{title: 'swiper-list', desc: 'swiper-tabs', page: 'swiper_list'},
-					{title: 'swiper-inter-list', desc: 'swiper与tabs联动', page: 'swiper_inter_list'},
+					{title: 'swiper-interact-list', desc: 'swiper与tabs联动', page: 'swiper_inter_list'},
+					{title: 'tabbar-swiper', desc: 'tabbar with swiper', page: 'swiper_tabbar'},
 					{title: 'swiper-header-list', desc: '无刷新加载', page: 'scroll_header'},
 					{title: 'swiper-header-list', desc: '带刷新加载', page: 'scroll_header_refresh'}
 				]

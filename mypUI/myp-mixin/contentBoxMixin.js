@@ -1,5 +1,4 @@
-import windowMixin from './windowMixin.js'
-import pxMixin from './pxMixin.js'
+import {getPx, getScreenHeight, getStatusBarHeight, getNavbarHeight, getXBarHeight} from '../utils/system.js'
 
 export default {
 	data() {
@@ -11,22 +10,21 @@ export default {
 			mypExtra: '0px'
 		}
 	},
-	mixins: [windowMixin, pxMixin],
 	computed: {
 		mypContentHeight() {
-			let _height = this.mypGetScreenHeight()
+			let _height = getScreenHeight()
 			if (_height === 0) {
 				// try again
-				_height = this.mypGetScreenHeight()
+				_height = getScreenHeight()
 			}
 			if (!this.mypIncludeStatus) {
-				_height = _height - this.mypGetStatusBarHeight()
+				_height = _height - getStatusBarHeight()
 			}
 			if (!this.mypIncludeNav) {
-				_height = _height - this.mypGetNavHeight()
+				_height = _height - getNavbarHeight()
 			}
 			if (!this.mypIncludeXBar) {
-				_height = _height - this.mypGetXBarHeight()
+				_height = _height - getXBarHeight()
 			}
 			_height = _height - this.mypTabHeight - this.mypExtraPx
 			if (_height <= 0) {
@@ -38,7 +36,7 @@ export default {
 			return `height:${this.mypContentHeight}px;`
 		},
 		mypExtraPx() {
-			return this.mypToPx(this.mypExtra)
+			return getPx(this.mypExtra)
 		}
 	}
 }

@@ -9,7 +9,7 @@
 			<image class="tp-logo" src="/static/logo.png" mode="aspectFill"></image>
 			<view class="tp-pay">
 				<myp-button bgType="primary" text="打赏" textType="inverse" border="none" radius="ll" boxStyle="width:420rpx;" @buttonClicked="toPay"></myp-button>
-				<myp-x-bar></myp-x-bar>
+				<myp-xbar></myp-xbar>
 			</view>
 		</view>
 	</myp-popup>

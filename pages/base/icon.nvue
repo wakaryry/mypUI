@@ -1,45 +1,52 @@
 <template>
 	<view>
 		<myp-navbar :lefts="leftIcons" title="图标" @leftAction="navLeftAction"></myp-navbar>
-		<scroll-view class="myp-bg-page" :scroll-y="true" :style="mypContentHeightStyle">
-			<myp-title bgType="none" centerIcon1="primary" centerIcon1Type="primary" centerIcon2="triangle-right" title2="主题配置" centerIcon2Type="third" centerStyle="padding-left:16rpx;padding-right:16rpx;background-color:#FFFFFF;border-radius:12rpx;height:60rpx;"></myp-title>
-			<view class="icon-margin icon-bw">
-				<myp-icon name="solid-plus" size="ll"></myp-icon>
-				<myp-icon name="solid-plus" type="primary" size="ll"></myp-icon>
-				<myp-icon name="solid-plus" type="success" size="ll"></myp-icon>
-				<myp-icon name="solid-plus" type="warning" size="ll"></myp-icon>
-				<myp-icon name="solid-plus" type="error" size="ll"></myp-icon>
-			</view>
-			<myp-title bgType="none" centerIcon1="primary" centerIcon1Type="primary" centerIcon2="triangle-right" title2="其它样式" centerIcon2Type="third" centerStyle="padding-left:16rpx;padding-right:16rpx;background-color:#FFFFFF;border-radius:12rpx;height:60rpx;"></myp-title>
-			<view class="icon-margin icon-bw">
-				<myp-icon name="solid-plus" type="warning" iconStyle="font-size:50rpx;"></myp-icon>
-				<myp-icon name="solid-plus" type="primary" size="ll" iconStyle="font-size:50rpx;"></myp-icon>
-				<myp-icon name="solid-plus" type="success" size="ll" iconStyle="font-size:50rpx; color:#FF0000;"></myp-icon>
-				<myp-icon name="solid-plus" type="warning" size="ll" iconStyle="font-size:50rpx;"></myp-icon>
-				<myp-icon name="solid-plus" type="error" size="ll" iconStyle="font-size:50rpx;"></myp-icon>
-			</view>
-			<myp-title bgType="none" centerIcon1="primary" centerIcon1Type="primary" centerIcon2="triangle-right" title2="使用图片" centerIcon2Type="third" centerStyle="padding-left:16rpx;padding-right:16rpx;background-color:#FFFFFF;border-radius:12rpx;height:60rpx;"></myp-title>
-			<view class="icon-margin icon-bw">
-				<myp-icon name="/static/bear.jpg" iconStyle="width: 120rpx; height: 120rpx; border-radius:60rpx;" mode="aspectFill"></myp-icon>
-				<myp-icon name="https://cdn.img.wenhairu.com/images/2020/05/23/YTnhG.jpg" iconStyle="width: 160rpx; height: 160rpx;border-radius:24rpx;"></myp-icon>
-				<myp-icon name="/static/octopus.png" iconStyle="width: 120rpx; height: 120rpx; border-radius:60rpx;"></myp-icon>
-			</view>
-			<myp-title bgType="none" centerIcon1="primary" centerIcon1Type="primary" centerIcon2="triangle-right" title2="图标列表" centerIcon2Type="third" centerStyle="padding-left:16rpx;padding-right:16rpx;background-color:#FFFFFF;border-radius:12rpx;height:60rpx;"></myp-title>
-			<myp-grid :columns="3" border="none" radius="none" :items="iconArray" iconLabel="name" textLabel="name" iconType="error" itemHeight="160rpx"></myp-grid>
-		</scroll-view>
+		<myp-list-simple>
+			<myp-list-cell>
+				<myp-title bgType="none" centerIcon1="primary" centerIcon1Type="primary" centerIcon2="triangle-right" title2="主题配置" centerIcon2Type="third" centerStyle="padding-left:16rpx;padding-right:16rpx;background-color:#FFFFFF;border-radius:12rpx;height:60rpx;"></myp-title>
+				<view class="icon-margin icon-bw">
+					<myp-icon name="solid-plus" size="ll"></myp-icon>
+					<myp-icon name="solid-plus" type="primary" size="ll"></myp-icon>
+					<myp-icon name="solid-plus" type="success" size="ll"></myp-icon>
+					<myp-icon name="solid-plus" type="warning" size="ll"></myp-icon>
+					<myp-icon name="solid-plus" type="error" size="ll"></myp-icon>
+				</view>
+			</myp-list-cell>
+			<myp-list-cell>
+				<myp-title bgType="none" centerIcon1="primary" centerIcon1Type="primary" centerIcon2="triangle-right" title2="其它样式" centerIcon2Type="third" centerStyle="padding-left:16rpx;padding-right:16rpx;background-color:#FFFFFF;border-radius:12rpx;height:60rpx;"></myp-title>
+				<view class="icon-margin icon-bw">
+					<myp-icon name="solid-plus" type="warning" iconStyle="font-size:50rpx;"></myp-icon>
+					<myp-icon name="solid-plus" type="primary" size="ll" iconStyle="font-size:50rpx;"></myp-icon>
+					<myp-icon name="solid-plus" type="success" size="ll" iconStyle="font-size:50rpx; color:#FF0000;"></myp-icon>
+					<myp-icon name="solid-plus" type="warning" size="ll" iconStyle="font-size:50rpx;"></myp-icon>
+					<myp-icon name="solid-plus" type="error" size="ll" iconStyle="font-size:50rpx;"></myp-icon>
+				</view>
+			</myp-list-cell>
+			<myp-list-cell>
+				<myp-title bgType="none" centerIcon1="primary" centerIcon1Type="primary" centerIcon2="triangle-right" title2="使用图片" centerIcon2Type="third" centerStyle="padding-left:16rpx;padding-right:16rpx;background-color:#FFFFFF;border-radius:12rpx;height:60rpx;"></myp-title>
+				<view class="icon-margin icon-bw">
+					<myp-icon name="/static/bear.jpg" iconStyle="width: 120rpx; height: 120rpx; border-radius:60rpx;" mode="aspectFill"></myp-icon>
+					<myp-icon name="https://mypui.asnowsoft.cn/imgs/a3.jpg" iconStyle="width: 160rpx; height: 160rpx;border-radius:24rpx;"></myp-icon>
+					<myp-icon name="/static/octopus.png" iconStyle="width: 120rpx; height: 120rpx; border-radius:60rpx;"></myp-icon>
+				</view>
+			</myp-list-cell>
+			<myp-list-cell>
+				<myp-title bgType="none" centerIcon1="primary" centerIcon1Type="primary" centerIcon2="triangle-right" title2="图标列表" centerIcon2Type="third" centerStyle="padding-left:16rpx;padding-right:16rpx;background-color:#FFFFFF;border-radius:12rpx;height:60rpx;"></myp-title>
+				<myp-grid :columns="3" border="none" radius="none" :items="iconArray" iconLabel="name" textLabel="name" iconType="error" itemHeight="160rpx"></myp-grid>
+			</myp-list-cell>
+		</myp-list-simple>
 		<myp-toast ref="myp-toast"></myp-toast>
 	</view>
 </template>
 
 <script>
-import contentBoxMixin from '@/mypUI/myp-mixin/contentBoxMixin.js'
 import toastMixin from '@/mypUI/myp-mixin/toastMixin.js'
 import navHelper from '@/router/navHelper.js'
 
 import icons from '@/mypUI/myp-icon/icons.js'
 
 export default {
-	mixins: [contentBoxMixin, toastMixin, navHelper],
+	mixins: [toastMixin, navHelper],
 	data() {
 		return {
 			icons

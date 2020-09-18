@@ -48,6 +48,7 @@ export default {
 	swiper_index: '/pages/swiper/index',
 	swiper_list: '/pages/swiper/list',
 	swiper_inter_list: '/pages/swiper/inter_list',
+	swiper_tabbar: '/pages/swiper/tabbar',
 	// scroll-test
 	scroll_test: '/pages/scroll/test/test',
 	scroll_list_top: '/pages/scroll/test/list_top',
@@ -63,6 +64,8 @@ export default {
 	scroll_load_more_one: '/pages/scroll/test/load_more_one',
 	scroll_load_more_wrap: '/pages/scroll/test/load_more_wrap',
 	scroll_load_more_one_wrap: '/pages/scroll/test/load_more_one_wrap',
+	// scroll-h
+	scroll_h_index: "/pages/scroll-h/index", 
 	// scroll
 	scroll_index: '/pages/scroll/index',
 	scroll_h: '/pages/scroll/h',

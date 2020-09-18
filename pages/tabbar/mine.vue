@@ -1,27 +1,25 @@
 <template>
-	<view>
-		<scroll-view class="myp-bg-page tm" :scroll-y="true" :style="mypContentHeightStyle">
+	<myp-list-simple boxStyle="width:750rpx;">
+		<myp-list-cell>
 			<view style="height: 32rpx;"></view>
-			<view :class="['tm-content', item.uid===1?'tm-content-left':'tm-content-right']" v-for="(item, idx) in items" :key="idx">
+		</myp-list-cell>
+		<myp-list-cell v-for="(item, idx) in items" :key="idx">
+			<view :class="['tm-content', item.uid===1?'tm-content-left':'tm-content-right']">
 				<myp-message-time v-if="idx===0 || idx ===5" :time="idx===0?'10:46':'11:05'" boxStyle="width:686rpx;"></myp-message-time>
-				<myp-message-text :direction="item.uid===1?'left':'right'" :nickname="item.nickname" :avatar="item.avatar" :text="item.text" :bgType="item.uid===1?'':'error'" :textType="item.uid===1?'':'inverse'"></myp-message-text>
+				<myp-message-text :direction="item.uid===1?'left':'right'" :avatar="item.avatar" :text="item.text" :bgType="item.uid===1?'':'error'" :textType="item.uid===1?'':'inverse'"></myp-message-text>
 				<view style="height: 32rpx;"></view>
 			</view>
+		</myp-list-cell>
+		<myp-list-cell>
 			<view style="height: 32rpx;"></view>
-		</scroll-view>
-	</view>
+		</myp-list-cell>
+	</myp-list-simple>
 </template>
 
 <script>
-	
-	import contentBoxMixin from '@/mypUI/myp-mixin/contentBoxMixin.js'
-	
 	export default {
-		mixins: [contentBoxMixin],
 		data() {
 			return {
-				mypTabHeight: 50,
-				mypIncludeXBar: false,
 				items: [{
 					uid: 1,
 					nickname: '章鱼哥哥很爱你直到天荒地老章鱼哥哥很爱你直到天荒地老',
@@ -69,7 +67,6 @@
 </script>
 
 <style lang="scss" scoped>
-	@import '@/mypUI/mypui.scss';
 	.tm {
 		width: 750rpx;
 		

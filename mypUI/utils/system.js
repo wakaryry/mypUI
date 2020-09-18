@@ -5,7 +5,6 @@ function _getSystemInfo() {
 	})
 
 	app.globalData.screenHeight = info.screenHeight
-	app.globalData.windowHeight = info.windowHeight
 	app.globalData.statusBarHeight = info.statusBarHeight || 0
 
 	if (info.safeAreaInsets) {
@@ -48,7 +47,7 @@ export function getPlatform() {
 	return app.globalData.platform
 }
 
-export function getNavHeight() {
+export function getNavbarHeight() {
 	const app = getApp({
 		allowDefault: true
 	})
@@ -60,14 +59,15 @@ export function getNavHeight() {
 }
 
 export function getWindowHeight() {
-	const app = getApp({
-		allowDefault: true
-	})
-	if (app.globalData.windowHeight) {
-		return app.globalData.windowHeight
+	try{
+		return uni.getSystemInfoSync().windowHeight
+	}catch(e){
+		try{
+			return uni.getSystemInfoSync().windowHeight
+		}catch(e){
+			return 0
+		}
 	}
-	initSystemInfo()
-	return app.globalData.windowHeight
 }
 
 export function getScreenHeight() {
@@ -129,10 +129,10 @@ export function getHeight(val) {
 		return getStatusBarHeight()
 	}
 	if (val === 'nav') {
-		return getNavHeight()
+		return getNavbarHeight()
 	}
 	if (val === 'status-nav' || val === 'nav-status') {
-		return getStatusBarHeight() + getNavHeight()
+		return getStatusBarHeight() + getNavbarHeight()
 	}
 	if (val === 'x') {
 		return getXBarHeight()
@@ -145,7 +145,7 @@ export function getHeight(val) {
 			if (t === 'status') {
 				h += getStatusBarHeight()
 			} else if (t === 'nav') {
-				h += getNavHeight()
+				h += getNavbarHeight()
 			} else {
 				h += getPx(t)
 			}

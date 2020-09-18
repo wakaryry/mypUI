@@ -1,7 +1,7 @@
 <template>
 	<view>
-		<myp-navbar :lefts="leftIcons" title="Tabbar" @leftAction="navLeftAction"></myp-navbar>
-		<myp-tabbar ref="tabbar" :includeStatus="false" :includeNav="false" :tabs="tabs" :tabStyle="tabStyle" @selected="tabbarSwitched">
+		<myp-navbar :lefts="leftIcons" title="HumpText Tabbar" @leftAction="navLeftAction"></myp-navbar>
+		<myp-tabbar ref="tabbar" top="status-nav" :tabs="tabs" :tabStyle="tabStyle" @tabClicked="tabbarSwitched">
 			<home-tab></home-tab>
 			<mine-tab></mine-tab>
 		</myp-tabbar>
@@ -10,8 +10,6 @@
 </template>
 
 <script>
-	// 带突出按钮的情况，且点击突出并不是打开新的页面
-	// 上头有navbar，所以我们在tabbar中使用了top来做偏移
 	import homeTab from './home.vue'
 	import mineTab from './mine.vue'
 	import plusMenu from './components/plusMenu.vue'

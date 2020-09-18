@@ -1,3 +1,7 @@
+// #ifndef APP-NVUE
+import {getTouchPoint} from '../../utils/element.js'
+// #endif
+
 export default {
 	props: {
 		// #ifdef APP-NVUE
@@ -76,6 +80,10 @@ export default {
 		        })
 		    }
 		},
+		mypResetLoadmore() {
+			const ins = this.$refs['myp-list']
+			ins.resetLoadmore()
+		},
 		// #endif
 		toRefresh(ref, sucH,  failH) {
 			// u must override it to do your refresh logic
@@ -109,6 +117,9 @@ export default {
 				uni.$emit("swiperScrollRefreshSuc")
 				// #endif
 				this.mypIsDownLoading = false
+				// #ifdef APP-NVUE
+				this.mypResetLoadmore()
+				// #endif
 			} else {
 				this.mypIsUpLoading = false
 			}
@@ -128,7 +139,7 @@ export default {
 		// #ifndef APP-NVUE
 		mypOnTouchStart(e) {
 			if (!this.scrollable) return;
-			this.mypStartPoint = this.mypGetPoint(e)
+			this.mypStartPoint = getTouchPoint(e)
 			this.mypStartTop = this.mypTheScrollTop || 0
 			this.mypLastPoint = this.mypStartPoint
 			this.mypInTouchend = false
@@ -144,7 +155,7 @@ export default {
 				this.mypMoveTimeDiff = 1000 / this.mypFps
 			}
 			const scrollTop = this.mypTheScrollTop
-			const currentPoint = this.mypGetPoint(e)
+			const currentPoint = getTouchPoint(e)
 			const moveY = currentPoint.y - this.mypStartPoint.y
 			// console.log(scrollTop)
 			// 往下拉
@@ -166,30 +177,6 @@ export default {
 		mypOnScroll(e) {
 			// console.log('child scroll')
 			this.mypTheScrollTop = e.detail.scrollTop
-		},
-		mypGetPoint(e) {
-			if (!e) {
-				return {
-					x: 0,
-					y: 0
-				}
-			}
-			if (e.touches && e.touches[0]) {
-				return {
-					x: e.touches[0].pageX,
-					y: e.touches[0].pageY
-				}
-			} else if (e.changedTouches && e.changedTouches[0]) {
-				return {
-					x: e.changedTouches[0].pageX,
-					y: e.changedTouches[0].pageY
-				}
-			} else {
-				return {
-					x: e.clientX,
-					y: e.clientY
-				}
-			}
 		}
 		// #endif
 	}

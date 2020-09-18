@@ -1,18 +1,28 @@
 <template>
 	<view>
 		<myp-navbar :lefts="leftIcons" title="弹层互动" @leftAction="navLeftAction"></myp-navbar>
-		<scroll-view class="myp-bg-page" :scroll-y="true" :style="mypContentHeightStyle">
-			<pop-cell @pop="toShowPop"></pop-cell>
-			<view style="height: 24rpx;"></view>
-			<toast-cell @toast="toShowToast"></toast-cell>
-			<view style="height: 24rpx;"></view>
-			<action-cell @select="toShowAction"></action-cell>
-			<view style="height: 24rpx;"></view>
-			<modal-cell @modal="toShowModal"></modal-cell>
-			<view style="height: 24rpx;"></view>
-			<overlay-cell @select="toShowOverlay"></overlay-cell>
-			<view style="height: 24rpx;"></view>
-		</scroll-view>
+		<myp-list-simple>
+			<myp-list-cell>
+				<pop-cell @pop="toShowPop"></pop-cell>
+				<view style="height: 24rpx;"></view>
+			</myp-list-cell>
+			<myp-list-cell>
+				<toast-cell @toast="toShowToast"></toast-cell>
+				<view style="height: 24rpx;"></view>
+			</myp-list-cell>
+			<myp-list-cell>
+				<action-cell @select="toShowAction"></action-cell>
+				<view style="height: 24rpx;"></view>
+			</myp-list-cell>
+			<myp-list-cell>
+				<modal-cell @modal="toShowModal"></modal-cell>
+				<view style="height: 24rpx;"></view>
+			</myp-list-cell>
+			<myp-list-cell>
+				<overlay-cell @select="toShowOverlay"></overlay-cell>
+				<view style="height: 24rpx;"></view>
+			</myp-list-cell>
+		</myp-list-simple>
 		<myp-position pos="bottom" offset="x-16px" boxStyle="left:32rpx;right:32rpx;">
 			<myp-notice ref="myp-notice" bgType="primary" icon="hint" text="如果不坚持吃饭,是有可能饿死的" indicator="circle-close" radius="ll" :closable="true"></myp-notice>
 		</myp-position>

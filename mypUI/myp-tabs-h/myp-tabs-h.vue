@@ -18,13 +18,12 @@
 	// item/indicator有固定宽度和动态宽度两种
 	// 
 	// #ifdef APP-NVUE
-	const dom = weex.requireModule('dom');
-	const animation = weex.requireModule('animation')
+	const dom = uni.requireNativePlugin('dom');
+	const animation = uni.requireNativePlugin('animation')
 	// #endif
-	import windowMixin from '../myp-mixin/windowMixin.js'
+	import {getPx} from '../utils/system.js'
 	
 	export default {
-		mixins: [windowMixin],
 		props: {
 			items: {
 				type: Array,
@@ -177,16 +176,16 @@
 				return _style + this.indicatorStyle
 			},
 			spacePx() {
-				return this.mypToPx(this.space)
+				return getPx(this.space)
 			},
 			scrollSizePx() {
-				return this.mypToPx(this.scrollSize)
+				return getPx(this.scrollSize)
 			},
 			widthPx() {
-				return this.mypToPx(this.width)
+				return getPx(this.width)
 			},
 			heightPx() {
-				return this.mypToPx(this.height)
+				return getPx(this.height)
 			},
 			fixedInd() {
 				const indW = parseInt(this.indicatorWidth)
@@ -211,7 +210,7 @@
 				return '0'
 			},
 			fixedIndWidthPx() {
-				return this.mypToPx(this.fixedIndWidth)
+				return getPx(this.fixedIndWidth)
 			},
 			mrScrollStyle() {
 				let _style = "flex-direction:row;"
@@ -246,7 +245,7 @@
 				return _style + this.itemStyle
 			},
 			swiperWidthPx() {
-				return this.mypToPx(this.swiperWidth)
+				return getPx(this.swiperWidth)
 			}
 		},
 		mounted() {
@@ -476,11 +475,20 @@
 
 <style lang="scss" scoped>
 	
-	/* #ifdef H5 */
+	/* #ifndef APP-NVUE */
 	.myp-tabs-scroll ::-webkit-scrollbar {
 	    display: none;
 	    width: 0 !important;
 	    height: 0 !important;
+		color: transparent;
+	    -webkit-appearance: none;
+	    background: transparent;
+	}
+	::-webkit-scrollbar {
+	    display: none;
+	    width: 0 !important;
+	    height: 0 !important;
+		color: transparent;
 	    -webkit-appearance: none;
 	    background: transparent;
 	}

@@ -22,6 +22,7 @@
 	import contentBoxMixin from '@/mypUI/myp-mixin/contentBoxMixin.js'
 	
 	const rawItems = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+	import {getPlatform} from '@/mypUI/utils/system.js'
 	
 	export default {
 		mixins: [contentBoxMixin],
@@ -62,7 +63,7 @@
 				}
 				if (!this.hasMore) {
 					console.log('没有更多辣')
-					const platform = this.mypGetPlatform()
+					const platform = getPlatform()
 					if (platform === 'ios') {
 						// ios下必须直接关闭，不然可以一直往上拖动，底部出现大量空白，而且不会自动回弹消除空白
 						this.displayLoading = 'hide'

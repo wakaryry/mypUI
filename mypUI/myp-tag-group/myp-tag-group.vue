@@ -51,8 +51,8 @@
 				default: '16rpx'
 			},
 			updatedTime: {
-				type: [String, Number],
-				default: ''
+				type: Number,
+				default: 0
 			},
 			disabled: {
 				type: Boolean,

@@ -2,8 +2,6 @@
 // nvue页面编译到H5，uni默认的样式层级比较高，会覆盖掉我们的全局class
 // 为了兼容H5，我们需要提高部分属性的层级
 // 如果您需要考虑H5，请引入该文件，并且在覆盖这些属性的时候记得加上 !important
-//
-
 @import './mypui.scss';
 
 .myp-flex {
@@ -22,20 +20,6 @@
 		flex-direction: column !important;
 	}
 }
-.myp-justify {
-	&-start {
-		justify-content: flex-start !important;
-	}
-	&-center {
-		justify-content: center !important;
-	}
-	&-end {
-		justify-content: flex-end !important;
-	}
-	&-between {
-		justify-content: space-between !important;
-	}
-}
 .myp-align {
 	&-start {
 		align-items: flex-start !important;
@@ -46,8 +30,16 @@
 	&-end {
 		align-items: flex-end !important;
 	}
-	&-between {
-		align-items: space-between !important;
+}
+.myp-position {
+	&-relative {
+		position: relative !important;
+	}
+	&-absolute {
+		position: absolute !important;
+	}
+	&-fixed {
+		position: fixed !important;
 	}
 }
 .myp-border {

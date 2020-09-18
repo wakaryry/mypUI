@@ -1,0 +1,62 @@
+<template>
+	<view>
+		<myp-tabbar ref="tabbar" :tabs="tabs" :tabStyle="tabStyle" @tabClicked="tabbarSwitched">
+			<tab-a></tab-a>
+			<tab-b></tab-b>
+		</myp-tabbar>
+		<myp-position :fixed="true" offset="x-66px" boxStyle="left:20rpx;width:50px;height:50px;border-radius:50px;background-color:#8F9CFF;justify-content:center;align-items:center;">
+			<myp-icon name="home" type="inverse" iconStyle="font-size:26px;" @iconClicked="navLeftAction"></myp-icon>
+		</myp-position>
+	</view>
+</template>
+
+<script>
+	import tabA from './components/tabA.vue'
+	import tabB from './components/tabB.vue'
+	
+	import toastMixin from '@/mypUI/myp-mixin/toastMixin.js'
+	import navHelper from '@/router/navHelper.js'
+	
+	export default {
+		components: {
+			tabA,
+			tabB
+		},
+		mixins: [toastMixin, navHelper],
+		data() {
+			return {
+				tabs: [
+					{
+						icon: '/static/tabs/home.png',
+						selectedIcon: '/static/tabs/homeH.png',
+						title: 'TabA',
+						selectedTitle: 'TabA'
+					},
+					{
+						icon: '/static/tabs/discovery.png',
+						selectedIcon: '/static/tabs/discoveryH.png',
+						title: 'TabB',
+						selectedTitle: 'TabB',
+						badge: 12
+					}
+				],
+				tabStyle: {
+					iconStyle: 'width:22px;height:22px;',
+					selectedIconStyle: 'width:22px;height:22px;',
+					titleStyle: 'font-size:12px;color:#888888;',
+					selectedTitleStyle: 'font-size:12px;color:#108EE9;',
+					boxStyle: 'background-color: #FFFFFF;'
+				}
+			}
+		},
+		methods: {
+			tabbarSwitched(val) {
+				
+			}
+		}
+	}
+</script>
+
+<style>
+
+</style>

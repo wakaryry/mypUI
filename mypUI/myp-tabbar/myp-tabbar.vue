@@ -88,7 +88,7 @@
 				}
 			},
 			duration: {
-				type: [Number, String],
+				type: Number,
 				default: 300
 			},
 			timingFunction: {
@@ -96,8 +96,8 @@
 				default: 'cubic-bezier(0.25, 0.46, 0.45, 0.94)'
 			},
 			top: {
-				type: [Number, String],
-				default: 0
+				type: String,
+				default: '0'
 			},
 			isSeize: {
 				type: Boolean,

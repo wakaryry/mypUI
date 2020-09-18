@@ -1,4 +1,4 @@
-# myp-list-cell
+# myp-scroll-scale-item
 
 ## Slots
 

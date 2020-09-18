@@ -1,9 +1,9 @@
 <template>
-	<!-- #ifdef APP-NVUE -->
-	<header>
-	<!-- #endif -->
 	<!-- #ifndef APP-NVUE -->
 	<view>
+	<!-- #endif -->
+	<!-- #ifdef APP-NVUE -->
+	<header>
 	<!-- #endif -->
 		<slot></slot>
 	<!-- #ifdef APP-NVUE -->

@@ -6,6 +6,8 @@
 | --------- | ----------- | ------ | ------ | ------- |
 | height    |             | string | -      | '0'     |
 | bgType    |             | string | -      | 'none'  |
+| border    |             | string | -      | 'none'  |
+| radius    |             | string | -      | 'none'  |
 | boxStyle  |             | string | -      | ''      |
 
 ## Slots

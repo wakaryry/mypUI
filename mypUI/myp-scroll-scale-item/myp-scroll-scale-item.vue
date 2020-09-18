@@ -7,8 +7,6 @@
 </template>
 
 <script>
-	const bindingX = uni.requireNativePlugin('bindingx');
-	
 	export default {
 		inject: ['mypBannerRoot'],
 		data() {

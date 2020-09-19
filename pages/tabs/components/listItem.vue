@@ -1,5 +1,5 @@
 <template>
-	<view class="liv-box">
+	<view class="liv-box" :style="boxStyle">
 		<view style="height: 68rpx;"></view>
 		<view class="liv-body">
 			<text class="liv-body-title">{{item.title}}</text>
@@ -26,6 +26,10 @@
 				default: ()=>{
 					return {}
 				}
+			},
+			boxStyle: {
+				type: String,
+				default: ''
 			}
 		},
 		methods: {
@@ -42,15 +46,18 @@
 	.liv {
 		&-box {
 			position: relative;
-			width: 660rpx;
+			width: 628rpx;
 		}
 		&-body {
 			background-color: #FFFFFF;
 			border-radius: 32rpx;
 			height: 300rpx;
-			margin-left: 32rpx;
 			flex-direction: column;
 			align-items: center;
+			border-width: $myp-border-width;
+			border-color: rgba($color: $myp-color-error, $alpha: 0.2); // $myp-border-color-light;
+			border-style: solid;
+			
 			&-title {
 				margin-top: 92rpx;
 				font-size: 32rpx;
@@ -65,10 +72,12 @@
 		}
 		&-logo {
 			position: absolute;
+			left: 0;
 			top: 0;
-			width: 660rpx;
+			width: 628rpx;
 			flex-direction: row;
 			justify-content: center;
+			
 			&-image {
 				width: 363rpx;
 				height: 136rpx;

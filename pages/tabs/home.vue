@@ -1,14 +1,15 @@
 <template>
 	<view class="myp-full-flex myp-flex-column">
 		<myp-navbar :fixed="false" title="mypUI"></myp-navbar>
-		<myp-list-simple bgType="page">
+		<myp-list-simple bgType="inverse">
 			<myp-list-cell>
 				<view style="height: 24rpx;"></view>
 			</myp-list-cell>
 			<myp-list-cell>
 				<myp-scroll-h left="628rpx" bgType="none" height="392rpx">
+					<view style="width: 32rpx;"></view>
 					<intro-header @selected="toIntro"></intro-header>
-					<component-list-item v-for="(item, idx) in items" :key="idx" :item="item" @selected="toItem(item.type)"></component-list-item>
+					<component-list-item v-for="(item, idx) in items" :key="idx" :item="item" boxStyle="margin-left:32rpx;" @selected="toItem(item.type)"></component-list-item>
 					<view style="width: 32rpx;"></view>
 				</myp-scroll-h>
 				<view style="height: 24rpx;"></view>

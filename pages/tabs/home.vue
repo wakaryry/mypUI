@@ -6,8 +6,8 @@
 				<view style="height: 24rpx;"></view>
 			</myp-list-cell>
 			<myp-list-cell>
-				<myp-scroll-h left="628rpx" bgType="none" height="392rpx">
-					<view style="width: 32rpx;"></view>
+				<myp-scroll-h left="660rpx" bgType="none" height="392rpx">
+					<view style="width: 61rpx;"></view>
 					<intro-header @selected="toIntro"></intro-header>
 					<component-list-item v-for="(item, idx) in items" :key="idx" :item="item" boxStyle="margin-left:32rpx;" @selected="toItem(item.type)"></component-list-item>
 					<view style="width: 32rpx;"></view>

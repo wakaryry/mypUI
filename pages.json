@@ -111,6 +111,24 @@
 				"disableScroll": true
 			}
 		},
+		{
+			"path": "pages/base/content_box",
+			"style": {
+				"disableScroll": true
+			}
+		},
+		{
+			"path": "pages/base/height",
+			"style": {
+				"disableScroll": true
+			}
+		},
+		{
+			"path": "pages/base/position",
+			"style": {
+				"disableScroll": true
+			}
+		},
 		// flex
 		{
 			"path": "pages/flex/index",

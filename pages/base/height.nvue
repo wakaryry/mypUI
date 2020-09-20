@@ -1,0 +1,52 @@
+<template>
+	<view>
+		<myp-navbar :lefts="leftIcons" title="便捷高度盒子" @leftAction="navLeftAction"></myp-navbar>
+		<myp-list-simple>
+			<myp-list-cell>
+				<view style="height: 24rpx;"></view>
+				<myp-title title2="myp-height"></myp-title>
+				<myp-height bgType="success" height="status-nav" boxStyle="flex-direction:row;align-items:center;justify-content:center;">
+					<text class="myp-color-inverse myp-size-base">status-nav</text>
+				</myp-height>
+				<view style="height: 12rpx;"></view>
+				<myp-height bgType="error" height="x" boxStyle="flex-direction:row;align-items:center;justify-content:center;">
+					<text class="myp-color-inverse myp-size-base">xbar</text>
+				</myp-height>
+				<view style="height: 12rpx;"></view>
+				<myp-height bgType="primary" height="120rpx" boxStyle="flex-direction:row;align-items:center;justify-content:center;">
+					<text class="myp-color-inverse myp-size-base">120rpx</text>
+				</myp-height>
+				<view style="height: 12rpx;"></view>
+				<myp-height bgType="primary" height="x-120rpx" boxStyle="flex-direction:row;align-items:center;justify-content:center;">
+					<text class="myp-color-inverse myp-size-base">x-120rpx</text>
+				</myp-height>
+			</myp-list-cell>
+			<myp-list-cell>
+				<view style="height: 24rpx;"></view>
+				<myp-title title2="myp-status"></myp-title>
+				<myp-status bgType="error" boxStyle="flex-direction:row;align-items:center;justify-content:center;">
+					<text class="myp-color-inverse myp-size-base">myp-status</text>
+				</myp-status>
+			</myp-list-cell>
+			<myp-list-cell>
+				<view style="height: 24rpx;"></view>
+				<myp-title title2="myp-xbar"></myp-title>
+				<myp-xbar bgType="primary" boxStyle="flex-direction:row;align-items:center;justify-content:center;">
+					<text class="myp-color-inverse myp-size-base">myp-xbar</text>
+				</myp-xbar>
+			</myp-list-cell>
+		</myp-list-simple>
+	</view>
+</template>
+
+<script>
+	import navHelper from '@/router/navHelper.js'
+	
+	export default {
+		mixins: [navHelper]
+	}
+</script>
+
+<style>
+
+</style>

@@ -29,7 +29,7 @@
 			<myp-list-cell>
 				<view style="height: 16rpx;"></view>
 				<myp-title title1="列表与盒子-快速构建页面" title1Size="ll" title1Style="font-weight: 700;" boxStyle="padding-left:32rpx;padding-right:32rpx;">
-					<myp-button slot="extra" text="查看更多" textSize="s" textType="text" border="all" radius="ll" boxStyle="width:160rpx;height:56rpx;"></myp-button>
+					<myp-button slot="extra" text="查看更多" textSize="s" textType="text" border="all" radius="ll" boxStyle="width:160rpx;height:56rpx;" @buttonClicked="toPage({page: 'scroll_index'})"></myp-button>
 				</myp-title>
 				<myp-scroll-h width="750rpx" height="300rpx">
 					<view style="width: 32rpx;"></view>

@@ -17,6 +17,9 @@ export default {
 	base_grid: '/pages/base/grid',
 	base_countdown: '/pages/base/countdown',
 	base_indexlist: '/pages/base/indexlist',
+	base_content_box: '/pages/base/content_box',
+	base_height: '/pages/base/height',
+	base_position: '/pages/base/position',
 	// flex
 	flex_index: '/pages/flex/index',
 	flex_flex: '/pages/flex/flex',

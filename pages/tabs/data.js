@@ -99,62 +99,52 @@ export const boxes = [{
 	cover: 'https://mypui.asnowsoft.cn/imgs/c10.jpg',
 	title: '[myp-list]刷新加载列表',
 	label: '列表',
-	page: ''
+	page: 'scroll_list_more'
 }, {
 	cover: 'https://mypui.asnowsoft.cn/imgs/c7.jpg',
 	title: '[myp-list-simple]纯列表',
 	label: '列表',
-	page: ''
+	page: 'scroll_list_simple'
 }, {
 	cover: 'https://mypui.asnowsoft.cn/imgs/c4.jpg',
 	title: '[myp-waterfall]瀑布流',
 	label: '瀑布',
-	page: ''
-}, {
-	cover: 'https://mypui.asnowsoft.cn/imgs/c1.jpg',
-	title: '[myp-list-cell]列表单元',
-	label: '单元',
-	page: ''
-}, {
-	cover: 'https://mypui.asnowsoft.cn/imgs/c3.jpg',
-	title: '[myp-list-header]列表header',
-	label: '单元',
-	page: ''
+	page: 'scroll_waterfall'
 }, {
 	cover: 'https://mypui.asnowsoft.cn/imgs/c12.jpg',
 	title: '[myp-scroll-h]横向列表',
 	label: '列表',
-	page: ''
+	page: 'scroll_h'
 }, {
 	cover: 'https://mypui.asnowsoft.cn/imgs/c4.jpg',
 	title: '[myp-list-index]索引列表',
 	label: '索引',
-	page: ''
+	page: 'base_indexlist'
 }, {
 	cover: 'https://mypui.asnowsoft.cn/imgs/c7.jpg',
 	title: '[myp-content-box]高度盒子',
 	label: '盒子',
-	page: ''
+	page: 'base_content_box'
 }, {
 	cover: 'https://mypui.asnowsoft.cn/imgs/c1.jpg',
 	title: '[myp-height]高度盒子',
 	label: '盒子',
-	page: ''
+	page: 'base_height'
 }, {
 	cover: 'https://mypui.asnowsoft.cn/imgs/c10.jpg',
 	title: '[myp-status]状态栏',
 	label: '盒子',
-	page: ''
+	page: 'base_height'
 }, {
 	cover: 'https://mypui.asnowsoft.cn/imgs/c3.jpg',
 	title: '[myp-xbar]底部安全区',
 	label: '盒子',
-	page: ''
+	page: 'base_height'
 }, {
 	cover: 'https://mypui.asnowsoft.cn/imgs/c7.jpg',
 	title: '[myp-position]定位盒子',
 	label: '定位',
-	page: ''
+	page: 'base_position'
 }]
 // 导航
 export const navs = [{

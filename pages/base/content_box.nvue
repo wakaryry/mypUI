@@ -1,0 +1,75 @@
+<template>
+	<view>
+		<myp-navbar :lefts="leftIcons" bgType="none" :isSeize="false" title="myp-content-box" @leftAction="navLeftAction"></myp-navbar>
+		<myp-content-box :includeStatus="includeStatus" :includeNav="includeNav" :includeXBar="includeXBar" :extra="extra" :tabHeight="tabHeight" :height="height" boxStyle="background-color: #e5f7fe;"></myp-content-box>
+		<myp-position :fixed="true" pos="bottom" offset="x-120rpx" boxStyle="left: 32rpx;">
+			<view>
+				<myp-button bgType="primary" :text="'status:'+includeStatus" textType="inverse" border="none" radius="ll" boxStyle="width:240rpx;margin-top:16rpx;margin-bottom:16rpx;" @buttonClicked="toToggleStatus"></myp-button>
+				<myp-button bgType="primary" :text="'nav:'+includeNav" textType="inverse" border="none" radius="ll" boxStyle="width:240rpx;margin-top:16rpx;margin-bottom:16rpx;" @buttonClicked="toToggleNav"></myp-button>
+				<myp-button bgType="primary" :text="'xbar:'+includeXBar" textType="inverse" border="none" radius="ll" boxStyle="width:240rpx;margin-top:16rpx;margin-bottom:16rpx;" @buttonClicked="toToggleXBar"></myp-button>
+				<myp-button bgType="primary" :text="'tab:'+tabHeight+''" textType="inverse" border="none" radius="ll" boxStyle="width:240rpx;margin-top:16rpx;margin-bottom:16rpx;" @buttonClicked="toToggleTabHeight"></myp-button>
+				<myp-button bgType="primary" :text="'extra:'+extra" textType="inverse" border="none" radius="ll" boxStyle="width:240rpx;margin-top:16rpx;margin-bottom:16rpx;" @buttonClicked="toToggleExtra"></myp-button>
+				<myp-button bgType="primary" :text="'height:'+height" textType="inverse" border="none" radius="ll" boxStyle="width:240rpx;margin-top:16rpx;margin-bottom:16rpx;" @buttonClicked="toToggleHeight"></myp-button>
+			</view>
+		</myp-position>
+	</view>
+</template>
+
+<script>
+	import navHelper from '@/router/navHelper.js'
+	
+	export default {
+		mixins: [navHelper],
+		data() {
+			return {
+				// content-box的高度规则是：屏幕高度 - status - nav - extra - tabHeight - xbar
+				// 如果 设置了height，而且不是0，则不会计算，直接使用height
+				includeStatus: true,
+				includeNav: true,
+				includeXBar: true,
+				extra: 0,
+				height: 0,
+				tabHeight: 0
+			}
+		},
+		methods: {
+			// 0表示计算高度，非0直接使用这个高度值，其它设置全部无效
+			toToggleHeight() {
+				if (this.height === 0) {
+					this.height = '600rpx'
+				} else {
+					this.height = 0
+				}
+			},
+			toToggleStatus() {
+				this.includeStatus = !this.includeStatus
+			},
+			toToggleNav() {
+				this.includeNav = !this.includeNav
+				this.includeStatus = this.includeNav
+			},
+			toToggleXBar() {
+				this.includeXBar = !this.includeXBar
+			},
+			toToggleExtra() {
+				if (this.extra === 0) {
+					this.extra = '120rpx'
+				} else {
+					this.extra = 0
+				}
+			},
+			// Number 类型，为px高度
+			toToggleTabHeight() {
+				if (this.tabHeight === 0) {
+					this.tabHeight = 50
+				} else {
+					this.tabHeight = 0
+				}
+			}
+		}
+	}
+</script>
+
+<style>
+
+</style>

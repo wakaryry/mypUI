@@ -29,8 +29,10 @@ export default {
 	design_theme: '/pages/design/theme',
 	// pop
 	pop_index: '/pages/pop/index',
-	// navbar
-	navbar_index: '/pages/navbar/index',
+	// nav
+	nav_index: '/pages/nav/index',
+	nav_navbar: '/pages/nav/navbar',
+	nav_popover: "/pages/nav/popover",
 	// tabbar
 	tabbar_index: '/pages/tabbar/index',
 	tabbar_hump: '/pages/tabbar/hump',

@@ -54,7 +54,7 @@
 				<view style="height: 24rpx;"></view>
 			</myp-list-cell>
 			<myp-list-cell>
-				<myp-title leftIcon1="user-check" leftIcon1Type="error" title1="导航-带你去想去的地方" title1Size="ll" title1Style="font-weight: 700;" title3="查看更多" rightIcon2="right" boxStyle="padding-left:32rpx;padding-right:32rpx;"></myp-title>
+				<myp-title leftIcon1="user-check" leftIcon1Type="error" title1="导航-带你去想去的地方" title1Size="ll" title1Style="font-weight: 700;" title3="查看更多" rightIcon2="right" boxStyle="padding-left:32rpx;padding-right:32rpx;" @rightClicked="toPage({page: 'nav_index'})"></myp-title>
 				<navs-scroll :items="navs" @care="toPage"></navs-scroll>
 				<myp-divider></myp-divider>
 			</myp-list-cell>

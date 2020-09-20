@@ -22,7 +22,7 @@ export const bigCats = [{
 }, {
 	icon: 'solid-circle-right',
 	name: '导航栏',
-	type: 'navbar_index',
+	type: 'nav_navbar',
 	title: '完全自定义',
 	intro: '默认与随心所欲之间，没有限制',
 	hint: '查看样板'
@@ -152,37 +152,37 @@ export const navs = [{
 	name: '导航栏',
 	cares: 'myp-navbar',
 	intro: '支持定位与占位',
-	page: ''
+	page: 'nav_navbar'
 }, {
 	avatar: 'https://mypui.asnowsoft.cn/imgs/cat.jpg',
 	name: 'tabbar',
 	cares: 'myp-tabbar',
 	intro: '凹凸都可以',
-	page: ''
+	page: 'tabbar_index'
 }, {
 	avatar: 'https://mypui.asnowsoft.cn/imgs/pig.jpg',
 	name: '横向tabs',
 	cares: 'myp-tabs-h',
 	intro: '可与进度联动',
-	page: ''
+	page: 'base_tabs'
 }, {
 	avatar: 'https://mypui.asnowsoft.cn/imgs/girl.jpg',
 	name: '竖向tabs',
 	cares: 'myp-tabs-v',
 	intro: '竖向切换tabs',
-	page: ''
+	page: 'base_tabs'
 }, {
 	avatar: 'https://mypui.asnowsoft.cn/imgs/hen.jpg',
 	name: '抽屉',
 	cares: 'myp-drawer',
 	intro: '可拖动抽屉/菜单',
-	page: ''
+	page: 'drawer_index'
 }, {
 	avatar: 'https://mypui.asnowsoft.cn/imgs/cat.jpg',
 	name: '气泡',
 	cares: 'myp-popover',
 	intro: '气泡弹层/引导',
-	page: ''
+	page: 'nav_popover'
 }]
 // 数据输入
 export const inputs = [{

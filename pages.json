@@ -249,9 +249,21 @@
 				"disableScroll": true
 			}
 		},
-		// navbar
+		// nav
 		{
-			"path": "pages/navbar/index",
+			"path": "pages/nav/navbar",
+			"style": {
+				"disableScroll": true
+			}
+		},
+		{
+			"path": "pages/nav/index",
+			"style": {
+				"disableScroll": true
+			}
+		},
+		{
+			"path": "pages/nav/popover",
 			"style": {
 				"disableScroll": true
 			}

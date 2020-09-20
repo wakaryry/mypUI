@@ -1,5 +1,5 @@
 <template>
-	<view :class="['vbc', 'myp-bg-'+bgType]" :style="boxStyle">
+	<view :class="['vbc', 'myp-bg-'+bgType]" :style="boxStyle" bubble="true" @tap="toDetail">
 		<image :src="img" mode="aspectFill" class="vbc-bg" :style="imgStyle"></image>
 		<view :class="['vbc-mask', 'myp-bg-'+maskType]"></view>
 		<view class="vbc-body">
@@ -140,6 +140,11 @@
 			descStyle: {
 				type: String,
 				default: ''
+			}
+		},
+		methods: {
+			toDetail() {
+				this.$emit("detail")
 			}
 		}
 	}

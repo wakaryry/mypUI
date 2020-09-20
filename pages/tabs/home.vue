@@ -97,7 +97,7 @@
 				<myp-scroll-h height="280rpx">
 					<view style="width: 32rpx;"></view>
 					<view v-for="(item,idx) in gestures" :key="idx" style="flex-direction: row;">
-						<v-bg-card :bgType="item.bgType" :maskType="item.maskType" :img="item.img" :tag="item.tag" :icon="item.icon" :title="item.title" :desc="item.desc" :descIcon="item.descIcon" :iconType="item.iconType" :titleType="item.titleType" :iconStyle="item.iconStyle" :descType="item.descType"></v-bg-card>
+						<v-bg-card :bgType="item.bgType" :maskType="item.maskType" :img="item.img" :tag="item.tag" :icon="item.icon" :title="item.title" :desc="item.desc" :descIcon="item.descIcon" :iconType="item.iconType" :titleType="item.titleType" :iconStyle="item.iconStyle" :descType="item.descType" @detail="toPage(item)"></v-bg-card>
 						<view style="width: 16rpx;"></view>
 					</view>
 					<view style="width: 20rpx;"></view>

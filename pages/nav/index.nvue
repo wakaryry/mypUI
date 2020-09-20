@@ -1,12 +1,39 @@
 <template>
-	<div>
-		
-	</div>
+	<view>
+		<myp-navbar :lefts="leftIcons" title="导航类组件" @leftAction="navLeftAction"></myp-navbar>
+		<myp-list-simple>
+			<myp-list-cell>
+				<view style="height: 20rpx;"></view>
+			</myp-list-cell>
+			<myp-list-cell v-for="(item,idx) in items" :key="idx">
+				<myp-cell :icon="item.icon" :title="item.name" :value="item.desc" indicator="right" radius="none" border="bottom" height="ll" valueStyle="text-align:right;" boxStyle="padding-left:30rpx;padding-right:30rpx;" @cellClicked="toDetail(item)"></myp-cell>
+			</myp-list-cell>
+		</myp-list-simple>
+	</view>
 </template>
 
 <script>
+	import navHelper from '@/router/navHelper.js'
+	
 	export default {
-		
+		mixins: [navHelper],
+		data() {
+			return {
+				items: [
+					{name: 'myp-navbar', page: 'nav_navbar', icon: 'class', desc: '导航栏配置'},
+					{name: 'myp-tabbar', page: 'tabbar_index', icon: 'headphone', desc: '各种tabbar，凹凸'},
+					{name: 'myp-tabs-h', page: 'base_tabs', icon: 'headphone', desc: '横向tabs，支持联动'},
+					{name: 'myp-tabs-v', page: 'base_tabs', icon: 'subject', desc: '竖向tabs'},
+					{name: 'myp-drawer', page: 'drawer_index', icon: 'book', desc: '抽屉，可拖拉'},
+					{name: 'myp-popover', page: 'nav_popover', icon: 'topic', desc: '引导气泡'}
+				]
+			}
+		},
+		methods: {
+			toDetail(val) {
+				this.navigateTo(val.page)
+			}
+		}
 	}
 </script>
 

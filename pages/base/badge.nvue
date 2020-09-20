@@ -1,12 +1,30 @@
 <template>
-	<div>
-		
-	</div>
+	<view>
+		<myp-navbar :lefts="leftIcons" title="myp-badge" @leftAction="navLeftAction"></myp-navbar>
+		<myp-list-simple>
+			<myp-list-cell>
+				<view style="height: 24rpx;"></view>
+				<myp-flex bgType="none">
+					<view class="myp-justify-center myp-align-center" style="flex: 1;">
+						<myp-badge></myp-badge>
+					</view>
+					<view class="myp-justify-center myp-align-center" style="flex: 1;">
+						<myp-badge size="24rpx" bgType="primary"></myp-badge>
+					</view>
+					<view class="myp-justify-center myp-align-center" style="flex: 1;">
+						<myp-badge text="买一赠一" size="0" boxStyle="padding-left:16rpx;padding-right:16rpx;height:40rpx;border-radius:40rpx;"></myp-badge>
+					</view>
+				</myp-flex>
+			</myp-list-cell>
+		</myp-list-simple>
+	</view>
 </template>
 
 <script>
+	import navHelper from '@/router/navHelper.js'
+	
 	export default {
-		
+		mixins: [navHelper]
 	}
 </script>
 

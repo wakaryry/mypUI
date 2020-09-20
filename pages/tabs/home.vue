@@ -19,10 +19,10 @@
 					<!-- 以下条件编译只是示范各端的差异：在MP端自定义组件需要再次设置style为flex:1. -->
 					<!-- 当然你可以不区分，全部都设置style为flex:1 -->
 					<!-- #ifndef APP-NVUE || H5 -->
-					<myp-item v-for="(item,idx) in apps" :key="idx" :icon="item.icon" :text="item.name" iconType="inverse" style="flex:1;" boxStyle="height:180rpx;flex:1;" iconBoxStyle="width:80rpx;height:80rpx;border-radius:80rpx;background-color:#FF9090;"></myp-item>
+					<myp-item v-for="(item,idx) in recommends" :key="idx" :icon="item.icon" :text="item.name" iconType="inverse" style="flex:1;" boxStyle="height:180rpx;flex:1;" iconBoxStyle="width:80rpx;height:80rpx;border-radius:80rpx;background-color:#FF9090;" @itemClicked="toPage(item)"></myp-item>
 					<!-- #endif -->
 					<!-- #ifdef APP-NVUE || H5 -->
-					<myp-item v-for="(item,idx) in apps" :key="idx" :icon="item.icon" :text="item.name" iconType="inverse" boxStyle="height:180rpx;flex:1;" iconBoxStyle="width:80rpx;height:80rpx;border-radius:80rpx;background-color:#FF9090;"></myp-item>
+					<myp-item v-for="(item,idx) in recommends" :key="idx" :icon="item.icon" :text="item.name" iconType="inverse" boxStyle="height:180rpx;flex:1;" iconBoxStyle="width:80rpx;height:80rpx;border-radius:80rpx;background-color:#FF9090;" @itemClicked="toPage(item)"></myp-item>
 					<!-- #endif -->
 				</myp-flex>
 			</myp-list-cell>
@@ -128,7 +128,7 @@
 	import vLongCard from '@/components/vLongVard.vue'
 	import vBgCard from '@/components/vBgCard.vue'
 	
-	import {bigCats, boxes, flexs, navs, inputs, displays, interacts, gestures} from './data.js'
+	import {recommends, bigCats, boxes, flexs, navs, inputs, displays, interacts, gestures} from './data.js'
 	
 	export default {
 		components: {
@@ -146,7 +146,7 @@
 		inject: ['tabRoot'],
 		data() {
 			return {
-				apps: [{icon: 'solid-camera', name: '推荐'},{icon: 'solid-location', name: '附近'},{icon: 'solid-fire', name: '排行榜'},{icon: 'solid-calendar', name: '最近'},{icon: 'radio-button', name: '随机'}],
+				recommends: recommends,
 				items: bigCats,
 				flexs: flexs,
 				boxes: boxes,

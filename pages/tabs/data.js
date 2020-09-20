@@ -1,3 +1,26 @@
+// recommend
+export const recommends = [{
+	icon: 'solid-camera',
+	name: '基础',
+	page: 'base_index'
+}, {
+	icon: 'solid-location',
+	name: '列表',
+	page: 'scroll_index'
+}, {
+	icon: 'solid-fire',
+	name: 'swiper',
+	page: 'swiper_index'
+}, {
+	icon: 'solid-calendar',
+	name: '筛选',
+	page: 'filter_index'
+}, {
+	icon: 'radio-button',
+	name: '弹层',
+	page: 'pop_index'
+}]
+
 export const bigCats = [{
 	icon: 'radio-button',
 	name: '基础组件',

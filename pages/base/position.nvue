@@ -1,7 +1,17 @@
 <template>
 	<view>
-		<myp-navbar :lefts="leftIcons" title="便捷高度盒子" @leftAction="navLeftAction"></myp-navbar>
+		<myp-navbar :lefts="leftIcons" title="快速定位" @leftAction="navLeftAction"></myp-navbar>
 		<myp-list-simple></myp-list-simple>
+		<myp-position pos="top" offset="status-nav-24rpx" boxStyle="left:75rpx;">
+			<myp-button bgType="primary" border="none" radius="ll" text="这里是顶部的定位内容" textType="inverse" boxStyle="width:600rpx;"></myp-button>
+		</myp-position>
+		<myp-position pos="bottom" offset="x-24rpx" boxStyle="left:75rpx;">
+			<myp-button bgType="primary" border="none" radius="ll" text="这里是底部的定位内容" textType="inverse" boxStyle="width:600rpx;"></myp-button>
+		</myp-position>
+		<myp-position pos="bottom" offset="x-160rpx" boxStyle="right:75rpx;">
+			<myp-button bgType="primary" border="none" radius="ll" text="调整位置" textType="inverse" boxStyle="width:300rpx;"></myp-button>
+			<myp-button bgType="primary" border="none" radius="ll" text="比如靠右" textType="inverse" boxStyle="width:300rpx;margin-top:16rpx;"></myp-button>
+		</myp-position>
 	</view>
 </template>
 

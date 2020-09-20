@@ -25,6 +25,8 @@ export default {
 	flex_flex: '/pages/flex/flex',
 	flex_wing: '/pages/flex/wing',
 	flex_space: '/pages/flex/space',
+	// design
+	design_theme: '/pages/design/theme',
 	// pop
 	pop_index: '/pages/pop/index',
 	// navbar

@@ -1,0 +1,18 @@
+<template>
+	<view>
+		<myp-navbar title="主题系统"></myp-navbar>
+		<myp-list-simple></myp-list-simple>
+	</view>
+</template>
+
+<script>
+	import navHelper from '@/router/navHelper.js'
+	
+	export default {
+		mixins: [navHelper]
+	}
+</script>
+
+<style>
+
+</style>

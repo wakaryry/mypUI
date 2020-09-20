@@ -111,6 +111,31 @@
 				"disableScroll": true
 			}
 		},
+		// flex
+		{
+			"path": "pages/flex/index",
+			"style": {
+				"disableScroll": true
+			}
+		},
+		{
+			"path": "pages/flex/flex",
+			"style": {
+				"disableScroll": true
+			}
+		},
+		{
+			"path": "pages/flex/wing",
+			"style": {
+				"disableScroll": true
+			}
+		},
+		{
+			"path": "pages/flex/space",
+			"style": {
+				"disableScroll": true
+			}
+		},
 		// pop
 		{
 			"path": "pages/pop/index",

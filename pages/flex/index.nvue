@@ -1,0 +1,137 @@
+<template>
+	<view style="background-color: #e5f7fe;">
+		<myp-navbar bgType="none" :lefts="leftIcons" title="布局" @leftAction="navLeftAction"></myp-navbar>
+		<myp-list-simple bgType="none">
+			<myp-list-cell>
+				<view style="height: 24rpx;"></view>
+				<myp-search v-model="search" icon="search" :fixIcon="true" placeholder="记住,梦想很重要" border="none" radius="base" boxStyle="margin-left:32rpx;margin-right:32rpx;padding-left:32rpx;padding-right:63rpx;" @confirm="toSearch">
+					<myp-button v-if="search&&search.length>0" border="none" radius="ll" slot="extra" icon="close" iconType="inverse" iconSize="l" boxStyle="background-color:#4A5061;width:42rpx;height:42rpx;position:absolute;right:32rpx;" @buttonClicked="toClearSearch"></myp-button>
+				</myp-search>
+			</myp-list-cell>
+			<myp-list-cell>
+				<view style="height: 64rpx;"></view>
+				<myp-scroll-h left="632rpx" bgType="none" height="900rpx">
+					<view style="width: 75rpx;"></view>
+					<view>
+						<view style="height: 80rpx;"></view>
+						<view class="fi-left" bubble="true" @tap="toPage({page: 'flex_wing'})">
+							<text class="myp-color-inverse myp-size-ll" style="margin-left: 72rpx;margin-top: 72rpx;">测距</text>
+							<text class="myp-color-inverse myp-size-base" style="margin-top: 24rpx; margin-left: 72rpx;">myp-wing水平距离设置</text>
+							<image class="fi-left-img" src="https://mypui.asnowsoft.cn/imgs/unb-up.png" mode="aspectFill"></image>
+						</view>
+					</view>
+					<view class="fi-center" bubble="true" @tap="toPage({page: 'flex_flex'})">
+						<text class="myp-color-inverse myp-size-ll" style="margin-left: 72rpx;margin-top: 72rpx;">Flex布局</text>
+						<text class="myp-color-inverse myp-size-base" style="margin-top: 24rpx; margin-left: 72rpx;">myp-flex组件化布局方式</text>
+						<image class="fi-center-img" src="https://mypui.asnowsoft.cn/imgs/bed.png" mode="aspectFill"></image>
+					</view>
+					<view>
+						<view style="height: 20rpx;"></view>
+						<view class="fi-right" bubble="true" @tap="toPage({page: 'flex_space'})">
+							<text class="myp-color-inverse myp-size-ll" style="margin-left: 72rpx;margin-top: 72rpx;">间距</text>
+							<text class="myp-color-inverse myp-size-base" style="margin-top: 24rpx; margin-left: 72rpx;">myp-space垂直距离设置</text>
+							<image class="fi-right-img" src="https://mypui.asnowsoft.cn/imgs/unb-up.png" mode="aspectFill"></image>
+						</view>
+					</view>
+					<view style="width: 75rpx;"></view>
+				</myp-scroll-h>
+			</myp-list-cell>
+		</myp-list-simple>
+		<myp-loading ref="myp-loading"></myp-loading>
+		<myp-toast ref="myp-toast"></myp-toast>
+	</view>
+</template>
+
+<script>
+	import navHelper from '@/router/navHelper.js'
+	import toastMixin from '@/mypUI/myp-mixin/toastMixin.js'
+	import loadingMixin from '@/mypUI/myp-mixin/loadingMixin.js'
+	
+	export default {
+		mixins: [navHelper, toastMixin, loadingMixin],
+		data() {
+			return {
+				search: ''
+			}
+		},
+		methods: {
+			toPage(val) {
+				this.navigateTo(val.page)
+			},
+			toClearSearch() {
+				this.search = ''
+			},
+			toSearch(val) {
+				if (!val || val.trim().length === 0) {
+					this.mypShowToast({
+						text: '梦想不能为空',
+						type: 'warning',
+						mode: 'big',
+						bgType: 'mask-dark'
+					})
+					return
+				}
+				this.mypShowLoading({needMask: true})
+				const that = this
+				setTimeout(()=>{
+					that.mypHideLoading()
+					this.mypShowToast({
+						text: val,
+						type: 'success',
+						mode: 'big'
+					})
+				}, 2600)
+			}
+		}
+	}
+</script>
+
+<style lang="scss" scoped>
+	.fi {
+		&-left {
+			width: 600rpx;
+			height: 800rpx;
+			border-radius: 32rpx;
+			background-image: linear-gradient(to bottom, #fc855a, #ffab81);
+			position: relative;
+			
+			&-img {
+				position: absolute;
+				width: 500rpx;
+				height: 187rpx;
+				bottom: 0;
+				left: 50rpx;
+			}
+		}
+		&-center {
+			background-image: linear-gradient(to bottom, #2083bf, #3bade1);
+			width: 600rpx;
+			height: 900rpx;
+			border-radius: 32rpx;
+			margin-left: 32rpx;
+			margin-right: 32rpx;
+			
+			&-img {
+				position: absolute;
+				width: 500rpx;
+				height: 402rpx;
+				bottom: 0;
+				left: 50rpx;
+			}
+		}
+		&-right {
+			width: 600rpx;
+			height: 800rpx;
+			border-radius: 32rpx;
+			background-image: linear-gradient(to bottom, #f194c0, #e8b3d1);
+			
+			&-img {
+				position: absolute;
+				width: 500rpx;
+				height: 187rpx;
+				bottom: 0;
+				left: 50rpx;
+			}
+		}
+	}
+</style>

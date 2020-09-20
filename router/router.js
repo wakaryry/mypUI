@@ -17,6 +17,11 @@ export default {
 	base_grid: '/pages/base/grid',
 	base_countdown: '/pages/base/countdown',
 	base_indexlist: '/pages/base/indexlist',
+	// flex
+	flex_index: '/pages/flex/index',
+	flex_flex: '/pages/flex/flex',
+	flex_wing: '/pages/flex/wing',
+	flex_space: '/pages/flex/space',
 	// pop
 	pop_index: '/pages/pop/index',
 	// navbar

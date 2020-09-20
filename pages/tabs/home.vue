@@ -40,7 +40,7 @@
 			</myp-list-cell>
 			<myp-list-cell>
 				<myp-title title1="布局-组件化布局能力" title1Size="ll" title1Style="font-weight: 700;" boxStyle="padding-left:32rpx;padding-right:32rpx;">
-					<myp-button slot="extra" icon="arrow-right" text="查看全部" textSize="s" textType="text" border="all" radius="ll" boxStyle="width:200rpx;height:56rpx;"></myp-button>
+					<myp-button slot="extra" icon="arrow-right" text="查看全部" textSize="s" textType="text" border="all" radius="ll" boxStyle="width:200rpx;height:56rpx;" @buttonClicked="toPage({page: 'flex_index'})"></myp-button>
 				</myp-title>
 				<view v-for="(item,idx) in flexs" :key="idx" style="margin-bottom: 24rpx;">
 					<h-img-text :item="item" @detail="toPage"></h-img-text>

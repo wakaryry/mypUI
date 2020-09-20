@@ -1,0 +1,109 @@
+<template>
+	<view style="background-color: #e5f7fe;">
+		<myp-navbar bgType="none" :lefts="leftIcons" title="myp-flex" @leftAction="navLeftAction"></myp-navbar>
+		<view style="height: 24rpx;"></view>
+		<myp-search v-model="search" icon="search" :fixIcon="true" placeholder="学习也很重要" border="none" radius="base" boxStyle="margin-left:32rpx;margin-right:32rpx;padding-left:32rpx;padding-right:63rpx;" @confirm="toSearch">
+			<myp-button v-if="search&&search.length>0" border="none" radius="ll" slot="extra" icon="close" iconType="inverse" iconSize="l" boxStyle="background-color:#4A5061;width:42rpx;height:42rpx;position:absolute;right:32rpx;" @buttonClicked="toClearSearch"></myp-button>
+		</myp-search>
+		<myp-list-simple bgType="none">
+			<myp-list-cell>
+				<view style="height: 24rpx;"></view>
+				<myp-flex bgType="none">
+					<!-- 以下条件编译只是示范各端的差异：在MP端自定义组件需要再次设置style为flex:1. -->
+					<!-- 当然你可以不区分，全部都设置style为flex:1 -->
+					<!-- #ifndef APP-NVUE || H5 -->
+					<myp-item bgType="none" v-for="(item,idx) in apps" :key="idx" :icon="item.icon" :text="item.name" iconType="inverse" style="flex:1;" boxStyle="height:180rpx;flex:1;" iconBoxStyle="width:80rpx;height:80rpx;border-radius:80rpx;background-color:#FF9090;"></myp-item>
+					<!-- #endif -->
+					<!-- APP端boxStyle中设置即可 -->
+					<!-- #ifdef APP-NVUE || H5 -->
+					<myp-item bgType="none" v-for="(item,idx) in apps" :key="idx" :icon="item.icon" :text="item.name" iconType="inverse" boxStyle="height:180rpx;flex:1;" iconBoxStyle="width:80rpx;height:80rpx;border-radius:80rpx;background-color:#FF9090;"></myp-item>
+					<!-- #endif -->
+				</myp-flex>
+			</myp-list-cell>
+			<!-- 以下不再写条件编译 -->
+			<myp-list-cell>
+				<view style="height: 24rpx;"></view>
+				<myp-flex border="none" radius="base" justify="center" boxStyle="margin-left:32rpx;margin-right:32rpx;">
+					<myp-item bgType="none" v-for="(item,idx) in apps3" :key="idx" :icon="item.icon" :text="item.name" iconType="inverse" boxStyle="height:180rpx;width:160rpx;" iconBoxStyle="width:80rpx;height:80rpx;border-radius:80rpx;background-color:#FF9090;"></myp-item>
+				</myp-flex>
+			</myp-list-cell>
+			<myp-list-cell>
+				<view style="height: 24rpx;"></view>
+				<myp-flex border="none" radius="base" justify="between" boxStyle="margin-left:32rpx;margin-right:32rpx;">
+					<myp-item bgType="none" v-for="(item,idx) in apps3" :key="idx" :icon="item.icon" :text="item.name" iconType="inverse" boxStyle="height:180rpx;width:160rpx;" iconBoxStyle="width:80rpx;height:80rpx;border-radius:80rpx;background-color:#FF9090;"></myp-item>
+				</myp-flex>
+			</myp-list-cell>
+			<myp-list-cell>
+				<view style="height: 24rpx;"></view>
+				<view class="myp-flex-row myp-wing-base myp-justify-between">
+					<myp-flex direction="column" border="none" radius="base" boxStyle="width: 200rpx; height: 560rpx;">
+						<view style="width: 100rpx;height: 160rpx;background-color: #fca177;"></view>
+						<view style="width: 100rpx;height: 160rpx;background-color: #35a2d7;"></view>
+						<view style="width: 100rpx;height: 160rpx;background-color: #f5a9d5;"></view>
+					</myp-flex>
+					<myp-flex direction="column" border="none" radius="base" justify="center" boxStyle="width: 200rpx; height: 560rpx;">
+						<view style="width: 100rpx;height: 160rpx;background-color: #fca177;"></view>
+						<view style="width: 100rpx;height: 160rpx;background-color: #35a2d7;"></view>
+						<view style="width: 100rpx;height: 160rpx;background-color: #f5a9d5;"></view>
+					</myp-flex>
+					<myp-flex direction="column" border="none" radius="base" justify="between" boxStyle="width: 200rpx; height: 560rpx;">
+						<view style="width: 100rpx;height: 160rpx;background-color: #fca177;"></view>
+						<view style="width: 100rpx;height: 160rpx;background-color: #35a2d7;"></view>
+						<view style="width: 100rpx;height: 160rpx;background-color: #f5a9d5;"></view>
+					</myp-flex>
+				</view>
+			</myp-list-cell>
+		</myp-list-simple>
+		<myp-loading ref="myp-loading"></myp-loading>
+		<myp-toast ref="myp-toast"></myp-toast>
+	</view>
+</template>
+
+<script>
+	import navHelper from '@/router/navHelper.js'
+	import toastMixin from '@/mypUI/myp-mixin/toastMixin.js'
+	import loadingMixin from '@/mypUI/myp-mixin/loadingMixin.js'
+	
+	export default {
+		mixins: [navHelper, toastMixin, loadingMixin],
+		data() {
+			return {
+				search: '',
+				apps: [{icon: 'solid-camera', name: '推荐'},{icon: 'solid-location', name: '附近'},{icon: 'solid-fire', name: '排行榜'},{icon: 'solid-calendar', name: '最近'},{icon: 'radio-button', name: '随机'}],
+				apps3: [{icon: 'solid-location', name: '附近'},{icon: 'solid-fire', name: '排行榜'},{icon: 'solid-calendar', name: '最近'}]
+			}
+		},
+		methods: {
+			toPage(val) {
+				this.navigateTo(val.page)
+			},
+			toClearSearch() {
+				this.search = ''
+			},
+			toSearch(val) {
+				if (!val || val.trim().length === 0) {
+					this.mypShowToast({
+						text: '梦想不能为空',
+						type: 'warning',
+						mode: 'big',
+						bgType: 'mask-dark'
+					})
+					return
+				}
+				this.mypShowLoading({needMask: true})
+				const that = this
+				setTimeout(()=>{
+					that.mypHideLoading()
+					this.mypShowToast({
+						text: val,
+						type: 'success',
+						mode: 'big'
+					})
+				}, 2600)
+			}
+		}
+	}
+</script>
+
+<style lang="scss" scoped>
+</style>

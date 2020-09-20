@@ -1,15 +1,63 @@
 <template>
-	<div>
-		
-	</div>
+	<view>
+		<myp-navbar :lefts="leftIcons" title="myp-item" @leftAction="navLeftAction"></myp-navbar>
+		<myp-list-simple>
+			<myp-list-cell>
+				<view style="height: 24rpx;"></view>
+				<myp-flex>
+					<myp-item v-for="(item,idx) in items" :key="idx" :icon="item.icon" :text="item.name" textType="text" iconType="primary" iconStyle="font-size: 46rpx;" space="20rpx" style="flex: 1;" boxStyle="flex:1;height:180rpx;"></myp-item>
+				</myp-flex>
+			</myp-list-cell>
+			<myp-list-cell>
+				<view style="height: 24rpx;"></view>
+				<myp-flex justify="betwwen" boxStyle="height:140rpx">
+					<myp-item icon="0" :isIcon="false" text="动态" boxStyle="width:160rpx; height: 100rpx;"></myp-item>
+					<view class="ms-split"></view>
+					<myp-item icon="0" :isIcon="false" text="关注" boxStyle="width:160rpx; height: 100rpx;"></myp-item>
+					<view class="ms-split"></view>
+					<myp-item icon="0" :isIcon="false" text="粉丝" boxStyle="width:160rpx; height: 100rpx;"></myp-item>
+				</myp-flex>
+			</myp-list-cell>
+			<myp-list-cell>
+				<view style="height: 24rpx;"></view>
+				<myp-flex>
+					<myp-item v-for="(item,idx) in items2" :key="idx" :icon="item.icon" :text="item.name" textType="text" iconType="warning" iconStyle="font-size: 52rpx;" space="20rpx" boxStyle="width:187rpx;height:180rpx;">
+						<myp-badge v-if="item.badge" :text="item.number" size="32rpx" boxStyle="position:absolute;right:46rpx;top:8rpx;"></myp-badge>
+					</myp-item>
+				</myp-flex>
+			</myp-list-cell>
+		</myp-list-simple>
+	</view>
 </template>
 
 <script>
+	import navHelper from '@/router/navHelper.js'
+	
 	export default {
-		
+		mixins: [navHelper],
+		data() {
+			return {
+				items: [
+					{icon: 'building', name: '离线缓存'},{icon: 'circle-play', name: '稍后再看'},{icon: 'star', name: '我的收藏'},{icon: 'refresh', name: '历史记录'},
+				],
+				items2: [
+					{icon: 'report', name: '创作首页'},{icon: 'edu', name: '创作学院'},{icon: 'subject', name: '创作日历'},{icon: 'task', name: '热门活动', badge: true, number: 1},
+				]
+			}
+		}
 	}
 </script>
 
-<style>
-
+<style lang="scss" scoped>
+	@import '@/mypUI/mypui.scss';
+	
+	.ms {
+		&-split {
+			width: 1px;
+			height: 66rpx;
+			background-color: $myp-border-color-light;
+			margin-left: 50rpx;
+			margin-right: 50rpx;
+		}
+	}
 </style>

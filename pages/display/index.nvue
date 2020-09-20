@@ -1,12 +1,33 @@
 <template>
-	<div>
-		
-	</div>
+	<view>
+		<myp-navbar :lefts="leftIcons" title="展示类组件" @leftAction="navLeftAction"></myp-navbar>
+		<myp-list-simple>
+			<myp-list-cell>
+				<view style="height: 20rpx;"></view>
+			</myp-list-cell>
+			<myp-list-cell v-for="(item,idx) in items" :key="idx">
+				<myp-cell :icon="item.icon" :title="item.title" :value="item.desc" indicator="right" radius="none" border="bottom" height="ll" valueStyle="text-align:right;" boxStyle="padding-left:30rpx;padding-right:30rpx;" @cellClicked="toDetail(item)"></myp-cell>
+			</myp-list-cell>
+		</myp-list-simple>
+	</view>
 </template>
 
 <script>
+	import navHelper from '@/router/navHelper.js'
+	import {displays} from '@/pages/tabs/data.js'
+	
 	export default {
-		
+		mixins: [navHelper],
+		data() {
+			return {
+				items: displays
+			}
+		},
+		methods: {
+			toDetail(val) {
+				this.navigateTo(val.page)
+			}
+		}
 	}
 </script>
 

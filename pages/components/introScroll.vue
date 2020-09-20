@@ -9,7 +9,7 @@
 </template>
 
 <script>
-	import vCareCard from '@/components/card/vCareCard.vue'
+	import vCareCard from '@/components/vCareCard.vue'
 	
 	export default {
 		components: {

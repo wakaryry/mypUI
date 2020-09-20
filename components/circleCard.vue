@@ -1,11 +1,11 @@
 <template>
-	<view class="cc" :style="boxStyle">
-		<image class="cc-img" src="https://mypui.asnowsoft.cn/imgs/c7.jpg" mode="aspectFill"></image>
-		<text class="cc-title">莫西卡的小村庄</text>
-		<text class="cc-desc">来感受花开花落，云卷云舒</text>
+	<view class="cc" :style="boxStyle" bubble="true" @tap="toDetail">
+		<image class="cc-img" :src="item.cover" mode="aspectFill"></image>
+		<text class="cc-title">{{item.title}}</text>
+		<text class="cc-desc">{{item.desc}}</text>
 		<view class="cc-label">
 			<myp-icon name="comment-dots" type="inverse" size="base"></myp-icon>
-			<text class="cc-label-text">68.4万</text>
+			<text class="cc-label-text">{{item.label}}</text>
 		</view>
 	</view>
 </template>
@@ -13,9 +13,20 @@
 <script>
 	export default {
 		props: {
+			item: {
+				type: Object,
+				default: ()=>{
+					return {}
+				}
+			},
 			boxStyle: {
 				type: String,
 				default: ''
+			}
+		},
+		methods: {
+			toDetail() {
+				this.$emit("detail", this.item)
 			}
 		}
 	}

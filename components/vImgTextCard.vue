@@ -1,19 +1,31 @@
 <template>
-	<view class="vitc">
+	<view class="vitc" bubble="true" @tap="toDetail">
 		<view class="vitc-top">
-			<image src="https://mypui.asnowsoft.cn/imgs/c1.jpg" class="vitc-img" mode="aspectFill"></image>
+			<image :src="item.cover" class="vitc-img" mode="aspectFill"></image>
 			<view class="vitc-tag">
 				<myp-icon name="comment-dots" type="inverse" size="s"></myp-icon>
-				<text class="vitc-tag-text">21.4亿</text>
+				<text class="vitc-tag-text">{{item.label}}</text>
 			</view>
 		</view>
-		<text class="vitc-text">[最佳裁判]今天我们一起吃火锅</text>
+		<text class="vitc-text">{{item.title}}</text>
 	</view>
 </template>
 
 <script>
 	export default {
-		
+		props: {
+			item: {
+				type: Object,
+				default: ()=>{
+					return {}
+				}
+			}
+		},
+		methods: {
+			toDetail() {
+				this.$emit("detail", this.item)
+			}
+		}
 	}
 </script>
 

@@ -1,17 +1,29 @@
 <template>
-	<view class="hit">
-		<image class="hit-img" src="https://mypui.asnowsoft.cn/imgs/c7.jpg" mode="aspectFill"></image>
+	<view class="hit" bubble="true" @tap="toDetail">
+		<image class="hit-img" :src="item.cover" mode="aspectFill"></image>
 		<view class="hit-body">
-			<text class="hit-title">天真但不傻，才是真的可爱</text>
-			<text class="hit-desc">我想在一个甜甜的午后，享受蜂蜜味的晚风</text>
+			<text class="hit-title">{{item.title}}</text>
+			<text class="hit-desc">{{item.desc}}</text>
 		</view>
-		<myp-icon name="arrow-right" type="error" boxStyle="border-radius:40rpx;border-width:1px;border-color:#EEEEEE;border-style:solid;width:50rpx;height:50rpx;"></myp-icon>
+		<myp-icon name="arrow-right" type="error" boxStyle="border-radius:40rpx;border-width:1px;border-color:#EEEEEE;border-style:solid;width:50rpx;height:50rpx;" @iconClicked="toDetail"></myp-icon>
 	</view>
 </template>
 
 <script>
 	export default {
-		
+		props: {
+			item: {
+				type: Object,
+				default: ()=>{
+					return {}
+				}
+			}
+		},
+		methods: {
+			toDetail() {
+				this.$emit("detail", this.item)
+			}
+		}
 	}
 </script>
 

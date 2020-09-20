@@ -20,7 +20,7 @@
 </template>
 
 <script>
-	import hIntroCard from '@/components/card/hIntroCard.vue'
+	import hIntroCard from '@/components/hIntroCard.vue'
 	
 	import dataMixin from '@/pages/base/mixin/indexData.js'
 	

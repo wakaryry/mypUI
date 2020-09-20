@@ -2,21 +2,25 @@
 	<view class="tc">
 		<view class="tc-title">
 			<myp-icon name="solid-calendar" size="ll" type="error" iconStyle="font-size:42rpx;"></myp-icon>
-			<text class="tc-title-text">日志日历</text>
+			<text class="tc-title-text">今日话题</text>
 		</view>
 		<view class="tc-bottom">
 			<view class="tc-body">
-				<text class="tc-label">今天09/21</text>
-				<text class="tc-desc">更有108位作者发布了1200个日志</text>
+				<text class="tc-label">主题系统</text>
+				<text class="tc-desc">了解内部采用的主题系统以及规范样式</text>
 			</view>
-			<myp-icon name="solid-circle-arrow" type="error" iconStyle="font-size:100rpx;"></myp-icon>
+			<myp-icon name="solid-circle-arrow" type="error" iconStyle="font-size:100rpx;" @iconClicked="toDetail"></myp-icon>
 		</view>
 	</view>
 </template>
 
 <script>
 	export default {
-		
+		methods: {
+			toDetail() {
+				this.$emit("detail")
+			}
+		}
 	}
 </script>
 

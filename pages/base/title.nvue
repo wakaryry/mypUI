@@ -51,7 +51,7 @@
 </template>
 
 <script>
-import hEntryCard from '@/components/card/hEntryCard.vue'
+import hEntryCard from '@/components/hEntryCard.vue'
 
 import toastMixin from '@/mypUI/myp-mixin/toastMixin.js'
 import navHelper from '@/router/navHelper.js'

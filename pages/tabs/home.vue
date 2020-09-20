@@ -12,7 +12,7 @@
 					<component-list-item v-for="(item, idx) in items" :key="idx" :item="item" boxStyle="margin-left:32rpx;" @selected="toItem(item.type)"></component-list-item>
 					<view style="width: 32rpx;"></view>
 				</myp-scroll-h>
-				<view style="height: 24rpx;"></view>
+				<view style="height: 16rpx;"></view>
 			</myp-list-cell>
 			<myp-list-cell>
 				<myp-flex>
@@ -27,68 +27,80 @@
 				</myp-flex>
 			</myp-list-cell>
 			<myp-list-cell>
-				<myp-title title1="灵魂日志, 值得领略" title1Size="ll" title1Style="font-weight: 700;" boxStyle="padding-left:32rpx;padding-right:32rpx;">
+				<view style="height: 16rpx;"></view>
+				<myp-title title1="列表与盒子-快速构建页面" title1Size="ll" title1Style="font-weight: 700;" boxStyle="padding-left:32rpx;padding-right:32rpx;">
 					<myp-button slot="extra" text="查看更多" textSize="s" textType="text" border="all" radius="ll" boxStyle="width:160rpx;height:56rpx;"></myp-button>
 				</myp-title>
 				<myp-scroll-h width="750rpx" height="300rpx">
 					<view style="width: 32rpx;"></view>
-					<view v-for="idx in [1,2,3,4,5,6]" :key="idx" style="margin-right: 20rpx;">
-						<v-img-text-card></v-img-text-card>
+					<view v-for="(item,idx) in boxes" :key="idx" style="margin-right: 20rpx;">
+						<v-img-text-card :item="item" @detail="toPage"></v-img-text-card>
 					</view>
 				</myp-scroll-h>
 			</myp-list-cell>
 			<myp-list-cell>
-				<view style="height: 20rpx;"></view>
-				<myp-title title1="你可能喜欢wakary的日志" title1Size="ll" title1Style="font-weight: 700;" boxStyle="padding-left:32rpx;padding-right:32rpx;">
+				<myp-title title1="布局-组件化布局能力" title1Size="ll" title1Style="font-weight: 700;" boxStyle="padding-left:32rpx;padding-right:32rpx;">
 					<myp-button slot="extra" icon="arrow-right" text="查看全部" textSize="s" textType="text" border="all" radius="ll" boxStyle="width:200rpx;height:56rpx;"></myp-button>
 				</myp-title>
-				<view v-for="idx in [1,2,3,4]" :key="idx" style="margin-bottom: 20rpx;">
-					<h-img-text></h-img-text>
+				<view v-for="(item,idx) in flexs" :key="idx" style="margin-bottom: 24rpx;">
+					<h-img-text :item="item" @detail="toPage"></h-img-text>
 				</view>
 			</myp-list-cell>
 			<myp-list-cell>
-				<view style="height: 80rpx;"></view>
+				<view style="height: 42rpx;"></view>
 				<view style="margin-left: 32rpx;">
-					<today-card></today-card>
+					<today-card @detail="toPage({page: 'design_theme'})"></today-card>
 				</view>
-				<view style="height: 20rpx;"></view>
+				<view style="height: 24rpx;"></view>
 			</myp-list-cell>
 			<myp-list-cell>
-				<myp-title leftIcon1="user-check" leftIcon1Type="error" title1="你可能感兴趣的人" title1Size="ll" title1Style="font-weight: 700;" title3="查看更多" rightIcon2="right" boxStyle="padding-left:32rpx;padding-right:32rpx;"></myp-title>
-				<users-scroll></users-scroll>
+				<myp-title leftIcon1="user-check" leftIcon1Type="error" title1="导航-带你去想去的地方" title1Size="ll" title1Style="font-weight: 700;" title3="查看更多" rightIcon2="right" boxStyle="padding-left:32rpx;padding-right:32rpx;"></myp-title>
+				<navs-scroll :items="navs" @care="toPage"></navs-scroll>
 				<myp-divider></myp-divider>
 			</myp-list-cell>
 			<myp-list-cell>
 				<view style="height: 20rpx;"></view>
-				<myp-title title1="这些主题你可能喜欢" title1Size="ll" title1Style="font-weight: 700;" boxStyle="padding-left:32rpx;padding-right:32rpx;">
+				<myp-title title1="数据输入-输入/选择" title1Size="ll" title1Style="font-weight: 700;" boxStyle="padding-left:32rpx;padding-right:32rpx;">
 					<myp-button slot="extra" text="发现更多" textSize="s" textType="text" border="all" radius="ll" boxStyle="width:160rpx;height:56rpx;"></myp-button>
 				</myp-title>
 				<myp-scroll-h height="300rpx">
 					<view style="width: 32rpx;"></view>
-					<series-card v-for="idx in [1,2,3,4,5,6]" :key="idx" :boxStyle="idx===6?'':'margin-right:20rpx;'"></series-card>
+					<series-card v-for="(item,idx) in inputs" :key="idx" :item="item" :boxStyle="idx===6?'':'margin-right:20rpx;'" @detail="toPage"></series-card>
 					<view style="width: 32rpx;"></view>
 				</myp-scroll-h>
 			</myp-list-cell>
 			<myp-list-cell>
 				<view style="height: 20rpx;"></view>
-				<myp-title title1="文章或者圈子卡片" title1Size="ll" title1Style="font-weight: 700;" boxStyle="padding-left:32rpx;padding-right:32rpx;">
+				<myp-title title1="数据展示" title1Size="ll" title1Style="font-weight: 700;" boxStyle="padding-left:32rpx;padding-right:32rpx;">
 					<myp-button slot="extra" text="查看更多" textSize="s" textType="text" border="all" radius="ll" boxStyle="width:160rpx;height:56rpx;"></myp-button>
 				</myp-title>
 				<myp-scroll-h height="360rpx">
 					<view style="width: 32rpx;"></view>
-					<circle-card v-for="idx in [1,2,3,4,5,6]" :key="idx" :boxStyle="idx===6?'':'margin-right:20rpx;'"></circle-card>
+					<circle-card v-for="(item,idx) in displays" :key="idx" :item="item" :boxStyle="idx===6?'':'margin-right:20rpx;'" @detail="toPage"></circle-card>
 					<view style="width: 32rpx;"></view>
 				</myp-scroll-h>
 			</myp-list-cell>
 			<myp-list-cell>
 				<view style="height: 20rpx;"></view>
-				<myp-title title1="竖向图片卡片" title1Size="ll" title1Style="font-weight: 700;" boxStyle="padding-left:32rpx;padding-right:32rpx;">
+				<myp-title title1="反馈互动-弹窗/提示/面板等" title1Size="ll" title1Style="font-weight: 700;" boxStyle="padding-left:32rpx;padding-right:32rpx;">
 					<myp-button slot="extra" text="查看更多" textSize="s" textType="text" border="all" radius="ll" boxStyle="width:160rpx;height:56rpx;"></myp-button>
 				</myp-title>
 				<myp-scroll-h height="400rpx">
 					<view style="width: 32rpx;"></view>
-					<v-long-card v-for="idx in [1,2,3,4,5,6]" :key="idx" :boxStyle="idx===6?'':'margin-right:20rpx;'"></v-long-card>
+					<v-long-card v-for="(item,idx) in interacts" :key="idx" :item="item" :boxStyle="idx===interacts.length-1?'':'margin-right:20rpx;'" @detail="toPage"></v-long-card>
 					<view style="width: 32rpx;"></view>
+				</myp-scroll-h>
+			</myp-list-cell>
+			<myp-list-cell>
+				<view style="height: 20rpx;"></view>
+				<myp-title title1="手势-刷新/加载等" title1Size="ll" title1Style="font-weight: 700;" rightIcon1="radio-button" rightIcon2="right" rightIcon1Type="third" rightIcon2Type="third" boxStyle="padding-left:32rpx;padding-right:32rpx;"></myp-title>
+				<myp-scroll-h height="280rpx">
+					<view style="width: 32rpx;"></view>
+					<view v-for="(item,idx) in gestures" :key="idx" style="flex-direction: row;">
+						<v-bg-card :bgType="item.bgType" :maskType="item.maskType" :img="item.img" :tag="item.tag" :icon="item.icon" :title="item.title" :desc="item.desc" :descIcon="item.descIcon" :iconType="item.iconType" :titleType="item.titleType" :iconStyle="item.iconStyle" :descType="item.descType"></v-bg-card>
+						<view style="width: 16rpx;"></view>
+					</view>
+					<view style="width: 20rpx;"></view>
 				</myp-scroll-h>
 			</myp-list-cell>
 			<myp-list-cell>
@@ -110,10 +122,13 @@
 	import vImgTextCard from '@/components/vImgTextCard.vue'
 	import hImgText from '@/components/hImgText.vue'
 	import todayCard from '@/components/todayCard.vue'
-	import usersScroll from '@/components/usersScroll.vue'
+	import navsScroll from './components/navsScroll.vue'
 	import seriesCard from '@/components/seriesCard.vue'
 	import circleCard from '@/components/circleCard.vue'
 	import vLongCard from '@/components/vLongVard.vue'
+	import vBgCard from '@/components/vBgCard.vue'
+	
+	import {bigCats, boxes, flexs, navs, inputs, displays, interacts, gestures} from './data.js'
 	
 	export default {
 		components: {
@@ -122,93 +137,24 @@
 			vImgTextCard,
 			hImgText,
 			todayCard,
-			usersScroll,
+			navsScroll,
 			seriesCard,
 			circleCard,
-			vLongCard
+			vLongCard,
+			vBgCard
 		},
 		inject: ['tabRoot'],
 		data() {
 			return {
 				apps: [{icon: 'solid-camera', name: '推荐'},{icon: 'solid-location', name: '附近'},{icon: 'solid-fire', name: '排行榜'},{icon: 'solid-calendar', name: '最近'},{icon: 'radio-button', name: '随机'}],
-				items: [{
-					icon: 'radio-button',
-					name: '基础组件',
-					type: 'base_index',
-					title: '主题配置，细节到位',
-					intro: '图标 按钮 输入框 单元格 格子 标签 ...',
-					hint: '查看具体'
-				}, {
-					icon: 'bold-refresh',
-					name: '下拉上提',
-					type: 'scroll_index',
-					title: 'scroll和list',
-					intro: '分别对mp/h5/app端做了下拉与上提',
-					hint: '试试感觉'
-				}, {
-					icon: 'warning',
-					name: '弹层互动',
-					type: 'pop_index',
-					title: '性能好，动画支持',
-					intro: '弹窗 Modal 遮罩 Loading Toast ActionSheet...',
-					hint: '前往体验'
-				}, {
-					icon: 'solid-circle-right',
-					name: '导航栏',
-					type: 'navbar_index',
-					title: '完全自定义',
-					intro: '默认与随心所欲之间，没有限制',
-					hint: '查看样板'
-				}, {
-					icon: 'album',
-					name: '弹层选择',
-					type: 'filter_index',
-					title: 'filter/down-up',
-					intro: '选择filter/dropdown，等',
-					hint: '马上感受'
-				}, {
-					icon: 'task',
-					name: '抽屉/拖动',
-					type: 'drawer_index',
-					title: '抽屉/拖动',
-					intro: '抽屉，拉出，拖动，回收，等',
-					hint: '现在就看'
-				}, {
-					icon: 'topic',
-					name: 'Picker',
-					type: 'picker_index',
-					title: '各种picker',
-					intro: 'myp-popup封装的picker示范',
-					hint: '体验一下'
-				}, {
-					icon: 'solid-plus',
-					name: 'Tabbar',
-					type: 'tabbar_index',
-					title: '非swiper实现',
-					intro: '支持各种细节微调，图片/icon/text/badge/dot',
-					hint: '马上体验'
-				}, {
-					icon: 'rows',
-					name: 'Swiper',
-					type: 'swiper_index',
-					title: 'Swiper示范',
-					intro: 'swiper列表，带头部的swiper列表',
-					hint: '试下手感'
-				}, {
-					icon: 'headphone',
-					name: 'ScrollScale',
-					type: 'scroll_h_index',
-					title: '滚动缩放，余弦放大，自动居中',
-					intro: '横向滚动，滚动缩放，余弦放大，自动居中',
-					hint: '现在就看'
-				}, {
-					icon: 'radio',
-					name: '其它',
-					type: 'others_index',
-					title: '组件或页面',
-					intro: '常用的一些UI设计，以及页面',
-					hint: '去瞄一下'
-				}]
+				items: bigCats,
+				flexs: flexs,
+				boxes: boxes,
+				navs: navs,
+				inputs: inputs,
+				displays: displays,
+				interacts: interacts,
+				gestures: gestures
 			}
 		},
 		methods: {
@@ -217,6 +163,9 @@
 			},
 			toItem(val) {
 				this.tabRoot.navigateTo(val)
+			},
+			toPage(val) {
+				this.tabRoot.navigateTo(val.page)
 			}
 		}
 	}

@@ -54,8 +54,8 @@
 </template>
 
 <script>
-	import vBgCard from '@/components/card/vBgCard.vue'
-	import hCoverCard from '@/components/card/hCoverTextCard.vue'
+	import vBgCard from '@/components/vBgCard.vue'
+	import hCoverCard from '@/components/hCoverTextCard.vue'
 	
 	// #ifndef APP-NVUE
 	import contentBoxMixin from '@/mypUI/myp-mixin/contentBoxMixin.js'

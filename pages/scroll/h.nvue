@@ -24,7 +24,7 @@
 </template>
 
 <script>
-	import vCareCard from '@/components/card/vCareCard.vue'
+	import vCareCard from '@/components/vCareCard.vue'
 	
 	import navHelper from '@/router/navHelper.js'
 	

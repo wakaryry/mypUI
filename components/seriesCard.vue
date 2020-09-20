@@ -1,12 +1,12 @@
 <template>
-	<view class="sc" :style="boxStyle">
-		<image src="https://mypui.asnowsoft.cn/imgs/c3.jpg" class="sc-img" mode="aspectFill"></image>
+	<view class="sc" :style="boxStyle" bubble="true" @tap="toDetail">
+		<image :src="item.cover" class="sc-img" mode="aspectFill"></image>
 		<view class="sc-over"></view>
 		<view class="sc-label">
-			<text class="sc-label-text">早饭吃啥</text>
+			<text class="sc-label-text">{{item.label}}</text>
 		</view>
 		<view class="sc-title">
-			<text class="sc-title-text">吃个早餐了不起，不吃不行</text>
+			<text class="sc-title-text">{{item.title}}</text>
 		</view>
 		<view class="sc-users">
 			<view class="sc-users-item" style="left: 56rpx;">
@@ -25,9 +25,20 @@
 <script>
 	export default {
 		props: {
+			item: {
+				type: Object,
+				default: ()=>{
+					return {}
+				}
+			},
 			boxStyle: {
 				type: String,
 				default: ''
+			}
+		},
+		methods: {
+			toDetail() {
+				this.$emit("detail", this.item)
 			}
 		}
 	}

@@ -189,57 +189,57 @@ export const inputs = [{
 	cover: 'https://mypui.asnowsoft.cn/imgs/c3.jpg',
 	title: 'myp-button',
 	label: '按钮',
-	page: ''
+	page: 'base_button'
 }, {
 	cover: 'https://mypui.asnowsoft.cn/imgs/c12.jpg',
 	title: 'myp-input',
 	label: '输入框',
-	page: ''
+	page: 'base_input'
 }, {
 	cover: 'https://mypui.asnowsoft.cn/imgs/c11.jpg',
 	title: 'myp-input-one',
 	label: '4-6验证码',
-	page: ''
+	page: 'base_input'
 }, {
 	cover: 'https://mypui.asnowsoft.cn/imgs/c10.jpg',
 	title: 'myp-switch',
 	label: '开关',
-	page: ''
+	page: 'base_switch'
 }, {
 	cover: 'https://mypui.asnowsoft.cn/imgs/c4.jpg',
 	title: 'myp-search',
 	label: '搜索框',
-	page: ''
+	page: 'base_search'
 }, {
 	cover: 'https://mypui.asnowsoft.cn/imgs/c7.jpg',
 	title: 'myp-check',
 	label: '单多选',
-	page: ''
+	page: 'base_check'
 }, {
 	cover: 'https://mypui.asnowsoft.cn/imgs/c1.jpg',
 	title: 'myp-select',
 	label: '选择',
-	page: ''
+	page: 'base_select'
 }, {
 	cover: 'https://mypui.asnowsoft.cn/imgs/c3.jpg',
 	title: 'myp-stepper',
 	label: '步进器',
-	page: ''
+	page: 'base_stepper'
 }, {
 	cover: 'https://mypui.asnowsoft.cn/imgs/c5.jpg',
 	title: 'myp-slider',
 	label: '区间',
-	page: ''
+	page: 'base_slider'
 }, {
 	cover: 'https://mypui.asnowsoft.cn/imgs/c6.jpg',
 	title: 'myp-picker',
 	label: '选择器',
-	page: ''
+	page: 'picker_index'
 }, {
 	cover: 'https://mypui.asnowsoft.cn/imgs/c7.jpg',
 	title: 'myp-picker-time',
 	label: '时间选择器',
-	page: ''
+	page: 'picker_index'
 }]
 // 数据展示
 export const displays = [{
@@ -247,120 +247,126 @@ export const displays = [{
 	title: 'myp-grid',
 	desc: '宫格：支持badge',
 	label: '宫格',
-	page: ''
+	page: 'base_grid'
 }, {
 	cover: 'https://mypui.asnowsoft.cn/imgs/c1.jpg',
 	title: 'myp-cell',
 	desc: '单元：icon-label-value-indicator四段式',
 	label: '单元',
-	page: ''
+	page: 'base_cell'
 }, {
 	cover: 'https://mypui.asnowsoft.cn/imgs/c2.jpg',
 	title: 'myp-icon',
 	desc: '图标：字体图标，支持图片',
 	label: '图标',
-	page: ''
+	page: 'base_icon'
+}, {
+	cover: 'https://mypui.asnowsoft.cn/imgs/c7.jpg',
+	title: 'myp-item',
+	desc: 'item：上下item',
+	label: 'item',
+	page: 'base_item'
 }, {
 	cover: 'https://mypui.asnowsoft.cn/imgs/c3.jpg',
 	title: 'myp-title',
 	desc: '标题：左中右三段式自定义标题',
 	label: '标题',
-	page: ''
+	page: 'base_title'
 }, {
 	cover: 'https://mypui.asnowsoft.cn/imgs/c4.jpg',
 	title: 'myp-tag',
 	desc: '标签：支持badge',
 	label: '标签',
-	page: ''
+	page: 'base_tag'
 }, {
 	cover: 'https://mypui.asnowsoft.cn/imgs/c5.jpg',
 	title: 'myp-tag-group',
 	desc: '标签群：支持单多选',
 	label: '标签',
-	page: ''
+	page: 'base_tag'
 }, {
 	cover: 'https://mypui.asnowsoft.cn/imgs/c6.jpg',
 	title: 'myp-badge',
 	desc: '角标：支持原点/文字',
 	label: '角标',
-	page: ''
+	page: 'base_badge'
 }, {
 	cover: 'https://mypui.asnowsoft.cn/imgs/c7.jpg',
 	title: 'myp-countdown',
 	desc: '倒计时：自定义格式的倒计时',
 	label: '倒计时',
-	page: ''
+	page: 'base_countdown'
 }, {
 	cover: 'https://mypui.asnowsoft.cn/imgs/c8.jpg',
 	title: 'myp-divider',
 	desc: '分割线：无情无聊的分割线',
 	label: '分割线',
-	page: ''
+	page: 'base_divider'
 }, {
 	cover: 'https://mypui.asnowsoft.cn/imgs/c9.jpg',
 	title: 'myp-progress',
 	desc: '进度条：开放自由，随心所欲',
 	label: '进度条',
-	page: ''
+	page: 'base_progress'
 }, {
 	cover: 'https://mypui.asnowsoft.cn/imgs/c10.jpg',
 	title: 'myp-progress-circle',
 	desc: '进度条：环状。纯css实现',
 	label: '进度条',
-	page: ''
+	page: 'base_progress_circle'
 }, {
 	cover: 'https://mypui.asnowsoft.cn/imgs/c11.jpg',
 	title: 'myp-result',
 	desc: '结果：结果展示页面，成功/失败...',
 	label: '结果',
-	page: ''
+	page: 'base_result'
 }]
 // 反馈互动
 export const interacts = [{
 	cover: 'https://mypui.asnowsoft.cn/imgs/c12.jpg',
 	title: 'myp-popup',
 	label: '弹窗',
-	page: ''
+	page: 'pop_index'
 }, {
 	cover: 'https://mypui.asnowsoft.cn/imgs/c3.jpg',
 	title: 'myp-popup-always',
 	label: '弹窗',
-	page: ''
+	page: 'pop_index'
 }, {
 	cover: 'https://mypui.asnowsoft.cn/imgs/c4.jpg',
 	title: 'myp-toast：提示',
 	label: 'toast',
-	page: ''
+	page: 'pop_index'
 }, {
 	cover: 'https://mypui.asnowsoft.cn/imgs/c10.jpg',
 	title: 'myp-loading：加载中，支持遮罩',
 	label: 'loading',
-	page: ''
+	page: 'pop_index'
 }, {
 	cover: 'https://mypui.asnowsoft.cn/imgs/c7.jpg',
 	title: 'myp-notice：提示',
 	label: 'notice',
-	page: ''
+	page: 'pop_index'
 }, {
 	cover: 'https://mypui.asnowsoft.cn/imgs/c12.jpg',
 	title: 'myp-notice-dynamic：动态提示',
 	label: 'notice',
-	page: ''
+	page: 'pop_index'
 }, {
 	cover: 'https://mypui.asnowsoft.cn/imgs/c3.jpg',
 	title: 'myp-overlay',
 	label: '遮罩',
-	page: ''
+	page: 'pop_index'
 }, {
 	cover: 'https://mypui.asnowsoft.cn/imgs/c4.jpg',
 	title: 'myp-fold',
 	label: '收展',
-	page: ''
+	page: 'base_fold'
 }, {
 	cover: 'https://mypui.asnowsoft.cn/imgs/c6.jpg',
 	title: 'myp-loading-indicator',
 	label: '指示器',
-	page: ''
+	page: 'base_loading_indicator'
 }]
 // 手势
 export const gestures = [{
@@ -376,7 +382,7 @@ export const gestures = [{
 		descType: 'inverse',
 		iconType: 'inverse',
 		iconStyle: 'font-size:54rpx;',
-		page: ''
+		page: 'scroll_list_more'
 	},
 	{
 		img: 'https://mypui.asnowsoft.cn/imgs/c7.jpgimages/2020/05/23/YO0sR.jpg',
@@ -391,7 +397,7 @@ export const gestures = [{
 		descType: 'inverse',
 		iconType: 'inverse',
 		iconStyle: 'font-size:54rpx;',
-		page: ''
+		page: 'scroll_list_more'
 	},
 	{
 		img: '',
@@ -406,7 +412,7 @@ export const gestures = [{
 		descType: 'third',
 		iconType: 'text',
 		iconStyle: 'font-size:54rpx;',
-		page: ''
+		page: 'scroll_list_more'
 	},
 	{
 		img: '',
@@ -421,6 +427,6 @@ export const gestures = [{
 		descType: 'third',
 		iconType: 'text',
 		iconStyle: 'font-size:54rpx;',
-		page: ''
+		page: 'scroll_list_loading'
 	}
 ]

@@ -64,7 +64,19 @@
 			}
 		},
 		{
-			"path": "pages/base/radio",
+			"path": "pages/base/check",
+			"style": {
+				"disableScroll": true
+			}
+		},
+		{
+			"path": "pages/base/select",
+			"style": {
+				"disableScroll": true
+			}
+		},
+		{
+			"path": "pages/base/slider",
 			"style": {
 				"disableScroll": true
 			}
@@ -100,6 +112,12 @@
 			}
 		},
 		{
+			"path": "pages/base/item",
+			"style": {
+				"disableScroll": true
+			}
+		},
+		{
 			"path": "pages/base/title",
 			"style": {
 				"disableScroll": true
@@ -125,6 +143,50 @@
 		},
 		{
 			"path": "pages/base/position",
+			"style": {
+				"disableScroll": true
+			}
+		},
+		{
+			"path": "pages/base/badge",
+			"style": {
+				"disableScroll": true
+			}
+		},
+		{
+			"path": "pages/base/divider",
+			"style": {
+				"disableScroll": true
+			}
+		},
+		{
+			"path": "pages/base/result",
+			"style": {
+				"disableScroll": true
+			}
+		},
+		{
+			"path": "pages/base/fold",
+			"style": {
+				"disableScroll": true
+			}
+		},
+		{
+			"path": "pages/base/loading_indicator",
+			"style": {
+				"disableScroll": true
+			}
+		},
+		// input
+		{
+			"path": "pages/input/index",
+			"style": {
+				"disableScroll": true
+			}
+		},
+		// display
+		{
+			"path": "pages/display/index",
 			"style": {
 				"disableScroll": true
 			}
@@ -161,9 +223,23 @@
 				"disableScroll": true
 			}
 		},
+		// interact
+		{
+			"path": "pages/interact/index",
+			"style": {
+				"disableScroll": true
+			}
+		},
 		// pop
 		{
 			"path": "pages/pop/index",
+			"style": {
+				"disableScroll": true
+			}
+		},
+		// gesture
+		{
+			"path": "pages/gesture/index",
 			"style": {
 				"disableScroll": true
 			}

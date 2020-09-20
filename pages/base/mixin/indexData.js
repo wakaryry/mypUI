@@ -126,7 +126,7 @@ export default {
 				cover: 'https://mypui.asnowsoft.cn/imgs/c2.jpg',
 				badge: 6,
 				identity: '京剧大师',
-				page: 'base_radio'
+				page: 'base_check'
 			}, {
 				name: '倒计时',
 				avatar: 'https://mypui.asnowsoft.cn/imgs/a3.jpg',

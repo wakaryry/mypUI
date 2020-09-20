@@ -6,20 +6,28 @@ export default {
 	base_cell: '/pages/base/cell',
 	base_input: '/pages/base/input',
 	base_tag: '/pages/base/tag',
-	base_radio: '/pages/base/radio',
+	base_check: '/pages/base/check',
+	base_select: '/pages/base/select',
 	base_search: '/pages/base/search',
 	base_stepper: '/pages/base/stepper',
+	base_slider: '/pages/base/slider',
 	base_switch: '/pages/base/switch',
 	base_title: '/pages/base/title',
 	base_progress: '/pages/base/progress',
 	base_progress_circle: '/pages/base/progress_circle',
 	base_tabs: '/pages/base/tabs',
+	base_item: '/pages/base/item',
 	base_grid: '/pages/base/grid',
+	base_badge: '/pages/base/badge',
+	base_divider: '/pages/base/divider',
 	base_countdown: '/pages/base/countdown',
 	base_indexlist: '/pages/base/indexlist',
 	base_content_box: '/pages/base/content_box',
 	base_height: '/pages/base/height',
 	base_position: '/pages/base/position',
+	base_result: '/pages/base/result',
+	base_fold: '/pages/base/fold',
+	base_loading_indicator: '/pages/base/loading_indicator',
 	// flex
 	flex_index: '/pages/flex/index',
 	flex_flex: '/pages/flex/flex',
@@ -27,12 +35,20 @@ export default {
 	flex_space: '/pages/flex/space',
 	// design
 	design_theme: '/pages/design/theme',
+	// input
+	input_index: '/pages/input/index',
+	// display
+	display_index: '/pages/display/index',
+	// interact
+	interact_index: '/pages/interact/index',
 	// pop
 	pop_index: '/pages/pop/index',
 	// nav
 	nav_index: '/pages/nav/index',
 	nav_navbar: '/pages/nav/navbar',
 	nav_popover: "/pages/nav/popover",
+	// gesture
+	gesture_index: '/pages/gesture/index',
 	// tabbar
 	tabbar_index: '/pages/tabbar/index',
 	tabbar_hump: '/pages/tabbar/hump',

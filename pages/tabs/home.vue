@@ -61,7 +61,7 @@
 			<myp-list-cell>
 				<view style="height: 20rpx;"></view>
 				<myp-title title1="数据输入-输入/选择" title1Size="ll" title1Style="font-weight: 700;" boxStyle="padding-left:32rpx;padding-right:32rpx;">
-					<myp-button slot="extra" text="发现更多" textSize="s" textType="text" border="all" radius="ll" boxStyle="width:160rpx;height:56rpx;"></myp-button>
+					<myp-button slot="extra" text="发现更多" textSize="s" textType="text" border="all" radius="ll" boxStyle="width:160rpx;height:56rpx;" @buttonClicked="toPage({page: 'input_index'})"></myp-button>
 				</myp-title>
 				<myp-scroll-h height="300rpx">
 					<view style="width: 32rpx;"></view>
@@ -72,18 +72,18 @@
 			<myp-list-cell>
 				<view style="height: 20rpx;"></view>
 				<myp-title title1="数据展示" title1Size="ll" title1Style="font-weight: 700;" boxStyle="padding-left:32rpx;padding-right:32rpx;">
-					<myp-button slot="extra" text="查看更多" textSize="s" textType="text" border="all" radius="ll" boxStyle="width:160rpx;height:56rpx;"></myp-button>
+					<myp-button slot="extra" text="查看更多" textSize="s" textType="text" border="all" radius="ll" boxStyle="width:160rpx;height:56rpx;" @buttonClicked="toPage({page: 'display_index'})"></myp-button>
 				</myp-title>
 				<myp-scroll-h height="360rpx">
 					<view style="width: 32rpx;"></view>
-					<circle-card v-for="(item,idx) in displays" :key="idx" :item="item" :boxStyle="idx===6?'':'margin-right:20rpx;'" @detail="toPage"></circle-card>
+					<circle-card v-for="(item,idx) in displays" :key="idx" :item="item" :boxStyle="idx===displays.length-1?'':'margin-right:20rpx;'" @detail="toPage"></circle-card>
 					<view style="width: 32rpx;"></view>
 				</myp-scroll-h>
 			</myp-list-cell>
 			<myp-list-cell>
 				<view style="height: 20rpx;"></view>
 				<myp-title title1="反馈互动-弹窗/提示/面板等" title1Size="ll" title1Style="font-weight: 700;" boxStyle="padding-left:32rpx;padding-right:32rpx;">
-					<myp-button slot="extra" text="查看更多" textSize="s" textType="text" border="all" radius="ll" boxStyle="width:160rpx;height:56rpx;"></myp-button>
+					<myp-button slot="extra" text="查看更多" textSize="s" textType="text" border="all" radius="ll" boxStyle="width:160rpx;height:56rpx;" @buttonClicked="toPage({page: 'interact_index'})"></myp-button>
 				</myp-title>
 				<myp-scroll-h height="400rpx">
 					<view style="width: 32rpx;"></view>
@@ -93,7 +93,7 @@
 			</myp-list-cell>
 			<myp-list-cell>
 				<view style="height: 20rpx;"></view>
-				<myp-title title1="手势-刷新/加载等" title1Size="ll" title1Style="font-weight: 700;" rightIcon1="radio-button" rightIcon2="right" rightIcon1Type="third" rightIcon2Type="third" boxStyle="padding-left:32rpx;padding-right:32rpx;"></myp-title>
+				<myp-title title1="手势-刷新/加载等" title1Size="ll" title1Style="font-weight: 700;" rightIcon1="radio-button" rightIcon2="right" rightIcon1Type="third" rightIcon2Type="third" boxStyle="padding-left:32rpx;padding-right:32rpx;" @rightClicked="toPage({page: 'gesture_index'})"></myp-title>
 				<myp-scroll-h height="280rpx">
 					<view style="width: 32rpx;"></view>
 					<view v-for="(item,idx) in gestures" :key="idx" style="flex-direction: row;">

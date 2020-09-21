@@ -79,7 +79,7 @@
 				mypExtra: 180,
 				loves: [
 					{img: 'https://mypui.asnowsoft.cn/imgs/c3.jpg', maskType: 'mask', title: '私人FM', icon: 'solid-calendar', tag: '', desc: '听点新鲜的', descIcon: '', bgType: '', titleType: 'inverse', descType: 'inverse', iconType: 'inverse', iconStyle: 'font-size:54rpx;'},
-					{img: 'https://mypui.asnowsoft.cn/imgs/c7.jpgimages/2020/05/23/YO0sR.jpg', maskType: 'mask', title: '古典专区', icon: 'solid-plus', tag: '', desc: '听不完的古典', descIcon: '', bgType: '', titleType: 'inverse', descType: 'inverse', iconType: 'inverse', iconStyle: 'font-size:54rpx;'},
+					{img: 'https://mypui.asnowsoft.cn/imgs/c7.jpg', maskType: 'mask', title: '古典专区', icon: 'solid-plus', tag: '', desc: '听不完的古典', descIcon: '', bgType: '', titleType: 'inverse', descType: 'inverse', iconType: 'inverse', iconStyle: 'font-size:54rpx;'},
 					{img: '', maskType: 'none', title: '亲子频道', icon: 'solid-camera', tag: '推荐', desc: '一键专业育儿', descIcon: '', bgType: 'dark', titleType: 'text', descType: 'third', iconType: 'text', iconStyle: 'font-size:54rpx;'},
 					{img: '', maskType: 'none', title: '爵士电台', icon: 'solid-play', tag: '推荐', desc: '缺乏锻炼的爱情', descIcon: '', bgType: 'dark', titleType: 'text', descType: 'third', iconType: 'text', iconStyle: 'font-size:54rpx;'},
 					{img: '', maskType: 'none', title: '摇滚天王', icon: 'solid-lock', tag: '推荐', desc: '生活不能停止', descIcon: '', bgType: 'dark', titleType: 'text', descType: 'third', iconType: 'text', iconStyle: 'font-size:54rpx;'},

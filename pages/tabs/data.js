@@ -408,7 +408,7 @@ export const gestures = [{
 		page: 'scroll_list_more'
 	},
 	{
-		img: 'https://mypui.asnowsoft.cn/imgs/c7.jpgimages/2020/05/23/YO0sR.jpg',
+		img: 'https://mypui.asnowsoft.cn/imgs/c7.jpg',
 		maskType: 'mask',
 		title: '刷新',
 		icon: 'solid-plus',

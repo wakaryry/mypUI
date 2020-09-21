@@ -4,7 +4,8 @@
 		{
 			"path": "pages/tabs/index",
 			"style": {
-				// 去掉uni自带的页面最外层scroll
+				// app-nvue端是去掉uni自带的页面最外层scroll
+				// 有该属性支持的MP平台是禁用掉了页面的滚动
 				"disableScroll": true
 			}
 		},

@@ -1,4 +1,4 @@
-## mypUI
+# mypUI qq群号：`306797275`
 
 **第一个高效且强悍的nvue开源组件库。做最好、最顺手的nvue组件库**
 
@@ -15,137 +15,33 @@
 
 mypUI 是基于 uniapp 的一套组件库与工具集，可以 **高效且规范** 地开发出 uniapp 支持的各端应用（APP/各家小程序/H5/快应用）。兼容 nvue 页面 和 vue 页面。nvue 页面对应的 app端 依托 weex 编译为原生，具备良好的性能与体验。mypUI 绝对能为您带来 **稳定、高效、规范** 的开发体验。
 
-## 集成mypUI
 
-### 拷贝UI组件
 
-直接将`mypUI`放在您的项目根目录下。
+# 2.0全面来袭
 
-> 或者npm安装：`npm install @mypui/myp-ui`
+## 2.0重点解决什么问题
 
-```bash
-npm install @mypui/myp-ui
-```
+我们一直在轻量化以及解耦内部的组件以及依赖，2.0我们几乎移除了内部依赖的所有mixin，改为更加独立和轻便的utils function。
 
-### 复制UI的静态资源
+同时，2.0版本特别为 APP端 优化，充分利用 APP端 布局的便捷性以及高度决策的便捷性，统一采用自适应高度，为 APP端 移除掉了1.x中引入的高度决策系统。2.0中的list你只需要理解 `flex:1` 就好。
 
-`loadingSrc`等公用静态资源直接使用了示范UI项目中 `/static/ui` 下面的静态文件，没有使用网络图片，所以需要拷贝到自己的项目下（`/static/ui`这个路径还是需要保持一致的）。
+不过，因为移除了以前为了 MP端 而引入的内容，现在的 2.0版中的 list还不能在 MP/H5中使用。预计一个星期之后升级就可以了。
 
-静态文件的路径依然保持和示范项目中一致即可也就是依然是 `/static/ui` 路径。
+**需要同时考虑 MP/APP/H5 的朋友请继续使用 1.x 版本。**
 
-### 使css生效
-
-为了减少包体积，UI内使用了 `全局css` 。您需要在 `app.vue` 里面引入 `mypUI` 中的 `base.scss`。
-
-也就是：
-
-``` html
-<style lang="scss">
-	@import '@/mypUI/base.scss';
-</style>
-```
-
-因为使用了 `scss变量`，记得设置 `style` 的 `lang="scss"`。
-
-> 注意：如果您使用的是npm安装，记得引入方式为：`@import '@mypui/myp-ui/mypui.scss';`。
-
-### 配置 `easycom`
-
-UI内部使用了 `easycom` 的组件自动引入，所以您必须在项目中开启 `easycom`。
-
-在 `pages.json` 中添加如下代码：
-
-```js
-"easycom": {
-	"autoscan": true,
-	"custom": {
-		"myp-(.*)": "@/mypUI/myp-$1/myp-$1.vue" // 匹配mypUI内的vue文件
-	}
-}
-```
-
-> 注意：npm安装时，easycom配置为：`"myp-(.*)": "@mypui/myp-ui/myp-$1/myp-$1.vue"`
-
-> easycom 是什么？请看官方文档 [easycom](https://uniapp.dcloud.io/collocation/pages?id=easycom)
-
-### 定义您的 UI 主题
-
-`mypUI` 下的 `mypui.scss` 是主题 `scss变量` 定义文件。您需要根据您的项目UI的主题色对其进行修改。
-
-如果主题内定义的变量无法满足您的要求，您可以在里面进行添加，并适当在 `base.scss` 里面增加相应的 `class` 即可。
-
-如果您需要用到主题内定义的`scss变量`，一定要记得在使用的地方引入`mypui.scss`，否则编译会报错。
-
-```html
-<style lang="scss">
-	@import '@/mypUI/mypui.scss';
-</style>
-```
-
-> 注意：在 `app.vue` 里面全局引入 `mypui.scss` 是不会起作用的。毕竟里面只是定义了一些 scss变量。而且该文件也不需要在 `app.vue` 里面引入。
-
-### 初始化系统变量
-
-我们建议您在 `onLaunch` 里面对系统变量进行初始化（当然，这是可选的，`mypUI` 内部接口会根据需要调用初始化的接口）。
-
-初始化代码如下：
-
-- 先引入并放入mixins；
-
-- 然后调用初始化方法；
-
-```html
-<script>
-	// import systemMixin from '@mypui/myp-ui/myp-mixin/systemMixin.js'
-	import systemMixin from '@/mypUI/myp-mixin/systemMixin.js'
-	
-	export default {
-		globalData: {
-			currentTab: 0
-		},
-		mixins: [systemMixin],
-		onLaunch: function() {
-			console.log('App Launch')
-			// #ifdef APP-NVUE || H5
-			this.mypInitSystemInfo()
-			// #endif
-			// #ifndef APP-NVUE || H5
-			setTimeout(()=>{
-				this.mypInitSystemInfo()
-			}, 0)
-			// #endif
-		},
-		onShow: function() {
-			console.log('App Show')
-		},
-		onHide: function() {
-			console.log('App Hide')
-		}
-	}
-</script>
-
-<style lang="scss">
-	@import '@/mypUI/base.scss';
-</style>
-```
-
-### 现在开始愉快的使用吧
-
-自由且无需手动导入 `mypUI` 的使用方式，正式开始。
-
-祝您使用愉快。
-
-> 如果在使用的过程中，您发现有任何不如意或者bug存在，敬请联系我们，或者给出您的宝贵意见。当然，您也可以给出您的实现方式。或者给我们提一个 [pr](https://github.com/wakaryry/mypUI)
-
-## 找到代码与我们
+# 找到代码与我们
 
 - [mypUI-github](https://github.com/wakaryry/mypUI) 欢迎star
+
+- 1.x分支代码 [mypUI-1.x](https://github.com/wakaryry/mypUI/tree/1.x)
 
 - [mypUI-uniapp插件市场](https://ext.dcloud.net.cn/plugin?id=2190) 需要您的好评
 
 - [mypUI-文档开源地址](https://github.com/wakaryry/mypui-doc)
 
 - [mypUI-文档线上地址](https://mypui.asnowsoft.cn)
+
+- [mypUI-1.x文档线上地址](https://mypui.asnowsoft.cn/v1)
 
 - npm地址：[https://www.npmjs.com/package/@mypui/myp-ui](https://www.npmjs.com/package/@mypui/myp-ui)
 
@@ -157,14 +53,14 @@ UI内部使用了 `easycom` 的组件自动引入，所以您必须在项目中�
 
 > 强烈建议加入wx与qq群，获取更多mypUI的动态与帮助
 
-## 快速体验
+# 快速体验
 
 - 安装HBuilderX；
 - 下载或者clone本UI库；
 - 在HBuilderX里面打开或者导入；
 - 运行到自己想要体验的平台即可；
 
-## 说明
+# 说明
 
 - 当时写这套`nvue`组件的时候，还没有任何一款`nvue`页面组件在开放或者售卖;
 - 第一版的时候，其实是根据`weex-ui`改的。`scroll`是根据`mescroll`改的（当时`mescroll`还不是`mixin`的形式，现在`mescroll`和以前也大不相同了吧）;
@@ -172,7 +68,7 @@ UI内部使用了 `easycom` 的组件自动引入，所以您必须在项目中�
 
 希望对你有用。
 
-## 工具与申明
+# 工具与申明
 
 - [免费图片压缩](https://tinypng.com/)
 - [字体文件转base64](https://transfonter.org/)

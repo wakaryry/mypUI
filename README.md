@@ -15,7 +15,13 @@
 
 mypUI 是基于 uniapp 的一套组件库与工具集，可以 **高效且规范** 地开发出 uniapp 支持的各端应用（APP/各家小程序/H5/快应用）。兼容 nvue 页面 和 vue 页面。nvue 页面对应的 app端 依托 weex 编译为原生，具备良好的性能与体验。mypUI 绝对能为您带来 **稳定、高效、规范** 的开发体验。
 
+![demo](https://mypui.asnowsoft.cn/demo-imgs/demo1.png)
 
+![demo](https://mypui.asnowsoft.cn/demo-imgs/demo2.png)
+
+[Android Demo APK下载](https://mypui.asnowsoft.cn/apk/mypUI_2.0.0.apk)
+
+![Android下载](https://mypui.asnowsoft.cn/apk/apk_2.0.0.png)
 
 # 2.0全面来袭
 

@@ -137,7 +137,7 @@ export function getHeight(val) {
 	if (val === 'x') {
 		return getXBarHeight()
 	}
-	if (typeof val === 'string' && (val.startsWith('status') || val.startsWith('nav'))) {
+	if (typeof val === 'string' && (val.startsWith('status') || val.startsWith('nav') || val.startsWith('x'))) {
 		const arr = val.split('-')
 		let h = 0
 		for (const i in arr) {
@@ -146,18 +146,7 @@ export function getHeight(val) {
 				h += getStatusBarHeight()
 			} else if (t === 'nav') {
 				h += getNavbarHeight()
-			} else {
-				h += getPx(t)
-			}
-		}
-		return h
-	}
-	if (typeof val === 'string' && val.startsWith('x')) {
-		const arr = val.split('-')
-		let h = 0
-		for (const i in arr) {
-			const t = arr[i]
-			if (t === 'x') {
+			} else if (t === 'x') {
 				h += getXBarHeight()
 			} else {
 				h += getPx(t)

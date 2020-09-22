@@ -1,7 +1,7 @@
 <template>
-	<view class="myp-full-flex myp-index" :style="boxStyle">
+	<view class="myp-full-flex myp-index">
 		<!-- #ifdef APP-NVUE -->
-		<list :class="['myp-full-flex', 'myp-bg-'+bgType]" :style="scrollStyle" @scroll="toScroll">
+		<list :class="['myp-full-flex', 'myp-bg-'+bgType]" :style="mrBoxStyle" @scroll="toScroll">
 			<cell>
 				<slot name="head"></slot>
 			</cell>
@@ -25,7 +25,7 @@
 		</list>
 		<!-- #endif -->
 		<!-- #ifndef APP-NVUE -->
-		<scroll-view :scroll-y="true" :scroll-with-animation="true" :scroll-into-view="viewId" :class="'myp-bg-'+bgType" :style="scrollStyle" @scroll="toScroll">
+		<scroll-view :scroll-y="true" :scroll-with-animation="true" :scroll-into-view="viewId" :class="'myp-bg-'+bgType" :style="mrBoxStyle" @scroll="toScroll">
 			<slot name="head"></slot>
 			<view v-for="(v, i) in formatList" :key="i" :id="'myp-index-title-' + (v.id||v.title)">
 				<text v-if="!onlyShowList" :class="['myp-index-title', v.type && v.type === 'group' && 'myp-index-title-group']" :style="(v.type && v.type === 'group')?groupTitleStyle:titleStyle">{{ v.title }}</text>
@@ -59,10 +59,12 @@
 // #ifdef APP-NVUE
 const dom = uni.requireNativePlugin('dom');
 // #endif
+import styleMixin from '../myp-list/styleMixin.js'
 
 import * as Format from './format.js';
 
 export default {
+	mixins: [styleMixin],
 	props: {
 		normalList: {
 			type: Array,
@@ -125,18 +127,6 @@ export default {
 			default: ''
 		},
 		indexTextStyle: {
-			type: String,
-			default: ''
-		},
-		bgType: {
-			type: String,
-			default: 'page'
-		},
-		boxStyle: {
-			type: String,
-			default: ''
-		},
-		scrollStyle: {
 			type: String,
 			default: ''
 		}

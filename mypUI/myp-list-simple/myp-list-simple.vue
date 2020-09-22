@@ -1,6 +1,6 @@
 <template>
 	<!-- #ifndef APP-NVUE -->
-	<scroll-view :scroll-y="true" :class="['myp-full-flex', 'myp-bg-'+bgType, 'myp-position-'+position]" :style="mrBoxStyle" :show-scrollbar="showScrollbar" @scroll="toScroll">
+	<scroll-view :scroll-y="true" :class="['myp-bg-'+bgType, 'myp-position-'+position]" :style="mrBoxStyle" :show-scrollbar="showScrollbar" @scroll="toScroll">
 	<!-- #endif -->
 	<!-- #ifdef APP-NVUE -->
 	<list :class="['myp-full-flex', 'myp-bg-'+bgType, 'myp-position-'+position]" :style="mrBoxStyle" :show-scrollbar="showScrollbar" @scroll="toScroll">

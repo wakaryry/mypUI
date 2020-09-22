@@ -117,8 +117,13 @@ export default {
 			this.mypCurrentPage = 1
 			if (this.down.use) {
 				this.mypIsDownLoading = true
+				this.mypGetContentList('refresh')
+			} else {
+				if (this.up.use) {
+					this.mypIsUpLoading = true
+					this.mypGetContentList('load')
+				}
 			}
-			this.mypGetContentList('refresh')
 		},
 		mypGetContentList(type='refresh') {
 			if (type === 'refresh') {

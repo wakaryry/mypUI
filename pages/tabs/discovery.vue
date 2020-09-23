@@ -1,7 +1,7 @@
 <template>
 	<view>
 		<myp-navbar :fixed="false" title="发现"></myp-navbar>
-		<myp-waterfall ref="myp-list" :autoUpdate="true" :columnCount="2" columnGap="20rpx" leftGap="32rpx" rightGap="32rpx" @down="toLoadData" @up="toLoadData">
+		<myp-waterfall ref="myp-list" :autoUpdate="true" :columnCount="2" columnGap="20rpx" leftGap="32rpx" rightGap="32rpx" extra="status-nav-x-50px" @down="toLoadData" @up="toLoadData">
 			<view slot="header" style="height: 200rpx; background-color: #007AFF;"></view>
 			<myp-list-cell v-for="(item,idx) in items" :key="idx">
 				<view :class="['water-item', 'water-item-'+(idx%4)]">

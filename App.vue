@@ -29,11 +29,6 @@
 </script>
 
 <style lang="scss">
-	/* #ifndef APP-NVUE */
-	page {
-		height: 100%;
-	}
-	/* #endif */
 	@import '@/mypUI/base.scss';
 	/* #ifdef MP */
 	@import '@/mypUI/mp.scss';

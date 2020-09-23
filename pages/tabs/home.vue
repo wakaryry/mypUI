@@ -1,7 +1,13 @@
 <template>
-	<view class="myp-full-flex myp-flex-column">
+	<view>
 		<myp-navbar :fixed="false" title="mypUI"></myp-navbar>
+		<!-- 仅仅只是演示区别，您可以直接不做区分，所有平台都写成属性最多的那个 -->
+		<!-- #ifdef APP-NVUE -->
 		<myp-list-simple bgType="inverse">
+		<!-- #endif -->
+		<!-- #ifndef APP-NVUE -->
+		<myp-list-simple bgType="inverse" extra="status-nav-x-50px">
+		<!-- #endif -->
 			<myp-list-cell>
 				<view style="height: 24rpx;"></view>
 			</myp-list-cell>

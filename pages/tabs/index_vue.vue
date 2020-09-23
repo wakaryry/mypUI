@@ -1,0 +1,94 @@
+<template>
+	<view>
+		<myp-tabbar ref="tabbar" :tabs="tabs" :tabStyle="tabStyle" @tabClicked="tabbarSwitched">
+			<home-tab></home-tab>
+			<discovery-tab></discovery-tab>
+			<mine-tab></mine-tab>
+		</myp-tabbar>
+		<!-- 在tabbar外层的内容是每一个tabbar都公用的 -->
+		<myp-toast ref="myp-toast"></myp-toast>
+	</view>
+</template>
+
+<script>
+	import homeTab from './home.vue'
+	import discoveryTab from './discovery.vue'
+	import mineTab from './mine.vue'
+	
+	import toastMixin from '@/mypUI/myp-mixin/toastMixin.js'
+	import navHelper from '@/router/navHelper.js'
+	
+	export default {
+		components: {
+			homeTab,
+			discoveryTab,
+			mineTab
+		},
+		mixins: [toastMixin, navHelper],
+		provide() {
+			return {
+				tabRoot: this
+			}
+		},
+		data() {
+			return {
+				tabs: [
+					{
+						icon: '/static/tabs/home.png',
+						selectedIcon: '/static/tabs/homeH.png',
+						title: '组件',
+						selectedTitle: '组件'
+					},
+					{
+						icon: '/static/tabs/discovery.png',
+						selectedIcon: '/static/tabs/discoveryH.png',
+						title: '模板',
+						selectedTitle: '模板',
+						badge: 12
+					},
+					{
+						icon: '/static/tabs/mine.png',
+						selectedIcon: '/static/tabs/mineH.png',
+						title: '接口',
+						selectedTitle: '接口',
+						dot: true
+					}
+				],
+				tabStyle: {
+					iconStyle: 'width:22px;height:22px;',
+					selectedIconStyle: 'width:22px;height:22px;',
+					titleStyle: 'font-size:12px;color:#888888;',
+					selectedTitleStyle: 'font-size:12px;color:#108EE9;',
+					boxStyle: 'background-color: #FFFFFF;'
+				}
+			}
+		},
+		onLoad(option) {
+			// 自定义的tabbar，relaunch进来的时候要自己跳转
+			// 当然nav-to-root的不需要，并且也不会传这个参数
+			if (option.target) {
+				const target = option.target
+				let toTab = 0
+				if (target === 'discovery') {
+					toTab = 1
+				} else if (target === 'mine') {
+					toTab = 2
+				}
+				// switch with no animation
+				this.$refs.tabbar.setPage(toTab, false)
+			}
+		},
+		methods: {
+			tabbarSwitched(val) {
+				// 记录当前tab
+				const app = getApp()
+				if (!app) return;
+				app.globalData.currentTab = val.page * 1
+			}
+		}
+	}
+</script>
+
+<style>
+
+</style>

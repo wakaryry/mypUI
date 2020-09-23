@@ -9,6 +9,12 @@
 				"disableScroll": true
 			}
 		},
+		{
+			"path": "pages/tabs/index_vue",
+			"style": {
+				"disableScroll": true
+			}
+		},
 		// base
 		{
 			"path": "pages/base/index",

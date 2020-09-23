@@ -52,6 +52,7 @@ export default {
 	gesture_index: '/pages/gesture/index',
 	// tabbar
 	tabbar_index: '/pages/tabbar/index',
+	vue_tabbar: '/pages/tabs/index_vue',
 	tabbar_hump: '/pages/tabbar/hump',
 	tabbar_hump_text: '/pages/tabbar/hump_text',
 	tabbar_hump_border: '/pages/tabbar/hump_border',

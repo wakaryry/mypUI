@@ -26,8 +26,6 @@
 			<!-- content of scroll -->
 			<slot></slot>
 			<myp-loader v-if="mypUp.use" :isLoading="mypIsUpLoading" :hasMore="mypHasMore"></myp-loader>
-			<view :style="{height: footToken}"></view>
-			<view v-if="includeXBar&&overrideXBar" :style="mypXBarHeightStyle"></view>
 		</view>
 	</scroll-view>
 	<!-- #endif -->

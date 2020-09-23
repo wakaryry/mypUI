@@ -338,6 +338,12 @@ export const displays = [{
 	label: '进度条',
 	page: 'base_progress_circle'
 }, {
+	cover: 'https://mypui.asnowsoft.cn/imgs/c3.jpg',
+	title: 'myp-timeline-item',
+	desc: '时间轴：百变自由',
+	label: '时间轴',
+	page: 'base_timeline'
+}, {
 	cover: 'https://mypui.asnowsoft.cn/imgs/c11.jpg',
 	title: 'myp-result',
 	desc: '结果：结果展示页面，成功/失败...',

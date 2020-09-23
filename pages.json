@@ -178,6 +178,12 @@
 				"disableScroll": true
 			}
 		},
+		{
+			"path": "pages/base/timeline",
+			"style": {
+				"disableScroll": true
+			}
+		},
 		// input
 		{
 			"path": "pages/input/index",

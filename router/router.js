@@ -28,6 +28,7 @@ export default {
 	base_result: '/pages/base/result',
 	base_fold: '/pages/base/fold',
 	base_loading_indicator: '/pages/base/loading_indicator',
+	base_timeline: '/pages/base/timeline',
 	// flex
 	flex_index: '/pages/flex/index',
 	flex_flex: '/pages/flex/flex',

@@ -137,6 +137,15 @@ export default {
 				identity: '钟点工',
 				page: 'base_countdown'
 			}, {
+				name: '时间轴',
+				avatar: 'https://mypui.asnowsoft.cn/imgs/a6.jpg',
+				desc: '166.8万粉丝',
+				content: '时间轴节点组件，足够自由与开放',
+				cover: 'https://mypui.asnowsoft.cn/imgs/c6.jpg',
+				badge: 2,
+				identity: '厨师',
+				page: 'base_timeline'
+			}, {
 				name: 'indexList',
 				avatar: 'https://mypui.asnowsoft.cn/imgs/a4.jpg',
 				desc: '26.6万粉丝',

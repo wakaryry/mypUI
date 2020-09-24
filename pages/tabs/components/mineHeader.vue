@@ -37,6 +37,10 @@
 	
 	.mh {
 		height: 176rpx;
+		/* #ifndef APP-NVUE */
+		display: flex;
+		box-sizing: border-box;
+		/* #endif */
 		flex-direction: row;
 		align-items: center;
 		padding-top: 20rpx;
@@ -51,6 +55,10 @@
 			width: 120rpx;
 			height: 120rpx;
 			border-radius: 120rpx;
+			/* #ifndef APP-NVUE */
+			display: flex;
+			box-sizing: border-box;
+			/* #endif */
 			justify-content: center;
 			align-items: center;
 			
@@ -73,10 +81,18 @@
 			margin-left: 24rpx;
 		}
 		&-top {
+			/* #ifndef APP-NVUE */
+			display: flex;
+			box-sizing: border-box;
+			/* #endif */
 			flex-direction: row;
 			align-items: center;
 		}
 		&-name {
+			/* #ifndef APP-NVUE */
+			display: flex;
+			box-sizing: border-box;
+			/* #endif */
 			flex-direction: row;
 			align-items: center;
 			border-radius: 4rpx;
@@ -106,6 +122,10 @@
 			/* #endif */
 		}
 		&-other {
+			/* #ifndef APP-NVUE */
+			display: flex;
+			box-sizing: border-box;
+			/* #endif */
 			flex-direction: row;
 			align-items: center;
 			
@@ -117,6 +137,10 @@
 		}
 		&-right {
 			margin-left: 24rpx;
+			/* #ifndef APP-NVUE */
+			display: flex;
+			box-sizing: border-box;
+			/* #endif */
 			flex-direction: row;
 			align-items: center;
 			

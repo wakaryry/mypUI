@@ -34,6 +34,10 @@
 			background-color: #FFFFFF;
 			border-radius: 32rpx;
 			height: 300rpx;
+			/* #ifndef APP-NVUE */
+			display: flex;
+			box-sizing: border-box;
+			/* #endif */
 			flex-direction: column;
 			align-items: center;
 			border-width: $myp-border-width;
@@ -57,6 +61,10 @@
 			left: 0;
 			top: 0;
 			width: 628rpx;
+			/* #ifndef APP-NVUE */
+			display: flex;
+			box-sizing: border-box;
+			/* #endif */
 			flex-direction: row;
 			justify-content: center;
 			&-image {

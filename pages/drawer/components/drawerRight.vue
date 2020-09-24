@@ -27,6 +27,10 @@
 
 <style lang="scss" scoped>
 	.dr {
+		/* #ifndef APP-NVUE */
+		display: flex;
+		box-sizing: border-box;
+		/* #endif */
 		flex-direction: row;
 		flex-wrap: nowrap;
 		width: 600rpx;

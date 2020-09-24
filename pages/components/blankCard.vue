@@ -35,6 +35,10 @@
 	.bc {
 		height: 240px;
 		background-color: #FFFFFF;
+		/* #ifndef APP-NVUE */
+		display: flex;
+		box-sizing: border-box;
+		/* #endif */
 		flex-direction: column;
 		align-items: center;
 		justify-content: flex-end;

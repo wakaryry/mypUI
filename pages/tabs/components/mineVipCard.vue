@@ -44,6 +44,10 @@
 			right: 24rpx;
 			bottom: 0;
 			height: 120rpx;
+			/* #ifndef APP-NVUE */
+			display: flex;
+			box-sizing: border-box;
+			/* #endif */
 			flex-direction: row;
 			justify-content: space-between;
 			align-items: center;

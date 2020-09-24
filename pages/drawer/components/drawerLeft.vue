@@ -29,6 +29,10 @@
 	.dl {
 		width: 600rpx;
 		flex: 1;
+		/* #ifndef APP-NVUE */
+		display: flex;
+		box-sizing: border-box;
+		/* #endif */
 		flex-direction: row;
 		flex-wrap: nowrap;
 	}

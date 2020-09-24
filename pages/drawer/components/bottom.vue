@@ -32,12 +32,20 @@
 		overflow: hidden;
 		padding-left: 32rpx;
 		padding-right: 32rpx;
+		/* #ifndef APP-NVUE */
+		display: flex;
+		box-sizing: border-box;
+		/* #endif */
 		flex-direction: column;
 		align-items: center;
 		
 		&-title {
 			width: 686rpx;
 			height: 80rpx;
+			/* #ifndef APP-NVUE */
+			display: flex;
+			box-sizing: border-box;
+			/* #endif */
 			flex-direction: row;
 			align-items: center;
 			justify-content: center;

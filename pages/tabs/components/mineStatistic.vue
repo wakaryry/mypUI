@@ -18,6 +18,10 @@
 	@import '@/mypUI/mypui.scss';
 	
 	.ms {
+		/* #ifndef APP-NVUE */
+		display: flex;
+		box-sizing: border-box;
+		/* #endif */
 		flex-direction: row;
 		justify-content: center;
 		align-items: center;

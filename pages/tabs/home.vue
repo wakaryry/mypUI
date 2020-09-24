@@ -188,12 +188,20 @@
 			height: 280rpx;
 			
 			&-item {
+				/* #ifndef APP-NVUE */
+				display: flex;
+				box-sizing: border-box;
+				/* #endif */
 				flex-direction: row;
 				align-items: center;
 				justify-content: center;
 			}
 		}
 		&-apps {
+			/* #ifndef APP-NVUE */
+			display: flex;
+			box-sizing: border-box;
+			/* #endif */
 			flex-direction: row;
 			justify-content: space-between;
 			padding-left: 32rpx;

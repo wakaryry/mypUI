@@ -55,6 +55,10 @@
 	
 	.water {
 		&-item {
+			/* #ifndef APP-NVUE */
+			display: flex;
+			box-sizing: border-box;
+			/* #endif */
 			justify-content: center;
 			align-items: center;
 			margin-bottom: 20rpx;

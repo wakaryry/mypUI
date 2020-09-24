@@ -19,6 +19,10 @@
 
 <style lang="scss" scoped>
 	.md {
+		/* #ifndef APP-NVUE */
+		display: flex;
+		box-sizing: border-box;
+		/* #endif */
 		flex-direction: row;
 		align-items: center;
 		flex-wrap: nowrap;

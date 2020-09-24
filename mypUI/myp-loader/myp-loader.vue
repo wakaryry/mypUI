@@ -58,11 +58,19 @@
 <style lang="scss" scoped>
 	.myp-loading {
 		width: 750rpx;
+		/* #ifndef APP-NVUE */
+		display: flex;
+		box-sizing: border-box;
+		/* #endif */
 		flex-direction: column;
 		align-items: center;
 		padding: 20rpx;
 		height: 120rpx;
 		&-content {
+			/* #ifndef APP-NVUE */
+			display: flex;
+			box-sizing: border-box;
+			/* #endif */
 			flex-direction: column;
 			align-items: center;
 		}

@@ -72,6 +72,10 @@
 	.myp-refresher {
 		height: 140rpx;
 		width: 750rpx;
+		/* #ifndef APP-NVUE */
+		display: flex;
+		box-sizing: border-box;
+		/* #endif */
 		flex-direction: row;
 		justify-content: center;
 		padding-top: 50rpx;

@@ -37,6 +37,10 @@
 			position: absolute;
 			right: 0;
 			bottom: 0;
+			/* #ifndef APP-NVUE */
+			display: flex;
+			box-sizing: border-box;
+			/* #endif */
 			flex-direction: row;
 			align-items: center;
 			justify-content: center;

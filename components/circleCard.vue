@@ -85,6 +85,10 @@
 			position: absolute;
 			right: 24rpx;
 			top: 20rpx;
+			/* #ifndef APP-NVUE */
+			display: flex;
+			box-sizing: border-box;
+			/* #endif */
 			flex-direction: row;
 			align-items: center;
 			flex-wrap: nowrap;

@@ -54,12 +54,20 @@
 		border-radius: 12rpx;
 		
 		&-head {
+			/* #ifndef APP-NVUE */
+			display: flex;
+			box-sizing: border-box;
+			/* #endif */
 			flex-direction: row;
 			justify-content: space-between;
 			align-items: center;
 			padding: 32rpx 0;
 			
 			&-left {
+				/* #ifndef APP-NVUE */
+				display: flex;
+				box-sizing: border-box;
+				/* #endif */
 				flex-direction: row;
 				height: 90rpx;
 			}
@@ -104,6 +112,10 @@
 		
 		&-body {
 			position: relative;
+			/* #ifndef APP-NVUE */
+			display: flex;
+			box-sizing: border-box;
+			/* #endif */
 			flex-direction: row;
 			height: 120rpx;
 			margin-top: 32rpx;
@@ -142,6 +154,10 @@
 		}
 		
 		&-footer {
+			/* #ifndef APP-NVUE */
+			display: flex;
+			box-sizing: border-box;
+			/* #endif */
 			flex-direction: row;
 			justify-content: space-between;
 			height: 76rpx;

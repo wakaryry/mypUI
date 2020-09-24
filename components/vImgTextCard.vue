@@ -45,6 +45,10 @@
 			border-radius: 12rpx;
 		}
 		&-tag {
+			/* #ifndef APP-NVUE */
+			display: flex;
+			box-sizing: border-box;
+			/* #endif */
 			flex-direction: row;
 			align-items: center;
 			position: absolute;

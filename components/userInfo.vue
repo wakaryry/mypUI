@@ -36,6 +36,10 @@
 			left: 0;
 			top: 64rpx;
 			width: 750rpx;
+			/* #ifndef APP-NVUE */
+			display: flex;
+			box-sizing: border-box;
+			/* #endif */
 			flex-direction: column;
 			align-items: center;
 		}
@@ -60,6 +64,10 @@
 		&-num {
 			margin-top: 16rpx;
 			margin-bottom: 24rpx;
+			/* #ifndef APP-NVUE */
+			display: flex;
+			box-sizing: border-box;
+			/* #endif */
 			flex-direction: row;
 			align-items: center;
 		}

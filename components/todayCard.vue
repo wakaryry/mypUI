@@ -39,6 +39,10 @@
 		padding-right: 20rpx;
 		
 		&-title {
+			/* #ifndef APP-NVUE */
+			display: flex;
+			box-sizing: border-box;
+			/* #endif */
 			flex-direction: row;
 			align-items: center;
 			
@@ -51,6 +55,10 @@
 			}
 		}
 		&-bottom {
+			/* #ifndef APP-NVUE */
+			display: flex;
+			box-sizing: border-box;
+			/* #endif */
 			flex-direction: row;
 			justify-content: space-between;
 			align-items: center;

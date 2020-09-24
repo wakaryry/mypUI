@@ -49,6 +49,10 @@
 		width: 300rpx;
 		height: 520rpx;
 		padding: 24rpx;
+		/* #ifndef APP-NVUE */
+		display: flex;
+		box-sizing: border-box;
+		/* #endif */
 		flex-direction: column;
 		align-items: center;
 		position: relative;

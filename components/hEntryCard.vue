@@ -41,15 +41,27 @@
 		background-color: $myp-text-color-second;
 		border-radius: 16rpx;
 		padding: 24rpx;
+		/* #ifndef APP-NVUE */
+		display: flex;
+		box-sizing: border-box;
+		/* #endif */
 		flex-direction: row;
 		justify-content: space-between;
 		
 		&-left {
 			flex: 1;
+			/* #ifndef APP-NVUE */
+			display: flex;
+			box-sizing: border-box;
+			/* #endif */
 			flex-direction: column;
 			justify-content: space-between;
 			
 			&-title {
+				/* #ifndef APP-NVUE */
+				display: flex;
+				box-sizing: border-box;
+				/* #endif */
 				flex-direction: row;
 				align-items: center;
 				
@@ -60,6 +72,10 @@
 				}
 			}
 			&-desc {
+				/* #ifndef APP-NVUE */
+				display: flex;
+				box-sizing: border-box;
+				/* #endif */
 				flex-direction: row;
 				
 				&-text {
@@ -82,6 +98,10 @@
 		
 		&-right {
 			width: 140rpx;
+			/* #ifndef APP-NVUE */
+			display: flex;
+			box-sizing: border-box;
+			/* #endif */
 			flex-direction: column;
 			align-items: center;
 			

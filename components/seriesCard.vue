@@ -70,6 +70,10 @@
 			left: 0;
 			top: 0;
 			height: 40rpx;
+			/* #ifndef APP-NVUE */
+			display: flex;
+			box-sizing: border-box;
+			/* #endif */
 			flex-direction: row;
 			align-items: center;
 			justify-content: center;

@@ -98,6 +98,10 @@
 
 <style lang="scss" scoped>
 	.hctc {
+		/* #ifndef APP-NVUE */
+		display: flex;
+		box-sizing: border-box;
+		/* #endif */
 		flex-direction: row;
 		align-items: center;
 		

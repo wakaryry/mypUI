@@ -204,6 +204,10 @@
 		position: relative;
 		
 		&-fix {
+			/* #ifndef APP-NVUE */
+			display: flex;
+			box-sizing: border-box;
+			/* #endif */
 			flex-direction: row;
 			align-items: center;
 			
@@ -213,6 +217,10 @@
 			}
 		}
 		&-place {
+			/* #ifndef APP-NVUE */
+			display: flex;
+			box-sizing: border-box;
+			/* #endif */
 			flex-direction: row;
 			align-items: center;
 			position: absolute;
@@ -233,6 +241,10 @@
 		}
 		&-input {
 			position: absolute;
+			/* #ifndef APP-NVUE */
+			display: flex;
+			box-sizing: border-box;
+			/* #endif */
 			flex-direction: row;
 			align-items: center;
 			left: 0;

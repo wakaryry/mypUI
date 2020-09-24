@@ -151,6 +151,10 @@
 
 <style lang="scss" scoped>
 	.myp-sl {
+		/* #ifndef APP-NVUE */
+		display: flex;
+		box-sizing: border-box;
+		/* #endif */
 		flex-direction: row;
 		align-items: center;
 		

@@ -211,6 +211,10 @@ export default {
 		padding-right: 70rpx;
 		
 		&-list {
+			/* #ifndef APP-NVUE */
+			display: flex;
+			box-sizing: border-box;
+			/* #endif */
 			flex-direction: row;
 			margin-left: 18rpx;
 			margin-top: 18rpx;
@@ -222,6 +226,10 @@ export default {
 			border-color: $myp-border-color;
 			border-radius: 12rpx;
 			margin-right: 18rpx;
+			/* #ifndef APP-NVUE */
+			display: flex;
+			box-sizing: border-box;
+			/* #endif */
 			flex-direction: row;
 			align-items: center;
 			justify-content: center;
@@ -242,6 +250,10 @@ export default {
 	}
 	&-item {
 		width: 750rpx;
+		/* #ifndef APP-NVUE */
+		display: flex;
+		box-sizing: border-box;
+		/* #endif */
 		flex-direction: row;
 		align-items: center;
 		height: 92rpx;
@@ -266,6 +278,10 @@ export default {
 		bottom: 32rpx;
 		right: 0;
 		width: 70rpx;
+		/* #ifndef APP-NVUE */
+		display: flex;
+		box-sizing: border-box;
+		/* #endif */
 		flex-direction: column;
 		align-items: center;
 		
@@ -285,6 +301,10 @@ export default {
 		width: 120rpx;
 		height: 120rpx;
 		text-align: center;
+		/* #ifndef APP-NVUE */
+		display: flex;
+		box-sizing: border-box;
+		/* #endif */
 		justify-content: center;
 		background-color: $myp-bg-color-mask-dark;
 		border-radius: 60rpx;

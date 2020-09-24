@@ -565,6 +565,10 @@
 <style scoped>
 	.slider-bar-container {
 		height: 56px;
+		/* #ifndef APP-NVUE */
+		display: flex;
+		box-sizing: border-box;
+		/* #endif */
 		justify-content: center;
 		align-items: center;
 		overflow: hidden;

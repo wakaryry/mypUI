@@ -189,8 +189,17 @@
 	@import '../mypui.scss';
 	
 	.myp-grid {
+		/* #ifndef APP-NVUE */
+		display: flex;
+		box-sizing: border-box;
+		/* #endif */
 		flex-direction: column;
+		
 		&-rows {
+			/* #ifndef APP-NVUE */
+			display: flex;
+			box-sizing: border-box;
+			/* #endif */
 			flex-direction: row;
 			flex-wrap: nowrap;
 		}
@@ -198,6 +207,10 @@
 			flex: 1;
 		}
 		&-item {
+			/* #ifndef APP-NVUE */
+			display: flex;
+			box-sizing: border-box;
+			/* #endif */
 			justify-content: center;
 			align-items: center;
 			position: relative;

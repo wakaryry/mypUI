@@ -54,6 +54,9 @@
 			},
 			mrContentStyle() {
 				let _style = `flex-direction:row;justify-content:${this.justify};flex-wrap:nowrap;`
+				// #ifndef APP-NVUE
+				_style += `display: flex;box-sizing: border-box;`
+				// #endif
 				if (this.justify != 'flex-start') {
 					_style += "width:" + this.width + ';'
 				}

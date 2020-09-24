@@ -114,6 +114,10 @@
 
 <style lang="scss" scoped>
 	.myp-mct {
+		/* #ifndef APP-NVUE */
+		display: flex;
+		box-sizing: border-box;
+		/* #endif */
 		flex-direction: row;
 		align-items: flex-start;
 		
@@ -123,6 +127,10 @@
 		}
 		
 		&-content {
+			/* #ifndef APP-NVUE */
+			display: flex;
+			box-sizing: border-box;
+			/* #endif */
 			flex-direction: column;
 			
 			&-left {

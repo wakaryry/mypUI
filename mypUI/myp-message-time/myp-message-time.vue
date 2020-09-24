@@ -37,6 +37,10 @@
 
 <style lang="scss" scoped>
 	.myp-ct {
+		/* #ifndef APP-NVUE */
+		display: flex;
+		box-sizing: border-box;
+		/* #endif */
 		flex-direction: row;
 		justify-content: center;
 		align-items: center;

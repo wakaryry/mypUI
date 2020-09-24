@@ -103,15 +103,27 @@
 
 <style lang="scss" scoped>
 	.myp-item {
+		/* #ifndef APP-NVUE */
+		display: flex;
+		box-sizing: border-box;
+		/* #endif */
 		justify-content: center;
 		align-items: center;
 		position: relative;
 		
 		&-row {
+			/* #ifndef APP-NVUE */
+			display: flex;
+			box-sizing: border-box;
+			/* #endif */
 			flex-direction: row;
 			flex-wrap: nowrap;
 		}
 		&-column {
+			/* #ifndef APP-NVUE */
+			display: flex;
+			box-sizing: border-box;
+			/* #endif */
 			flex-direction: column;
 			flex-wrap: nowrap;
 		}

@@ -248,12 +248,20 @@
 	.myp-picker {
 		&-box {
 			overflow: hidden;
+			/* #ifndef APP-NVUE */
+			display: flex;
+			box-sizing: border-box;
+			/* #endif */
 			flex-direction: column;
 		}
 		&-view {
 			flex: 1;
 		}
 		&-item {
+			/* #ifndef APP-NVUE */
+			display: flex;
+			box-sizing: border-box;
+			/* #endif */
 			justify-content: center;
 			align-items: center;
 			

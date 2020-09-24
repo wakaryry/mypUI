@@ -208,12 +208,20 @@
 <style lang="scss" scoped>
 	.myp-cp {
 		position: relative;
+		/* #ifndef APP-NVUE */
+		display: flex;
+		box-sizing: border-box;
+		/* #endif */
 		justify-content: center;
 		align-items: center;
 		overflow: hidden;
 		
 		&-in {
 			position: absolute;
+			/* #ifndef APP-NVUE */
+			display: flex;
+			box-sizing: border-box;
+			/* #endif */
 			justify-content: center;
 			align-items: center;
 		}

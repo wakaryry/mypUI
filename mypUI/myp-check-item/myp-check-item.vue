@@ -177,6 +177,10 @@
 
 <style lang="scss" scoped>
 	.myp-radio-box {
+		/* #ifndef APP-NVUE */
+		display: flex;
+		box-sizing: border-box;
+		/* #endif */
 		flex-direction: row;
 		align-items: center;
 		flex-wrap: nowrap;

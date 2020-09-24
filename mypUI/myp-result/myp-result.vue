@@ -83,6 +83,10 @@
 
 <style lang="scss" scoped>
 	.myp-result {
+		/* #ifndef APP-NVUE */
+		display: flex;
+		box-sizing: border-box;
+		/* #endif */
 		flex-direction: column;
 		align-items: center;
 	}

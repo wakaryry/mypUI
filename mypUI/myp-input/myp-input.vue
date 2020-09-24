@@ -294,6 +294,10 @@
 
 <style lang="scss" scoped>
 	.myp-input {
+		/* #ifndef APP-NVUE */
+		display: flex;
+		box-sizing: border-box;
+		/* #endif */
 		flex-direction: row;
 		flex-wrap: nowrap;
 		align-items: center;
@@ -308,6 +312,10 @@
 			top: 0;
 			right: 0;
 			bottom: 0;
+			/* #ifndef APP-NVUE */
+			display: flex;
+			box-sizing: border-box;
+			/* #endif */
 			flex-direction: row;
 			align-items: center;
 			
@@ -327,6 +335,10 @@
 			top: 0;
 			right: 0;
 			bottom: 0;
+			/* #ifndef APP-NVUE */
+			display: flex;
+			box-sizing: border-box;
+			/* #endif */
 			flex-direction: row;
 			align-items: center;
 		}

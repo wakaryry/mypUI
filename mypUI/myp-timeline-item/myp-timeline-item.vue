@@ -46,11 +46,19 @@
 
 <style lang="scss" scoped>
 	.myp-timeline {
+		/* #ifndef APP-NVUE */
+		display: flex;
+		box-sizing: border-box;
+		/* #endif */
 		flex-direction: row;
 		flex-wrap: nowrap;
 		
 		&-center {
 			position: relative;
+			/* #ifndef APP-NVUE */
+			display: flex;
+			box-sizing: border-box;
+			/* #endif */
 			flex-direction: column;
 			align-items: center;
 		}

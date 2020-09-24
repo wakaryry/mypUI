@@ -1,7 +1,7 @@
 <template>
 	<view>
 		<myp-tabbar ref="tabbar" :tabs="tabs" :tabStyle="tabStyle" @tabClicked="tabbarSwitched">
-			<home-tab></home-tab>
+			<home-tab :isVue="true"></home-tab>
 			<discovery-tab></discovery-tab>
 			<mine-tab></mine-tab>
 		</myp-tabbar>

@@ -118,7 +118,7 @@
 				</view>
 				<view style="height: 40rpx;"></view>
 			</myp-list-cell>
-			<myp-list-cell>
+			<myp-list-cell v-if="isVue">
 				<myp-button bgType="error" text="进入Vue页面示范" textType="inverse" border="none" radius="ll" boxStyle="width:550rpx;height:76rpx;margin-left:100rpx;" @buttonClicked="toPage({page: 'vue_tabbar'})"></myp-button>
 				<view style="height: 40rpx;"></view>
 			</myp-list-cell>
@@ -154,6 +154,12 @@
 			vBgCard
 		},
 		inject: ['tabRoot'],
+		props: {
+			isVue: {
+				type: Boolean,
+				default: false
+			}
+		},
 		data() {
 			return {
 				recommends: recommends,

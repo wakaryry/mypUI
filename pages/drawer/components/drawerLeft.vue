@@ -28,6 +28,7 @@
 <style lang="scss" scoped>
 	.dl {
 		width: 600rpx;
+		flex: 1;
 		flex-direction: row;
 		flex-wrap: nowrap;
 	}

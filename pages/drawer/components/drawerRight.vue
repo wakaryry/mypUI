@@ -30,5 +30,6 @@
 		flex-direction: row;
 		flex-wrap: nowrap;
 		width: 600rpx;
+		flex: 1;
 	}
 </style>

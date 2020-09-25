@@ -590,6 +590,7 @@
 		}
 	],
 	"globalStyle": {
+		"pageOrientation": "portrait",
 		"navigationBarTextStyle": "black",
 		"navigationBarTitleText": "",
 		// 设置默认的navbar背景色，根据自己的项目更改(mp端页面渲染的时候会先出现导航栏)

@@ -14,7 +14,7 @@ export default {
 			navBack: "back",
 			tab: null,
 			delta: 1,
-			leftIcons: [{icon:'left'}],
+			leftIcons: [{icon:'left', style: 'width:44px;height:44px;'}],
 			// used to remove left icons. only use off. on/off
 			// relaunch到下一页的时候,下一页是没有leftIcon的,要么我们在页面上判断,要么我们自动判断.这里采用url传参自动判断
 			leftIconSwitch: 'on'

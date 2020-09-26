@@ -46,7 +46,7 @@ export default {
 	},
 	created() {
 		const that = this
-		if (this.index === 0 && this.current === 0 && !this.mypInited) {
+		if (this.index === this.current && !this.mypInited) {
 			setTimeout(()=>{
 				that.mypInited = true
 				that.toRefresh()

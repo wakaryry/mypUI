@@ -7,7 +7,7 @@
 		<!-- #endif -->
 		<swiper :current="mypCurrentTab" style="width: 750rpx;flex: 1;" @change="mypOnSwiperChange" @animationfinish="mypOnSwiperAnimationFinish" @onAnimationEnd="mypOnSwiperAnimationFinish" @transition="mypOnSwiperScroll">
 			<swiper-item v-for="(tab,idx) in tabs" :key="idx">
-				<album-list :current='mypCurrentTab' :index="idx" extra="80rpx"></album-list>
+				<album-list :current='mypCurrentTab' :index="idx" extra="status-nav-80rpx"></album-list>
 			</swiper-item>
 		</swiper>
 		<!-- #ifndef APP-NVUE -->

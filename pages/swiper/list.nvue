@@ -10,7 +10,7 @@
 		<!-- #endif -->
 		<swiper :current="current" style="width: 750rpx;flex: 1;" @change="toSwiperChange">
 			<swiper-item v-for="(tab,idx) in tabs" :key="idx">
-				<album-list :current='current' :index="idx"></album-list>
+				<album-list :current='current' :index="idx" extra="status-nav"></album-list>
 			</swiper-item>
 		</swiper>
 		<!-- #ifndef APP-NVUE -->

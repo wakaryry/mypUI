@@ -38,7 +38,7 @@
 					<myp-button slot="extra" text="查看更多" textSize="s" textType="text" border="all" radius="ll" boxStyle="width:160rpx;height:56rpx;" @buttonClicked="toPage({page: 'scroll_index'})"></myp-button>
 				</myp-title>
 				<myp-scroll-h width="750rpx" height="300rpx">
-					<view style="width: 32rpx;height: 300rpx;background-color: #007AFF;"></view>
+					<view style="width: 32rpx;"></view>
 					<view v-for="(item,idx) in boxes" :key="idx" style="margin-right: 20rpx;">
 						<v-img-text-card :item="item" @detail="toPage"></v-img-text-card>
 					</view>

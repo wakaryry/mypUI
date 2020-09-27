@@ -5,11 +5,17 @@
 				<myp-tabs-h :value="mypCurrentTab" :items="tabs" :isTap="mypIsTap" :offset="mypDx" :last="mypLastTabIndex" textType="second" activeTextType="text" activeTextStyle="font-weight:700;" scrollSize="350rpx" width="100rpx" height="44px" @change="mypToTabTab"></myp-tabs-h>
 			</view>
 		</myp-navbar>
+		<!-- #ifndef APP-NVUE -->
+		<myp-content-box :includeXBar="false" :tabHeight="50">
+		<!-- #endif -->
 		<swiper :current="mypCurrentTab" style="width: 750rpx;flex: 1;" @change="mypOnSwiperChange" @animationfinish="mypOnSwiperAnimationFinish" @onAnimationEnd="mypOnSwiperAnimationFinish" @transition="mypOnSwiperScroll">
 			<swiper-item v-for="(tab,idx) in tabs" :key="idx">
-				<album-list :current='mypCurrentTab' :index="idx"></album-list>
+				<album-list :current='mypCurrentTab' :index="idx" extra="status-nav-x-50px"></album-list>
 			</swiper-item>
 		</swiper>
+		<!-- #ifndef APP-NVUE -->
+		</myp-content-box>
+		<!-- #endif -->
 	</view>
 </template>
 

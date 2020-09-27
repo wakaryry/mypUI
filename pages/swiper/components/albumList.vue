@@ -1,5 +1,5 @@
 <template>
-	<myp-list ref="myp-list" @down="toLoadData" @up="toLoadData">
+	<myp-list ref="myp-list" :extra="extra" @down="toLoadData" @up="toLoadData">
 		<myp-list-cell v-for="(item,idx) in items" :key="idx">
 			<album-rich-cell :item="item" @user="toUser" @detail="toDetail" @thumb="toThumb" @comment="toComment" @moreComment="toMoreComment" @share="toShare"></album-rich-cell>
 			<view style="height: 20rpx;"></view>
@@ -24,6 +24,10 @@
 			index: {
 				type: Number,
 				default: 0
+			},
+			extra: {
+				type: String,
+				default: '0'
 			}
 		},
 		data() {

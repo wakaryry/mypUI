@@ -5,11 +5,17 @@
 				<myp-tabs-h :value="current" :items="tabs" textType="second" activeTextType="text" activeTextStyle="font-weight:700;" :isTap="true" scrollSize="350rpx" justify="center" width="100rpx" height="44px" @change="toChangeTab"></myp-tabs-h>
 			</view>
 		</myp-navbar>
+		<!-- #ifndef APP-NVUE -->
+		<myp-content-box>
+		<!-- #endif -->
 		<swiper :current="current" style="width: 750rpx;flex: 1;" @change="toSwiperChange">
 			<swiper-item v-for="(tab,idx) in tabs" :key="idx">
 				<album-list :current='current' :index="idx"></album-list>
 			</swiper-item>
 		</swiper>
+		<!-- #ifndef APP-NVUE -->
+		</myp-content-box>
+		<!-- #endif -->
 	</view>
 </template>
 

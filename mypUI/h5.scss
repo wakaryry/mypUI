@@ -3,6 +3,7 @@
 // 为了兼容H5，我们需要提高部分属性的层级
 // 如果您需要考虑H5，请引入该文件，并且在覆盖这些属性的时候记得加上 !important
 @import './mypui.scss';
+@import '@/uni.scss';
 
 .myp-flex {
 	&-row {

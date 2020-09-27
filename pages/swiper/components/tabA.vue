@@ -3,7 +3,7 @@
 		<myp-navbar :fixed="false" title="我欲乘风归去"></myp-navbar>
 		<myp-tabs-h :value="mypCurrentTab" :items="tabs" :isTap="mypIsTap" :offset="mypDx" :last="mypLastTabIndex" textType="second" activeTextType="text" activeTextStyle="font-weight:700;" width="100rpx" height="80rpx" @change="mypToTabTab"></myp-tabs-h>
 		<!-- #ifndef APP-NVUE -->
-		<myp-content-box :includeXBar="false" :tabHeight="50" extra="80rpx">
+		<myp-content-box extra="status-nav-x-50px-80rpx">
 		<!-- #endif -->
 		<swiper :current="mypCurrentTab" style="width: 750rpx;flex: 1;" @change="mypOnSwiperChange" @animationfinish="mypOnSwiperAnimationFinish" @onAnimationEnd="mypOnSwiperAnimationFinish" @transition="mypOnSwiperScroll">
 			<swiper-item v-for="(tab,idx) in tabs" :key="idx">

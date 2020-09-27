@@ -42,8 +42,7 @@
 		// #endif
 		data() {
 			return {
-				mypIncludeXBar: false,
-				mypExtra: 180
+				mypExtra: 'status-nav-x-180rpx'
 			}
 		},
 		methods: {

@@ -6,7 +6,7 @@
 			</view>
 		</myp-navbar>
 		<!-- #ifndef APP-NVUE -->
-		<myp-content-box :includeXBar="false" :tabHeight="50">
+		<myp-content-box extra="status-nav-x-50px">
 		<!-- #endif -->
 		<swiper :current="mypCurrentTab" style="width: 750rpx;flex: 1;" @change="mypOnSwiperChange" @animationfinish="mypOnSwiperAnimationFinish" @onAnimationEnd="mypOnSwiperAnimationFinish" @transition="mypOnSwiperScroll">
 			<swiper-item v-for="(tab,idx) in tabs" :key="idx">

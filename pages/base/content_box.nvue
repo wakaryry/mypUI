@@ -1,7 +1,7 @@
 <template>
 	<view>
 		<myp-navbar :lefts="leftIcons" bgType="none" :isSeize="false" title="myp-content-box" @leftAction="navLeftAction"></myp-navbar>
-		<myp-content-box :includeStatus="includeStatus" :includeNav="includeNav" :includeXBar="includeXBar" :extra="extra" :tabHeight="tabHeight" :height="height" boxStyle="background-color: #e5f7fe;"></myp-content-box>
+		<myp-content-box :extra="extraHeight" :height="height" boxStyle="background-color: #e5f7fe;"></myp-content-box>
 		<myp-position :fixed="true" pos="bottom" offset="x-120rpx" boxStyle="left: 32rpx;">
 			<view>
 				<myp-button bgType="primary" :text="'status:'+includeStatus" textType="inverse" border="none" radius="ll" boxStyle="width:240rpx;margin-top:16rpx;margin-bottom:16rpx;" @buttonClicked="toToggleStatus"></myp-button>
@@ -22,7 +22,7 @@
 		mixins: [navHelper],
 		data() {
 			return {
-				// content-box的高度规则是：屏幕高度 - status - nav - extra - tabHeight - xbar
+				// content-box的高度规则是：屏幕高度 - extra
 				// 如果 设置了height，而且不是0，则不会计算，直接使用height
 				includeStatus: true,
 				includeNav: true,
@@ -30,6 +30,24 @@
 				extra: 0,
 				height: 0,
 				tabHeight: 0
+			}
+		},
+		computed: {
+			extraHeight() {
+				if (this.height !== 0) {
+					return this.height
+				}
+				let _extra = ''
+				if (!this.includeStatus) {
+					_extra = 'status'
+				}
+				if (!this.includeNav) {
+					_extra += '-nav'
+				}
+				if (!this.includeXBar) {
+					_extra += '-x'
+				}
+				return _extra + '-'+this.tabHeight+'px' + '-'+this.extra
 			}
 		},
 		methods: {

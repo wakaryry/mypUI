@@ -53,9 +53,7 @@
 		mixins: [navHelper, contentBoxMixin, parentMixin],
 		data() {
 			return {
-				mypIncludeStatus: true,
-				mypIncludeNav: true,
-				mypIncludeXBar: true
+				mypExtra: '0'
 			}
 		},
 		onReady() {

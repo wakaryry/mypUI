@@ -45,10 +45,7 @@
 		data() {
 			return {
 				// #ifndef APP-NVUE
-				mypIncludeStatus: false,
-				mypIncludeNav: false,
-				mypIncludeXBar: false,
-				mypExtra: 180,
+				mypExtra: 'status-nav-x-180rpx',
 				// #endif
 				items: []
 			}

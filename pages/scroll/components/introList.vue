@@ -75,8 +75,7 @@
 		// #endif
 		data() {
 			return {
-				mypIncludeXBar: false,
-				mypExtra: 180,
+				mypExtra: 'status-nav-x-180rpx',
 				loves: [
 					{img: 'https://mypui.asnowsoft.cn/imgs/c3.jpg', maskType: 'mask', title: '私人FM', icon: 'solid-calendar', tag: '', desc: '听点新鲜的', descIcon: '', bgType: '', titleType: 'inverse', descType: 'inverse', iconType: 'inverse', iconStyle: 'font-size:54rpx;'},
 					{img: 'https://mypui.asnowsoft.cn/imgs/c7.jpg', maskType: 'mask', title: '古典专区', icon: 'solid-plus', tag: '', desc: '听不完的古典', descIcon: '', bgType: '', titleType: 'inverse', descType: 'inverse', iconType: 'inverse', iconStyle: 'font-size:54rpx;'},

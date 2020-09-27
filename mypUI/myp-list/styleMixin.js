@@ -30,7 +30,7 @@ export default {
 			default: ''
 		},
 		// #ifndef APP-NVUE
-		// 补充高度
+		// 需要从屏幕高度减去的高度
 		extra: {
 			type: String,
 			default: 'status-nav'

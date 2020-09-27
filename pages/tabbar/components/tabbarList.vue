@@ -101,8 +101,7 @@
 		mixins: [childMixin, contentBoxMixin],
 		data() {
 			return {
-				mypIncludeXBar: true,
-				mypExtra: '90rpx'
+				mypExtra: 'status-nav-90rpx'
 			}
 		},
 		methods: {

@@ -9,7 +9,7 @@
 				<myp-tabs-h :value="currentTab" :items="tabs" :isTap="true" textLabel="name" activeTextType="primary" width="128rpx" indicatorType="primary" indicatorWidth="64rpx" scrollSize="750rpx" justify="center" @change="toChangeTab"></myp-tabs-h>
 			</cell>
 			<cell>
-				<myp-content-box :includeStatus="false" :includeNav="false" :includeXBar="false" extra="180rpx">
+				<myp-content-box extra="status-nav-x-180rpx">
 					<swiper id="swiper" ref="swiper" :current="currentTab" style="width:750rpx;flex:1;" @change="onSwiperChange">
 						<swiper-item>
 							<intro-list ref="intro" :parentId="mypListId" :current="currentTab" :index="0"></intro-list>
@@ -29,7 +29,7 @@
 		<scroll-view :scroll-y="mypParentScrollable" :scroll-top="mypParentScrollTop" :scroll-with-animation="true" :style="'width:750rpx;'+mypContentHeightStyle" @scroll="handleParentScroll">
 			<swiper-head></swiper-head>
 			<myp-tabs-h :value="currentTab" :items="tabs" :isTap="true" textLabel="name" activeTextType="primary" width="128rpx" indicatorType="primary" indicatorWidth="64rpx" scrollSize="750rpx" justify="center" @change="toChangeTab"></myp-tabs-h>
-			<myp-content-box :includeStatus="false" :includeNav="false" :includeXBar="false" extra="180rpx">
+			<myp-content-box extra="status-nav-x-180rpx">
 				<swiper :current="currentTab" style="width:750rpx;flex:1;" @change="onSwiperChange">
 					<swiper-item>
 						<intro-list :scrollable="mypChildScrollable" :current="currentTab" :index="0" @move="mypChildTouchMove" @end="mypChildTouchEnd"></intro-list>
@@ -93,10 +93,7 @@
 		mixins: [contentBoxMixin, navHelper, toastMixin, loadingMixin, parentMixin, actionsMixin],
 		data() {
 			return {
-				mypExtra: 100,
-				mypIncludeXBar: false,
-				mypIncludeStatus: true,
-				mypIncludeNav: true,
+				mypExtra: 'x-100rpx',
 				currentTab: 0,
 				titleVisible: false,
 				tabs: [

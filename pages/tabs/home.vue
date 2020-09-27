@@ -13,7 +13,7 @@
 			</myp-list-cell>
 			<myp-list-cell>
 				<myp-scroll-h left="660rpx" bgType="none" height="392rpx">
-					<view style="width: 61rpx;"></view>
+					<view style="width: 61rpx;height: 6rpx;"></view>
 					<intro-header @selected="toIntro"></intro-header>
 					<component-list-item v-for="(item, idx) in items" :key="idx" :item="item" boxStyle="margin-left:32rpx;" @selected="toItem(item.type)"></component-list-item>
 					<view style="width: 32rpx;"></view>
@@ -71,7 +71,7 @@
 				</myp-title>
 				<myp-scroll-h height="300rpx">
 					<view style="width: 32rpx;"></view>
-					<series-card v-for="(item,idx) in inputs" :key="idx" :item="item" :boxStyle="idx===6?'':'margin-right:20rpx;'" @detail="toPage"></series-card>
+					<series-card v-for="(item,idx) in inputs" :key="idx" :item="item" :boxStyle="idx===inputs.length-1?'':'margin-right:20rpx;'" @detail="toPage"></series-card>
 					<view style="width: 32rpx;"></view>
 				</myp-scroll-h>
 			</myp-list-cell>

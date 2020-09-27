@@ -13,7 +13,7 @@
 			</myp-list-cell>
 			<myp-list-cell>
 				<myp-scroll-h left="660rpx" bgType="none" height="392rpx">
-					<view style="width: 61rpx;height: 6rpx;"></view>
+					<view style="width: 61rpx;"></view>
 					<intro-header @selected="toIntro"></intro-header>
 					<component-list-item v-for="(item, idx) in items" :key="idx" :item="item" boxStyle="margin-left:32rpx;" @selected="toItem(item.type)"></component-list-item>
 					<view style="width: 32rpx;"></view>
@@ -38,7 +38,7 @@
 					<myp-button slot="extra" text="查看更多" textSize="s" textType="text" border="all" radius="ll" boxStyle="width:160rpx;height:56rpx;" @buttonClicked="toPage({page: 'scroll_index'})"></myp-button>
 				</myp-title>
 				<myp-scroll-h width="750rpx" height="300rpx">
-					<view style="width: 32rpx;"></view>
+					<view style="width: 32rpx;height: 300rpx;background-color: #007AFF;"></view>
 					<view v-for="(item,idx) in boxes" :key="idx" style="margin-right: 20rpx;">
 						<v-img-text-card :item="item" @detail="toPage"></v-img-text-card>
 					</view>

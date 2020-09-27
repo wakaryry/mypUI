@@ -567,12 +567,6 @@
 				"disableScroll": true
 			}
 		},
-		{
-			"path": "pages/scroll/x_support",
-			"style": {
-				"disableScroll": true
-			}
-		},
 		// others
 		{
 			"path": "pages/others/index",

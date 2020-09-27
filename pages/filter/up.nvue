@@ -1,7 +1,7 @@
 <template>
 	<view>
 		<myp-navbar :lefts="leftIcons" title="底部出现" @leftAction="navLeftAction"></myp-navbar>
-		<myp-list-simple bgType="page" :includeXBar="false" extra="64px">
+		<myp-list-simple bgType="page" extra="status-nav-x-64px">
 			
 		</myp-list-simple>
 		<up-pop :show="upVisible" :current="current" @cancel="toToggleUp" @select="selectedUp"></up-pop>

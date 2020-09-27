@@ -30,8 +30,7 @@
 					{name: 'list', page: 'scroll_list_simple', icon: 'topic', desc: '简单list'},
 					{name: 'list', page: 'scroll_list_loading', icon: 'topic', desc: 'list，带下拉/上提'},
 					{name: 'list', page: 'scroll_list_more', icon: 'topic', desc: 'list，带下拉/loadmoreoffset'},
-					{name: 'waterfall', page: 'scroll_waterfall', icon: 'radio-button', desc: 'waterfall，带下拉/上提'},
-					{name: 'xBar', page: 'scroll_x_support', icon: 'teacher', desc: 'xBar安全区适配'}
+					{name: 'waterfall', page: 'scroll_waterfall', icon: 'radio-button', desc: 'waterfall，带下拉/上提'}
 				]
 			}
 		},

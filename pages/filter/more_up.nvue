@@ -1,7 +1,7 @@
 <template>
 	<view>
 		<myp-navbar :lefts="leftIcons" title="Filter" @leftAction="navLeftAction"></myp-navbar>
-		<myp-list-simple bgType="page" :includeXBar="false" extra="100rpx">
+		<myp-list-simple bgType="page" extra="status-nav-x-100rpx">
 			
 		</myp-list-simple>
 		<myp-popup-always :show="selectedQuery === 1" :width="214" :height="gradesHeight" pos="bottom" :overlay="overlay" leftOffset="16" bottom="x-100" @overlayClicked="toGrade">

@@ -106,7 +106,6 @@ export default {
 	scroll_list_loading: '/pages/scroll/list_loading',
 	scroll_list_more: "/pages/scroll/list_more",
 	scroll_waterfall: '/pages/scroll/waterfall',
-	scroll_x_support: '/pages/scroll/x_support',
 	// others
 	others_index: '/pages/others/index',
 	// helper

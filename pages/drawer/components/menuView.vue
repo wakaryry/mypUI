@@ -1,5 +1,5 @@
 <template>
-	<myp-list-simple bgType="inverse" width="568rpx" :includeStatus="true" :includeNav="true">
+	<myp-list-simple bgType="inverse" extra="0" boxStyle="width:568rpx;">
 		<myp-list-cell>
 			
 		</myp-list-cell>

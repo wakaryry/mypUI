@@ -83,6 +83,11 @@
             "mode" : "hash",
             "base" : "/h5/"
         },
-        "domain" : "https://mypui.asnowsoft.cn"
+        "domain" : "https://mypui.asnowsoft.cn",
+        "optimization" : {
+            "treeShaking" : {
+                "enable" : true
+            }
+        }
     }
 }

@@ -35,12 +35,11 @@
 	import styleMixin from '../myp-list/styleMixin.js'
 	import scrollMixin from '../myp-list/mixin.js'
 	import weexActions from '../myp-list/weexActions.js'
-	import waterfallMixin from './mixin.js'
 	
-	import {getPlatform} from '../utils/system.js'
+	import {getPlatform, getPx} from '../utils/system.js'
 	
 	export default {
-		mixins: [styleMixin, scrollMixin, weexActions, waterfallMixin],
+		mixins: [styleMixin, scrollMixin, weexActions],
 		props: {
 			// #ifdef APP-NVUE
 			// 是否启用loading组件，而不是loadmoreofset触发
@@ -54,6 +53,26 @@
 				default: 60
 			},
 			// #endif
+			columnCount: {
+				type: [String, Number],
+				default: 'auto'
+			},
+			columnWidth: {
+				type: String,
+				default: 'auto'
+			},
+			columnGap: {
+				type: String,
+				default: '0'
+			},
+			leftGap: {
+				type: String,
+				default: '0'
+			},
+			rightGap: {
+				type: String,
+				default: '0'
+			},
 			// 进入自动刷新数据. 默认不自动刷新数据
 			autoUpdate: {
 				type: Boolean,
@@ -107,6 +126,23 @@
 			}
 		},
 		methods: {
+		},
+		computed: {
+			columnWidthPx() {
+				if (this.columnWidth === 'auto') {
+					return 'auto'
+				}
+				return getPx(this.columnWidth)
+			},
+			columnGapPx() {
+				return getPx(this.columnGap)
+			},
+			leftGapPx() {
+				return getPx(this.leftGap)
+			},
+			rightGapPx() {
+				return getPx(this.rightGap)
+			}
 		}
 	}
 </script>

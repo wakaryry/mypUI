@@ -50,7 +50,7 @@
 			},
 			extra: {
 				type: String,
-				default: 0
+				default: '0'
 			},
 			leftOffset: {
 				type: String,

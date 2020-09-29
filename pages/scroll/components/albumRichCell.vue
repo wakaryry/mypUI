@@ -15,7 +15,7 @@
 					</view>
 				</view>
 				<view class="pc-time">
-					<text class="pc-time-text">{{item.time | mypTimeAgo('{y}-{m}-{d} {h}:{i}')}}</text>
+					<text class="pc-time-text">{{timeText}}</text>
 					<view v-if="showCircle&&(item.topic&&item.topic.id||0)*1 > 0" class="pc-circle">
 						<text class="pc-circle-label">来自</text>
 						<text class="pc-circle-text" @tap="toCircle">{{item.topic.name}}</text>
@@ -70,14 +70,12 @@
 
 <script>
 	import commentTextCell from './commentTextCell.vue'
-	
-	import timeFilter from '@/mypUI/myp-mixin/timeFilter.js'
+	import {formatTime} from '@/mypUI/utils/date.js'
 	
 	export default {
 		components: {
 			commentTextCell
 		},
-		mixins: [timeFilter],
 		props: {
 			item: {
 				type: Object,
@@ -114,6 +112,9 @@
 			commentNumText() {
 				const a = (this.item.comment_num || 0)*1
 				return this.numToText(a, '评论')
+			},
+			timeText() {
+				return formatTime(this.item.time, '{y}-{m}-{d} {h}:{i}')
 			}
 		},
 		data() {

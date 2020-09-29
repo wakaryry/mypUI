@@ -10,17 +10,16 @@
 			</view>
 		</view>
 		<view class="hec-right">
-			<text class="hec-right-top">{{Date.now() | mypTimeParse('{m}月')}}</text>
-			<text class="hec-right-bottom">{{Date.now() | mypTimeParse('{d}')}}</text>
+			<text class="hec-right-top">{{monthNow}}</text>
+			<text class="hec-right-bottom">{{dayNow}}</text>
 		</view>
 	</view>
 </template>
 
 <script>
-	import timeFilter from '@/mypUI/myp-mixin/timeFilter.js'
+	import {parseTime} from '@/mypUI/utils/date.js'
 	
 	export default {
-		mixins: [timeFilter],
 		props: {
 			title: {
 				type: String,
@@ -29,6 +28,14 @@
 			desc: {
 				type: String,
 				default: ''
+			}
+		},
+		computed: {
+			monthNow() {
+				return parseTime(Date.now(), '{m}月')
+			},
+			dayNow() {
+				return parseTime(Date.now(), '{d}')
 			}
 		}
 	}

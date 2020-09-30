@@ -27,6 +27,7 @@
 					</slot>
 				</view>
 			</view>
+			<slot name="extra"></slot>
 		</view>
 	</view>
 </template>

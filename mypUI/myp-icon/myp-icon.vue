@@ -1,6 +1,6 @@
 <template>
 	<view bubble="true" class="myp-icon-box" :style="boxStyle" :hover-class="'myp-hover-'+hover" @tap.stop="toClickIcon">
-		<image v-if="isImageSrc" class="myp-image" :src="name" :mode="mode" :style="iconStyle"></image>
+		<image v-if="isImageSrc" class="myp-image" :src="name" mode="aspectFill" :style="iconStyle"></image>
 		<text v-else :class="['myp-iconfont', 'myp-color-'+type, 'myp-size-'+size]" :style="iconStyle">{{icons[name]}}</text>
 		<slot></slot>
 	</view>
@@ -31,10 +31,6 @@
 			size: {
 				type: String,
 				default: 'l'
-			},
-			mode: {
-				type: String,
-				default: 'aspectFit'
 			},
 			hover: {
 				type: String,

@@ -7,34 +7,42 @@
 <script>
 	export default {
 		props: {
+			// 圆点样式的直径大小，不是圆点时需要设置为0
 			size: {
 				type: String,
 				default: '12rpx'
 			},
+			// 背景主题
 			bgType: {
 				type: String,
 				default: 'error'
 			},
+			// 文字内容
 			text: {
 				type: [String, Number],
 				default: ''
 			},
+			// 边框主题
 			border: {
 				type: String,
 				default: 'none'
 			},
+			// 文字颜色主题
 			textType: {
 				type: String,
 				default: 'inverse'
 			},
+			// 文字尺寸主题
 			textSize: {
 				type: String,
 				default: 'ss'
 			},
+			// 文字样式
 			textStyle: {
 				type: String,
 				default: ''
 			},
+			// 外层样式
 			boxStyle: {
 				type: String,
 				default: ''

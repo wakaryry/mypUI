@@ -1,123 +1,140 @@
 <template>
-	<view :class="['myp-cell', 'myp-bg-'+bgType, 'myp-height-'+height, 'myp-radius-'+radius, 'myp-border-'+border]" :style="boxStyle" :hover-class="'myp-hover-'+hover" bubble="true" @tap.stop="toSelect">
-		<myp-icon v-if="icon&&icon.length > 0" :name="icon" :type="iconType" :size="iconSize" :mode="iconMode" :iconStyle="iconStyle" :boxStyle="'margin-right:'+space+';'+iconBoxStyle" @iconClicked="toSelect"></myp-icon>
+	<view :class="['myp-cell', 'myp-flex-row', 'myp-align-center', 'myp-wrap-nowrap', 'myp-bg-'+bgType, 'myp-height-'+height, 'myp-radius-'+radius, 'myp-border-'+border]" :style="boxStyle" :hover-class="'myp-hover-'+hover" bubble="true" @tap.stop="toSelect">
+		<myp-icon v-if="icon&&icon.length > 0" :name="icon" :type="iconType" :size="iconSize" :iconStyle="iconStyle" :boxStyle="'margin-right:'+space+';'+iconBoxStyle" @iconClicked="toSelect"></myp-icon>
 		<slot>
 			<text v-if="title&&title.length>0" :class="['myp-color-'+titleType, 'myp-size-'+titleSize]" :style="'margin-right:'+space+';'+titleStyle">{{title}}</text>
-			<text :class="['myp-cell-value', 'myp-color-'+valueType, 'myp-size-'+valueSize]" :style="valueStyle">{{value}}</text>
+			<text :class="['myp-cell-value', 'myp-flex-one', 'myp-lines-one', 'myp-color-'+valueType, 'myp-size-'+valueSize]" :style="valueStyle">{{value}}</text>
 		</slot>
 		<!-- custom right extra view -->
 		<slot name="extra"></slot>
-		<myp-icon v-if="indicator&&indicator.length>0" :name="indicator" :type="indicatorType" :size="indicatorSize" :mode="indicatorMode" :iconStyle="indicatorStyle" :boxStyle="'margin-left:'+space+';'+indicatorBoxStyle" @iconClicked="toSelect"></myp-icon>
+		<myp-icon v-if="indicator&&indicator.length>0" :name="indicator" :type="indicatorType" :size="indicatorSize" :iconStyle="indicatorStyle" :boxStyle="'margin-left:'+space+';'+indicatorBoxStyle" @iconClicked="toSelect"></myp-icon>
 	</view>
 </template>
 
 <script>
 	export default {
 		props: {
+			// 左侧图标
 			icon: {
 				type: String,
 				default: ""
 			},
+			// 左侧标题
 			title: {
 				type: String,
 				default: ""
 			},
+			// 具体/描述内容
 			value: {
 				type: String,
 				default: ""
 			},
+			// 右侧图标
 			indicator: {
 				type: String,
 				default: ""
 			},
+			// 背景主题
 			bgType: {
 				type: String,
 				default: ''
 			},
+			// 标题颜色主题
 			titleType: {
 				type: String,
-				default: ''
+				default: 'text'
 			},
+			// 内容颜色主题
 			valueType: {
 				type: String,
 				default: 'second'
 			},
+			// 左侧图标颜色主题
 			iconType: {
 				type: String,
-				default: ''
+				default: 'text'
 			},
+			// 右侧图标颜色主题
 			indicatorType: {
 				type: String,
 				default: 'second'
 			},
+			// 标题尺寸主题
 			titleSize: {
 				type: String,
-				default: ''
+				default: 'base'
 			},
+			// 内容尺寸主题
 			valueSize: {
 				type: String,
 				default: 's'
 			},
+			// 左侧图标尺寸主题
 			iconSize: {
 				type: String,
 				default: "l"
 			},
+			// 右侧图标尺寸主题
 			indicatorSize: {
 				type: String,
 				default: "l"
 			},
+			// 高度主题
 			height: {
 				type: String,
 				default: 'l'
 			},
+			// 圆角主题
 			radius: {
 				type: String,
-				default: ''
+				default: 'base'
 			},
+			// 边框主题
 			border: {
 				type: String,
 				default: ''
 			},
+			// hover点击效果
 			hover: {
 				type: String,
 				default: 'bg'
 			},
+			// 文字与图标间距
 			space: {
 				type: String,
 				default: '12rpx'
 			},
+			// 左侧图标样式
 			iconStyle: {
 				type: String,
 				default: ''
 			},
+			// 右侧图标样式
 			indicatorStyle: {
 				type: String,
 				default: ''
 			},
-			iconMode: {
-				type: String,
-				default: 'aspectFill'
-			},
-			indicatorMode: {
-				type: String,
-				default: 'aspectFill'
-			},
+			// 外层样式
 			boxStyle: {
 				type: String,
 				default: ''
 			},
+			// 标题样式
 			titleStyle: {
 				type: String,
 				default: ''
 			},
+			// 内容样式
 			valueStyle: {
 				type: String,
 				default: ''
 			},
+			// 左侧图标外层样式
 			iconBoxStyle: {
 				type: String,
 				default: ''
 			},
+			// 右侧图标外层样式
 			indicatorBoxStyle: {
 				type: String,
 				default: ''
@@ -134,27 +151,11 @@
 
 <style lang="scss" scoped>
 	.myp-cell {
-		/* #ifndef APP-NVUE */
-		display: flex;
-		box-sizing: border-box;
-		/* #endif */
-		flex-direction: row;
-		flex-wrap: nowrap;
-		align-items: center;
 		padding-left: 32rpx;
 		padding-right: 32rpx;
 		
 		&-value {
-			flex: 1;
-			overflow: hidden;
-			text-overflow: ellipsis;
 			text-align: right;
-			/* #ifdef APP-NVUE */
-			lines: 1;
-			/* #endif */
-			/* #ifndef APP-NVUE */
-			white-space: nowrap;
-			/* #endif */
 		}
 	}
 </style>

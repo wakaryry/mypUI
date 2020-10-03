@@ -44,49 +44,54 @@
 		"order": 65,
 		"title": "横向列表：myp-scroll-h"
 	},
-	"myp-scroll-scale": {
+	"myp-scroll-inline": {
 		"type": "guide",
 		"order": 66,
+		"title": "横向列表：myp-scroll-inline"
+	},
+	"myp-scroll-scale": {
+		"type": "guide",
+		"order": 67,
 		"title": "伸缩列表：myp-scroll-scale"
 	},
 	"myp-scroll-scale-item": {
 		"type": "guide",
-		"order": 67,
+		"order": 68,
 		"title": "伸缩列表单元：myp-scroll-scale-item"
 	},
 	"myp-list-chat": {
 		"type": "guide",
-		"order": 68,
+		"order": 69,
 		"title": "聊天列表：myp-list-chat"
 	},
 	"myp-list-index": {
 		"type": "guide",
-		"order": 69,
+		"order": 70,
 		"title": "索引列表：myp-list-index"
 	},
 	"myp-content-box": {
 		"type": "guide",
-		"order": 70,
+		"order": 71,
 		"title": "盒子：myp-content-box"
 	},
 	"myp-height": {
 		"type": "guide",
-		"order": 71,
+		"order": 72,
 		"title": "高度：myp-height"
 	},
 	"myp-status": {
 		"type": "guide",
-		"order": 72,
+		"order": 73,
 		"title": "状态栏：myp-status"
 	},
 	"myp-xbar": {
 		"type": "guide",
-		"order": 73,
+		"order": 74,
 		"title": "底部安全区：myp-xbar"
 	},
 	"myp-position": {
 		"type": "guide",
-		"order": 74,
+		"order": 75,
 		"title": "定位：myp-position"
 	},
 	"myp-navbar": {
@@ -273,6 +278,11 @@
 		"type": "guide",
 		"order": 216,
 		"title": "结果展示：myp-result"
+	},
+	"myp-timeline-item": {
+		"type": "guide",
+		"order": 217,
+		"title": "结果展示：myp-timeline-item"
 	},
 	"myp-popup": {
 		"type": "guide",

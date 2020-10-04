@@ -1,27 +1,27 @@
 <template>
-	<view :class="['myp-time', 'myp-bg-'+bgType, 'myp-border-'+border, 'myp-radius-'+radius]" :style="boxStyle">
-		<view v-if="indexOfDays !== -1" :class="['myp-time-box', 'myp-height-'+itemHeight, 'myp-bg-'+itemBgType, 'myp-border-'+itemBorder, 'myp-radius-'+itemRadius]" :style="mrItemBoxStyle">
+	<view :class="['myp-flex-row', 'myp-align-center', 'myp-bg-'+bgType, 'myp-border-'+border, 'myp-radius-'+radius]" :style="boxStyle">
+		<view v-if="indexOfDays !== -1" :class="['myp-flex-row', 'myp-justify-center', 'myp-align-center', 'myp-height-'+itemHeight, 'myp-bg-'+itemBgType, 'myp-border-'+itemBorder, 'myp-radius-'+itemRadius]" :style="mrItemBoxStyle">
 			<text :class="['myp-color-'+itemTextType, 'myp-size-'+itemTextSize]" :style="itemTextStyle">{{countDownData.day}}</text>
 		</view>
-		<view v-if="indexOfDays !== -1" class="myp-time-dot-box" :style="mrIndicatorBoxStyle">
+		<view v-if="indexOfDays !== -1" class="myp-flex-row myp-justify-center myp-align-center" :style="mrIndicatorBoxStyle">
 			<text :class="['myp-color-'+indicatorTextType, 'myp-size-'+indicatorTextSize]" :style="indicatorTextStyle">{{getDot(indexOfDays, indexOfHours)}}</text>
 		</view>
-		<view v-if="indexOfHours !== -1" :class="['myp-time-box', 'myp-height-'+itemHeight, 'myp-bg-'+itemBgType, 'myp-border-'+itemBorder, 'myp-radius-'+itemRadius]" :style="mrItemBoxStyle">
+		<view v-if="indexOfHours !== -1" :class="['myp-flex-row', 'myp-justify-center', 'myp-align-center', 'myp-height-'+itemHeight, 'myp-bg-'+itemBgType, 'myp-border-'+itemBorder, 'myp-radius-'+itemRadius]" :style="mrItemBoxStyle">
 			<text :class="['myp-color-'+itemTextType, 'myp-size-'+itemTextSize]" :style="itemTextStyle">{{countDownData.hour}}</text>
 		</view>
-		<view v-if="indexOfHours !== -1" class="myp-time-dot-box" :style="mrIndicatorBoxStyle">
+		<view v-if="indexOfHours !== -1" class="myp-flex-row myp-justify-center myp-align-center" :style="mrIndicatorBoxStyle">
 			<text :class="['myp-color-'+indicatorTextType, 'myp-size-'+indicatorTextSize]" :style="indicatorTextStyle">{{getDot(indexOfHours, indexOfMinutes)}}</text>
 		</view>
-		<view v-if="indexOfMinutes !== -1" :class="['myp-time-box', 'myp-height-'+itemHeight, 'myp-bg-'+itemBgType, 'myp-border-'+itemBorder, 'myp-radius-'+itemRadius]" :style="mrItemBoxStyle">
+		<view v-if="indexOfMinutes !== -1" :class="['myp-flex-row', 'myp-justify-center', 'myp-align-center', 'myp-height-'+itemHeight, 'myp-bg-'+itemBgType, 'myp-border-'+itemBorder, 'myp-radius-'+itemRadius]" :style="mrItemBoxStyle">
 			<text :class="['myp-color-'+itemTextType, 'myp-size-'+itemTextSize]" :style="itemTextStyle">{{countDownData.minute}}</text>
 		</view>
-		<view v-if="indexOfMinutes !== -1" class="myp-time-dot-box" :style="mrIndicatorBoxStyle">
+		<view v-if="indexOfMinutes !== -1&&getDot(indexOfMinutes, indexOfSeconds)" class="myp-flex-row myp-justify-center myp-align-center" :style="mrIndicatorBoxStyle">
 			<text :class="['myp-color-'+indicatorTextType, 'myp-size-'+indicatorTextSize]" :style="indicatorTextStyle">{{getDot(indexOfMinutes, indexOfSeconds)}}</text>
 		</view>
-		<view v-if="indexOfSeconds !== -1" :class="['myp-time-box', 'myp-height-'+itemHeight, 'myp-bg-'+itemBgType, 'myp-border-'+itemBorder, 'myp-radius-'+itemRadius]" :style="mrItemBoxStyle">
+		<view v-if="indexOfSeconds !== -1" :class="['myp-flex-row', 'myp-justify-center', 'myp-align-center', 'myp-height-'+itemHeight, 'myp-bg-'+itemBgType, 'myp-border-'+itemBorder, 'myp-radius-'+itemRadius]" :style="mrItemBoxStyle">
 			<text :class="['myp-color-'+itemTextType, 'myp-size-'+itemTextSize]" :style="itemTextStyle">{{countDownData.second}}</text>
 		</view>
-		<view v-if="indexOfSeconds !== -1" class="myp-time-dot-box" :style="mrIndicatorBoxStyle">
+		<view v-if="indexOfSeconds !== -1&&getDot(indexOfSeconds, -1)" class="myp-flex-row myp-justify-center myp-align-center" :style="mrIndicatorBoxStyle">
 			<text :class="['myp-color-'+indicatorTextType, 'myp-size-'+indicatorTextSize]" :style="indicatorTextStyle">{{getDot(indexOfSeconds, -1)}}</text>
 		</view>
 	</view>
@@ -30,86 +30,107 @@
 <script>
 	export default {
 		props: {
+			// 目标时间戳
 			time: {
 				type: Number,
 				default: 1600000000000
 			},
+			// 计时周期
 			interval: {
 				type: Number,
 				default: 1000
 			},
+			// 内容显示格式
 			tpl: {
 				type: String,
 				default: '{h}:{m}:{s}'
 			},
+			// 背景主题
 			bgType: {
 				type: String,
 				default: 'none'
 			},
+			// 边框主题
 			border: {
 				type: String,
-				default: 'none'
+				default: ''
 			},
+			// 圆角主题
 			radius: {
 				type: String,
-				default: 'none'
+				default: ''
 			},
+			// item的背景主题
 			itemBgType: {
 				type: String,
 				default: ''
 			},
+			// item的边框主题
 			itemBorder: {
 				type: String,
-				default: 'none'
+				default: ''
 			},
+			// item的圆角主题
 			itemRadius: {
 				type: String,
 				default: 's'
 			},
+			// item的文字颜色主题
 			itemTextType: {
 				type: String,
 				default: 'text'
 			},
+			// item的文字尺寸主题
 			itemTextSize: {
 				type: String,
 				default: 'l'
 			},
+			// item的高度主题
 			itemHeight: {
 				type: String,
 				default: 'base'
 			},
+			// item的宽度。0时会有左右各24rpx的padding
 			itemWidth: {
 				type: String,
 				default: '0'
 			},
+			// 分隔符的颜色主题
 			indicatorTextType: {
 				type: String,
 				default: 'text'
 			},
+			// 分隔符的尺寸主题
 			indicatorTextSize: {
 				type: String,
 				default: 'l'
 			},
+			// 分隔符的宽度
 			indicatorWidth: {
 				type: String,
 				default: '60rpx'
 			},
+			// 外层样式
 			boxStyle: {
 				type: String,
 				default: ''
 			},
+			// item外层样式
 			itemBoxStyle: {
 				type: String,
 				default: ''
 			},
+			// 分隔符的外层样式
 			indicatorBoxStyle: {
 				type: String,
 				default: ''
 			},
+			// item的文字样式
 			itemTextStyle: {
 				type: String,
 				default: ''
 			},
+			// 分隔符的文字样式
 			indicatorTextStyle: {
 				type: String,
 				default: ''
@@ -220,31 +241,4 @@
 </script>
 
 <style lang="scss" scoped>
-	.myp-time {
-		/* #ifndef APP-NVUE */
-		display: flex;
-		box-sizing: border-box;
-		/* #endif */
-		flex-direction: row;
-		align-items: center;
-		
-		&-box {
-			/* #ifndef APP-NVUE */
-			display: flex;
-			box-sizing: border-box;
-			/* #endif */
-			flex-direction: row;
-			justify-content: center;
-			align-items: center;
-		}
-		&-dot-box {
-			/* #ifndef APP-NVUE */
-			display: flex;
-			box-sizing: border-box;
-			/* #endif */
-			flex-direction: row;
-			justify-content: center;
-			align-items: center;
-		}
-	}
 </style>

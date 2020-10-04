@@ -9,14 +9,17 @@
 	
 	export default {
 		props: {
+			// 背景主题
 			bgType: {
 				type: String,
 				default: 'page'
 			},
+			// 边框主题
 			border: {
 				type: String,
 				default: ''
 			},
+			// 圆角主题
 			radius: {
 				type: String,
 				default: ''
@@ -26,11 +29,12 @@
 				type: String,
 				default: 'status-nav'
 			},
-			// 设置了height，会直接使用height，忽略其它的计算
+			// height非0时，会直接使用height，忽略extra
 			height: {
 				type: String,
 				default: '0'
 			},
+			// 外层样式
 			boxStyle: {
 				type: String,
 				default: ''

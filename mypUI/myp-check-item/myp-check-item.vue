@@ -1,5 +1,5 @@
 <template>
-	<view bubble="true" @tap="toSelect">
+	<view :class="['myp-border-'+border, 'myp-radius-'+radius, 'myp-bg-'+bgType]" :style="boxStyle" :hover-class="'myp-hover-'+hover" bubble="true" @tap="toSelect">
 		<slot></slot>
 	</view>
 </template>
@@ -15,8 +15,29 @@
 			disabled: {
 				type: Boolean,
 				default: false
+			},
+			border: {
+				type: String,
+				default: ''
+			},
+			radius: {
+				type: String,
+				default: ''
+			},
+			bgType: {
+				type: String,
+				default: ''
+			},
+			hover: {
+				type: String,
+				default: 'opacity'
+			},
+			boxStyle: {
+				type: String,
+				default: ''
 			}
 		},
+		inject: ['mypCheck'],
 		methods: {
 			toSelect() {
 				if (this.disabled) {

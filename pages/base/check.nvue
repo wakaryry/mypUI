@@ -20,6 +20,15 @@
 					<myp-check-static v-model="model2" icon="circle" checkedIcon="radio" flex="column" :limits="2" :items="items2" textLabel="title" valueLabel="value" disabledLabel="disabled" itemSpace="16rpx"></myp-check-static>
 				</view>
 			</myp-list-cell>
+			<myp-list-cell>
+				<view style="margin: 32rpx;">
+					<myp-check v-model="models3" bgType="none">
+						<myp-check-item v-for="(item,idx) in items3" :key="idx" :value="item.value" :disabled="item.disabled" :border="models3.includes(item.value)?'all-primary':'all'" :bgType="models3.includes(item.value)?'primary':'inverse'" boxStyle="flex-direction:row;justify-content:center;align-items:center;height:80rpx;margin-bottom:16rpx;border-radius:16rpx;">
+							<text :class="[models3.includes(item.value)?'myp-color-inverse':'myp-color-text', 'myp-size-base']">{{item.title}}</text>
+						</myp-check-item>
+					</myp-check>
+				</view>
+			</myp-list-cell>
 		</myp-list-simple>
 		<myp-toast ref="myp-toast"></myp-toast>
 	</view>
@@ -37,7 +46,9 @@ export default {
 			items1: ['香蕉', '苹果', '西红柿', '南瓜'],
 			model1: ['苹果'],
 			items2: [{title: '猪肉', value: 0}, {title: '牛肉', value: 1, disabled: true}, {title: '羊肉', value: 2}, {title: '狗肉', value: 3}],
-			model2: [2]
+			model2: [2],
+			items3: [{title: '自定义猪肉', value: 0}, {title: '自定义牛肉（不可选）', value: 1, disabled: true}, {title: '自定义羊肉', value: 2}, {title: '自定义狗肉', value: 3}],
+			models3: [2]
 		}
 	},
 	methods: {

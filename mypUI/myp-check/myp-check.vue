@@ -41,6 +41,11 @@
 				default: ''
 			}
 		},
+		provide() {
+			return {
+				mypCheck: this
+			}
+		},
 		// 先父组件created，然后是子组件created，而且子组件created是有顺序的，同步created
 		// 先子组件mounted，然后是父组件mounted
 		created() {
@@ -61,7 +66,7 @@
 						return
 					}
 				}
-				const _vals = []
+				let _vals = []
 				// limits为1的时候，直接切换状态或者清空选中
 				if (this.limits === 1) {
 					if (isToCheck) {

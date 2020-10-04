@@ -154,44 +154,49 @@
 		"order": 155,
 		"title": "单多选：myp-check-item"
 	},
-	"myp-select": {
+	"myp-check-static": {
 		"type": "guide",
 		"order": 156,
+		"title": "单多选：myp-check-static"
+	},
+	"myp-select": {
+		"type": "guide",
+		"order": 157,
 		"title": "选择：myp-select"
 	},
 	"myp-stepper": {
 		"type": "guide",
-		"order": 157,
+		"order": 158,
 		"title": "步进器：myp-stepper"
 	},
 	"myp-slider": {
 		"type": "guide",
-		"order": 158,
+		"order": 159,
 		"title": "区间：myp-slider"
 	},
 	"myp-search": {
 		"type": "guide",
-		"order": 159,
+		"order": 160,
 		"title": "搜索框：myp-search"
 	},
 	"myp-picker-time": {
 		"type": "guide",
-		"order": 160,
+		"order": 161,
 		"title": "时间选择：myp-picker-time"
 	},
 	"myp-picker-time-content": {
 		"type": "guide",
-		"order": 161,
+		"order": 162,
 		"title": "时间内容：myp-picker-time-content"
 	},
 	"myp-picker": {
 		"type": "guide",
-		"order": 162,
+		"order": 163,
 		"title": "选择器：myp-picker"
 	},
 	"myp-picker-content": {
 		"type": "guide",
-		"order": 163,
+		"order": 164,
 		"title": "选择内容：myp-picker-content"
 	},
 	"myp-grid": {

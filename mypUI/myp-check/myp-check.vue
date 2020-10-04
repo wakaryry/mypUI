@@ -1,9 +1,11 @@
 <template>
-	<view :class="flex === 'row' ? 'myp-row-radio' : 'myp-column-radio'" :style="boxStyle">
-		<view v-for="(item, idx) in updatedItems" :key="idx" :class="['myp-radios-item', 'myp-height-'+height]" :style="'margin-right:'+((flex==='column'&&idx !== updatedItems.length-1) ? itemSpace : '0')+';'+itemBoxStyle" @tap.stop="toUpdateItemCheck(idx)">
-			<view style="flex: 1;">
-				<myp-check-item :textType="textType" :checkedTextType="checkedTextType" :disabledTextType="disabledTextType" :iconType="iconType" :checkedIconType="checkedIconType" :disabledIconType="disabledIconType" :textSize="textSize" :space="space" :iconSize="iconSize" :boxStyle="itemStyle" :iconStyle="iconStyle" :iconBoxStyle="iconBoxStyle" :checkedIconStyle="checkedIconStyle" :disabledIconStyle="disabledIconStyle" :textStyle="textStyle" :checkedTextStyle="checkedTextStyle" :disabledTextStyle="disabledTextStyle" :direction="direction" :icon="icon" :checkedIcon="checkedIcon" :text="item[tl]" :value="item[vl]" :disabled="disabled || item[dl]" :checked="item['myp-checked']" :isBetween="isBetween" @itemClicked="toUpdateItemCheck(idx)"></myp-check-item>
+	<view :class="[flex==='row'?'myp-flex-column':'myp-flex-row', flex==='row'?'myp-justify-center':'myp-align-center']" :style="boxStyle">
+		<view v-for="(item, idx) in updatedItems" :key="idx" :class="['myp-flex-row', 'myp-align-center', 'myp-wrap-nowrap', 'myp-height-'+height]" :style="'margin-right:'+((flex==='column'&&idx !== updatedItems.length-1) ? itemSpace : '0')+';'+itemBoxStyle" bubble="true" @tap.stop="toUpdateItemCheck(idx)">
+			<myp-icon v-if="direction==='left'" :name="item['myp-checked']?checkedIcon:icon" :type="disabled||item[dl]?disabledIconType:(item['myp-checked']?checkedIconType:iconType)" :size="iconSize" :iconStyle="iconStyle+(item['myp-checked']?checkedIconStyle:'')+(disabled||item[dl]?disabledIconStyle:'')" :boxStyle="'margin-right:'+space+';'+iconBoxStyle" @iconClicked="toUpdateItemCheck(idx)"></myp-icon>
+			<view :style="isBetween?'flex:1;':''">
+				<text :class="['myp-color-'+(disabled||item[dl]?disabledTextType:(item['myp-checked']?checkedTextType:textType)), 'myp-size-'+textSize]" :style="textStyle+(item['myp-checked']?checkedTextStyle:'')+(disabled||item[dl]?disabledTextStyle:'')">{{item[tl]}}</text>
 			</view>
+			<myp-icon v-if="direction==='right'" :name="item['myp-checked']?checkedIcon:icon" :type="disabled||item[dl]?disabledIconType:(item['myp-checked']?checkedIconType:iconType)" :size="iconSize" :iconStyle="iconStyle+(item['myp-checked']?checkedIconStyle:'')+(disabled||item[dl]?disabledIconStyle:'')" :boxStyle="'margin-left:'+space+';'+iconBoxStyle" @iconClicked="toUpdateItemCheck(idx)"></myp-icon>
 		</view>
 	</view>
 </template>
@@ -11,151 +13,168 @@
 <script>
 	export default {
 		props: {
+			// 未选中时图标
 			icon: {
 				type: String,
-				default: ''
+				default: 'circle'
 			},
+			// 选中时图标
 			checkedIcon: {
 				type: String,
-				default: ''
+				default: 'radio'
 			},
+			// 图标左右位置
 			direction: {
 				type: String,
 				default: 'left'
 			},
-			// row/column
+			// 选项布局方式
 			flex: {
 				type: String,
 				default: 'row'
 			},
-			// flex为row时，item是否spaceBetween
+			// flex为row时，图标与文字是否space-between
 			isBetween: {
 				type: Boolean,
 				default: false
 			},
+			// items内容
 			items: {
 				type: Array,
 				default: ()=>{return []}
 			},
+			// 选中的值
 			value: {
 				type: Array,
 				default: ()=>{return []}
 			},
-			// 限制最多可选数量
+			// 限制最多可选数量。0表示不限制
 			limits: {
 				type: Number,
 				default: 0
 			},
-			updatedTime: {
-				type: Number,
-				default: 0
-			},
-			// we do not calculate disabled via value, just set by user
+			// 全部禁用
 			disabled: {
 				type: Boolean,
 				default: false
 			},
-			// 我们可以直接使用textLabel获取text内容
+			// text内容的字段
 			textLabel: {
 				type: String,
 				default: null
 			},
-			// 我们也可以利用格式化来决定text内容
-			// 这样可以一次性输出几个key的内容
-			// 比如 '{name} (ID:{id})'
+			// 格式化输出，允许输出多个字段内容，比如 '{name} (ID:{id})'
 			textFormat: {
 				type: String,
 				default: ''
 			},
+			// 唯一值的字段
 			valueLabel: {
 				type: String,
 				default: null
 			},
+			// 禁用的字段
 			disabledLabel: {
 				type: String,
 				default: null
 			},
+			// 外层样式
 			boxStyle: {
 				type: String,
 				default: ''
 			},
+			// 选项外层样式
 			itemBoxStyle: {
 				type: String,
 				default: ''
 			},
+			// flex为column时各选项的间距
 			itemSpace: {
 				type: String,
 				default: '16rpx'
 			},
+			// 文字颜色主题
 			textType: {
 				type: String,
-				default: ''
+				default: 'text'
 			},
+			// 选中时文字颜色主题
 			checkedTextType: {
 				type: String,
-				default: ''
+				default: 'text'
 			},
+			// 禁用时文字颜色主题
 			disabledTextType: {
 				type: String,
 				default: 'disabled'
 			},
+			// 图标颜色主题
 			iconType: {
 				type: String,
-				default: ''
+				default: 'text'
 			},
+			// 选中时图标颜色主题
 			checkedIconType: {
 				type: String,
-				default: ''
+				default: 'text'
 			},
+			// 禁用时图标颜色主题
 			disabledIconType: {
 				type: String,
 				default: 'disabled'
 			},
+			// 文字尺寸主题
 			textSize: {
 				type: String,
-				default: ''
+				default: 'base'
 			},
+			// 选项高度主题
 			height: {
 				type: String,
-				default: ''
+				default: 'base'
 			},
+			// 文字与图标的间距
 			space: {
 				type: String,
 				default: '12rpx'
 			},
+			// 文字样式
 			textStyle: {
 				type: String,
 				default: ''
 			},
+			// 禁用时文字样式
 			disabledTextStyle: {
 				type: String,
 				default: ''
 			},
+			// 选中时文字样式
 			checkedTextStyle: {
 				type: String,
 				default: ''
 			},
+			// 图标尺寸主题
 			iconSize: {
 				type: String,
 				default: 'l'
 			},
+			// 图标样式
 			iconStyle: {
 				type: String,
 				default: ''
 			},
+			// 图标外层样式
 			iconBoxStyle: {
 				type: String,
 				default: ''
 			},
+			// 禁用时图标样式
 			disabledIconStyle: {
 				type: String,
 				default: ''
 			},
+			// 选中时图标样式
 			checkedIconStyle: {
-				type: String,
-				default: ''
-			},
-			itemStyle: {
 				type: String,
 				default: ''
 			}
@@ -177,13 +196,10 @@
 			}
 		},
 		created() {
-			// 处理初始数据
 			this.toGenerateUpdatedItems()
 		},
 		watch: {
-			// 我们不通过直接watch value/items 来对updatedItems进行更新
-			// 通过updatedTime来进行强制更新/手动更新
-			updatedTime() {
+			items() {
 				this.toGenerateUpdatedItems()
 			}
 		},
@@ -273,28 +289,4 @@
 </script>
 
 <style lang="scss" scoped>
-	.myp-row-radio {
-		/* #ifndef APP-NVUE */
-		display: flex;
-		box-sizing: border-box;
-		/* #endif */
-		flex-direction: column;
-		justify-content: center;
-	}
-	.myp-column-radio {
-		/* #ifndef APP-NVUE */
-		display: flex;
-		box-sizing: border-box;
-		/* #endif */
-		flex-direction: row;
-		align-items: center;
-	}
-	.myp-radios-item {
-		/* #ifndef APP-NVUE */
-		display: flex;
-		box-sizing: border-box;
-		/* #endif */
-		flex-direction: row;
-		align-items: center;
-	}
 </style>

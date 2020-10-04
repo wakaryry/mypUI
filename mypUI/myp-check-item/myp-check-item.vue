@@ -12,26 +12,32 @@
 				type: [Number, String],
 				default: ''
 			},
+			// 是否禁用
 			disabled: {
 				type: Boolean,
 				default: false
 			},
+			// 边框主题
 			border: {
 				type: String,
 				default: ''
 			},
+			// 圆角主题
 			radius: {
 				type: String,
 				default: ''
 			},
+			// 背景主题
 			bgType: {
 				type: String,
 				default: ''
 			},
+			// hover效果
 			hover: {
 				type: String,
 				default: 'opacity'
 			},
+			// 外层样式
 			boxStyle: {
 				type: String,
 				default: ''

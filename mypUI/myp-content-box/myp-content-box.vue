@@ -15,11 +15,11 @@
 			},
 			border: {
 				type: String,
-				default: 'none'
+				default: ''
 			},
 			radius: {
 				type: String,
-				default: 'none'
+				default: ''
 			},
 			// 需要从屏幕高度减去的高度
 			extra: {

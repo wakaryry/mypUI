@@ -19,23 +19,27 @@
 				type: Number,
 				default: 0
 			},
-			// 全局禁用
+			// 是否全局禁用
 			disabled: {
 				type: Boolean,
 				default: false
 			},
+			// 背景主题
 			bgType: {
 				type: String,
 				default: ''
 			},
+			// 边框主题
 			border: {
 				type: String,
-				default: 'none'
+				default: ''
 			},
+			// 圆角主题
 			radius: {
 				type: String,
-				default: 'none'
+				default: ''
 			},
+			// 外层样式
 			boxStyle: {
 				type: String,
 				default: ''

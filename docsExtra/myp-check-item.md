@@ -1,9 +1,7 @@
 
-myp-check-static 组件提供的是现成的内部item，除了一些基础的样式配置之外，不能通过slot等方式重定义内容等。对于大多数选择组件而言，已经足够使用。
+myp-check-item 只用于 myp-check 组件的子组件。而且 myp-check的子组件必须是myp-check-item。
 
-myp-check-static 支持单选/多选。单选多选都是这个组件，单选的时候返回的值也是数组，value属性的类型也依然是数组。
-
-如果您需要更加灵活，可自定义的check类组件，我们还提供了 [myp-check](/doc/guide/myp-check.html) 组件。
+如果您不想自定义，请直接使用我们提供的默认可配置的选择组件 [myp-check-static](/doc/guide/myp-check-static.html).
 
 **示范**
 

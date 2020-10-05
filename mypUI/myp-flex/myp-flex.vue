@@ -5,37 +5,44 @@
 </template>
 
 <script>
-	// 我们不提供 myp-flex-item，因为 MP端自定义组件模式中flex:1是不起作用的
 	export default {
 		props: {
+			// 布局方向主题
 			direction: {
 				type: String,
 				default: 'row'
 			},
+			// 换行主题
 			wrap: {
 				type: String,
 				default: 'nowrap'
 			},
+			// justify主题
 			justify: {
 				type: String,
 				default: 'start'
 			},
+			// align主题
 			align: {
 				type: String,
 				default: 'center'
 			},
+			// 背景颜色主题
 			bgType: {
 				type: String,
 				default: ''
 			},
+			// 边框主题
 			border: {
 				type: String,
 				default: 'none'
 			},
+			// 圆角主题
 			radius: {
 				type: String,
 				default: 'none'
 			},
+			// 外层样式
 			boxStyle: {
 				type: String,
 				default: ''

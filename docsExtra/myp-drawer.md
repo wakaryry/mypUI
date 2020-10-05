@@ -18,9 +18,14 @@ myp-drawer 组件，提供了从不同方向出现的抽屉的实现。是一个
 - myp-popup-always 内部内容不受 v-if控制，支持 standout，用于standout以及明确需要与其它内容配合控制层级的地方；
 - myp-drawer 是 myp-popup-always 的手势强化版，用于手势拖拽抽屉等；
 
+其它文档地址：
+
+- [myp-popup](/doc/guide/myp-popup.html)
+- [myp-popup-always](/doc/guide/myp-popup-always.html)
+
 如果您不知道自己该选择哪个，请直接使用 myp-popup。
 
-## 使用
+**示范**
 
 myp-drawer 用法上稍微有所不同，不再是使用 `show` 来控制，而是采用 `ref method` 来控制。
 
@@ -53,26 +58,12 @@ myp-drawer 用法上稍微有所不同，不再是使用 `show` 来控制，而�
 
 以上代码就构建了一个 从底部出现的，事先露出 60px standout高度的 drawer。它支持手势拉出。
 
-## ref method
+**结果**
 
-通过 ref method 来控制打开与关闭。提供 show 与 hide 方法。
+![myp-drawer](/images/doc/drawer-close.png)
+![myp-drawer](/images/doc/drawer-open.png)
 
-### show
-
-`show(duration)` 打开，支持 duration配置；
-
-### hide
-
-`hide(duration)` 关闭，支持 duration配置；
-
-## 其它
-
-关于高度、位置等其它信息请查看文档：
-
-- [myp-popup](/doc/guide/myp-popup.html)
-- [myp-popup-always](/doc/guide/myp-popup-always.html)
-
-## TODO
+**TODO**
 
 - 增加手势收起；
 - 开放swipe动作支持；

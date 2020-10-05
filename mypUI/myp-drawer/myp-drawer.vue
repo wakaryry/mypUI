@@ -10,11 +10,6 @@
 </template>
 
 <script>
-	//
-	// 一直存在，不通过v-if控制，直接控制是否在可见屏幕内
-	// 支持standout
-	// 只适配left/top/bottom/right的drawer特性
-	//
 	// #ifdef APP-NVUE
 	const animation = uni.requireNativePlugin('animation');
 	const bindingX = uni.requireNativePlugin('bindingx');
@@ -25,21 +20,25 @@
 	import {getHeight, getPx, getScreenHeight, getPlatform} from '../utils/system.js'
 	
 	let iosHack = null
-	// TODO: add height animation: height-0->height
+	
 	export default {
 		props: {
+			// 出现位置
 			pos: {
 				type: String,
 				default: 'bottom'
 			},
+			// 内容背景主题
 			bgType: {
 				type: String,
 				default: 'none'
 			},
+			// 打开/关闭的动画周期
 			duration: {
 				type: Number,
 				default: 300
 			},
+			// 遮罩层的整体设置
 			overlay: {
 				type: Object,
 				default: () => ({
@@ -49,56 +48,74 @@
 					bgType: 'mask'
 				})
 			},
+			// 内容高度.0为自适应.1为全屏高度
 			height: {
 				type: String,
 				default: '0'
 			},
+			// 从height高度减去的高度
+			extra: {
+				type: String,
+				default: '0'
+			},
+			// 内容露出的高度
 			standout: {
 				type: String,
 				default: '0'
 			},
+			// 内容左侧偏移量，-1表示居中
 			leftOffset: {
 				type: String,
 				default: '-1'
 			},
+			// 内容右侧偏移量，-1表示居中
 			rightOffset: {
 				type: String,
 				default: '-1'
 			},
+			// 内容底部偏移量，-1表示居中
 			bottomOffset: {
 				type: String,
 				default: '-1'
 			},
+			// 内容顶部偏移量，-1表示居中
 			topOffset: {
 				type: String,
 				default: '-1'
 			},
+			// 内容的宽度
 			width: {
 				type: String,
 				default: '750rpx'
 			},
+			// 打开/关闭动画
 			animation: {
 				type: Object,
 				default: () => ({
 					timingFunction: 'ease-in-out'
 				})
 			},
+			// 遮罩左侧偏移量
 			left: {
 				type: String,
 				default: '0'
 			},
+			// 遮罩顶部偏移量
 			top: {
 				type: String,
 				default: '0'
 			},
+			// 遮罩右侧偏移量
 			right: {
 				type: String,
 				default: '0'
 			},
+			// 遮罩底部偏移量
 			bottom: {
 				type: String,
 				default: '0'
 			},
+			// 内容外层样式
 			boxStyle: {
 				type: String,
 				default: ''
@@ -128,26 +145,9 @@
 					width: `${this.widthPx}px`,
 					height: `${this.heightPx}px`
 				}
-				// center/top-center/left-center/bottom-center/right-center/scale-center
+				// top-center/left-center/bottom-center/right-center
 				if (this.pos.endsWith('center')) {
-					if (this.pos === 'center' || this.pos === 'scale-center') {
-						// opacity
-						style['left'] = (this.screenWidth - this.widthPx) * 0.5 + 'px'
-						if (this.topOffsetPx < 0 && this.bottomOffsetPx < 0) {
-							style['top'] = (this.screenHeight - this.heightPx) * 0.5 + 'px'
-						} else {
-							if (this.topOffsetPx >= 0) {
-								style['top'] = (this.screenHeight - this.heightPx) * 0.5 + this.topOffsetPx + 'px'
-							} else if (this.bottomOffsetPx >= 0) {
-								style['top'] = (this.screenHeight - this.heightPx) * 0.5 - this.bottomOffsetPx + 'px'
-							}
-						}
-						if (this.pos === 'center') {
-							style['opacity'] = 0
-							style['transform'] = 'scale(0,0)'
-						}
-						this.pos === 'scale-center' && (style['transform'] = 'scale(0,0)')
-					} else if (this.pos === 'left-center' || this.pos === 'right-center') {
+					if (this.pos === 'left-center' || this.pos === 'right-center') {
 						if (this.topOffsetPx < 0 && this.bottomOffsetPx < 0) {
 							style['top'] = (this.screenHeight - this.heightPx) * 0.5 + 'px'
 						} else {
@@ -201,12 +201,15 @@
 			heightPx() {
 				const h = getHeight(this.height)
 				if (h > 1) {
-					return h
+					return h - this.extraPx
 				}
 				if (h <= 0) {
-					return this.screenHeight - this.topPx - this.bottomPx - (this.topOffsetPx>=0?this.topOffsetPx:0) - (this.bottomOffsetPx>=0?this.bottomOffsetPx:0)
+					return this.screenHeight - this.topPx - this.bottomPx - (this.topOffsetPx>=0?this.topOffsetPx:0) - (this.bottomOffsetPx>=0?this.bottomOffsetPx:0) - this.extraPx
 				}
-				return this.screenHeight * h
+				return this.screenHeight * h - this.extraPx
+			},
+			extraPx() {
+				return getHeight(this.extra)
 			},
 			widthPx() {
 				const w = getPx(this.width)

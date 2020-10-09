@@ -22,6 +22,19 @@ function _getSystemInfo() {
 	if (app.globalData.safeTop > 0 && app.globalData.statusBarHeight === 0) {
 		app.globalData.statusBarHeight = app.globalData.safeTop
 	}
+	// 修正:存在uni的tabbar的时候安全区bottom高度不正确的问题
+	const tabHeight = app.globalData.tabHeight || 50
+	if (app.globalData.safeBottom === 0 || app.globalData.safeBottom - tabHeight > 0) {
+		const extra = info.screenHeight - info.windowHeight
+		if (extra > 0) {
+			// tabHeight 必须大于 safeBottom 才正确
+			if (extra - tabHeight > 0) {
+				app.globalData.safeBottom = extra - tabHeight
+			} else {
+				app.globalData.safeBottom = extra
+			}
+		}
+	}
 
 	app.globalData.platform = info.platform
 	app.globalData.brand = info.brand

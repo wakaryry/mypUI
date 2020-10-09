@@ -14,30 +14,32 @@
 	
 	export default {
 		props: {
-			maxTime: {
-				type: Number,
-				default: 0
-			},
+			// 下拉时提示文字
 			mainText: {
 				type: String,
 				default: '下拉即可刷新...'
 			},
+			// 满足刷新时的提示文字
 			pullingText: {
 				type: String,
 				default: '释放即可刷新...'
 			},
+			// 正在刷新的提示文字
 			refreshingText: {
 				type: String,
 				default: '正在努力加载...'
 			},
+			// 是否正在刷新
 			refreshing: {
 				type: Boolean,
 				default: false
 			},
+			// 是否可以满足刷新
 			couldUnLash: {
 				type: Boolean,
 				default: false
 			},
+			// 下拉的进度/比率
 			rate: {
 				type: Number,
 				default: 0

@@ -7,34 +7,42 @@
 <script>
 	export default {
 		props: {
+			// 进度。0-100
 			progress: {
 				type: Number,
 				default: 0
 			},
+			// 自定义宽度
 			width: {
 				type: String,
 				default: '600rpx'
 			},
+			// 自定义高度
 			height: {
 				type: String,
 				default: '12rpx'
 			},
+			// 背景主题
 			bgType: {
 				type: String,
 				default: 'light'
 			},
+			// 进度条的自定义高度
 			progressHeight: {
 				type: String,
 				default: '12rpx'
 			},
+			// 进度条的背景主题
 			progressBgType: {
 				type: String,
 				default: 'primary'
 			},
+			// 外层样式
 			boxStyle: {
 				type: String,
 				default: ''
 			},
+			// 进度条的样式
 			progressStyle: {
 				type: String,
 				default: ''

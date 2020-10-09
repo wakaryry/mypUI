@@ -32,46 +32,54 @@
 				type: String,
 				default: "s1"
 			},
-			// value, not index of column
+			// 值，不是索引
 			value: {
 				type: Array,
 				default: ()=>{
 					return [0,0,0,0,0,0,0]
 				}
 			},
-			// styles
+			// 背景主题
 			bgType: {
 				type: String,
 				default: 'inverse'
 			},
+			// 选择项文字颜色主题
 			textType: {
 				type: String,
 				default: 'text'
 			},
+			// 选择项文字尺寸主题
 			textSize: {
 				type: String,
 				default: 'base'
 			},
+			// 自定义的高度
 			height: {
 				type: String,
 				default: '500rpx'
 			},
+			// 选择项自定义的高度
 			itemHeight: {
 				type: String,
 				default: '100rpx'
 			},
+			// 外层样式
 			boxStyle: {
 				type: String,
 				default: ''
 			},
+			// 选择项的外层样式
 			itemStyle: {
 				type: String,
 				default: ''
 			},
+			// 选择项的文字样式
 			textStyle: {
 				type: String,
 				default: ''
 			},
+			// indicator-style
 			indicatorStyle: {
 				type: String,
 				default: ''

@@ -17,33 +17,35 @@
 	//
 	export default {
 		props: {
+			// 超时时间，0表示不限制
 			maxTime: {
 				type: Number,
 				default: 0
 			},
+			// 可以上提时的文字提示
 			mainText: {
 				type: String,
 				default: '继续上拉加载更多'
 			},
+			// 加载中的文字提示
 			loadingText: {
 				type: String,
 				default: '正在加载'
 			},
+			// 没有更多时的文字提示
 			noMoreText: {
 				type: String,
 				default: '没有更多啦'
 			},
+			// 是否还有更多
 			hasMore: {
 				type: Boolean,
 				default: true
 			},
+			// 加载中的gif图片
 			loadingSrc: {
 				type: String,
 				default: '/static/ui/loading-small.gif'
-			},
-			isRefreshing: {
-				type: Boolean,
-				default: false
 			}
 		},
 		data() {

@@ -37,133 +37,162 @@
 	
 	export default {
 		props: {
+			// 左侧item集
 			lefts: {
 				type: Array,
 				default: ()=>{return []}
 			},
+			// 标题
 			title: {
 				type: String,
 				default: null
 			},
+			// 标题右侧图标
 			icon: {
 				type: String,
 				default: null
 			},
+			// 右侧item集
 			rights: {
 				type: Array,
 				default: ()=>{return []}
 			},
+			// 背景主题
 			bgType: {
 				type: String,
 				default: 'nav'
 			},
+			// 边框主题
 			border: {
 				type: String,
 				default: 'none'
 			},
+			// 标题颜色主题
 			titleType: {
 				type: String,
 				default: 'nav-title'
 			},
+			// 标题尺寸主题
 			titleSize: {
 				type: String,
 				default: 'nav-title'
 			},
+			// 标题样式
 			titleStyle: {
 				type: String,
 				default: ''
 			},
+			// 标题图标颜色主题
 			iconType: {
 				type: String,
 				default: 'nav-title'
 			},
+			// 标题图标尺寸主题
 			iconSize: {
 				type: String,
 				default: 'nav-title'
 			},
+			// 标题图标样式
 			iconStyle: {
 				type: String,
 				default: ""
 			},
+			// item图标颜色主题
 			itemIconType: {
 				type: String,
 				default: 'nav-icon'
 			},
+			// item图标尺寸主题
 			itemIconSize: {
 				type: String,
 				default: 'nav-icon'
 			},
+			// item图标样式
 			itemIconStyle: {
 				type: String,
 				default: ""
 			},
+			// item文字颜色主题
 			itemTextType: {
 				type: String,
 				default: 'nav-item'
 			},
+			// item文字尺寸主题
 			itemTextSize: {
 				type: String,
 				default: 'nav-item'
 			},
+			// item文字样式
 			itemTextStyle: {
 				type: String,
 				default: ''
 			},
+			// 自定义px高度
 			height: {
 				type: Number,
 				default: 44
 			},
+			// 是否包含状态栏
 			includeStatus: {
 				type: Boolean,
 				default: true
 			},
+			// 是否占位
 			isSeize: {
 				type: Boolean,
 				default: true
 			},
+			// 是否fixed定位
 			fixed: {
 				type: Boolean,
 				default: true
 			},
-			// 左侧样式修改，一般修改宽度
+			// lefts整体样式
 			leftStyle: {
 				type: String,
 				default: ''
 			},
+			// lefts整体的背景主题
 			leftBgType: {
 				type: String,
 				default: ''
 			},
+			// lefts中item的样式
 			leftItemStyle: {
 				type: String,
 				default: ''
 			},
-			// 右侧一般不修改
+			// rights整体样式
 			rightStyle: {
 				type: String,
 				default: ''
 			},
+			// rights整体背景主题
 			rightBgType: {
 				type: String,
 				default: ''
 			},
+			// rights中item的样式
 			rightItemStyle: {
 				type: String,
 				default: ''
 			},
-			// 中间一般也是修改宽度
+			// 中间title外层的样式
 			centerStyle: {
 				type: String,
 				default: ''
 			},
+			// 外层样式
 			boxStyle: {
 				type: String,
 				default: ''
 			},
+			// status与nav的外层样式
 			statusNavStyle: {
 				type: String,
 				default: ''
 			},
+			// nav的外层样式
 			navStyle: {
 				type: String,
 				default: ''

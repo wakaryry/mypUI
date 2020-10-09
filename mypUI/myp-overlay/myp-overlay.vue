@@ -12,26 +12,32 @@
 	
 	export default {
 		props: {
+			// 是否打开
 			show: {
 				type: Boolean,
 				default: false
 			},
+			// 是否有动画
 			hasAnimation: {
 				type: Boolean,
 				default: true
 			},
+			// 动画周期
 			duration: {
 				type: Number,
 				default: 400
 			},
+			// 动画函数
 			timingFunction: {
 				type: Array,
 				default: () => (['ease-in', 'ease-out'])
 			},
+			// 背景主题
 			bgType: {
 				type: String,
 				default: 'mask'
 			},
+			// 自定义背景色
 			bg: {
 				type: String,
 				default: ''
@@ -41,18 +47,22 @@
 				type: Boolean,
 				default: true
 			},
+			// 与屏幕左侧距离
 			left: {
 				type: String,
 				default: '0'
 			},
+			// 与屏幕顶部距离
 			top: {
 				type: String,
 				default: '0'
 			},
+			// 与屏幕右侧距离
 			right: {
 				type: String,
 				default: '0'
 			},
+			// 与屏幕底部距离
 			bottom: {
 				type: String,
 				default: '0'

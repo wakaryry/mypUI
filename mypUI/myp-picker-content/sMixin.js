@@ -1,13 +1,13 @@
 export default {
 	props: {
-		// for s1/s2/s3
+		// 选择的内容
 		selections: {
 			type: Array,
 			default: () => {
 				return []
 			}
 		},
-		// for s1/s2/s3 to get right prop value
+		// 对应选择内容的字段
 		labelProps: {
 			type: Object,
 			default: () => {

@@ -105,88 +105,104 @@
 				type: String,
 				default: "date"
 			},
-			// value, not index of column
+			// 值，不是索引
 			value: {
 				type: Array,
 				default: ()=>{
 					return [0,0,0,0,0,0,0]
 				}
 			},
+			// 是否使用当前时间
 			useCurrent: {
 				type: Boolean,
 				default: false
 			},
-			// 表示年份year的开始或者小时hour的开始
+			// 年份year的开始
 			start: {
 				type: String,
 				default: "1970"
 			},
+			// 年份year的结束
 			end: {
 				type: String,
 				default: new Date().getFullYear() + ''
 			},
-			// 仅仅只是用在带年份选择的mode上
+			// 是否允许以前的时间，仅仅只是用在带年份选择的mode上
 			includeBefore: {
 				type: Boolean,
 				default: true
 			},
+			// 是否允许未来的时间
 			includeAfter: {
 				type: Boolean,
 				default: true
 			},
+			// 范围选择分隔符
 			range: {
 				type: String,
 				default: '-'
 			},
-			// styles
+			// 背景色主题
 			bgType: {
 				type: String,
 				default: 'inverse'
 			},
+			// 选择项的文字颜色主题
 			textType: {
 				type: String,
 				default: 'text'
 			},
+			// 选择项的文字尺寸主题
 			textSize: {
 				type: String,
 				default: 'base'
 			},
+			// 自定义高度
 			height: {
 				type: String,
 				default: '500rpx'
 			},
+			// 选择项的自定义高度
 			itemHeight: {
 				type: String,
 				default: '100rpx'
 			},
+			// 外层样式
 			boxStyle: {
 				type: String,
 				default: ''
 			},
+			// 选择项的外层样式
 			itemStyle: {
 				type: String,
 				default: ''
 			},
+			// 选择项的文字样式
 			textStyle: {
 				type: String,
 				default: ''
 			},
+			// indicator-style
 			indicatorStyle: {
 				type: String,
 				default: ''
 			},
+			// 范围分隔符的颜色主题
 			rangeType: {
 				type: String,
 				default: 'text'
 			},
+			// 范围分隔符的尺寸主题
 			rangeSize: {
 				type: String,
 				default: 'base'
 			},
+			// 范围分隔符的外层样式
 			rangeBoxStyle: {
 				type: String,
 				default: ''
 			},
+			// 范围分隔符的样式
 			rangeStyle: {
 				type: String,
 				default: ''

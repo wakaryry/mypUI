@@ -32,150 +32,182 @@
 	
 	export default {
 		props: {
-			// 格式，每一段的长度:[3, 4, 4]
+			// 自定义格式，每一段的长度:[3, 4, 4]
 			format: {
 				type: Array,
 				default: ()=>{return []}
 			},
+			// 自定义格式的分割器
 			separator: {
 				type: String,
 				default: " "
 			},
-			// it's input's type
+			// input的type
 			type: {
 				type: String,
 				default: "text"
 			},
+			// 最大输入
 			maxlength: {
 				type: Number,
 				default: 140
 			},
+			// 是否密码
 			password: {
 				type: Boolean,
 				default: false
 			},
+			// 左侧图标
 			icon: {
 				type: String,
 				default: ''
 			},
+			// 左侧label文字
 			label: {
 				type: String,
 				default: ""
 			},
+			// 值
 			value: {
 				type: String,
 				default: ""
 			},
+			// placeholder
 			placeholder: {
 				type: String,
 				default: "请输入内容"
 			},
+			// 右侧图标
 			indicator: {
 				type: String,
 				default: ''
 			},
-			// 因为placeholder没有使用input自己的，我们需要利用valueAlign来为placeholder排版
+			// 文字排版
 			valueAlign: {
 				type: String,
 				default: 'left'
 			},
+			// 背景主题
 			bgType: {
 				type: String,
 				default: ''
 			},
+			// 高度主题
 			height: {
 				type: String,
 				default: ''
 			},
+			// 边框主题
 			border: {
 				type: String,
 				default: 'bottom'
 			},
+			// 圆角主题
 			radius: {
 				type: String,
 				default: ''
 			},
+			// 值颜色主题
 			valueType: {
 				type: String,
 				default: ''
 			},
+			// 值尺寸主题
 			valueSize: {
 				type: String,
 				default: ''
 			},
+			// 图标颜色主题
 			iconType: {
 				type: String,
 				default: ''
 			},
+			// 图标尺寸主题
 			iconSize: {
 				type: String,
 				default: 'l'
 			},
+			// label颜色主题
 			labelType: {
 				type: String,
 				default: ''
 			},
+			// label尺寸主题
 			labelSize: {
 				type: String,
 				default: ''
 			},
+			// 右侧图标颜色主题
 			indicatorType: {
 				type: String,
 				default: ''
 			},
+			// 右侧图标尺寸主题
 			indicatorSize: {
 				type: String,
 				default: 'l'
 			},
+			// placeholder颜色主题
 			placeType: {
 				type: String,
 				default: 'place'
 			},
+			// placeholder尺寸主题
 			placeSize: {
 				type: String,
 				default: ''
 			},
+			// 键盘adjust-position弹出方式
 			adjust: {
 				type: Boolean,
 				default: true
 			},
+			// confirm-type
 			confirmType: {
 				type: String,
 				default: 'done'
 			},
+			// 图标样式
 			iconStyle: {
 				type: String,
 				default: ''
 			},
+			// 图标外层样式
 			iconBoxStyle: {
 				type: String,
 				default: ''
 			},
+			// label样式
 			labelStyle: {
 				type: String,
 				default: ""
 			},
+			// 值样式
 			valueStyle: {
 				type: String,
 				default: 'flex:1;'
 			},
+			// 右侧图标样式
 			indicatorStyle: {
 				type: String,
 				default: ''
 			},
+			// 右侧图标外层样式
 			indicatorBoxStyle: {
 				type: String,
 				default: ''
 			},
+			// 外层样式
 			boxStyle: {
 				type: String,
 				default: ""
 			},
-			// 内部元素之间的空隙
+			// 内部各元素之间的空隙
 			space: {
 				type: String,
 				default: '12rpx'
 			},
+			// placeholder的样式
 			placeStyle: {
 				type: String,
 				default: ''

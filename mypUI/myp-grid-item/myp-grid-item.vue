@@ -1,7 +1,7 @@
 <template>
 	<view :class="['myp-item', flexDirection==='row' ? 'myp-item-row':'myp-item-column']" :hover-class="'myp-hover-'+hover" :style="boxStyle" bubble="true" @tap="clickedItem">
 		<text v-if="textFirst" :class="['myp-color-'+textType, 'myp-size-'+textSize]" :style="mrTextStyle">{{text}}</text>
-		<myp-icon v-if="isIcon" :name="icon" :type="iconType" :size="iconSize" :mode="iconMode" :iconStyle="iconStyle" :boxStyle="iconBoxStyle" @iconClicked="clickedItem"></myp-icon>
+		<myp-icon v-if="isIcon" :name="icon" :type="iconType" :size="iconSize" :iconStyle="iconStyle" :boxStyle="iconBoxStyle" @iconClicked="clickedItem"></myp-icon>
 		<text v-if="!isIcon" :class="['myp-color-'+iconType, 'myp-size-'+iconSize]" :style="iconStyle">{{icon}}</text>
 		<text v-if="!textFirst" :class="['myp-color-'+textType, 'myp-size-'+textSize]" :style="mrTextStyle">{{text}}</text>
 		<slot name="extra"></slot>
@@ -16,14 +16,17 @@
 				type: [String, Number],
 				default: ''
 			},
+			// icon是否是图标
 			isIcon: {
 				type: Boolean,
 				default: true
 			},
+			// 文字内容
 			text: {
 				type: [String, Number],
 				default: ''
 			},
+			// 图标与文字的间距
 			space: {
 				type: String,
 				default: '12rpx'
@@ -33,43 +36,47 @@
 				type: String,
 				default: 'top'
 			},
+			// 文字颜色主题
 			textType: {
 				type: String,
 				default: 'text'
 			},
+			// 文字尺寸主题
 			textSize: {
 				type: String,
 				default: 'base'
 			},
+			// 图标颜色主题
 			iconType: {
 				type: String,
 				default: 'text'
 			},
+			// 图标尺寸主题
 			iconSize: {
 				type: String,
 				default: 'll'
 			},
-			iconMode: {
-				type: String,
-				default: 'aspectFill'
-			},
+			// hover主题
 			hover: {
 				type: String,
 				default: 'opacity'
 			},
+			// 外层样式
 			boxStyle: {
 				type: String,
 				default: ''
 			},
-			// 文字/图片/图标的样式设置
+			// 文字/图片/图标的样式
 			iconStyle: {
 				type: String,
 				default: ''
 			},
+			// 图标的外层样式
 			iconBoxStyle: {
 				type: String,
 				default: ''
 			},
+			// 文字样式
 			textStyle: {
 				type: String,
 				default: ''

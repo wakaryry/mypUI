@@ -5,26 +5,32 @@ import {getScreenHeight} from '../utils/system.js'
 
 export default {
 	props: {
+		// 是否显示scrollbar
 		showScrollbar: {
 			type: Boolean,
 			default: true
 		},
+		// 背景主题
 		bgType: {
 			type: String,
 			default: 'page'
 		},
+		// 定位
 		position: {
 			type: String,
 			default: 'static'
 		},
+		// 定位的top
 		top: {
 			type: String,
 			default: '0'
 		},
+		// 定位的bottom
 		bottom: {
 			type: String,
 			default: '0'
 		},
+		// 外层样式
 		boxStyle: {
 			type: String,
 			default: ''

@@ -2,7 +2,26 @@
 	<view>
 		<myp-navbar :lefts="leftIcons" title="myp-fold" @leftAction="navLeftAction"></myp-navbar>
 		<myp-list-simple>
-			
+			<myp-list-cell>
+				<view style="height: 32rpx;"></view>
+				<myp-fold bgType="inverse" boxStyle="margin-left:32rpx;width:686rpx;" @toggle="toToggleBox">
+					<view slot="head" class="myp-flex-row myp-align-center myp-wrap-nowrap myp-height-l" style="padding-left: 32rpx;padding-right: 32rpx;">
+						<myp-icon name="plus"></myp-icon>
+						<text class="myp-color-text myp-size-l myp-flex-one">我的百宝箱</text>
+						<myp-icon :name="boxOpened?'up':'down'"></myp-icon>
+					</view>
+					<view slot="body"></view>
+				</myp-fold>
+				<view style="height: 32rpx;"></view>
+				<myp-fold :isOpen="true" boxStyle="margin-left:32rpx;width:686rpx;" @toggle="toToggleSecret">
+					<view slot="head">
+						<myp-icon name="plus"></myp-icon>
+						<text>我的超级秘密</text>
+						<myp-icon :name="secretOpened?'up':'down'"></myp-icon>
+					</view>
+					<view slot="body"></view>
+				</myp-fold>
+			</myp-list-cell>
 		</myp-list-simple>
 	</view>
 </template>
@@ -11,7 +30,21 @@
 	import navHelper from '@/router/navHelper.js'
 	
 	export default {
-		mixins: [navHelper]
+		mixins: [navHelper],
+		data() {
+			return {
+				boxOpened: false,
+				secretOpened: true
+			}
+		},
+		methods: {
+			toToggleBox(val) {
+				this.boxOpened = val
+			},
+			toToggleSecret(val) {
+				this.secretOpened = val
+			}
+		}
 	}
 </script>
 

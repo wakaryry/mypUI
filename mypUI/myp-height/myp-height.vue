@@ -9,22 +9,27 @@
 	
 	export default {
 		props: {
+			// 自定义高度。允许status-nav-100rpx-12px写法
 			height: {
 				type: String,
 				default: '0'
 			},
+			// 背景颜色主题
 			bgType: {
 				type: String,
 				default: 'none'
 			},
+			// 边框主题
 			border: {
 				type: String,
 				default: 'none'
 			},
+			// 圆角主题
 			radius: {
 				type: String,
 				default: 'none'
 			},
+			// 外层样式
 			boxStyle: {
 				type: String,
 				default: ''

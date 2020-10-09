@@ -4,7 +4,7 @@
 			<view v-if="mode === 'middle' && codeIndex <= item" :style="mrMiddleStyle"></view>
 			<view v-if="mode === 'bottom'" :style="mrBottomStyle+(codeArr.length+1 === item?activeLineStyle:'')"></view>
 			<view v-if="mode==='box' && codeArr.length+1 === item" class="myp-one-cursor" :style="mrCursorStyle"></view>
-			<view v-if="secret && codeArr.length >= item" :style="mrDotStyle"></view>
+			<view v-if="password && codeArr.length >= item" :style="mrDotStyle"></view>
 			<text v-else class="myp-one-item-text" :style="'line-height:'+width+';'+valueStyle">{{ codeArr[index] ? codeArr[index] : ''}}</text>
 		</view>
 		<input type="number" :value="inputValue" :focus="focus" :maxlength="maxlength" class="myp-one-hide-input" :style="{height: width}" @input="getVal" />
@@ -15,69 +15,82 @@
 	// v-model or refs or nothing(just @finish)
 	export default {
 		props: {
+			// 值
 			value: {
 				type: String,
 				default: ''
 			},
-			// 4/5/6
+			// 最大长度。4/5/6
 			maxlength: {
 				type: Number,
 				default: 4
 			},
-			secret: {
+			// 是否密码
+			password: {
 				type: Boolean,
 				default: false
 			},
+			// 是否带有光标
 			cursor: {
 				type: Boolean,
 				default: false
 			},
+			// 是否focus
 			focus: {
 				type: Boolean,
 				default: false
 			},
-			// middle-middle line, bottom-bottom line, box-square box
+			// middle-中间线, bottom-下划线, box-方框
 			mode: {
 				type: String,
 				default: "middle"
 			},
-			// height/width相等，且不是scss中定义的系列。直接赋值
+			// 自定义height/width
 			width: {
 				type: String,
 				default: '100rpx'
 			},
+			// 间隙
 			space: {
 				type: String,
 				default: '12rpx'
 			},
+			// password时圆点的样式
 			dotStyle: {
 				type: String,
 				default: 'width:16rpx;height:16rpx;border-radius:16rpx;background-color:#000000;'
 			},
+			// middle或bottom时线条的样式
 			lineStyle: {
 				type: String,
 				default: 'width:80rpx;height:8rpx;border-radius:12rpx;background-color:#000000;'
 			},
+			// 当前输入框线条的样式
 			activeLineStyle: {
 				type: String,
 				default: ''
 			},
+			// 光标的样式
 			cursorStyle: {
 				type: String,
 				default: 'width:1px;height:42rpx;background-color:#8F9CFF;'
 			},
+			// 值的样式
 			valueStyle: {
 				type: String,
 				default: 'font-size:70rpx;font-weight:700;color:#000000;'
 			},
+			// 外层样式
 			boxStyle: {
 				type: String,
 				default: ''
 			},
+			// 输入框样式
 			itemStyle: {
 				type: String,
 				default: ''
 			},
+			// 当前输入框的样式
 			activeItemStyle: {
 				type: String,
 				default: ''

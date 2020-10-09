@@ -66,66 +66,82 @@ import * as Format from './format.js';
 export default {
 	mixins: [styleMixin],
 	props: {
+		// 普通list内容
 		normalList: {
 			type: Array,
 			default: () => []
 		},
+		// 是否只展示普通list内容
 		onlyShowList: {
 			type: Boolean,
 			default: false
 		},
+		// 是否展示index
 		showIndex: {
 			type: Boolean,
 			default: true
 		},
+		// 滚动时是否有动画效果
 		needAnimation: {
 			type: Boolean,
 			default: true
 		},
+		// 热门list配置
 		hotList: {
 			type: Object,
 			default: () => ({})
 		},
+		// 特殊list配置
 		specialList: {
 			type: Object,
 			default: () => ({})
 		},
+		// group类型的title样式
 		groupTitleStyle: {
 			type: String,
 			default: ''
 		},
+		// title样式
 		titleStyle: {
 			type: String,
 			default: ''
 		},
+		// group类型的item样式
 		groupItemStyle: {
 			type: String,
 			default: ''
 		},
+		// group类型的item文字样式
 		groupItemTextStyle: {
 			type: String,
 			default: ''
 		},
+		// group类型的item描述文字样式
 		groupItemDescStyle: {
 			type: String,
 			default: ''
 		},
+		// item样式
 		itemStyle: {
 			type: String,
 			default: ''
 		},
+		// item文字样式
 		itemTextStyle: {
 			type: String,
 			default: ''
 		},
+		// item描述文字样式
 		itemDescStyle: {
 			type: String,
 			default: ''
 		},
+		// index的外层样式
 		indexBoxStyle: {
 			type: String,
 			default: ''
 		},
+		// index的文字样式
 		indexTextStyle: {
 			type: String,
 			default: ''

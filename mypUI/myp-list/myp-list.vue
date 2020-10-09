@@ -37,22 +37,23 @@
 		mixins: [styleMixin, scrollMixin, weexActions],
 		props: {
 			// #ifdef APP-NVUE
-			// 是否启用loading组件，而不是loadmoreofset触发
+			// 是否启用loading组件，而不是loadmoreoffset触发
 			useLoading: {
 				type: Boolean,
 				default: false
 			},
-			// 使用loadmoreofset时的触发偏移量
+			// 使用loadmoreoffset时的触发偏移量
 			loadMoreOffset: {
 				type: Number,
 				default: 60
 			},
 			// #endif
-			// 进入自动刷新数据. 默认不自动刷新数据
+			// 是否自动加载第一页数据
 			autoUpdate: {
 				type: Boolean,
 				default: false
 			},
+			// 下拉刷新的配置
 			down: {
 				type: Object,
 				default: ()=>{
@@ -64,6 +65,7 @@
 					}
 				}
 			},
+			// 上提加载的配置
 			up: {
 				type: Object,
 				default: ()=>{

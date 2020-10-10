@@ -9,10 +9,12 @@
 	
 	export default {
 		props: {
+			// 背景主题
 			bgType: {
 				type: String,
 				default: ''
 			},
+			// 外层样式
 			boxStyle: {
 				type: String,
 				default: ''

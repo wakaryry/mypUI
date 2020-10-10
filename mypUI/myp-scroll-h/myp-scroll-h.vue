@@ -11,31 +11,37 @@
 	
 	export default {
 		props: {
+			// 背景主题
 			bgType: {
 				type: String,
 				default: ''
 			},
+			// 布局调整
 			justify: {
 				type: String,
 				default: 'flex-start'
 			},
+			// 自定义宽度
 			width: {
 				type: String,
 				default: '750rpx'
 			},
+			// 自定义高度
 			height: {
 				type: String,
 				default: '260px'
 			},
+			// scroll-left
 			left: {
 				type: String,
 				default: '0'
 			},
+			// 外层样式
 			boxStyle: {
 				type: String,
 				default: ''
 			},
-			// 如果vue页面下无法滚动，请设置内容总宽度
+			// 内容样式。如果vue页面下无法滚动（内容有压缩），请设置内容总宽度
 			contentStyle: {
 				type: String,
 				default: ''

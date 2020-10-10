@@ -12,30 +12,37 @@
 <script>
 	export default {
 		props: {
+			// 背景主题
 			bgType: {
 				type: String,
 				default: 'none'
 			},
+			// 边框主题
 			border: {
 				type: String,
 				default: 'none'
 			},
+			// 圆角主题
 			radius: {
 				type: String,
 				default: 'none'
 			},
+			// 中间线外层样式
 			centerStyle: {
 				type: String,
 				default: ''
 			},
+			// 中间线背景主题
 			lineBgType: {
 				type: String,
 				default: 'border'
 			},
+			// 中间线样式
 			lineStyle: {
 				type: String,
 				default: ''
 			},
+			// 外层样式
 			boxStyle: {
 				type: String,
 				default: ''

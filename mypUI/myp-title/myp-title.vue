@@ -23,204 +23,222 @@
 <script>
 	export default {
 		props: {
+			// 左侧标题
 			title1: {
 				type: String,
 				default: ''
 			},
+			// 中间标题
 			title2: {
 				type: String,
 				default: ''
 			},
+			// 右侧标题
 			title3: {
 				type: String,
 				default: ''
 			},
+			// 左侧图标1
 			leftIcon1: {
 				type: String,
 				default: ''
 			},
+			// 左侧图标2
 			leftIcon2: {
 				type: String,
 				default: ''
 			},
+			// 中间图标1
 			centerIcon1: {
 				type: String,
 				default: ''
 			},
+			// 中间图标2
 			centerIcon2: {
 				type: String,
 				default: ''
 			},
+			// 右侧图标1
 			rightIcon1: {
 				type: String,
 				default: ''
 			},
+			// 右侧图标3
 			rightIcon2: {
 				type: String,
 				default: ''
 			},
-			// icon-text-icon 之间的space
+			// icon-text-icon之间的间距
 			space: {
 				type: String,
 				default: '12rpx'
 			},
+			// 高度主题
 			height: {
 				type: String,
 				default: 'l'
 			},
-			// 增加hover只是方便你当作cell使用
+			// hover主题
 			hover: {
 				type: String,
 				default: 'none'
 			},
+			// 背景主题
 			bgType: {
 				type: String,
 				default: ''
 			},
+			// 标题1的颜色主题
 			title1Type: {
 				type: String,
 				default: ''
 			},
+			// 标题1的尺寸主题
 			title1Size: {
 				type: String,
 				default: ''
 			},
+			// 标题1的样式
 			title1Style: {
 				type: String,
 				default: ''
 			},
+			// 标题2的颜色主题
 			title2Type: {
 				type: String,
 				default: ''
 			},
+			// 标题2的尺寸主题
 			title2Size: {
 				type: String,
 				default: ''
 			},
+			// 标题2的样式
 			title2Style: {
 				type: String,
 				default: ''
 			},
+			// 标题3的颜色主题
 			title3Type: {
 				type: String,
 				default: ''
 			},
+			// 标题3的尺寸主题
 			title3Size: {
 				type: String,
 				default: ''
 			},
+			// 标题3的样式
 			title3Style: {
 				type: String,
 				default: ''
 			},
+			// 左侧图标1的颜色主题
 			leftIcon1Type: {
 				type: String,
 				default: ''
 			},
+			// 左侧图标1的尺寸主题
 			leftIcon1Size: {
 				type: String,
 				default: ''
 			},
+			// 左侧图标1的样式
 			leftIcon1Style: {
 				type: String,
 				default: ''
 			},
-			leftIcon1Mode: {
-				type: String,
-				default: 'aspectFill'
-			},
+			// 左侧图标2的颜色主题
 			leftIcon2Type: {
 				type: String,
 				default: ''
 			},
+			// 左侧图标2的尺寸主题
 			leftIcon2Size: {
 				type: String,
 				default: ''
 			},
+			// 左侧图标2的样式
 			leftIcon2Style: {
 				type: String,
 				default: ''
 			},
-			leftIcon2Mode: {
-				type: String,
-				default: 'aspectFill'
-			},
+			// 中间图标1的颜色主题
 			centerIcon1Type: {
 				type: String,
 				default: ''
 			},
+			// 中间图标1的尺寸主题
 			centerIcon1Size: {
 				type: String,
 				default: ''
 			},
+			// 中间图标1的样式
 			centerIcon1Style: {
 				type: String,
 				default: ''
 			},
-			centerIcon1Mode: {
-				type: String,
-				default: 'aspectFill'
-			},
+			// 中间图标2的颜色主题
 			centerIcon2Type: {
 				type: String,
 				default: ''
 			},
+			// 中间图标2的尺寸主题
 			centerIcon2Size: {
 				type: String,
 				default: ''
 			},
+			// 中间图标2的样式
 			centerIcon2Style: {
 				type: String,
 				default: ''
 			},
-			centerIcon2Mode: {
-				type: String,
-				default: 'aspectFill'
-			},
+			// 右侧图标1的颜色主题
 			rightIcon1Type: {
 				type: String,
 				default: ''
 			},
+			// 右侧图标1的尺寸主题
 			rightIcon1Size: {
 				type: String,
 				default: ''
 			},
+			// 右侧图标1的样式
 			rightIcon1Style: {
 				type: String,
 				default: ''
 			},
-			rightIcon1Mode: {
-				type: String,
-				default: 'aspectFill'
-			},
+			// 右侧图标2的颜色主题
 			rightIcon2Type: {
 				type: String,
 				default: ''
 			},
+			// 右侧图标2的尺寸主题
 			rightIcon2Size: {
 				type: String,
 				default: ''
 			},
+			// 右侧图标2的样式
 			rightIcon2Style: {
 				type: String,
 				default: ''
 			},
-			rightIcon2Mode: {
-				type: String,
-				default: 'aspectFill'
-			},
+			// 外层样式
 			boxStyle: {
 				type: String,
 				default: ''
 			},
+			// 左侧样式
 			leftStyle: {
 				type: String,
 				default: ''
 			},
+			// 中间样式
 			centerStyle: {
 				type: String,
 				default: ''
 			},
+			// 右侧样式
 			rightStyle: {
 				type: String,
 				default: ''

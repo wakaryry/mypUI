@@ -25,35 +25,39 @@
 	
 	export default {
 		props: {
+			// tabs内容
 			items: {
 				type: Array,
 				default: function() {
 					return []
 				}
 			},
-			// current index
+			// 当前index
 			value: {
 				type: Number,
 				default: 0
 			},
-			// 因为scroll的过程中，current就会发生变化，我们需要用另外一个来记录
+			// 联动时需要。因为scroll的过程中，current就会发生变化，我们需要用另外一个来记录
 			last: {
 				type: Number,
 				default: 0
 			},
+			// 文字内容的字段
 			textLabel: {
 				type: String,
 				default: null
 			},
-			// px. swiperScroll dx
+			// 联动时swiper的偏移量。px. swiperScroll dx
 			offset: {
 				type: Number,
 				default: 0
 			},
+			// swiper的宽度。联动时需要
 			swiperWidth: {
 				type: String,
 				default: '750rpx'
 			},
+			// 是否是点击tab。不联动时一直设置为true
 			isTap: {
 				type: Boolean,
 				default: false
@@ -63,94 +67,112 @@
 				type: String,
 				default: 'flex-start'
 			},
-			// width of the scroll-view
+			// scroll的自定义宽度
 			scrollSize: {
 				type: String,
 				default: '750rpx'
 			},
+			// 文字的尺寸主题
 			textSize: {
 				type: String,
 				default: ''
 			},
+			// 当前项文字的尺寸主题
 			activeTextSize: {
 				type: String,
 				default: ''
 			},
+			// 背景主题
 			bgType: {
 				type: String,
 				default: ''
 			},
+			// 文字颜色主题
 			textType: {
 				type: String,
 				default: ''
 			},
+			// 当前项的文字颜色主题
 			activeTextType: {
 				type: String,
 				default: ''
 			},
-			// item height: rpx/px
+			// 自定义高度
 			height: {
 				type: String,
 				default: '80rpx'
 			},
-			// 0的时候，自适应宽度
+			// tab项的宽度。0的时候，自适应宽度
 			width: {
 				type: String,
 				default: '120rpx'
 			},
+			// 各个tab之间的间隙
 			space: {
 				type: String,
 				default: '0px'
 			},
+			// 边框主题
 			border: {
 				type: String,
 				default: 'none'
 			},
+			// 是否有底下指示器
 			hasIndicator: {
 				type: Boolean,
 				default: true
 			},
+			// 指示器的背景主题
 			indicatorType: {
 				type: String,
 				default: 'primary'
 			},
-			// 0的时候动态宽度，自适应宽度
+			// 指示器的自定义宽度。0的时候动态宽度，自适应宽度
 			indicatorWidth: {
 				type: String,
 				default: '80rpx'
 			},
+			// 指示器的自定义高度
 			indicatorHeight: {
 				type: String,
 				default: '4rpx'
 			},
+			// 指示器的自定义圆角
 			indicatorRadius: {
 				type: String,
 				default: '4rpx'
 			},
+			// 外层样式，也是scroll的样式
 			boxStyle: {
 				type: String,
 				default: ''
 			},
+			// tabs的内容样式
 			tabsStyle: {
 				type: String,
 				default: ''
 			},
+			// 文字样式
 			textStyle: {
 				type: String,
 				default: ''
 			},
+			// 当前项的文字样式
 			activeTextStyle: {
 				type: String,
 				default: ''
 			},
+			// tab项的样式
 			itemStyle: {
 				type: String,
 				default: ''
 			},
+			// 当前项的tab样式
 			activeItemStyle: {
 				type: String,
 				default: ''
 			},
+			// 指示器的样式
 			indicatorStyle: {
 				type: String,
 				default: ''

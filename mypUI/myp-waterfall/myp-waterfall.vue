@@ -53,31 +53,37 @@
 				default: 60
 			},
 			// #endif
+			// 每一行的栏目数
 			columnCount: {
 				type: [String, Number],
 				default: 'auto'
 			},
+			// 每一栏的宽度
 			columnWidth: {
 				type: String,
 				default: 'auto'
 			},
+			// 栏目之间的间距
 			columnGap: {
 				type: String,
 				default: '0'
 			},
+			// 内容距离左侧的间距
 			leftGap: {
 				type: String,
 				default: '0'
 			},
+			// 内容距离右侧的间距
 			rightGap: {
 				type: String,
 				default: '0'
 			},
-			// 进入自动刷新数据. 默认不自动刷新数据
+			// 是否自动加载第一页数据
 			autoUpdate: {
 				type: Boolean,
 				default: false
 			},
+			// 下拉刷新的配置
 			down: {
 				type: Object,
 				default: ()=>{
@@ -89,6 +95,7 @@
 					}
 				}
 			},
+			// 上提加载的配置
 			up: {
 				type: Object,
 				default: ()=>{

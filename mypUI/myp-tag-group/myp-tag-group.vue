@@ -19,140 +19,167 @@
 	import {arrayChunk} from '../utils/utils.js'
 	export default {
 		props: {
+			// 标签群内容
 			items: {
 				type: Array,
 				default: ()=>{return []}
 			},
+			// 当前选中值
 			value: {
 				type: Array,
 				default: ()=>{return []}
 			},
-			// 0 means no limit
+			// 限制最大选择数。0表示不限制
 			limits: {
 				type: Number,
 				default: 0
 			},
-			// limits为1时是否允许取消当前选择
+			// limits为1时是否允许取消当前选择，也就是是否允许一个也不选
 			leastOne: {
 				type: Boolean,
 				default: false
 			},
-			// 0表示动态宽度，其余就是等宽
+			// 每一行多少个tag。0表示动态宽度，其余就是等宽
 			column: {
 				type: Number,
 				default: 0
 			},
+			// 标签之间的竖向距离
 			rowSpace: {
 				type: String,
 				default: '16rpx'
 			},
+			// 标签之间的横向距离
 			columnSpace: {
 				type: String,
 				default: '16rpx'
 			},
+			// 强制刷新，重新生成数据
 			updatedTime: {
 				type: Number,
 				default: 0
 			},
+			// 是否全部禁用
 			disabled: {
 				type: Boolean,
 				default: false
 			},
+			// 文字内容的字段
 			textLabel: {
 				type: String,
 				default: null
 			},
+			// 唯一值的字段
 			valueLabel: {
 				type: String,
 				default: null
 			},
+			// 禁用的字段
 			disabledLabel: {
 				type: String,
 				default: null
 			},
+			// 背景主题
 			bgType: {
 				type: String,
 				default: ''
 			},
+			// 边框主题
 			border: {
 				type: String,
 				default: 'none'
 			},
+			// 圆角主题
 			radius: {
 				type: String,
 				default: 'none'
 			},
+			// 外层样式
 			boxStyle: {
 				type: String,
 				default: ''
 			},
-			// dyBoxStyle可以设置items的排布规则
+			// column为0时，标签群的样式
 			dyBoxStyle: {
 				type: String,
 				default: ''
 			},
-			// below is tags' props
+			// tag的背景主题
 			tagBgType: {
 				type: String,
 				default: ''
 			},
+			// 选中时tag的背景主题
 			tagSelectedBgType: {
 				type: String,
 				default: ''
 			},
+			// tag的文字颜色主题
 			tagTextType: {
 				type: String,
 				default: ''
 			},
+			// 选中时tag的文字颜色主题
 			tagSelectedTextType: {
 				type: String,
 				default: ''
 			},
+			// tag的文字尺寸主题
 			tagTextSize: {
 				type: String,
 				default: ''
 			},
+			// tag的高度主题
 			tagHeight: {
 				type: String,
 				default: ''
 			},
+			// tag的边框主题
 			tagBorder: {
 				type: String,
 				default: 'all'
 			},
+			// 选中时tag的边框主题
 			tagSelectedBorder: {
 				type: String,
 				default: 'all'
 			},
+			// tag的圆角主题
 			tagRadius: {
 				type: String,
 				default: 'base'
 			},
+			// tag的左右padding
 			tagSpace: {
 				type: String,
 				default: '16rpx'
 			},
+			// tag的文字样式
 			textStyle: {
 				type: String,
 				default: ''
 			},
+			// 选中时tag的文字样式
 			selectedTextStyle: {
 				type: String,
 				default: ''
 			},
+			// 禁用时tag的文字样式
 			disabledTextStyle: {
 				type: String,
 				default: ''
 			},
-			// width/height等可以在这里设置
+			// tag的外层样式
 			tagStyle: {
 				type: String,
 				default: ''
 			},
+			// 选中时tag的外层样式
 			selectedTagStyle: {
 				type: String,
 				default: ''
 			},
+			// 禁用时tag的外层样式
 			disabledTagStyle: {
 				type: String,
 				default: ''

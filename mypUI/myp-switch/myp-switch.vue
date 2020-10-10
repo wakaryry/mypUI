@@ -8,54 +8,67 @@
 <script>
 	export default {
 		props: {
+			// 值/是否打开
 			value: {
 				type: Boolean,
 				default: false
 			},
+			// 是否禁用
 			disabled: {
 				type: Boolean,
 				default: false
 			},
+			// 关闭时的背景主题
 			bgType: {
 				type: String,
 				default: 'border'
 			},
+			// 打开时的背景主题
 			onBgType: {
 				type: String,
 				default: 'primary'
 			},
+			// 移动球的背景主题
 			ballBgType: {
 				type: String,
 				default: ''
 			},
+			// 动画层背景主题
 			animateBgType: {
 				type: String,
 				default: ''
 			},
+			// 自定义宽度
 			width: {
 				type: String,
 				default: '102rpx'
 			},
+			// 自定义高度
 			height: {
 				type: String,
 				default: '62rpx'
 			},
+			// 移动球的自定义宽高
 			ballSize: {
 				type: String,
 				default: '58rpx'
 			},
+			// 移动球的自定义背景色
 			ballBg: {
 				type: String,
 				default: ''
 			},
+			// 动画层的自定义背景色
 			animateBg: {
 				type: String,
 				default: ''
 			},
+			// 关闭时的自定义背景色
 			bg: {
 				type: String,
 				default: ''
 			},
+			// 打开时的自定义背景色
 			onBg: {
 				type: String,
 				default: ''

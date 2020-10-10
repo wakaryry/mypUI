@@ -22,23 +22,27 @@
 	// TODO: add height animation: height-0->height
 	export default {
 		props: {
+			// 是否打开/展示
 			show: {
 				type: Boolean,
 				default: false
 			},
+			// 定位位置
 			pos: {
 				type: String,
 				default: 'bottom'
 			},
+			// 背景主题
 			bgType: {
 				type: String,
 				default: 'none'
 			},
+			// 动画周期
 			duration: {
 				type: Number,
 				default: 300
 			},
-			// in mp, we do not support v-bind="overlay". we need to list it
+			// 遮罩层设置
 			overlay: {
 				type: Object,
 				default: () => ({
@@ -48,61 +52,74 @@
 					bgType: 'mask'
 				})
 			},
+			// 自定义高度
 			height: {
 				type: String,
 				default: '0'
 			},
+			// 需要从屏幕高度额外减去的高度
 			extra: {
 				type: String,
 				default: '0'
 			},
+			// 提前显示在可见屏幕内的高度
 			standout: {
 				type: String,
 				default: '0'
 			},
-			// 打开后与边框的距离. 可以通过其它方式实现，比如内容高度增加，然后背景色透明
+			// 内容与屏幕左侧的距离
 			leftOffset: {
 				type: String,
 				default: '-1'
 			},
+			// 内容与屏幕右侧的距离
 			rightOffset: {
 				type: String,
 				default: '-1'
 			},
+			// 内容与屏幕底部的距离
 			bottomOffset: {
 				type: String,
 				default: '-1'
 			},
+			// 内容与屏幕顶部的距离
 			topOffset: {
 				type: String,
 				default: '-1'
 			},
+			// 自定义宽度
 			width: {
 				type: String,
 				default: '750rpx'
 			},
+			// 动画函数
 			animation: {
 				type: Object,
 				default: () => ({
 					timingFunction: 'ease-in-out'
 				})
 			},
+			// 遮罩与屏幕左侧的距离
 			left: {
 				type: String,
 				default: '0'
 			},
+			// 遮罩与屏幕顶部的距离
 			top: {
 				type: String,
 				default: '0'
 			},
+			// 遮罩与屏幕右侧的距离
 			right: {
 				type: String,
 				default: '0'
 			},
+			// 遮罩与屏幕底部的距离
 			bottom: {
 				type: String,
 				default: '0'
 			},
+			// 内容外层样式
 			boxStyle: {
 				type: String,
 				default: ''

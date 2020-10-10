@@ -20,22 +20,24 @@
 	
 	export default {
 		props: {
+			// tabs内容
 			items: {
 				type: Array,
 				default: function() {
 					return []
 				}
 			},
-			// current index
+			// 当前index
 			value: {
 				type: Number,
 				default: 0
 			},
+			// 文字内容的字段
 			textLabel: {
 				type: String,
 				default: null
 			},
-			// height of scroll
+			// scroll的自定义高度
 			scrollSize: {
 				type: String,
 				default: '750rpx'
@@ -45,81 +47,97 @@
 				type: String,
 				default: 'flex-start'
 			},
+			// 文字尺寸主题
 			textSize: {
 				type: String,
 				default: ''
 			},
+			// 当前项文字尺寸主题
 			activeTextSize: {
 				type: String,
 				default: ''
 			},
+			// 背景主题
 			bgType: {
 				type: String,
 				default: ''
 			},
+			// 文字颜色主题
 			textType: {
 				type: String,
 				default: ''
 			},
+			// 当前项文字颜色主题
 			activeTextType: {
 				type: String,
 				default: ''
 			},
-			// item height: rpx/px
-			// 0的时候，自适应高度
+			// tab项的自定义高度。0的时候，自适应高度
 			height: {
 				type: String,
 				default: '80rpx'
 			},
+			// tab项的自定义宽度
 			width: {
 				type: String,
 				default: '120rpx'
 			},
+			// 是否有指示器
 			hasIndicator: {
 				type: Boolean,
 				default: true
 			},
+			// 指示器背景主题
 			indicatorType: {
 				type: String,
 				default: ''
 			},
+			// 指示器自定义宽度
 			indicatorWidth: {
 				type: String,
 				default: '4rpx'
 			},
-			// 0的时候动态高度，自适应高度
+			// 指示器自定义高度。0的时候动态高度，自适应高度
 			indicatorHeight: {
 				type: String,
 				default: '40rpx'
 			},
+			// 指示器自定义圆角
 			indicatorRadius: {
 				type: String,
 				default: '4rpx'
 			},
+			// 指示器与左侧的距离
 			indicatorLeft: {
 				type: String,
 				default: '6rpx'
 			},
+			// 外层样式。也是scroll的样式
 			boxStyle: {
 				type: String,
 				default: ''
 			},
+			// 文字样式
 			textStyle: {
 				type: String,
 				default: ''
 			},
+			// 当前项的文字样式
 			activeTextStyle: {
 				type: String,
 				default: ''
 			},
+			// tab项的样式
 			itemStyle: {
 				type: String,
 				default: ''
 			},
+			// 当前tab项的样式
 			activeItemStyle: {
 				type: String,
 				default: ''
 			},
+			// 指示器的样式
 			indicatorStyle: {
 				type: String,
 				default: ''

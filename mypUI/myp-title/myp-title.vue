@@ -1,19 +1,19 @@
 <template>
 	<view :class="['myp-title', 'myp-bg-'+bgType, 'myp-height-'+height]" :style="boxStyle" :hover-class="'myp-hover-'+hover">
 		<view class="myp-title-left" :style="leftStyle" bubble="true" @tap="leftClicked">
-			<myp-icon v-if="leftIcon1&&leftIcon1.length>0" :name="leftIcon1" :type="leftIcon1Type" :size="leftIcon1Size" :style="leftIcon1Style" :mode="leftIcon1Mode" @iconClicked="leftClicked"></myp-icon>
+			<myp-icon v-if="leftIcon1&&leftIcon1.length>0" :name="leftIcon1" :type="leftIcon1Type" :size="leftIcon1Size" :style="leftIcon1Style" @iconClicked="leftClicked"></myp-icon>
 			<text :class="['myp-size-'+title1Size, 'myp-color-'+title1Type]" :style="mrTitle1Style">{{title1}}</text>
-			<myp-icon v-if="leftIcon2&&leftIcon2.length>0" :name="leftIcon2" :type="leftIcon2Type" :size="leftIcon2Size" :style="leftIcon2Style" :mode="leftIcon2Mode" @iconClicked="leftClicked"></myp-icon>
+			<myp-icon v-if="leftIcon2&&leftIcon2.length>0" :name="leftIcon2" :type="leftIcon2Type" :size="leftIcon2Size" :style="leftIcon2Style" @iconClicked="leftClicked"></myp-icon>
 		</view>
 		<view class="myp-title-center" :style="centerStyle" bubble="true" @tap="centerClicked">
-			<myp-icon v-if="centerIcon1&&centerIcon1.length>0" :name="centerIcon1" :type="centerIcon1Type" :size="centerIcon1Size" :style="centerIcon1Style" :mode="centerIcon1Mode" @iconClicked="centerClicked"></myp-icon>
+			<myp-icon v-if="centerIcon1&&centerIcon1.length>0" :name="centerIcon1" :type="centerIcon1Type" :size="centerIcon1Size" :style="centerIcon1Style" @iconClicked="centerClicked"></myp-icon>
 			<text :class="['myp-size-'+title2Size, 'myp-color-'+title2Type]" :style="mrTitle2Style">{{title2}}</text>
-			<myp-icon v-if="centerIcon2&&centerIcon2.length>0" :name="centerIcon2" :type="centerIcon2Type" :size="centerIcon2Size" :style="centerIcon2Style" :mode="centerIcon2Mode" @iconClicked="centerClicked"></myp-icon>
+			<myp-icon v-if="centerIcon2&&centerIcon2.length>0" :name="centerIcon2" :type="centerIcon2Type" :size="centerIcon2Size" :style="centerIcon2Style" @iconClicked="centerClicked"></myp-icon>
 		</view>
 		<view class="myp-title-right" :style="rightStyle" bubble="true" @tap="rightClicked">
-			<myp-icon v-if="rightIcon1&&rightIcon1.length>0" :name="rightIcon1" :type="rightIcon1Type" :size="rightIcon1Size" :style="rightIcon1Style" :mode="rightIcon1Mode" @iconClicked="rightClicked"></myp-icon>
+			<myp-icon v-if="rightIcon1&&rightIcon1.length>0" :name="rightIcon1" :type="rightIcon1Type" :size="rightIcon1Size" :style="rightIcon1Style" @iconClicked="rightClicked"></myp-icon>
 			<text :class="['myp-size-'+title3Size, 'myp-color-'+title3Type]" :style="mrTitle3Style">{{title3}}</text>
-			<myp-icon v-if="rightIcon2&&rightIcon2.length>0" :name="rightIcon2" :type="rightIcon2Type" :size="rightIcon2Size" :style="rightIcon2Style" :mode="rightIcon2Mode" @iconClicked="rightClicked"></myp-icon>
+			<myp-icon v-if="rightIcon2&&rightIcon2.length>0" :name="rightIcon2" :type="rightIcon2Type" :size="rightIcon2Size" :style="rightIcon2Style" @iconClicked="rightClicked"></myp-icon>
 			<slot></slot>
 		</view>
 		<slot name="extra"></slot>

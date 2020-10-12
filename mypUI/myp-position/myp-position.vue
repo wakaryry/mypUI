@@ -9,27 +9,37 @@
 	
 	export default {
 		props: {
-			// 是否fixed定位
+			/**
+			 * 是否fixed定位
+			 */
 			fixed: {
 				type: Boolean,
 				default: false
 			},
-			// 定位的位置
+			/**
+			 * 定位的位置
+			 */
 			pos: {
 				type: String,
 				default: 'bottom'
 			},
-			// 定位的偏移量
+			/**
+			 * 定位的偏移量
+			 */
 			offset: {
 				type: String,
 				default: '0px'
 			},
-			// 背景主题
+			/**
+			 * 背景主题
+			 */
 			bgType: {
 				type: String,
 				default: 'none'
 			},
-			// 外层样式
+			/**
+			 * 外层样式
+			 */
 			boxStyle: {
 				type: String,
 				default: ''

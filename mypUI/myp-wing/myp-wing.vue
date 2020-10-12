@@ -7,27 +7,37 @@
 <script>
 	export default {
 		props: {
-			// 间距的尺寸主题
+			/**
+			 * 间距的尺寸主题
+			 */
 			size: {
 				type: String,
 				default: 'base'
 			},
-			// 背景主题
+			/**
+			 * 背景主题
+			 */
 			bgType: {
 				type: String,
 				default: ''
 			},
-			// 边框主题
+			/**
+			 * 边框主题
+			 */
 			border: {
 				type: String,
 				default: 'none'
 			},
-			// 圆角主题
+			/**
+			 * 圆角主题
+			 */
 			radius: {
 				type: String,
 				default: 'none'
 			},
-			// 外层样式
+			/**
+			 * 外层样式
+			 */
 			boxStyle: {
 				type: String,
 				default: ''

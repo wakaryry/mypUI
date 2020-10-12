@@ -54,15 +54,19 @@
 	
 	export default {
 		props: {
-			// tabs的内容以及个性化的配置
-			// isHump 表示是否凸起, noPage 表示点击当前tab时不切换，依然停留在原tab内容, hump具备humpStyle,hump有humpBottom(就是距离底部的距离px)
-			// icon,selectedIcon,title,selectedTitle,badge,dot,isHump,noPage,humpStyle,humpBottom
-			// iconStyle,selectedIconStyle,titleStyle,selectedTitleStyle,badgeStyle,badgeTextStyle,dotStyle,iconBoxWidth
+			/**
+			 * tabs的内容以及个性化的配置
+			 * isHump 表示是否凸起, noPage 表示点击当前tab时不切换，依然停留在原tab内容, hump具备humpStyle,hump有humpBottom(就是距离底部的距离px)
+			 * icon,selectedIcon,title,selectedTitle,badge,dot,isHump,noPage,humpStyle,humpBottom
+			 * iconStyle,selectedIconStyle,titleStyle,selectedTitleStyle,badgeStyle,badgeTextStyle,dotStyle,iconBoxWidth
+			 */
 			tabs: {
 				type: Array,
 				default: () => ([])
 			},
-			// 全局tabs的样式设置。tabs中可以单独设置进行覆盖
+			/**
+			 * 全局tabs的样式设置。tabs中可以单独设置进行覆盖
+			 */
 			tabStyle: {
 				type: Object,
 				default: ()=>{
@@ -87,37 +91,51 @@
 					}
 				}
 			},
-			// 页面切换的动画周期
+			/**
+			 * 页面切换的动画周期
+			 */
 			duration: {
 				type: Number,
 				default: 300
 			},
-			// 页面切换的动画函数
+			/**
+			 * 页面切换的动画函数
+			 */
 			timingFunction: {
 				type: String,
 				default: 'cubic-bezier(0.25, 0.46, 0.45, 0.94)'
 			},
-			// 距离顶部的距离
+			/**
+			 * 距离顶部的距离
+			 */
 			top: {
 				type: String,
 				default: '0'
 			},
-			// tabs以及xbar的高度是否有占位
+			/**
+			 * tabs以及xbar的高度是否有占位
+			 */
 			isSeize: {
 				type: Boolean,
 				default: true
 			},
-			// 是否考虑xbar
+			/**
+			 * 是否考虑xbar
+			 */
 			considerXBar: {
 				type: Boolean,
 				default: true
 			},
-			// xbar的背景主题
+			/**
+			 * xbar的背景主题
+			 */
 			xBarBgType: {
 				type: String,
 				default: 'inverse'
 			},
-			// xbar的样式
+			/**
+			 * xbar的样式
+			 */
 			xBarStyle: {
 				type: String,
 				default: ''

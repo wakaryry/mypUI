@@ -42,48 +42,66 @@
 		mixins: [styleMixin, scrollMixin, weexActions],
 		props: {
 			// #ifdef APP-NVUE
-			// 是否启用loading组件，而不是loadmoreofset触发
+			/**
+			 * 是否启用loading组件，而不是loadmoreofset触发
+			 */
 			useLoading: {
 				type: Boolean,
 				default: false
 			},
-			// 使用loadmoreofset时的触发偏移量
+			/**
+			 * 使用loadmoreofset时的触发偏移量
+			 */
 			loadMoreOffset: {
 				type: Number,
 				default: 60
 			},
 			// #endif
-			// 每一行的栏目数
+			/**
+			 * 每一行的栏目数
+			 */
 			columnCount: {
 				type: [String, Number],
 				default: 'auto'
 			},
-			// 每一栏的宽度
+			/**
+			 * 每一栏的宽度
+			 */
 			columnWidth: {
 				type: String,
 				default: 'auto'
 			},
-			// 栏目之间的间距
+			/**
+			 * 栏目之间的间距
+			 */
 			columnGap: {
 				type: String,
 				default: '0'
 			},
-			// 内容距离左侧的间距
+			/**
+			 * 内容距离左侧的间距
+			 */
 			leftGap: {
 				type: String,
 				default: '0'
 			},
-			// 内容距离右侧的间距
+			/**
+			 * 内容距离右侧的间距
+			 */
 			rightGap: {
 				type: String,
 				default: '0'
 			},
-			// 是否自动加载第一页数据
+			/**
+			 * 是否自动加载第一页数据
+			 */
 			autoUpdate: {
 				type: Boolean,
 				default: false
 			},
-			// 下拉刷新的配置
+			/**
+			 * 下拉刷新的配置
+			 */
 			down: {
 				type: Object,
 				default: ()=>{
@@ -95,7 +113,9 @@
 					}
 				}
 			},
-			// 上提加载的配置
+			/**
+			 * 上提加载的配置
+			 */
 			up: {
 				type: Object,
 				default: ()=>{

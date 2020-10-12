@@ -19,57 +19,79 @@
 	
 	export default {
 		props: {
-			// 进度。0-100
+			/**
+			 * 进度。0-100
+			 */
 			progress: {
 				type: Number,
 				default: 0
 			},
-			// 自定义宽度
+			/**
+			 * 自定义宽度
+			 */
 			width: {
 				type: String,
 				default: '80px'
 			},
-			// 自定义边框宽度
+			/**
+			 * 自定义边框宽度
+			 */
 			borderWidth: {
 				type: String,
 				default: '6px'
 			},
-			// 自定义边框颜色
+			/**
+			 * 自定义边框颜色
+			 */
 			borderColor: {
 				type: String,
 				default: '#8F9CFF'
 			},
-			// 背景主题
+			/**
+			 * 背景主题
+			 */
 			bgType: {
 				type: String,
 				default: 'inverse'
 			},
-			// 外层样式
+			/**
+			 * 外层样式
+			 */
 			boxStyle: {
 				type: String,
 				default: ''
 			},
-			// 是否每次从0开始
+			/**
+			 * 是否每次从0开始
+			 */
 			fromZero: {
 				type: Boolean,
 				default: false
 			},
-			// 是否动画回到0
+			/**
+			 * 是否动画回到0
+			 */
 			aniToZero: {
 				type: Boolean,
 				default: true
 			},
-			// 0-100的整体动画周期
+			/**
+			 * 0-100的整体动画周期
+			 */
 			duration: {
 				type: Number,
 				default: 2000
 			},
-			// 动画函数
+			/**
+			 * 动画函数
+			 */
 			timingFunction: {
 				type: String,
 				default: 'ease-out'
 			},
-			// 是否同时动画
+			/**
+			 * 是否同时动画
+			 */
 			twoWay: {
 				type: Boolean,
 				default: false

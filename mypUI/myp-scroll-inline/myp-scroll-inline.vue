@@ -10,27 +10,37 @@
 	
 	export default {
 		props: {
-			// 背景主题
+			/**
+			 * 背景主题
+			 */
 			bgType: {
 				type: String,
 				default: ''
 			},
-			// 自定义宽度
+			/**
+			 * 自定义宽度
+			 */
 			width: {
 				type: String,
 				default: '750rpx'
 			},
-			// 自定义高度
+			/**
+			 * 自定义高度
+			 */
 			height: {
 				type: String,
 				default: '260px'
 			},
-			// scroll-left
+			/**
+			 * scroll-left
+			 */
 			left: {
 				type: String,
 				default: '0'
 			},
-			// 外层样式
+			/**
+			 * 外层样式
+			 */
 			boxStyle: {
 				type: String,
 				default: ''

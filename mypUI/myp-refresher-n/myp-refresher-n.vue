@@ -30,29 +30,41 @@
 
 	export default {
 		props: {
-			// 对应的list/scroll的ref
+			/**
+			 * 对应的list/scroll的ref
+			 */
 			scrollerRef: String,
-			// 超时时间。0表示不会超时
+			/**
+			 * 超时时间。0表示不会超时
+			 */
 			maxTime: {
 				type: Number,
 				default: 0
 			},
-			// 下拉文字提示
+			/**
+			 * 下拉文字提示
+			 */
 			mainText: {
 				type: String,
 				default: '下拉触发刷新...'
 			},
-			// 满足是否刷新时文字提示
+			/**
+			 * 满足是否刷新时文字提示
+			 */
 			pullingText: {
 				type: String,
 				default: '释放即可刷新...'
 			},
-			// 刷新时文字提示
+			/**
+			 * 刷新时文字提示
+			 */
 			refreshingText: {
 				type: String,
 				default: '正在努力加载...'
 			},
-			// 下拉的图标
+			/**
+			 * 下拉的图标
+			 */
 			downIcon: {
 				type: String,
 				default: '/static/ui/down.png'

@@ -7,42 +7,58 @@
 <script>
 	export default {
 		props: {
-			// 布局方向主题
+			/**
+			 * 布局方向主题
+			 */
 			direction: {
 				type: String,
 				default: 'row'
 			},
-			// 换行主题
+			/**
+			 * 换行主题
+			 */
 			wrap: {
 				type: String,
 				default: 'nowrap'
 			},
-			// justify主题
+			/**
+			 * justify主题
+			 */
 			justify: {
 				type: String,
 				default: 'start'
 			},
-			// align主题
+			/**
+			 * align主题
+			 */
 			align: {
 				type: String,
 				default: 'center'
 			},
-			// 背景颜色主题
+			/**
+			 * 背景颜色主题
+			 */
 			bgType: {
 				type: String,
 				default: ''
 			},
-			// 边框主题
+			/**
+			 * 边框主题
+			 */
 			border: {
 				type: String,
 				default: 'none'
 			},
-			// 圆角主题
+			/**
+			 * 圆角主题
+			 */
 			radius: {
 				type: String,
 				default: 'none'
 			},
-			// 外层样式
+			/**
+			 * 外层样式
+			 */
 			boxStyle: {
 				type: String,
 				default: ''

@@ -20,32 +20,44 @@
 	import {isSrc} from '../utils/utils.js'
 	export default {
 		props: {
-			// 字体图标的名字，允许是图片路径
+			/**
+			 * 字体图标的名字，允许是图片路径
+			 */
 			name: {
 				type: String,
 				default: 'right'
 			},
-			// 图标的颜色主题
+			/**
+			 * 图标的颜色主题
+			 */
 			type: {
 				type: String,
 				default: ''
 			},
-			// 图标的尺寸主题
+			/**
+			 * 图标的尺寸主题
+			 */
 			size: {
 				type: String,
 				default: 'l'
 			},
-			// hover主题
+			/**
+			 * hover主题
+			 */
 			hover: {
 				type: String,
 				default: 'none'
 			},
-			// 图标或者图片样式
+			/**
+			 * 图标或者图片样式
+			 */
 			iconStyle: {
 				type: String,
 				default: ""
 			},
-			// 外层样式
+			/**
+			 * 外层样式
+			 */
 			boxStyle: {
 				type: String,
 				default: ''

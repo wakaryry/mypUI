@@ -17,17 +17,23 @@
 	
 	export default {
 		props: {
-			// 初始状态,是否打开
+			/**
+			 * 初始状态,是否打开
+			 */
 			isOpen: {
 				type: Boolean,
 				default: false
 			},
-			// 动画周期
+			/**
+			 * 动画周期
+			 */
 			duration: {
 				type: Number,
 				default: 300
 			},
-			// 动画效果
+			/**
+			 * 动画效果
+			 */
 			timingFunction: {
 				type: String,
 				default: 'ease-in'
@@ -36,32 +42,44 @@
 				type: String,
 				default: ''
 			},
-			// 边框主题
+			/**
+			 * 边框主题
+			 */
 			border: {
 				type: String,
 				default: 'all'
 			},
-			// 圆角主题
+			/**
+			 * 圆角主题
+			 */
 			radius: {
 				type: String,
 				default: 'base'
 			},
-			// 刷新高度/重新计算
+			/**
+			 * 刷新高度/重新计算
+			 */
 			updateTime: {
 				type: Number,
 				default: 0
 			},
-			// 外层样式
+			/**
+			 * 外层样式
+			 */
 			boxStyle: {
 				type: String,
 				default: ''
 			},
-			// head样式
+			/**
+			 * head样式
+			 */
 			headStyle: {
 				type: String,
 				default: ''
 			},
-			// body样式
+			/**
+			 * body样式
+			 */
 			bodyStyle: {
 				type: String,
 				default: ''

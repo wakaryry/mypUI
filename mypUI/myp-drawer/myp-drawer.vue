@@ -23,22 +23,30 @@
 	
 	export default {
 		props: {
-			// 出现位置
+			/**
+			 * 出现位置
+			 */
 			pos: {
 				type: String,
 				default: 'bottom'
 			},
-			// 内容背景主题
+			/**
+			 * 内容背景主题
+			 */
 			bgType: {
 				type: String,
 				default: 'none'
 			},
-			// 打开/关闭的动画周期
+			/**
+			 * 打开/关闭的动画周期
+			 */
 			duration: {
 				type: Number,
 				default: 300
 			},
-			// 遮罩层的整体设置
+			/**
+			 * 遮罩层的整体设置
+			 */
 			overlay: {
 				type: Object,
 				default: () => ({
@@ -48,74 +56,102 @@
 					bgType: 'mask'
 				})
 			},
-			// 内容高度.0为自适应.1为全屏高度
+			/**
+			 * 内容高度.0为自适应.1为全屏高度
+			 */
 			height: {
 				type: String,
 				default: '0'
 			},
-			// 从height高度减去的高度
+			/**
+			 * 从height高度减去的高度
+			 */
 			extra: {
 				type: String,
 				default: '0'
 			},
-			// 内容露出的高度
+			/**
+			 * 内容露出的高度
+			 */
 			standout: {
 				type: String,
 				default: '0'
 			},
-			// 内容左侧偏移量，-1表示居中
+			/**
+			 * 内容左侧偏移量，-1表示居中
+			 */
 			leftOffset: {
 				type: String,
 				default: '-1'
 			},
-			// 内容右侧偏移量，-1表示居中
+			/**
+			 * 内容右侧偏移量，-1表示居中
+			 */
 			rightOffset: {
 				type: String,
 				default: '-1'
 			},
-			// 内容底部偏移量，-1表示居中
+			/**
+			 * 内容底部偏移量，-1表示居中
+			 */
 			bottomOffset: {
 				type: String,
 				default: '-1'
 			},
-			// 内容顶部偏移量，-1表示居中
+			/**
+			 * 内容顶部偏移量，-1表示居中
+			 */
 			topOffset: {
 				type: String,
 				default: '-1'
 			},
-			// 内容的宽度
+			/**
+			 * 内容的宽度
+			 */
 			width: {
 				type: String,
 				default: '750rpx'
 			},
-			// 打开/关闭动画
+			/**
+			 * 打开/关闭动画
+			 */
 			animation: {
 				type: Object,
 				default: () => ({
 					timingFunction: 'ease-in-out'
 				})
 			},
-			// 遮罩左侧偏移量
+			/**
+			 * 遮罩左侧偏移量
+			 */
 			left: {
 				type: String,
 				default: '0'
 			},
-			// 遮罩顶部偏移量
+			/**
+			 * 遮罩顶部偏移量
+			 */
 			top: {
 				type: String,
 				default: '0'
 			},
-			// 遮罩右侧偏移量
+			/**
+			 * 遮罩右侧偏移量
+			 */
 			right: {
 				type: String,
 				default: '0'
 			},
-			// 遮罩底部偏移量
+			/**
+			 * 遮罩底部偏移量
+			 */
 			bottom: {
 				type: String,
 				default: '0'
 			},
-			// 内容外层样式
+			/**
+			 * 内容外层样式
+			 */
 			boxStyle: {
 				type: String,
 				default: ''

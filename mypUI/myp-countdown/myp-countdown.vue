@@ -30,107 +30,149 @@
 <script>
 	export default {
 		props: {
-			// 目标时间戳
+			/**
+			 * 目标时间戳
+			 */
 			time: {
 				type: Number,
 				default: 1600000000000
 			},
-			// 计时周期
+			/**
+			 * 计时周期
+			 */
 			interval: {
 				type: Number,
 				default: 1000
 			},
-			// 内容显示格式
+			/**
+			 * 内容显示格式
+			 */
 			tpl: {
 				type: String,
 				default: '{h}:{m}:{s}'
 			},
-			// 背景主题
+			/**
+			 * 背景主题
+			 */
 			bgType: {
 				type: String,
 				default: 'none'
 			},
-			// 边框主题
+			/**
+			 * 边框主题
+			 */
 			border: {
 				type: String,
 				default: ''
 			},
-			// 圆角主题
+			/**
+			 * 圆角主题
+			 */
 			radius: {
 				type: String,
 				default: ''
 			},
-			// item的背景主题
+			/**
+			 * item的背景主题
+			 */
 			itemBgType: {
 				type: String,
 				default: ''
 			},
-			// item的边框主题
+			/**
+			 * item的边框主题
+			 */
 			itemBorder: {
 				type: String,
 				default: ''
 			},
-			// item的圆角主题
+			/**
+			 * item的圆角主题
+			 */
 			itemRadius: {
 				type: String,
 				default: 's'
 			},
-			// item的文字颜色主题
+			/**
+			 * item的文字颜色主题
+			 */
 			itemTextType: {
 				type: String,
 				default: 'text'
 			},
-			// item的文字尺寸主题
+			/**
+			 * item的文字尺寸主题
+			 */
 			itemTextSize: {
 				type: String,
 				default: 'l'
 			},
-			// item的高度主题
+			/**
+			 * item的高度主题
+			 */
 			itemHeight: {
 				type: String,
 				default: 'base'
 			},
-			// item的宽度。0时会有左右各24rpx的padding
+			/**
+			 * item的宽度。0时会有左右各24rpx的padding
+			 */
 			itemWidth: {
 				type: String,
 				default: '0'
 			},
-			// 分隔符的颜色主题
+			/**
+			 * 分隔符的颜色主题
+			 */
 			indicatorTextType: {
 				type: String,
 				default: 'text'
 			},
-			// 分隔符的尺寸主题
+			/**
+			 * 分隔符的尺寸主题
+			 */
 			indicatorTextSize: {
 				type: String,
 				default: 'l'
 			},
-			// 分隔符的宽度
+			/**
+			 * 分隔符的宽度
+			 */
 			indicatorWidth: {
 				type: String,
 				default: '60rpx'
 			},
-			// 外层样式
+			/**
+			 * 外层样式
+			 */
 			boxStyle: {
 				type: String,
 				default: ''
 			},
-			// item外层样式
+			/**
+			 * item外层样式
+			 */
 			itemBoxStyle: {
 				type: String,
 				default: ''
 			},
-			// 分隔符的外层样式
+			/**
+			 * 分隔符的外层样式
+			 */
 			indicatorBoxStyle: {
 				type: String,
 				default: ''
 			},
-			// item的文字样式
+			/**
+			 * item的文字样式
+			 */
 			itemTextStyle: {
 				type: String,
 				default: ''
 			},
-			// 分隔符的文字样式
+			/**
+			 * 分隔符的文字样式
+			 */
 			indicatorTextStyle: {
 				type: String,
 				default: ''
@@ -158,7 +200,6 @@
 			countDownData() {
 				const timeSpacing = this.time - this.NOW_DATE;
 
-				// 倒计时结束了
 				if (timeSpacing < 0) {
 					if (this.completed === false) {
 						this.$emit('completed');

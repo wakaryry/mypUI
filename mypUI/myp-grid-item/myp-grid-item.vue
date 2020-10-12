@@ -11,72 +11,100 @@
 <script>
 	export default {
 		props: {
-			// 文字/图标/图片
+			/**
+			 * 文字/图标/图片
+			 */
 			icon: {
 				type: [String, Number],
 				default: ''
 			},
-			// icon是否是图标
+			/**
+			 * icon是否是图标
+			 */
 			isIcon: {
 				type: Boolean,
 				default: true
 			},
-			// 文字内容
+			/**
+			 * 文字内容
+			 */
 			text: {
 				type: [String, Number],
 				default: ''
 			},
-			// 图标与文字的间距
+			/**
+			 * 图标与文字的间距
+			 */
 			space: {
 				type: String,
 				default: '12rpx'
 			},
-			// top/right/bottom/left 分别表示icon排布的位置
+			/**
+			 * top/right/bottom/left 分别表示icon排布的位置
+			 */
 			mode: {
 				type: String,
 				default: 'top'
 			},
-			// 文字颜色主题
+			/**
+			 * 文字颜色主题
+			 */
 			textType: {
 				type: String,
 				default: 'text'
 			},
-			// 文字尺寸主题
+			/**
+			 * 文字尺寸主题
+			 */
 			textSize: {
 				type: String,
 				default: 'base'
 			},
-			// 图标颜色主题
+			/**
+			 * 图标颜色主题
+			 */
 			iconType: {
 				type: String,
 				default: 'text'
 			},
-			// 图标尺寸主题
+			/**
+			 * 图标尺寸主题
+			 */
 			iconSize: {
 				type: String,
 				default: 'll'
 			},
-			// hover主题
+			/**
+			 * hover主题
+			 */
 			hover: {
 				type: String,
 				default: 'opacity'
 			},
-			// 外层样式
+			/**
+			 * 外层样式
+			 */
 			boxStyle: {
 				type: String,
 				default: ''
 			},
-			// 文字/图片/图标的样式
+			/**
+			 * 文字/图片/图标的样式
+			 */
 			iconStyle: {
 				type: String,
 				default: ''
 			},
-			// 图标的外层样式
+			/**
+			 * 图标的外层样式
+			 */
 			iconBoxStyle: {
 				type: String,
 				default: ''
 			},
-			// 文字样式
+			/**
+			 * 文字样式
+			 */
 			textStyle: {
 				type: String,
 				default: ''

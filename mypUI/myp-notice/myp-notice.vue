@@ -9,107 +9,149 @@
 <script>
 	export default {
 		props: {
-			// 左侧图标
+			/**
+			 * 左侧图标
+			 */
 			icon: {
 				type: String,
 				default: null
 			},
-			// 文字内容
+			/**
+			 * 文字内容
+			 */
 			text: {
 				type: String,
 				default: ''
 			},
-			// 右侧图标
+			/**
+			 * 右侧图标
+			 */
 			indicator: {
 				type: String,
 				default: null
 			},
-			// 背景主题
+			/**
+			 * 背景主题
+			 */
 			bgType: {
 				type: String,
 				default: ''
 			},
-			// 高度主题
+			/**
+			 * 高度主题
+			 */
 			height: {
 				type: String,
 				default: 'base'
 			},
-			// 边框主题
+			/**
+			 * 边框主题
+			 */
 			border: {
 				type: String,
 				default: 'none'
 			},
-			// 圆角主题
+			/**
+			 * 圆角主题
+			 */
 			radius: {
 				type: String,
 				default: ''
 			},
-			// 文字颜色主题
+			/**
+			 * 文字颜色主题
+			 */
 			textType: {
 				type: String,
 				default: ''
 			},
-			// 文字尺寸主题
+			/**
+			 * 文字尺寸主题
+			 */
 			textSize: {
 				type: String,
 				default: 'base'
 			},
-			// 图标主题
+			/**
+			 * 图标主题
+			 */
 			iconType: {
 				type: String,
 				default: ''
 			},
-			// 图标尺寸主题
+			/**
+			 * 图标尺寸主题
+			 */
 			iconSize: {
 				type: String,
 				default: 'll'
 			},
-			// 图标样式
+			/**
+			 * 图标样式
+			 */
 			iconStyle: {
 				type: String,
 				default: ''
 			},
-			// 右侧图标颜色主题
+			/**
+			 * 右侧图标颜色主题
+			 */
 			indicatorType: {
 				type: String,
 				default: ''
 			},
-			// 右侧图标尺寸主题
+			/**
+			 * 右侧图标尺寸主题
+			 */
 			indicatorSize: {
 				type: String,
 				default: 'll'
 			},
-			// 右侧图标样式
+			/**
+			 * 右侧图标样式
+			 */
 			indicatorStyle: {
 				type: String,
 				default: ''
 			},
-			// 间距
+			/**
+			 * 间距
+			 */
 			space: {
 				type: String,
 				default: '12rpx'
 			},
-			// 文字样式
+			/**
+			 * 文字样式
+			 */
 			textStyle: {
 				type: String,
 				default: ''
 			},
-			// 外层样式
+			/**
+			 * 外层样式
+			 */
 			boxStyle: {
 				type: String,
 				default: ''
 			},
-			// 图标外层样式
+			/**
+			 * 图标外层样式
+			 */
 			iconBoxStyle: {
 				type: String,
 				default: ''
 			},
-			// 右侧图标外层样式
+			/**
+			 * 右侧图标外层样式
+			 */
 			indicatorBoxStyle: {
 				type: String,
 				default: ''
 			},
-			// 是否可以关闭
+			/**
+			 * 是否可以关闭
+			 */
 			closable: {
 				type: Boolean,
 				default: false

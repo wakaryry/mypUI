@@ -20,15 +20,17 @@ contentBoxMixin（`/mypUI/myp-mixin/contentBoxMixin.js`）就是用来辅助计�
 
 你只需要按照规则设置，您就能拿到您想要的高度。
 
-实际上，这个规则，我们已经在别的地方见过很多次了。他们就是 与 xBar statusbar navbar tabbar extra 等相关的内容。
-
-我们肯定对 `includeStatus` `includeNav` `includeXBar` `tabHeight` `extra` `height` 等这些设置和规则不再陌生。
+实际上，这个规则，我们已经在别的地方见过很多次了。他们就是 与 xBar statusbar navbar tabbar extra 等相关的内容：通过 `extra` 属性来控制高度的。
 
 contentBoxMixin 也一样，不过是对外暴露的名字不一样而已。
 
-<p class="tip">为什么名字不一样？因为 开放的mixin，为了避免命名冲突，对外暴露都加了一个 myp 前缀</p>
+<p class="tip">开放的mixin，为了避免命名冲突，对外暴露都加了一个 myp 前缀</p>
 
-默认属性下，得到的高度 = 屏幕的高度 - 状态栏高度 - 导航栏高度。
+在该mixin中相对应的属性为：`mypExtra`：
+
+- mypExtra: 默认是 status-nav，也就是导航栏和状态栏的高度。extra表示的是需要从屏幕高度上减去的高度，减去之后剩下的就是我们需要的高度。
+
+也就是，默认属性下：得到的高度 = 屏幕的高度 - 状态栏高度 - 导航栏高度。
 
 ## 使用
 
@@ -37,11 +39,7 @@ contentBoxMixin 的设置是开放在 data 中的。
 ```js
 	data() {
 		return {
-			mypIncludeStatus: false,  // 默认不包含状态栏
-			mypIncludeNav: false,   // 默认不包含导航栏
-			mypTabHeight: 0,
-			mypIncludeXBar: true,
-			mypExtra: '0px'
+			mypExtra: 'status-nav-x-120rpx-50px'
 		}
 	}
 ```
@@ -63,7 +61,7 @@ contentBoxMixin 的设置是开放在 data 中的。
     mixins: [contentBoxMixin],
     data() {
       return {
-        mypExtra: '100rpx'
+        mypExtra: 'status-nav-100rpx'
       }
     }
   }

@@ -14,127 +14,177 @@
 <script>
 	export default {
 		props: {
-			// 左侧图标
+			/**
+			 * 左侧图标
+			 */
 			icon: {
 				type: String,
 				default: ""
 			},
-			// 左侧标题
+			/**
+			 * 左侧标题
+			 */
 			title: {
 				type: String,
 				default: ""
 			},
-			// 具体/描述内容
+			/**
+			 * 具体/描述内容
+			 */
 			value: {
 				type: String,
 				default: ""
 			},
-			// 右侧图标
+			/**
+			 * 右侧图标
+			 */
 			indicator: {
 				type: String,
 				default: ""
 			},
-			// 背景主题
+			/**
+			 * 背景主题
+			 */
 			bgType: {
 				type: String,
 				default: ''
 			},
-			// 标题颜色主题
+			/**
+			 * 标题颜色主题
+			 */
 			titleType: {
 				type: String,
 				default: 'text'
 			},
-			// 内容颜色主题
+			/**
+			 * 内容颜色主题
+			 */
 			valueType: {
 				type: String,
 				default: 'second'
 			},
-			// 左侧图标颜色主题
+			/**
+			 * 左侧图标颜色主题
+			 */
 			iconType: {
 				type: String,
 				default: 'text'
 			},
-			// 右侧图标颜色主题
+			/**
+			 * 右侧图标颜色主题
+			 */
 			indicatorType: {
 				type: String,
 				default: 'second'
 			},
-			// 标题尺寸主题
+			/**
+			 * 标题尺寸主题
+			 */
 			titleSize: {
 				type: String,
 				default: 'base'
 			},
-			// 内容尺寸主题
+			/**
+			 * 内容尺寸主题
+			 */
 			valueSize: {
 				type: String,
 				default: 's'
 			},
-			// 左侧图标尺寸主题
+			/**
+			 * 左侧图标尺寸主题
+			 */
 			iconSize: {
 				type: String,
 				default: "l"
 			},
-			// 右侧图标尺寸主题
+			/**
+			 * 右侧图标尺寸主题
+			 */
 			indicatorSize: {
 				type: String,
 				default: "l"
 			},
-			// 高度主题
+			/**
+			 * 高度主题
+			 */
 			height: {
 				type: String,
 				default: 'l'
 			},
-			// 圆角主题
+			/**
+			 * 圆角主题
+			 */
 			radius: {
 				type: String,
 				default: 'base'
 			},
-			// 边框主题
+			/**
+			 * 边框主题
+			 */
 			border: {
 				type: String,
 				default: ''
 			},
-			// hover点击效果
+			/**
+			 * hover点击效果
+			 */
 			hover: {
 				type: String,
 				default: 'bg'
 			},
-			// 文字与图标间距
+			/**
+			 * 文字与图标间距
+			 */
 			space: {
 				type: String,
 				default: '12rpx'
 			},
-			// 左侧图标样式
+			/**
+			 * 左侧图标样式
+			 */
 			iconStyle: {
 				type: String,
 				default: ''
 			},
-			// 右侧图标样式
+			/**
+			 * 右侧图标样式
+			 */
 			indicatorStyle: {
 				type: String,
 				default: ''
 			},
-			// 外层样式
+			/**
+			 * 外层样式
+			 */
 			boxStyle: {
 				type: String,
 				default: ''
 			},
-			// 标题样式
+			/**
+			 * 标题样式
+			 */
 			titleStyle: {
 				type: String,
 				default: ''
 			},
-			// 内容样式
+			/**
+			 * 内容样式
+			 */
 			valueStyle: {
 				type: String,
 				default: ''
 			},
-			// 左侧图标外层样式
+			/**
+			 * 左侧图标外层样式
+			 */
 			iconBoxStyle: {
 				type: String,
 				default: ''
 			},
-			// 右侧图标外层样式
+			/**
+			 * 右侧图标外层样式
+			 */
 			indicatorBoxStyle: {
 				type: String,
 				default: ''

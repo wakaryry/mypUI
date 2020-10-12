@@ -7,37 +7,51 @@
 <script>
 	export default {
 		props: {
-			// 唯一值/返回的内容
+			/**
+			 * 唯一值/返回的内容
+			 */
 			value: {
 				type: [Number, String],
 				default: ''
 			},
-			// 是否禁用
+			/**
+			 * 是否禁用
+			 */
 			disabled: {
 				type: Boolean,
 				default: false
 			},
-			// 边框主题
+			/**
+			 * 边框主题
+			 */
 			border: {
 				type: String,
 				default: ''
 			},
-			// 圆角主题
+			/**
+			 * 圆角主题
+			 */
 			radius: {
 				type: String,
 				default: ''
 			},
-			// 背景主题
+			/**
+			 * 背景主题
+			 */
 			bgType: {
 				type: String,
 				default: ''
 			},
-			// hover效果
+			/**
+			 * hover效果
+			 */
 			hover: {
 				type: String,
 				default: 'opacity'
 			},
-			// 外层样式
+			/**
+			 * 外层样式
+			 */
 			boxStyle: {
 				type: String,
 				default: ''

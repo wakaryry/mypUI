@@ -13,137 +13,191 @@
 <script>
 	export default {
 		props: {
-			// 背景主题
+			/**
+			 * 背景主题
+			 */
 			bgType: {
 				type: String,
 				default: ''
 			},
-			// 文字内容
+			/**
+			 * 文字内容
+			 */
 			text: {
 				type: String,
 				default: ''
 			},
-			// 左侧图标
+			/**
+			 * 左侧图标
+			 */
 			icon: {
 				type: String,
 				default: ''
 			},
-			// 右侧图标
+			/**
+			 * 右侧图标
+			 */
 			icon2: {
 				type: String,
 				default: ''
 			},
-			// 是否为loading状态
+			/**
+			 * 是否为loading状态
+			 */
 			loading: {
 				type: Boolean,
 				default: false
 			},
-			// loading状态时显示的图片
+			/**
+			 * loading状态时显示的图片
+			 */
 			loadingSrc: {
 				type: String,
 				default: '/static/ui/loading.gif'
 			},
-			// 高度主题
+			/**
+			 * 高度主题
+			 */
 			height: {
 				type: String,
 				default: 'l'
 			},
-			// 点击时的hover效果: opacity/bg/bg-opacity
+			/**
+			 * 点击时的hover效果: opacity/bg/bg-opacity
+			 */
 			hover: {
 				type: String,
 				default: 'opacity'
 			},
-			// 圆角主题
+			/**
+			 * 圆角主题
+			 */
 			radius: {
 				type: String,
 				default: 'base'
 			},
-			// 边框主题
+			/**
+			 * 边框主题
+			 */
 			border: {
 				type: String,
 				default: ''
 			},
-			// 是否为禁用状态。禁用时不可点击
+			/**
+			 * 是否为禁用状态。禁用时不可点击
+			 */
 			disabled: {
 				type: Boolean,
 				default: false
 			},
-			// 是否为高亮状态
+			/**
+			 * 是否为高亮状态
+			 */
 			highlight: {
 				type: Boolean,
 				default: false
 			},
-			// 文字与图标之间的间距
+			/**
+			 * 文字与图标之间的间距
+			 */
 			space: {
 				type: String,
 				default: '12rpx'
 			},
-			// 文字颜色主题
+			/**
+			 * 文字颜色主题
+			 */
 			textType: {
 				type: String,
 				default: 'text'
 			},
-			// 文字尺寸主题
+			/**
+			 * 文字尺寸主题
+			 */
 			textSize: {
 				type: String,
 				default: 'base'
 			},
-			// 左侧图标颜色主题
+			/**
+			 * 左侧图标颜色主题
+			 */
 			iconType: {
 				type: String,
 				default: 'text'
 			},
-			// 左侧图标尺寸主题
+			/**
+			 * 左侧图标尺寸主题
+			 */
 			iconSize: {
 				type: String,
 				default: 'l'
 			},
-			// 右侧图标颜色主题
+			/**
+			 * 右侧图标颜色主题
+			 */
 			icon2Type: {
 				type: String,
 				default: 'text'
 			},
-			// 右侧图标尺寸主题
+			/**
+			 * 右侧图标尺寸主题
+			 */
 			icon2Size: {
 				type: String,
 				default: 'l'
 			},
-			// 外层样式
+			/**
+			 * 外层样式
+			 */
 			boxStyle: {
 				type: String,
 				default: ''
 			},
-			// 文字样式
+			/**
+			 * 文字样式
+			 */
 			textStyle: {
 				type: String,
 				default: ''
 			},
-			// 左侧图标外层样式
+			/**
+			 * 左侧图标外层样式
+			 */
 			iconBoxStyle: {
 				type: String,
 				default: ''
 			},
-			// 左侧图标样式
+			/**
+			 * 左侧图标样式
+			 */
 			iconStyle: {
 				type: String,
 				default: ''
 			},
-			// 右侧图标外层样式
+			/**
+			 * 右侧图标外层样式
+			 */
 			icon2BoxStyle: {
 				type: String,
 				default: ''
 			},
-			// 右侧图标样式
+			/**
+			 * 右侧图标样式
+			 */
 			icon2Style: {
 				type: String,
 				default: ''
 			},
-			// loading图标的宽度
+			/**
+			 * loading图标的宽度
+			 */
 			loadingWidth: {
 				type: String,
 				default: '36rpx'
 			},
-			// loading图标的高度
+			/**
+			 * loading图标的高度
+			 */
 			loadingHeight: {
 				type: String,
 				default: '36rpx'

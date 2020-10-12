@@ -13,167 +13,233 @@
 <script>
 	export default {
 		props: {
-			// 未选中时图标
+			/**
+			 * 未选中时图标
+			 */
 			icon: {
 				type: String,
 				default: 'circle'
 			},
-			// 选中时图标
+			/**
+			 * 选中时图标
+			 */
 			checkedIcon: {
 				type: String,
 				default: 'radio'
 			},
-			// 图标左右位置
+			/**
+			 * 图标左右位置
+			 */
 			direction: {
 				type: String,
 				default: 'left'
 			},
-			// 选项布局方式
+			/**
+			 * 选项布局方式
+			 */
 			flex: {
 				type: String,
 				default: 'row'
 			},
-			// flex为row时，图标与文字是否space-between
+			/**
+			 * flex为row时，图标与文字是否space-between
+			 */
 			isBetween: {
 				type: Boolean,
 				default: false
 			},
-			// items内容
+			/**
+			 * items内容
+			 */
 			items: {
 				type: Array,
 				default: ()=>{return []}
 			},
-			// 选中的值
+			/**
+			 * 选中的值
+			 */
 			value: {
 				type: Array,
 				default: ()=>{return []}
 			},
-			// 限制最多可选数量。0表示不限制
+			/**
+			 * 限制最多可选数量。0表示不限制
+			 */
 			limits: {
 				type: Number,
 				default: 0
 			},
-			// 全部禁用
+			/**
+			 * 全部禁用
+			 */
 			disabled: {
 				type: Boolean,
 				default: false
 			},
-			// text内容的字段
+			/**
+			 * text内容的字段
+			 */
 			textLabel: {
 				type: String,
 				default: null
 			},
-			// 格式化输出，允许输出多个字段内容，比如 '{name} (ID:{id})'
+			/**
+			 * 格式化输出，允许输出多个字段内容，比如 '{name} (ID:{id})'
+			 */
 			textFormat: {
 				type: String,
 				default: ''
 			},
-			// 唯一值的字段
+			/**
+			 * 唯一值的字段
+			 */
 			valueLabel: {
 				type: String,
 				default: null
 			},
-			// 禁用的字段
+			/**
+			 * 禁用的字段
+			 */
 			disabledLabel: {
 				type: String,
 				default: null
 			},
-			// 外层样式
+			/**
+			 * 外层样式
+			 */
 			boxStyle: {
 				type: String,
 				default: ''
 			},
-			// 选项外层样式
+			/**
+			 * 选项外层样式
+			 */
 			itemBoxStyle: {
 				type: String,
 				default: ''
 			},
-			// flex为column时各选项的间距
+			/**
+			 * flex为column时各选项的间距
+			 */
 			itemSpace: {
 				type: String,
 				default: '16rpx'
 			},
-			// 文字颜色主题
+			/**
+			 * 文字颜色主题
+			 */
 			textType: {
 				type: String,
 				default: 'text'
 			},
-			// 选中时文字颜色主题
+			/**
+			 * 选中时文字颜色主题
+			 */
 			checkedTextType: {
 				type: String,
 				default: 'text'
 			},
-			// 禁用时文字颜色主题
+			/**
+			 * 禁用时文字颜色主题
+			 */
 			disabledTextType: {
 				type: String,
 				default: 'disabled'
 			},
-			// 图标颜色主题
+			/**
+			 * 图标颜色主题
+			 */
 			iconType: {
 				type: String,
 				default: 'text'
 			},
-			// 选中时图标颜色主题
+			/**
+			 * 选中时图标颜色主题
+			 */
 			checkedIconType: {
 				type: String,
 				default: 'text'
 			},
-			// 禁用时图标颜色主题
+			/**
+			 * 禁用时图标颜色主题
+			 */
 			disabledIconType: {
 				type: String,
 				default: 'disabled'
 			},
-			// 文字尺寸主题
+			/**
+			 * 文字尺寸主题
+			 */
 			textSize: {
 				type: String,
 				default: 'base'
 			},
-			// 选项高度主题
+			/**
+			 * 选项高度主题
+			 */
 			height: {
 				type: String,
 				default: 'base'
 			},
-			// 文字与图标的间距
+			/**
+			 * 文字与图标的间距
+			 */
 			space: {
 				type: String,
 				default: '12rpx'
 			},
-			// 文字样式
+			/**
+			 * 文字样式
+			 */
 			textStyle: {
 				type: String,
 				default: ''
 			},
-			// 禁用时文字样式
+			/**
+			 * 禁用时文字样式
+			 */
 			disabledTextStyle: {
 				type: String,
 				default: ''
 			},
-			// 选中时文字样式
+			/**
+			 * 选中时文字样式
+			 */
 			checkedTextStyle: {
 				type: String,
 				default: ''
 			},
-			// 图标尺寸主题
+			/**
+			 * 图标尺寸主题
+			 */
 			iconSize: {
 				type: String,
 				default: 'l'
 			},
-			// 图标样式
+			/**
+			 * 图标样式
+			 */
 			iconStyle: {
 				type: String,
 				default: ''
 			},
-			// 图标外层样式
+			/**
+			 * 图标外层样式
+			 */
 			iconBoxStyle: {
 				type: String,
 				default: ''
 			},
-			// 禁用时图标样式
+			/**
+			 * 禁用时图标样式
+			 */
 			disabledIconStyle: {
 				type: String,
 				default: ''
 			},
-			// 选中时图标样式
+			/**
+			 * 选中时图标样式
+			 */
 			checkedIconStyle: {
 				type: String,
 				default: ''

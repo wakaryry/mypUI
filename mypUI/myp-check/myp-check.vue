@@ -7,39 +7,53 @@
 <script>
 	export default {
 		props: {
-			// 初始值/绑定值
+			/**
+			 * 初始值/绑定值
+			 */
 			value: {
 				type: Array,
 				default: ()=>{
 					return []
 				}
 			},
-			// 限制最多可选数量. 0表示不限制
+			/**
+			 * 限制最多可选数量. 0表示不限制
+			 */
 			limits: {
 				type: Number,
 				default: 0
 			},
-			// 是否全局禁用
+			/**
+			 * 是否全局禁用
+			 */
 			disabled: {
 				type: Boolean,
 				default: false
 			},
-			// 背景主题
+			/**
+			 * 背景主题
+			 */
 			bgType: {
 				type: String,
 				default: ''
 			},
-			// 边框主题
+			/**
+			 * 边框主题
+			 */
 			border: {
 				type: String,
 				default: ''
 			},
-			// 圆角主题
+			/**
+			 * 圆角主题
+			 */
 			radius: {
 				type: String,
 				default: ''
 			},
-			// 外层样式
+			/**
+			 * 外层样式
+			 */
 			boxStyle: {
 				type: String,
 				default: ''

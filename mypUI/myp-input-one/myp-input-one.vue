@@ -12,85 +12,116 @@
 </template>
 
 <script>
-	// v-model or refs or nothing(just @finish)
 	export default {
 		props: {
-			// 值
+			/**
+			 * 值
+			 */
 			value: {
 				type: String,
 				default: ''
 			},
-			// 最大长度。4/5/6
+			/**
+			 * 最大长度。4/5/6
+			 */
 			maxlength: {
 				type: Number,
 				default: 4
 			},
-			// 是否密码
+			/**
+			 * 是否密码
+			 */
 			password: {
 				type: Boolean,
 				default: false
 			},
-			// 是否带有光标
+			/**
+			 * 是否带有光标
+			 */
 			cursor: {
 				type: Boolean,
 				default: false
 			},
-			// 是否focus
+			/**
+			 * 是否focus
+			 */
 			focus: {
 				type: Boolean,
 				default: false
 			},
-			// middle-中间线, bottom-下划线, box-方框
+			/**
+			 * middle-中间线, bottom-下划线, box-方框
+			 */
 			mode: {
 				type: String,
 				default: "middle"
 			},
-			// 自定义height/width
+			/**
+			 * 自定义height/width
+			 */
 			width: {
 				type: String,
 				default: '100rpx'
 			},
-			// 间隙
+			/**
+			 * 间隙
+			 */
 			space: {
 				type: String,
 				default: '12rpx'
 			},
-			// password时圆点的样式
+			/**
+			 * password时圆点的样式
+			 */
 			dotStyle: {
 				type: String,
 				default: 'width:16rpx;height:16rpx;border-radius:16rpx;background-color:#000000;'
 			},
-			// middle或bottom时线条的样式
+			/**
+			 * middle或bottom时线条的样式
+			 */
 			lineStyle: {
 				type: String,
 				default: 'width:80rpx;height:8rpx;border-radius:12rpx;background-color:#000000;'
 			},
-			// 当前输入框线条的样式
+			/**
+			 * 当前输入框线条的样式
+			 */
 			activeLineStyle: {
 				type: String,
 				default: ''
 			},
-			// 光标的样式
+			/**
+			 * 光标的样式
+			 */
 			cursorStyle: {
 				type: String,
 				default: 'width:1px;height:42rpx;background-color:#8F9CFF;'
 			},
-			// 值的样式
+			/**
+			 * 值的样式
+			 */
 			valueStyle: {
 				type: String,
 				default: 'font-size:70rpx;font-weight:700;color:#000000;'
 			},
-			// 外层样式
+			/**
+			 * 外层样式
+			 */
 			boxStyle: {
 				type: String,
 				default: ''
 			},
-			// 输入框样式
+			/**
+			 * 输入框样式
+			 */
 			itemStyle: {
 				type: String,
 				default: ''
 			},
-			// 当前输入框的样式
+			/**
+			 * 当前输入框的样式
+			 */
 			activeItemStyle: {
 				type: String,
 				default: ''

@@ -5,43 +5,59 @@ import {getScreenHeight} from '../utils/system.js'
 
 export default {
 	props: {
-		// 是否显示scrollbar
+		/**
+		 * 是否显示scrollbar
+		 */
 		showScrollbar: {
 			type: Boolean,
 			default: true
 		},
-		// 背景主题
+		/**
+		 * 背景主题
+		 */
 		bgType: {
 			type: String,
 			default: 'page'
 		},
-		// 定位
+		/**
+		 * 定位
+		 */
 		position: {
 			type: String,
 			default: 'static'
 		},
-		// 定位的top
+		/**
+		 * 定位的top
+		 */
 		top: {
 			type: String,
 			default: '0'
 		},
-		// 定位的bottom
+		/**
+		 * 定位的bottom
+		 */
 		bottom: {
 			type: String,
 			default: '0'
 		},
-		// 外层样式
+		/**
+		 * 外层样式
+		 */
 		boxStyle: {
 			type: String,
 			default: ''
 		},
 		// #ifndef APP-NVUE
-		// 需要从屏幕高度减去的高度
+		/**
+		 * 需要从屏幕高度减去的高度
+		 */
 		extra: {
 			type: String,
 			default: 'status-nav'
 		},
-		// 设置了height，会直接使用height，忽略其它的计算
+		/**
+		 * 设置了height，会直接使用height，忽略其它的计算
+		 */
 		height: {
 			type: String,
 			default: '0'

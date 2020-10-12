@@ -7,6 +7,7 @@
 | isOpen         |             | boolean | -      | false     |
 | duration       |             | number  | -      | 300       |
 | timingFunction |             | string  | -      | 'ease-in' |
+| bgType         |             | string  | -      | ''        |
 | border         |             | string  | -      | 'all'     |
 | radius         |             | string  | -      | 'base'    |
 | updateTime     |             | number  | -      | 0         |

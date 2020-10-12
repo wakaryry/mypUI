@@ -2,15 +2,14 @@
 
 ## Props
 
-| Prop name | Description | Type   | Values | Default     |
-| --------- | ----------- | ------ | ------ | ----------- |
-| name      |             | string | -      | 'right'     |
-| type      |             | string | -      | ''          |
-| size      |             | string | -      | 'l'         |
-| mode      |             | string | -      | 'aspectFit' |
-| hover     |             | string | -      | 'none'      |
-| iconStyle |             | string | -      | ""          |
-| boxStyle  |             | string | -      | ''          |
+| Prop name | Description | Type   | Values | Default |
+| --------- | ----------- | ------ | ------ | ------- |
+| name      |             | string | -      | 'right' |
+| type      |             | string | -      | ''      |
+| size      |             | string | -      | 'l'     |
+| hover     |             | string | -      | 'none'  |
+| iconStyle |             | string | -      | ""      |
+| boxStyle  |             | string | -      | ''      |
 
 ## Events
 

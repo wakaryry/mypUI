@@ -6,7 +6,7 @@
 | --------------- | ----------- | ------- | ------ | ------------------------------------------------------------------------ |
 | value           |             | string  | -      | ''                                                                       |
 | maxlength       |             | number  | -      | 4                                                                        |
-| secret          |             | boolean | -      | false                                                                    |
+| password        |             | boolean | -      | false                                                                    |
 | cursor          |             | boolean | -      | false                                                                    |
 | focus           |             | boolean | -      | false                                                                    |
 | mode            |             | string  | -      | "middle"                                                                 |

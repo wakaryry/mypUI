@@ -8,6 +8,7 @@
 | justify      |             | string | -      | 'flex-start' |
 | width        |             | string | -      | '750rpx'     |
 | height       |             | string | -      | '260px'      |
+| left         |             | string | -      | '0'          |
 | boxStyle     |             | string | -      | ''           |
 | contentStyle |             | string | -      | ''           |
 

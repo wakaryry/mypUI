@@ -2,14 +2,16 @@
 
 ## Props
 
-| Prop name     | Description | Type    | Values | Default  |
-| ------------- | ----------- | ------- | ------ | -------- |
-| showScrollbar |             | boolean | -      | true     |
-| bgType        |             | string  | -      | 'page'   |
-| position      |             | string  | -      | 'static' |
-| top           |             | string  | -      | '0'      |
-| bottom        |             | string  | -      | '0'      |
-| boxStyle      |             | string  | -      | ''       |
+| Prop name     | Description | Type    | Values | Default      |
+| ------------- | ----------- | ------- | ------ | ------------ |
+| showScrollbar |             | boolean | -      | true         |
+| bgType        |             | string  | -      | 'page'       |
+| position      |             | string  | -      | 'static'     |
+| top           |             | string  | -      | '0'          |
+| bottom        |             | string  | -      | '0'          |
+| boxStyle      |             | string  | -      | ''           |
+| extra         |             | string  | -      | 'status-nav' |
+| height        |             | string  | -      | '0'          |
 
 ## Events
 

@@ -1,22 +1,17 @@
----
-title: 单多选：myp-check
-type: guide
-order: 154
----
+# myp-check-static
 
 ## Props
 
 | Prop name         | Description | Type    | Values | Default    |
 | ----------------- | ----------- | ------- | ------ | ---------- |
-| icon              |             | string  | -      | ''         |
-| checkedIcon       |             | string  | -      | ''         |
+| icon              |             | string  | -      | 'circle'   |
+| checkedIcon       |             | string  | -      | 'radio'    |
 | direction         |             | string  | -      | 'left'     |
 | flex              |             | string  | -      | 'row'      |
 | isBetween         |             | boolean | -      | false      |
 | items             |             | array   | -      | []         |
 | value             |             | array   | -      | []         |
 | limits            |             | number  | -      | 0          |
-| updatedTime       |             | number  | -      | 0          |
 | disabled          |             | boolean | -      | false      |
 | textLabel         |             | string  | -      | null       |
 | textFormat        |             | string  | -      | ''         |
@@ -25,14 +20,14 @@ order: 154
 | boxStyle          |             | string  | -      | ''         |
 | itemBoxStyle      |             | string  | -      | ''         |
 | itemSpace         |             | string  | -      | '16rpx'    |
-| textType          |             | string  | -      | ''         |
-| checkedTextType   |             | string  | -      | ''         |
+| textType          |             | string  | -      | 'text'     |
+| checkedTextType   |             | string  | -      | 'text'     |
 | disabledTextType  |             | string  | -      | 'disabled' |
-| iconType          |             | string  | -      | ''         |
-| checkedIconType   |             | string  | -      | ''         |
+| iconType          |             | string  | -      | 'text'     |
+| checkedIconType   |             | string  | -      | 'text'     |
 | disabledIconType  |             | string  | -      | 'disabled' |
-| textSize          |             | string  | -      | ''         |
-| height            |             | string  | -      | ''         |
+| textSize          |             | string  | -      | 'base'     |
+| height            |             | string  | -      | 'base'     |
 | space             |             | string  | -      | '12rpx'    |
 | textStyle         |             | string  | -      | ''         |
 | disabledTextStyle |             | string  | -      | ''         |
@@ -42,7 +37,6 @@ order: 154
 | iconBoxStyle      |             | string  | -      | ''         |
 | disabledIconStyle |             | string  | -      | ''         |
 | checkedIconStyle  |             | string  | -      | ''         |
-| itemStyle         |             | string  | -      | ''         |
 
 ## Events
 
@@ -53,4 +47,3 @@ order: 154
 | change     | undefined |
 
 ---
-

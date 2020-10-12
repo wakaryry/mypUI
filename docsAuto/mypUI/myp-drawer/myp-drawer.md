@@ -9,6 +9,7 @@
 | duration     |             | number | -      | 300                                                                                                   |
 | overlay      |             | object | -      | {<br> timingFunction: ['ease-in', 'ease-out'],<br> duration: 300,<br> bg: '',<br> bgType: 'mask'<br>} |
 | height       |             | string | -      | '0'                                                                                                   |
+| extra        |             | string | -      | '0'                                                                                                   |
 | standout     |             | string | -      | '0'                                                                                                   |
 | leftOffset   |             | string | -      | '-1'                                                                                                  |
 | rightOffset  |             | string | -      | '-1'                                                                                                  |

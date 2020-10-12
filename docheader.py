@@ -18,7 +18,7 @@ def gen_header_json(path='/Users/wakary/GitHub/uni/myp-ui/mypUI'):
                         "order": 1
                     }
     json_str = json.dumps(headers, indent=4, ensure_ascii=False)
-    with open('docs/header.json', 'w') as json_file:
+    with open('docs/header_.json', 'w') as json_file:
         json_file.write(json_str)
 
 

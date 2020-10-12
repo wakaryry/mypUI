@@ -10,6 +10,8 @@
 | top            |             | string  | -      | '0'                                                                                  |
 | bottom         |             | string  | -      | '0'                                                                                  |
 | boxStyle       |             | string  | -      | ''                                                                                   |
+| extra          |             | string  | -      | 'status-nav'                                                                         |
+| height         |             | string  | -      | '0'                                                                                  |
 | useLoading     |             | boolean | -      | false                                                                                |
 | loadMoreOffset |             | number  | -      | 60                                                                                   |
 | autoUpdate     |             | boolean | -      | false                                                                                |

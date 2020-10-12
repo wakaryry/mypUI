@@ -8,10 +8,10 @@
 | interval           |             | number | -      | 1000          |
 | tpl                |             | string | -      | '{h}:{m}:{s}' |
 | bgType             |             | string | -      | 'none'        |
-| border             |             | string | -      | 'none'        |
-| radius             |             | string | -      | 'none'        |
+| border             |             | string | -      | ''            |
+| radius             |             | string | -      | ''            |
 | itemBgType         |             | string | -      | ''            |
-| itemBorder         |             | string | -      | 'none'        |
+| itemBorder         |             | string | -      | ''            |
 | itemRadius         |             | string | -      | 's'           |
 | itemTextType       |             | string | -      | 'text'        |
 | itemTextSize       |             | string | -      | 'l'           |

@@ -1,5 +1,5 @@
 <template>
-	<view ref="myp-notice" v-if="showing" :hack="hackShow" :class="['myp-notice', 'myp-bg-'+mrBgType]" :style="mrBoxStyle + noWeexAnimation">
+	<view ref="myp-notice" v-if="showing" :hack="hackShow" :class="['myp-notice', 'myp-flex-row', 'myp-align-center', 'myp-justify-center', 'myp-bg-'+mrBgType]" :style="mrBoxStyle + noWeexAnimation">
 		<slot>
 			<myp-icon :name="mrIcon" :iconStyle="iconStyle" :type="iconType" :size="iconSize" :boxStyle="iconBoxStyle"></myp-icon>
 			<text :class="['myp-size-'+textSize, 'myp-color-'+textType]" :style="mrTextStyle">{{text}}</text>
@@ -172,12 +172,5 @@
 		position: fixed;
 		left: 0;
 		right: 0;
-		/* #ifndef APP-NVUE */
-		display: flex;
-		box-sizing: border-box;
-		/* #endif */
-		align-items: center;
-		justify-content: center;
-		flex-direction: row;
 	}
 </style>

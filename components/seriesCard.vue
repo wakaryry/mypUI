@@ -117,6 +117,7 @@
 			left: 24rpx;
 			bottom: 24rpx;
 			height: 40rpx;
+			width: 150rpx;
 			
 			&-item {
 				position: absolute;

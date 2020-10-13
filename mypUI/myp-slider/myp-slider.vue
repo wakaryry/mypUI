@@ -75,7 +75,8 @@
 				type: Number,
 				default: 5
 			},
-			// 设置当前取值。当 range 为 false 时，使用 number，否则用 [number, number]
+			// 设置当前取值。当 range 为 false 时，使用 number，
+			// 否则用 [number, number]
 			value: {
 				type: [Number, Array],
 				default: 0

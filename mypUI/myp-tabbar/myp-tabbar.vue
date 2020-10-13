@@ -56,9 +56,11 @@
 		props: {
 			/**
 			 * tabs的内容以及个性化的配置。
-			 * isHump表示是否凸起,noPage表示点击当前tab时不切换，依然停留在原tab内容。
+			 * isHump表示是否凸起,
+			 * noPage表示点击当前tab时不切换，依然停留在原tab内容。
 			 * hump具备humpStyle,hump有humpBottom(就是距离底部的距离px)。
-			 * icon,selectedIcon,title,selectedTitle,badge,dot,
+			 * icon,selectedIcon,title,selectedTitle,
+			 * badge,dot,
 			 * isHump,noPage,humpStyle,humpBottom
 			 * iconStyle,selectedIconStyle,titleStyle,selectedTitleStyle,
 			 * badgeStyle,badgeTextStyle,dotStyle,iconBoxWidth

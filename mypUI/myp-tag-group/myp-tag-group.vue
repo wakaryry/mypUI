@@ -41,7 +41,8 @@
 				default: 0
 			},
 			/**
-			 * limits为1时是否允许取消当前选择，也就是是否允许一个也不选
+			 * limits为1时是否允许取消当前选择，
+			 * 也就是是否允许一个也不选
 			 */
 			leastOne: {
 				type: Boolean,

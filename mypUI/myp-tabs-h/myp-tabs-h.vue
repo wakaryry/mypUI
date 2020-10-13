@@ -42,7 +42,8 @@
 				default: 0
 			},
 			/**
-			 * 联动时需要。因为scroll的过程中，current就会发生变化，我们需要用另外一个来记录
+			 * 联动时需要。因为scroll的过程中，current就会发生变化，
+			 * 我们需要用另外一个来记录
 			 */
 			last: {
 				type: Number,

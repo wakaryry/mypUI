@@ -100,7 +100,8 @@
 	export default {
 		props: {
 			/**
-			 * ['date'/年月日, 'dateTime'/年月日时分, 'yearMonth'/年月, 'time'/时分, 'dateRange'/年月日, 'yearMonthRange'/年月, 'timeRange'/时分]
+			 * ['date'/年月日, 'dateTime'/年月日时分, 'yearMonth'/年月, 
+			 * 'time'/时分, 'dateRange'/年月日, 'yearMonthRange'/年月, 'timeRange'/时分]
 			 */
 			mode: {
 				type: String,

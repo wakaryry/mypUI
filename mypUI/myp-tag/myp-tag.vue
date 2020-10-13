@@ -1,5 +1,5 @@
 <template>
-	<view :class="['myp-tag-box', 'myp-height-'+height, 'myp-bg-'+mrBgType, 'myp-border-'+mrBorder, 'myp-radius-'+radius, disabled && 'myp-disabled']" :style="mrBoxStyle" @tap.stop="toSelect">
+	<view :class="['myp-flex-row', 'myp-justify-center', 'myp-align-center', 'myp-height-'+height, 'myp-bg-'+mrBgType, 'myp-border-'+mrBorder, 'myp-radius-'+radius, disabled && 'myp-disabled']" :style="mrBoxStyle" @tap.stop="toSelect">
 		<slot>
 			<text :class="['myp-size-'+textSize, 'myp-color-'+mrTextType]" :style="mrTextStyle">{{text}}</text>
 		</slot>
@@ -236,12 +236,4 @@
 </script>
 
 <style lang="scss" scoped>
-	.myp-tag-box {
-		/* #ifndef APP-NVUE */
-		display: flex;
-		box-sizing: border-box;
-		/* #endif */
-		justify-content: center;
-		align-items: center;
-	}
 </style>

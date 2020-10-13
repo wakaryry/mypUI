@@ -1,13 +1,13 @@
 <template>
 	<view :class="['myp-bg-'+bgType, 'myp-border-'+border, 'myp-radius-'+radius]" :style="boxStyle">
-		<view v-if="column === 0" class="myp-tag-group" :style="dyBoxStyle">
+		<view v-if="column === 0" class="myp-flex-row myp-wrap-wrap" :style="dyBoxStyle">
 			<view v-for="(item, idx) in updatedItems" :key="idx" :style="{'margin-right': idx !== updatedItems.length-1 ? columnSpace : '0', 'margin-bottom': rowSpace}">
 				<myp-tag :text="item[tl]" :value="item[vl]" :disabled="disabled || item[dl]" :selected="item['myp-checked']" :bgType="tagBgType" :selectedBgType="tagSelectedBgType" :textType="tagTextType" :selectedTextType="tagSelectedTextType" :height="tagHeight" :textSize="tagTextSize" :border="tagBorder" :selectedBorder="tagSelectedBorder" :radius="tagRadius" :space="tagSpace" :textStyle="textStyle" :selectedTextStyle="selectedTextStyle" :disabledTextStyle="disabledTextStyle" :boxStyle="tagStyle" :selectedBoxStyle="selectedTagStyle" :disabledBoxStyle="disabledTagStyle" @tagClicked="toUpdateItemCheck(idx)"></myp-tag>
 			</view>
 		</view>
 		<view v-if="column !== 0">
-			<view v-for="(rows, index) in chunkedItems" :key="index" class="myp-item-row" :style="{'margin-bottom': index !== chunkedItems.length-1 ? rowSpace : '0'}">
-				<view v-for="(item, idx) in rows" :key="idx" class="myp-item-flex" :style="{'margin-right': idx !== rows.length-1 ? columnSpace : '0'}">
+			<view v-for="(rows, index) in chunkedItems" :key="index" class="myp-flex-row myp-wrap-nowrap" :style="{'margin-bottom': index !== chunkedItems.length-1 ? rowSpace : '0'}">
+				<view v-for="(item, idx) in rows" :key="idx" class="myp-flex-one" :style="{'margin-right': idx !== rows.length-1 ? columnSpace : '0'}">
 					<myp-tag v-if="item" :text="item[tl]" :value="item[vl]" :disabled="disabled || item[dl]" :selected="item['myp-checked']" :bgType="tagBgType" :selectedBgType="tagSelectedBgType" :textType="tagTextType" :selectedTextType="tagSelectedTextType" :height="tagHeight" :textSize="tagTextSize" :border="tagBorder" :selectedBorder="tagSelectedBorder" :radius="tagRadius" :space="tagSpace" :textStyle="textStyle" :selectedTextStyle="selectedTextStyle" :disabledTextStyle="disabledTextStyle" :boxStyle="tagStyle" :selectedBoxStyle="selectedTagStyle" :disabledBoxStyle="disabledTagStyle" @tagClicked="toUpdateItemCheck(index * column + idx)"></myp-tag>
 				</view>
 			</view>
@@ -362,23 +362,4 @@
 </script>
 
 <style lang="scss" scoped>
-	.myp-tag-group {
-		/* #ifndef APP-NVUE */
-		display: flex;
-		box-sizing: border-box;
-		/* #endif */
-		flex-direction: row;
-		flex-wrap: wrap;
-	}
-	.myp-item-row {
-		/* #ifndef APP-NVUE */
-		display: flex;
-		box-sizing: border-box;
-		/* #endif */
-		flex-direction: row;
-		flex-wrap: nowrap;
-	}
-	.myp-item-flex {
-		flex: 1;
-	}
 </style>

@@ -1,13 +1,13 @@
 <template>
 	<scroll-view ref="scroll" id="scroll" :scroll-x="true" :scroll-left="scrollLeft" :scroll-with-animation="true" :show-scrollbar="false" :class="['myp-bg-'+bgType, 'myp-border-'+border, 'myp-tabs-scroll']" :style="mrScrollStyle">
-		<view style="flex-direction: column;">
+		<view style="flex-direction: column;position: relative;">
+			<view v-if="hasIndicator" ref="myp-underline" :class="['myp-tab-item-underline', 'myp-bg-'+indicatorType, isTap?'myp-tab-item-animation':'']" :style="mrIndStyle">
+				<slot name="indicator"></slot>
+			</view>
 			<view :style="mrTabsStyle">
 				<view v-for="(item, index) in items" :key="index" :ref="'item'+index" :id="'item'+index" class="myp-tab-item" :style="mrItemStyle + (index===value ? activeItemStyle:'')" @click="changeTab(index)">
 					<text :class="['myp-color-'+(index===value?activeTextType:textType), 'myp-size-'+(index===value?activeTextSize:textSize)]" :style="textStyle + (index===value ? activeTextStyle : '')">{{ textLabel ? item[textLabel] : item }}</text>
 				</view>
-			</view>
-			<view v-if="hasIndicator" :class="['myp-tab-item-indicator']" :style="{height: indicatorHeight}">
-				<view ref="myp-underline" :class="['myp-tab-item-underline', 'myp-bg-'+indicatorType, isTap?'myp-tab-item-animation':'']" :style="mrIndStyle"></view>
 			</view>
 		</view>
 	</scroll-view>
@@ -251,6 +251,7 @@
 		computed: {
 			mrIndStyle() {
 				let _style = `border-radius:${this.indicatorRadius};`
+				_style += `height:${this.indicatorHeight};`
 				// #ifndef APP-NVUE
 				_style += `width:${this.dyIndicatorWidth}px;`
 				_style += `left:${this.dyIndicatorLeft}px;`
@@ -569,13 +570,8 @@
 	/* #endif */
 	
 	.myp-tab-item {
-		&-indicator {
-			position: relative;
-			background-color: transparent;
-		}
 		&-underline {
 			position: absolute;
-			top: 0;
 			bottom: 0;
 			left: 0;
 			width: 0;

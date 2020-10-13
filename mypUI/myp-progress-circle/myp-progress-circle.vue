@@ -1,5 +1,5 @@
 <template>
-	<view :class="['myp-cp', 'myp-bg-'+bgType]" :style="mrBoxStyle">
+	<view :class="['myp-cp', 'myp-flex-column', 'myp-align-center', 'myp-justify-center', 'myp-bg-'+bgType]" :style="mrBoxStyle">
 		<slot></slot>
 		<view class="myp-cp-right" :style="{width: (evenWidth/2)+'px', height: evenWidth+'px'}">
 			<view ref="myp-right" class="myp-cp-right-rotate" :style="mrRightStyle+noWeexRightAni+noWeexRightOpacity"></view>
@@ -778,23 +778,8 @@
 <style lang="scss" scoped>
 	.myp-cp {
 		position: relative;
-		/* #ifndef APP-NVUE */
-		display: flex;
-		box-sizing: border-box;
-		/* #endif */
-		justify-content: center;
-		align-items: center;
 		overflow: hidden;
 		
-		&-in {
-			position: absolute;
-			/* #ifndef APP-NVUE */
-			display: flex;
-			box-sizing: border-box;
-			/* #endif */
-			justify-content: center;
-			align-items: center;
-		}
 		&-right {
 			position: absolute;
 			overflow: hidden;

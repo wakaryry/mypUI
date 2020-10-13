@@ -1,7 +1,7 @@
 <template>
-	<view v-if="showing" :class="['myp-noticebar', 'myp-bg-'+bgType, 'myp-height-'+height, 'myp-border-'+border, 'myp-radius-'+radius]" :style="boxStyle" bubble="true" @tap.stop="noticeBarClicked">
+	<view v-if="showing" :class="['myp-flex-row', 'myp-align-center', 'myp-noticebar', 'myp-bg-'+bgType, 'myp-height-'+height, 'myp-border-'+border, 'myp-radius-'+radius]" :style="boxStyle" bubble="true" @tap.stop="noticeBarClicked">
 		<myp-icon v-if="icon" :name="icon" :type="iconType" :size="iconSize" :iconStyle="iconStyle" :boxStyle="'margin-right:'+space+';'+iconBoxStyle" @iconClicked="noticeBarClicked"></myp-icon>
-		<text :class="['myp-noticebar-text', 'myp-size-'+textSize, 'myp-color-'+textType]" :style="textStyle">{{text}}</text>
+		<text :class="['myp-flex-one', 'myp-lines-one', 'myp-size-'+textSize, 'myp-color-'+textType]" :style="textStyle">{{text}}</text>
 		<myp-icon v-if="indicator" :name="indicator" :type="indicatorType" :size="indicatorSize" :iconStyle="indicatorStyle" :boxStyle="'margin-left:'+space+';'+indicatorBoxStyle" @iconClicked="indicatorClicked"></myp-icon>
 	</view>
 </template>
@@ -186,21 +186,5 @@
 	.myp-noticebar {
 		padding-left: 32rpx;
 		padding-right: 32rpx;
-		/* #ifndef APP-NVUE */
-		display: flex;
-		box-sizing: border-box;
-		/* #endif */
-		flex-direction: row;
-		align-items: center;
-		
-		&-text {
-			flex: 1;
-			lines: 1;
-			overflow: hidden;
-			text-overflow: ellipsis;
-			/* #ifndef APP-NVUE */
-			white-space: nowrap;
-			/* #endif */
-		}
 	}
 </style>

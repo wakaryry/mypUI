@@ -1,8 +1,8 @@
 <template>
 	<view v-if="showLoading" :class="['myp-loading', showLoading&&needMask&&'myp-bg-'+maskType, showLoading&&needMask&&'myp-loading-mask']" @tap.stop="maskClicked" :style="maskStyle">
-		<view :class="['myp-loading-content', 'myp-bg-'+bgType]" :style="mrContentStyle">
+		<view :class="['myp-flex-column', 'myp-align-center', 'myp-justify-center', 'myp-loading-content', 'myp-bg-'+bgType]" :style="mrContentStyle">
 			<image :src="icon" mode="aspectFill" class="myp-loading-content-image" :style="iconStyle"></image>
-			<text v-if="text" :class="['myp-loading-content-text', 'myp-color-'+textType, 'myp-size-'+textSize]" :style="textStyle">{{text}}</text>
+			<text v-if="text" :class="['myp-lines-one', 'myp-loading-content-text', 'myp-color-'+textType, 'myp-size-'+textSize]" :style="textStyle">{{text}}</text>
 		</view>
 	</view>
 </template>
@@ -102,17 +102,9 @@
 			right: 0;
 			bottom: 0;
 		}
-		
 		&-content {
 			position: fixed;
-			/* #ifndef APP-NVUE */
-			display: flex;
-			box-sizing: border-box;
-			/* #endif */
 			left: 375rpx;
-			flex-direction: column;
-			align-items: center;
-			justify-content: center;
 			border-radius: 20rpx;
 			width: 200rpx;
 			height: 200rpx;
@@ -122,13 +114,7 @@
 				height: 75rpx;
 			}
 			&-text {
-				overflow: hidden;
 				text-align: center;
-				text-overflow: ellipsis;
-				lines: 1;
-				/* #ifndef APP-NVUE */
-				white-space: nowrap;
-				/* #endif */
 				color: #FFFFFF;
 				font-size: 24rpx;
 				line-height: 30rpx;

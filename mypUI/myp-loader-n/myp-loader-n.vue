@@ -1,5 +1,5 @@
 <template>
-	<loading class="myp-loading" @loading="onloading" :display="isLoading ? 'show' : 'hide'">
+	<loading class="myp-loading myp-flex-column myp-align-center" @loading="onloading" :display="isLoading ? 'show' : 'hide'" :style="boxStyle">
 		<image v-if="hasMore&&isLoading" class="myp-loading-img" :src="loadingSrc" mode="aspectFill"></image>
 		<text v-if="isLoading || !hasMore" class="myp-loading-text">{{loadText}}</text>
 		<text v-if="!isLoading&&hasMore" class="myp-loading-text">{{mainText}}</text>
@@ -58,6 +58,13 @@
 			loadingSrc: {
 				type: String,
 				default: '/static/ui/loading-small.gif'
+			},
+			/**
+			 * 外层样式
+			 */
+			boxStyle: {
+				type: String,
+				default: ''
 			}
 		},
 		data() {
@@ -101,8 +108,6 @@
 <style lang="scss" scoped>
 	.myp-loading {
 		width: 750rpx;
-		flex-direction: column;
-		align-items: center;
 		padding: 20rpx;
 		height: 120rpx;
 		&-img {

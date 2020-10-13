@@ -1,25 +1,25 @@
 <template>
 	<view>
-		<view v-if="position==='left'&&fixIcon" :class="['myp-search', 'myp-bg-'+bgType, 'myp-border-'+border, 'myp-radius-'+radius, 'myp-height-'+height, 'myp-search-fix']" :style="boxStyle">
+		<view v-if="position==='left'&&fixIcon" :class="['myp-search', 'myp-bg-'+bgType, 'myp-border-'+border, 'myp-radius-'+radius, 'myp-height-'+height, 'myp-flex-row', 'myp-align-center']" :style="boxStyle">
 			<myp-icon v-if="icon&&icon.length>0" :name="icon" :type="showPlaceholder?placeIconType:iconType" :size="iconSize" :iconStyle="iconStyle" :boxStyle="'margin-right:'+iconTextSpace+';'"></myp-icon>
 			<view :class="['myp-search-fix-full', 'myp-height-'+height]" :style="mrFixBoxStyle">
-				<view :class="['myp-search-place']" :style="placeBoxStyle">
+				<view :class="['myp-search-place', 'myp-flex-row', 'myp-align-center']" :style="placeBoxStyle">
 					<text :class="['myp-search-place-text', 'myp-color-'+placeType, 'myp-size-'+placeSize]" :style="placeStyle">{{showPlaceholder?placeholder:''}}</text>
 				</view>
-				<view :class="['myp-search-input']" :style="valueBoxStyle">
+				<view :class="['myp-search-input', 'myp-flex-row', 'myp-align-center']" :style="valueBoxStyle">
 					<input :value="inputValue" :focus="focus" :adjust-position="adjust" :confirm-type="confirmType" :class="['myp-search-input-input', 'myp-color-'+valueType, 'myp-size-'+valueSize]" :style="valueStyle" @input="toInput" @confirm="toConfirm" @focus="toFocus" @blur="toBlur" @keyboardheightchange="toChangeKb" />
 				</view>
 			</view>
 			<slot name="extra"></slot>
 		</view>
 		<view v-else :class="['myp-search', 'myp-bg-'+bgType, 'myp-border-'+border, 'myp-radius-'+radius, 'myp-height-'+height]" :style="mrBoxStyle">
-			<view :class="['myp-search-place', 'myp-search-place-'+position]" :style="mrPlaceBoxStyle">
+			<view :class="['myp-search-place', 'myp-flex-row', 'myp-align-center', 'myp-search-place-'+position]" :style="mrPlaceBoxStyle">
 				<view v-if="showPlaceholder&&icon&&icon.length>0" :style="{'margin-right': iconTextSpace}">
 					<myp-icon :name="icon" :type="placeIconType" :size="iconSize" :iconStyle="iconStyle"></myp-icon>
 				</view>
 				<text :class="['myp-color-'+placeType, 'myp-size-'+placeSize]" :style="placeStyle">{{showPlaceholder?placeholder:''}}</text>
 			</view>
-			<view :class="['myp-search-input']" :style="mrValueBoxStyle">
+			<view :class="['myp-search-input', 'myp-flex-row', 'myp-align-center']" :style="mrValueBoxStyle">
 				<input :value="inputValue" :focus="focus" :adjust-position="adjust" :confirm-type="confirmType" :class="['myp-search-input-input', 'myp-search-input-'+position, 'myp-color-'+valueType, 'myp-size-'+valueSize]" :style="valueStyle" @input="toInput" @confirm="toConfirm" @focus="toFocus" @blur="toBlur" @keyboardheightchange="toChangeKb" />
 			</view>
 			<slot name="extra"></slot>
@@ -283,25 +283,12 @@
 		position: relative;
 		
 		&-fix {
-			/* #ifndef APP-NVUE */
-			display: flex;
-			box-sizing: border-box;
-			/* #endif */
-			flex-direction: row;
-			align-items: center;
-			
 			&-full {
 				flex: 1;
 				position: relative;
 			}
 		}
 		&-place {
-			/* #ifndef APP-NVUE */
-			display: flex;
-			box-sizing: border-box;
-			/* #endif */
-			flex-direction: row;
-			align-items: center;
 			position: absolute;
 			left: 0;
 			top: 0;
@@ -320,12 +307,6 @@
 		}
 		&-input {
 			position: absolute;
-			/* #ifndef APP-NVUE */
-			display: flex;
-			box-sizing: border-box;
-			/* #endif */
-			flex-direction: row;
-			align-items: center;
 			left: 0;
 			top: 0;
 			right: 0;
@@ -337,7 +318,6 @@
 			&-left {
 				text-align: left;
 			}
-			
 			&-center {
 				text-align: center;
 			}

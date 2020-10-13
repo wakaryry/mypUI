@@ -1,11 +1,11 @@
 <template>
-	<view :class="['myp-sl', 'myp-bg-'+bgType, 'myp-height-'+height, 'myp-border-'+border, 'myp-radius-'+radius]" :hover-class="'myp-hover-'+hover" :style="boxStyle" @tap.stop="toSelect">
+	<view :class="['myp-flex-row', 'myp-align-center', 'myp-wrap-nowrap', 'myp-bg-'+bgType, 'myp-height-'+height, 'myp-border-'+border, 'myp-radius-'+radius]" :hover-class="'myp-hover-'+hover" :style="boxStyle" @tap.stop="toSelect">
 		<myp-icon v-if="icon&&icon.length>0" :name="icon" :type="iconType" :size="iconSize" :iconStyle="iconStyle" :boxStyle="'margin-right:'+space+';'+iconBoxStyle" @iconClicked="toSelect"></myp-icon>
 		<slot name="label">
 			<text v-if="label&&label.length>0" :class="['myp-color-'+labelType, 'myp-size-'+labelSize]" :style="'margin-right:'+space+';'+labelStyle">{{label}}</text>
 		</slot>
-		<text v-if="shouldShowPlace" :class="['myp-sl-value', 'myp-color-'+placeType, 'myp-size-'+placeSize]" :style="'text-align:'+valueAlign+';'+placeStyle">{{placeholder}}</text>
-		<text v-else :class="['myp-sl-value', 'myp-color-'+valueType, 'myp-size-'+valueSize]" :style="'text-align:'+valueAlign+';'+valueStyle">{{value}}</text>
+		<text v-if="shouldShowPlace" :class="['myp-lines-one', 'myp-color-'+placeType, 'myp-size-'+placeSize]" :style="'text-align:'+valueAlign+';'+placeStyle">{{placeholder}}</text>
+		<text v-else :class="['myp-lines-one', 'myp-color-'+valueType, 'myp-size-'+valueSize]" :style="'text-align:'+valueAlign+';'+valueStyle">{{value}}</text>
 		<slot name="extra"></slot>
 		<myp-icon v-if="indicator&&indicator.length>0" :name="indicator" :type="indicatorType" :size="indicatorSize" :iconStyle="indicatorStyle" :boxStyle="'margin-left:'+space+';'+indicatorBoxStyle" @iconClicked="toSelect"></myp-icon>
 	</view>
@@ -236,24 +236,4 @@
 </script>
 
 <style lang="scss" scoped>
-	.myp-sl {
-		/* #ifndef APP-NVUE */
-		display: flex;
-		box-sizing: border-box;
-		/* #endif */
-		flex-direction: row;
-		align-items: center;
-		
-		&-value {
-			//flex: 1;
-			overflow: hidden;
-			text-overflow: ellipsis;
-			/* #ifdef APP-NVUE */
-			lines: 1;
-			/* #endif */
-			/* #ifndef APP-NVUE */
-			white-space: nowrap;
-			/* #endif */
-		}
-	}
 </style>

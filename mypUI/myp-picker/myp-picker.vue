@@ -1,9 +1,9 @@
 <template>
 	<myp-popup-always :show="show" pos="bottom" height="600rpx" @overlayClicked="toCancel">
 		<slot name="header">
-			<view :class="['myp-picker-header', 'myp-bg-'+headerBgType, 'myp-border-'+headerBorder, 'myp-radius-'+headerRadius]" :style="headerStyle">
+			<view :class="['myp-picker-header', 'myp-flex-row', 'myp-align-center', 'myp-justify-center', 'myp-bg-'+headerBgType, 'myp-border-'+headerBorder, 'myp-radius-'+headerRadius]" :style="headerStyle">
 				<text :class="['myp-color-'+cancelType, 'myp-size-'+cancelSize]" :style="cancelStyle" @tap="toCancel">{{cancelText}}</text>
-				<text :class="['myp-picker-header-title', 'myp-color-'+titleType, 'myp-size-'+titleSize]" :style="titleStyle">{{title}}</text>
+				<text :class="['myp-flex-one', 'myp-color-'+titleType, 'myp-size-'+titleSize]" :style="titleStyle">{{title}}</text>
 				<text :class="['myp-color-'+confirmType, 'myp-size-'+confirmSize]" :style="confirmStyle" @tap="toConfirm">{{confirmText}}</text>
 			</view>
 		</slot>
@@ -275,21 +275,10 @@
 <style lang="scss" scoped>
 	.myp-picker {
 		&-header {
-			/* #ifndef APP-NVUE */
-			display: flex;
-			box-sizing: border-box;
-			/* #endif */
-			flex-direction: row;
-			align-items: center;
-			justify-content: center;
 			height: 100rpx;
 			width: 750rpx;
 			padding-left: 32rpx;
 			padding-right: 32rpx;
-			
-			&-title {
-				flex: 1;
-			}
 		}
 	}
 </style>

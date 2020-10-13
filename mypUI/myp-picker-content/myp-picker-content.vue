@@ -1,19 +1,19 @@
 <template>
-	<view :class="['myp-picker-box', 'myp-bg-'+bgType]" :style="mrBoxStyle">
-		<picker-view v-if="mode==='s3' || mode==='s2' || mode==='s1'" class="myp-picker-view" :indicator-style="mrIndicatorStyle" :value="pickVal" @change="bindChange">
+	<view :class="['myp-picker-box', 'myp-flex-column', 'myp-bg-'+bgType]" :style="mrBoxStyle">
+		<picker-view v-if="mode==='s3' || mode==='s2' || mode==='s1'" class="myp-flex-one" :indicator-style="mrIndicatorStyle" :value="pickVal" @change="bindChange">
 			<picker-view-column>
-				<view class="myp-picker-item" :style="mrItemStyle" v-for="(item,index) in items.p||[]" :key="index">
-					<text :class="['myp-picker-item-text', 'myp-color-'+textType, 'myp-size-'+textSize]" :style="textStyle">{{item[pl]}}</text>
+				<view class="myp-flex-column myp-align-center myp-justify-center" :style="mrItemStyle" v-for="(item,index) in items.p||[]" :key="index">
+					<text :class="['myp-picker-item-text', 'myp-lines-one', 'myp-color-'+textType, 'myp-size-'+textSize]" :style="textStyle">{{item[pl]}}</text>
 				</view>
 			</picker-view-column>
 			<picker-view-column v-if="mode==='s2' || mode==='s3'">
-				<view class="myp-picker-item" :style="mrItemStyle" v-for="(item,index) in items.c||[]" :key="index">
-					<text :class="['myp-picker-item-text', 'myp-color-'+textType, 'myp-size-'+textSize]" :style="textStyle">{{item[cl]}}</text>
+				<view class="myp-flex-column myp-align-center myp-justify-center" :style="mrItemStyle" v-for="(item,index) in items.c||[]" :key="index">
+					<text :class="['myp-picker-item-text', 'myp-lines-one', 'myp-color-'+textType, 'myp-size-'+textSize]" :style="textStyle">{{item[cl]}}</text>
 				</view>
 			</picker-view-column>
 			<picker-view-column v-if="mode==='s3'">
-				<view class="myp-picker-item" :style="mrItemStyle" v-for="(item,index) in items.a||[]" :key="index">
-					<text :class="['myp-picker-item-text', 'myp-color-'+textType, 'myp-size-'+textSize]" :style="textStyle">{{item[al]}}</text>
+				<view class="myp-flex-column myp-align-center myp-justify-center" :style="mrItemStyle" v-for="(item,index) in items.a||[]" :key="index">
+					<text :class="['myp-picker-item-text', 'myp-lines-one', 'myp-color-'+textType, 'myp-size-'+textSize]" :style="textStyle">{{item[al]}}</text>
 				</view>
 			</picker-view-column>
 		</picker-view>
@@ -436,33 +436,10 @@
 	.myp-picker {
 		&-box {
 			overflow: hidden;
-			/* #ifndef APP-NVUE */
-			display: flex;
-			box-sizing: border-box;
-			/* #endif */
-			flex-direction: column;
-		}
-		&-view {
-			flex: 1;
 		}
 		&-item {
-			/* #ifndef APP-NVUE */
-			display: flex;
-			box-sizing: border-box;
-			/* #endif */
-			justify-content: center;
-			align-items: center;
-			
 			&-text {
 				text-align: center;
-				overflow: hidden;
-				text-overflow: ellipsis;
-				/* #ifdef APP-NVUE */
-				lines: 1;
-				/* #endif */
-				/* #ifndef APP-NVUE */
-				white-space: nowrap;
-				/* #endif */
 			}
 		}
 	}

@@ -1,10 +1,10 @@
 <template>
-	<view class="myp-stepper" :style="boxStyle">
-		<view :class="['myp-stepper-action', 'myp-bg-'+minusBgType, 'myp-radius-'+radius, (disabled||isLess)&&'myp-disabled']" :hover-class="'myp-hover-'+hover" :style="mrMinusBoxStyle" bubble="true" @click="minusClicked">
+	<view class="myp-flex-row myp-align-center myp-wrap-nowrap" :style="boxStyle">
+		<view :class="['myp-stepper-action', 'myp-flex-row', 'myp-align-center', 'myp-justify-center', 'myp-bg-'+minusBgType, 'myp-radius-'+radius, (disabled||isLess)&&'myp-disabled']" :hover-class="'myp-hover-'+hover" :style="mrMinusBoxStyle" bubble="true" @click="minusClicked">
 			<myp-icon :name="minus" :type="minusType" :iconStyle="mrMinusStyle" @iconClicked="minusClicked"></myp-icon>
 		</view>
 		<input :class="['myp-stepper-input', 'myp-size-'+valueSize, 'myp-color-'+valueType]" type="number" :style="mrValueStyle" :disabled="disabled||readOnly" :value="value" @input="onInput" @blur="onBlur" />
-		<view :class="['myp-stepper-action', 'myp-bg-'+plusBgType, 'myp-radius-'+radius, (disabled||isOver)&&'myp-disabled']" :hover-class="'myp-hover-'+hover" :style="mrPlusBoxStyle" bubble="true" @click="plusClicked">
+		<view :class="['myp-stepper-action', 'myp-flex-row', 'myp-align-center', 'myp-justify-center', 'myp-bg-'+plusBgType, 'myp-radius-'+radius, (disabled||isOver)&&'myp-disabled']" :hover-class="'myp-hover-'+hover" :style="mrPlusBoxStyle" bubble="true" @click="plusClicked">
 			<myp-icon :name="plus" :type="plusType" :iconStyle="mrPlusStyle" @iconClicked="plusClicked"></myp-icon>
 		</view>
 	</view>
@@ -326,21 +326,7 @@
 
 <style lang="scss" scoped>
 	.myp-stepper {
-		/* #ifndef APP-NVUE */
-		display: flex;
-		box-sizing: border-box;
-		/* #endif */
-		flex-direction: row;
-		align-items: center;
-		
 		&-action {
-			/* #ifndef APP-NVUE */
-			display: flex;
-			box-sizing: border-box;
-			/* #endif */
-			flex-direction: row;
-			align-items: center;
-			justify-content: center;
 			width: 60rpx;
 			height: 60rpx;
 		}

@@ -1,6 +1,6 @@
 <template>
-	<view class="myp-loading">
-		<view v-if="hasMore&&isLoading" class="myp-loading-content">
+	<view class="myp-loading myp-flex-column myp-align-center" :style="boxStyle">
+		<view v-if="hasMore&&isLoading" class="myp-flex-column myp-align-center">
 			<image class="myp-loading-img" :src="loadingSrc" mode="aspectFill"></image>
 			<text class="myp-loading-text">{{loadText}}</text>
 		</view>
@@ -52,6 +52,13 @@
 			hasMore: {
 				type: Boolean,
 				default: true
+			},
+			/**
+			 * 外层样式
+			 */
+			boxStyle: {
+				type: String,
+				default: ''
 			}
 		},
 		data() {
@@ -72,22 +79,9 @@
 <style lang="scss" scoped>
 	.myp-loading {
 		width: 750rpx;
-		/* #ifndef APP-NVUE */
-		display: flex;
-		box-sizing: border-box;
-		/* #endif */
-		flex-direction: column;
-		align-items: center;
 		padding: 20rpx;
 		height: 120rpx;
-		&-content {
-			/* #ifndef APP-NVUE */
-			display: flex;
-			box-sizing: border-box;
-			/* #endif */
-			flex-direction: column;
-			align-items: center;
-		}
+		
 		&-img {
 			width: 40rpx;
 			height: 40rpx;

@@ -175,18 +175,4 @@
 </script>
 
 <style lang="scss" scoped>
-	.myp-list {
-		position: relative;
-		/* #ifndef APP-NVUE */
-		display: flex;
-		box-sizing: border-box;
-		/* #endif */
-		flex-direction: column;
-		
-		&-foot {
-			position: absolute;
-			left: 0;
-			bottom: 0;
-		}
-	}
 </style>

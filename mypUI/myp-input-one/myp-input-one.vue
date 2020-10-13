@@ -1,5 +1,5 @@
 <template>
-	<view class="myp-one" :style="boxStyle">
+	<view class="myp-one myp-flex-row myp-justify-center" :style="boxStyle">
 		<view v-for="(item, index) in ranges" :key="index" class="myp-one-item" :style="mrItemStyle+(codeArr.length+1 === item?activeItemStyle:'')+(index!==ranges.length-1?('margin-right:'+space+';'):'')">
 			<view v-if="mode === 'middle' && codeIndex <= item" :style="mrMiddleStyle"></view>
 			<view v-if="mode === 'bottom'" :style="mrBottomStyle+(codeArr.length+1 === item?activeLineStyle:'')"></view>
@@ -228,12 +228,6 @@
 
 <style lang="scss" scoped>
 	.myp-one {
-		/* #ifndef APP-NVUE */
-		display: flex;
-		box-sizing: border-box;
-		/* #endif */
-		flex-direction: row;
-		justify-content: center;
 		position: relative;
 		
 		&-cursor {

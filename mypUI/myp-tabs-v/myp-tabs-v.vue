@@ -1,7 +1,7 @@
 <template>
 	<scroll-view ref="scroll" id="scroll" :scroll-y="true" :scroll-top="scrollTop" :scroll-with-animation="true" :show-scrollbar="false" :class="['myp-bg-'+bgType, 'myp-tabs-scroll']" :style="mrScrollStyle">
 		<view class="myp-tabs" :style="mrTabsStyle">
-			<view v-for="(item, index) in items" :key="index" :ref="'item'+index" :id="'item'+index" class="myp-tab-item" :style="mrItemStyle + (index===value ? activeItemStyle:'')" @click="changeTab(index)">
+			<view v-for="(item, index) in items" :key="index" :ref="'item'+index" :id="'item'+index" class="myp-flex-row myp-align-center" :style="mrItemStyle + (index===value ? activeItemStyle:'')" @click="changeTab(index)">
 				<text :class="['myp-color-'+(index===value?activeTextType:textType), 'myp-size-'+(index===value?activeTextSize:textSize)]" :style="textStyle + (index===value ? activeTextStyle : '')">{{ textLabel ? item[textLabel] : item }}</text>
 			</view>
 			<view v-if="hasIndicator" :class="['myp-tab-item-indicator', 'myp-bg-'+(indicatorType&&indicatorType.length>0?indicatorType:'text')]" :style="mrIndStyle"></view>
@@ -439,11 +439,7 @@
 	.myp-tabs {
 		position: relative;
 	}
-	
 	.myp-tab-item {
-		flex-direction: row;
-		align-items: center;
-		
 		&-indicator {
 			position: absolute;
 			bottom: 0;

@@ -566,18 +566,9 @@
 	    -webkit-appearance: none;
 	    background: transparent;
 	}
-	::-webkit-scrollbar {
-	    display: none;
-	    width: 0 !important;
-	    height: 0 !important;
-		color: transparent;
-	    -webkit-appearance: none;
-	    background: transparent;
-	}
 	/* #endif */
 	
 	.myp-tab-item {
-		
 		&-indicator {
 			position: relative;
 			background-color: transparent;

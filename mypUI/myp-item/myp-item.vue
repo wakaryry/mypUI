@@ -1,5 +1,5 @@
 <template>
-	<view :class="['myp-item', 'myp-bg-'+bgType, 'myp-border-'+border, 'myp-radius-'+radius]" :hover-class="'myp-hover-'+hover" :style="boxStyle" bubble="true" @tap="toSelect">
+	<view :class="['myp-flex-column', 'myp-align-center', 'myp-justify-center', 'myp-position-relative', 'myp-bg-'+bgType, 'myp-border-'+border, 'myp-radius-'+radius]" :hover-class="'myp-hover-'+hover" :style="boxStyle" bubble="true" @tap="toSelect">
 		<myp-icon v-if="isIcon&&icon" :name="icon" :type="iconType" :size="iconSize" :iconStyle="iconStyle" :boxStyle="iconBoxStyle" @iconClicked="toSelect"></myp-icon>
 		<text v-if="!isIcon&&icon" :class="['myp-color-'+iconType, 'myp-size-'+iconSize]" :style="iconStyle">{{icon}}</text>
 		<text :class="['myp-color-'+textType, 'myp-size-'+textSize]" :style="'margin-top:'+space+';'+textStyle">{{text}}</text>
@@ -131,15 +131,5 @@
 	}
 </script>
 
-<style lang="scss" scoped>
-	.myp-item {
-		position: relative;
-		/* #ifndef APP-NVUE */
-		display: flex;
-		box-sizing: border-box;
-		/* #endif */
-		flex-direction: column;
-		justify-content: center;
-		align-items: center;
-	}
+<style lang="scss">
 </style>

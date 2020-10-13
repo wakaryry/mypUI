@@ -1,7 +1,5 @@
 # mypUI qq群号：`306797275`
 
-## 从轻出发，重新出发。遇见你，刚刚好。
-
 **第一个高效且强悍的nvue开源组件库。做最好、最顺手的nvue组件库**
 
 - 适用于`nvue`页面的组件与工具（app端对应weex，不再是webview）；
@@ -21,33 +19,19 @@ mypUI 是基于 uniapp 的一套组件库与工具集，可以 **高效且规范
 
 ![demo](https://mypui.asnowsoft.cn/demo-imgs/demo2.png)
 
-[Android Demo APK下载](https://mypui.asnowsoft.cn/apk/mypUI_2.0.0.apk)
+[Android Demo APK下载](https://mypui.asnowsoft.cn/apk/mypUI.apk)
 
-![Android下载](https://mypui.asnowsoft.cn/apk/apk_2.0.0.png)
-
-# 2.0全面来袭
-
-## 2.0重点解决什么问题
-
-我们一直在轻量化以及解耦内部的组件以及依赖，2.0我们几乎移除了内部依赖的所有mixin，改为更加独立和轻便的utils function。
-
-同时，2.0版本特别为 APP端 优化，充分利用 APP端 布局的便捷性以及高度决策的便捷性，统一采用自适应高度，为 APP端 移除掉了1.x中引入的高度决策系统。2.0中的list你只需要理解 `flex:1` 就好。
-
-在 非APP-NVUE 端，2.0极大的简化了list高度配置的参数，只需要extra配合height即可，其它高度管理类盒子与mixin也全部换成了简化的配置，降低配置成本。
+![Android下载](https://mypui.asnowsoft.cn/apk/mypUI.png)
 
 # 找到代码与我们
 
 - [mypUI-github](https://github.com/wakaryry/mypUI) 欢迎star
-
-- 1.x分支代码 [mypUI-1.x](https://github.com/wakaryry/mypUI/tree/1.x)
 
 - [mypUI-uniapp插件市场](https://ext.dcloud.net.cn/plugin?id=2190) 需要您的好评
 
 - [mypUI-文档开源地址](https://github.com/wakaryry/mypui-doc)
 
 - [mypUI-文档线上地址](https://mypui.asnowsoft.cn)
-
-- [mypUI-1.x文档线上地址](https://mypui.asnowsoft.cn/v1)
 
 - npm地址：[https://www.npmjs.com/package/@mypui/myp-ui](https://www.npmjs.com/package/@mypui/myp-ui)
 

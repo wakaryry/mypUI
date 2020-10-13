@@ -1,17 +1,17 @@
 <template>
 	<view v-if="showing" :class="['myp-toast', needMask&&'myp-toast-mask', needMask&&'myp-bg-'+maskType]" @click.stop="toPrevent" :style="maskStyle">
 		<view v-if="mode==='big'" class="myp-toast-content" :style="mrContentStyle">
-			<view :class="['myp-toast-content-box', 'myp-bg-'+bgType]" :style="contentStyle">
+			<view :class="['myp-toast-content-box', 'myp-flex-column', 'myp-align-center', 'myp-justify-center', 'myp-bg-'+bgType]" :style="contentStyle">
 				<myp-icon v-if="icon" :name="icon" :type="iconType" :size="iconSize" :iconStyle="'font-size:60rpx;'+iconStyle"></myp-icon>
-				<text v-if="text" :class="['myp-toast-content-text', 'myp-color-'+textType, 'myp-size-'+textSize]" :style="textStyle">{{text}}</text>
+				<text v-if="text" :class="['myp-toast-content-text', 'myp-lines-two', 'myp-color-'+textType, 'myp-size-'+textSize]" :style="textStyle">{{text}}</text>
 			</view>
 		</view>
 		<view v-else class="myp-toast-small" :style="mrContentStyle">
-			<view :class="['myp-toast-small-box', 'myp-bg-'+bgType]" :style="contentStyle">
+			<view :class="['myp-toast-small-box', 'myp-flex-row', 'myp-align-center', 'myp-bg-'+bgType]" :style="contentStyle">
 				<view v-if="icon" style="margin-right: 24rpx;">
 					<myp-icon :name="icon" :type="iconType" :size="iconSize" :iconStyle="iconStyle"></myp-icon>
 				</view>
-				<text v-if="text" :class="['myp-toast-small-text', 'myp-color-'+textType, 'myp-size-'+textSize]" :style="textStyle">{{text}}</text>
+				<text v-if="text" :class="['myp-toast-small-text', 'myp-flex-one', 'myp-lines-two', 'myp-color-'+textType, 'myp-size-'+textSize]" :style="textStyle">{{text}}</text>
 			</view>
 		</view>
 	</view>
@@ -213,64 +213,27 @@
 			position: fixed;
 			
 			&-box {
-				/* #ifndef APP-NVUE */
-				display: flex;
-				box-sizing: border-box;
-				/* #endif */
-				flex-direction: column;
-				align-items: center;
-				justify-content: center;
 				border-radius: 20rpx;
 				width: 250rpx;
 				height: 250rpx;
 			}
-			
 			&-text {
-				overflow: hidden;
 				text-align: center;
-				text-overflow: ellipsis;
 				line-height: 42rpx;
 				margin-top: 20rpx;
 				width: 200rpx;
-				/* #ifdef APP-NVUE */
-				lines: 2;
-				/* #endif */
-				/* #ifndef APP-NVUE */
-				display: -webkit-box;
-				-webkit-box-orient: vertical;
-				-webkit-line-clamp: 2;
-				/* #endif */
 			}
 		}
-		
 		&-small {
 			position: fixed;
 			
 			&-box {
-				/* #ifndef APP-NVUE */
-				display: flex;
-				box-sizing: border-box;
-				/* #endif */
-				flex-direction: row;
-				align-items: center;
 				border-radius: 20rpx;
 				width: 600rpx;
 				padding: 32rpx;
 			}
-			
 			&-text {
-				flex: 1;
 				line-height: 42rpx;
-				/* #ifdef APP-NVUE */
-				lines: 2;
-				/* #endif */
-				overflow: hidden;
-				text-overflow: ellipsis;
-				/* #ifndef APP-NVUE */
-				display: -webkit-box;
-				-webkit-box-orient: vertical;
-				-webkit-line-clamp: 2;
-				/* #endif */
 			}
 		}
 	}

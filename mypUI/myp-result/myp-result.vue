@@ -1,5 +1,5 @@
 <template>
-	<view class="myp-result" :style="boxStyle">
+	<view class="myp-flex-column myp-align-center" :style="boxStyle">
 		<view :style="{height: top}"></view>
 		<slot name="icon">
 			<myp-icon :name="icon" :type="iconType" :size="iconSize" :iconStyle="iconStyle" :boxStyle="iconBoxStyle"></myp-icon>
@@ -127,12 +127,4 @@
 </script>
 
 <style lang="scss" scoped>
-	.myp-result {
-		/* #ifndef APP-NVUE */
-		display: flex;
-		box-sizing: border-box;
-		/* #endif */
-		flex-direction: column;
-		align-items: center;
-	}
 </style>

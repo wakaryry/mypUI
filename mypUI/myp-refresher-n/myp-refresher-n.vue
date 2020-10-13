@@ -1,5 +1,5 @@
 <template>
-	<refresh class="myp-refresher" @refresh="onRefresh" @pullingdown="onPullingDown" :display="refreshing ? 'show' : 'hide'">
+	<refresh class="myp-refresher myp-flex-row myp-justify-center" @refresh="onRefresh" @pullingdown="onPullingDown" :display="refreshing ? 'show' : 'hide'" :style="boxStyle">
 		<view class="myp-cycle-container" ref="cycle">
 			<view class="myp-u-cover myp-u-c1" ref="cover1">
 				<view class="myp-u-cover-cycle myp-u-cover1"></view>
@@ -68,6 +68,13 @@
 			downIcon: {
 				type: String,
 				default: '/static/ui/down.png'
+			},
+			/**
+			 * 外层样式
+			 */
+			boxStyle: {
+				type: String,
+				default: ''
 			}
 		},
 		data() {
@@ -242,8 +249,6 @@
 	.myp-refresher {
 		height: 140rpx;
 		width: 750rpx;
-		flex-direction: row;
-		justify-content: center;
 		padding-top: 50rpx;
 	}
 

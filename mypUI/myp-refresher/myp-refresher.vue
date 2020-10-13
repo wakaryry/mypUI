@@ -1,5 +1,5 @@
 <template>
-	<view class="myp-refresher">
+	<view class="myp-refresher myp-flex-row myp-justify-center" :style="boxStyle">
 		<view :class="['myp-cycle-container', refreshing&&'myp-scroll-rotate']">
 			<view class="myp-u-cover myp-u-c2" :style="cover2Style">
 				<view class="myp-u-cover-cycle" :style="coverCycleStyle"></view>
@@ -55,6 +55,13 @@
 			rate: {
 				type: Number,
 				default: 0
+			},
+			/**
+			 * 外层样式
+			 */
+			boxStyle: {
+				type: String,
+				default: ''
 			}
 		},
 		data() {
@@ -86,12 +93,6 @@
 	.myp-refresher {
 		height: 140rpx;
 		width: 750rpx;
-		/* #ifndef APP-NVUE */
-		display: flex;
-		box-sizing: border-box;
-		/* #endif */
-		flex-direction: row;
-		justify-content: center;
 		padding-top: 50rpx;
 	}
 

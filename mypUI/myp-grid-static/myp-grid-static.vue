@@ -1,8 +1,11 @@
 <template>
-	<view :class="['myp-grid', 'myp-border-'+border, 'myp-radius-'+radius]" :style="boxStyle">
-		<view v-for="(rows, idx) in rowArr" class="myp-grid-rows" :style="mrRowStyle" :key="idx">
-			<view v-for="(item, index)  in rows" :class="['myp-grid-item', isGrid&&'myp-grid-grid', index !==0 && hasLine && 'myp-grid-item-left', idx !== 0 && hasLine && 'myp-grid-item-top']" :key="index" :style="mrItemStyle+((index===rows.length-1)?mrNoSpaceStyle:'')">
-				<myp-grid-item v-if="item" :icon="item[iconLabel]" :text="item[textLabel]" :textType="textType" :textSize="textSize" :iconType="iconType" :iconSize="iconSize" :hover="hover" :isIcon="isIcon" :mode="mode" :space="space" :boxStyle="itemBoxStyle" :iconStyle="iconStyle" :iconBoxStyle="iconBoxStyle" :textStyle="textStyle" @itemClicked="clickedItem(idx, index, item)"></myp-grid-item>
+	<view :class="['myp-flex-column', 'myp-border-'+border, 'myp-radius-'+radius]" :style="boxStyle">
+		<view v-for="(rows, idx) in rowArr" class="myp-flex-row myp-wrap-nowrap" :key="idx">
+			<view v-for="(item, index)  in rows" :class="[flexDirection==='row'?'myp-flex-row':'myp-flex-column', 'myp-position-relative', 'myp-justify-center', 'myp-align-center', 'myp-flex-one', index !==0 && hasLine && 'myp-grid-item-left', idx !== 0 && hasLine && 'myp-grid-item-top']" :key="index" :style="mrItemStyle" :hover-class="'myp-hover-'+hover" bubble="true" @tap.stop="clickedItem(idx, index, item)">
+				<text v-if="textFirst&&item" :class="['myp-color-'+textType, 'myp-size-'+textSize]" :style="mrTextStyle+itemBoxStyle">{{item[textLabel]}}</text>
+				<myp-icon v-if="isIcon&&item" :name="item[iconLabel]" :type="iconType" :size="iconSize" :iconStyle="iconStyle" :boxStyle="iconBoxStyle" @iconClicked="clickedItem(idx, index, item)"></myp-icon>
+				<text v-if="!isIcon&&item" :class="['myp-color-'+iconType, 'myp-size-'+iconSize]" :style="iconStyle">{{item[iconLabel]}}</text>
+				<text v-if="!textFirst&&item" :class="['myp-color-'+textType, 'myp-size-'+textSize]" :style="mrTextStyle">{{item[textLabel]}}</text>
 				<myp-badge v-if="item.badge" :size="item.badge.size||badgeConfig.size||'12rpx'" :bgType="item.badge.bgType||badgeConfig.bgType||'error'" :text="item.badge.text||''" :border="item.badge.border||badgeConfig.border||'none'" :textType="item.badge.textType||badgeConfig.textType||'inverse'" :textSize="item.badge.textSize||badgeConfig.textSize||'ss'" :textStyle="item.badge.textStyle||badgeConfig.textStyle||''" :boxStyle="item.badge.boxStyle||badgeConfig.boxStyle||''"></myp-badge>
 			</view>
 		</view>
@@ -18,27 +21,6 @@
 			items: {
 				type: Array,
 				default: ()=>{return []}
-			},
-			/**
-			 * 布局方式，除开grid值外，还可以选择justify-content的值
-			 */
-			flex: {
-				type: String,
-				default: 'grid'
-			},
-			/**
-			 * item的宽度，只有当flex不是grid的时候起效
-			 */
-			itemWidth: {
-				type: String,
-				default: ''
-			},
-			/**
-			 * item之间的间隙，只有当flex不是grid的时候有效
-			 */
-			itemSpace: {
-				type: String,
-				default: ''
 			},
 			/**
 			 * grid-item的布局方式
@@ -191,9 +173,6 @@
 			}
 		},
 		computed: {
-			isGrid() {
-				return this.flex === 'grid'
-			},
 			rowArr() {
 			  const rowArr = []
 			  let rowCount = 0
@@ -211,33 +190,24 @@
 			  }
 			  return rowArr
 			},
-			mrRowStyle() {
-				if (this.isGrid) {
-					return ''
-				}
-				return `justify-content:${this.flex};`
-			},
 			mrItemStyle() {
-				if (this.isGrid) {
-					return this.itemHeight ? ("height:" + this.itemHeight + ';') : ''
-				}
-				let _style = this.itemHeight ? ("height:" + this.itemHeight + ';') : ''
-				if (this.itemWidth && this.itemWidth.length > 0) {
-					_style += `width:${this.itemWidth};`
-				}
-				if (this.itemSpace && this.itemSpace.length > 0) {
-					_style += `margin-right:${this.itemSpace};`
-				}
-				return _style
+				return this.itemHeight ? ("height:" + this.itemHeight + ';') : ''
 			},
-			mrNoSpaceStyle() {
-				if (this.isGrid) {
-					return ''
+			flexDirection() {
+				if (this.mode === 'left' || this.mode === 'right') {
+					return 'row'
 				}
-				if (this.itemSpace && this.itemSpace.length > 0) {
-					return 'margin-right:0;'
+				return 'column'
+			},
+			textFirst() {
+				if (this.mode === 'left' || this.mode === 'top') {
+					return false
 				}
-				return ''
+				return true
+			},
+			mrTextStyle() {
+				const _space = "margin-" + this.mode + ':' + this.space + ';'
+				return _space + this.textStyle
 			}
 		},
 		methods: {
@@ -254,34 +224,10 @@
 
 <style lang="scss" scoped>
 	@import '../mypui.scss';
+	@import '@/uni.scss';
 	
 	.myp-grid {
-		/* #ifndef APP-NVUE */
-		display: flex;
-		box-sizing: border-box;
-		/* #endif */
-		flex-direction: column;
-		
-		&-rows {
-			/* #ifndef APP-NVUE */
-			display: flex;
-			box-sizing: border-box;
-			/* #endif */
-			flex-direction: row;
-			flex-wrap: nowrap;
-		}
-		&-grid {
-			flex: 1;
-		}
 		&-item {
-			/* #ifndef APP-NVUE */
-			display: flex;
-			box-sizing: border-box;
-			/* #endif */
-			justify-content: center;
-			align-items: center;
-			position: relative;
-			
 			&-left {
 				border-left-color: $myp-border-color;
 				border-left-width: 1px;

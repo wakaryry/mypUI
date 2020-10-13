@@ -244,7 +244,8 @@
 
 <style lang="scss" scoped>
 	@import '../mypui.scss';
-
+	@import '@/uni.scss';
+	
 	.myp-index {
 		position: relative;
 

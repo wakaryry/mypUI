@@ -1,6 +1,6 @@
 <template>
 	<view class="myp-popover">
-		<view class="myp-popover-cover" ref="myp-cover" v-if="show" @click="hideAction" :style="mrCoverStyle + noWeexCoverAni"></view>
+		<view class="myp-popover-cover myp-bg-mask" ref="myp-cover" v-if="show" @click="hideAction" :style="mrCoverStyle + noWeexCoverAni"></view>
 		<view ref="myp-popover" class="myp-popover-popover" v-if="show && buttons.length" :style="contentStyle + noWeexPopAni">
 			<view class="myp-popover-arrow" :style="arrowStyle"></view>
 			<view class="myp-popover-inner">
@@ -366,8 +366,6 @@
 </script>
 
 <style lang="scss" scoped>
-	@import '../mypui.scss';
-	
 	.myp-popover {
 		&-cover {
 			position: fixed;
@@ -375,7 +373,6 @@
 			right: 0;
 			left: 0;
 			bottom: 0;
-			background-color: $myp-bg-color-mask;
 		}
 		&-popover {
 			position: fixed;

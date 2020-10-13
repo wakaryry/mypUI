@@ -3,7 +3,7 @@
 		<view ref="myp-popo-overlay" :class="['myp-popo-over', 'myp-bg-'+overlay.bgType]" @tap.stop="overlayClose" :style="mrOverlayStyle + overlayNoWeexAni">
 			<slot name="overlay"></slot>
 		</view>
-		<view ref="myp-popo" @tap.stop="toPrevent" :class="['myp-popo', 'myp-bg-'+bgType]" :style="boxStyle+mrPopStyle + noWeexAni">
+		<view ref="myp-popo" @tap.stop="toPrevent" :class="['myp-popo', 'myp-flex-column', 'myp-bg-'+bgType]" :style="boxStyle+mrPopStyle + noWeexAni">
 			<slot></slot>
 		</view>
 	</view>
@@ -480,11 +480,6 @@
 	.myp-popo {
 		position: fixed;
 		width: 750rpx;
-		flex-direction: column;
-		/* #ifndef APP-NVUE */
-		display: flex;
-		box-sizing: border-box;
-		/* #endif */
 		
 		&-over {
 			position: fixed;

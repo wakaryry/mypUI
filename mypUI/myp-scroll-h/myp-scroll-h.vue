@@ -1,6 +1,6 @@
 <template>
 	<scroll-view :scroll="false" :scroll-x="true" :scroll-left="leftPx" :scroll-with-animation="true" :show-scrollbar="false" :class="['myp-bg-'+bgType]" :style="mrScrollStyle">
-		<view :style="mrContentStyle">
+		<view class="myp-flex-row myp-wrap-nowrap" :style="contentStyle">
 			<slot></slot>
 		</view>
 	</scroll-view>
@@ -17,13 +17,6 @@
 			bgType: {
 				type: String,
 				default: ''
-			},
-			/**
-			 * 布局调整
-			 */
-			justify: {
-				type: String,
-				default: 'flex-start'
 			},
 			/**
 			 * 自定义宽度
@@ -69,19 +62,9 @@
 				let _style = "width:" + this.width + ';'
 				_style += "height:" + this.height + ';'
 				// #ifdef APP-NVUE
-				_style += `flex-direction:row;justify-content:${this.justify};`
+				_style += `flex-direction:row;`
 				// #endif
 				return _style + this.boxStyle
-			},
-			mrContentStyle() {
-				let _style = `flex-direction:row;justify-content:${this.justify};flex-wrap:nowrap;`
-				// #ifndef APP-NVUE
-				_style += `display: flex;box-sizing: border-box;`
-				// #endif
-				if (this.justify != 'flex-start') {
-					_style += "width:" + this.width + ';'
-				}
-				return _style + this.contentStyle
 			}
 		}
 	}

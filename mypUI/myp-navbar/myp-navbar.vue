@@ -3,24 +3,24 @@
 		<view v-if="fixed&&isSeize" :style="{height: seizeHeight + 'px', width: '750rpx'}"></view>
 		<view :class="['myp-bg-'+bgType, 'myp-border-'+border, 'myp-nav-box', fixed&&'myp-nav-fixed']" :style="statusNavStyle" @tap.stop="toPrevent">
 			<view v-if="includeStatus" :style="{width: '750rpx', height: statusHeight + 'px'}"></view>
-			<view class="myp-nav-content" :style="mrNavStyle">
-				<view :class="['myp-nav-lefts', leftBgType&&('myp-bg-'+leftBgType)]" :style="leftStyle">
+			<view class="myp-flex-row myp-wrap-nowrap myp-align-center" :style="mrNavStyle">
+				<view :class="['myp-flex-row', 'myp-wrap-nowrap', 'myp-justify-start', 'myp-align-center', 'myp-nav-lefts', leftBgType&&('myp-bg-'+leftBgType)]" :style="leftStyle">
 					<slot name="left">
-						<view v-if="lefts && lefts.length > 0" v-for="(left, idx) in lefts" :key="idx" :class="['myp-nav-lefts-item', left.bgType&&('myp-bg-'+left.bgType)]" :style="leftItemStyle+(left.style||'')" bubble="true" @tap="goLeft(idx)">
+						<view v-if="lefts && lefts.length > 0" v-for="(left, idx) in lefts" :key="idx" :class="['myp-flex-row', 'myp-align-center', left.bgType&&('myp-bg-'+left.bgType)]" :style="leftItemStyle+(left.style||'')" bubble="true" @tap="goLeft(idx)">
 							<myp-icon v-if="left.icon" :name="left.icon" :type="left.iconType||itemIconType" :size="left.iconSize||itemIconSize" :iconStyle="itemIconStyle+(left.iconStyle||'')" @iconClicked="goLeft(idx)"></myp-icon>
 							<text v-if="left.text" :class="['myp-color-'+(left.textType||itemTextType), 'myp-size-'+(left.textSize||itemTextSize)]" :style="itemTextStyle+(left.textStyle||'')">{{left.text}}</text>
 						</view>
 					</slot>
 				</view>
-				<view class="myp-nav-title" :style="centerStyle">
+				<view class="myp-flex-row myp-wrap-nowrap myp-align-center myp-justify-center myp-nav-title" :style="centerStyle">
 					<slot name="title">
-						<text v-if="title" :class="['myp-nav-title-text', 'myp-color-'+titleType, 'myp-size-'+titleSize]" :style="titleStyle" @tap.stop="clickCenter">{{ title }}</text>
+						<text v-if="title" :class="['myp-lines-one', 'myp-nav-title-text', 'myp-color-'+titleType, 'myp-size-'+titleSize]" :style="titleStyle" @tap.stop="clickCenter">{{ title }}</text>
 						<myp-icon v-if="icon" :name="icon" :type="iconType" :size="iconSize" :iconStyle="iconStyle" @iconClicked="clickCenter"></myp-icon>
 					</slot>
 				</view>
-				<view :class="['myp-nav-rights', rightBgType&&('myp-bg-'+rightBgType)]" :style="rightStyle">
+				<view :class="['myp-flex-row', 'myp-align-center', 'myp-wrap-nowrap', 'myp-justify-end', 'myp-nav-rights', rightBgType&&('myp-bg-'+rightBgType)]" :style="rightStyle">
 					<slot name="right">
-						<view v-if="rights && rights.length > 0" v-for="(right, idx) in rights" :key="idx" :class="['myp-nav-rights-item', right.bgType&&('myp-bg-'+right.bgType)]" :style="rightItemStyle+(right.style||'')" bubble="true" @tap="goRight(idx)">
+						<view v-if="rights && rights.length > 0" v-for="(right, idx) in rights" :key="idx" :class="['myp-flex-row', 'myp-align-center', 'myp-wrap-nowrap', 'myp-justify-end', right.bgType&&('myp-bg-'+right.bgType)]" :style="rightItemStyle+(right.style||'')" bubble="true" @tap="goRight(idx)">
 							<myp-icon v-if="right.icon" :name="right.icon" :type="right.iconType||itemIconType" :size="right.iconSize||itemIconSize" :iconStyle="itemIconStyle+(right.iconStyle||'')" @iconClicked="goRight(idx)"></myp-icon>
 							<text v-if="right.text" :class="['myp-color-'+(right.textType||itemTextType), 'myp-size-'+(right.textSize||itemTextSize)]" :style="itemTextStyle+(right.textStyle||'')">{{right.text}}</text>
 						</view>
@@ -310,81 +310,20 @@
 		&-fixed {
 			position: fixed;
 		}
-		&-content {
-			/* #ifndef APP-NVUE */
-			display: flex;
-			box-sizing: border-box;
-			/* #endif */
-			flex-direction: row;
-			flex-wrap: nowrap;
-			align-items: center;
-		}
 		&-lefts {
 			padding-left: 30rpx;
 			width: 200rpx;
-			/* #ifndef APP-NVUE */
-			display: flex;
-			box-sizing: border-box;
-			/* #endif */
-			flex-direction: row;
-			flex-wrap: nowrap;
-			align-items: center;
-			justify-content: flex-start;
-			
-			&-item {
-				/* #ifndef APP-NVUE */
-				display: flex;
-				box-sizing: border-box;
-				/* #endif */
-				flex-direction: row;
-				align-items: center;
-			}
 		}
 		&-title {
 			width: 350rpx;
-			/* #ifndef APP-NVUE */
-			display: flex;
-			box-sizing: border-box;
-			/* #endif */
-			flex-direction: row;
-			flex-wrap: nowrap;
-			justify-content: center;
-			align-items: center;
 			
 			&-text {
 				max-width: 350rpx;
-				overflow: hidden;
-				text-overflow: ellipsis;
-				/* #ifdef APP-NVUE */
-				lines: 1;
-				/* #endif */
-				/* #ifndef APP-NVUE */
-				white-space: nowrap;
-				/* #endif */
 			}
 		}
 		&-rights {
 			padding-right: 30rpx;
 			width: 200rpx;
-			/* #ifndef APP-NVUE */
-			display: flex;
-			box-sizing: border-box;
-			/* #endif */
-			flex-direction: row;
-			flex-wrap: nowrap;
-			align-items: center;
-			justify-content: flex-end;
-			
-			&-item {
-				/* #ifndef APP-NVUE */
-				display: flex;
-				box-sizing: border-box;
-				/* #endif */
-				flex-direction: row;
-				align-items: center;
-				flex-wrap: nowrap;
-				justify-content: flex-end;
-			}
 		}
 	}
 </style>

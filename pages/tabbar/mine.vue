@@ -5,8 +5,8 @@
 		</myp-list-cell>
 		<myp-list-cell v-for="(item, idx) in items" :key="idx">
 			<view :class="['tm-content', item.uid===1?'tm-content-left':'tm-content-right']">
-				<myp-message-time v-if="idx===0 || idx ===5" :time="idx===0?'10:46':'11:05'" boxStyle="width:686rpx;"></myp-message-time>
-				<myp-message-text :direction="item.uid===1?'left':'right'" :avatar="item.avatar" :text="item.text" :bgType="item.uid===1?'':'error'" :textType="item.uid===1?'':'inverse'"></myp-message-text>
+				<message-time v-if="idx===0 || idx ===5" :time="idx===0?'10:46':'11:05'" boxStyle="width:686rpx;"></message-time>
+				<message-text :direction="item.uid===1?'left':'right'" :avatar="item.avatar" :text="item.text" :bgType="item.uid===1?'':'error'" :textType="item.uid===1?'':'inverse'"></message-text>
 				<view style="height: 32rpx;"></view>
 			</view>
 		</myp-list-cell>
@@ -17,7 +17,14 @@
 </template>
 
 <script>
+	import messageTime from '@/components/messageTime.vue'
+	import messageText from '@/components/messageText.vue'
+	
 	export default {
+		components: {
+			messageText,
+			messageTime
+		},
 		data() {
 			return {
 				items: [{

@@ -1,22 +1,22 @@
 <template>
-	<view :class="['myp-input', 'myp-bg-'+bgType, 'myp-height-'+height, 'myp-radius-'+radius, 'myp-border-'+border]" :style="boxStyle">
+	<view :class="['myp-flex-row', 'myp-align-center', 'myp-wrap-nowrap', 'myp-bg-'+bgType, 'myp-height-'+height, 'myp-radius-'+radius, 'myp-border-'+border]" :style="boxStyle">
 		<myp-icon v-if="icon&&icon.length>0" :name="icon" :type="iconType" :size="iconSize" :iconStyle="iconStyle" :boxStyle="'margin-right:'+space+';'+iconBoxStyle"></myp-icon>
 		<slot name="label">
 			<text v-if="label&&label.length>0" :class="['myp-color-'+labelType, 'myp-size-'+labelSize]" :style="'margin-right:'+space+';'+labelStyle">{{label||''}}</text>
 		</slot>
 		<!-- #ifndef APP-NVUE -->
-		<view :class="['myp-input-box', 'myp-height-'+height]" :style="inputBoxHeightStyle">
-			<view :class="['myp-input-place', 'myp-input-place-'+valueAlign]">
+		<view :class="['myp-flex-one', 'myp-position-relative', 'myp-height-'+height]" :style="inputBoxHeightStyle">
+			<view :class="['myp-flex-row', 'myp-align-center', 'myp-input-place', 'myp-input-place-'+valueAlign]">
 				<text v-if="showPlaceholder" :class="['myp-size-'+placeSize, 'myp-color-'+placeType]" :style="placeStyle">{{placeholder||''}}</text>
 			</view>
-			<view class="myp-input-input">
+			<view class="myp-flex-row myp-align-center myp-input-input">
 				<input :type="type" :adjust-position="adjust" :confirm-type="confirmType" :maxlength="maxlength" :value="inputValue||''" :password="password" :class="['myp-color-'+valueType, 'myp-size-'+valueSize]" :style="'text-align:'+valueAlign+';'+valueStyle" @input="handleInputedText" @confirm="handleConfirmText" @focus="toFocus" @blur="toBlur" @keyboardheightchange="toChangeKb" />
 			</view>
 		</view>
 		<!-- #endif -->
 		<!-- #ifdef APP-NVUE -->
-		<view class="myp-input-box">
-			<view :class="['myp-input-place', 'myp-input-place-'+valueAlign]">
+		<view class="myp-flex-one myp-position-relative">
+			<view :class="['myp-flex-row', 'myp-align-center', 'myp-input-place', 'myp-input-place-'+valueAlign]">
 				<text v-if="showPlaceholder" :class="['myp-size-'+placeSize, 'myp-color-'+placeType]" :style="placeStyle">{{placeholder||''}}</text>
 			</view>
 			<input :type="type" :adjust-position="adjust" :confirm-type="confirmType" :maxlength="maxlength" :value="inputValue||''" :password="password" :class="['myp-color-'+valueType, 'myp-size-'+valueSize]" :style="'text-align:'+valueAlign+';'+valueStyle" @input="handleInputedText" @confirm="handleConfirmText" @focus="toFocus" @blur="toBlur" @keyboardheightchange="toChangeKb" />
@@ -398,30 +398,12 @@
 
 <style lang="scss" scoped>
 	.myp-input {
-		/* #ifndef APP-NVUE */
-		display: flex;
-		box-sizing: border-box;
-		/* #endif */
-		flex-direction: row;
-		flex-wrap: nowrap;
-		align-items: center;
-		
-		&-box {
-			flex: 1;
-			position: relative;
-		}
 		&-place {
 			position: absolute;
 			left: 0;
 			top: 0;
 			right: 0;
 			bottom: 0;
-			/* #ifndef APP-NVUE */
-			display: flex;
-			box-sizing: border-box;
-			/* #endif */
-			flex-direction: row;
-			align-items: center;
 			
 			&-left {
 				justify-content: flex-start;
@@ -439,12 +421,6 @@
 			top: 0;
 			right: 0;
 			bottom: 0;
-			/* #ifndef APP-NVUE */
-			display: flex;
-			box-sizing: border-box;
-			/* #endif */
-			flex-direction: row;
-			align-items: center;
 		}
 	}
 </style>

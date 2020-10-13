@@ -1,7 +1,7 @@
 <template>
-	<view :class="['myp-timeline', 'myp-bg-'+bgType, 'myp-border-'+border, 'myp-radius-'+radius]" :style="boxStyle">
+	<view :class="['myp-flex-row', 'myp-wrap-nowrap', 'myp-bg-'+bgType, 'myp-border-'+border, 'myp-radius-'+radius]" :style="boxStyle">
 		<slot name="left"></slot>
-		<view class="myp-timeline-center" :style="centerStyle">
+		<view class="myp-timeline-center myp-flex-column myp-align-center" :style="centerStyle">
 			<view :class="['myp-timeline-line', 'myp-bg-'+lineBgType]" :style="lineStyle"></view>
 			<slot name="badge"></slot>
 		</view>
@@ -67,21 +67,8 @@
 
 <style lang="scss" scoped>
 	.myp-timeline {
-		/* #ifndef APP-NVUE */
-		display: flex;
-		box-sizing: border-box;
-		/* #endif */
-		flex-direction: row;
-		flex-wrap: nowrap;
-		
 		&-center {
 			position: relative;
-			/* #ifndef APP-NVUE */
-			display: flex;
-			box-sizing: border-box;
-			/* #endif */
-			flex-direction: column;
-			align-items: center;
 		}
 		&-line {
 			flex: 1;

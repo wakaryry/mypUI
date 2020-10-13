@@ -10,13 +10,13 @@
 				<view style="height: 24rpx;"></view>
 			</myp-list-cell>
 			<myp-list-cell>
-				<myp-tabs-h :value="current" :isTap="true" :items="tabs1" activeTextType="warning" indicatorType="warning" @change="toChange1"></myp-tabs-h>
+				<myp-tabs-h :value="current" :isTap="true" :items="tabs1" activeTextType="warning" indicatorType="warning" indicatorStyle="bottom:20rpx;" @change="toChange1"></myp-tabs-h>
 			</myp-list-cell>
 			<myp-list-cell>
 				<view style="height: 24rpx;"></view>
 			</myp-list-cell>
 			<myp-list-cell>
-				<myp-tabs-h :value="current" :isTap="true" :items="tabs1" justify="center" activeTextType="error" indicatorType="error" @change="toChange1"></myp-tabs-h>
+				<myp-tabs-h :value="current" :isTap="true" :items="tabs1" justify="center" activeTextType="inverse" indicatorType="error" indicatorRadius="50rpx" indicatorStyle="height:80rpx;border-radius:50rpx;" @change="toChange1"></myp-tabs-h>
 			</myp-list-cell>
 			<myp-list-cell>
 				<view style="height: 24rpx;"></view>
@@ -28,7 +28,7 @@
 				<view style="height: 24rpx;"></view>
 			</myp-list-cell>
 			<myp-list-cell>
-				<myp-tabs-h :value="current3" :isTap="true" :items="tabs3" activeTextType="error" indicatorType="error" @change="toChange3"></myp-tabs-h>
+				<myp-tabs-h :value="current3" :isTap="true" :items="tabs3" activeTextType="error" indicatorType="error" indicatorStyle="top:0;" @change="toChange3"></myp-tabs-h>
 			</myp-list-cell>
 			<myp-list-cell>
 				<view style="height: 24rpx;"></view>

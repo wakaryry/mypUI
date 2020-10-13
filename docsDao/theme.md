@@ -187,6 +187,14 @@ $myp-nav-bg-color: #FFFFFF;  // 导航栏的背景色
 
 base.scss 中定义的class，基本上已经足够支撑大多数的设计。熟悉它里面与主题的对应关系以及有哪些内容，对于快速开发，以及减少css代码的书写，与减少包体积来说是十分重要的。
 
+我们的组件库内部依赖全局样式`base.scss`，而且我们的组件里面很少用到别的样式。我们尽量在复用base.scss的样式，这对于小程序等需要分包的端来说是比较重要的，能够最大程度减少包体积。我自己本人也在用mypUI做项目，我们会一直全方面优化mypUI。也正是因为我不是为了框架而出框架，我更多的是项目的体验与实战，所以mypUI才会真的一直越做越好。
+
+`base.scss`中提供了 flex布局、背景主题、颜色主题、字体大小主题、行高主题、高度主题、间距主题、文字省略、边框主题、圆角主题、遮罩主题、hover主题等各方面class。
+
+具体的对应关系您应该查阅`base.scss`里面的内容。
+
+`base.scss`绝对足够支撑大多数业务与设计，而且我们的组件库就是基于`base.scss`的。	
+
 > 组件中对于主题的一些约定
 
 在文档中，主题类的属性，我们都会说明，`xxxx主题`，比如 背景主题 颜色主题 尺寸主题。其它非主题类的，我们会说明为：`样式` 或者 `自定义xxxx`，比如 文字样式 自定义高度 自定义宽度。
@@ -205,5 +213,42 @@ base.scss 中定义的class，基本上已经足够支撑大多数的设计。�
 
 > 如何增加主题变量
 
+我们不建议您直接在mypUI.scss以及base.scss中增加变量和相关的class。
+
+您应该在uni.scss中增加变量，然后增加一个新的对应的class样式文件，并且在app.vue里面引入这个样式文件。
 
 > 各端兼容
+
+为了兼容各端的统一开发，以及单个开发某个端时的便利性，我们为需要兼容考虑的某些端提供了兼容scss样式文件。比如 `mp.scss` 和 `h5.scss`。
+
+如果您需要编译到这些平台，您应该条件引入这些样式：
+
+```html
+<style lang="scss">
+	@import '@/mypUI/base.scss';
+	/* #ifdef MP */
+	@import '@/mypUI/mp.scss';
+	/* #endif */
+	/* #ifdef H5 */
+	@import '@/mypUI/h5.scss';
+	/* #endif */
+</style>
+```
+
+需要编译到多端的时候，记得查看兼容平台相应的样式中的优先级。如果需要在样式中个性化，需要考虑优先级问题。
+
+比如H5中：
+
+```html
+<style lang="scss">
+.myp-border {
+	&-all {
+		border-width: $myp-border-width !important;
+		border-style: solid !important;
+		border-color: $myp-border-color !important;
+	}
+}
+</style>
+```
+
+因为`h5.scss`中全局样式兼容的时候存在 `!important`，优先级高。所以如果您需要覆盖，记得在自己的样式里面加 `!important`。

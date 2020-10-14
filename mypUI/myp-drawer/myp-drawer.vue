@@ -351,7 +351,6 @@
 						}
 					} else if (this.pos === 'bottom') {
 						if (offsetY >= 0) {
-							
 						} else {
 							const y = (-offsetY >= maxSize) ? (-1*maxSize) : offsetY
 							this.noWeexAni = `transition-property: transform; transform: translateY(${y}px);transition-duration: 0;`
@@ -361,18 +360,42 @@
 							const x = (offsetX >= maxSize) ? maxSize : offsetX
 							this.noWeexAni = `transition-property: transform; transform: translateX(${x}px);transition-duration: 0;`
 						} else {
-							
 						}
 					} else if (this.pos === 'right') {
 						if (offsetX < 0) {
 							const x = (-offsetX >= maxSize) ? (-1*maxSize) : offsetX
 							this.noWeexAni = `transition-property: transform; transform: translateX(${x}px);transition-duration: 0;`
 						} else {
-							
 						}
 					}
 				} else {
-					
+					if (this.pos === 'top') {
+						if (offsetY <= 0) {
+							const y = (-offsetY >= maxSize) ? 0 : (maxSize + offsetY)
+							this.noWeexAni = `transition-property: transform; transform: translateY(${y}px);transition-duration: 0;`
+						} else {
+						}
+					} else if (this.pos === 'bottom') {
+						if (offsetY <= 0) {
+						} else {
+							const y = (offsetY >= maxSize) ? (-maxSize) : (-maxSize + offsetY)
+							this.noWeexAni = `transition-property: transform; transform: translateY(${y}px);transition-duration: 0;`
+						}
+					} else if (this.pos === 'left') {
+						if (offsetX <= 0) {
+							const x = (-offsetX >= maxSize) ? 0 : (offsetX + maxSize)
+							this.noWeexAni = `transition-property: transform; transform: translateX(${x}px);transition-duration: 0;`
+						} else {
+							
+						}
+					} else if (this.pos === 'right') {
+						if (offsetX > 0) {
+							const x = (offsetX >= maxSize) ? (-1*maxSize) : (offsetX - maxSize)
+							this.noWeexAni = `transition-property: transform; transform: translateX(${x}px);transition-duration: 0;`
+						} else {
+							
+						}
+					}
 				}
 			},
 			onTouchEnd(e) {
@@ -411,7 +434,32 @@
 						this.toHackShow(false)
 					}
 				} else {
-					
+					this.noWeexAni = ""
+					if (this.pos === 'bottom' || this.pos === 'top') {
+						if (offsetYAbs >= 0.5*maxSize) {
+							if (this.pos === 'top' && offsetY < 0) {
+								this.toHackShow(false)
+								return
+							}
+							if (this.pos === 'bottom' && offsetY > 0) {
+								this.toHackShow(false)
+								return
+							}
+						}
+						this.toHackShow(true)
+					} else if (this.pos === 'left' || this.pos === 'right') {
+						if (offsetXAbs >= 0.5*maxSize) {
+							if (this.pos === 'left' && offsetX < 0) {
+								this.toHackShow(false)
+								return
+							}
+							if (this.pos === 'right' && offsetX > 0) {
+								this.toHackShow(false)
+								return
+							}
+						}
+						this.toHackShow(true)
+					}
 				}
 			},
 			onTouchCancel(e) {

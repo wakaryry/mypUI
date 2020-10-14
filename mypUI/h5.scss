@@ -20,6 +20,9 @@
 		/* #endif */
 		flex-direction: column !important;
 	}
+	&-one {
+		flex: 1 !important;
+	}
 }
 .myp-align {
 	&-start {

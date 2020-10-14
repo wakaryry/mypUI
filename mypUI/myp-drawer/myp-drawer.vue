@@ -1,6 +1,6 @@
 <template>
 	<view>
-		<view ref="myp-popo-overlay" :class="['myp-popo-over', 'myp-bg-'+overlay.bgType]" @tap.stop="overlayClose" :style="mrOverlayStyle + overlayNoWeexAni">
+		<view v-if="hasOverlay" ref="myp-popo-overlay" :class="['myp-popo-over', 'myp-bg-'+overlay.bgType]" @tap.stop="overlayClose" :style="mrOverlayStyle + overlayNoWeexAni">
 			<slot name="overlay"></slot>
 		</view>
 		<view ref="myp-popo" bubble="true" @touchstart="onTouchStart" @touchmove="onTouchMove" @touchcancel="onTouchCancel" @touchend="onTouchEnd" @tap.stop="toPrevent" :class="['myp-flex-column', 'myp-popo', 'myp-bg-'+bgType]" :style="boxStyle+mrPopStyle + noWeexAni">
@@ -43,6 +43,27 @@
 			duration: {
 				type: Number,
 				default: 300
+			},
+			/**
+			 * 停止手势后是否自动打开/关闭
+			 */
+			auto: {
+				type: Boolean,
+				default: true
+			},
+			/**
+			 * 是否允许swipe动作来打开/关闭
+			 */
+			allowSwipe: {
+				type: Boolean,
+				default: true
+			},
+			/**
+			 * 是否存在遮罩层
+			 */
+			hasOverlay: {
+				type: Boolean,
+				default: true
 			},
 			/**
 			 * 遮罩层的整体设置
@@ -449,7 +470,67 @@
 				})
 			},
 			closeWithDrag() {
-				
+				const that = this
+				const maxSize = this.getTransformSize(this.pos, false)
+				const standEl = this.$refs['myp-popo'].ref
+				const popoEl = this.$refs['myp-popo'].ref
+				let exp = ''
+				if (this.pos === 'bottom') {
+					exp = `(y >= 0) ? ((y < ${maxSize}) ? (y - ${maxSize}) : 0) : (-${maxSize})`
+				} else if (this.pos === 'top') {
+					exp = `(y >= 0) ? ${maxSize} : ((y > (-${maxSize})) ? (${maxSize} + y) : 0)`
+				} else if (this.pos === 'left') {
+					exp = `(x >= 0) ? ${maxSize} : ((x > (-${maxSize})) ? (${maxSize} + x) : 0)`
+				} else if (this.pos === 'right') {
+					exp = `(x >= 0) ? ((x < ${maxSize}) ? (x - ${maxSize}) : 0) : (-${maxSize})`
+				}
+				const result = bindingX.bind({
+					eventType: 'pan',
+					anchor: standEl,
+					props: [{
+						element: popoEl,
+						property: this.pos === 'top' || this.pos === 'bottom' ? 'transform.translateY' : 'transform.translateX',
+						expression: exp
+					}]
+				}, (res) => {
+					if (res.state === 'end' && that.isShow) {
+						if (this.pos === 'top' || this.pos === 'bottom') {
+							let offset = res.deltaY
+							let offsetAbs = Math.abs(res.deltaY)
+							if (offsetAbs < maxSize / 2) {
+								this.toHackShow(true)
+							} else if (offsetAbs >= maxSize / 2) {
+								if (this.pos === 'top' && offset < 0) {
+									this.toHackShow(false)
+								} else if (this.pos === 'bottom' && offset > 0) {
+									this.toHackShow(false)
+								} else {
+									this.toHackShow(true)
+								}
+							}
+						} else if (this.pos === 'left' || this.pos === 'right') {
+							let offset = res.deltaX
+							let offsetAbs = Math.abs(res.deltaX)
+							if (offsetAbs < maxSize / 2) {
+							    this.toHackShow(true)
+							} else if (offsetAbs >= maxSize / 2) {
+								if (this.pos === 'left' && offset < 0) {
+									this.toHackShow(false)
+								} else if (this.pos === 'right' && offset > 0) {
+									this.toHackShow(false)
+								} else {
+									this.toHackShow(true)
+								}
+							}
+						}
+					    if (result) {
+					        bindingX.unbind({
+					            token: result.token,
+					            eventType: 'pan'
+					        })
+					    }
+					}
+				})
 			},
 			toHackShow(bool) {
 				this.appearPopup(bool)

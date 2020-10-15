@@ -59,6 +59,13 @@
 				default: true
 			},
 			/**
+			 * 是否只允许swipe动作，没有跟手
+			 */
+			onlySwipe: {
+				type: Boolean,
+				default: false
+			},
+			/**
 			 * 是否存在遮罩层
 			 */
 			hasOverlay: {
@@ -472,49 +479,67 @@
 				const maxSize = this.getTransformSize(this.pos, false)
 				const standEl = this.$refs['myp-popo'].ref
 				const popoEl = this.$refs['myp-popo'].ref
+				const overEl = this.$refs['myp-popo-overlay'].ref
 				let exp = ''
+				let overExp = ''
 				if (this.pos === 'bottom') {
 					exp = `(y >= 0) ? 0 : ((y > (-${maxSize})) ? (y+0) : (-${maxSize}))`
+					overExp = `(y >= 0) ? 0 : ((y > (-${maxSize})) ? ((-1*y) * ${1/maxSize}) : (1+0))`
 				} else if (this.pos === 'top') {
 					exp = `(y > 0) ? ((y > ${maxSize}) ? ${maxSize} : (y+0)) : 0`
+					overExp = `(y > 0) ? ((y > ${maxSize}) ? (1+0) : (y * ${1/maxSize})) : 0`
 				} else if (this.pos === 'left') {
 					exp = `(x > 0) ? ((x > ${maxSize}) ? ${maxSize} : (x+0)) : 0`
+					overExp = `(x > 0) ? ((x > ${maxSize}) ? (1+0) : (x * ${1/maxSize})) : 0`
 				} else if (this.pos === 'right') {
 					exp = `(x >= 0) ? 0 : ((x > (-${maxSize})) ? (x+0) : (-${maxSize}))`
+					overExp = `(x >= 0) ? 0 : ((x > (-${maxSize})) ? ((-1*x)*${1/maxSize}) : (1+0))`
+				}
+				const props = [{
+					element: popoEl,
+					property: this.pos === 'top' || this.pos === 'bottom' ? 'transform.translateY' : 'transform.translateX',
+					expression: exp
+				}]
+				if (this.hasOverlay) {
+					props.push({
+						element: overEl,
+						property: 'opacity',
+						expression: overExp
+					})
+					animation.transition(this.$refs['myp-popo-overlay'], {styles: {height: `${this.overlayHeight}px`},duration: 0,delay: 0})
 				}
 				const result = bindingX.bind({
 					eventType: 'pan',
 					anchor: standEl,
-					props: [{
-						element: popoEl,
-						property: this.pos === 'top' || this.pos === 'bottom' ? 'transform.translateY' : 'transform.translateX',
-						expression: exp
-					}]
+					props: props
 				}, (res) => {
 					if (res.state === 'end' && !that.isShow) {
-						if (this.pos === 'top' || this.pos === 'bottom') {
+						if (result) {
+						    bindingX.unbind({
+						        token: result.token,
+						        eventType: 'pan'
+						    })
+						}
+						if (!that.auto) {
+							return
+						}
+						if (that.pos === 'top' || that.pos === 'bottom') {
 							let offset = res.deltaY
 							let offsetAbs = Math.abs(res.deltaY)
 							if (offsetAbs < maxSize / 2) {
-							    this.toHackShow(false)
+							    that.toHackShow(false)
 							} else if (offsetAbs >= maxSize / 2) {
-							    this.toHackShow(true)
+							    that.toHackShow(true)
 							}
-						} else if (this.pos === 'left' || this.pos === 'right') {
+						} else if (that.pos === 'left' || that.pos === 'right') {
 							let offset = res.deltaX
 							let offsetAbs = Math.abs(res.deltaX)
 							if (offsetAbs < maxSize / 2) {
-							    this.toHackShow(false)
+							    that.toHackShow(false)
 							} else if (offsetAbs >= maxSize / 2) {
-							    this.toHackShow(true)
+							    that.toHackShow(true)
 							}
 						}
-					    if (result) {
-					        bindingX.unbind({
-					            token: result.token,
-					            eventType: 'pan'
-					        })
-					    }
 					}
 				})
 			},
@@ -523,26 +548,49 @@
 				const maxSize = this.getTransformSize(this.pos, false)
 				const standEl = this.$refs['myp-popo'].ref
 				const popoEl = this.$refs['myp-popo'].ref
+				const overEl = this.$refs['myp-popo-overlay'].ref
 				let exp = ''
+				let overExp = ''
 				if (this.pos === 'bottom') {
 					exp = `(y >= 0) ? ((y < ${maxSize}) ? (y - ${maxSize}) : 0) : (-${maxSize})`
+					overExp = `(y >= 0) ? ((y < ${maxSize}) ? ((${maxSize} - y) * ${1/maxSize}) : 0) : (1+0)`
 				} else if (this.pos === 'top') {
 					exp = `(y >= 0) ? ${maxSize} : ((y > (-${maxSize})) ? (${maxSize} + y) : 0)`
+					overExp = `(y >= 0) ? (1+0) : ((y > (-${maxSize})) ? ((${maxSize} + y) * ${1/maxSize}) : 0)`
 				} else if (this.pos === 'left') {
 					exp = `(x >= 0) ? ${maxSize} : ((x > (-${maxSize})) ? (${maxSize} + x) : 0)`
+					overExp = `(x >= 0) ? (1+0) : ((x > (-${maxSize})) ? ((${maxSize} + x) * ${1/maxSize}) : 0)`
 				} else if (this.pos === 'right') {
 					exp = `(x >= 0) ? ((x < ${maxSize}) ? (x - ${maxSize}) : 0) : (-${maxSize})`
+					overExp = `(x >= 0) ? ((x < ${maxSize}) ? ((${maxSize}-x) * ${1/maxSize}) : 0) : (1+0)`
+				}
+				const props = [{
+					element: popoEl,
+					property: this.pos === 'top' || this.pos === 'bottom' ? 'transform.translateY' : 'transform.translateX',
+					expression: exp
+				}]
+				if (this.hasOverlay) {
+					props.push({
+						element: overEl,
+						property: 'opacity',
+						expression: overExp
+					})
 				}
 				const result = bindingX.bind({
 					eventType: 'pan',
 					anchor: standEl,
-					props: [{
-						element: popoEl,
-						property: this.pos === 'top' || this.pos === 'bottom' ? 'transform.translateY' : 'transform.translateX',
-						expression: exp
-					}]
+					props: props
 				}, (res) => {
 					if (res.state === 'end' && that.isShow) {
+						if (result) {
+						    bindingX.unbind({
+						        token: result.token,
+						        eventType: 'pan'
+						    })
+						}
+						if (!this.auto) {
+							return
+						}
 						if (this.pos === 'top' || this.pos === 'bottom') {
 							let offset = res.deltaY
 							let offsetAbs = Math.abs(res.deltaY)
@@ -572,12 +620,6 @@
 								}
 							}
 						}
-					    if (result) {
-					        bindingX.unbind({
-					            token: result.token,
-					            eventType: 'pan'
-					        })
-					    }
 					}
 				})
 			},

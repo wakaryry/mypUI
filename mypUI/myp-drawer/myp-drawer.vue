@@ -479,7 +479,7 @@
 				const maxSize = this.getTransformSize(this.pos, false)
 				const standEl = this.$refs['myp-popo'].ref
 				const popoEl = this.$refs['myp-popo'].ref
-				const overEl = this.$refs['myp-popo-overlay'].ref
+				const overEl = (this.$refs['myp-popo-overlay']||{}).ref
 				let exp = ''
 				let overExp = ''
 				if (this.pos === 'bottom') {
@@ -548,7 +548,7 @@
 				const maxSize = this.getTransformSize(this.pos, false)
 				const standEl = this.$refs['myp-popo'].ref
 				const popoEl = this.$refs['myp-popo'].ref
-				const overEl = this.$refs['myp-popo-overlay'].ref
+				const overEl = (this.$refs['myp-popo-overlay']||{}).ref
 				let exp = ''
 				let overExp = ''
 				if (this.pos === 'bottom') {

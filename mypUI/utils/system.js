@@ -138,6 +138,9 @@ export function getPx(val) {
 }
 
 export function getHeight(val) {
+	if (val === 'screen') {
+		return getScreenHeight()
+	}
 	if (val === 'status') {
 		return getStatusBarHeight()
 	}
@@ -150,19 +153,25 @@ export function getHeight(val) {
 	if (val === 'x') {
 		return getXBarHeight()
 	}
-	if (typeof val === 'string' && (val.startsWith('status') || val.startsWith('nav') || val.startsWith('x'))) {
+	if (typeof val === 'string') {
 		const arr = val.split('-')
 		let h = 0
 		for (const i in arr) {
 			const t = arr[i]
-			if (t === 'status') {
-				h += getStatusBarHeight()
-			} else if (t === 'nav') {
-				h += getNavbarHeight()
-			} else if (t === 'x') {
-				h += getXBarHeight()
+			let factor = 1
+			if (i.indexOf('!') === 0) {
+				factor = -1
+			}
+			if (t === 'screen' || t === '!screen') {
+				t += factor * getScreenHeight()
+			} else if (t === 'status' || t === 'status') {
+				h += factor * getStatusBarHeight()
+			} else if (t === 'nav' || t === '!nav') {
+				h += factor * getNavbarHeight()
+			} else if (t === 'x' || t === '!x') {
+				h += factor * getXBarHeight()
 			} else {
-				h += getPx(t)
+				h += factor * getPx(t)
 			}
 		}
 		return h

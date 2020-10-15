@@ -288,6 +288,12 @@
 				"disableScroll": true
 			}
 		},
+		{
+			"path": "pages/drawer/scroll_drawer",
+			"style": {
+				"disableScroll": true
+			}
+		},
 		// picker
 		{
 			"path": "pages/picker/index",

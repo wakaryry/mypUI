@@ -159,19 +159,23 @@ export function getHeight(val) {
 		for (const i in arr) {
 			const t = arr[i]
 			let factor = 1
-			if (i.indexOf('!') === 0) {
+			if (t.startsWith('!')) {
 				factor = -1
 			}
 			if (t === 'screen' || t === '!screen') {
-				t += factor * getScreenHeight()
-			} else if (t === 'status' || t === 'status') {
+				h += factor * getScreenHeight()
+			} else if (t === 'status' || t === '!status') {
 				h += factor * getStatusBarHeight()
 			} else if (t === 'nav' || t === '!nav') {
 				h += factor * getNavbarHeight()
 			} else if (t === 'x' || t === '!x') {
 				h += factor * getXBarHeight()
 			} else {
-				h += factor * getPx(t)
+				if (t.startsWith('!')) {
+					h -= getPx(t.substring(1))
+				} else {
+					h += getPx(t)
+				}
 			}
 		}
 		return h

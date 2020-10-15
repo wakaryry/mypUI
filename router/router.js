@@ -74,6 +74,7 @@ export default {
 	drawer_left: '/pages/drawer/left',
 	drawer_right: '/pages/drawer/right',
 	drawer_bottom: '/pages/drawer/bottom',
+	scroll_drawer: '/pages/drawer/scroll_drawer',
 	// swiper
 	swiper_index: '/pages/swiper/index',
 	swiper_list: '/pages/swiper/list',

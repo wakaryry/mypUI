@@ -661,6 +661,7 @@
 					!bool && this.pos === 'center' && (animation.transition(popupEl, {styles: {transform: 'scale(0,0)'},duration: 0,delay: 0}))
 				})
 				// overlay
+				if (!this.hasOverlay) return;
 				const popupOverEl = this.$refs['myp-popo-overlay']
 				if (!popupOverEl) return;
 				bool && (animation.transition(popupOverEl, {styles: {height: `${this.overlayHeight}px`},duration: 0,delay: 0}))

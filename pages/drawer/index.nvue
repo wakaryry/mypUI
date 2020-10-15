@@ -37,7 +37,9 @@
 				{title: '抽屉', desc: '左侧出现', type: 'drawerLeft', page: 'drawer_left'}, 
 				{title: '抽屉', desc: '右侧出现', type: 'drawerRight', page: 'drawer_right'}, 
 				{title: '当作popup', desc: '底部出现', type: 'popBottom'}, 
-				{title: '支持standout', desc: '底部出现', type: 'standBottom'}]
+				{title: '支持standout', desc: '底部出现', type: 'standBottom'},
+				{title: '双层scroll', desc: '无遮罩，双层滚动', type: 'scrollDrawer', page: 'scroll_drawer'}
+				]
 			}
 		},
 		methods: {

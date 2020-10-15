@@ -346,25 +346,25 @@
 					if (this.pos === 'top') {
 						if (offsetY > 0) {
 							const y = (offsetY >= maxSize) ? maxSize : offsetY
-							this.noWeexAni = `transition-property: transform; transform: translateY(${y}px);transition-duration: 0;`
+							this.noWeexAni = `transition-property: transform; transform: translateY(${y}px); transition-duration: 0ms;`
 						} else {
 						}
 					} else if (this.pos === 'bottom') {
 						if (offsetY >= 0) {
 						} else {
 							const y = (-offsetY >= maxSize) ? (-1*maxSize) : offsetY
-							this.noWeexAni = `transition-property: transform; transform: translateY(${y}px);transition-duration: 0;`
+							this.noWeexAni = `transition-property: transform; transform: translateY(${y}px); transition-duration: 0ms;`
 						}
 					} else if (this.pos === 'left') {
 						if (offsetX > 0) {
 							const x = (offsetX >= maxSize) ? maxSize : offsetX
-							this.noWeexAni = `transition-property: transform; transform: translateX(${x}px);transition-duration: 0;`
+							this.noWeexAni = `transition-property: transform; transform: translateX(${x}px); transition-duration: 0ms;`
 						} else {
 						}
 					} else if (this.pos === 'right') {
 						if (offsetX < 0) {
 							const x = (-offsetX >= maxSize) ? (-1*maxSize) : offsetX
-							this.noWeexAni = `transition-property: transform; transform: translateX(${x}px);transition-duration: 0;`
+							this.noWeexAni = `transition-property: transform; transform: translateX(${x}px); transition-duration: 0ms;`
 						} else {
 						}
 					}
@@ -372,26 +372,27 @@
 					if (this.pos === 'top') {
 						if (offsetY <= 0) {
 							const y = (-offsetY >= maxSize) ? 0 : (maxSize + offsetY)
-							this.noWeexAni = `transition-property: transform; transform: translateY(${y}px);transition-duration: 0;`
+							// in H5: we must use 0ms and not 0, or it will hold 300ms. i.e 0 can not change 300ms into 0, must use 0ms
+							this.noWeexAni = `transition-property: transform; transform: translateY(${y}px); transition-duration: 0ms;`
 						} else {
 						}
 					} else if (this.pos === 'bottom') {
 						if (offsetY <= 0) {
 						} else {
 							const y = (offsetY >= maxSize) ? (-maxSize) : (-maxSize + offsetY)
-							this.noWeexAni = `transition-property: transform; transform: translateY(${y}px);transition-duration: 0;`
+							this.noWeexAni = `transition-property: transform; transform: translateY(${y}px); transition-duration: 0ms;`
 						}
 					} else if (this.pos === 'left') {
 						if (offsetX <= 0) {
 							const x = (-offsetX >= maxSize) ? 0 : (offsetX + maxSize)
-							this.noWeexAni = `transition-property: transform; transform: translateX(${x}px);transition-duration: 0;`
+							this.noWeexAni = `transition-property: transform; transform: translateX(${x}px); transition-duration: 0ms;`
 						} else {
 							
 						}
 					} else if (this.pos === 'right') {
 						if (offsetX > 0) {
 							const x = (offsetX >= maxSize) ? (-1*maxSize) : (offsetX - maxSize)
-							this.noWeexAni = `transition-property: transform; transform: translateX(${x}px);transition-duration: 0;`
+							this.noWeexAni = `transition-property: transform; transform: translateX(${x}px); transition-duration: 0ms;`
 						} else {
 							
 						}
@@ -643,10 +644,10 @@
 					_style += "transform:" + this.getTransform(this.pos, !bool) + ';'
 				}
 				this.noWeexAni = _style
-				setTimeout(()=>{
-					!bool && (this.noWeexAni='')
-				}, duration)
 				const that = this
+				setTimeout(()=>{
+					!bool && (that.noWeexAni='')
+				}, duration)
 				// overlay
 				let _oStyle = "transition-duration:" + this.overlay.duration + 'ms;'
 				bool && (_oStyle += `height:${this.overlayHeight}px;`)
@@ -655,7 +656,7 @@
 				_oStyle += 'opacity:' + (bool ? 1 : 0) + ';'
 				this.overlayNoWeexAni = _oStyle
 				setTimeout(() => {
-					!bool && (this.overlayNoWeexAni = '')
+					!bool && (that.overlayNoWeexAni = '')
 				}, this.overlay.duration)
 			},
 			getTransformSize(pos, toClose) {

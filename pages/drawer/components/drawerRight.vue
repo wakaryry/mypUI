@@ -35,5 +35,6 @@
 		flex-wrap: nowrap;
 		width: 600rpx;
 		flex: 1;
+		background-color: $myp-color-primary;
 	}
 </style>

@@ -1,3 +1,90 @@
+$myp-color-primary: #8F9CFF;
+$myp-color-success: #8FDAFF;
+$myp-color-warning: #FFD666;
+$myp-color-error: #FF9090;
+
+$myp-color-custom: #4A5061;
+$myp-color-link: #0273F1;
+
+$myp-text-color: #333232;
+$myp-text-color-inverse: #FFFFFF;
+$myp-text-color-second: #666464;
+$myp-text-color-third: #999696;
+$myp-text-color-forth: #CCC8C8;
+
+$myp-text-color-place: #CCC8C8;
+$myp-text-color-disabled: #CCC8C8;
+
+$myp-bg-color-inverse: #FFFFFF;
+$myp-bg-color-page: #FAFAFA;
+$myp-bg-color-light: #F3F4F5;
+$myp-bg-color-dark: #F1F1F1;
+
+$myp-bg-color-hover: #F1F1F1;
+$myp-bg-color-hover-dark: rgba(0, 0, 0, 0.8);
+$myp-bg-color-mask: rgba(0, 0, 0, 0.2);
+$myp-bg-color-mask-dark: rgba(0, 0, 0, 0.8);
+
+$myp-border-color: #F7F5F5;
+$myp-border-color-light: #F7F5F5;
+$myp-border-color-dark: #EBEBEB;
+$myp-border-color-inverse: #FFFFFF;
+
+/* #ifdef APP-NVUE */
+$myp-border-width: 1px;
+/* #endif */
+/* #ifndef APP-NVUE */
+$myp-border-width: 1px;
+/* #endif */
+
+$myp-height-ss: 40rpx;
+$myp-height-s: 60rpx;
+$myp-height-base: 80rpx;
+$myp-height-l: 100rpx;
+$myp-height-ll: 120rpx;
+
+$myp-font-size-ss: 24rpx;
+$myp-font-size-s: 28rpx;
+$myp-font-size-base: 30rpx;
+$myp-font-size-l: 32rpx;
+$myp-font-size-ll: 36rpx;
+
+$myp-lh-ss: 34rpx;
+$myp-lh-s: 40rpx;
+$myp-lh-base: 42rpx;
+$myp-lh-l: 45rpx;
+$myp-lh-ll: 50rpx;
+
+$myp-border-radius-ss: 4rpx;
+$myp-border-radius-s: 6rpx;
+$myp-border-radius-base: 12rpx;
+$myp-border-radius-l: 24rpx;
+$myp-border-radius-ll: 60rpx;
+
+$myp-space-ss: 6rpx;
+$myp-space-s: 12rpx;
+$myp-space-base: 16rpx;
+$myp-space-l: 24rpx;
+$myp-space-ll: 32rpx;
+
+$myp-wing-ss: 12rpx;
+$myp-wing-s: 24rpx;
+$myp-wing-base: 32rpx;
+$myp-wing-l: 36rpx;
+$myp-wing-ll: 40rpx;
+
+$myp-opacity-disabled: 0.5;
+$myp-opacity-hover: 0.5;
+
+$myp-nav-title-color: #000000;
+$myp-nav-title-size: 16px;
+$myp-nav-icon-color: #4C4C4C;
+$myp-nav-icon-size: 20px;
+$myp-nav-item-color: #4C4C4C;
+$myp-nav-item-size: 14px;
+$myp-nav-bg-color: #FFFFFF;
+
+
 $uni-color-primary: #007aff;
 $uni-color-success: #4cd964;
 $uni-color-warning: #f0ad4e;

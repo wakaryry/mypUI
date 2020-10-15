@@ -35,5 +35,6 @@
 		/* #endif */
 		flex-direction: row;
 		flex-wrap: nowrap;
+		background-color: $myp-color-primary;
 	}
 </style>

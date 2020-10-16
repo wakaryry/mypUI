@@ -354,6 +354,7 @@
 						if (offsetY > 0) {
 							const y = (offsetY >= maxSize) ? maxSize : offsetY
 							this.noWeexAni = `transition-property: transform; transform: translateY(${y}px); transition-duration: 0ms;`
+							this.overlayNoWeexAni = `transition-property:opacity; transition-duration: 0ms;opacity:${y/maxSize};height:${this.overlayHeight}px;`
 						} else {
 						}
 					} else if (this.pos === 'bottom') {
@@ -361,17 +362,20 @@
 						} else {
 							const y = (-offsetY >= maxSize) ? (-1*maxSize) : offsetY
 							this.noWeexAni = `transition-property: transform; transform: translateY(${y}px); transition-duration: 0ms;`
+							this.overlayNoWeexAni = `transition-property:opacity; transition-duration: 0ms;opacity:${-y/maxSize};height:${this.overlayHeight}px;`
 						}
 					} else if (this.pos === 'left') {
 						if (offsetX > 0) {
 							const x = (offsetX >= maxSize) ? maxSize : offsetX
 							this.noWeexAni = `transition-property: transform; transform: translateX(${x}px); transition-duration: 0ms;`
+							this.overlayNoWeexAni = `transition-property:opacity; transition-duration: 0ms;opacity:${x/maxSize};height:${this.overlayHeight}px;`
 						} else {
 						}
 					} else if (this.pos === 'right') {
 						if (offsetX < 0) {
 							const x = (-offsetX >= maxSize) ? (-1*maxSize) : offsetX
 							this.noWeexAni = `transition-property: transform; transform: translateX(${x}px); transition-duration: 0ms;`
+							this.overlayNoWeexAni = `transition-property:opacity; transition-duration: 0ms;opacity:${-x/maxSize};height:${this.overlayHeight}px;`
 						} else {
 						}
 					}
@@ -381,6 +385,7 @@
 							const y = (-offsetY >= maxSize) ? 0 : (maxSize + offsetY)
 							// in H5: we must use 0ms and not 0, or it will hold 300ms. i.e 0 can not change 300ms into 0, must use 0ms
 							this.noWeexAni = `transition-property: transform; transform: translateY(${y}px); transition-duration: 0ms;`
+							this.overlayNoWeexAni = `transition-property:opacity; transition-duration: 0ms;opacity:${y/maxSize};height:${this.overlayHeight}px;`
 						} else {
 						}
 					} else if (this.pos === 'bottom') {
@@ -388,11 +393,13 @@
 						} else {
 							const y = (offsetY >= maxSize) ? (-maxSize) : (-maxSize + offsetY)
 							this.noWeexAni = `transition-property: transform; transform: translateY(${y}px); transition-duration: 0ms;`
+							this.overlayNoWeexAni = `transition-property:opacity; transition-duration: 0ms;opacity:${-y/maxSize};height:${this.overlayHeight}px;`
 						}
 					} else if (this.pos === 'left') {
 						if (offsetX <= 0) {
 							const x = (-offsetX >= maxSize) ? 0 : (offsetX + maxSize)
 							this.noWeexAni = `transition-property: transform; transform: translateX(${x}px); transition-duration: 0ms;`
+							this.overlayNoWeexAni = `transition-property:opacity; transition-duration: 0ms;opacity:${x/maxSize};height:${this.overlayHeight}px;`
 						} else {
 							
 						}
@@ -400,6 +407,7 @@
 						if (offsetX > 0) {
 							const x = (offsetX >= maxSize) ? (-1*maxSize) : (offsetX - maxSize)
 							this.noWeexAni = `transition-property: transform; transform: translateX(${x}px); transition-duration: 0ms;`
+							this.overlayNoWeexAni = `transition-property:opacity; transition-duration: 0ms;opacity:${-x/maxSize};height:${this.overlayHeight}px;`
 						} else {
 							
 						}

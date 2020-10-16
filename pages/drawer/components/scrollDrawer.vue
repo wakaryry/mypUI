@@ -1,5 +1,5 @@
 <template>
-	<myp-drawer :hasOverlay="false" :auto="false" standout="screen-!status-!nav-!432rpx" extra="status-nav">
+	<myp-drawer :hasOverlay="false" standout="screen-!status-!nav-!432rpx" extra="status-nav">
 		<view style="flex: 1;">
 			<view class="sd-header">
 				<view class="sd-vip">
@@ -8,7 +8,7 @@
 						<text class="sd-vip-text">更加舒畅的控制与动画</text>
 					</view>
 					<view class="sd-vip-row">
-						<text class="sd-vip-desc">299元永久</text>
+						<text class="sd-vip-desc">399元永久</text>
 						<myp-icon name="right"></myp-icon>
 					</view>
 				</view>

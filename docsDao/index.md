@@ -20,6 +20,8 @@ mypUI 从学习成本、开发经验，以及记忆成本、性能优化、包�
 npm install @mypui/myp-ui
 ```
 
+> 注意：使用npm安装mypUI之前，您得确保您的项目进行了npm初始化：`npm init`，保证项目下存在`package.json`配置文件。否则可能会遇到一些意想不到的问题。
+
 ### 复制UI的静态资源
 
 `loadingSrc`等公用静态资源直接使用了示范UI项目中 `/static/ui` 下面的静态文件，没有使用网络图片，所以需要拷贝到自己的项目下（`/static/ui`这个路径还是需要保持一致的）。

@@ -1,7 +1,7 @@
 <template>
 	<view>
 		<myp-navbar :lefts="leftIcons" title="无遮罩双层滚动" titleType="inverse" itemIconType="inverse" statusNavStyle="background-color:#313236;" @leftAction="navLeftAction"></myp-navbar>
-		<myp-list-simple boxStyle="background-color:#313236;">
+		<myp-list :down="null" :up="null" boxStyle="background-color:#313236;">
 			<myp-list-cell>
 				<view style="height: 32rpx;"></view>
 			</myp-list-cell>
@@ -14,7 +14,7 @@
 					<myp-item v-for="(item,idx) in apps" bgType="none" :key="idx" :icon="item.icon" :text="item.name" iconType="inverse" textType="inverse" style="flex:1;" boxStyle="height:120rpx;flex:1;" @itemClicked="toPage(item)"></myp-item>
 				</myp-flex>
 			</myp-list-cell>
-		</myp-list-simple>
+		</myp-list>
 		<scroll-drawer></scroll-drawer>
 	</view>
 </template>

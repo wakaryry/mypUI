@@ -1,7 +1,7 @@
 <template>
 	<view>
 		<myp-navbar :lefts="leftIcons" title="myp-item" @leftAction="navLeftAction"></myp-navbar>
-		<myp-list-simple>
+		<myp-list :down="null" :up="null">
 			<myp-list-cell>
 				<view style="height: 24rpx;"></view>
 				<myp-flex>
@@ -26,7 +26,7 @@
 					</myp-item>
 				</myp-flex>
 			</myp-list-cell>
-		</myp-list-simple>
+		</myp-list>
 	</view>
 </template>
 

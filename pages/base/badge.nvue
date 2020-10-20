@@ -1,7 +1,7 @@
 <template>
 	<view>
 		<myp-navbar :lefts="leftIcons" title="myp-badge" @leftAction="navLeftAction"></myp-navbar>
-		<myp-list-simple>
+		<myp-list :down="null" :up="null">
 			<myp-list-cell>
 				<view style="height: 24rpx;"></view>
 				<myp-flex bgType="none">
@@ -16,7 +16,7 @@
 					</view>
 				</myp-flex>
 			</myp-list-cell>
-		</myp-list-simple>
+		</myp-list>
 	</view>
 </template>
 

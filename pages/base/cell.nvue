@@ -1,7 +1,7 @@
 <template>
 	<view>
 		<myp-navbar :lefts="leftIcons" title="单元" @leftAction="navLeftAction"></myp-navbar>
-		<myp-list-simple>
+		<myp-list :down="null" :up="null">
 			<myp-list-cell>
 				<view style="height: 24rpx;"></view>
 				<myp-cell icon="book" title="我的知识" boxStyle="padding-left:32rpx;"></myp-cell>
@@ -23,7 +23,7 @@
 				<view style="height: 24rpx;"></view>
 				<myp-cell icon="solid-about" title="关于我们" indicator="right" space="24rpx" boxStyle="padding-left:38rpx;padding-right:48rpx;" @selected="toAbout"></myp-cell>
 			</myp-list-cell>
-		</myp-list-simple>
+		</myp-list>
 		<myp-toast ref="myp-toast"></myp-toast>
 	</view>
 </template>

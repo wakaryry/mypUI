@@ -1,7 +1,7 @@
 <template>
 	<view>
 		<myp-navbar :lefts="leftIcons" title="便捷高度盒子" @leftAction="navLeftAction"></myp-navbar>
-		<myp-list-simple>
+		<myp-list :down="null" :up="null">
 			<myp-list-cell>
 				<view style="height: 24rpx;"></view>
 				<myp-title title2="myp-height"></myp-title>
@@ -35,7 +35,7 @@
 					<text class="myp-color-inverse myp-size-base">myp-xbar</text>
 				</myp-xbar>
 			</myp-list-cell>
-		</myp-list-simple>
+		</myp-list>
 	</view>
 </template>
 

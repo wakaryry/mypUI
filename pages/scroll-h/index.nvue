@@ -1,7 +1,7 @@
 <template>
 	<view>
 		<myp-navbar :lefts="leftIcons" title="各种横向scroll" @leftAction="navLeftAction"></myp-navbar>
-		<myp-list-simple>
+		<myp-list :down="null" :up="null">
 			<myp-list-cell>
 				<myp-scroll-scale :width="750" :height="1000" :widthScale="0.827" :heightScale="0.84" :scaleFactor="0.8" :pagingEnabled="false">
 					<myp-scroll-scale-item>
@@ -40,7 +40,7 @@
 					</myp-scroll-scale-item>
 				</myp-scroll-scale>
 			</myp-list-cell>
-		</myp-list-simple>
+		</myp-list>
 	</view>
 </template>
 

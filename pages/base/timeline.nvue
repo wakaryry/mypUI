@@ -1,7 +1,7 @@
 <template>
 	<view>
 		<myp-navbar :lefts="leftIcons" title="myp-timeline-item" @leftAction="navLeftAction"></myp-navbar>
-		<myp-list-simple bgType="inverse">
+		<myp-list :down="null" :up="null" bgType="inverse">
 			<myp-list-cell>
 				<view style="height: 24rpx;"></view>
 			</myp-list-cell>
@@ -34,7 +34,7 @@
 					</view>
 				</myp-timeline-item>
 			</myp-list-cell>
-		</myp-list-simple>
+		</myp-list>
 	</view>
 </template>
 

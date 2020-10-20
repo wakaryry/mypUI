@@ -21,11 +21,11 @@
 					<myp-button bgType="error" icon="plus" text="开通VIP" iconType="inverse" textType="inverse" border="none" radius="ll" boxStyle="width:240rpx;height:72rpx;"></myp-button>
 				</view>
 			</view>
-			<myp-list-simple bgType="inverse">
+			<myp-list :down="null" :up="null" bgType="inverse">
 				<myp-list-cell v-for="(item,idx) in items" :key="idx">
 					<h-vip-cell :item="item" :index="idx+1"></h-vip-cell>
 				</myp-list-cell>
-			</myp-list-simple>
+			</myp-list>
 		</view>
 	</myp-drawer>
 </template>

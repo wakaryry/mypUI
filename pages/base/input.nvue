@@ -1,7 +1,7 @@
 <template>
 	<view>
 		<myp-navbar :lefts="leftIcons" title="输入框" @leftAction="navLeftAction"></myp-navbar>
-		<myp-list-simple bgType="page">
+		<myp-list :down="null" :up="null" bgType="page">
 			<myp-list-cell>
 				<myp-title bgType="none" title1="快速适配" title1Type="third" boxStyle="padding-left:32rpx;padding-right:32rpx;"></myp-title>
 			</myp-list-cell>
@@ -61,7 +61,7 @@
 			<myp-list-cell>
 				<view style="height: 20rpx;"></view>
 			</myp-list-cell>
-		</myp-list-simple>
+		</myp-list>
 		<myp-toast ref="myp-toast"></myp-toast>
 	</view>
 </template>

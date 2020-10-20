@@ -1,7 +1,7 @@
 <template>
 	<view>
 		<myp-navbar :lefts="leftIcons" title="开关" @leftAction="navLeftAction"></myp-navbar>
-		<myp-list-simple bgType="page">
+		<myp-list :down="null" :up="null" bgType="page">
 			<myp-list-cell>
 				<view style="height: 24rpx;"></view>
 			</myp-list-cell>
@@ -22,7 +22,7 @@
 					<myp-switch :value="true" width="200rpx" height="60rpx" ballSize="56rpx"></myp-switch>
 				</view>
 			</myp-list-cell>
-		</myp-list-simple>
+		</myp-list>
 		<myp-toast ref="myp-toast"></myp-toast>
 	</view>
 </template>

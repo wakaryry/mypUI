@@ -1,7 +1,7 @@
 <template>
 	<view>
 		<myp-navbar :lefts="leftIcons" title="进度条" @leftAction="navLeftAction"></myp-navbar>
-		<myp-list-simple bgType="page">
+		<myp-list :down="null" :up="null" bgType="page">
 			<myp-list-cell>
 				<view style="height: 60rpx;"></view>
 				<myp-progress boxStyle="margin-left:75rpx;"></myp-progress>
@@ -23,7 +23,7 @@
 				<myp-progress :progress="progress" boxStyle="margin-left:75rpx;"></myp-progress>
 				<view style="height: 60rpx;"></view>
 			</myp-list-cell>
-		</myp-list-simple>
+		</myp-list>
 		<myp-toast ref="myp-toast"></myp-toast>
 	</view>
 </template>

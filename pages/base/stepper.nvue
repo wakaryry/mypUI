@@ -1,7 +1,7 @@
 <template>
 	<view>
 		<myp-navbar :lefts="leftIcons" title="计步器" @leftAction="navLeftAction"></myp-navbar>
-		<myp-list-simple bgType="page">
+		<myp-list :down="null" :up="null" bgType="page">
 			<myp-list-cell>
 				<view style="height: 24rpx;"></view>
 			</myp-list-cell>
@@ -15,7 +15,7 @@
 					<myp-stepper v-model="value2" minusType="primary" plusType="primary" :min="0" radius="none" :minusBoxStyle="minusBoxStyle" :plusBoxStyle="plusBoxStyle" :valueStyle="valueStyle"></myp-stepper>
 				</view>
 			</myp-list-cell>
-		</myp-list-simple>
+		</myp-list>
 		<myp-toast ref="myp-toast"></myp-toast>
 	</view>
 </template>

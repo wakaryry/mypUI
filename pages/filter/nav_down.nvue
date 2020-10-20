@@ -1,9 +1,9 @@
 <template>
 	<view>
 		<myp-height height="status-nav"></myp-height>
-		<myp-list-simple bgType="page">
+		<myp-list :down="null" :up="null" bgType="page">
 			
-		</myp-list-simple>
+		</myp-list>
 		<nav-down-pop :show="downVisible" :current="current" @select="changedFilter" @cancel="toToggleDropDown"></nav-down-pop>
 		<myp-navbar :fixed="true" :isSeize="false" :lefts="leftIcons" :title="current.title" icon="down" titleStyle="margin-right:12rpx;max-width:300rpx;" @leftAction="navLeftAction" @centerAction="toToggleDropDown"></myp-navbar>
 	</view>

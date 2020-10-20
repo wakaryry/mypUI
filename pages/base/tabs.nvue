@@ -5,7 +5,7 @@
 				<myp-tabs-h :value="current2" :isTap="true" :items="tabs2" width="86rpx" textLabel="title" textType="second" activeTextType="text" textStyle="font-size:14px;" activeTextStyle="font-size:16px;" indicatorWidth="42rpx" indicatorType="primary" scrollSize="350rpx" justify="center" height="44px" @change="toChangeNavTabs"></myp-tabs-h>
 			</view>
 		</myp-navbar>
-		<myp-list-simple bgType="page">
+		<myp-list :down="null" :up="null" bgType="page">
 			<myp-list-cell>
 				<view style="height: 24rpx;"></view>
 			</myp-list-cell>
@@ -48,7 +48,7 @@
 					<myp-tabs-v :value="currentV4" :items="tabs4" width="180rpx" space="0" activeType="warning" indicatorType="warning" scrollSize="500rpx" itemStyle="padding-left:18rpx;" @change="toChangeV4"></myp-tabs-v>
 				</view>
 			</myp-list-cell>
-		</myp-list-simple>
+		</myp-list>
 		<myp-toast ref="myp-toast"></myp-toast>
 	</view>
 </template>

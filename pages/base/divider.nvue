@@ -1,7 +1,7 @@
 <template>
 	<view>
 		<myp-navbar :lefts="leftIcons" title="myp-divider" @leftAction="navLeftAction"></myp-navbar>
-		<myp-list-simple bgType="inverse">
+		<myp-list :down="null" :up="null" bgType="inverse">
 			<myp-list-cell>
 				<view style="height: 24rpx;"></view>
 				<myp-divider></myp-divider>
@@ -12,7 +12,7 @@
 				<view style="height: 24rpx;"></view>
 				<myp-divider bgType="error" :vertical="true" width="1px" height="80rpx" left="32rpx" right="32rpx"></myp-divider>
 			</myp-list-cell>
-		</myp-list-simple>
+		</myp-list>
 	</view>
 </template>
 

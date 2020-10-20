@@ -1,7 +1,7 @@
 <template>
 	<view>
 		<myp-navbar :lefts="leftIcons" title="其它内容" @leftAction="navLeftAction"></myp-navbar>
-		<myp-list-simple bgType="page"></myp-list-simple>
+		<myp-list :down="null" :up="null" bgType="page"></myp-list>
 	</view>
 </template>
 

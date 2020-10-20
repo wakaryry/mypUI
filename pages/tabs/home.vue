@@ -3,10 +3,10 @@
 		<myp-navbar :fixed="false" title="mypUI"></myp-navbar>
 		<!-- 仅仅只是演示区别，您可以直接不做区分，所有平台都写成属性最多的那个 -->
 		<!-- #ifdef APP-NVUE -->
-		<myp-list-simple bgType="inverse">
+		<myp-list :down="null" :up="null" bgType="inverse">
 		<!-- #endif -->
 		<!-- #ifndef APP-NVUE -->
-		<myp-list-simple bgType="inverse" extra="status-nav-x-50px">
+		<myp-list :down="null" :up="null" bgType="inverse" extra="status-nav-x-50px">
 		<!-- #endif -->
 			<myp-list-cell>
 				<view style="height: 24rpx;"></view>
@@ -122,7 +122,7 @@
 				<myp-button bgType="error" text="进入Vue页面示范" textType="inverse" border="none" radius="ll" boxStyle="width:550rpx;height:76rpx;margin-left:100rpx;" @buttonClicked="toPage({page: 'vue_tabbar'})"></myp-button>
 				<view style="height: 40rpx;"></view>
 			</myp-list-cell>
-		</myp-list-simple>
+		</myp-list>
 	</view>
 </template>
 

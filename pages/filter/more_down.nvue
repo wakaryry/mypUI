@@ -2,9 +2,9 @@
 	<view>
 		<myp-navbar :lefts="leftIcons" title="Filter" @leftAction="navLeftAction"></myp-navbar>
 		<head-query-view></head-query-view>
-		<myp-list-simple bgType="page" extra="100rpx">
+		<myp-list :down="null" :up="null" bgType="page" extra="100rpx">
 			
-		</myp-list-simple>
+		</myp-list>
 	</view>
 </template>
 

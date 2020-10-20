@@ -1,9 +1,9 @@
 <template>
 	<view>
 		<myp-navbar :lefts="leftIcons" title="底部出现" @leftAction="navLeftAction"></myp-navbar>
-		<myp-list-simple bgType="page" extra="status-nav-x-64px">
+		<myp-list :down="null" :up="null" bgType="page" extra="status-nav-x-64px">
 			
-		</myp-list-simple>
+		</myp-list>
 		<up-pop :show="upVisible" :current="current" @cancel="toToggleUp" @select="selectedUp"></up-pop>
 		<myp-position :fixed="true" boxStyle="left:0;width:750rpx;">
 			<view class="up-btn">

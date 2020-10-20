@@ -4,7 +4,7 @@
 		<mine-header></mine-header>
 		<mine-statistic></mine-statistic>
 		<mine-vip-card></mine-vip-card>
-		<myp-list-simple bgType="inverse" extra="status-nav-x-50px-436rpx">
+		<myp-list :down="null" :up="null" bgType="inverse" extra="status-nav-x-50px-436rpx">
 			<myp-list-cell>
 				<mine-data></mine-data>
 			</myp-list-cell>
@@ -17,7 +17,7 @@
 			<myp-list-cell>
 				<more-entry></more-entry>
 			</myp-list-cell>
-		</myp-list-simple>
+		</myp-list>
 	</view>
 </template>
 

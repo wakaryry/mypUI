@@ -1,7 +1,7 @@
 <template>
 	<view>
 		<myp-navbar :lefts="leftIcons" title="环形进度条" @leftAction="navLeftAction"></myp-navbar>
-		<myp-list-simple bgType="page">
+		<myp-list :down="null" :up="null" bgType="page">
 			<myp-list-cell>
 				<view style="height: 32rpx;"></view>
 				<text style="margin-left: 60rpx;color: #999999;font-size: 28rpx;line-height: 60rpx;">twoWay:false - fromZero:false</text>
@@ -63,7 +63,7 @@
 				</view>
 				<view style="height: 60rpx;"></view>
 			</myp-list-cell>
-		</myp-list-simple>
+		</myp-list>
 		<myp-toast ref="myp-toast"></myp-toast>
 	</view>
 </template>

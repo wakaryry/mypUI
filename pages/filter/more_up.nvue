@@ -1,9 +1,9 @@
 <template>
 	<view>
 		<myp-navbar :lefts="leftIcons" title="Filter" @leftAction="navLeftAction"></myp-navbar>
-		<myp-list-simple bgType="page" extra="status-nav-x-100rpx">
+		<myp-list :down="null" :up="null" bgType="page" extra="status-nav-x-100rpx">
 			
-		</myp-list-simple>
+		</myp-list>
 		<myp-popup-always :show="selectedQuery === 1" :width="214" :height="gradesHeight" pos="bottom" :overlay="overlay" leftOffset="16" bottom="x-100" @overlayClicked="toGrade">
 			<view class="mu-grades">
 				<view class="mu-grades-item" v-for="(item, idx) in grades" :key="idx" @tap="toSelectedGrade(item)">

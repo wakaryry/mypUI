@@ -1,7 +1,7 @@
 <template>
 	<view>
 		<myp-navbar :lefts="leftIcons" title="弹层互动" @leftAction="navLeftAction"></myp-navbar>
-		<myp-list-simple>
+		<myp-list :down="null" :up="null">
 			<myp-list-cell>
 				<pop-cell @pop="toShowPop"></pop-cell>
 				<view style="height: 24rpx;"></view>
@@ -22,7 +22,7 @@
 				<overlay-cell @select="toShowOverlay"></overlay-cell>
 				<view style="height: 24rpx;"></view>
 			</myp-list-cell>
-		</myp-list-simple>
+		</myp-list>
 		<myp-position pos="bottom" offset="x-16px" boxStyle="left:32rpx;right:32rpx;">
 			<myp-notice ref="myp-notice" bgType="primary" icon="hint" text="如果不坚持吃饭,是有可能饿死的" indicator="circle-close" radius="ll" :closable="true"></myp-notice>
 		</myp-position>

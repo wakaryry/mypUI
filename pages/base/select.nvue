@@ -1,9 +1,9 @@
 <template>
 	<view>
 		<myp-navbar :lefts="leftIcons" title="myp-select" @leftAction="navLeftAction"></myp-navbar>
-		<myp-list-simple>
+		<myp-list :down="null" :up="null">
 			
-		</myp-list-simple>
+		</myp-list>
 	</view>
 </template>
 

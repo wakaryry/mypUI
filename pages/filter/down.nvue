@@ -1,9 +1,9 @@
 <template>
 	<view>
 		<myp-height height="status-nav"></myp-height>
-		<myp-list-simple bgType="page">
+		<myp-list :down="null" :up="null" bgType="page">
 			
-		</myp-list-simple>
+		</myp-list>
 		<down-pop :show="downVisible" :current="service" @cancel="toToggle" @select="toSelect"></down-pop>
 		<myp-navbar :fixed="true" :isSeize="false" :lefts="leftIcons" title="dropdown" @leftAction="navLeftAction"></myp-navbar>
 		<myp-position :fixed="true" pos="top" offset="status-nav" boxStyle="left:32rpx;width:200rpx;">

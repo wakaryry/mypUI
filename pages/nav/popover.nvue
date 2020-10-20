@@ -1,7 +1,7 @@
 <template>
 	<view>
 		<myp-navbar :lefts="leftIcons" title="myp-popover" @leftAction="navLeftAction"></myp-navbar>
-		<myp-list-simple></myp-list-simple>
+		<myp-list :down="null" :up="null"></myp-list>
 	</view>
 </template>
 

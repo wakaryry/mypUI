@@ -1,7 +1,7 @@
 <template>
 	<view>
 		<myp-navbar :lefts="leftIcons" title="快速定位" @leftAction="navLeftAction"></myp-navbar>
-		<myp-list-simple></myp-list-simple>
+		<myp-list :down="null" :up="null"></myp-list>
 		<myp-position pos="top" offset="status-nav-24rpx" boxStyle="left:75rpx;">
 			<myp-button bgType="primary" border="none" radius="ll" text="这里是顶部的定位内容" textType="inverse" boxStyle="width:600rpx;"></myp-button>
 		</myp-position>

@@ -1,7 +1,7 @@
 <template>
 	<view>
 		<myp-navbar :lefts="leftIcons" title="基础组件" @leftAction="navLeftAction"></myp-navbar>
-		<myp-list-simple bgType="inverse">
+		<myp-list :down="null" :up="null" bgType="inverse">
 			<myp-list-cell>
 				<intro-scroll @care="toCare" @close="toClose"></intro-scroll>
 			</myp-list-cell>
@@ -11,7 +11,7 @@
 					<view style="height: 32rpx;"></view>
 				</view>
 			</myp-list-cell>
-		</myp-list-simple>
+		</myp-list>
 		<myp-toast ref="myp-toast"></myp-toast>
 	</view>
 </template>

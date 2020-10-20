@@ -1,11 +1,11 @@
 <template>
 	<view>
 		<myp-navbar title="底部抽屉/支持拉出" :lefts="leftIcons" @leftAction="navLeftAction"></myp-navbar>
-		<myp-list-simple>
+		<myp-list :down="null" :up="null">
 			<myp-list-cell>
 				<blank-card desc="可以从底部弹出,也可以拉出" btn="直接弹出" @action="toShow"></blank-card>
 			</myp-list-cell>
-		</myp-list-simple>
+		</myp-list>
 		<drawer-bottom ref="drawerBottom"></drawer-bottom>
 	</view>
 </template>

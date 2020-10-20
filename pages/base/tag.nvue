@@ -1,7 +1,7 @@
 <template>
 	<view>
 		<myp-navbar :lefts="leftIcons" title="标签" @leftAction="navLeftAction"></myp-navbar>
-		<myp-list-simple bgType="page">
+		<myp-list :down="null" :up="null" bgType="page">
 			<myp-list-cell>
 				<myp-title bgType="none" title1="单个标签:各种样式配置" title1Type="text" boxStyle="padding-left:32rpx;"></myp-title>
 			</myp-list-cell>
@@ -34,7 +34,7 @@
 					<text class="tag-foot-text">我们往往很难适配所有的tag式的选择或者展示需求。与其去配置，自己直接写会是更快的选择。如果您有一些常用的tag样式需要我们添加进来，可以联系说明。我们在这里仅仅只是提供了一个壳子。</text>
 				</view>
 			</myp-list-cell>
-		</myp-list-simple>
+		</myp-list>
 		<myp-toast ref="myp-toast"></myp-toast>
 	</view>
 </template>

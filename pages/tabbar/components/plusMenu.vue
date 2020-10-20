@@ -1,6 +1,6 @@
 <template>
 	<myp-popup :show='show' pos="top-center" width="660rpx" height="860rpx" @overlayClicked="toClose">
-		<myp-list-simple bgType="inverse" boxStyle="border-radius:24rpx;">
+		<myp-list :down="null" :up="null" bgType="inverse" boxStyle="border-radius:24rpx;">
 			<myp-list-cell>
 				<view style="height: 32rpx;"></view>
 			</myp-list-cell>
@@ -10,7 +10,7 @@
 					<view style="height: 32rpx;"></view>
 				</view>
 			</myp-list-cell>
-		</myp-list-simple>
+		</myp-list>
 	</myp-popup>
 </template>
 

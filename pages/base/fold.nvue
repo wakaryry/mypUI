@@ -1,7 +1,7 @@
 <template>
 	<view>
 		<myp-navbar :lefts="leftIcons" title="myp-fold" @leftAction="navLeftAction"></myp-navbar>
-		<myp-list-simple>
+		<myp-list :down="null" :up="null">
 			<myp-list-cell>
 				<view style="height: 32rpx;"></view>
 				<myp-fold bgType="inverse" boxStyle="margin-left:32rpx;width:686rpx;" @toggle="toToggleBox">
@@ -22,7 +22,7 @@
 					<view slot="body"></view>
 				</myp-fold>
 			</myp-list-cell>
-		</myp-list-simple>
+		</myp-list>
 	</view>
 </template>
 

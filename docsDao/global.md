@@ -73,11 +73,11 @@ order: 3
 <template>
 	<view>
 		<myp-navbar title="导航栏标题" :lefts="leftIcons" @leftAction="navLeftAction"></myp-navbar>
-		<myp-list-simple>
+		<myp-list :down="null" :up="null">
 			<myp-list-cell>
 				<text>...</text>
 			</myp-list-cell>
-		</myp-list-simple>
+		</myp-list>
 		<myp-loading ref="myp-loading"></myp-loading>
 		<myp-toast ref="myp-toast"></myp-toast>
 	</view>

@@ -2,7 +2,7 @@
 	<myp-popup-always :show="show" pos="bottom">
 		<myp-navbar :fixed="false" :lefts="leftIcon" title="院校筛选" @leftAction="toCancel"></myp-navbar>
 		<view :hack="toHack"></view>
-		<myp-list-simple bgType="inverse">
+		<myp-list :down="null" :up="null" bgType="inverse">
 			<myp-list-cell>
 				<view style="height: 8rpx;"></view>
 			</myp-list-cell>
@@ -16,7 +16,7 @@
 					</view>
 				</view>
 			</myp-list-cell>
-		</myp-list-simple>
+		</myp-list>
 	</myp-popup-always>
 </template>
 

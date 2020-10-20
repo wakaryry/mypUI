@@ -1,9 +1,9 @@
 <template>
-	<myp-list-simple bgType="inverse" extra="0" boxStyle="width:568rpx;">
+	<myp-list :down="null" :up="null" bgType="inverse" extra="0" boxStyle="width:568rpx;">
 		<myp-list-cell>
 			
 		</myp-list-cell>
-	</myp-list-simple>
+	</myp-list>
 </template>
 
 <script>

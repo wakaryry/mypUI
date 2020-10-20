@@ -1,5 +1,5 @@
 <template>
-	<myp-list-simple boxStyle="width:750rpx;">
+	<myp-list :down="null" :up="null" boxStyle="width:750rpx;">
 		<myp-list-cell>
 			<view style="height: 32rpx;"></view>
 		</myp-list-cell>
@@ -13,7 +13,7 @@
 		<myp-list-cell>
 			<view style="height: 32rpx;"></view>
 		</myp-list-cell>
-	</myp-list-simple>
+	</myp-list>
 </template>
 
 <script>

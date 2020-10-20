@@ -1,14 +1,14 @@
 <template>
 	<view>
 		<myp-height height="status-nav"></myp-height>
-		<myp-list-simple>
+		<myp-list :down="null" :up="null">
 			<myp-list-cell>
 				<view style="height: 50px; background-color: #FFFFFF;"></view>
 			</myp-list-cell>
 			<myp-list-cell>
 				<blank-card desc="语文考试打了满分😄真是太高兴了" btn="寻找灵感" @action="toShow"></blank-card>
 			</myp-list-cell>
-		</myp-list-simple>
+		</myp-list>
 		<drawer-top ref="drawerTop"></drawer-top>
 		<myp-navbar title="顶部抽屉/支持拉出" :fixed="true" :isSeize="false" :lefts="leftIcons" bgType="primary" itemIconType="inverse" itemTextType="inverse" titleType="inverse" @leftAction="navLeftAction"></myp-navbar>
 	</view>

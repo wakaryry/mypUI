@@ -5,7 +5,7 @@
 		<myp-search v-model="search" icon="search" :fixIcon="true" placeholder="学习也很重要" border="none" radius="base" boxStyle="margin-left:32rpx;margin-right:32rpx;padding-left:32rpx;padding-right:63rpx;" @confirm="toSearch">
 			<myp-button v-if="search&&search.length>0" border="none" radius="ll" slot="extra" icon="close" iconType="inverse" iconSize="l" boxStyle="background-color:#4A5061;width:42rpx;height:42rpx;position:absolute;right:32rpx;" @buttonClicked="toClearSearch"></myp-button>
 		</myp-search>
-		<myp-list-simple bgType="none">
+		<myp-list :down="null" :up="null" bgType="none">
 			<myp-list-cell>
 				<view style="height: 24rpx;"></view>
 				<myp-flex bgType="none">
@@ -53,7 +53,7 @@
 					</myp-flex>
 				</view>
 			</myp-list-cell>
-		</myp-list-simple>
+		</myp-list>
 		<myp-loading ref="myp-loading"></myp-loading>
 		<myp-toast ref="myp-toast"></myp-toast>
 	</view>

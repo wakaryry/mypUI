@@ -3,7 +3,13 @@
 		<!-- #ifdef APP-NVUE -->
 		<list :class="'myp-bg-'+bgType" :style="mrBoxStyle" ref="myp-scroller" :show-scrollbar="showScrollbar" :loadmoreoffset="(mypUp.use&&!useLoading)?loadMoreOffset:0" @loadmore="mypMoreLoad" @scroll="mypScroll">
 			<myp-refresher-n v-if="mypDown.use" ref="myp-refresher" scroller-ref="myp-scroller" @refresh="mypRefresh"></myp-refresher-n>
+			<cell>
+				<view ref="myp-list-top"></view>
+			</cell>
 			<slot></slot>
+			<cell>
+				<view ref="myp-list-bottom"></view>
+			</cell>
 			<cell v-if="mypUp.use&&!useLoading">
 				<myp-loader :isLoading="mypIsUpLoading" :hasMore="mypHasMore"></myp-loader>
 			</cell>
@@ -16,8 +22,10 @@
 				<view v-if="mypDown.use" :style="mypMrRefreshStyle">
 					<myp-refresher :refreshing="mypIsDownLoading" :couldUnLash="mypCouldUnLash" :rate="mypDownRate"></myp-refresher>
 				</view>
+				<view id="myp-list-top" ref="myp-list-top"></view>
 				<!-- content of scroll -->
 				<slot></slot>
+				<view id="myp-list-bottom" ref="myp-list-bottom"></view>
 				<myp-loader v-if="mypUp.use" :isLoading="mypIsUpLoading" :hasMore="mypHasMore"></myp-loader>
 			</view>
 		</scroll-view>
@@ -87,12 +95,12 @@
 		created() {
 			// config the down/up
 			// #ifndef APP-NVUE
-			this.mypDown = Object.assign({use: true,offset: uni.upx2px(140),inRate: 0.8,outRate: 0.2}, this.down)
-			this.mypUp = Object.assign({use: true,offset: 80}, this.up)
+			this.mypDown = Object.assign({use: true,offset: uni.upx2px(140),inRate: 0.8,outRate: 0.2}, this.down||{use:false})
+			this.mypUp = Object.assign({use: true,offset: 80}, this.up||{use:false})
 			// #endif
 			// #ifdef APP-NVUE
-			this.mypDown = Object.assign(this.down)
-			this.mypUp = Object.assign(this.up)
+			this.mypDown = Object.assign(this.down||{use:false})
+			this.mypUp = Object.assign(this.up||{use:false})
 			this.platform = getPlatform()
 			// #endif
 			// emit this 会在mp端报错，且不建议
@@ -111,28 +119,6 @@
 			}
 		},
 		methods: {
-			mypScrollToBottom() {
-				// #ifdef APP-NVUE
-				const ref = this.$refs['myp-chat-bottom']
-				dom.scrollToElement(ref, {offset: 0, animated: true})
-				// #endif
-				// #ifndef APP-NVUE
-				this.mypCurrentView = 'myp-chat-bottom'
-				// #endif
-			},
-			mypScrollToElement(ref, options={offset: 0, animated: true}) {
-				// #ifdef APP-NVUE
-				dom.scrollToElement(ref, options)
-				// #endif
-				// #ifndef APP-NVUE
-				this.mypCurrentView = null
-				if (this.mypScrollTop === ref) {
-					this.mypScrollTop = ref + 0.1
-				} else {
-					this.mypScrollTop = ref
-				}
-				// #endif
-			}
 		}
 	}
 </script>

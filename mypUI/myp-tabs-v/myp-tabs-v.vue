@@ -1,10 +1,14 @@
 <template>
 	<scroll-view ref="scroll" id="scroll" :scroll-y="true" :scroll-top="scrollTop" :scroll-with-animation="true" :show-scrollbar="false" :class="['myp-bg-'+bgType, 'myp-tabs-scroll']" :style="mrScrollStyle">
 		<view class="myp-tabs" :style="mrTabsStyle">
-			<view v-if="hasIndicator" :class="['myp-tab-item-indicator', 'myp-bg-'+(indicatorType&&indicatorType.length>0?indicatorType:'text')]" :style="mrIndStyle"></view>
+			<view v-if="hasIndicator" :class="['myp-tab-item-indicator', 'myp-bg-'+(indicatorType&&indicatorType.length>0?indicatorType:'text')]" :style="mrIndStyle">
+				<slot name="indicator"></slot>
+			</view>
+			<view :style="{height: top}"></view>
 			<view v-for="(item, index) in items" :key="index" :ref="'item'+index" :id="'item'+index" class="myp-flex-row myp-align-center" :style="mrItemStyle + (index===value ? activeItemStyle:'')" @click="changeTab(index)">
 				<text :class="['myp-color-'+(index===value?activeTextType:textType), 'myp-size-'+(index===value?activeTextSize:textSize)]" :style="textStyle + (index===value ? activeTextStyle : '')">{{ textLabel ? item[textLabel] : item }}</text>
 			</view>
+			<view :style="{height: bottom}"></view>
 		</view>
 	</scroll-view>
 </template>
@@ -107,6 +111,20 @@
 				default: '120rpx'
 			},
 			/**
+			 * 顶部空白占位
+			 */
+			top: {
+				type: String,
+				default: '0'
+			},
+			/**
+			 * 底部空白占位
+			 */
+			bottom: {
+				type: String,
+				default: '0'
+			},
+			/**
 			 * 是否有指示器
 			 */
 			hasIndicator: {
@@ -189,6 +207,16 @@
 			indicatorStyle: {
 				type: String,
 				default: ''
+			},
+			/**
+			 * 通过改变该值触发位置的重新计算。
+			 * 主要是为了兼容各大平台位置获取的时机问题。
+			 * 在弹层里面，items能够很快拿到，
+			 * 但是不一定位置信息就可以立马拿到
+			 */
+			updateTime: {
+				type: Number,
+				default: 0
 			}
 		},
 		data() {
@@ -261,24 +289,26 @@
 			}
 		},
 		mounted() {
-			setTimeout(()=>{
-				this.toCurrentIndex(this.value)
-				this.toCacheItemsSize()
-			}, 60)
+			this.toCacheItemsSize()
+			this.toCurrentIndex(this.value)
 		},
 		watch: {
 			value(newV) {
-				setTimeout(()=>{
-					this.toCurrentIndex(newV)
-				}, 0)
+				this.toCurrentIndex(newV)
 			},
 			items() {
 				// 清缓存
 				this.dyItems = {}
-				setTimeout(()=>{
-					this.toCurrentIndex(this.value)
-					this.toCacheItemsSize()
-				}, 60)
+				const that = this
+				this.$nextTick(function(){
+					that.toCacheItemsSize()
+					that.toCurrentIndex(this.value)
+				})
+			},
+			updateTime() {
+				this.dyItems = {}
+				this.toCacheItemsSize()
+				this.toCurrentIndex(this.value)
 			}
 		},
 		methods: {
@@ -356,20 +386,13 @@
 			async toCacheItemsSize() {
 				let scrollT = 0
 				try{
-					const cachedS = this.dyItems['scroll']
-					if (cachedS) {
-						scrollT = cachedS.top
-					} else {
-						const res = await this.getElSize(-100)
-						scrollT = res.top
-						this.dyItems['scroll'] = {top: scrollT}
-					}
+					const res = await this.getElSize(-100)
+					scrollT = res.top
+					this.dyItems['scroll'] = {top: scrollT}
 				}catch(e){
 					//TODO handle the exception
 				}
 				for (const i in this.items) {
-					const cached = this.dyItems['item'+i]
-					if (cached) continue;
 					try{
 						const result = await this.getElSize(i)
 						let indHeight = result.height

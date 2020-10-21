@@ -253,6 +253,16 @@
 			indicatorStyle: {
 				type: String,
 				default: ''
+			},
+			/**
+			 * 通过改变该值触发位置的重新计算。
+			 * 主要是为了兼容各大平台位置获取的时机问题。
+			 * 在弹层里面，items能够很快拿到，
+			 * 但是不一定位置信息就可以立马拿到
+			 */
+			updateTime: {
+				type: Number,
+				default: 0
 			}
 		},
 		data() {
@@ -375,6 +385,11 @@
 			},
 			offset(newV) {
 				this.toHandleSwiperScroll(newV)
+			},
+			updateTime() {
+				this.dyItems = {}
+				this.toCacheItemsSize()
+				this.toCurrentIndex(this.value, true)
 			}
 		},
 		methods: {

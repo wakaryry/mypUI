@@ -5,9 +5,11 @@
 				<slot name="indicator"></slot>
 			</view>
 			<view :style="mrTabsStyle">
-				<view v-for="(item, index) in items" :key="index" :ref="'item'+index" :id="'item'+index" class="myp-tab-item" :style="mrItemStyle + (index===value ? activeItemStyle:'')" @click="changeTab(index)">
+				<view :style="{width: left}"></view>
+				<view v-for="(item, index) in items" :key="index" :ref="'item'+index" :id="'item'+index" class="myp-tab-item" :style="mrItemStyle + (index===value ? activeItemStyle:'') + (index===items.length-1?'margin-right:0;':'')" @click="changeTab(index)">
 					<text :class="['myp-color-'+(index===value?activeTextType:textType), 'myp-size-'+(index===value?activeTextSize:textSize)]" :style="textStyle + (index===value ? activeTextStyle : '')">{{ textLabel ? item[textLabel] : item }}</text>
 				</view>
+				<view :style="{width: right}"></view>
 			</view>
 		</view>
 	</scroll-view>
@@ -139,6 +141,20 @@
 			width: {
 				type: String,
 				default: '120rpx'
+			},
+			/**
+			 * 左侧空白占位
+			 */
+			left: {
+				type: String,
+				default: '0'
+			},
+			/**
+			 * 右侧空白占位
+			 */
+			right: {
+				type: String,
+				default: '0'
 			},
 			/**
 			 * 各个tab之间的间隙
@@ -318,9 +334,9 @@
 				let _style = `height:${this.heightPx}px;`
 				const w = parseInt(this.width)
 				if (w > 0) {
-					_style += `width:${this.widthPx}px;margin-right:${this.spacePx}px;margin-left:${this.spacePx}px;`
+					_style += `width:${this.widthPx}px;margin-right:${this.spacePx}px;`
 				} else {
-					_style += `margin-right:${this.spacePx}px;margin-left:${this.spacePx}px;`
+					_style += `margin-right:${this.spacePx}px;`
 				}
 				_style += "justify-content:center;align-items:center;"
 				// #ifndef APP-NVUE
@@ -333,27 +349,29 @@
 			}
 		},
 		mounted() {
-			setTimeout(()=>{
-				this.toCurrentIndex(this.value, true)
-				// 这样的话要求mounted之后，所有item的宽度不会变化
-				// 所以适用于固定宽度的，或者动态宽度，但是元素生成之后宽度不变的
-				this.toCacheItemsSize()
-			}, 60)
+			this.toCacheItemsSize()
+			this.toCurrentIndex(this.value, true)
 		},
 		watch: {
 			value(newV) {
-				// this.toCurrentIndex(newV)
+				// #ifdef APP-NVUE
+				this.toCurrentIndex(newV)
+				// #endif
+				// #ifndef APP-NVUE
+				// 否则在点击过程中可能响应不正确
 				setTimeout(()=>{
 					this.toCurrentIndex(newV)
 				}, 0)
+				// #endif
 			},
 			items() {
 				// 清缓存
 				this.dyItems = {}
-				setTimeout(()=>{
-					this.toCurrentIndex(this.value)
-					this.toCacheItemsSize()
-				}, 60)
+				const that = this
+				this.$nextTick(()=>{
+					that.toCacheItemsSize()
+					that.toCurrentIndex(this.value, true)
+				})
 			},
 			offset(newV) {
 				this.toHandleSwiperScroll(newV)
@@ -490,20 +508,13 @@
 			async toCacheItemsSize() {
 				let scrollL = 0
 				try{
-					const cachedS = this.dyItems['scroll']
-					if (cachedS) {
-						scrollL = cachedS.left
-					} else {
-						const res = await this.getElSize(-100)
-						scrollL = res.left
-						this.dyItems['scroll'] = {left: scrollL}
-					}
+					const res = await this.getElSize(-100)
+					scrollL = res.left
+					this.dyItems['scroll'] = {left: scrollL}
 				}catch(e){
 					//TODO handle the exception
 				}
 				for (const i in this.items) {
-					const cached = this.dyItems['item'+i]
-					if (cached) continue;
 					try{
 						const result = await this.getElSize(i)
 						let indWidth = result.width

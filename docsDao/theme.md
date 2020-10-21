@@ -252,3 +252,54 @@ base.scss 中定义的class，基本上已经足够支撑大多数的设计。�
 ```
 
 因为`h5.scss`中全局样式兼容的时候存在 `!important`，优先级高。所以如果您需要覆盖，记得在自己的样式里面加 `!important`。
+
+为什么会需要添加优先级：
+
+```css
+/*
+// 这是uni自动嵌入的样式，这些样式会直接嵌入到 组件/页面；
+// 这些样式的优先级非常高，比任何在 app.vue 里面引入的全局 style/class 也要高，毕竟这些样式是直接在组件文件下的；
+// 为了使 全局css 生效，我们 得给涉及到 这些属性的样式 设置 !important；
+// 而且，在 style 中个性化配置的时候也需要加 !important，否则无法生效；
+*/
+
+view,
+swiper-item,
+scroll-view {
+  display:-webkit-box;
+  display:-webkit-flex;
+  display:flex;
+  -webkit-box-orient:vertical;
+  -webkit-box-direction:normal;
+  -webkit-flex-direction:column;
+          flex-direction:column;
+  -webkit-flex-shrink: 0;
+          flex-shrink: 0;
+  -webkit-box-flex: 0;
+  -webkit-flex-grow: 0;
+          flex-grow: 0;
+  -webkit-flex-basis: auto;
+          flex-basis: auto;
+  -webkit-box-align: stretch;
+  -webkit-align-items: stretch;
+          align-items: stretch;
+  -webkit-align-content: flex-start;
+          align-content: flex-start;
+}
+view,
+image,
+input,
+scroll-view,
+swiper,
+swiper-item,
+text,
+textarea,
+video {
+  position: relative;
+  border: 0px solid #000000;
+  box-sizing: border-box;
+}
+swiper-item {
+  position: absolute;
+}
+```

@@ -31,3 +31,35 @@ nvue页面，在app端，动态的全局js变量实际上是无法正常保持�
 > list下为什么无法触发第二次加载更多
 
 不要把所有的内容放在一个cell里面，否则会出现无法触发上提加载的问题。尽量使用cell循环。
+
+> textarea内容闪
+
+如果你的textarea存在内容时而出现，时而不见，或者内容闪烁的情况。先检查上一个页面是否存在弹窗类组件没有关闭。如果没有问题，可以独立这个页面测试是否有问题。独立没有问题，大概率是上一个页面某种写法导致闪烁。没有啥好办法。
+
+> 页面内容闪烁
+
+- 检查是否存在box-shadow；
+
+**Android平台阴影(box-shadow)问题**
+
+Android平台weex对阴影样式(box-shadow)支持不完善，如设置圆角边框时阴影样式显示不正常、设置动画时在Android7上显示不正常、在Android10上出现闪烁现象等。
+
+为解决这些问题，从HBuilderX 2.4.7起，新增elevation属性（组件的属性，不是css样式）设置组件的层级，Number类型，层级值越大阴影越明显，阴影效果也与组件位置有关，越靠近页面底部阴影效果越明显
+
+```html
+<view elevation="5px"></view>
+```
+
+**注意**
+
+设置elevation属性产生的阴影暂时无法修改颜色
+
+为了避免elevation属性的阴影效果与阴影样式(box-shadow)冲突，设置elevation属性后box-shadow样式失效
+
+使用elevation需要阴影元素的父元素大于阴影范围，否则会对阴影进行裁剪
+
+IOS不支持elevation属性，请使用box-shadow设置阴影
+
+- swiper-list可能会造成下一个页面闪烁或者有历史内容残留
+
+swiper-list是双列表潜逃，支持公用header，以及swiper切换的效果。swiper-list有可能会导致下一个页面出现残影或者内容闪烁。（还在排查与取证阶段）

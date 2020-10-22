@@ -1,36 +1,36 @@
 <template>
-	<view class="myp-list">
-		<!-- #ifdef APP-NVUE -->
-		<list :class="'myp-bg-'+bgType" :style="mrBoxStyle" ref="myp-scroller" :show-scrollbar="showScrollbar" :loadmoreoffset="(mypUp.use&&!useLoading)?loadMoreOffset:0" @loadmore="mypMoreLoad" @scroll="mypScroll">
-			<myp-refresher-n v-if="mypDown.use" ref="myp-refresher" scroller-ref="myp-scroller" @refresh="mypRefresh"></myp-refresher-n>
-			<cell>
-				<view ref="myp-list-top"></view>
-			</cell>
-			<slot></slot>
-			<cell>
-				<view ref="myp-list-bottom"></view>
-			</cell>
-			<cell v-if="mypUp.use&&!useLoading">
-				<myp-loader :isLoading="mypIsUpLoading" :hasMore="mypHasMore"></myp-loader>
-			</cell>
-			<myp-loader-n v-if="mypUp.use&&useLoading" ref="myp-loader" :hasMore="mypHasMore" @loading="mypLoad"></myp-loader-n>
-		</list>
-		<!-- #endif -->
-		<!-- #ifndef APP-NVUE -->
-		<scroll-view :class="'myp-bg-'+bgType" :style="mrBoxStyle" :scroll-y="mypScrollable" :show-scrollbar="showScrollbar" :enable-back-to-top="true" @scroll="mypScroll" @touchstart="mypTouchstartEvent" @touchmove="mypTouchmoveEvent" @touchend="mypTouchendEvent" @touchcancel="mypTouchendEvent">
-			<view :style="mypMrScrollContentStyle">
-				<view v-if="mypDown.use" :style="mypMrRefreshStyle">
-					<myp-refresher :refreshing="mypIsDownLoading" :couldUnLash="mypCouldUnLash" :rate="mypDownRate"></myp-refresher>
-				</view>
-				<view id="myp-list-top" ref="myp-list-top"></view>
-				<!-- content of scroll -->
-				<slot></slot>
-				<view id="myp-list-bottom" ref="myp-list-bottom"></view>
-				<myp-loader v-if="mypUp.use" :isLoading="mypIsUpLoading" :hasMore="mypHasMore"></myp-loader>
+	<!-- #ifndef APP-NVUE -->
+	<scroll-view :class="['myp-bg-'+bgType, 'myp-list']" :style="mrBoxStyle" :scroll-y="mypScrollable" :show-scrollbar="showScrollbar" :enable-back-to-top="true" @scroll="mypScroll" @touchstart="mypTouchstartEvent" @touchmove="mypTouchmoveEvent" @touchend="mypTouchendEvent" @touchcancel="mypTouchendEvent">
+	<!-- #endif -->
+	<!-- #ifdef APP-NVUE -->
+	<list :class="['myp-bg-'+bgType, 'myp-list']" :style="mrBoxStyle" ref="myp-scroller" :show-scrollbar="showScrollbar" :loadmoreoffset="(mypUp.use&&!useLoading)?loadMoreOffset:0" @loadmore="mypMoreLoad" @scroll="mypScroll">
+		<myp-refresher-n v-if="mypDown.use" ref="myp-refresher" scroller-ref="myp-scroller" @refresh="mypRefresh"></myp-refresher-n>
+		<cell>
+			<view ref="myp-list-top"></view>
+		</cell>
+		<slot></slot>
+		<cell>
+			<view ref="myp-list-bottom"></view>
+		</cell>
+		<cell v-if="mypUp.use&&!useLoading">
+			<myp-loader :isLoading="mypIsUpLoading" :hasMore="mypHasMore"></myp-loader>
+		</cell>
+		<myp-loader-n v-if="mypUp.use&&useLoading" ref="myp-loader" :hasMore="mypHasMore" @loading="mypLoad"></myp-loader-n>
+	</list>
+	<!-- #endif -->
+	<!-- #ifndef APP-NVUE -->
+		<view :style="mypMrScrollContentStyle">
+			<view v-if="mypDown.use" :style="mypMrRefreshStyle">
+				<myp-refresher :refreshing="mypIsDownLoading" :couldUnLash="mypCouldUnLash" :rate="mypDownRate"></myp-refresher>
 			</view>
-		</scroll-view>
-		<!-- #endif -->
-	</view>
+			<view id="myp-list-top" ref="myp-list-top"></view>
+			<!-- content of scroll -->
+			<slot></slot>
+			<view id="myp-list-bottom" ref="myp-list-bottom"></view>
+			<myp-loader v-if="mypUp.use" :isLoading="mypIsUpLoading" :hasMore="mypHasMore"></myp-loader>
+		</view>
+	</scroll-view>
+	<!-- #endif -->
 </template>
 
 <script>
@@ -125,17 +125,10 @@
 
 <style lang="scss" scoped>
 	.myp-list {
-		position: relative;
 		/* #ifndef APP-NVUE */
 		display: flex;
 		/* #endif */
 		flex-direction: column;
 		transform: rotateZ(180deg);
-		
-		&-foot {
-			position: absolute;
-			left: 0;
-			bottom: 0;
-		}
 	}
 </style>

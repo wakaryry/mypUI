@@ -68,6 +68,7 @@
 			padding-left: 32rpx;
 			padding-right: 32rpx;
 			flex-direction: column;
+			transform: rotateZ(180deg);
 			
 			&-left {
 				align-items: flex-start;

@@ -573,6 +573,12 @@
 				"disableScroll": true
 			}
 		},
+		{
+			"path": "pages/scroll/video_api",
+			"style": {
+				"disableScroll": true
+			}
+		},
 		// others
 		{
 			"path": "pages/others/index",

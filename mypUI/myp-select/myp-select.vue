@@ -4,8 +4,10 @@
 		<slot name="label">
 			<text v-if="label&&label.length>0" :class="['myp-color-'+labelType, 'myp-size-'+labelSize]" :style="'margin-right:'+space+';'+labelStyle">{{label}}</text>
 		</slot>
-		<text v-if="shouldShowPlace" :class="['myp-lines-one', 'myp-color-'+placeType, 'myp-size-'+placeSize]" :style="'text-align:'+valueAlign+';'+placeStyle">{{placeholder}}</text>
-		<text v-else :class="['myp-lines-one', 'myp-color-'+valueType, 'myp-size-'+valueSize]" :style="'text-align:'+valueAlign+';'+valueStyle">{{value}}</text>
+		<slot>
+			<text v-if="shouldShowPlace" :class="['myp-lines-one', 'myp-color-'+placeType, 'myp-size-'+placeSize]" :style="'text-align:'+valueAlign+';'+placeStyle">{{placeholder}}</text>
+			<text v-else :class="['myp-lines-one', 'myp-color-'+valueType, 'myp-size-'+valueSize]" :style="'text-align:'+valueAlign+';'+valueStyle">{{value}}</text>
+		</slot>
 		<slot name="extra"></slot>
 		<myp-icon v-if="indicator&&indicator.length>0" :name="indicator" :type="indicatorType" :size="indicatorSize" :iconStyle="indicatorStyle" :boxStyle="'margin-left:'+space+';'+indicatorBoxStyle" @iconClicked="toSelect"></myp-icon>
 	</view>

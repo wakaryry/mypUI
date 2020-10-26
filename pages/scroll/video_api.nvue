@@ -1,0 +1,60 @@
+<template>
+	<view>
+		<myp-position pos="top">
+			<image style="width: 750rpx; height: 300rpx;" src="/static/circle-bg.png" mode="aspectFill"></image>
+		</myp-position>
+		<myp-navbar title="接口测试"></myp-navbar>
+		<myp-list bgType="none" ref="myp-list" :autoUpdate="true" @down="toLoadData" @up="toLoadData">
+			<myp-list-cell v-for="(item,idx) in items" :key="idx">
+				<view style="height: 200rpx;">
+					<text>{{item.vod_id}}</text>
+				</view>
+			</myp-list-cell>
+		</myp-list>
+	</view>
+</template>
+
+<script>
+	export default {
+		data() {
+			return {
+				items: []
+			}
+		},
+		methods: {
+			toLoadData() {
+				const ins = this.$refs['myp-list']
+				const cp = ins.mypCurrentPage
+				const that = this
+				uni.request({
+					url: 'http://dysa.cn/api.php/provide/vod/',
+					data: {
+						ac: 'list',
+						t: 13,
+						pg: cp
+					},
+					method: 'GET',
+					success: (res) => {
+						console.log(res)
+						if (res.statusCode === 200) {
+							if (cp === 1) {
+								that.items = res.data.list || []
+							} else {
+								that.items = that.items.concat(res.data.list || [])
+							}
+							ins.mypEndSuccess(res.data.pagecount>cp)
+						} else {
+							ins.mypEndError()
+						}
+					},
+					fail: (err) => {
+						ins.mypEndError()
+					}
+				})
+			}
+		}
+	}
+</script>
+
+<style lang="scss">
+</style>

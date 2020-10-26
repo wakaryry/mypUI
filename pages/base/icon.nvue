@@ -11,6 +11,14 @@
 					<myp-icon name="solid-plus" type="warning" size="ll"></myp-icon>
 					<myp-icon name="solid-plus" type="error" size="ll"></myp-icon>
 				</view>
+				<view style="height: 30rpx;"></view>
+				<myp-title bgType="none" centerIcon1="primary" centerIcon1Type="primary" centerIcon2="triangle-right" title2="自定义图标" centerIcon2Type="third" centerStyle="padding-left:16rpx;padding-right:16rpx;background-color:#FFFFFF;border-radius:12rpx;height:60rpx;"></myp-title>
+				<view class="icon-margin icon-bw">
+					<myp-icon name="solid-love" size="ll"></myp-icon>
+					<myp-icon name="music-lines" size="ll"></myp-icon>
+					<myp-icon name="light" size="ll"></myp-icon>
+					<myp-icon name="headphone-dot" size="ll"></myp-icon>
+				</view>
 			</myp-list-cell>
 			<myp-list-cell>
 				<myp-title bgType="none" centerIcon1="primary" centerIcon1Type="primary" centerIcon2="triangle-right" title2="其它样式" centerIcon2Type="third" centerStyle="padding-left:16rpx;padding-right:16rpx;background-color:#FFFFFF;border-radius:12rpx;height:60rpx;"></myp-title>

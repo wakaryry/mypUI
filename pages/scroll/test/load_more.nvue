@@ -137,7 +137,7 @@
 </script>
 
 <style lang="scss">
-	@import '@/mypUI/mypui.scss';
+	
 	
 	.raw {
 		&-item {

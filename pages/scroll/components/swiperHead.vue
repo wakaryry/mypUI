@@ -35,7 +35,7 @@
 </script>
 
 <style lang="scss" scoped>
-	@import '@/mypUI/mypui.scss';
+	
 	
 	.sh {
 		width: 750rpx;

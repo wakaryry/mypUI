@@ -47,7 +47,7 @@
 </script>
 
 <style lang="scss" scoped>
-	@import '@/mypUI/mypui.scss';
+	
 	.hic {
 		background-color: $myp-bg-color-light;
 		padding: 0 24rpx;

@@ -179,7 +179,7 @@
 </script>
 
 <style lang="scss">
-	@import '@/mypUI/mypui.scss';
+	
 	.ch {
 		&-nav {
 			flex-direction: row;

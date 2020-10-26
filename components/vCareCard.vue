@@ -43,7 +43,7 @@
 </script>
 
 <style lang="scss" scoped>
-	@import '@/mypUI/mypui.scss';
+	
 	.vcc {
 		background-color: #FFFFFF;
 		width: 300rpx;

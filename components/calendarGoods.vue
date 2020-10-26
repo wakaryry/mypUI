@@ -46,7 +46,7 @@
 </script>
 
 <style lang="scss" scoped>
-	@import '@/mypUI/mypui.scss';
+	
 	
 	.myp-ucv {
 		flex-direction: column;

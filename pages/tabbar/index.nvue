@@ -80,7 +80,7 @@
 </script>
 
 <style lang="scss">
-	@import '@/mypUI/mypui.scss';
+	
 	.ti {
 		&-head {
 			width: 750rpx;

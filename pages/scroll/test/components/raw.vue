@@ -115,7 +115,7 @@
 </script>
 
 <style lang="scss">
-	@import '@/mypUI/mypui.scss';
+	
 	
 	.wrap {
 		&-item {

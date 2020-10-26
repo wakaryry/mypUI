@@ -15,7 +15,7 @@
 </script>
 
 <style lang="scss" scoped>
-	@import '@/mypUI/mypui.scss';
+	
 	
 	.ms {
 		/* #ifndef APP-NVUE */

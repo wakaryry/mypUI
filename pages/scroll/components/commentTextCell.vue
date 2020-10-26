@@ -83,7 +83,7 @@
 </script>
 
 <style lang="scss" scoped>
-	@import '@/mypUI/mypui.scss';
+	
 	.ctc {
 		/* #ifndef APP-NVUE */
 		// display: block;

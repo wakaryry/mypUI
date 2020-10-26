@@ -178,7 +178,7 @@
 </script>
 
 <style lang="scss">
-	@import '@/mypUI/mypui.scss';
+	
 	
 	.mu {
 		&-grades {

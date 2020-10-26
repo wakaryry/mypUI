@@ -199,7 +199,7 @@
 </script>
 
 <style lang="scss" scoped>
-	@import '@/mypUI/mypui.scss';
+	
 	.pc {
 		background-color: #FFFFFF;
 		padding-left: 36rpx;

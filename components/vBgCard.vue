@@ -151,7 +151,7 @@
 </script>
 
 <style lang="scss" scoped>
-	@import '@/mypUI/mypui.scss';
+	
 	
 	.vbc {
 		width: 220rpx;

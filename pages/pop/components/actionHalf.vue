@@ -33,7 +33,7 @@
 </script>
 
 <style lang="scss" scoped>
-	@import '@/mypUI/mypui.scss';
+	
 	
 	.aa {
 		width: 600rpx;

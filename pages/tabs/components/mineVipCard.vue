@@ -20,7 +20,7 @@
 </script>
 
 <style lang="scss" scoped>
-	@import '@/mypUI/mypui.scss';
+	
 	.mvc {
 		position: relative;
 		width: 750rpx;

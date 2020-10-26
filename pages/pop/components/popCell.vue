@@ -38,7 +38,7 @@
 </script>
 
 <style lang="scss" scoped>
-	@import '@/mypUI/mypui.scss';
+	
 	.co {
 		position: relative;
 		width: 750rpx;

@@ -28,7 +28,7 @@
 </script>
 
 <style lang="scss" scoped>
-	@import '@/mypUI/mypui.scss';
+	
 	
 	.dt {
 		background-color: $myp-color-primary;

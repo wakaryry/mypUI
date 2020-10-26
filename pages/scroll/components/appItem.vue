@@ -50,7 +50,7 @@
 </script>
 
 <style lang="scss" scoped>
-	@import '@/mypUI/mypui.scss';
+	
 	.ai {
 		position: relative;
 		flex-direction: column;

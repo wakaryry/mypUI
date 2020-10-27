@@ -88,6 +88,13 @@
 			bottom: {
 				type: String,
 				default: '0'
+			},
+			/**
+			 * 外层样式。比如设置z-index
+			 */
+			boxStyle: {
+				type: String,
+				default: ''
 			}
 		},
 		computed: {
@@ -97,7 +104,7 @@
 					_style += `background-color:${this.bg};`
 				}
 				_style += `left:${this.leftPx}px;top:${this.topPx}px;right:${this.rightPx}px;bottom:${this.bottomPx}px;`
-				return _style
+				return _style + this.boxStyle
 			},
 			leftPx() {
 				return getPx(this.left)

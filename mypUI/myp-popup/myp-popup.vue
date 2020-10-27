@@ -1,7 +1,7 @@
 <template>
 	<view>
 		<view>
-			<myp-overlay :show="overlayShow" :bgType="overlay.bgType" :bg="overlay.bg" :duration="overlay.duration" :hasAnimation="overlay.hasAnimation" :timingFunction="overlay.timingFunction" :canAutoClose="false" :left="left" :top="top" :right="right" :bottom="bottom" @overlayClicked="overlayClicked"></myp-overlay>
+			<myp-overlay :show="hasOverlay&&overlayShow" :bgType="overlay.bgType" :bg="overlay.bg" :duration="overlay.duration" :hasAnimation="overlay.hasAnimation" :timingFunction="overlay.timingFunction" :canAutoClose="false" :left="left" :top="top" :right="right" :bottom="bottom" :boxStyle="overlayStyle" @overlayClicked="overlayClicked"></myp-overlay>
 		</view>
 		<view ref="myp-popup" v-if="helpShow" @click.stop="toPrevent" :class="['myp-popup', 'myp-flex-column', 'myp-bg-'+bgType]" :style="boxStyle+mrPopStyle + noWeexAni">
 			<slot></slot>
@@ -45,6 +45,13 @@
 			duration: {
 				type: Number,
 				default: 300
+			},
+			/**
+			 * 是否有overlay
+			 */
+			hasOverlay: {
+				type: Boolean,
+				default: true
 			},
 			/**
 			 * 遮罩层设置
@@ -149,6 +156,13 @@
 			 * 内容外层样式
 			 */
 			boxStyle: {
+				type: String,
+				default: ''
+			},
+			/**
+			 * overlay的外层样式
+			 */
+			overlayStyle: {
 				type: String,
 				default: ''
 			}

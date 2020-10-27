@@ -193,7 +193,7 @@
 		methods: {
 			toSelect(e) {
 				this.$emit("cellClicked")
-				e.stopPropagation && e.stopPropagation()
+				e && e.stopPropagation && e.stopPropagation()
 			}
 		}
 	}

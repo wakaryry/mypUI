@@ -11,7 +11,7 @@
 	const dom = uni.requireNativePlugin('dom');
 	dom.addRule('fontFace', {
 		'fontFamily': "mypiconfont",
-		'src': "url('https://at.alicdn.com/t/font_1827032_nyt5dngyrvp.ttf')"
+		'src': "url('https://at.alicdn.com/t/font_1827032_ta8cozouisj.ttf')"
 	})
 	// #endif
 	
@@ -82,12 +82,12 @@
 	/* #ifndef APP-NVUE */
 	@font-face {
 	  font-family: 'mypiconfont';  /* project id 1827032 */
-	  src: url('https://at.alicdn.com/t/font_1827032_nyt5dngyrvp.eot');
-	  src: url('https://at.alicdn.com/t/font_1827032_nyt5dngyrvp.eot?#iefix') format('embedded-opentype'),
-	  url('https://at.alicdn.com/t/font_1827032_nyt5dngyrvp.woff2') format('woff2'),
-	  url('https://at.alicdn.com/t/font_1827032_nyt5dngyrvp.woff') format('woff'),
-	  url('https://at.alicdn.com/t/font_1827032_nyt5dngyrvp.ttf') format('truetype'),
-	  url('https://at.alicdn.com/t/font_1827032_nyt5dngyrvp.svg#mypiconfont') format('svg');
+	  src: url('https://at.alicdn.com/t/font_1827032_ta8cozouisj.eot');
+	    src: url('https://at.alicdn.com/t/font_1827032_ta8cozouisj.eot?#iefix') format('embedded-opentype'),
+	    url('https://at.alicdn.com/t/font_1827032_ta8cozouisj.woff2') format('woff2'),
+	    url('https://at.alicdn.com/t/font_1827032_ta8cozouisj.woff') format('woff'),
+	    url('https://at.alicdn.com/t/font_1827032_ta8cozouisj.ttf') format('truetype'),
+	    url('https://at.alicdn.com/t/font_1827032_ta8cozouisj.svg#mypiconfont') format('svg');
 	}
 	/* #endif */
 	

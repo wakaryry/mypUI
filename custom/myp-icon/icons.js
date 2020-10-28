@@ -1,4 +1,7 @@
 export default {
+	'shang-tiku': "\ue674",
+	'xia-tiku': "\ue675",
+	'solid-cat': "\ue673",
 	'solid-back': "\ue672",
 	'solid-love': "\ue670",
 	'music-lines': "\ue6ab",
@@ -164,7 +167,5 @@ export default {
 	'comment-dots': "\ue8a5",
 	'sound': "\ue62e",
 	'link': "\ue634",
-	'solid-eye': "\ue622",
-	'handle-up':"\ue674",
-	'handle-down':"\ue675"
+	'solid-eye': "\ue622"
 }

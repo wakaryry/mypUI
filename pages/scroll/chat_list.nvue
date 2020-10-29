@@ -1,7 +1,7 @@
 <template>
 	<view>
 		<myp-navbar :lefts="leftIcons" title="chat-list" @leftAction="navLeftAction"></myp-navbar>
-		<myp-list-chat bgType="page" ref="myp-list" :includeXBar="false" :autoUpdate="true" @down="toLoadData">
+		<myp-list :reverse="true" :showScrollbar="false" bgType="page" ref="myp-list" :autoUpdate="true" :down="null" @up="toLoadData">
 			<myp-list-cell v-for="(item, idx) in items" :key="idx">
 				<view v-if="item.myp_page" :ref="'chat_page_'+item.myp_page"></view>
 				<view v-else :class="['slo-content', item.uid===1?'slo-content-left':'slo-content-right']">
@@ -10,7 +10,7 @@
 					<view style="height: 32rpx;"></view>
 				</view>
 			</myp-list-cell>
-		</myp-list-chat>
+		</myp-list>
 	</view>
 </template>
 

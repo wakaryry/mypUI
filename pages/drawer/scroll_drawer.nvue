@@ -11,7 +11,12 @@
 			<myp-list-cell>
 				<view style="height: 20rpx;"></view>
 				<myp-flex bgType="none">
+					<!-- #ifdef APP-NVUE || H5 -->
+					<myp-item v-for="(item,idx) in apps" bgType="none" :key="idx" :icon="item.icon" :text="item.name" iconType="inverse" textType="inverse" boxStyle="height:120rpx;flex:1;" @itemClicked="toPage(item)"></myp-item>
+					<!-- #endif -->
+					<!-- #ifndef APP-NVUE || H5 -->
 					<myp-item v-for="(item,idx) in apps" bgType="none" :key="idx" :icon="item.icon" :text="item.name" iconType="inverse" textType="inverse" style="flex:1;" boxStyle="height:120rpx;flex:1;" @itemClicked="toPage(item)"></myp-item>
+					<!-- #endif -->
 				</myp-flex>
 			</myp-list-cell>
 		</myp-list>

@@ -16,6 +16,7 @@ export default {
 	base_progress: '/pages/base/progress',
 	base_progress_circle: '/pages/base/progress_circle',
 	base_tabs: '/pages/base/tabs',
+	base_tabs_v: "/pages/base/tabs_v",
 	base_item: '/pages/base/item',
 	base_grid: '/pages/base/grid',
 	base_badge: '/pages/base/badge',

@@ -19,13 +19,13 @@ export default {
 		mypRefresh() {
 			this.mypPrePage = this.mypCurrentPage
 			this.mypCurrentPage = 1
-			if (this.down.use) {
+			if (this.mypDown.use) {
 				this.mypIsDownLoading = true
 			}
 			this.mypGetContentList('refresh')
 		},
 		mypLoad() {
-			if (!this.up.use) return;
+			if (!this.mypUp.use) return;
 			if (this.mypIsDownLoading) {
 				if (this.platform === 'ios') {
 					this.$refs['myp-loader'] && this.$refs['myp-loader'].cancel()
@@ -54,13 +54,13 @@ export default {
 			this.mypPrePage = this.mypCurrentPage
 			this.mypCurrentPage += 1
 			
-			if (this.up.use) {
+			if (this.mypUp.use) {
 				this.mypIsUpLoading = true
 			}
 			this.mypGetContentList('load')
 		},
 		mypReload() {
-			if (!this.up.use) return;
+			if (!this.mypUp.use) return;
 			if (this.mypIsDownLoading) {
 				if (this.platform === 'ios') {
 					this.$refs['myp-loader'] && this.$refs['myp-loader'].cancel()
@@ -78,7 +78,7 @@ export default {
 			this.mypPrePage = this.mypCurrentPage
 			this.mypCurrentPage = 1
 			
-			if (this.up.use) {
+			if (this.mypUp.use) {
 				this.mypIsUpLoading = true
 			}
 			this.mypGetContentList('load')
@@ -115,11 +115,11 @@ export default {
 		mypInitContentList() {
 			this.mypPrePage = 0
 			this.mypCurrentPage = 1
-			if (this.down.use) {
+			if (this.mypDown.use) {
 				this.mypIsDownLoading = true
 				this.mypGetContentList('refresh')
 			} else {
-				if (this.up.use) {
+				if (this.mypUp.use) {
 					this.mypIsUpLoading = true
 					this.mypGetContentList('load')
 				}

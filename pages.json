@@ -113,6 +113,12 @@
 			}
 		},
 		{
+			"path": "pages/base/tabs_v",
+			"style": {
+				"disableScroll": true
+			}
+		},
+		{
 			"path": "pages/base/tag",
 			"style": {
 				"disableScroll": true

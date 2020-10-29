@@ -61,8 +61,15 @@ export default {
 		height: {
 			type: String,
 			default: '0'
-		}
+		},
 		// #endif
+		/**
+		 * 是否颠倒列表
+		 */
+		reverse: {
+			type: Boolean,
+			default: false
+		}
 	},
 	computed: {
 		mrBoxStyle() {
@@ -107,8 +114,10 @@ export default {
 	},
 	data() {
 		return {
+			// #ifndef APP-NVUE
 			mypCurrentView: null,
 			mypScrollTop: 0
+			// #endif
 		}
 	},
 	methods: {

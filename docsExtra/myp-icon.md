@@ -1,8 +1,6 @@
 
 myp-icon 提供了快速使用 icon图标 的能力，支持 字体图标、本地图片，以及网络图片。
 
-## 使用
-
 ```html
 <myp-icon name="setting" type="text" size="l" @iconClicked="toSet"></myp-icon>
 ```
@@ -11,43 +9,7 @@ myp-icon 其实就是 view 包裹了一个 image 或者 text。我们可以分�
 
 `name` `type` `size` `iconStyle` `mode` `hover` `boxStyle`
 
-## @iconClicked
-
-点击图标的事件监听。
-
-## props
-
-`name` `type` `size` `iconStyle` `mode` `hover` `boxStyle`
-
-### name
-
-icon的名字，也就是 mypUI 下，icons.js 中自己定义的 key，这个key将对应上 icon 的 code。比如：`copy: '\ue643'`，name就是 copy。
-
-### type
-
-icon的颜色主题。给字体icon设置一个颜色。只有字体icon才会有作用。图片不起作用。
-
-### size
-
-icon的字体大小配置，默认是 `ll`。对图片设置无效。
-
-### iconStyle
-
-对icon的个性化style设置，图片同样设置这个属性。
-
-### mode 
-
-图片的 mode，默认是 aspectFill。
-
-### hover
-
-hover效果。可以配置 `bg` `opacity` `bg-opacity`。
-
-### boxStyle
-
-最外层包裹层的设置。
-
-## 如何自定义图标
+**如何自定义图标**
 
 我们的图标来自于 iconfont。您可以在上面挑选，也可以上传自己的设计。
 
@@ -55,7 +17,27 @@ hover效果。可以配置 `bg` `opacity` `bg-opacity`。
 
 比如 mypUI 中的名字为：`mypiconfont`。
 
-## 如何提取图标的code
+我们组件内部对 myp-icon 有依赖（当然，我们可以通过开放slot的形式消除这种依赖，不过个人觉得没有必要），我们提供了以下方式来更好的管理图标：
+
+> 您直接自定义一个自己的icon组件，在里面维护自己的图标库，然后配合 easycom 的匹配规则，覆盖掉 myp-cion 的查找。
+
+您可以看到，我们在 demo 中提供了一个 `custom` 的文件夹，里面有一个我们自定义的 `myp-icon` 组件，然后在 `pages.json` 中，我们配置如下：
+
+```json
+{
+	"easycom": {
+		"autoscan": true,
+		"custom": {
+			"myp-icon": "@/custom/myp-icon/myp-icon.vue", // 允许覆盖某个组件，比如 myp-icon
+			"myp-(.*)": "@/mypUI/myp-$1/myp-$1.vue" // 匹配mypUI内的vue文件
+		}
+	}
+}
+```
+
+这样的好处就是，我们内部依然可以依赖该组件，而您又可以直接自己管理该组件，不受 mypUI 更新的影响。
+
+**如何提取图标的code**
 
 关于字体图标的使用，是可以直接使用 unicode 代码的，但是unicode代码不太友好，我们基本上识别不出它是谁，所以，我们添加了一个js对象，他给每一个 图标的unicode代码一个语意化的命名。这样我们用起来就简单多了。
 

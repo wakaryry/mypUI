@@ -63,9 +63,3 @@ myp-drawer 用法上稍微有所不同，不再是使用 `show` 来控制，而�
 ![myp-drawer](/images/doc/drawer-close.png)
 ![myp-drawer](/images/doc/drawer-open.png)
 
-**TODO**
-
-- 增加手势收起；
-- 开放swipe动作支持；
-- 开放打开/收起的progress，方便外部实现某些随动/联动动画；
-

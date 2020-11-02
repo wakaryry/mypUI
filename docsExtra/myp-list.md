@@ -7,14 +7,13 @@
 
 > 主要功能如下：
 
-- 高度控制；
+- app端高度继承，MP/H5端高度控制；
 - 可开可关闭的 下拉刷新 与 上提加载；
 - 可以设置 是使用 loader 组件来实现 上提加载，还是使用 loadMore 事件来实现上提加载；
+- 可以用来做聊天列表，并提供了示范；
 - ...
 
-如果您只是纯粹的想使用一个不带刷新和加载的列表，请使用 `myp-list-simple`，其文档见 [myp-list-simple](/doc/guide/myp-list-simple.html)
-
-## 快速使用
+**快速使用**
 
 ```html
 <template>
@@ -38,6 +37,7 @@
 	  toLoadData() {
 		const ins = this.$refs['myp-list']
 		const cp = ins.mypCurrentPage
+		// 您需要更换这个api接口
 		requestApi({page: cp}).then(response => {
 		  if (cp === 1) {
 			this.items = response.results || []
@@ -63,11 +63,11 @@
 
 在 `loadData` 方法中，我们不需要自己去管理当前的页面等状态，`myp-list` 会自己管理，你只需要调用 成功或者失败 的回掉即可。
 
-## 刷新与加载
+**刷新与加载**
 
 我们提供了刷新与加载的开关，以及事件。大致为：`autoUpdate` `down` `up` `@inited` `@down` `@up` 。
 
-### down
+**down**
 
 下拉刷新的开关。默认是打开的，也就是：`{use: true, offset: uni.upx2px(140), inRate: 0.8, outRate: 0.2}`。
 
@@ -76,9 +76,11 @@
 - `inRate`: 满足释放刷新之前的拉下难易程度。
 - `outRate`: 满足释放刷新之后的拉下难易程度。
 
+关闭刷新可以是 `:down="{use:false}"` ，也可以是 `:down="null"`。
+
 刷新开启之后，会有对应的 `@down` 事件。
 
-### up
+**up**
 
 上提加载的开关。默认是打开的。也就是：`{use: true, offset: 80}`。
 
@@ -90,13 +92,15 @@
 
 如果您需要使用 `weex` 中的 `loading` 组件来做 上提加载更多，您需要设置：`useLoading:true`。我们默认是关闭了 `useLoading`，而是使用 `loadMoreOffset` 这个属性来配置可触发加载更多时的底部距离。
 
+关闭上提加载可以是 `:up="{use:false}"` ，也可以是 `:up="null"`。
+
 不管使用啥，上提加载对应的事件是 `@up`。
 
-### autoUpdate
+**autoUpdate**
 
 是否自动加载第一页数据。默认不加载，也就是 `autoUpdate:false`。
 
-`autoUpdate:true` 即可自动加载第一页数据，当然前提条件是 开启了 下拉刷新。
+`autoUpdate:true` 即可自动加载第一页数据，当然前提条件是 开启了 下拉刷新或者上提加载。
 
 > 如果您不开启 `autoUpdate` 如何加载第一页数据了？
 
@@ -104,11 +108,11 @@
 
 **注意**：这里的 ins 指的是 myp-list 的ref。比如 `<myp-list ref="myp-list"></myp-list>`, ins 就是 `this.$refs['myp-list']` whatever
 
-### @dwon
+**@dwon**
 
 开启了下拉刷新，就必须提供 `@dwon` 事件，并且在里面处理您的刷新逻辑。一般情况下， `@down` 与 `@up` 公用一个处理逻辑。
 
-### @up
+**@up**
 
 开启了 上提加载，就必须提供 `@up` 事件。一般与 `@down` 回调是同一个函数。
 
@@ -133,7 +137,7 @@ toLoadData() {
 
 也就是上面写的，`ins.mypEndSuccess(ifHasNextPage)` 以及 `ins.mypEndError()`。刷新或者加载成功/失败都需要调用相应的接口，以便 `myp-list` 能够正确的为您处理业务。
 
-### @inited
+**@inited**
 
 有时候，您需要一个时机，这个时机是 myp-list 已经准备好了的时候。我们为您提供了 `@inited` 事件监听。这说明 myp-list 已经准备好了一切，您可以尽情的调用。有时候页面内容的初始化刷新，您可以在此事件的回调中处理。
 
@@ -141,15 +145,6 @@ toLoadData() {
 
 `autoUpdate` 也是一样。
 
-## 其它事件
-
-### @scroll
+**@scroll**
 
 list 滚动时的 scroll 事件的监听。
-
-## TODO
-
-- 页面无内容提示占位；
-- 提供整个内容页的刷新显示（比如空白页面刷新时，刷新组件占满全屏）；
-- 回到顶部；
-- 更多更灵活的页面页码管理；

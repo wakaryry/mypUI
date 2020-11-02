@@ -1,5 +1,5 @@
 
-myp-check-item 只用于 myp-check 组件的子组件。而且 myp-check的子组件必须是myp-check-item。
+myp-check-item 只用于 myp-check 组件的子组件。而且 myp-check 的子组件必须是 myp-check-item。
 
 如果您不想自定义，请直接使用我们提供的默认可配置的选择组件 [myp-check-static](/doc/guide/myp-check-static.html).
 

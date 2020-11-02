@@ -230,7 +230,7 @@
 		},
 		methods: {
 			toSelect(e) {
-				e.stopPropagation && e.stopPropagation()
+				e && e.stopPropagation && e.stopPropagation()
 				this.$emit("selectClicked")
 			}
 		}

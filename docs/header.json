@@ -19,50 +19,50 @@
 		"order": 60,
 		"title": "列表：myp-list"
 	},
-	"myp-list-simple": {
-		"type": "guide",
-		"order": 61,
-		"title": "列表：myp-list-simple"
-	},
 	"myp-list-cell": {
 		"type": "guide",
-		"order": 62,
+		"order": 61,
 		"title": "列表单元：myp-list-cell"
 	},
 	"myp-list-header": {
 		"type": "guide",
-		"order": 63,
+		"order": 62,
 		"title": "列表header：myp-list-header"
 	},
 	"myp-waterfall": {
 		"type": "guide",
-		"order": 64,
+		"order": 63,
 		"title": "瀑布流：myp-waterfall"
 	},
 	"myp-scroll-h": {
 		"type": "guide",
-		"order": 65,
+		"order": 64,
 		"title": "横向列表：myp-scroll-h"
 	},
 	"myp-scroll-inline": {
 		"type": "guide",
-		"order": 66,
+		"order": 65,
 		"title": "横向列表：myp-scroll-inline"
 	},
 	"myp-scroll-scale": {
 		"type": "guide",
-		"order": 67,
+		"order": 66,
 		"title": "伸缩列表：myp-scroll-scale"
 	},
 	"myp-scroll-scale-item": {
 		"type": "guide",
-		"order": 68,
+		"order": 67,
 		"title": "伸缩列表单元：myp-scroll-scale-item"
 	},
-	"myp-list-chat": {
+	"myp-slide-gallery": {
+		"type": "guide",
+		"order": 68,
+		"title": "画廊/slide：myp-slide-gallery"
+	},
+	"myp-slide-gallery-item": {
 		"type": "guide",
 		"order": 69,
-		"title": "聊天列表：myp-list-chat"
+		"title": "画廊单元：myp-slide-gallery-item"
 	},
 	"myp-list-index": {
 		"type": "guide",
@@ -169,10 +169,10 @@
 		"order": 158,
 		"title": "步进器：myp-stepper"
 	},
-	"myp-slider": {
+	"myp-slider-bar": {
 		"type": "guide",
 		"order": 159,
-		"title": "区间：myp-slider"
+		"title": "区间：myp-slider-bar"
 	},
 	"myp-search": {
 		"type": "guide",
@@ -199,15 +199,10 @@
 		"order": 164,
 		"title": "选择内容：myp-picker-content"
 	},
-	"myp-grid": {
+	"myp-grid-static": {
 		"type": "guide",
 		"order": 200,
-		"title": "宫格：myp-grid"
-	},
-	"myp-grid-item": {
-		"type": "guide",
-		"order": 201,
-		"title": "宫格item：myp-grid-item"
+		"title": "宫格：myp-grid-static"
 	},
 	"myp-cell": {
 		"type": "guide",
@@ -263,21 +258,6 @@
 		"type": "guide",
 		"order": 212,
 		"title": "进度条：myp-progress"
-	},
-	"myp-message-text": {
-		"type": "guide",
-		"order": 213,
-		"title": "聊天文字：myp-message-text"
-	},
-	"myp-message-time": {
-		"type": "guide",
-		"order": 214,
-		"title": "聊天时间：myp-message-time"
-	},
-	"myp-message-image": {
-		"type": "guide",
-		"order": 215,
-		"title": "聊天图片：myp-message-image"
 	},
 	"myp-result": {
 		"type": "guide",

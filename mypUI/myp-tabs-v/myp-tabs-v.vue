@@ -217,6 +217,16 @@
 			updateTime: {
 				type: Number,
 				default: 0
+			},
+			/**
+			 * 延迟获取元素内容，
+			 * 只影响mounted里面的调用，
+			 * -1表示不延迟。
+			 * 其他情况使用updateTime
+			 */
+			delay: {
+				type: Number,
+				default: -1
 			}
 		},
 		data() {
@@ -289,8 +299,16 @@
 			}
 		},
 		mounted() {
-			this.toCacheItemsSize()
-			this.toCurrentIndex(this.value)
+			if (this.delay >= 0) {
+				const that = this
+				setTimeout(()=>{
+					that.toCurrentIndex(that.value)
+					that.toCacheItemsSize()
+				}, this.delay)
+			} else {
+				this.toCurrentIndex(this.value)
+				this.toCacheItemsSize()
+			}
 		},
 		watch: {
 			value(newV) {

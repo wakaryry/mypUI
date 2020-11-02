@@ -39,16 +39,40 @@
 			<myp-list-cell>
 				<view style="height: 24rpx;"></view>
 			</myp-list-cell>
-			<myp-list-cell>
-				<view class="tabs-columns">
-					<myp-tabs-v :value="currentV" :items="tabs1" width="90rpx" space="0" scrollSize="400rpx" indicatorType="error" itemStyle="padding-left:18rpx;" @change="toChangeV"></myp-tabs-v>
-					<myp-tabs-v :value="currentV" :items="tabs1" width="90rpx" space="0" justify="center" scrollSize="400rpx" indicatorType="error" itemStyle="padding-left:18rpx;" @change="toChangeV"></myp-tabs-v>
-					<myp-tabs-v :value="currentV" :items="tabs1" width="90rpx" space="0" justify="space-between" scrollSize="400rpx" indicatorType="error" itemStyle="padding-left:18rpx;" @change="toChangeV"></myp-tabs-v>
-					<myp-tabs-v :value="currentV3" :items="tabs3" width="90rpx" space="0" activeType="error" indicatorType="error" scrollSize="500rpx" itemStyle="padding-left:18rpx;" @change="toChangeV3"></myp-tabs-v>
-					<myp-tabs-v :value="currentV4" :items="tabs4" width="180rpx" space="0" activeType="warning" indicatorType="warning" scrollSize="500rpx" itemStyle="padding-left:18rpx;" @change="toChangeV4"></myp-tabs-v>
-				</view>
+			<myp-list-cell v-for="(item,idx) in items" :key="idx">
+				<myp-cell :border="idx<items.length-1?'bottom':''" :title="item.title" :value="item.desc" indicator="right" @cellClicked="toPage(item)"></myp-cell>
 			</myp-list-cell>
 		</myp-list>
+		<myp-popup :show="popVisible" bgType="inverse" @overlayClicked="toHidePop">
+			<myp-navbar :fixed="false"></myp-navbar>
+			<view style="height: 24rpx;"></view>
+			<myp-tabs-h :value="current" :isTap="true" :items="tabs1" activeTextType="warning" indicatorType="warning" indicatorStyle="bottom:20rpx;" @change="toChange1"></myp-tabs-h>
+			<view style="height: 24rpx;"></view>
+			<myp-tabs-h :value="current" :isTap="true" :items="tabs1" justify="center" activeTextType="inverse" indicatorType="error" indicatorRadius="50rpx" indicatorStyle="height:80rpx;border-radius:50rpx;" @change="toChange1"></myp-tabs-h>
+			<view style="height: 24rpx;"></view>
+			<myp-tabs-h :value="current" :isTap="true" :items="tabs1" justify="space-between" activeTextType="warning" indicatorType="warning" @change="toChange1"></myp-tabs-h>
+			<view style="height: 24rpx;"></view>
+			<myp-tabs-h :value="current3" :isTap="true" :items="tabs3" activeTextType="error" indicatorType="error" indicatorStyle="top:0;" @change="toChange3"></myp-tabs-h>
+			<view style="height: 24rpx;"></view>
+			<myp-tabs-h :value="current4" :isTap="true" :items="tabs4" space="24rpx" activeTextType="warning" width="0" indicatorWidth="0" indicatorType="warning" @change="toChange4"></myp-tabs-h>
+			<view style="height: 24rpx;"></view>
+			<myp-button text="关闭" textStyle="inverse" bgType="primary" border="none" radius="ll" boxStyle="width:500rpx;margin-left:125rpx;" @buttonClicked="toHidePop"></myp-button>
+		</myp-popup>
+		<myp-popup-always :show="popAlwaysVisible" bgType="inverse" @overlayClicked="toHidePop">
+			<myp-navbar :fixed="false"></myp-navbar>
+			<view style="height: 24rpx;"></view>
+			<myp-tabs-h :value="current" :isTap="true" :items="tabs1" activeTextType="warning" indicatorType="warning" indicatorStyle="bottom:20rpx;" @change="toChange1"></myp-tabs-h>
+			<view style="height: 24rpx;"></view>
+			<myp-tabs-h :value="current" :isTap="true" :items="tabs1" justify="center" activeTextType="inverse" indicatorType="error" indicatorRadius="50rpx" indicatorStyle="height:80rpx;border-radius:50rpx;" @change="toChange1"></myp-tabs-h>
+			<view style="height: 24rpx;"></view>
+			<myp-tabs-h :value="current" :isTap="true" :items="tabs1" justify="space-between" activeTextType="warning" indicatorType="warning" @change="toChange1"></myp-tabs-h>
+			<view style="height: 24rpx;"></view>
+			<myp-tabs-h :value="current3" :isTap="true" :items="tabs3" activeTextType="error" indicatorType="error" indicatorStyle="top:0;" @change="toChange3"></myp-tabs-h>
+			<view style="height: 24rpx;"></view>
+			<myp-tabs-h :value="current4" :isTap="true" :items="tabs4" space="24rpx" activeTextType="warning" width="0" indicatorWidth="0" indicatorType="warning" @change="toChange4"></myp-tabs-h>
+			<view style="height: 24rpx;"></view>
+			<myp-button text="关闭" textStyle="inverse" bgType="primary" border="none" radius="ll" boxStyle="width:500rpx;margin-left:125rpx;" @buttonClicked="toHidePop"></myp-button>
+		</myp-popup-always>
 		<myp-toast ref="myp-toast"></myp-toast>
 	</view>
 </template>
@@ -65,16 +89,29 @@ export default {
 			current2: 1,
 			current3: 0,
 			current4: 0,
-			currentV: 0,
-			currentV3: 0,
-			currentV4: 0,
 			tabs1: ['我的','你的','Ta的'],
 			tabs2: [{title: '好人'},{title: '一生'},{title: '平安'}],
 			tabs3: ['一起','努力','加油','奋斗','争取','美好','未来','共建','幸福','家园','享受','快乐','人生'],
-			tabs4: ['我们','一起','把家还','好吗','可不可以','要不要得','好的','收到','同意']
+			tabs4: ['我们','一起','把家还','好吗','可不可以','要不要得','好的','收到','同意'],
+			popVisible: false,
+			popAlwaysVisible: false,
+			items: [
+				{title: '与swiper联动', desc: 'tabs-swiper', page: 'swiper_list'},
+				{title: '与swiper进度联动', desc: 'tabs-swiper', page: 'swiper_inter_list'},
+				{title: '在popup中', desc: 'tabs在popup中', page: false, show: 'popVisible'},
+				{title: '在popup中', desc: 'tabs在popup-always中', page: false, show: 'popAlwaysVisible'},
+				{title: 'tabs-v', desc: '竖向tabs', page: 'base_tabs_v'}
+			]
 		}
 	},
 	methods: {
+		toPage(val) {
+			if (val.page) {
+				this.navigateTo(val.page)
+			} else {
+				this[val.show] = true
+			}
+		},
 		toChangeNavTabs(i) {
 			this.current2 = i
 		},
@@ -87,29 +124,18 @@ export default {
 		toChange4(i) {
 			this.current4 = i
 		},
-		toChangeV(i) {
-			this.currentV = i
-		},
-		toChangeV3(i) {
-			this.currentV3 = i
-		},
-		toChangeV4(i) {
-			this.currentV4 = i
+		toHidePop() {
+			this.popVisible = false
+			this.popAlwaysVisible = false
 		}
 	}
 };
 </script>
 
 <style lang="scss" scoped>
-
 .tabs {
 	&-nav {
 		width: 350rpx;
-	}
-	&-columns {
-		margin: 0 32rpx;
-		flex-direction: row;
-		justify-content: space-between;
 	}
 }
 </style>

@@ -1,0 +1,65 @@
+<template>
+	<view>
+		<myp-navbar :lefts="leftIcons" title="tabs-v" @leftAction="navLeftAction"></myp-navbar>
+		<view style="height: 24rpx;"></view>
+		<view class="tabs-columns">
+			<myp-tabs-v :value="currentV" :items="tabs1" width="90rpx" space="0" scrollSize="400rpx" indicatorType="error" itemStyle="padding-left:18rpx;" @change="toChangeV"></myp-tabs-v>
+			<myp-tabs-v :value="currentV" :items="tabs1" width="90rpx" space="0" justify="center" scrollSize="400rpx" indicatorType="error" itemStyle="padding-left:18rpx;" @change="toChangeV"></myp-tabs-v>
+			<myp-tabs-v :value="currentV" :items="tabs1" width="90rpx" space="0" justify="space-between" scrollSize="400rpx" indicatorType="error" itemStyle="padding-left:18rpx;" @change="toChangeV"></myp-tabs-v>
+			<myp-tabs-v :value="currentV3" :items="tabs3" width="90rpx" space="0" activeType="error" indicatorType="error" scrollSize="400rpx" itemStyle="padding-left:18rpx;" @change="toChangeV3"></myp-tabs-v>
+			<myp-tabs-v :value="currentV4" :items="tabs4" width="180rpx" space="0" activeType="warning" indicatorType="warning" scrollSize="400rpx" itemStyle="padding-left:18rpx;" @change="toChangeV4"></myp-tabs-v>
+		</view>
+		<view style="height: 24rpx;"></view>
+		<myp-cell border="bottom" title="左右联动" value="tabs-v左右联动" indicator="right" @cellClicked="toPage"></myp-cell>
+		<myp-cell border="bottom" title="左右联动" value="在popup中左右联动" indicator="right" @cellClicked="toPopup"></myp-cell>
+		<myp-cell title="左右联动" value="在popup-always中" indicator="right" @cellClicked="toPopupAlways"></myp-cell>
+	</view>
+</template>
+
+<script>
+	import navHelper from '@/router/navHelper.js'
+	
+	export default {
+		mixins: [navHelper],
+		data() {
+			return {
+				currentV: 0,
+				currentV3: 0,
+				currentV4: 0,
+				tabs1: ['我的','你的','Ta的'],
+				tabs3: ['一起','努力','加油','奋斗','争取','美好','未来','共建','幸福','家园','享受','快乐','人生'],
+				tabs4: ['我们','一起','把家还','好吗','可不可以','要不要得','好的','收到','同意']
+			}
+		},
+		methods: {
+			toChangeV(i) {
+				this.currentV = i
+			},
+			toChangeV3(i) {
+				this.currentV3 = i
+			},
+			toChangeV4(i) {
+				this.currentV4 = i
+			},
+			toPage() {
+				
+			},
+			toPopup() {
+				
+			},
+			toPopupAlways() {
+				
+			}
+		}
+	}
+</script>
+
+<style lang="scss" scoped>
+.tabs {
+	&-columns {
+		margin: 0 32rpx;
+		flex-direction: row;
+		justify-content: space-between;
+	}
+}
+</style>

@@ -1,7 +1,7 @@
 <template>
 	<scroll-view ref="scroll" id="scroll" :scroll-y="true" :scroll-top="scrollTop" :scroll-with-animation="true" :show-scrollbar="false" :class="['myp-bg-'+bgType, 'myp-tabs-scroll']" :style="mrScrollStyle">
 		<view class="myp-tabs" :style="mrTabsStyle">
-			<view v-if="hasIndicator" :class="['myp-tab-item-indicator', 'myp-bg-'+(indicatorType&&indicatorType.length>0?indicatorType:'text')]" :style="mrIndStyle">
+			<view v-if="hasIndicator&&!hoverTop" :class="['myp-tab-item-indicator', 'myp-bg-'+(indicatorType&&indicatorType.length>0?indicatorType:'text')]" :style="mrIndStyle">
 				<slot name="indicator"></slot>
 			</view>
 			<view :style="{height: top}"></view>
@@ -9,6 +9,9 @@
 				<text :class="['myp-color-'+(index===value?activeTextType:textType), 'myp-size-'+(index===value?activeTextSize:textSize)]" :style="textStyle + (index===value ? activeTextStyle : '')">{{ textLabel ? item[textLabel] : item }}</text>
 			</view>
 			<view :style="{height: bottom}"></view>
+			<view v-if="hasIndicator&&hoverTop" :class="['myp-tab-item-indicator', 'myp-bg-'+(indicatorType&&indicatorType.length>0?indicatorType:'text')]" :style="mrIndStyle">
+				<slot name="indicator"></slot>
+			</view>
 		</view>
 	</scroll-view>
 </template>
@@ -227,6 +230,13 @@
 			delay: {
 				type: Number,
 				default: -1
+			},
+			/**
+			 * indicator是否在最上层
+			 */
+			hoverTop: {
+				type: Boolean,
+				default: false
 			}
 		},
 		data() {

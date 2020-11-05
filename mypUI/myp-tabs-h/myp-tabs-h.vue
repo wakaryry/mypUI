@@ -1,7 +1,7 @@
 <template>
 	<scroll-view ref="scroll" id="scroll" :scroll-x="true" :scroll-left="scrollLeft" :scroll-with-animation="true" :show-scrollbar="false" :class="['myp-bg-'+bgType, 'myp-border-'+border, 'myp-tabs-scroll']" :style="mrScrollStyle">
 		<view style="flex-direction: column;position: relative;">
-			<view v-if="hasIndicator" ref="myp-underline" :class="['myp-tab-item-underline', 'myp-bg-'+indicatorType, isTap?'myp-tab-item-animation':'']" :style="mrIndStyle">
+			<view v-if="hasIndicator&&!hoverTop" ref="myp-underline" :class="['myp-tab-item-underline', 'myp-bg-'+indicatorType, isTap?'myp-tab-item-animation':'']" :style="mrIndStyle">
 				<slot name="indicator"></slot>
 			</view>
 			<view :style="mrTabsStyle">
@@ -10,6 +10,9 @@
 					<text :class="['myp-color-'+(index===value?activeTextType:textType), 'myp-size-'+(index===value?activeTextSize:textSize)]" :style="textStyle + (index===value ? activeTextStyle : '')">{{ textLabel ? item[textLabel] : item }}</text>
 				</view>
 				<view :style="{width: right}"></view>
+			</view>
+			<view v-if="hasIndicator&&hoverTop" ref="myp-underline" :class="['myp-tab-item-underline', 'myp-bg-'+indicatorType, isTap?'myp-tab-item-animation':'']" :style="mrIndStyle">
+				<slot name="indicator"></slot>
 			</view>
 		</view>
 	</scroll-view>
@@ -273,6 +276,13 @@
 			delay: {
 				type: Number,
 				default: -1
+			},
+			/**
+			 * indicator是否在最上层
+			 */
+			hoverTop: {
+				type: Boolean,
+				default: false
 			}
 		},
 		data() {

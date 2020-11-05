@@ -42,7 +42,7 @@ npm install @mypui/myp-ui
 
 因为使用了 `scss变量`，记得设置 `style` 的 `lang="scss"`。
 
-> 注意：如果您使用的是npm安装，记得引入方式为：`@import '@mypui/myp-ui/mypui.scss';`。
+> 注意：如果您使用的是npm安装，记得引入方式为：`@import '@mypui/myp-ui/base.scss';`。
 
 具体的scss变量的引入以及自定义和规范，请看文档：[主题](/doc/guide/theme.html) 以及 [设计](/doc/guide/design.html).
 

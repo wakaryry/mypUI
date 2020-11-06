@@ -2,6 +2,7 @@
 title: 进度条：myp-progress
 type: guide
 order: 212
+page: http://mypui.asnowsoft.cn/h5/#/pages/base/progress
 ---
 
 ## Props

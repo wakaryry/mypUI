@@ -2,6 +2,7 @@
 title: 刷新：myp-refresher-n
 type: guide
 order: 301
+page: http://mypui.asnowsoft.cn/h5/#/pages/scroll/index
 ---
 
 ## Props

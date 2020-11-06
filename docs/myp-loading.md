@@ -2,6 +2,7 @@
 title: 加载中：myp-loading
 type: guide
 order: 253
+page: http://mypui.asnowsoft.cn/h5/#/pages/pop/index
 ---
 
 ## Events

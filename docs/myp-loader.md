@@ -2,6 +2,7 @@
 title: 加载：myp-loader
 type: guide
 order: 302
+page: http://mypui.asnowsoft.cn/h5/#/pages/scroll/index
 ---
 
 ## Props

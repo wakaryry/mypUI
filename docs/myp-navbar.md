@@ -2,6 +2,7 @@
 title: 导航栏：myp-navbar
 type: guide
 order: 100
+page: http://mypui.asnowsoft.cn/h5/#/pages/nav/navbar
 ---
 
 ## Props

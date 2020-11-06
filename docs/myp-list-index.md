@@ -2,6 +2,7 @@
 title: 索引列表：myp-list-index
 type: guide
 order: 70
+page: http://mypui.asnowsoft.cn/h5/#/pages/base/indexlist
 ---
 
 ## Props

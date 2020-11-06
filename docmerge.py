@@ -3,6 +3,8 @@
 import os
 import json
 
+BASE_URL = 'http://mypui.asnowsoft.cn/h5/#/'
+
 
 # since my python is default python2
 # python3 -u "/Users/wakary/GitHub/uni/myp-ui/docmerge.py"
@@ -18,6 +20,8 @@ def doc_merge():
             content += 'title: '+header['title']+'\n'
             content += 'type: '+header['type']+'\n'
             content += 'order: '+str(header['order'])+'\n'
+            if 'page' in header:
+                content += 'page: '+BASE_URL+header['page']+'\n'
             content += '---\n'
             # auto content
             auto_file = './docsAuto/mypUI/'+f+'/'+f+'.md'

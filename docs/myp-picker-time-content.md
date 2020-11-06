@@ -2,6 +2,7 @@
 title: 时间内容：myp-picker-time-content
 type: guide
 order: 162
+page: http://mypui.asnowsoft.cn/h5/#/pages/picker/index
 ---
 
 ## Props

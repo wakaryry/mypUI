@@ -2,6 +2,7 @@
 title: 遮罩层：myp-overlay
 type: guide
 order: 258
+page: http://mypui.asnowsoft.cn/h5/#/pages/pop/index
 ---
 
 ## Props

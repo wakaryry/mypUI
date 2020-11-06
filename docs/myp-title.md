@@ -2,6 +2,7 @@
 title: 标题：myp-title
 type: guide
 order: 205
+page: http://mypui.asnowsoft.cn/h5/#/pages/base/title
 ---
 
 ## Props

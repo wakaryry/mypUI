@@ -3,6 +3,7 @@
 import os
 
 
+# python3 -u "/Users/wakary/GitHub/uni/myp-ui/docgen.py"
 def genDoc(path='/Users/wakary/GitHub/uni/myp-ui/mypUI'):
 	# os.chdir(path)
 	files = os.listdir(path)

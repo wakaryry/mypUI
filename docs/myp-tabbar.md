@@ -2,6 +2,7 @@
 title: tabbar：myp-tabbar
 type: guide
 order: 101
+page: http://mypui.asnowsoft.cn/h5/#/pages/tabbar/index
 ---
 
 ## Props

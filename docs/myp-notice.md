@@ -2,6 +2,7 @@
 title: 提示：myp-notice
 type: guide
 order: 254
+page: http://mypui.asnowsoft.cn/h5/#/pages/pop/index
 ---
 
 ## Props

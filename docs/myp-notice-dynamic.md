@@ -2,6 +2,7 @@
 title: 动态提示：myp-notice-dynamic
 type: guide
 order: 255
+page: http://mypui.asnowsoft.cn/h5/#/pages/pop/index
 ---
 
 ## Events

@@ -2,6 +2,7 @@
 title: 结果展示：myp-timeline-item
 type: guide
 order: 217
+page: http://mypui.asnowsoft.cn/h5/#/pages/base/timeline
 ---
 
 ## Props

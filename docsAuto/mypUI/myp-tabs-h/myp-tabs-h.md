@@ -38,6 +38,7 @@
 | indicatorStyle  | 指示器的样式                                                                                                                                           | string  | -      | ''           |
 | updateTime      | 通过改变该值触发位置的重新计算。<br>主要是为了兼容各大平台位置获取的时机问题。<br>在弹层里面，items 能够很快拿到，<br>但是不一定位置信息就可以立马拿到 | number  | -      | 0            |
 | delay           | 延迟获取元素内容，<br>只影响 mounted 里面的调用，<br>-1 表示不延迟。<br>其他情况使用 updateTime                                                        | number  | -      | -1           |
+| hoverTop        | indicator 是否在最上层                                                                                                                                 | boolean | -      | false        |
 
 ## Events
 

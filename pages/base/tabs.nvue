@@ -2,7 +2,7 @@
 	<view>
 		<myp-navbar :lefts="leftIcons" @leftAction="navLeftAction">
 			<view slot="title" class="tabs-nav">
-				<myp-tabs-h :value="current2" :isTap="true" :items="tabs2" width="86rpx" textLabel="title" textType="second" activeTextType="text" textStyle="font-size:14px;" activeTextStyle="font-size:16px;" indicatorWidth="42rpx" indicatorType="primary" scrollSize="350rpx" justify="center" height="44px" @change="toChangeNavTabs"></myp-tabs-h>
+				<myp-tabs-h :value="current2" :isTap="true" :items="tabs2" :delay="50" width="86rpx" textLabel="title" textType="second" activeTextType="text" textStyle="font-size:14px;" activeTextStyle="font-size:16px;" indicatorWidth="42rpx" indicatorType="primary" scrollSize="350rpx" justify="center" height="44px" @change="toChangeNavTabs"></myp-tabs-h>
 			</view>
 		</myp-navbar>
 		<myp-list :down="null" :up="null" bgType="page">
@@ -10,31 +10,31 @@
 				<view style="height: 24rpx;"></view>
 			</myp-list-cell>
 			<myp-list-cell>
-				<myp-tabs-h :value="current" :isTap="true" :items="tabs1" activeTextType="warning" indicatorType="warning" indicatorStyle="bottom:20rpx;" @change="toChange1"></myp-tabs-h>
+				<myp-tabs-h :value="current" :isTap="true" :items="tabs1" :delay="50" activeTextType="warning" indicatorType="warning" indicatorStyle="bottom:20rpx;" @change="toChange1"></myp-tabs-h>
 			</myp-list-cell>
 			<myp-list-cell>
 				<view style="height: 24rpx;"></view>
 			</myp-list-cell>
 			<myp-list-cell>
-				<myp-tabs-h :value="current" :isTap="true" :items="tabs1" justify="center" activeTextType="inverse" indicatorType="error" indicatorRadius="50rpx" indicatorStyle="height:80rpx;border-radius:50rpx;" @change="toChange1"></myp-tabs-h>
+				<myp-tabs-h :value="current" :isTap="true" :items="tabs1" :delay="50" justify="center" activeTextType="inverse" indicatorType="error" indicatorRadius="50rpx" indicatorStyle="height:80rpx;border-radius:50rpx;" @change="toChange1"></myp-tabs-h>
 			</myp-list-cell>
 			<myp-list-cell>
 				<view style="height: 24rpx;"></view>
 			</myp-list-cell>
 			<myp-list-cell>
-				<myp-tabs-h :value="current" :isTap="true" :items="tabs1" justify="space-between" activeTextType="warning" indicatorType="warning" @change="toChange1"></myp-tabs-h>
+				<myp-tabs-h :value="current" :isTap="true" :items="tabs1" :delay="50" justify="space-between" activeTextType="warning" indicatorType="warning" @change="toChange1"></myp-tabs-h>
 			</myp-list-cell>
 			<myp-list-cell>
 				<view style="height: 24rpx;"></view>
 			</myp-list-cell>
 			<myp-list-cell>
-				<myp-tabs-h :value="current3" :isTap="true" :items="tabs3" activeTextType="error" indicatorType="error" indicatorStyle="top:0;" @change="toChange3"></myp-tabs-h>
+				<myp-tabs-h :value="current3" :isTap="true" :items="tabs3" :delay="50" activeTextType="error" indicatorType="error" indicatorStyle="top:0;" @change="toChange3"></myp-tabs-h>
 			</myp-list-cell>
 			<myp-list-cell>
 				<view style="height: 24rpx;"></view>
 			</myp-list-cell>
 			<myp-list-cell>
-				<myp-tabs-h :value="current4" :isTap="true" :items="tabs4" space="24rpx" activeTextType="warning" width="0" indicatorWidth="0" indicatorType="warning" @change="toChange4"></myp-tabs-h>
+				<myp-tabs-h :value="current4" :isTap="true" :items="tabs4" :delay="50" left="24rpx" space="24rpx" right="24rpx" activeTextType="warning" width="0" indicatorWidth="0" indicatorType="warning" @change="toChange4"></myp-tabs-h>
 			</myp-list-cell>
 			<myp-list-cell>
 				<view style="height: 24rpx;"></view>
@@ -46,30 +46,30 @@
 		<myp-popup :show="popVisible" bgType="inverse" @overlayClicked="toHidePop">
 			<myp-navbar :fixed="false"></myp-navbar>
 			<view style="height: 24rpx;"></view>
-			<myp-tabs-h :value="current" :isTap="true" :items="tabs1" activeTextType="warning" indicatorType="warning" indicatorStyle="bottom:20rpx;" @change="toChange1"></myp-tabs-h>
+			<myp-tabs-h :value="current" :isTap="true" :items="tabs1" :updateTime="updateTime" activeTextType="warning" indicatorType="warning" indicatorStyle="bottom:20rpx;" @change="toChange1"></myp-tabs-h>
 			<view style="height: 24rpx;"></view>
-			<myp-tabs-h :value="current" :isTap="true" :items="tabs1" justify="center" activeTextType="inverse" indicatorType="error" indicatorRadius="50rpx" indicatorStyle="height:80rpx;border-radius:50rpx;" @change="toChange1"></myp-tabs-h>
+			<myp-tabs-h :value="current" :isTap="true" :items="tabs1" :updateTime="updateTime" justify="center" activeTextType="inverse" indicatorType="error" indicatorRadius="50rpx" indicatorStyle="height:80rpx;border-radius:50rpx;" @change="toChange1"></myp-tabs-h>
 			<view style="height: 24rpx;"></view>
-			<myp-tabs-h :value="current" :isTap="true" :items="tabs1" justify="space-between" activeTextType="warning" indicatorType="warning" @change="toChange1"></myp-tabs-h>
+			<myp-tabs-h :value="current" :isTap="true" :items="tabs1" :updateTime="updateTime" justify="space-between" activeTextType="warning" indicatorType="warning" @change="toChange1"></myp-tabs-h>
 			<view style="height: 24rpx;"></view>
-			<myp-tabs-h :value="current3" :isTap="true" :items="tabs3" activeTextType="error" indicatorType="error" indicatorStyle="top:0;" @change="toChange3"></myp-tabs-h>
+			<myp-tabs-h :value="current3" :isTap="true" :items="tabs3" :updateTime="updateTime" activeTextType="error" indicatorType="error" indicatorStyle="top:0;" @change="toChange3"></myp-tabs-h>
 			<view style="height: 24rpx;"></view>
-			<myp-tabs-h :value="current4" :isTap="true" :items="tabs4" space="24rpx" activeTextType="warning" width="0" indicatorWidth="0" indicatorType="warning" @change="toChange4"></myp-tabs-h>
+			<myp-tabs-h :value="current4" :isTap="true" :items="tabs4" :updateTime="updateTime" left="24rpx" right="24rpx" space="24rpx" activeTextType="warning" width="0" indicatorWidth="0" indicatorType="warning" @change="toChange4"></myp-tabs-h>
 			<view style="height: 24rpx;"></view>
 			<myp-button text="关闭" textStyle="inverse" bgType="primary" border="none" radius="ll" boxStyle="width:500rpx;margin-left:125rpx;" @buttonClicked="toHidePop"></myp-button>
 		</myp-popup>
 		<myp-popup-always :show="popAlwaysVisible" bgType="inverse" @overlayClicked="toHidePop">
 			<myp-navbar :fixed="false"></myp-navbar>
 			<view style="height: 24rpx;"></view>
-			<myp-tabs-h :value="current" :isTap="true" :items="tabs1" activeTextType="warning" indicatorType="warning" indicatorStyle="bottom:20rpx;" @change="toChange1"></myp-tabs-h>
+			<myp-tabs-h :value="current" :isTap="true" :items="tabs1" :delay="50" activeTextType="warning" indicatorType="warning" indicatorStyle="bottom:20rpx;" @change="toChange1"></myp-tabs-h>
 			<view style="height: 24rpx;"></view>
-			<myp-tabs-h :value="current" :isTap="true" :items="tabs1" justify="center" activeTextType="inverse" indicatorType="error" indicatorRadius="50rpx" indicatorStyle="height:80rpx;border-radius:50rpx;" @change="toChange1"></myp-tabs-h>
+			<myp-tabs-h :value="current" :isTap="true" :items="tabs1" :delay="50" justify="center" activeTextType="inverse" indicatorType="error" indicatorRadius="50rpx" indicatorStyle="height:80rpx;border-radius:50rpx;" @change="toChange1"></myp-tabs-h>
 			<view style="height: 24rpx;"></view>
-			<myp-tabs-h :value="current" :isTap="true" :items="tabs1" justify="space-between" activeTextType="warning" indicatorType="warning" @change="toChange1"></myp-tabs-h>
+			<myp-tabs-h :value="current" :isTap="true" :items="tabs1" :delay="50" justify="space-between" activeTextType="warning" indicatorType="warning" @change="toChange1"></myp-tabs-h>
 			<view style="height: 24rpx;"></view>
-			<myp-tabs-h :value="current3" :isTap="true" :items="tabs3" activeTextType="error" indicatorType="error" indicatorStyle="top:0;" @change="toChange3"></myp-tabs-h>
+			<myp-tabs-h :value="current3" :isTap="true" :items="tabs3" :delay="50" activeTextType="error" indicatorType="error" indicatorStyle="top:0;" @change="toChange3"></myp-tabs-h>
 			<view style="height: 24rpx;"></view>
-			<myp-tabs-h :value="current4" :isTap="true" :items="tabs4" space="24rpx" activeTextType="warning" width="0" indicatorWidth="0" indicatorType="warning" @change="toChange4"></myp-tabs-h>
+			<myp-tabs-h :value="current4" :isTap="true" :items="tabs4" :delay="50" left="24rpx" right="24rpx" space="24rpx" activeTextType="warning" width="0" indicatorWidth="0" indicatorType="warning" @change="toChange4"></myp-tabs-h>
 			<view style="height: 24rpx;"></view>
 			<myp-button text="关闭" textStyle="inverse" bgType="primary" border="none" radius="ll" boxStyle="width:500rpx;margin-left:125rpx;" @buttonClicked="toHidePop"></myp-button>
 		</myp-popup-always>
@@ -101,7 +101,8 @@ export default {
 				{title: '在popup中', desc: 'tabs在popup中', page: false, show: 'popVisible'},
 				{title: '在popup中', desc: 'tabs在popup-always中', page: false, show: 'popAlwaysVisible'},
 				{title: 'tabs-v', desc: '竖向tabs', page: 'base_tabs_v'}
-			]
+			],
+			updateTime: 0
 		}
 	},
 	methods: {
@@ -110,6 +111,10 @@ export default {
 				this.navigateTo(val.page)
 			} else {
 				this[val.show] = true
+				const that = this
+				setTimeout(()=>{
+					that.updateTime = Date.now()
+				}, 200)
 			}
 		},
 		toChangeNavTabs(i) {

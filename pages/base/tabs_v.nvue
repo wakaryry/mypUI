@@ -3,11 +3,11 @@
 		<myp-navbar :lefts="leftIcons" title="tabs-v" @leftAction="navLeftAction"></myp-navbar>
 		<view style="height: 24rpx;"></view>
 		<view class="tabs-columns">
-			<myp-tabs-v :value="currentV" :items="tabs1" width="90rpx" space="0" scrollSize="400rpx" indicatorType="error" itemStyle="padding-left:18rpx;" @change="toChangeV"></myp-tabs-v>
-			<myp-tabs-v :value="currentV" :items="tabs1" width="90rpx" space="0" justify="center" scrollSize="400rpx" indicatorType="error" itemStyle="padding-left:18rpx;" @change="toChangeV"></myp-tabs-v>
-			<myp-tabs-v :value="currentV" :items="tabs1" width="90rpx" space="0" justify="space-between" scrollSize="400rpx" indicatorType="error" itemStyle="padding-left:18rpx;" @change="toChangeV"></myp-tabs-v>
-			<myp-tabs-v :value="currentV3" :items="tabs3" width="90rpx" space="0" activeType="error" indicatorType="error" scrollSize="400rpx" itemStyle="padding-left:18rpx;" @change="toChangeV3"></myp-tabs-v>
-			<myp-tabs-v :value="currentV4" :items="tabs4" width="180rpx" space="0" activeType="warning" indicatorType="warning" scrollSize="400rpx" itemStyle="padding-left:18rpx;" @change="toChangeV4"></myp-tabs-v>
+			<myp-tabs-v :value="currentV" :items="tabs1" :delay="50" width="90rpx" space="0" scrollSize="400rpx" indicatorType="error" itemStyle="padding-left:18rpx;" @change="toChangeV"></myp-tabs-v>
+			<myp-tabs-v :value="currentV" :items="tabs1" :delay="50" width="90rpx" space="0" justify="center" scrollSize="400rpx" indicatorType="error" itemStyle="padding-left:18rpx;" @change="toChangeV"></myp-tabs-v>
+			<myp-tabs-v :value="currentV" :items="tabs1" :delay="50" width="90rpx" space="0" justify="space-between" scrollSize="400rpx" indicatorType="error" itemStyle="padding-left:18rpx;" @change="toChangeV"></myp-tabs-v>
+			<myp-tabs-v :value="currentV3" :items="tabs3" :delay="50" width="90rpx" space="0" activeType="error" indicatorType="error" scrollSize="400rpx" itemStyle="padding-left:18rpx;" @change="toChangeV3"></myp-tabs-v>
+			<myp-tabs-v :value="currentV4" :items="tabs4" :delay="50" width="180rpx" space="0" activeType="warning" indicatorType="warning" scrollSize="400rpx" itemStyle="padding-left:18rpx;" @change="toChangeV4"></myp-tabs-v>
 		</view>
 		<view style="height: 24rpx;"></view>
 		<myp-cell border="bottom" title="左右联动" value="tabs-v左右联动" indicator="right" @cellClicked="toPage"></myp-cell>

@@ -1,6 +1,6 @@
 {
   "name": "myp-ui",
-  "version": "2.5.0",
+  "version": "2.6.0",
   "description": "**第一个高效且强悍的nvue开源组件库。做最好、最顺手的nvue组件库**",
   "main": "main.js",
   "scripts": {

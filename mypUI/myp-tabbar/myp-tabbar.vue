@@ -282,7 +282,11 @@
 
 <style lang="scss" scoped>
 	.myp-tab-page {
-		position: absolute;
+		// position: absolute;
+		// 我们使用fixed，
+		// 因为absolute时，在mp端高度受外层影响.
+		// 外层高度不设置时是0，会导致在MP-IOS端isSeize下的内容排在最顶部，从而产生遮挡问题
+		position: fixed;
 		top: 0;
 		left: 0;
 		right: 0;

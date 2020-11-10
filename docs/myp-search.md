@@ -2,7 +2,7 @@
 title: 搜索框：myp-search
 type: guide
 order: 160
-page: http://mypui.asnowsoft.cn/h5/#/pages/base/search
+page: https://mypui.asnowsoft.cn/h5/#/pages/base/search
 ---
 
 ## Props

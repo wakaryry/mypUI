@@ -2,7 +2,7 @@
 title: badge：myp-badge
 type: guide
 order: 208
-page: http://mypui.asnowsoft.cn/h5/#/pages/base/badge
+page: https://mypui.asnowsoft.cn/h5/#/pages/base/badge
 ---
 
 ## Props

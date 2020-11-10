@@ -2,7 +2,7 @@
 title: 测距：myp-wing
 type: guide
 order: 31
-page: http://mypui.asnowsoft.cn/h5/#/pages/flex/wing
+page: https://mypui.asnowsoft.cn/h5/#/pages/flex/wing
 ---
 
 ## Props

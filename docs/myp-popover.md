@@ -2,7 +2,7 @@
 title: 气泡：myp-popover
 type: guide
 order: 105
-page: http://mypui.asnowsoft.cn/h5/#/pages/nav/popover
+page: https://mypui.asnowsoft.cn/h5/#/pages/nav/popover
 ---
 
 ## Props

@@ -2,7 +2,7 @@
 title: 选择：myp-select
 type: guide
 order: 157
-page: http://mypui.asnowsoft.cn/h5/#/pages/base/select
+page: https://mypui.asnowsoft.cn/h5/#/pages/base/select
 ---
 
 ## Props

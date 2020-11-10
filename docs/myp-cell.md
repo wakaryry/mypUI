@@ -2,7 +2,7 @@
 title: 单元：myp-cell
 type: guide
 order: 202
-page: http://mypui.asnowsoft.cn/h5/#/pages/base/cell
+page: https://mypui.asnowsoft.cn/h5/#/pages/base/cell
 ---
 
 ## Props

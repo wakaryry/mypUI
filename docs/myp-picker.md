@@ -2,7 +2,7 @@
 title: 选择器：myp-picker
 type: guide
 order: 163
-page: http://mypui.asnowsoft.cn/h5/#/pages/picker/index
+page: https://mypui.asnowsoft.cn/h5/#/pages/picker/index
 ---
 
 ## Props

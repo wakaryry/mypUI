@@ -2,7 +2,7 @@
 title: 弹窗1：myp-popup
 type: guide
 order: 250
-page: http://mypui.asnowsoft.cn/h5/#/pages/pop/index
+page: https://mypui.asnowsoft.cn/h5/#/pages/pop/index
 ---
 
 ## Props

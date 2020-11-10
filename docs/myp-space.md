@@ -2,7 +2,7 @@
 title: 间距：myp-space
 type: guide
 order: 32
-page: http://mypui.asnowsoft.cn/h5/#/pages/flex/space
+page: https://mypui.asnowsoft.cn/h5/#/pages/flex/space
 ---
 
 ## Props

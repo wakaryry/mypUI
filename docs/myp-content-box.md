@@ -2,7 +2,7 @@
 title: 盒子：myp-content-box
 type: guide
 order: 71
-page: http://mypui.asnowsoft.cn/h5/#/pages/base/content_box
+page: https://mypui.asnowsoft.cn/h5/#/pages/base/content_box
 ---
 
 ## Props

@@ -2,7 +2,7 @@
 title: 列表：myp-list
 type: guide
 order: 60
-page: http://mypui.asnowsoft.cn/h5/#/pages/scroll/index
+page: https://mypui.asnowsoft.cn/h5/#/pages/scroll/index
 ---
 
 ## Props

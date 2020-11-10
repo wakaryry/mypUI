@@ -2,7 +2,7 @@
 title: 高度：myp-height
 type: guide
 order: 72
-page: http://mypui.asnowsoft.cn/h5/#/pages/base/height
+page: https://mypui.asnowsoft.cn/h5/#/pages/base/height
 ---
 
 ## Props

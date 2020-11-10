@@ -2,7 +2,7 @@
 title: 倒计时：myp-countdown
 type: guide
 order: 209
-page: http://mypui.asnowsoft.cn/h5/#/pages/base/countdown
+page: https://mypui.asnowsoft.cn/h5/#/pages/base/countdown
 ---
 
 ## Props

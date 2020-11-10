@@ -2,7 +2,7 @@
 title: 验证码输入：myp-input-one
 type: guide
 order: 152
-page: http://mypui.asnowsoft.cn/h5/#/pages/base/input
+page: https://mypui.asnowsoft.cn/h5/#/pages/base/input
 ---
 
 ## Props

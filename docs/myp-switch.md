@@ -2,7 +2,7 @@
 title: 开关：myp-switch
 type: guide
 order: 153
-page: http://mypui.asnowsoft.cn/h5/#/pages/base/switch
+page: https://mypui.asnowsoft.cn/h5/#/pages/base/switch
 ---
 
 ## Props

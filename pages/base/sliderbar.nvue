@@ -1,0 +1,25 @@
+<template>
+	<view>
+		<myp-navbar :lefts="leftIcons" title="myp-slider-bar" @leftAction="navLeftAction"></myp-navbar>
+		<myp-list bgType="inverse" :down="null" :up="null">
+			<myp-list-cell>
+				<view style="height: 20rpx;"></view>
+			</myp-list-cell>
+			<myp-list-cell>
+				<myp-slider-bar :value="6"></myp-slider-bar>
+			</myp-list-cell>
+		</myp-list>
+	</view>
+</template>
+
+<script>
+	import navHelper from '@/router/navHelper.js'
+	
+	export default {
+		mixins: [navHelper]
+	}
+</script>
+
+<style>
+
+</style>

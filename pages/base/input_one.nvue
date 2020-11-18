@@ -17,6 +17,12 @@
 				<myp-input-one v-model="oneMiddle" mode="middle"></myp-input-one>
 				<myp-input-one v-model="oneMiddle" mode="middle" :password="true"></myp-input-one>
 			</myp-list-cell>
+			<myp-list-cell>
+				<view style="height: 30rpx;"></view>
+				<myp-input-one v-model="oneMiddle2" mode="middle" :maxlength="6"></myp-input-one>
+				<view style="height: 30rpx;"></view>
+				<myp-input-one v-model="oneMiddle2" mode="middle" :password="true" :maxlength="6"></myp-input-one>
+			</myp-list-cell>
 		</myp-list>
 	</view>
 </template>
@@ -30,7 +36,8 @@
 			return {
 				oneBox: '6',
 				oneBottom: '57',
-				oneMiddle: '369'
+				oneMiddle: '369',
+				oneMiddle2: '241'
 			}
 		}
 	}

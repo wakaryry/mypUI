@@ -20,6 +20,15 @@ export default {
 				identity: '诗人',
 				page: 'base_input'
 			}, {
+				name: '验证码/密码输入框',
+				avatar: 'https://mypui.asnowsoft.cn/imgs/a3.jpg',
+				desc: '38.6万粉丝',
+				content: '验证码/密码等输入',
+				cover: 'https://mypui.asnowsoft.cn/imgs/c2.jpg',
+				badge: 0,
+				identity: '诗人',
+				page: 'base_input_one'
+			}, {
 				name: '图标',
 				avatar: 'https://mypui.asnowsoft.cn/imgs/a1.jpg',
 				desc: '126.6万粉丝',
@@ -101,6 +110,15 @@ export default {
 				identity: '歌剧演员',
 				page: 'base_search'
 			}, {
+				name: '范围选择',
+				avatar: 'https://mypui.asnowsoft.cn/imgs/a11.jpg',
+				desc: '36.9万粉丝',
+				content: 'sliderbar。单拖动范围选择',
+				cover: 'https://mypui.asnowsoft.cn/imgs/c11.jpg',
+				badge: 3,
+				identity: '歌剧演员',
+				page: 'base_sliderbar'
+			}, {
 				name: '进度条',
 				avatar: 'https://mypui.asnowsoft.cn/imgs/a12.jpg',
 				desc: '116.4万粉丝',
@@ -154,6 +172,15 @@ export default {
 				badge: 4,
 				identity: '风水师',
 				page: 'base_indexlist'
+			}, {
+				name: '可切换容器',
+				avatar: 'https://mypui.asnowsoft.cn/imgs/a4.jpg',
+				desc: '26.6万粉丝',
+				content: '不受v-if控制的左右切换容器，不是swiper',
+				cover: 'https://mypui.asnowsoft.cn/imgs/c4.jpg',
+				badge: 4,
+				identity: '风水师',
+				page: 'base_tab_container'
 			}]
 		}
 	}

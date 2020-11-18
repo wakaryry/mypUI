@@ -59,6 +59,12 @@
 			}
 		},
 		{
+			"path": "pages/base/input_one",
+			"style": {
+				"disableScroll": true
+			}
+		},
+		{
 			"path": "pages/base/progress",
 			"style": {
 				"disableScroll": true
@@ -83,7 +89,13 @@
 			}
 		},
 		{
-			"path": "pages/base/slider",
+			"path": "pages/base/sliderbar",
+			"style": {
+				"disableScroll": true
+			}
+		},
+		{
+			"path": "pages/base/swiper",
 			"style": {
 				"disableScroll": true
 			}
@@ -144,6 +156,12 @@
 		},
 		{
 			"path": "pages/base/content_box",
+			"style": {
+				"disableScroll": true
+			}
+		},
+		{
+			"path": "pages/base/tab_container",
 			"style": {
 				"disableScroll": true
 			}

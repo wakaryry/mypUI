@@ -8,12 +8,14 @@
 - 可配置主题；
 - 细节开放到位，在好用和可灵活适配之间把握到位；
 - request/router/share...各种工具集；
-- 页面内容完全自己控制，移除掉了系统自带的navbar和tabbar，以及外层自动包裹的scroll；
+- 考虑了完全自控的页面设计（移除掉系统自带的navbar和tabbar，以及外层自动包裹的scroll）；
 - 页面排版更加灵活。遮罩层全屏覆盖。status/nav/xBar处理也非常灵活与方便；
 - 精简`page.json`的配置，减少独立配置；
 - 已在`Android`/`iOS`/`mp-wexin`/`mp-qq`/`mp-toutiao`等上面有实际应用；
 
 mypUI 是基于 uniapp 的一套组件库与工具集，可以 **高效且规范** 地开发出 uniapp 支持的各端应用（APP/各家小程序/H5/快应用）。兼容 nvue 页面 和 vue 页面。nvue 页面对应的 app端 依托 weex 编译为原生，具备良好的性能与体验。mypUI 绝对能为您带来 **稳定、高效、规范** 的开发体验。
+
+mypUI 更加注重于通用组件与手势组件，高阶组件、盒子组件的开发，是真正符合 **高质量、灵活、高效、规范等** 开发要求的组件库。
 
 ![demo](https://mypui.asnowsoft.cn/demo-imgs/demo1.png)
 
@@ -31,7 +33,7 @@ mypUI 是基于 uniapp 的一套组件库与工具集，可以 **高效且规范
 
 - [mypUI-文档开源地址](https://github.com/wakaryry/mypui-doc)
 
-- [mypUI-文档线上地址](https://mypui.asnowsoft.cn)
+- [mypUI-文档线上地址](https://mypui.asnowsoft.cn/doc/)
 
 - npm地址：[https://www.npmjs.com/package/@mypui/myp-ui](https://www.npmjs.com/package/@mypui/myp-ui)
 

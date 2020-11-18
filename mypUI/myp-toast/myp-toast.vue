@@ -1,5 +1,5 @@
 <template>
-	<view v-if="showing" :class="['myp-toast', needMask&&'myp-toast-mask', needMask&&'myp-bg-'+maskType]" @click.stop="toPrevent" :style="maskStyle">
+	<view v-if="showing" :class="['myp-toast', needMask&&'myp-toast-mask', needMask&&'myp-bg-'+maskType]" @click.stop="toPrevent" :style="boxStyle+maskStyle">
 		<view v-if="mode==='big'" class="myp-toast-content" :style="mrContentStyle">
 			<view :class="['myp-toast-content-box', 'myp-flex-column', 'myp-align-center', 'myp-justify-center', 'myp-bg-'+bgType]" :style="contentStyle">
 				<myp-icon v-if="icon" :name="icon" :type="iconType" :size="iconSize" :iconStyle="'font-size:60rpx;'+iconStyle"></myp-icon>
@@ -21,6 +21,12 @@
 	import {getScreenHeight, getHeight} from '../utils/system.js'
 
 	export default {
+		props: {
+			boxStyle: {
+				type: String,
+				default: ''
+			}
+		},
 		data() {
 			return {
 				needMask: false,

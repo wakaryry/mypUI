@@ -1,5 +1,5 @@
 <template>
-	<view v-if="showLoading" :class="['myp-loading', showLoading&&needMask&&'myp-bg-'+maskType, showLoading&&needMask&&'myp-loading-mask']" @tap.stop="maskClicked" :style="maskStyle">
+	<view v-if="showLoading" :class="['myp-loading', showLoading&&needMask&&'myp-bg-'+maskType, showLoading&&needMask&&'myp-loading-mask']" @tap.stop="maskClicked" :style="boxStyle+maskStyle">
 		<view :class="['myp-flex-column', 'myp-align-center', 'myp-justify-center', 'myp-loading-content', 'myp-bg-'+bgType]" :style="mrContentStyle">
 			<image :src="icon" mode="aspectFill" class="myp-loading-content-image" :style="iconStyle"></image>
 			<text v-if="text" :class="['myp-lines-one', 'myp-loading-content-text', 'myp-color-'+textType, 'myp-size-'+textSize]" :style="textStyle">{{text}}</text>
@@ -11,6 +11,12 @@
 	import {getHeight, getScreenHeight} from '../utils/system.js'
 
 	export default {
+		props: {
+			boxStyle: {
+				type: String,
+				default: ''
+			}
+		},
 		data() {
 			return {
 				showLoading: false,

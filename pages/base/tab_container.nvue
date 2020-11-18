@@ -1,0 +1,36 @@
+<template>
+	<view>
+		<myp-navbar :lefts="leftIcons" title="tab-container" @leftAction="navLeftAction"></myp-navbar>
+		<myp-list :down="null" :up="null">
+			<myp-list-cell>
+				<myp-tabs-h :delay="50" :value="current" :items="['登陆','注册']" width="375rpx" indicatorWidth="200rpx" indicatorHeight="6rpx" indicatorStyle="bottom:12rpx;" @change="toChangeTab"></myp-tabs-h>
+				<myp-tab-container :current="current" :number="2" width="750rpx">
+					<view style="width: 750rpx;height: 600rpx;background-color: #027AFF;"></view>
+					<view style="width: 750rpx;height: 600rpx;background-color: #FF9090;"></view>
+				</myp-tab-container>
+			</myp-list-cell>
+		</myp-list>
+	</view>
+</template>
+
+<script>
+	import navHelper from '@/router/navHelper.js'
+	
+	export default {
+		mixins: [navHelper],
+		data() {
+			return {
+				current: 0
+			}
+		},
+		methods: {
+			toChangeTab(e) {
+				this.current = e
+			}
+		}
+	}
+</script>
+
+<style>
+
+</style>

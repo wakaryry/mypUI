@@ -1,0 +1,41 @@
+<template>
+	<view>
+		<myp-navbar :lefts="leftIcons" title="验证码输入框" @leftAction="navLeftAction"></myp-navbar>
+		<myp-list :down="null" :up="null">
+			<myp-list-cell>
+				<myp-title bgType="none" title1="密码/验证码样式" title1Type="third" boxStyle="padding-left:32rpx;padding-right:32rpx;"></myp-title>
+			</myp-list-cell>
+			<myp-list-cell>
+				<myp-input-one v-model="oneBox" mode="box"></myp-input-one>
+				<myp-input-one v-model="oneBox" mode="box" :password="true"></myp-input-one>
+			</myp-list-cell>
+			<myp-list-cell>
+				<myp-input-one v-model="oneBottom" mode="bottom"></myp-input-one>
+				<myp-input-one v-model="oneBottom" mode="bottom" :password="true"></myp-input-one>
+			</myp-list-cell>
+			<myp-list-cell>
+				<myp-input-one v-model="oneMiddle" mode="middle"></myp-input-one>
+				<myp-input-one v-model="oneMiddle" mode="middle" :password="true"></myp-input-one>
+			</myp-list-cell>
+		</myp-list>
+	</view>
+</template>
+
+<script>
+	import navHelper from '@/router/navHelper.js'
+	
+	export default {
+		mixins: [navHelper],
+		data() {
+			return {
+				oneBox: '6',
+				oneBottom: '57',
+				oneMiddle: '369'
+			}
+		}
+	}
+</script>
+
+<style>
+
+</style>

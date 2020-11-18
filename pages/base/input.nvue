@@ -32,18 +32,6 @@
 				</view>
 			</myp-list-cell>
 			<myp-list-cell>
-				<myp-title bgType="none" title1="密码/验证码样式" title1Type="third" boxStyle="padding-left:32rpx;padding-right:32rpx;"></myp-title>
-			</myp-list-cell>
-			<myp-list-cell>
-				<myp-input-one v-model="oneBox" mode="box"></myp-input-one>
-			</myp-list-cell>
-			<myp-list-cell>
-				<myp-input-one v-model="oneBottom" type="error" mode="bottom"></myp-input-one>
-			</myp-list-cell>
-			<myp-list-cell>
-				<myp-input-one v-model="oneMiddle" mode="middle"></myp-input-one>
-			</myp-list-cell>
-			<myp-list-cell>
 				<myp-title bgType="none" title1="可自增多行输入框" title1Type="third" boxStyle="padding-left:32rpx;padding-right:32rpx;"></myp-title>
 			</myp-list-cell>
 			<myp-list-cell>
@@ -79,10 +67,7 @@ export default {
 			phone: '',
 			password: '',
 			code: '',
-			phone2: '17610779055',
-			oneBox: '6',
-			oneBottom: '57',
-			oneMiddle: '369'
+			phone2: '17610779055'
 		}
 	},
 	computed: {

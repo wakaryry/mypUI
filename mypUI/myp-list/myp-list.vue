@@ -4,7 +4,7 @@
 	<!-- #endif -->
 	<!-- #ifdef APP-NVUE -->
 	<list :class="['myp-full-flex', 'myp-bg-'+bgType, reverse&&'myp-list-reverse']" :style="mrBoxStyle" ref="myp-scroller" :show-scrollbar="showScrollbar" :loadmoreoffset="(mypUp.use&&!useLoading)?loadMoreOffset:0" @loadmore="mypMoreLoad" @scroll="mypScroll">
-		<myp-refresher-n v-if="mypDown.use" ref="myp-refresher" scroller-ref="myp-scroller" :boxStyle="reverse?'transform: rotateZ(180deg);':''" @refresh="mypRefresh"></myp-refresher-n>
+		<myp-refresher-n v-if="mypDown.use" ref="myp-refresher" scroller-ref="myp-scroller" :mainText="refreshMainText" :pullingText="pullingText" :refreshingText="refreshingText" :boxStyle="(reverse?'transform: rotateZ(180deg);':'')+refreshStyle" @refresh="mypRefresh"></myp-refresher-n>
 		<cell>
 			<view ref="myp-list-top"></view>
 		</cell>
@@ -15,21 +15,21 @@
 		<!-- in android, we must put loading in the last, or it will not trigger loading next page. --> 
 		<!-- it's the same in loadMore with loadMoreOffset -->
 		<cell v-if="mypUp.use&&!useLoading">
-			<myp-loader :isLoading="mypIsUpLoading" :hasMore="mypHasMore" :boxStyle="reverse?'transform: rotateZ(180deg);':''"></myp-loader>
+			<myp-loader :isLoading="mypIsUpLoading" :hasMore="mypHasMore" :showNoMore="showNoMore" :mainText="loadMainText" :loadingText="loadingText" :noMoreText="noMoreText" :loadingSrc="loadingSrc" :boxStyle="(reverse?'transform: rotateZ(180deg);':'')+loadingStyle"></myp-loader>
 		</cell>
-		<myp-loader-n v-if="mypUp.use&&useLoading" ref="myp-loader" :hasMore="mypHasMore" :boxStyle="reverse?'transform: rotateZ(180deg);':''" @loading="mypLoad"></myp-loader-n>
+		<myp-loader-n v-if="mypUp.use&&useLoading" ref="myp-loader" :hasMore="mypHasMore" :showNoMore="showNoMore" :mainText="loadMainText" :loadingText="loadingText" :noMoreText="noMoreText" :loadingSrc="loadingSrc" :boxStyle="(reverse?'transform: rotateZ(180deg);':'')+loadingStyle" @loading="mypLoad"></myp-loader-n>
 	</list>
 	<!-- #endif -->
 	<!-- #ifndef APP-NVUE -->
 		<view :style="mypMrScrollContentStyle">
 			<view v-if="mypDown.use" :style="mypMrRefreshStyle">
-				<myp-refresher :refreshing="mypIsDownLoading" :couldUnLash="mypCouldUnLash" :rate="mypDownRate" :boxStyle="reverse?'transform: rotateZ(180deg);':''"></myp-refresher>
+				<myp-refresher :refreshing="mypIsDownLoading" :couldUnLash="mypCouldUnLash" :rate="mypDownRate" :mainText="refreshMainText" :pullingText="pullingText" :refreshingText="refreshingText" :boxStyle="(reverse?'transform: rotateZ(180deg);':'')+refreshStyle"></myp-refresher>
 			</view>
 			<view id="myp-list-top" ref="myp-list-top"></view>
 			<!-- content of scroll -->
 			<slot></slot>
 			<view id="myp-list-bottom" ref="myp-list-bottom"></view>
-			<myp-loader v-if="mypUp.use" :isLoading="mypIsUpLoading" :hasMore="mypHasMore" :boxStyle="reverse?'transform: rotateZ(180deg);':''"></myp-loader>
+			<myp-loader v-if="mypUp.use" :isLoading="mypIsUpLoading" :hasMore="mypHasMore" :showNoMore="showNoMore" :mainText="loadMainText" :loadingText="loadingText" :noMoreText="noMoreText" :loadingSrc="loadingSrc" :boxStyle="(reverse?'transform: rotateZ(180deg);':'')+loadingStyle"></myp-loader>
 		</view>
 	</scroll-view>
 	<!-- #endif -->
@@ -37,12 +37,13 @@
 
 <script>
 	import styleMixin from './styleMixin.js'
+	import refreshLoadCustom from './refreshLoadCustom.js'
 	import scrollMixin from './mixin.js'
 	import weexActions from './weexActions.js'
 	import {getPlatform} from '../utils/system.js'
 	
 	export default {
-		mixins: [styleMixin, scrollMixin, weexActions],
+		mixins: [styleMixin, refreshLoadCustom, scrollMixin, weexActions],
 		props: {
 			// #ifdef APP-NVUE
 			/**

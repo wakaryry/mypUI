@@ -1,7 +1,7 @@
 <template>
 	<loading class="myp-loading myp-flex-column myp-align-center" @loading="onloading" :display="isLoading ? 'show' : 'hide'" :style="boxStyle">
 		<image v-if="hasMore&&isLoading" class="myp-loading-img" :src="loadingSrc" mode="aspectFill"></image>
-		<text v-if="isLoading || !hasMore" class="myp-loading-text">{{loadText}}</text>
+		<text v-if="isLoading || (!hasMore&&showNoMore)" class="myp-loading-text">{{loadText}}</text>
 		<text v-if="!isLoading&&hasMore" class="myp-loading-text">{{mainText}}</text>
 	</loading>
 </template>
@@ -49,6 +49,13 @@
 			 * 是否还有更多
 			 */
 			hasMore: {
+				type: Boolean,
+				default: true
+			},
+			/**
+			 * 是否展示没有更多
+			 */
+			showNoMore: {
 				type: Boolean,
 				default: true
 			},

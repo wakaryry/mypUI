@@ -4,7 +4,7 @@
 			<image class="myp-loading-img" :src="loadingSrc" mode="aspectFill"></image>
 			<text class="myp-loading-text">{{loadText}}</text>
 		</view>
-		<text v-if="!hasMore" class="myp-loading-text">{{loadText}}</text>
+		<text v-if="!hasMore&&showNoMore" class="myp-loading-text">{{loadText}}</text>
 	</view>
 </template>
 
@@ -50,6 +50,13 @@
 			 * 是否还有更多
 			 */
 			hasMore: {
+				type: Boolean,
+				default: true
+			},
+			/**
+			 * 是否展示没有更多
+			 */
+			showNoMore: {
 				type: Boolean,
 				default: true
 			},

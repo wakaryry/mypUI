@@ -4,7 +4,7 @@
 	<!-- #endif -->
 	<!-- #ifdef APP-NVUE -->
 	<waterfall :class="['myp-full-flex', 'myp-bg-'+bgType]" :style="mrBoxStyle" ref="myp-scroller" :show-scrollbar="showScrollbar" :column-count="columnCount" :column-width="columnWidthPx" :column-gap="columnGapPx" :left-gap="leftGapPx" :right-gap="rightGapPx" :loadmoreoffset="(mypUp.use&&!useLoading)?loadMoreOffset:0" @loadmore="mypMoreLoad" @scroll="mypScroll">
-		<myp-refresher-n v-if="mypDown.use" ref="myp-refresher" scroller-ref="myp-scroller" @refresh="mypRefresh"></myp-refresher-n>
+		<myp-refresher-n v-if="mypDown.use" ref="myp-refresher" scroller-ref="myp-scroller" :mainText="refreshMainText" :pullingText="pullingText" :refreshingText="refreshingText" :boxStyle="refreshStyle" @refresh="mypRefresh"></myp-refresher-n>
 		<header>
 			<slot name="header"></slot>
 		</header>
@@ -13,19 +13,19 @@
 		<!-- it's the same in loadMore with loadMoreOffset -->
 		<!-- or we could put the foot-token after loading -->
 		<header v-if="mypUp.use&&!useLoading">
-			<myp-loader :isLoading="mypIsUpLoading" :hasMore="mypHasMore"></myp-loader>
+			<myp-loader :isLoading="mypIsUpLoading" :hasMore="mypHasMore" :showNoMore="showNoMore" :mainText="loadMainText" :loadingText="loadingText" :noMoreText="noMoreText" :loadingSrc="loadingSrc" :boxStyle="loadingStyle"></myp-loader>
 		</header>
-		<myp-loader-n v-if="mypUp.use&&useLoading" ref="myp-loader" :hasMore="mypHasMore" @loading="mypLoad"></myp-loader-n>
+		<myp-loader-n v-if="mypUp.use&&useLoading" ref="myp-loader" :hasMore="mypHasMore" :showNoMore="showNoMore" :mainText="loadMainText" :loadingText="loadingText" :noMoreText="noMoreText" :loadingSrc="loadingSrc" :boxStyle="loadingStyle" @loading="mypLoad"></myp-loader-n>
 	</waterfall>
 	<!-- #endif -->
 	<!-- #ifndef APP-NVUE -->
 		<view :style="mypMrScrollContentStyle">
 			<view v-if="mypDown.use" :style="mypMrRefreshStyle">
-				<myp-refresher :refreshing="mypIsDownLoading" :couldUnLash="mypCouldUnLash" :rate="mypDownRate"></myp-refresher>
+				<myp-refresher :refreshing="mypIsDownLoading" :couldUnLash="mypCouldUnLash" :rate="mypDownRate" :mainText="refreshMainText" :pullingText="pullingText" :refreshingText="refreshingText" :boxStyle="refreshStyle"></myp-refresher>
 			</view>
 			<!-- content of scroll -->
 			<slot></slot>
-			<myp-loader v-if="mypUp.use" :isLoading="mypIsUpLoading" :hasMore="mypHasMore"></myp-loader>
+			<myp-loader v-if="mypUp.use" :isLoading="mypIsUpLoading" :hasMore="mypHasMore" :showNoMore="showNoMore" :mainText="loadMainText" :loadingText="loadingText" :noMoreText="noMoreText" :loadingSrc="loadingSrc" :boxStyle="loadingStyle"></myp-loader>
 		</view>
 	</scroll-view>
 	<!-- #endif -->
@@ -33,13 +33,14 @@
 
 <script>
 	import styleMixin from '../myp-list/styleMixin.js'
+	import refreshLoadCustom from '../myp-list/refreshLoadCustom.js'
 	import scrollMixin from '../myp-list/mixin.js'
 	import weexActions from '../myp-list/weexActions.js'
 	
 	import {getPlatform, getPx} from '../utils/system.js'
 	
 	export default {
-		mixins: [styleMixin, scrollMixin, weexActions],
+		mixins: [styleMixin, refreshLoadCustom, scrollMixin, weexActions],
 		props: {
 			// #ifdef APP-NVUE
 			/**

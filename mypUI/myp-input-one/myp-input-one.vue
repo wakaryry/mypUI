@@ -1,13 +1,13 @@
 <template>
 	<view class="myp-one myp-flex-row myp-justify-center" :style="boxStyle">
-		<view v-for="(item, index) in ranges" :key="index" class="myp-one-item" :style="mrItemStyle+(codeArr.length+1 === item?activeItemStyle:'')+(index!==ranges.length-1?('margin-right:'+space+';'):'')">
+		<view v-for="(item, index) in ranges" :key="index" class="myp-one-item" :style="mrItemStyle+(codeArr.length+1 == item?activeItemStyle:'')+(index!=ranges.length-1?('margin-right:'+space+';'):'')">
 			<view v-if="mode === 'middle' && codeIndex <= item" :style="mrMiddleStyle"></view>
-			<view v-if="mode === 'bottom'" :style="mrBottomStyle+(codeArr.length+1 === item?activeLineStyle:'')"></view>
-			<view v-if="mode==='box' && codeArr.length+1 === item" class="myp-one-cursor" :style="mrCursorStyle"></view>
-			<view v-if="password && codeArr.length >= item" :style="mrDotStyle"></view>
-			<text v-else class="myp-one-item-text" :style="'line-height:'+width+';'+valueStyle">{{ codeArr[index] ? codeArr[index] : ''}}</text>
+			<view v-if="mode === 'bottom'" :style="mrBottomStyle+(codeArr.length+1 == item?activeLineStyle:'')"></view>
+			<view v-if="mode==='box' && codeArr.length+1 == item && cursor" class="myp-one-cursor" :style="mrCursorStyle"></view>
+			<view v-if="password" :class="['myp-position-absolute', codeArr.length >= item?'myp-one-opacity':'myp-one-opacity-no']" :style="mrDotStyle"></view>
+			<text v-if="!password" class="myp-one-item-text" :style="'line-height:'+width+';'+valueStyle">{{ codeArr[index] ? codeArr[index] : ''}}</text>
 		</view>
-		<input type="number" :value="inputValue" :focus="focus" :maxlength="maxlength" class="myp-one-hide-input" :style="{height: width}" @input="getVal" />
+		<input type="number" :adjust-position="adjust" :value="inputValue" :focus="focus" :maxlength="maxlength" class="myp-one-hide-input" :style="{height: width}" @input="getVal" />
 	</view>
 </template>
 
@@ -55,6 +55,13 @@
 			mode: {
 				type: String,
 				default: "middle"
+			},
+			/**
+			 * adjust-position控制
+			 */
+			adjust: {
+				type: Boolean,
+				default: true
 			},
 			/**
 			 * 自定义height/width
@@ -189,7 +196,7 @@
 			},
 			mrDotStyle() {
 				const iw = parseInt(this.width)
-				let _style = `position:absolute;left:${iw*0.5}${this.widthUnit};top:${iw*0.5}${this.widthUnit};`
+				let _style = `left:${iw*0.5}${this.widthUnit};top:${iw*0.5}${this.widthUnit};`
 				_style += `transform:translate(-50%,-50%);`
 				return _style + this.dotStyle
 			}
@@ -205,7 +212,7 @@
 				const arr = val.split('')
 				this.codeIndex = arr.length + 1
 				this.codeArr = arr
-				if (this.codeIndex > Number(this.maxlength)) {
+				if (this.codeIndex > this.maxlength) {
 					this.$emit('finish', this.codeArr.join(''))
 				}
 			},
@@ -230,6 +237,20 @@
 	.myp-one {
 		position: relative;
 		
+		&-item {
+			position: relative;
+		
+			&-text {
+				text-align: center;
+			}
+		}
+		&-opacity {
+			opacity: 1;
+			
+			&-no {
+				opacity: 0;
+			}
+		}
 		&-cursor {
 			position: absolute;
 			transform: translate(-50%, -50%);
@@ -258,13 +279,6 @@
 			text-align: left;
 			opacity: 1;
 			background-color: transparent;
-		}
-		&-item {
-			position: relative;
-
-			&-text {
-				text-align: center;
-			}
 		}
 	}
 </style>

@@ -78,6 +78,31 @@
 		flex: 1;
 	}
 }
+.myp-text-align {
+	&-left {
+		text-align: left;	
+	}
+	&-center {
+		text-align: center;	
+	}
+	&-right {
+		text-align: right;
+	}
+}
+.myp-opacity {
+	&-1 {
+		opacity: 1;
+	}
+	&-0 {
+		opacity: 0;
+	}
+	&-hover {
+		opacity: $myp-opacity-hover;
+	}
+	&-disabled {
+		opacity: $myp-opacity-disabled;
+	}
+}
 .myp-bg {
 	&- {
 		background-color: $myp-bg-color-inverse;

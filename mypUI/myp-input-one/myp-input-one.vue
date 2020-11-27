@@ -1,11 +1,11 @@
 <template>
-	<view class="myp-one myp-flex-row myp-justify-center" :style="boxStyle">
-		<view v-for="(item, index) in ranges" :key="index" class="myp-one-item" :style="mrItemStyle+(codeArr.length+1 == item?activeItemStyle:'')+(index!=ranges.length-1?('margin-right:'+space+';'):'')">
+	<view class="myp-position-relative myp-flex-row myp-justify-center" :style="boxStyle">
+		<view v-for="(item, index) in ranges" :key="index" class="myp-position-relative" :style="mrItemStyle+(codeArr.length+1 == item?activeItemStyle:'')+(index!=ranges.length-1?('margin-right:'+space+';'):'')">
 			<view v-if="mode === 'middle' && codeIndex <= item" :style="mrMiddleStyle"></view>
 			<view v-if="mode === 'bottom'" :style="mrBottomStyle+(codeArr.length+1 == item?activeLineStyle:'')"></view>
 			<view v-if="mode==='box' && codeArr.length+1 == item && cursor" class="myp-one-cursor" :style="mrCursorStyle"></view>
-			<view v-if="password" :class="['myp-position-absolute', codeArr.length >= item?'myp-one-opacity':'myp-one-opacity-no']" :style="mrDotStyle"></view>
-			<text v-if="!password" class="myp-one-item-text" :style="'line-height:'+width+';'+valueStyle">{{ codeArr[index] ? codeArr[index] : ''}}</text>
+			<view v-if="password" :class="['myp-position-absolute', codeArr.length >= item?'myp-opacity-1':'myp-opacity-0']" :style="mrDotStyle"></view>
+			<text v-if="!password" class="myp-text-align-center" :style="'line-height:'+width+';'+valueStyle">{{ codeArr[index] ? codeArr[index] : ''}}</text>
 		</view>
 		<input type="number" :adjust-position="adjust" :value="inputValue" :focus="focus" :maxlength="maxlength" class="myp-one-hide-input" :style="{height: width}" @input="getVal" />
 	</view>
@@ -235,22 +235,6 @@
 
 <style lang="scss" scoped>
 	.myp-one {
-		position: relative;
-		
-		&-item {
-			position: relative;
-		
-			&-text {
-				text-align: center;
-			}
-		}
-		&-opacity {
-			opacity: 1;
-			
-			&-no {
-				opacity: 0;
-			}
-		}
 		&-cursor {
 			position: absolute;
 			transform: translate(-50%, -50%);

@@ -248,6 +248,13 @@
 			rangeStyle: {
 				type: String,
 				default: ''
+			},
+			/**
+			 * 强制刷新数据
+			 */
+			updateTime: {
+				type: Number,
+				default: 0
 			}
 		},
 		computed: {
@@ -287,6 +294,9 @@
 						this.initData()  // re-init
 					}
 				}
+			},
+			updateTime() {
+				this.initData()
 			}
 		},
 		created() {

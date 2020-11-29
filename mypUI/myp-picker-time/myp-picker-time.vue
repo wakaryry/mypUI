@@ -7,7 +7,7 @@
 				<text :class="['myp-color-'+confirmType, 'myp-size-'+confirmSize]" :style="confirmStyle" @tap="toConfirm">{{confirmText}}</text>
 			</view>
 		</slot>
-		<myp-picker-time-content :mode="mode" :value="value" :useCurrent="useCurrent" :start="start" :end="end" :includeBefore="includeBefore" :includeAfter="includeAfter" :range="range" :bgType="bgType" :textType="textType" :textSize="textSize" :height="height" :itemHeight="itemHeight" :boxStyle="boxStyle" :itemStyle="itemStyle" :textStyle="textStyle" :indicatorStyle="indicatorStyle" :rangeType="rangeType" :rangeSize="rangeSize" :rangeStyle="rangeStyle" :rangeBoxStyle="rangeBoxStyle" @inited="pickerInited" @change="pickerChanged"></myp-picker-time-content>
+		<myp-picker-time-content :mode="mode" :value="value" :updateTime="updateTime" :useCurrent="useCurrent" :start="start" :end="end" :includeBefore="includeBefore" :includeAfter="includeAfter" :range="range" :bgType="bgType" :textType="textType" :textSize="textSize" :height="height" :itemHeight="itemHeight" :boxStyle="boxStyle" :itemStyle="itemStyle" :textStyle="textStyle" :indicatorStyle="indicatorStyle" :rangeType="rangeType" :rangeSize="rangeSize" :rangeStyle="rangeStyle" :rangeBoxStyle="rangeBoxStyle" @inited="pickerInited" @change="pickerChanged"></myp-picker-time-content>
 	</myp-popup-always>
 </template>
 
@@ -149,6 +149,13 @@
 				default: ()=>{
 					return [0,0,0,0,0,0,0]
 				}
+			},
+			/**
+			 * 控制手动刷新数据的时机
+			 */
+			updateTime: {
+				type: Number,
+				default: 0
 			},
 			/**
 			 * 是否使用当前时间

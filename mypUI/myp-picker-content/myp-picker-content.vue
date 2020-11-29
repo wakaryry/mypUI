@@ -40,6 +40,13 @@
 				}
 			},
 			/**
+			 * 用户手动初始化数据
+			 */
+			updateTime: {
+				type: Number,
+				default: 0
+			},
+			/**
 			 * 背景主题
 			 */
 			bgType: {
@@ -191,6 +198,9 @@
 			},
 			// s1/s2/s3
 			selections() {
+				this.initData()
+			},
+			updateTime() {
 				this.initData()
 			}
 		},

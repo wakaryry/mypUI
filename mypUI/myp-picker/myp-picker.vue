@@ -7,7 +7,7 @@
 				<text :class="['myp-color-'+confirmType, 'myp-size-'+confirmSize]" :style="confirmStyle" @tap="toConfirm">{{confirmText}}</text>
 			</view>
 		</slot>
-		<myp-picker-content :mode="mode" :selections="selections" :labelProps="labelProps" :value="value" :bgType="bgType" :textType="type" :textSize="size" :height="height" :itemHeight="itemHeight" :boxStyle="boxStyle" :itemStyle="itemStyle" :textStyle="textStyle" :indicatorStyle="indicatorStyle" @inited="pickerInited" @change="pickerChanged"></myp-picker-content>
+		<myp-picker-content :mode="mode" :updateTime="updateTime" :selections="selections" :labelProps="labelProps" :value="value" :bgType="bgType" :textType="type" :textSize="size" :height="height" :itemHeight="itemHeight" :boxStyle="boxStyle" :itemStyle="itemStyle" :textStyle="textStyle" :indicatorStyle="indicatorStyle" @inited="pickerInited" @change="pickerChanged"></myp-picker-content>
 	</myp-popup-always>
 </template>
 
@@ -148,6 +148,13 @@
 				default: ()=>{
 					return [0,0,0,0,0,0,0]
 				}
+			},
+			/**
+			 * 手动强制刷新数据
+			 */
+			updateTime: {
+				type: Number,
+				default: 0
 			},
 			/**
 			 * content的背景色主题

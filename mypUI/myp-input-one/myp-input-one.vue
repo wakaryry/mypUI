@@ -4,7 +4,12 @@
 			<view v-if="mode === 'middle' && codeIndex <= item" :style="mrMiddleStyle"></view>
 			<view v-if="mode === 'bottom'" :style="mrBottomStyle+(codeArr.length+1 == item?activeLineStyle:'')"></view>
 			<view v-if="mode==='box' && codeArr.length+1 == item && cursor" class="myp-one-cursor" :style="mrCursorStyle"></view>
+			<!-- #ifdef APP-NVUE -->
 			<view v-if="password" :class="['myp-position-absolute', codeArr.length >= item?'myp-opacity-1':'myp-opacity-0']" :style="mrDotStyle"></view>
+			<!-- #endif -->
+			<!-- #ifndef APP-NVUE -->
+			<view v-if="password && codeArr.length >= item" class="myp-position-absolute" :style="mrDotStyle"></view>
+			<!-- #endif -->
 			<text v-if="!password" class="myp-text-align-center" :style="'line-height:'+width+';'+valueStyle">{{ codeArr[index] ? codeArr[index] : ''}}</text>
 		</view>
 		<input type="number" :adjust-position="adjust" :value="inputValue" :focus="focus" :maxlength="maxlength" class="myp-one-hide-input" :style="{height: width}" @input="getVal" />

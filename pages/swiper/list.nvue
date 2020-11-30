@@ -10,12 +10,13 @@
 		<!-- #endif -->
 		<swiper :current="current" style="width: 750rpx;flex: 1;" @change="toSwiperChange">
 			<swiper-item v-for="(tab,idx) in tabs" :key="idx">
-				<album-list :current='current' :index="idx" extra="status-nav"></album-list>
+				<album-list :current='current' :index="idx" extra="status-nav" @error="toShowToast"></album-list>
 			</swiper-item>
 		</swiper>
 		<!-- #ifndef APP-NVUE -->
 		</myp-content-box>
 		<!-- #endif -->
+		<myp-toast ref="myp-toast"></myp-toast>
 	</view>
 </template>
 
@@ -23,12 +24,13 @@
 	import albumList from './components/albumList.vue'
 	
 	import navHelper from '@/router/navHelper.js'
+	import toastMixin from '@/mypUI/myp-mixin/toastMixin.js'
 	
 	export default {
 		components: {
 			albumList
 		},
-		mixins: [navHelper],
+		mixins: [navHelper, toastMixin],
 		data() {
 			return {
 				tabs: ['广场','热门','我的'],
@@ -41,6 +43,9 @@
 			},
 			toSwiperChange(e) {
 				this.current = e.detail.current
+			},
+			toShowToast(val) {
+				this.mypShowToast(val)
 			}
 		}
 	}

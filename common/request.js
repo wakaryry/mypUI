@@ -84,41 +84,27 @@ const resInterceptor = (response, conf={}) => {
 		}
 		// for mock data, we do not have {code: 200, msg: "xxx", data: {}} style, just {}
 		if (process.env.NODE_ENV === 'development') {
-			if (isMockServer) {
-				if (response.data.errMsg) {
-					return {
-						mypReqToReject: true,
-						text: response.data.errMsg,
-						// we could change type according to code
-						type: 'error'
-					}
-				}
-				return response.data
-			} else {
-				// test api server
-				if (response.data.code === 200) {
-					return response.data.data || {}  // in case null
-				}
+			if (response.data.errMsg) {
 				return {
 					mypReqToReject: true,
-					text: response.data.msg,
+					text: response.data.errMsg,
 					// we could change type according to code
-					type: 'warning'
+					type: 'error',
+					mode: 'big'
 				}
 			}
+			return response.data
 		} else {
-			// in prod, we use {code: 200, msg: "xxx", data: {}}
-			if (response.data.code === 200) {
-				return response.data.data || {}  // in case null
+			if (response.data.errMsg) {
+				return {
+					mypReqToReject: true,
+					text: response.data.errMsg,
+					// we could change type according to code
+					type: 'error',
+					node: 'big'
+				}
 			}
-			// if returned code is not 200, we will reject the response
-			// in reject, we just return the msg
-			return {
-				mypReqToReject: true,
-				text: response.data.msg,
-				// we could change type according to code
-				type: 'warning'
-			}
+			return response.data
 		}
 	} else if (statusCode === 500) {
 		_responseLog(response, conf, "response 500")

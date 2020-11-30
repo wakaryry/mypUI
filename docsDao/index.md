@@ -107,10 +107,6 @@ onLaunch: function() {
 
 初始化代码如下：
 
-- 先引入并放入mixins；
-
-- 然后调用初始化方法；
-
 ```html
 <script>
 	import {initSystemInfo} from '@/mypUI/utils/system.js'

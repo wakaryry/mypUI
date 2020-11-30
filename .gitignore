@@ -1,4 +1,6 @@
 unpackage/dist/
+unpackage/build/
+unpackage/debug/
 node_modules
 .DS_Store
 

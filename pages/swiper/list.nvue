@@ -2,7 +2,7 @@
 	<view>
 		<myp-navbar :lefts="leftIcons" @leftAction="navLeftAction">
 			<view slot="title">
-				<myp-tabs-h :value="current" :items="tabs" textType="second" activeTextType="text" activeTextStyle="font-weight:700;" :isTap="true" scrollSize="350rpx" justify="center" width="100rpx" height="44px" @change="toChangeTab"></myp-tabs-h>
+				<myp-tabs-h :value="current" :items="tabs" :delay="50" textType="second" activeTextType="text" activeTextStyle="font-weight:700;" :isTap="true" scrollSize="350rpx" justify="center" width="100rpx" height="44px" @change="toChangeTab"></myp-tabs-h>
 			</view>
 		</myp-navbar>
 		<!-- #ifndef APP-NVUE -->

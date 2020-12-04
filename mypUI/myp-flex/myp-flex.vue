@@ -1,5 +1,5 @@
 <template>
-	<view :class="['myp-bg-'+bgType, 'myp-border-'+border, 'myp-radius-'+radius, 'myp-flex-'+direction, 'myp-justify-'+justify, 'myp-align-'+align, 'myp-wrap-'+wrap]" :style="boxStyle">
+	<view :class="['myp-bg-'+bgType, 'myp-border-'+border, 'myp-radius-'+radius, 'myp-flex-'+direction, 'myp-justify-'+justify, 'myp-align-'+align, 'myp-wrap-'+wrap]" :style="boxStyle" bubble="true" @tap.stop="toClick">
 		<slot></slot>
 	</view>
 </template>
@@ -62,6 +62,12 @@
 			boxStyle: {
 				type: String,
 				default: ''
+			}
+		},
+		methods: {
+			toClick(e) {
+				this.$emit("flexClicked")
+				e.stopPropagation && e.stopPropagation()
 			}
 		}
 	}

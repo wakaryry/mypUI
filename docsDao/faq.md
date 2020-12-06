@@ -68,3 +68,17 @@ IOS不支持elevation属性，请使用box-shadow设置阴影
 - swiper-list可能会造成下一个页面闪烁或者有历史内容残留
 
 swiper-list是双列表潜逃，支持公用header，以及swiper切换的效果。swiper-list有可能会导致下一个页面出现残影或者内容闪烁。（还在排查与取证阶段）
+
+> 兄弟absolute定位的问题
+
+两个兄弟absolute定位，都使用v-if来动态的控制，动态改变v-if，我们会发现，在nvue-app上，会导致样式有问题。他们的布局变成了互相影响的布局，而不是absolute。如果你发现了这种情况，可以一个使用v-if，另一个使用opacity来控制。当然，opacity控制的内容，实际上还是存在占位的，如果需要有点击等响应的话，需要注意层级。
+
+> 可以使用原生tabbar吗？
+
+是否使用原生tabbar是您自己决定的，myp-list支持原生tabbar或者自定义tabbar的。myp-list在app端都是自适应的，不管是原生还是自定义，都能自适应高度。
+
+> 为什么myp-list在页面中无法出现下拉刷新和上提加载？
+
+这是个好问题。你可能会发现自己的list开启了刷新和上提，但是就是看不到效果，为什么？
+
+有可能你的list外层还有一个list/scroll。导致滚动无法触发到内部list的事件。对于页面来说，如果我们自己使用list，最好是禁用掉页面的滚动效果，也就是开启 disableScroll。

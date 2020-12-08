@@ -23,6 +23,7 @@
 			<view v-if="mypDown.use" :style="mypMrRefreshStyle">
 				<myp-refresher :refreshing="mypIsDownLoading" :couldUnLash="mypCouldUnLash" :rate="mypDownRate" :mainText="refreshMainText" :pullingText="pullingText" :refreshingText="refreshingText" :boxStyle="refreshStyle"></myp-refresher>
 			</view>
+			<slot name="header"></slot>
 			<!-- content of scroll -->
 			<slot></slot>
 			<myp-loader v-if="mypUp.use" :isLoading="mypIsUpLoading" :hasMore="mypHasMore" :showNoMore="showNoMore" :mainText="loadMainText" :loadingText="loadingText" :noMoreText="noMoreText" :loadingSrc="loadingSrc" :boxStyle="loadingStyle"></myp-loader>

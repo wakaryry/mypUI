@@ -83,6 +83,8 @@
 			clear() {
 				this.leftItems = []
 				this.rightItems = []
+				this.leftH = 0
+				this.rightH = 0
 			},
 			// 重新生成布局
 			set(arr) {
@@ -135,13 +137,18 @@
 					for (const i in arr) {
 						const theI = arr[i]
 						const id = theI[this.idLabel]
-						let h = this.cached['i_'+id] || 0
-						if (h === 0) {
+						let h = 0
+						const _cached = this.cached['i_'+id]
+						if (!_cached || _cached.h === 0) {
 							const _cal = this.calculator(theI)
 							h = _cal.h
-							this.cached['i_'+id] = h
+							this.cached['i_'+id] = _cal
 							theI['mypH'] = h
-							theI['myp'] = _cal
+							theI['myp'] = {..._cal}
+						} else {
+							h = _cached.h
+							theI['mypH'] = h
+							theI['myp'] = {..._cached}
 						}
 						if (this.leftH <= this.rightH) {
 							this.leftItems.push(theI)

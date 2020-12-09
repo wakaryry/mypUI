@@ -35,7 +35,7 @@
 			<tabbar-list :scrollable="mypChildScrollable" @move="mypChildTouchMove" @end="mypChildTouchEnd" @page="toTabbar"></tabbar-list>
 		</scroll-view>
 		<!-- #endif -->
-		<myp-navbar :lefts="leftIcons" :fixed="true" :isSeize="false" iconStyle="color:#FFFFFF;" boxStyle="background-color:transparent;" @leftAction="navLeftAction"></myp-navbar>
+		<myp-navbar :lefts="leftIcons" :fixed="true" :isSeize="false" bgType="none" itemIconType="inverse" @leftAction="navLeftAction"></myp-navbar>
 	</view>
 </template>
 

@@ -1,12 +1,12 @@
 <template>
 	<view ref="slider-wrap" class="myp-slider" :style="boxStyle" @tap.stop="toWrapClicked">
-		<view class="myp-slider-container">
+		<view class="myp-slider-container" :style="containerStyle">
 			<!-- progress -->
 			<view :class="['myp-slider-bg', 'myp-bg-'+bgType]" :style="progressStyle">
 				<view :class="['myp-slider-progress', 'myp-bg-'+activeBgType]" :style="activeProgressStyle"></view>
 			</view>
 			<!-- tooltip -->
-			<view class="myp-slider-tooltip" >
+			<view class="myp-slider-tooltip" :style="tooltipStyle">
 				<slot name="tooltip"></slot>
 			</view>
 		</view>
@@ -81,11 +81,19 @@
 				type: String,
 				default: ''
 			},
+			containerStyle: {
+				type: String,
+				default: ''
+			},
 			progressStyle: {
 				type: String,
 				default: ''
 			},
 			activeProgressStyle: {
+				type: String,
+				default: ''
+			},
+			tooltipStyle: {
 				type: String,
 				default: ''
 			}
@@ -111,6 +119,7 @@
 			position: relative;
 		}
 		&-bg {
+			overflow: hidden;
 		}
 		&-progress {
 		}

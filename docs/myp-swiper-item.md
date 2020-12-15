@@ -5,8 +5,6 @@ order: 73
 page: https://mypui.asnowsoft.cn/h5/#/pages/base/swiper
 ---
 
-> esc-swiper-item
-
 ## Props
 
 | Prop name | Description | Type    | Values | Default |

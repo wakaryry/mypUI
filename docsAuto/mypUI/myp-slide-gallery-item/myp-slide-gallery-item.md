@@ -1,3 +1,0 @@
-# myp-slide-gallery-item
-
----

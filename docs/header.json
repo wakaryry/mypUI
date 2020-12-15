@@ -123,6 +123,12 @@
 		"title": "定位：myp-position",
 		"page": "pages/base/position"
 	},
+	"myp-fold": {
+		"type": "guide",
+		"order": 78,
+		"title": "收展：myp-fold",
+		"page": "pages/base/fold"
+	},
 	"myp-navbar": {
 		"type": "guide",
 		"order": 100,

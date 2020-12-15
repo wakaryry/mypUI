@@ -2,6 +2,9 @@ import {getHeight} from '../utils/system.js'
 // #ifndef APP-NVUE
 import {getScreenHeight} from '../utils/system.js'
 // #endif
+// #ifdef APP-NVUE
+const dom = uni.requireNativePlugin("dom")
+// #endif
 
 export default {
 	props: {

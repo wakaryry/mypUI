@@ -41,71 +41,85 @@
 		"title": "瀑布流：myp-waterfall",
 		"page": "pages/scroll/waterfall"
 	},
-	"myp-scroll-h": {
+	"myp-waterfall-view": {
 		"type": "guide",
 		"order": 64,
+		"title": "瀑布流：myp-waterfall-view",
+		"page": "pages/scroll/waterfall"
+	},
+	"myp-scroll-h": {
+		"type": "guide",
+		"order": 65,
 		"title": "横向列表：myp-scroll-h",
 		"page": "pages/scroll/h"
 	},
 	"myp-scroll-inline": {
 		"type": "guide",
-		"order": 65,
+		"order": 66,
 		"title": "横向列表：myp-scroll-inline",
 		"page": "pages/scroll/h"
 	},
-	"myp-scroll-scale": {
-		"type": "guide",
-		"order": 66,
-		"title": "伸缩列表：myp-scroll-scale"
-	},
-	"myp-scroll-scale-item": {
+	"myp-gallery": {
 		"type": "guide",
 		"order": 67,
-		"title": "伸缩列表单元：myp-scroll-scale-item"
+		"title": "画廊：myp-scroll-scale"
 	},
-	"myp-slide-gallery": {
+	"myp-gallery-item": {
 		"type": "guide",
 		"order": 68,
-		"title": "画廊/slide：myp-slide-gallery"
-	},
-	"myp-slide-gallery-item": {
-		"type": "guide",
-		"order": 69,
-		"title": "画廊单元：myp-slide-gallery-item"
+		"title": "画廊单元：myp-scroll-scale-item"
 	},
 	"myp-list-index": {
 		"type": "guide",
-		"order": 70,
+		"order": 69,
 		"title": "索引列表：myp-list-index",
 		"page": "pages/base/indexlist"
 	},
 	"myp-content-box": {
 		"type": "guide",
-		"order": 71,
+		"order": 70,
 		"title": "盒子：myp-content-box",
 		"page": "pages/base/content_box"
 	},
-	"myp-height": {
+	"myp-tab-container": {
+		"type": "guide",
+		"order": 71,
+		"title": "切换盒子：myp-tab-container",
+		"page": "pages/base/tab_container"
+	},
+	"myp-swiper": {
 		"type": "guide",
 		"order": 72,
+		"title": "swiper：myp-swiper",
+		"page": "pages/base/swiper"
+	},
+	"myp-swiper-item": {
+		"type": "guide",
+		"order": 73,
+		"title": "swiper：myp-swiper-item",
+		"page": "pages/base/swiper"
+	},
+	"myp-height": {
+		"type": "guide",
+		"order": 74,
 		"title": "高度：myp-height",
 		"page": "pages/base/height"
 	},
 	"myp-status": {
 		"type": "guide",
-		"order": 73,
+		"order": 75,
 		"title": "状态栏：myp-status",
 		"page": "pages/base/height"
 	},
 	"myp-xbar": {
 		"type": "guide",
-		"order": 74,
+		"order": 76,
 		"title": "底部安全区：myp-xbar",
 		"page": "pages/base/height"
 	},
 	"myp-position": {
 		"type": "guide",
-		"order": 75,
+		"order": 77,
 		"title": "定位：myp-position",
 		"page": "pages/base/position"
 	},
@@ -151,86 +165,92 @@
 		"title": "按钮：myp-button",
 		"page": "pages/base/button"
 	},
-	"myp-input": {
+	"myp-button-raw": {
 		"type": "guide",
 		"order": 151,
+		"title": "原生按钮：myp-button-raw",
+		"page": "pages/base/button"
+	},
+	"myp-input": {
+		"type": "guide",
+		"order": 152,
 		"title": "输入框：myp-input",
 		"page": "pages/base/input"
 	},
 	"myp-input-one": {
 		"type": "guide",
-		"order": 152,
+		"order": 153,
 		"title": "验证码输入：myp-input-one",
 		"page": "pages/base/input"
 	},
 	"myp-switch": {
 		"type": "guide",
-		"order": 153,
+		"order": 154,
 		"title": "开关：myp-switch",
 		"page": "pages/base/switch"
 	},
 	"myp-check": {
 		"type": "guide",
-		"order": 154,
+		"order": 155,
 		"title": "单多选：myp-check",
 		"page": "pages/base/check"
 	},
 	"myp-check-item": {
 		"type": "guide",
-		"order": 155,
+		"order": 156,
 		"title": "单多选：myp-check-item",
 		"page": "pages/base/check"
 	},
 	"myp-check-static": {
 		"type": "guide",
-		"order": 156,
+		"order": 157,
 		"title": "单多选：myp-check-static",
 		"page": "pages/base/check"
 	},
 	"myp-select": {
 		"type": "guide",
-		"order": 157,
+		"order": 158,
 		"title": "选择：myp-select",
 		"page": "pages/base/select"
 	},
 	"myp-stepper": {
 		"type": "guide",
-		"order": 158,
+		"order": 159,
 		"title": "步进器：myp-stepper",
 		"page": "pages/base/stepper"
 	},
 	"myp-slider-bar": {
 		"type": "guide",
-		"order": 159,
+		"order": 160,
 		"title": "区间：myp-slider-bar"
 	},
 	"myp-search": {
 		"type": "guide",
-		"order": 160,
+		"order": 161,
 		"title": "搜索框：myp-search",
 		"page": "pages/base/search"
 	},
 	"myp-picker-time": {
 		"type": "guide",
-		"order": 161,
+		"order": 162,
 		"title": "时间选择：myp-picker-time",
 		"page": "pages/picker/index"
 	},
 	"myp-picker-time-content": {
 		"type": "guide",
-		"order": 162,
+		"order": 163,
 		"title": "时间内容：myp-picker-time-content",
 		"page": "pages/picker/index"
 	},
 	"myp-picker": {
 		"type": "guide",
-		"order": 163,
+		"order": 164,
 		"title": "选择器：myp-picker",
 		"page": "pages/picker/index"
 	},
 	"myp-picker-content": {
 		"type": "guide",
-		"order": 164,
+		"order": 165,
 		"title": "选择内容：myp-picker-content",
 		"page": "pages/picker/index"
 	},

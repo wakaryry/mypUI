@@ -3,42 +3,42 @@
 		<myp-navbar :lefts="leftIcons" title="各种横向scroll" @leftAction="navLeftAction"></myp-navbar>
 		<myp-list :down="null" :up="null">
 			<myp-list-cell>
-				<myp-scroll-scale :width="750" :height="1000" :widthScale="0.827" :heightScale="0.84" :scaleFactor="0.8" :pagingEnabled="false">
-					<myp-scroll-scale-item>
+				<myp-gallery :width="750" :height="1000" :widthScale="0.827" :heightScale="0.84" :scaleFactor="0.8" :pagingEnabled="false">
+					<myp-gallery-item>
 						<calendar-goods></calendar-goods>
-					</myp-scroll-scale-item>
-					<myp-scroll-scale-item>
+					</myp-gallery-item>
+					<myp-gallery-item>
 						<calendar-goods></calendar-goods>
-					</myp-scroll-scale-item>
-					<myp-scroll-scale-item>
+					</myp-gallery-item>
+					<myp-gallery-item>
 						<calendar-goods></calendar-goods>
-					</myp-scroll-scale-item>
-					<myp-scroll-scale-item>
+					</myp-gallery-item>
+					<myp-gallery-item>
 						<calendar-goods></calendar-goods>
-					</myp-scroll-scale-item>
-					<myp-scroll-scale-item>
+					</myp-gallery-item>
+					<myp-gallery-item>
 						<calendar-goods></calendar-goods>
-					</myp-scroll-scale-item>
-				</myp-scroll-scale>
+					</myp-gallery-item>
+				</myp-gallery>
 			</myp-list-cell>
 			<myp-list-cell>
-				<myp-scroll-scale :width="750" :height="1000" :widthScale="0.827" :heightScale="0.84" :pagingEnabled="true">
-					<myp-scroll-scale-item>
+				<myp-gallery :width="750" :height="1000" :widthScale="0.827" :heightScale="0.84" :pagingEnabled="true">
+					<myp-gallery-item>
 						<calendar-goods></calendar-goods>
-					</myp-scroll-scale-item>
-					<myp-scroll-scale-item>
+					</myp-gallery-item>
+					<myp-gallery-item>
 						<calendar-goods></calendar-goods>
-					</myp-scroll-scale-item>
-					<myp-scroll-scale-item>
+					</myp-gallery-item>
+					<myp-gallery-item>
 						<calendar-goods></calendar-goods>
-					</myp-scroll-scale-item>
-					<myp-scroll-scale-item>
+					</myp-gallery-item>
+					<myp-gallery-item>
 						<calendar-goods></calendar-goods>
-					</myp-scroll-scale-item>
-					<myp-scroll-scale-item>
+					</myp-gallery-item>
+					<myp-gallery-item>
 						<calendar-goods></calendar-goods>
-					</myp-scroll-scale-item>
-				</myp-scroll-scale>
+					</myp-gallery-item>
+				</myp-gallery>
 			</myp-list-cell>
 		</myp-list>
 	</view>

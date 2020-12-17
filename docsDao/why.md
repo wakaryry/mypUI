@@ -102,7 +102,7 @@ mypUI 组件的文档，分为快捷设置，细节配置，进阶设置等层�
 
 在兼容各端的过程中，差异化的配置或者适配是不可避免的，但是很多差异是可以通过取舍以及封装抹平的。
 
-很多时候，我们既想要优秀的性能，又想得到高校的开发效率。通过封装来抹平差异以及减少差异化的配置等来提高效率是重中之重。
+很多时候，我们既想要优秀的性能，又想得到高效的开发效率。通过封装来抹平差异以及减少差异化的配置等来提高效率是重中之重。
 
 尤其是在app端的时候，导航栏各种设计，或者是tabbar的各种特效，使用自带的navbar或者tabbar很难满足要求，而个别页面自定义的话，又觉得风格不统一。甚至，`pages.json`中的各种`subnvue`的配置实在是不够友好。
 
@@ -180,6 +180,8 @@ mypUI 组件的文档，分为快捷设置，细节配置，进阶设置等层�
 
 - 支持手势的抽屉；
 
+- 自定义的swiper以及更多手势组件支持；
+
 - 最顺手的高度管理与计算，非常灵活的安全区兼容；
 
 - 作者具备前后端，以及原生app的开发经验。具备 Objc Swift Python Go JS 等语言开发经验。尤其在效率与规范上面颇有心得；
@@ -219,7 +221,7 @@ mypUI 组件的文档，分为快捷设置，细节配置，进阶设置等层�
 
 - [mypUI-文档开源地址](https://github.com/wakaryry/mypui-doc)
 
-- [mypUI-文档线上地址](https://mypui.asnowsoft.cn)
+- [mypUI-文档线上地址](https://mypui.asnowsoft.cn/doc/)
 
 - npm地址：[https://www.npmjs.com/package/@mypui/myp-ui](https://www.npmjs.com/package/@mypui/myp-ui)
 

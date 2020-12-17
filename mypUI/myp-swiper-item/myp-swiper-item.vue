@@ -13,7 +13,7 @@
 	import {getPlatform} from '../utils/system.js'
 	// #endif
 	/**
-	 * esc-swiper-item
+	 * myp-swiper-item
 	 * @description esc-swiper-item (不支持使用class)
 	 * @property {Number} index 索引(必填)
 	 * @property {Boolean} clickAny 可以点击任意项

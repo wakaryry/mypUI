@@ -1,6 +1,4 @@
-import {
-	getStyleStr
-} from '../../../utils/style.js';
+import { styleObjToStr } from '../../utils/utils.js'
 // #ifdef APP-NVUE
 const animation = uni.requireNativePlugin('animation')
 // #endif
@@ -62,7 +60,7 @@ export default {
 			return this.isAnimated ? this.duration : 0
 		},
 		boxStyle() {
-			return getStyleStr({
+			return styleObjToStr({
 				width: this.width + 'rpx',
 				height: this.height + 'rpx'
 			});
@@ -86,7 +84,7 @@ export default {
 			style.left = this.left + 'rpx'
 			style.transition = 'left ' + this.manualDuration + 'ms ' + this.timingFunction
 			// #endif
-			return getStyleStr(style);
+			return styleObjToStr(style);
 		},
 		_size() {
 			return (this.$slots && this.$slots.default && this.$slots.default.length) || this.size;

@@ -2,8 +2,8 @@
     "name" : "myp-ui",
     "appid" : "__UNI__7DE0F6C",
     "description" : "",
-    "versionName" : "2.8.0",
-    "versionCode" : 280,
+    "versionName" : "2.9.0",
+    "versionCode" : 290,
     "transformPx" : false,
     /* 5+App特有相关 */
     "app-plus" : {

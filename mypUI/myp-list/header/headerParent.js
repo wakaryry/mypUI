@@ -9,8 +9,6 @@ export default {
 			mypListId: 'head_swiper_list',
 			// #endif
 			// header
-			mypHeaderHeight: uni.upx2px(168), // 不包含tabs
-			mypTabsHeight: uni.upx2px(80), // 30 + 50
 			mypAllHeight: uni.upx2px(248),
 			// #ifndef APP-NVUE
 			mypChildScrollable: false,

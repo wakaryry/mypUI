@@ -12,7 +12,7 @@
 			<!-- #endif -->
 			<text v-if="!password" class="myp-text-align-center" :style="'line-height:'+width+';'+valueStyle">{{ codeArr[index] ? codeArr[index] : ''}}</text>
 		</view>
-		<input type="number" :adjust-position="adjust" :value="inputValue" :focus="focus" :maxlength="maxlength" class="myp-one-hide-input" :style="{height: width}" @input="getVal" />
+		<input type="number" :adjust-position="adjust" :value="inputValue" :focus="focus" :maxlength="maxlength" class="myp-one-hide-input" :style="{height: width}" @input="getVal" @blur="toBlur" @focus="toFocus" @confirm="toConfirm" @keyboardheightchange="toKbChange" />
 	</view>
 </template>
 
@@ -233,6 +233,18 @@
 				this.inputValue = ''
 				this.codeArr = []
 				this.codeIndex = 1
+			},
+			toBlur(e) {
+				this.$emit("blur", e)
+			},
+			toFocus(e) {
+				this.$emit("focus", e)
+			},
+			toConfirm(e) {
+				this.$emit("confirm", e.detail.value)
+			},
+			toKbChange(e) {
+				this.$emit("keyboardHeightChange", e)
 			}
 		}
 	}

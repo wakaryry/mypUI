@@ -12,7 +12,7 @@
 			<!-- #endif -->
 			<text v-if="!password" class="myp-text-align-center" :style="'line-height:'+width+';'+valueStyle">{{ codeArr[index] ? codeArr[index] : ''}}</text>
 		</view>
-		<input type="number" :adjust-position="adjust" :value="inputValue" :focus="focus" :maxlength="maxlength" class="myp-one-hide-input" :style="{height: width}" @input="getVal" @blur="toBlur" @focus="toFocus" @confirm="toConfirm" @keyboardheightchange="toKbChange" />
+		<input :disabled="disabled" type="number" :adjust-position="adjust" :value="inputValue" :focus="focus" :maxlength="maxlength" class="myp-one-hide-input" :style="{height: width}" @input="getVal" @blur="toBlur" @focus="toFocus" @confirm="toConfirm" @keyboardheightchange="toKbChange" />
 	</view>
 </template>
 
@@ -51,6 +51,13 @@
 			 * 是否focus
 			 */
 			focus: {
+				type: Boolean,
+				default: false
+			},
+			/**
+			 * 是否禁用
+			 */
+			disabled: {
 				type: Boolean,
 				default: false
 			},

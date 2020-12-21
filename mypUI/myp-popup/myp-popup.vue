@@ -121,7 +121,7 @@
 			animation: {
 				type: Object,
 				default: () => ({
-					timingFunction: 'ease-in-out'
+					timingFunction: 'ease-out'
 				})
 			},
 			/**
@@ -151,6 +151,14 @@
 			bottom: {
 				type: String,
 				default: '0'
+			},
+			/**
+			 * 确保存在动画
+			 * 需要加延时
+			 */
+			delay: {
+				type: Number,
+				default: 10
 			},
 			/**
 			 * 内容外层样式
@@ -309,18 +317,22 @@
 		methods: {
 			toHackShow(bool) {
 				if (bool) {
+					const that = this
 					// 先渲染元素
 					this.overlayShow = true
+					// TODO:
+					// 调整一下逻辑，利用 nextTick 之类的
 					// 必须确保overlay先于popup-content渲染，将popup-content移入下一个loop
-					setTimeout(()=>{
-						this.helpShow = true
-					}, 0)
 					// app端不能同一个loop同步执行，否则overlay始终在最上层
-					// this.helpShow = true
 					// 为了能够获取到元素，且实现动画
-					setTimeout(() => {
-						this.appearPopup(bool);
-					}, 50);
+					this.$nextTick(function(){
+						that.helpShow = true
+						that.$nextTick(function(){
+							setTimeout(()=>{
+								that.appearPopup(bool)
+							}, that.delay)
+						})
+					})
 				} else {
 					// 关闭动画需要执行动画之后再关闭v-if
 					this.overlayShow = false

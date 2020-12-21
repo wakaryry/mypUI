@@ -1,5 +1,5 @@
 <template>
-	<loading class="myp-loading myp-flex-column myp-align-center" @loading="onloading" :display="isLoading ? 'show' : 'hide'" :style="boxStyle">
+	<loading :class="['myp-loading', 'myp-flex-'+flex, 'myp-align-center', flex==='row'&&'myp-justify-center']" @loading="onloading" :display="isLoading ? 'show' : 'hide'" :style="boxStyle">
 		<image v-if="hasMore&&isLoading" class="myp-loading-img" :src="loadingSrc" mode="aspectFill"></image>
 		<text v-if="isLoading || (!hasMore&&showNoMore)" class="myp-loading-text">{{loadText}}</text>
 		<text v-if="!isLoading&&hasMore" class="myp-loading-text">{{mainText}}</text>
@@ -67,6 +67,13 @@
 				default: '/static/ui/loading-small.gif'
 			},
 			/**
+			 * 内容的布局方式
+			 */
+			flex: {
+				type: String,
+				default: 'column'
+			},
+			/**
 			 * 外层样式
 			 */
 			boxStyle: {
@@ -125,6 +132,8 @@
 			font-size: 28rpx;
 			color: #666666;
 			line-height: 40rpx;
+			padding-left: 12rpx;
+			padding-right: 12rpx;
 		}
 	}
 </style>

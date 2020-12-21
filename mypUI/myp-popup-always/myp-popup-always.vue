@@ -124,7 +124,7 @@
 			animation: {
 				type: Object,
 				default: () => ({
-					timingFunction: 'ease-in-out'
+					timingFunction: 'ease-out'
 				})
 			},
 			/**

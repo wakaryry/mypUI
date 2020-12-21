@@ -1,7 +1,7 @@
 <template>
 	<scroll-view ref="scroll" id="scroll" :scroll-x="true" :scroll-left="scrollLeft" :scroll-with-animation="true" :show-scrollbar="false" :class="['myp-bg-'+bgType, 'myp-border-'+border, 'myp-tabs-scroll']" :style="mrScrollStyle">
 		<view style="flex-direction: column;position: relative;">
-			<view v-if="hasIndicator&&!hoverTop" ref="myp-underline" :class="['myp-tab-item-underline', 'myp-bg-'+indicatorType, isTap?'myp-tab-item-animation':'']" :style="mrIndStyle">
+			<view v-if="hasIndicator&&!hoverTop" ref="myp-underline" :class="[absIndicator&&'myp-tab-item-underline', 'myp-bg-'+indicatorType, isTap?'myp-tab-item-animation':'']" :style="mrIndStyle">
 				<slot name="indicator"></slot>
 			</view>
 			<view :style="mrTabsStyle">
@@ -11,7 +11,7 @@
 				</view>
 				<view :style="{width: right}"></view>
 			</view>
-			<view v-if="hasIndicator&&hoverTop" ref="myp-underline" :class="['myp-tab-item-underline', 'myp-bg-'+indicatorType, isTap?'myp-tab-item-animation':'']" :style="mrIndStyle">
+			<view v-if="hasIndicator&&hoverTop" ref="myp-underline" :class="[absIndicator&&'myp-tab-item-underline', 'myp-bg-'+indicatorType, isTap?'myp-tab-item-animation':'']" :style="mrIndStyle">
 				<slot name="indicator"></slot>
 			</view>
 		</view>
@@ -207,6 +207,13 @@
 			indicatorRadius: {
 				type: String,
 				default: '4rpx'
+			},
+			/**
+			 * indicator是否绝对定位
+			 */
+			absIndicator: {
+				type: Boolean,
+				default: true
 			},
 			/**
 			 * 外层样式，也是scroll的样式

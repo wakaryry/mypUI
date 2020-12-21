@@ -10,7 +10,7 @@
 				<view style="height: 24rpx;"></view>
 			</myp-list-cell>
 			<myp-list-cell>
-				<myp-tabs-h :value="current" :isTap="true" :items="tabs1" :delay="50" activeTextType="warning" indicatorType="warning" indicatorStyle="bottom:20rpx;" @change="toChange1"></myp-tabs-h>
+				<myp-tabs-h :value="current" :isTap="true" :items="tabs1" :delay="50" width="200rpx" activeTextType="warning" indicatorType="warning" indicatorStyle="bottom:20rpx;" indicatorWidth="120rpx" @change="toChange1"></myp-tabs-h>
 			</myp-list-cell>
 			<myp-list-cell>
 				<view style="height: 24rpx;"></view>

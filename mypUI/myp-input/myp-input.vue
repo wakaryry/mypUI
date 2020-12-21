@@ -10,7 +10,7 @@
 				<text v-if="showPlaceholder" :class="['myp-size-'+placeSize, 'myp-color-'+placeType]" :style="placeStyle">{{placeholder||''}}</text>
 			</view>
 			<view class="myp-flex-row myp-align-center myp-input-input">
-				<input :type="type" :adjust-position="adjust" :confirm-type="confirmType" :maxlength="maxlength" :value="inputValue||''" :password="password" :class="['myp-color-'+valueType, 'myp-size-'+valueSize]" :style="'text-align:'+valueAlign+';'+valueStyle" @input="handleInputedText" @confirm="handleConfirmText" @focus="toFocus" @blur="toBlur" @keyboardheightchange="toChangeKb" />
+				<input :focus="focus" :type="type" :adjust-position="adjust" :confirm-type="confirmType" :maxlength="maxlength" :value="inputValue||''" :password="password" :class="['myp-color-'+valueType, 'myp-size-'+valueSize]" :style="'text-align:'+valueAlign+';'+valueStyle" @input="handleInputedText" @confirm="handleConfirmText" @focus="toFocus" @blur="toBlur" @keyboardheightchange="toChangeKb" />
 			</view>
 		</view>
 		<!-- #endif -->
@@ -19,7 +19,7 @@
 			<view :class="['myp-flex-row', 'myp-align-center', 'myp-input-place', 'myp-input-place-'+valueAlign]">
 				<text v-if="showPlaceholder" :class="['myp-size-'+placeSize, 'myp-color-'+placeType]" :style="placeStyle">{{placeholder||''}}</text>
 			</view>
-			<input :type="type" :adjust-position="adjust" :confirm-type="confirmType" :maxlength="maxlength" :value="inputValue||''" :password="password" :class="['myp-color-'+valueType, 'myp-size-'+valueSize]" :style="'text-align:'+valueAlign+';'+valueStyle" @input="handleInputedText" @confirm="handleConfirmText" @focus="toFocus" @blur="toBlur" @keyboardheightchange="toChangeKb" />
+			<input :focus="focus" :type="type" :adjust-position="adjust" :confirm-type="confirmType" :maxlength="maxlength" :value="inputValue||''" :password="password" :class="['myp-color-'+valueType, 'myp-size-'+valueSize]" :style="'text-align:'+valueAlign+';'+valueStyle" @input="handleInputedText" @confirm="handleConfirmText" @focus="toFocus" @blur="toBlur" @keyboardheightchange="toChangeKb" />
 		</view>
 		<!-- #endif -->
 		<slot name="extra"></slot>
@@ -64,6 +64,13 @@
 			 * 是否密码
 			 */
 			password: {
+				type: Boolean,
+				default: false
+			},
+			/**
+			 * 是否聚焦
+			 */
+			focus: {
 				type: Boolean,
 				default: false
 			},

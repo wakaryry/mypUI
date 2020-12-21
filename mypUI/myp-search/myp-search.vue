@@ -7,7 +7,7 @@
 					<text :class="['myp-search-place-text', 'myp-color-'+placeType, 'myp-size-'+placeSize]" :style="placeStyle">{{showPlaceholder?placeholder:''}}</text>
 				</view>
 				<view :class="['myp-search-input', 'myp-flex-row', 'myp-align-center']" :style="valueBoxStyle">
-					<input :value="inputValue" :focus="focus" :adjust-position="adjust" :confirm-type="confirmType" :class="['myp-search-input-input', 'myp-color-'+valueType, 'myp-size-'+valueSize]" :style="valueStyle" @input="toInput" @confirm="toConfirm" @focus="toFocus" @blur="toBlur" @keyboardheightchange="toChangeKb" />
+					<input :disabled="disabled" :value="inputValue" :focus="focus" :adjust-position="adjust" :confirm-type="confirmType" :class="['myp-search-input-input', 'myp-color-'+valueType, 'myp-size-'+valueSize]" :style="valueStyle" @input="toInput" @confirm="toConfirm" @focus="toFocus" @blur="toBlur" @keyboardheightchange="toChangeKb" />
 				</view>
 			</view>
 			<slot name="extra"></slot>
@@ -20,7 +20,7 @@
 				<text :class="['myp-color-'+placeType, 'myp-size-'+placeSize]" :style="placeStyle">{{showPlaceholder?placeholder:''}}</text>
 			</view>
 			<view :class="['myp-search-input', 'myp-flex-row', 'myp-align-center']" :style="mrValueBoxStyle">
-				<input :value="inputValue" :focus="focus" :adjust-position="adjust" :confirm-type="confirmType" :class="['myp-search-input-input', 'myp-search-input-'+position, 'myp-color-'+valueType, 'myp-size-'+valueSize]" :style="valueStyle" @input="toInput" @confirm="toConfirm" @focus="toFocus" @blur="toBlur" @keyboardheightchange="toChangeKb" />
+				<input :disabled="disabled" :value="inputValue" :focus="focus" :adjust-position="adjust" :confirm-type="confirmType" :class="['myp-search-input-input', 'myp-search-input-'+position, 'myp-color-'+valueType, 'myp-size-'+valueSize]" :style="valueStyle" @input="toInput" @confirm="toConfirm" @focus="toFocus" @blur="toBlur" @keyboardheightchange="toChangeKb" />
 			</view>
 			<slot name="extra"></slot>
 		</view>
@@ -73,6 +73,13 @@
 			adjust: {
 				type: Boolean,
 				default: true
+			},
+			/**
+			 * 是否禁用
+			 */
+			disabled: {
+				type: Boolean,
+				default: false
 			},
 			/**
 			 * confirm-type

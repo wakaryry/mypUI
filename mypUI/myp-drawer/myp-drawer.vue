@@ -1,5 +1,5 @@
 <template>
-	<view>
+	<view bubble="true">
 		<view v-if="hasOverlay" ref="myp-popo-overlay" :class="['myp-popo-over', 'myp-bg-'+overlay.bgType]" @tap.stop="overlayClose" :style="mrOverlayStyle + overlayNoWeexAni">
 			<slot name="overlay"></slot>
 		</view>
@@ -188,7 +188,40 @@
 				default: '0'
 			},
 			/**
+			 * TODO
+			 * 多少比例自动打开
+			 */
+			openRate: {
+				type: Number,
+				default: 0.5
+			},
+			/**
+			 * TODO
+			 * 多少比例自动关闭
+			 */
+			closeRate: {
+				type: Number,
+				default: 0.5
+			},
+			/**
+			 * 关闭时有个delay
+			 * 否则Android下点击事件存在问题
+			 */
+			delay: {
+				type: Number,
+				default: 150
+			},
+			/**
+			 * 遮罩层的外层样式
+			 * MP/H5可设置z-index
+			 */
+			overlayStyle: {
+				type: String,
+				default: ''
+			},
+			/**
 			 * 内容外层样式
+			 * MP/H5可设置z-index
 			 */
 			boxStyle: {
 				type: String,
@@ -213,7 +246,7 @@
 			},
 			mrOverlayStyle() {
 				let style = `left:${this.leftPx}px;top:${this.topPx}px;right:${this.rightPx}px;`
-				return style
+				return style + this.overlayStyle
 			},
 			mrPopStyle() {
 				let style = {
@@ -328,39 +361,23 @@
 		methods: {
 			// ref method to open
 			show(duration) {
-				if (typeof duration === 'undefined') {
-					this.toHackShow(true, this.duration)
-				} else {
-					this.toHackShow(true, duration)
-				}
+				this.toHackShow(true, typeof duration === 'undefined' ? this.duration : duration)
 			},
 			// ref method to close
 			hide(duration) {
-				if (typeof duration === 'undefined') {
-					this.toHackShow(false, this.duration)
-				} else {
-					this.toHackShow(false, duration)
-				}
+				this.toHackShow(false, typeof duration === 'undefined' ? this.duration : duration)
 			},
 			onAllTouchStart(e) {
-				if (this.allowAll) {
-					this.onTouchStart(e)
-				}
+				this.allowAll && this.onTouchStart(e)
 			},
 			onAllTouchMove(e) {
-				if (this.allowAll) {
-					this.onTouchMove(e)
-				}
+				this.allowAll && this.onTouchMove()
 			},
 			onAllTouchEnd(e) {
-				if (this.allowAll) {
-					this.onTouchEnd(e)
-				}
+				this.allowAll && this.onTouchEnd(e)
 			},
 			onAllTouchCancel(e) {
-				if (this.allowAll) {
-					this.onTouchCancel(e)
-				}
+				this.allowAll && this.onTouchCancel(e)
 			},
 			onStandTouchStart(e) {
 				this.onTouchStart(e)
@@ -376,11 +393,7 @@
 			},
 			onTouchStart(e) {
 				// #ifdef APP-NVUE
-				if (!this.isShow) {
-					this.openWithDrag()
-				} else {
-					this.closeWithDrag()
-				}
+				this.isShow ? this.closeWithDrag() : this.openWithDrag()
 				// #endif
 				// #ifndef APP-NVUE
 				this.startPoint = getTouchPoint(e)
@@ -672,52 +685,54 @@
 						expression: overExp
 					})
 				}
-				const result = bindingX.bind({
-					eventType: 'pan',
-					anchor: standEl,
-					props: props
-				}, (res) => {
-					if (res.state === 'end' && that.isShow) {
-						if (result) {
-						    bindingX.unbind({
-						        token: result.token,
-						        eventType: 'pan'
-						    })
-						}
-						if (!this.auto) {
-							return
-						}
-						if (this.pos === 'top' || this.pos === 'bottom') {
-							let offset = res.deltaY
-							let offsetAbs = Math.abs(res.deltaY)
-							if (offsetAbs < maxSize / 2) {
-								this.toHackShow(true)
-							} else if (offsetAbs >= maxSize / 2) {
-								if (this.pos === 'top' && offset < 0) {
-									this.toHackShow(false)
-								} else if (this.pos === 'bottom' && offset > 0) {
-									this.toHackShow(false)
-								} else {
-									this.toHackShow(true)
+				setTimeout(()=>{
+					const result = bindingX.bind({
+						eventType: 'pan',
+						anchor: standEl,
+						props: props
+					}, (res) => {
+						if (res.state === 'end' && that.isShow) {
+							if (result) {
+							    bindingX.unbind({
+							        token: result.token,
+							        eventType: 'pan'
+							    })
+							}
+							if (!that.auto) {
+								return
+							}
+							if (that.pos === 'top' || that.pos === 'bottom') {
+								let offset = res.deltaY
+								let offsetAbs = Math.abs(res.deltaY)
+								if (offsetAbs < maxSize / 2) {
+									that.toHackShow(true)
+								} else if (offsetAbs >= maxSize / 2) {
+									if (that.pos === 'top' && offset < 0) {
+										that.toHackShow(false)
+									} else if (that.pos === 'bottom' && offset > 0) {
+										that.toHackShow(false)
+									} else {
+										that.toHackShow(true)
+									}
+								}
+							} else if (that.pos === 'left' || that.pos === 'right') {
+								let offset = res.deltaX
+								let offsetAbs = Math.abs(res.deltaX)
+								if (offsetAbs < maxSize / 2) {
+								    that.toHackShow(true)
+								} else if (offsetAbs >= maxSize / 2) {
+									if (that.pos === 'left' && offset < 0) {
+										that.toHackShow(false)
+									} else if (that.pos === 'right' && offset > 0) {
+										that.toHackShow(false)
+									} else {
+										that.toHackShow(true)
+									}
 								}
 							}
-						} else if (this.pos === 'left' || this.pos === 'right') {
-							let offset = res.deltaX
-							let offsetAbs = Math.abs(res.deltaX)
-							if (offsetAbs < maxSize / 2) {
-							    this.toHackShow(true)
-							} else if (offsetAbs >= maxSize / 2) {
-								if (this.pos === 'left' && offset < 0) {
-									this.toHackShow(false)
-								} else if (this.pos === 'right' && offset > 0) {
-									this.toHackShow(false)
-								} else {
-									this.toHackShow(true)
-								}
-							}
 						}
-					}
-				})
+					})
+				}, this.delay)
 			},
 			toHackShow(bool) {
 				this.appearPopup(bool)

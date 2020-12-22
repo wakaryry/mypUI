@@ -285,6 +285,16 @@
 				default: -1
 			},
 			/**
+			 * 延迟获取元素内容，
+			 * 只影响items改变时的调用，
+			 * -1表示不延迟。
+			 * 其他情况使用updateTime
+			 */
+			updateDelay: {
+				type: Number,
+				default: -1
+			},
+			/**
 			 * indicator是否在最上层
 			 */
 			hoverTop: {
@@ -414,8 +424,15 @@
 				this.dyItems = {}
 				const that = this
 				this.$nextTick(()=>{
-					that.toCacheItemsSize()
-					that.toCurrentIndex(this.value, true)
+					if (that.updateDelay >= 0) {
+						setTimeout(()=>{
+							that.toCacheItemsSize()
+							that.toCurrentIndex(this.value, true)
+						}, that.updateDelay)
+					} else {
+						that.toCacheItemsSize()
+						that.toCurrentIndex(this.value, true)
+					}
 				})
 			},
 			offset(newV) {

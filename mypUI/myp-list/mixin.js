@@ -161,6 +161,9 @@ export default {
 			
 			// 上滑 && 检查并触发上拉
 			isScrollUp && this.mypTriggerUpScroll();
+			if (this.mypCurrentView) {
+				this.mypCurrentView = null
+			}
 		},
 		// 进入下拉区域的那一刻
 		mypDownInOffset() {

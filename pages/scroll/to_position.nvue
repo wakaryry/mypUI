@@ -1,0 +1,83 @@
+<template>
+	<view>
+		<myp-navbar :lefts="leftIcons" title="滚动到位置" @leftAction="navLeftAction"></myp-navbar>
+		<myp-list ref="myp-list" :down="{use:false}" :up="{use:false}">
+			<myp-list-cell v-for="(item, idx) in items" :key="idx">
+				<view :ref="'item_'+idx" class="myp-flex-row myp-justify-center myp-align-center myp-bg-warning" style="width: 750rpx;height: 240rpx;">
+					<text class="myp-size-l myp-color-inverse">{{item}}</text>
+				</view>
+				<view style="height: 20rpx;"></view>
+			</myp-list-cell>
+		</myp-list>
+		<myp-position pos="bottom" :fixed="true" offset="x-100px" boxStyle="left:20rpx;">
+			<view class="x-set">
+				<view class="x-set-item" @tap="toTop">
+					<text class="x-set-text">到顶</text>
+				</view>
+				<view class="x-set-item" @tap="toBottom">
+					<text class="x-set-text">到底</text>
+				</view>
+				<!-- #ifdef APP-NVUE -->
+				<view class="x-set-item" @tap="toDom">
+					<text class="x-set-text">到10</text>
+				</view>
+				<!-- #endif -->
+				<!-- #ifndef APP-NVUE -->
+				<view class="x-set-item" @tap="toPosition">
+					<text class="x-set-text">到10</text>
+				</view>
+				<!-- #endif -->
+			</view>
+		</myp-position>
+	</view>
+</template>
+
+<script>
+	import navHelper from '@/router/navHelper.js'
+	
+	export default {
+		mixins: [navHelper],
+		data() {
+			return {
+				items: [1, 2, 3, 4, 5, 6, 7, 8, 9 , 10, 11, 12, 13, 14, 15, 16]
+			}
+		},
+		methods: {
+			toTop() {
+				this.$refs['myp-list'].mypScrollToTop()
+			},
+			toBottom() {
+				this.$refs['myp-list'].mypScrollToBottom()
+			},
+			toDom() {
+				this.$refs['myp-list'].mypScrollToElement(this.$refs['item_9'][0], {offset: 0, animated: true})
+			},
+			toPosition() {
+				this.$refs['myp-list'].mypScrollToElement(uni.upx2px(260*9))
+			}
+		}
+	}
+</script>
+
+<style lang="scss" scoped>
+	.x {
+		&-set {
+			
+			&-item {
+				flex-direction: row;
+				align-items: center;
+				justify-content: space-between;
+				padding-left: 16rpx;
+				padding-right: 16rpx;
+				margin-bottom: 16rpx;
+				background-color: rgba($color: $myp-color-primary, $alpha: 0.4);
+				border-radius: 60rpx;
+				height: 80rpx;
+			}
+			&-text {
+				font-size: 32rpx;
+				color: $myp-text-color;
+			}
+		}
+	}
+</style>

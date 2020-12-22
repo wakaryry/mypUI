@@ -31,7 +31,8 @@
 					{name: 'list', page: 'scroll_list_loading', icon: 'topic', desc: 'list，带下拉/上提'},
 					{name: 'list', page: 'scroll_list_more', icon: 'topic', desc: 'list，带下拉/loadmoreoffset'},
 					{name: 'list', page: 'video_api', icon: 'topic', desc: '视频接口测试'},
-					{name: 'waterfall', page: 'scroll_waterfall', icon: 'radio-button', desc: 'waterfall，带下拉/上提'}
+					{name: 'waterfall', page: 'scroll_waterfall', icon: 'radio-button', desc: 'waterfall，带下拉/上提'},
+					{name: '位置', page: 'scroll_to_position', icon: 'radio-button', desc: '滚动到指定位置'}
 				]
 			}
 		},

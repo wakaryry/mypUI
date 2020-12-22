@@ -598,6 +598,12 @@
 			}
 		},
 		{
+			"path": "pages/scroll/to_position",
+			"style": {
+				"disableScroll": true
+			}
+		},
+		{
 			"path": "pages/scroll/video_api",
 			"style": {
 				"disableScroll": true

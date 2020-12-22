@@ -4,6 +4,7 @@
 		<myp-list :down="null" :up="null" bgType="page">
 			<myp-list-cell>
 				<view style="height: 20rpx;"></view>
+				<myp-cell title="useCurrent" value="使用当前时间" valueStyle="text-align:right;" border="bottom" radius="none" indicator="right" boxStyle="padding-left:32rpx;padding-right:32rpx;" @cellClicked="toShowCurrent"></myp-cell>
 			</myp-list-cell>
 			<myp-list-cell v-for="(item,idx) in items" :key="idx">
 				<myp-cell :title="item.title" :value="item.value||item.desc" valueStyle="text-align:right;" border="bottom" radius="none" indicator="right" boxStyle="padding-left:32rpx;padding-right:32rpx;" @cellClicked="toShowPicker(item)"></myp-cell>
@@ -12,6 +13,7 @@
 				<myp-cell title="自定义动态数据" :value="pcaText||'省市区动态与缓存'" valueStyle="text-align:right;" border="bottom" radius="none" indicator="right" boxStyle="padding-left:32rpx;padding-right:32rpx;" @cellClicked="toShowPca"></myp-cell>
 			</myp-list-cell>
 		</myp-list>
+		<myp-picker-time :show="currentVisible" :useCurrent="true" mode="date" @cancel="toHideCurrent" @confirm="toConfirmCurrent"></myp-picker-time>
 		<myp-picker-time :show="pickerVisible" :value="temp.val" :mode="temp.mode" @cancel="toHidePicker" @confirm="toConfirmPicker"></myp-picker-time>
 		<myp-picker :show="s1Visible" :value="s1Val" :selections="s1" mode="s1" @cancel="toHideS" @confirm="toConfirmS1"></myp-picker>
 		<myp-picker :show="s2Visible" :value="s2Val" :selections="updatedS2" mode="s2" :labelProps="labelTags" @cancel="toHideS" @confirm="toConfirmS2"></myp-picker>
@@ -77,7 +79,8 @@
 				},
 				addAll: true,
 				pcaVisible: false,
-				pcaText: ''
+				pcaText: '',
+				currentVisible: false
 			}
 		},
 		computed: {
@@ -101,6 +104,15 @@
 			}
 		},
 		methods: {
+			toShowCurrent() {
+				this.currentVisible = true
+			},
+			toHideCurrent() {
+				this.currentVisible = false
+			},
+			toConfirmCurrent() {
+				this.currentVisible = false
+			},
 			toConfirmPicker(val, s) {
 				console.log(val)
 				for (const i in this.items) {

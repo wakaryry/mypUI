@@ -288,6 +288,9 @@
 <style lang="scss" scoped>
 	.myp-search {
 		position: relative;
+		/* #ifndef APP-NVUE */
+		box-sizing: border-box;
+		/* #endif */
 		
 		&-fix {
 			&-full {

@@ -2,10 +2,10 @@
 	<view :class="['myp-flex-column', 'myp-border-'+border, 'myp-radius-'+radius]" :style="boxStyle">
 		<view v-for="(rows, idx) in rowArr" class="myp-flex-row myp-wrap-nowrap" :key="idx">
 			<view v-for="(item, index)  in rows" :class="[flexDirection==='row'?'myp-flex-row':'myp-flex-column', 'myp-position-relative', 'myp-justify-center', 'myp-align-center', 'myp-flex-one', index !==0 && hasLine && 'myp-grid-item-left', idx !== 0 && hasLine && 'myp-grid-item-top']" :key="index" :style="mrItemStyle" :hover-class="'myp-hover-'+hover" bubble="true" @tap.stop="clickedItem(idx, index, item)">
-				<text v-if="textFirst&&item" :class="['myp-color-'+textType, 'myp-size-'+textSize]" :style="mrTextStyle">{{item[textLabel]}}</text>
+				<text v-if="textFirst&&item" :class="['myp-color-'+textType, 'myp-size-'+textSize]" :style="(item.textStyle||'')+mrTextStyle">{{item[textLabel]}}</text>
 				<myp-icon v-if="isIcon&&item" :name="item[iconLabel]" :type="iconType" :size="iconSize" :iconStyle="iconStyle" :boxStyle="iconBoxStyle" @iconClicked="clickedItem(idx, index, item)"></myp-icon>
 				<text v-if="!isIcon&&item" :class="['myp-color-'+iconType, 'myp-size-'+iconSize]" :style="iconStyle">{{item[iconLabel]}}</text>
-				<text v-if="!textFirst&&item" :class="['myp-color-'+textType, 'myp-size-'+textSize]" :style="mrTextStyle">{{item[textLabel]}}</text>
+				<text v-if="!textFirst&&item" :class="['myp-color-'+textType, 'myp-size-'+textSize]" :style="(item.textStyle||'')+mrTextStyle">{{item[textLabel]}}</text>
 				<myp-badge v-if="item.badge" :size="item.badge.size||badgeConfig.size||'12rpx'" :bgType="item.badge.bgType||badgeConfig.bgType||'error'" :text="item.badge.text||''" :border="item.badge.border||badgeConfig.border||'none'" :textType="item.badge.textType||badgeConfig.textType||'inverse'" :textSize="item.badge.textSize||badgeConfig.textSize||'ss'" :textStyle="item.badge.textStyle||badgeConfig.textStyle||''" :boxStyle="item.badge.boxStyle||badgeConfig.boxStyle||''"></myp-badge>
 			</view>
 		</view>

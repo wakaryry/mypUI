@@ -1,5 +1,5 @@
 <template>
-	<view :class="['myp-overlay', 'myp-bg-'+bgType]" v-if="helpShow" ref="myp-overlay" @click.stop="overlayClose" :style="overlayStyle + noWeexTransition">
+	<view :class="['myp-overlay', 'myp-bg-'+bgType]" v-if="helpShow" ref="myp-overlay" @touchmove.stop="toPrevent" @click.stop="overlayClose" :style="overlayStyle + noWeexTransition">
 		<slot></slot>
 	</view>
 </template>
@@ -273,8 +273,11 @@
 						})
 					}
 				}
-			}
+			},
 			// #endif
+			toPrevent(e) {
+				e && e.stopPropagation && e.stopPropagation()
+			}
 		}
 	}
 </script>

@@ -1,6 +1,9 @@
 <template>
 	<view :class="[value?'myp-bg-'+onBgType:'myp-bg-'+bgType, disabled&&'myp-disabled']" :style="mrSwitchStyle" @click.stop="handleClick">
-		<view :class="['myp-bg-'+animateBgType]" :style="mrAnimateStyle"></view>
+		<slot name="on"></slot>
+		<view :class="['myp-bg-'+animateBgType]" :style="mrAnimateStyle">
+			<slot name="off"></slot>
+		</view>
 		<view :class="['myp-bg-'+ballBgType]" :style="mrBallStyle"></view>
 	</view>
 </template>

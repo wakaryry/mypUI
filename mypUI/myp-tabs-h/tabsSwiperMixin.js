@@ -40,7 +40,7 @@ export default {
 			// #endif
 		},
 		// @change for myp-tabs-h
-		mypToTabTab(i) {
+		mypOnTabChange(i) {
 			this.mypIsTap = true
 			this.mypTapIndex = i
 			this.mypToSwitchTab(i)

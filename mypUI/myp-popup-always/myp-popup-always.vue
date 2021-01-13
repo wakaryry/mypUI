@@ -1,6 +1,6 @@
 <template>
 	<view>
-		<view ref="myp-popo-overlay" :class="['myp-popo-over', 'myp-bg-'+overlay.bgType]" @touchmove.stop="toPrevent" @tap.stop="overlayClose" :style="mrOverlayStyle + overlayNoWeexAni">
+		<view v-if="hasOverlay" ref="myp-popo-overlay" :class="['myp-popo-over', 'myp-bg-'+overlay.bgType]" @touchmove.stop="toPrevent" @tap.stop="overlayClose" :style="mrOverlayStyle + overlayNoWeexAni">
 			<slot name="overlay"></slot>
 		</view>
 		<view ref="myp-popo" @touchmove.stop="toPrevent" @tap.stop="toPrevent" :class="['myp-popo', 'myp-flex-column', 'myp-bg-'+bgType]" :style="boxStyle+mrPopStyle + noWeexAni">
@@ -82,6 +82,13 @@
 			standout: {
 				type: String,
 				default: '0'
+			},
+			/**
+			 * 是否具备遮罩层
+			 */
+			hasOverlay: {
+				type: Boolean,
+				default: true
 			},
 			/**
 			 * 内容与屏幕左侧的距离
@@ -355,6 +362,7 @@
 					!bool && this.pos === 'center' && (animation.transition(popupEl, {styles: {transform: 'scale(0,0)'},duration: 0,delay: 0}))
 				})
 				// overlay
+				if (!this.hasOverlay) return;
 				const popupOverEl = this.$refs['myp-popo-overlay']
 				if (!popupOverEl) return;
 				bool && (animation.transition(popupOverEl, {styles: {height: `${this.overlayHeight}px`},duration: 0,delay: 0}))
@@ -385,6 +393,7 @@
 				}, duration)
 				const that = this
 				// overlay
+				if (!this.hasOverlay) return;
 				let _oStyle = "transition-duration:" + this.overlay.duration + 'ms;'
 				bool && (_oStyle += `height:${this.overlayHeight}px;`)
 				_oStyle += "transition-timing-function:" + (bool ? this.overlay.timingFunction[0] : this.overlay.timingFunction[1]) + ';'

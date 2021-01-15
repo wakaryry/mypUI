@@ -4,7 +4,7 @@
 		<view class="hvc-body">
 			<text class="hvc-title">{{item.title}}</text>
 			<view class="hvc-desc">
-				<view v-for="(tag,idx) in item.tags" class="hvc-tag">
+				<view v-for="(tag,idx) in item.tags" :key="idx" class="hvc-tag">
 					<text class="hvc-tag-text">{{tag}}</text>
 				</view>
 				<text class="hvc-desc-text">{{item.desc}}</text>

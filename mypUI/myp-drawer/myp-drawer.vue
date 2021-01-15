@@ -371,7 +371,7 @@
 				this.allowAll && this.onTouchStart(e)
 			},
 			onAllTouchMove(e) {
-				this.allowAll && this.onTouchMove()
+				this.allowAll && this.onTouchMove(e)
 			},
 			onAllTouchEnd(e) {
 				this.allowAll && this.onTouchEnd(e)

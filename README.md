@@ -17,13 +17,11 @@ mypUI 是基于 uniapp 的一套组件库与工具集，可以 **高效且规范
 
 mypUI 更加注重于通用组件与手势组件，高阶组件、盒子组件的开发，是真正符合 **高质量、灵活、高效、规范等** 开发要求的组件库。
 
-![demo](https://mypui.asnowsoft.cn/demo-imgs/demo1.png)
+![demo](https://cdn.mypui.fekit.cn/demo-imgs/demo1.png)
 
-![demo](https://mypui.asnowsoft.cn/demo-imgs/demo2.png)
+![demo](https://cdn.mypui.fekit.cn/demo-imgs/demo2.png)
 
-[Android Demo APK下载](https://mypui.asnowsoft.cn/apk/mypUI.apk)
-
-![Android下载](https://mypui.asnowsoft.cn/apk/mypUI.png)
+[Android Demo APK下载](https://cdn.mypui.fekit.cn/apk/mypUI.apk)
 
 # 找到代码与我们
 
@@ -33,7 +31,7 @@ mypUI 更加注重于通用组件与手势组件，高阶组件、盒子组件�
 
 - [mypUI-文档开源地址](https://github.com/wakaryry/mypui-doc)
 
-- [mypUI-文档线上地址](https://mypui.asnowsoft.cn/doc/)
+- [mypUI-文档线上地址](https://mypui.fekit.cn/doc/)
 
 - npm地址：[https://www.npmjs.com/package/@mypui/myp-ui](https://www.npmjs.com/package/@mypui/myp-ui)
 

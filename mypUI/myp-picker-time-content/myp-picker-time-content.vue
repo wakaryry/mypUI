@@ -255,6 +255,13 @@
 			updateTime: {
 				type: Number,
 				default: 0
+			},
+			/**
+			 * created的时候延时执行
+			 */
+			delay: {
+				type: Number,
+				default: -1
 			}
 		},
 		computed: {

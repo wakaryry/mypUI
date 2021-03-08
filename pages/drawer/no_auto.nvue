@@ -1,15 +1,43 @@
 <template>
-	<div>
-		
-	</div>
+	<view>
+		<myp-navbar :lefts="leftIcons" title="随停随动" @leftAction="navLeftAction"></myp-navbar>
+		<myp-list bgType="inverse" ref="no-auto" :down="null" :up="null">
+			<myp-list-cell>
+				
+			</myp-list-cell>
+		</myp-list>
+		<myp-drawer ref="no-auto-drawer" :auto="false" :allowAll="false" :hasOverlay="false" extra="status-nav" standout="x-100rpx">
+			<view class="na-stand myp-flex-row myp-align-center myp-justify-center" slot="standout">
+				<myp-icon name="up" @iconClicked="toToggleDrawer"></myp-icon>
+			</view>
+			<view class="myp-flex-one myp-bg-page"></view>
+			<myp-xbar bgType="page"></myp-xbar>
+		</myp-drawer>
+	</view>
 </template>
 
 <script>
+	import navHelper from '@/router/navHelper.js'
+	
 	export default {
-		
+		mixins: [navHelper],
+		methods: {
+			toToggleDrawer() {
+				const ins = this.$refs['no-auto-drawer']
+				ins.show()
+			}
+		}
 	}
 </script>
 
-<style>
-
+<style lang="scss" scoped>
+	.na {
+		&-stand {
+			border-top-left-radius: 16rpx;
+			border-top-right-radius: 16rpx;
+			width: 750rpx;
+			height: 100rpx;
+			background-color: #999696;
+		}
+	}
 </style>

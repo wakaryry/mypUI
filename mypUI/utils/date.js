@@ -201,6 +201,9 @@ export function parseTime(time, cFormat) {
 		if ((typeof time === 'number') && (time.toString().length === 10)) {
 			time = time * 1000
 		}
+		if ((typeof time === 'string') && time.indexOf('-') >= 0) {
+			time = time.replace(/-/g, "/").replace("T", " ")
+		}
 		date = new Date(time)
 	}
 	const formatObj = {
@@ -245,6 +248,9 @@ export function formatTime(time, option) {
 		}
 		if ((typeof time === 'number') && (time.toString().length === 10)) {
 			time = time * 1000
+		}
+		if ((typeof time === 'string') && time.indexOf('-') >= 0) {
+			time = time.replace(/-/g, "/").replace("T", " ")
 		}
 		date = new Date(time)
 	}

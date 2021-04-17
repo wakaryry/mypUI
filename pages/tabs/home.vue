@@ -1,6 +1,6 @@
 <template>
 	<view>
-		<myp-navbar :fixed="false" title="mypUI"></myp-navbar>
+		<myp-navbar :fixed="false" title="查看组件列表" icon="right" @centerAction="toComponentsList"></myp-navbar>
 		<!-- 仅仅只是演示区别，您可以直接不做区分，所有平台都写成属性最多的那个 -->
 		<!-- #ifdef APP-NVUE -->
 		<myp-list :down="null" :up="null" bgType="inverse">
@@ -179,6 +179,9 @@
 			},
 			toItem(val) {
 				this.tabRoot.navigateTo(val)
+			},
+			toComponentsList() {
+				
 			},
 			toPage(val) {
 				this.tabRoot.navigateTo(val.page)

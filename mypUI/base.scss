@@ -352,6 +352,7 @@
 		overflow: hidden;
 		text-overflow: ellipsis;
 		/* #ifndef APP-NVUE */
+		display: block;
 		white-space: nowrap;
 		/* #endif */
 	}

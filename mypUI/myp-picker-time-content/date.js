@@ -138,7 +138,7 @@ const generateMinutesArr = (now, hour, hours, includeBefore, includeAfter) => {
 }
 
 const getDefaultValue = (mode, value, useCurrent) => {
-	if (value && typeof value === 'object' && value.length > 0) {
+	if (value && typeof value === 'object' && value.length > 0 && !useCurrent) {
 		return value
 	}
 	if (useCurrent) {

@@ -33,18 +33,24 @@ export function getTouchPoint(e) {
 	if (!e) {
 		return {
 			x: 0,
-			y: 0
+			y: 0,
+			sX: 0,
+			sY: 0
 		}
 	}
 	if (e.touches && e.touches[0]) {
 		return {
 			x: e.touches[0].pageX,
-			y: e.touches[0].pageY
+			y: e.touches[0].pageY,
+			sX: e.touches[0].screenX,
+			sY: e.touches[0].screenY
 		}
 	} else if (e.changedTouches && e.changedTouches[0]) {
 		return {
 			x: e.changedTouches[0].pageX,
-			y: e.changedTouches[0].pageY
+			y: e.changedTouches[0].pageY,
+			sX: e.changedTouches[0].screenX,
+			sY: e.changedTouches[0].screenY
 		}
 	} else {
 		return {

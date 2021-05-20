@@ -96,6 +96,7 @@
 
 <script>
 	import dateMaker from "./date.js"
+	import {getHeight} from '../utils/system.js'
 	
 	export default {
 		props: {
@@ -265,17 +266,23 @@
 			}
 		},
 		computed: {
+			heightPx() {
+				return getHeight(this.height)
+			},
+			itemHeightPx() {
+				return getHeight(this.itemHeight)
+			},
 			mrBoxStyle() {
-				return `height:${this.height};` + this.boxStyle
+				return `height:${this.heightPx}px;` + this.boxStyle
 			},
 			mrIndicatorStyle() {
-				return `height:${this.itemHeight};` + this.indicatorStyle
+				return `height:${this.itemHeightPx}px;` + this.indicatorStyle
 			},
 			mrItemStyle() {
-				return `height:${this.itemHeight};` + this.itemStyle
+				return `height:${this.itemHeightPx}px;` + this.itemStyle
 			},
 			mrRangeStyle() {
-				return `height:${this.itemHeight};` + this.rangeBoxStyle
+				return `height:${this.itemHeightPx}px;` + this.rangeBoxStyle
 			}
 		},
 		data() {
@@ -390,10 +397,18 @@
 					defaultVal: dVal,
 					result: this.resultStr
 				})
+				// #ifndef APP-NVUE
 				// we must set default-data in nextTick, or mp will not show the current index
 				this.$nextTick(()=>{
 					this.pickVal = dVal
 				})
+				// #endif
+				// #ifdef APP-NVUE
+				// we must set default-data in nextTick, or mp will not show the current index
+				setTimeout(()=>{
+					this.pickVal = dVal
+				}, 50)
+				// #endif
 			},
 			bindChange(val) {
 				let arr = Object.assign([], val.detail.value)

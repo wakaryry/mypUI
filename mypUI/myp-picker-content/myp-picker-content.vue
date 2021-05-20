@@ -21,6 +21,7 @@
 </template>
 
 <script>
+	import {getHeight} from '../utils/system.js'
 	export default {
 		props: {
 			/**
@@ -146,14 +147,20 @@
 			}
 		},
 		computed: {
+			heightPx() {
+				return getHeight(this.height)
+			},
+			itemHeightPx() {
+				return getHeight(this.itemHeight)
+			},
 			mrBoxStyle() {
-				return `height:${this.height};` + this.boxStyle
+				return `height:${this.heightPx}px;` + this.boxStyle
 			},
 			mrIndicatorStyle() {
-				return `height:${this.itemHeight};` + this.indicatorStyle
+				return `height:${this.itemHeightPx}px;` + this.indicatorStyle
 			},
 			mrItemStyle() {
-				return `height:${this.itemHeight};` + this.itemStyle
+				return `height:${this.itemHeightPx}px;` + this.itemStyle
 			},
 			pl() {
 				return this.labelProps.s1 && this.labelProps.s1.label

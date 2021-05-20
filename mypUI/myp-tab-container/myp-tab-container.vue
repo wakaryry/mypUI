@@ -11,7 +11,7 @@
 	const animation = uni.requireNativePlugin('animation');
 	// #endif
 	
-	import {getPx, getXBarHeight, getHeight, getStatusBarHeight, getNavbarHeight} from '../utils/system.js'
+	import {getPx, getXBarHeight, getHeight, getStatusBarHeight, getNavBarHeight} from '../utils/system.js'
 	
 	export default {
 		props: {

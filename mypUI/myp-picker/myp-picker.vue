@@ -7,7 +7,7 @@
 				<text :class="['myp-color-'+confirmType, 'myp-size-'+confirmSize]" :style="confirmStyle" @tap="toConfirm">{{confirmText}}</text>
 			</view>
 		</slot>
-		<myp-picker-content :mode="mode" :updateTime="updateTime" :selections="selections" :labelProps="labelProps" :value="value" :bgType="bgType" :textType="type" :textSize="size" :height="height" :itemHeight="itemHeight" :boxStyle="boxStyle" :itemStyle="itemStyle" :textStyle="textStyle" :indicatorStyle="indicatorStyle" @inited="pickerInited" @change="pickerChanged"></myp-picker-content>
+		<myp-picker-content :mode="mode" :updateTime="updateTime" :selections="selections" :labelProps="labelProps" :value="value" :bgType="bgType" :textType="textType" :textSize="textSize" :height="height" :itemHeight="itemHeight" :boxStyle="boxStyle" :itemStyle="itemStyle" :textStyle="textStyle" :indicatorStyle="indicatorStyle" @inited="pickerInited" @change="pickerChanged"></myp-picker-content>
 	</myp-popup-always>
 </template>
 

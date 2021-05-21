@@ -213,6 +213,20 @@
 				default: ''
 			},
 			/**
+			 * 选择项文字颜色主题
+			 */
+			type: {
+				type: String,
+				default: 'text'
+			},
+			/**
+			 * 选择项文字尺寸主题
+			 */
+			size: {
+				type: String,
+				default: 'base'
+			},
+			/**
 			 * content的indicator-style
 			 */
 			indicatorStyle: {

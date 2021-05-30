@@ -1,6 +1,6 @@
 {
   "name": "@mypui/myp-ui",
-  "version": "2.9.2",
+  "version": "2.9.4",
   "description": "第一个高效且强悍的nvue开源组件库。做最好、最顺手的nvue组件库",
   "main": "index.js",
   "scripts": {

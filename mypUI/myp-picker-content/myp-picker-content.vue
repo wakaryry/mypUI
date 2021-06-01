@@ -360,7 +360,7 @@
 					let pf = false
 					let cf = false
 					let af = false
-					for (const i in ps) {
+					for (let i = 0; i < ps.length; i++) {
 						const _p = ps[i]
 						if (_p[this.pv] === p) {
 							pf = true
@@ -372,7 +372,7 @@
 					if (!pf) {
 						return [0,0,0]
 					}
-					for (const i in cs) {
+					for (let i = 0; i < cs.length; i++) {
 						const _c = cs[i]
 						if (_c[this.cv] === c) {
 							cf = true
@@ -384,7 +384,7 @@
 					if (!cf) {
 						return [p, 0, 0]
 					}
-					for (const i in ass) {
+					for (let i = 0; i < ass.length; i++) {
 						const _a = ass[i]
 						if (_a[this.av] === a) {
 							af = true
@@ -403,7 +403,7 @@
 					let cs = []
 					let pf = false
 					let cf = false
-					for (const i in ps) {
+					for (let i = 0; i < ps.length; i++) {
 						const _p = ps[i]
 						if (_p[this.pv] === p) {
 							pf = true
@@ -415,7 +415,7 @@
 					if (!pf) {
 						return [0,0]
 					}
-					for (const i in cs) {
+					for (let i = 0; i < cs.length; i++) {
 						const _c = cs[i]
 						if (_c[this.cv] === c) {
 							cf = true
@@ -431,7 +431,7 @@
 					let p = val[0]
 					const ps = this.selections
 					let pf = false
-					for (const i in ps) {
+					for (let i = 0; i < ps.length; i++) {
 						const _p = ps[i]
 						if (_p[this.pv] === p) {
 							pf = true

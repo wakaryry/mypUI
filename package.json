@@ -1,15 +1,13 @@
 {
+	"id": "myp-ui",
   "name": "myp-ui",
-  "version": "2.9.2",
+  "version": "2.9.5",
   "description": "**第一个高效且强悍的nvue开源组件库。做最好、最顺手的nvue组件库**",
   "main": "main.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/wakaryry/mypUI.git"
-  },
+  "repository": "https://github.com/wakaryry/mypUI",
   "author": "",
   "license": "ISC",
   "bugs": {
@@ -18,5 +16,77 @@
   "homepage": "https://github.com/wakaryry/mypUI#readme",
   "devDependencies": {
     "vue-docgen-cli": "^4.31.1"
-  }
+},
+"displayName": "mypUI 开源nvue组件库 兼容vue swiper/waterfall全面支持",
+"keywords": [
+    "mypUI",
+    "tabbar",
+    "抽屉",
+    "tabs",
+    "swiper"
+],
+"engines": {
+    "HBuilderX": "^3.1.20"
+},
+"dcloudext": {
+    "category": [
+        "前端页面模板",
+        "uni-app前端项目模板"
+    ],
+    "sale": {
+        "regular": {
+            "price": "0.00"
+        },
+        "sourcecode": {
+            "price": "0.00"
+        }
+    },
+    "contact": {
+        "qq": ""
+    },
+    "declaration": {
+        "ads": "无",
+        "data": "无",
+        "permissions": "无"
+    },
+    "npmurl": "https://www.npmjs.com/package/@mypui/myp-ui"
+},
+"uni_modules": {
+    "platforms": {
+        "cloud": {
+            "tcb": "y",
+            "aliyun": "y"
+        },
+        "client": {
+            "App": {
+                "app-vue": "u",
+                "app-nvue": "u"
+            },
+            "H5-mobile": {
+                "Safari": "u",
+                "Android Browser": "u",
+                "微信浏览器(Android)": "u",
+                "QQ浏览器(Android)": "u"
+            },
+            "H5-pc": {
+                "Chrome": "u",
+                "IE": "u",
+                "Edge": "u",
+                "Firefox": "u",
+                "Safari": "u"
+            },
+            "小程序": {
+                "微信": "u",
+                "阿里": "u",
+                "百度": "u",
+                "字节跳动": "u",
+                "QQ": "u"
+            },
+            "快应用": {
+                "华为": "u",
+                "联盟": "u"
+            }
+        }
+    }
+}
 }

@@ -1,6 +1,6 @@
 <template>
 	<!-- #ifndef APP-NVUE -->
-	<scroll-view :scroll-into-view="mypCurrentView" :scroll-top="mypScrollTop" :scroll-with-animation="true" :class="['myp-bg-'+bgType, reverse&&'myp-list-reverse']" :style="mrBoxStyle" :scroll-y="mypScrollable" :show-scrollbar="showScrollbar" :enable-back-to-top="true" @scroll="mypScroll" @touchstart="mypTouchstartEvent" @touchmove="mypTouchmoveEvent" @touchend="mypTouchendEvent" @touchcancel="mypTouchendEvent">
+	<scroll-view :scroll-into-view="mypCurrentView" :scroll-top="mypScrollTop" :scroll-with-animation="true" :class="['myp-bg-'+bgType, reverse&&'myp-list-reverse']" :style="mrBoxStyle" :scroll-y="mypScrollable" :show-scrollbar="showScrollbar" :enable-back-to-top="true" @scroll="mypScroll">
 	<!-- #endif -->
 	<!-- #ifdef APP-NVUE -->
 	<list :class="['myp-full-flex', 'myp-bg-'+bgType, reverse&&'myp-list-reverse']" :style="mrBoxStyle" ref="myp-scroller" :show-scrollbar="showScrollbar" :loadmoreoffset="(mypUp.use&&!useLoading)?loadMoreOffset:0" @loadmore="mypMoreLoad" @scroll="mypScroll">
@@ -21,7 +21,7 @@
 	</list>
 	<!-- #endif -->
 	<!-- #ifndef APP-NVUE -->
-		<view :style="mypMrScrollContentStyle">
+		<view :style="mypMrScrollContentStyle" @touchstart="mypTouchstartEvent" @touchmove="mypTouchmoveEvent" @touchend="mypTouchendEvent" @touchcancel="mypTouchendEvent">
 			<view v-if="mypDown.use" :style="mypMrRefreshStyle">
 				<myp-refresher :refreshing="mypIsDownLoading" :couldUnLash="mypCouldUnLash" :rate="mypDownRate" :mainText="refreshMainText" :pullingText="pullingText" :refreshingText="refreshingText" :boxStyle="(reverse?'transform: rotateX(180deg);':'')+refreshStyle"></myp-refresher>
 			</view>
@@ -119,6 +119,24 @@
 					// to refresh data
 					this.mypInitContentList()
 				}, 10)
+			}
+		},
+		watch: {
+			down(newV) {
+				// #ifndef APP-NVUE
+				this.mypDown = Object.assign({use: true,offset: uni.upx2px(140),inRate: 0.8,outRate: 0.2}, newV||{use:false})
+				// #endif
+				// #ifdef APP-NVUE
+				this.mypDown = Object.assign(newV||{use:false})
+				// #endif
+			},
+			up(newV) {
+				// #ifndef APP-NVUE
+				this.mypUp = Object.assign({use: true,offset: 80}, newV||{use:false})
+				// #endif
+				// #ifdef APP-NVUE
+				this.mypUp = Object.assign(newV||{use:false})
+				// #endif
 			}
 		},
 		methods: {

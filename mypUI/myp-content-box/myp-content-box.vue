@@ -1,5 +1,5 @@
 <template>
-	<view :class="['myp-bg-'+bgType, 'myp-border-'+border, 'myp-radius-'+radius]" :style="'height:'+heightPx+'px;'+boxStyle">
+	<view :class="['myp-bg-'+bgType, 'myp-border-'+border, 'myp-radius-'+radius, 'myp-flex-column']" :style="'height:'+heightPx+'px;'+boxStyle">
 		<slot></slot>
 	</view>
 </template>

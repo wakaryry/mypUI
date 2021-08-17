@@ -65,7 +65,7 @@ export default {
 		return {
 			pwdNoVisible: true,
 			phone: '',
-			password: '',
+			password: '123',
 			code: '',
 			phone2: '17610779055'
 		}

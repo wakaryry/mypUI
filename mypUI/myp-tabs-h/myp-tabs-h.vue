@@ -21,6 +21,7 @@
 <script>
 	//
 	// item/indicator有固定宽度和动态宽度两种
+	// 在vue页面下，textStyle记得加white-space:nowrap;
 	// 
 	// #ifdef APP-NVUE
 	const dom = uni.requireNativePlugin('dom');

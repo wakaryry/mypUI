@@ -21,8 +21,8 @@
 			</view>
 			<view :class="['myp-search-input', 'myp-flex-row', 'myp-align-center']" :style="mrValueBoxStyle">
 				<input :disabled="disabled" :value="inputValue" :focus="focus" :adjust-position="adjust" :confirm-type="confirmType" :class="['myp-search-input-input', 'myp-search-input-'+position, 'myp-color-'+valueType, 'myp-size-'+valueSize]" :style="valueStyle" @input="toInput" @confirm="toConfirm" @focus="toFocus" @blur="toBlur" @keyboardheightchange="toChangeKb" />
+				<slot name="extra"></slot>
 			</view>
-			<slot name="extra"></slot>
 		</view>
 	</view>
 </template>

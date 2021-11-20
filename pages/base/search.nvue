@@ -50,7 +50,7 @@
 			<myp-list-cell>
 				<view style="margin-left: 32rpx; margin-right: 32rpx;">
 					<myp-search :icon="null">
-						<view slot="extra" class="search-button">
+						<view slot="extra">
 							<myp-button bgType="error" text="搜索" textType="inverse" border="none" radius="ll" boxStyle="width:160rpx;height:60rpx;"></myp-button>
 						</view>
 					</myp-search>

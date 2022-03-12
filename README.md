@@ -17,11 +17,11 @@ mypUI 是基于 uniapp 的一套组件库与工具集，可以 **高效且规范
 
 mypUI 更加注重于通用组件与手势组件，高阶组件、盒子组件的开发，是真正符合 **高质量、灵活、高效、规范等** 开发要求的组件库。
 
-![demo](https://mypui.redou.vip/mypui/demo/demo1.png)
+![demo](https://vkceyugu.cdn.bspapp.com/VKCEYUGU-b238aeb7-f54c-40c0-85b8-d6519342e0ba/ec0f28f2-e1e5-426f-9df8-1faf31fbd4ce.png)
 
-![demo](https://mypui.redou.vip/mypui/demo/demo2.png)
+![demo](https://vkceyugu.cdn.bspapp.com/VKCEYUGU-b238aeb7-f54c-40c0-85b8-d6519342e0ba/7aab7217-f764-4f2b-a0bc-e0ed7f86d986.png)
 
-[Android Demo APK下载](https://mypui.redou.vip/mypui/demo/mypUI.apk)
+[Android Demo APK下载](https://vkceyugu.cdn.bspapp.com/VKCEYUGU-b238aeb7-f54c-40c0-85b8-d6519342e0ba/3907d12c-e76b-45ae-b830-a66451a0db09.apk)
 
 # 找到代码与我们
 
@@ -33,7 +33,7 @@ mypUI 更加注重于通用组件与手势组件，高阶组件、盒子组件�
 
 - [mypUI-文档线上地址](https://mypui.redou.vip)
 
-- npm地址：[https://www.npmjs.com/package/@mypui/myp-ui](https://www.npmjs.com/package/@mypui/myp-ui)
+- npm地址：[https://www.npmjs.com/package/@mypui/myp-ui](https://www.npmjs.com/package/@mypui/myp-ui) (因为npm突然忘记了密码，暂时还没有同步更新)
 
 - 作者wx：`pptpdf`
 

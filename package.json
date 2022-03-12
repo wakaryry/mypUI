@@ -1,7 +1,7 @@
 {
 	"id": "myp-ui",
   "name": "myp-ui",
-  "version": "2.9.6",
+  "version": "2.9.9",
   "description": "**第一个高效且强悍的nvue开源组件库。做最好、最顺手的nvue组件库**",
   "main": "main.js",
   "scripts": {
@@ -17,7 +17,7 @@
   "devDependencies": {
     "vue-docgen-cli": "^4.31.1"
 },
-"displayName": "mypUI 开源nvue组件库 兼容vue swiper/waterfall全面支持",
+"displayName": "mypUI开源nvue组件库 兼容vue",
 "keywords": [
     "mypUI",
     "tabbar",
@@ -85,6 +85,10 @@
             "快应用": {
                 "华为": "y",
                 "联盟": "y"
+            },
+            "Vue": {
+                "vue2": "y",
+                "vue3": "u"
             }
         }
     }

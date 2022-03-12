@@ -222,7 +222,7 @@ export const inputs = [{
 	cover: '/static/imgs/c11.jpg',
 	title: 'myp-input-one',
 	label: '4-6验证码',
-	page: 'base_input'
+	page: 'base_input_one'
 }, {
 	cover: '/static/imgs/c10.jpg',
 	title: 'myp-switch',

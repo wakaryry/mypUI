@@ -2,7 +2,7 @@
 title: 状态栏：myp-status
 type: guide
 order: 75
-page: https://mypui.asnowsoft.cn/h5/#/pages/base/height
+page: /static/h5/#/pages/base/height
 ---
 
 ## Props

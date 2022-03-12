@@ -1,19 +1,19 @@
 <template>
 	<view class="ct">
 		<view class="ct-bg">
-			<image src="https://mypui.asnowsoft.cn/imgs/bg-white.jpg" class="ct-bg-cover" mode="aspectFill"></image>
+			<image src="/static/imgs/bg-white.jpg" class="ct-bg-cover" mode="aspectFill"></image>
 		</view>
 		<view class="ct-title-bg">
-			<image class="ct-title-bg-cover" src="https://mypui.asnowsoft.cn/imgs/bg-slice.png" mode="aspectFit"></image>
+			<image class="ct-title-bg-cover" src="/static/imgs/bg-slice.png" mode="aspectFit"></image>
 		</view>
 		<view class="ct-title">
 			<text class="ct-title-text">ActionSheet</text>
-			<image class="ct-title-hint" src="https://mypui.asnowsoft.cn/imgs/drop.png" mode="aspectFit"></image>
+			<image class="ct-title-hint" src="/static/imgs/drop.png" mode="aspectFit"></image>
 		</view>
 		<view class="ct-body">
 			<view class="ct-item" v-for="(item,idx) in items" :key="idx">
 				<view bubble="true" class="ct-item-top" @tap="toSelect(item.name)">
-					<image class="ct-item-bg" src="https://mypui.asnowsoft.cn/imgs/bg-circle.png" mode="aspectFit"></image>
+					<image class="ct-item-bg" src="/static/imgs/bg-circle.png" mode="aspectFit"></image>
 					<view class="ct-item-title">
 						<text class="ct-item-title-text">{{item.title}}</text>
 					</view>

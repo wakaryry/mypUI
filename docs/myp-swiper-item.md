@@ -2,7 +2,7 @@
 title: swiper：myp-swiper-item
 type: guide
 order: 73
-page: https://mypui.asnowsoft.cn/h5/#/pages/base/swiper
+page: /static/h5/#/pages/base/swiper
 ---
 
 ## Props

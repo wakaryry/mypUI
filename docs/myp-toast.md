@@ -2,7 +2,7 @@
 title: toast提示：myp-toast
 type: guide
 order: 252
-page: https://mypui.asnowsoft.cn/h5/#/pages/pop/index
+page: /static/h5/#/pages/pop/index
 ---
 
 ## Props

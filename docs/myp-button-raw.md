@@ -2,7 +2,7 @@
 title: 原生按钮：myp-button-raw
 type: guide
 order: 151
-page: https://mypui.asnowsoft.cn/h5/#/pages/base/button
+page: /static/h5/#/pages/base/button
 ---
 
 ## Props

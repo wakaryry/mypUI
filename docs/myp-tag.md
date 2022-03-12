@@ -2,7 +2,7 @@
 title: 标签：myp-tag
 type: guide
 order: 206
-page: https://mypui.asnowsoft.cn/h5/#/pages/base/tag
+page: /static/h5/#/pages/base/tag
 ---
 
 ## Props

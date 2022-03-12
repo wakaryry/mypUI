@@ -2,7 +2,7 @@
 title: 定位：myp-position
 type: guide
 order: 77
-page: https://mypui.asnowsoft.cn/h5/#/pages/base/position
+page: /static/h5/#/pages/base/position
 ---
 
 ## Props

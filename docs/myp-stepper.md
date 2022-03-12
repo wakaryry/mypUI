@@ -2,7 +2,7 @@
 title: 步进器：myp-stepper
 type: guide
 order: 159
-page: https://mypui.asnowsoft.cn/h5/#/pages/base/stepper
+page: /static/h5/#/pages/base/stepper
 ---
 
 ## Props

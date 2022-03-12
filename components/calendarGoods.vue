@@ -11,7 +11,7 @@
 			</view>
 			<view class="myp-ucv-top-right">
 				<view>
-					<image class="myp-ucv-top-image" src="https://mypui.asnowsoft.cn/imgs/c3.jpg" mode="aspectFill"></image>
+					<image class="myp-ucv-top-image" src="/static/imgs/c3.jpg" mode="aspectFill"></image>
 				</view>
 				<view class="myp-ucv-calendar-hint">
 					<text class="myp-ucv-calendar-hint-text">「宜入宅安门」</text>

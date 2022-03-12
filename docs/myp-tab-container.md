@@ -2,7 +2,7 @@
 title: 切换盒子：myp-tab-container
 type: guide
 order: 71
-page: https://mypui.asnowsoft.cn/h5/#/pages/base/tab_container
+page: /static/h5/#/pages/base/tab_container
 ---
 
 ## Props

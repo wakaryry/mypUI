@@ -77,28 +77,28 @@
 			return {
 				mypExtra: 'status-nav-x-180rpx',
 				loves: [
-					{img: 'https://mypui.asnowsoft.cn/imgs/c3.jpg', maskType: 'mask', title: '私人FM', icon: 'solid-calendar', tag: '', desc: '听点新鲜的', descIcon: '', bgType: '', titleType: 'inverse', descType: 'inverse', iconType: 'inverse', iconStyle: 'font-size:54rpx;'},
-					{img: 'https://mypui.asnowsoft.cn/imgs/c7.jpg', maskType: 'mask', title: '古典专区', icon: 'solid-plus', tag: '', desc: '听不完的古典', descIcon: '', bgType: '', titleType: 'inverse', descType: 'inverse', iconType: 'inverse', iconStyle: 'font-size:54rpx;'},
+					{img: '/static/imgs/c3.jpg', maskType: 'mask', title: '私人FM', icon: 'solid-calendar', tag: '', desc: '听点新鲜的', descIcon: '', bgType: '', titleType: 'inverse', descType: 'inverse', iconType: 'inverse', iconStyle: 'font-size:54rpx;'},
+					{img: '/static/imgs/c7.jpg', maskType: 'mask', title: '古典专区', icon: 'solid-plus', tag: '', desc: '听不完的古典', descIcon: '', bgType: '', titleType: 'inverse', descType: 'inverse', iconType: 'inverse', iconStyle: 'font-size:54rpx;'},
 					{img: '', maskType: 'none', title: '亲子频道', icon: 'solid-camera', tag: '推荐', desc: '一键专业育儿', descIcon: '', bgType: 'dark', titleType: 'text', descType: 'third', iconType: 'text', iconStyle: 'font-size:54rpx;'},
 					{img: '', maskType: 'none', title: '爵士电台', icon: 'solid-play', tag: '推荐', desc: '缺乏锻炼的爱情', descIcon: '', bgType: 'dark', titleType: 'text', descType: 'third', iconType: 'text', iconStyle: 'font-size:54rpx;'},
 					{img: '', maskType: 'none', title: '摇滚天王', icon: 'solid-lock', tag: '推荐', desc: '生活不能停止', descIcon: '', bgType: 'dark', titleType: 'text', descType: 'third', iconType: 'text', iconStyle: 'font-size:54rpx;'},
 					{img: '', maskType: 'none', title: '放松愉悦', icon: 'solid-shop-car', tag: '推荐', desc: '感受静谧大自然', descIcon: '', bgType: 'dark', titleType: 'text', descType: 'third', iconType: 'text', iconStyle: 'font-size:54rpx;'}
 				],
 				histories: [
-					{title: '在最美的春天里遇见你', desc: '13.6W人看过', img: 'https://mypui.asnowsoft.cn/imgs/c3.jpg', icon: 'triangle-right', boxStyle: 'width: 330rpx;margin-bottom:24rpx;', titleStyle: 'line-height:38rpx;', descStyle: 'line-height:34rpx;margin-top:12rpx;'},
-					{title: '在最热烈的夏天爱上你', desc: '2.7W人看过', img: 'https://mypui.asnowsoft.cn/imgs/c3.jpg', icon: 'triangle-right', boxStyle: 'width: 330rpx;margin-bottom:24rpx;', titleStyle: 'line-height:38rpx;', descStyle: 'line-height:34rpx;margin-top:12rpx;'},
-					{title: '在最冷的冬天温暖你。金坷垃，呵护肥料，值得拥有', desc: '58.9W人看过', img: 'https://mypui.asnowsoft.cn/imgs/c3.jpg', icon: 'triangle-right', boxStyle: 'width: 330rpx;', titleStyle: 'line-height:38rpx;', descStyle: 'line-height:34rpx;margin-top:12rpx;'}
+					{title: '在最美的春天里遇见你', desc: '13.6W人看过', img: '/static/imgs/c3.jpg', icon: 'triangle-right', boxStyle: 'width: 330rpx;margin-bottom:24rpx;', titleStyle: 'line-height:38rpx;', descStyle: 'line-height:34rpx;margin-top:12rpx;'},
+					{title: '在最热烈的夏天爱上你', desc: '2.7W人看过', img: '/static/imgs/c3.jpg', icon: 'triangle-right', boxStyle: 'width: 330rpx;margin-bottom:24rpx;', titleStyle: 'line-height:38rpx;', descStyle: 'line-height:34rpx;margin-top:12rpx;'},
+					{title: '在最冷的冬天温暖你。金坷垃，呵护肥料，值得拥有', desc: '58.9W人看过', img: '/static/imgs/c3.jpg', icon: 'triangle-right', boxStyle: 'width: 330rpx;', titleStyle: 'line-height:38rpx;', descStyle: 'line-height:34rpx;margin-top:12rpx;'}
 				],
 				hots: [
-					{title: '一个人一座城', desc: '13.6W人看过', img: 'https://mypui.asnowsoft.cn/imgs/c3.jpg', boxStyle: 'width: 330rpx;margin-bottom:24rpx;', titleStyle: 'line-height:38rpx;', descStyle: 'line-height:34rpx;margin-top:12rpx;'},
-					{title: '是兄弟就来砍我，今晚八点，不见不散', desc: '', img: 'https://mypui.asnowsoft.cn/imgs/c3.jpg', boxStyle: 'width: 330rpx;margin-bottom:24rpx;', titleStyle: 'line-height:38rpx;', descStyle: 'line-height:34rpx;'},
-					{title: '在最好的年华里闯出一片天地', desc: '58.9W人看过', img: 'https://mypui.asnowsoft.cn/imgs/c3.jpg', boxStyle: 'width: 330rpx;margin-bottom:24rpx;', titleStyle: 'line-height:38rpx;', descStyle: 'line-height:34rpx;margin-top:12rpx;'},
-					{title: '一个人一座城', desc: '13.6W人看过', img: 'https://mypui.asnowsoft.cn/imgs/c3.jpg', boxStyle: 'width: 330rpx;margin-bottom:24rpx;', titleStyle: 'line-height:38rpx;', descStyle: 'line-height:34rpx;margin-top:12rpx;'},
-					{title: '是兄弟就来砍我，今晚八点，不见不散', desc: '', img: 'https://mypui.asnowsoft.cn/imgs/c3.jpg', boxStyle: 'width: 330rpx;margin-bottom:24rpx;', titleStyle: 'line-height:38rpx;', descStyle: 'line-height:34rpx;'},
-					{title: '在最好的年华里闯出一片天地', desc: '58.9W人看过', img: 'https://mypui.asnowsoft.cn/imgs/c3.jpg', boxStyle: 'width: 330rpx;margin-bottom:24rpx;', titleStyle: 'line-height:38rpx;', descStyle: 'line-height:34rpx;margin-top:12rpx;'},
-					{title: '一个人一座城', desc: '13.6W人看过', img: 'https://mypui.asnowsoft.cn/imgs/c3.jpg', boxStyle: 'width: 330rpx;margin-bottom:24rpx;', titleStyle: 'line-height:38rpx;', descStyle: 'line-height:34rpx;margin-top:12rpx;'},
-					{title: '是兄弟就来砍我，今晚八点，不见不散', desc: '', img: 'https://mypui.asnowsoft.cn/imgs/c3.jpg', boxStyle: 'width: 330rpx;margin-bottom:24rpx;', titleStyle: 'line-height:38rpx;', descStyle: 'line-height:34rpx;'},
-					{title: '在最好的年华里闯出一片天地', desc: '58.9W人看过', img: 'https://mypui.asnowsoft.cn/imgs/c3.jpg', boxStyle: 'width: 330rpx;', titleStyle: 'line-height:38rpx;', descStyle: 'line-height:34rpx;margin-top:12rpx;'}
+					{title: '一个人一座城', desc: '13.6W人看过', img: '/static/imgs/c3.jpg', boxStyle: 'width: 330rpx;margin-bottom:24rpx;', titleStyle: 'line-height:38rpx;', descStyle: 'line-height:34rpx;margin-top:12rpx;'},
+					{title: '是兄弟就来砍我，今晚八点，不见不散', desc: '', img: '/static/imgs/c3.jpg', boxStyle: 'width: 330rpx;margin-bottom:24rpx;', titleStyle: 'line-height:38rpx;', descStyle: 'line-height:34rpx;'},
+					{title: '在最好的年华里闯出一片天地', desc: '58.9W人看过', img: '/static/imgs/c3.jpg', boxStyle: 'width: 330rpx;margin-bottom:24rpx;', titleStyle: 'line-height:38rpx;', descStyle: 'line-height:34rpx;margin-top:12rpx;'},
+					{title: '一个人一座城', desc: '13.6W人看过', img: '/static/imgs/c3.jpg', boxStyle: 'width: 330rpx;margin-bottom:24rpx;', titleStyle: 'line-height:38rpx;', descStyle: 'line-height:34rpx;margin-top:12rpx;'},
+					{title: '是兄弟就来砍我，今晚八点，不见不散', desc: '', img: '/static/imgs/c3.jpg', boxStyle: 'width: 330rpx;margin-bottom:24rpx;', titleStyle: 'line-height:38rpx;', descStyle: 'line-height:34rpx;'},
+					{title: '在最好的年华里闯出一片天地', desc: '58.9W人看过', img: '/static/imgs/c3.jpg', boxStyle: 'width: 330rpx;margin-bottom:24rpx;', titleStyle: 'line-height:38rpx;', descStyle: 'line-height:34rpx;margin-top:12rpx;'},
+					{title: '一个人一座城', desc: '13.6W人看过', img: '/static/imgs/c3.jpg', boxStyle: 'width: 330rpx;margin-bottom:24rpx;', titleStyle: 'line-height:38rpx;', descStyle: 'line-height:34rpx;margin-top:12rpx;'},
+					{title: '是兄弟就来砍我，今晚八点，不见不散', desc: '', img: '/static/imgs/c3.jpg', boxStyle: 'width: 330rpx;margin-bottom:24rpx;', titleStyle: 'line-height:38rpx;', descStyle: 'line-height:34rpx;'},
+					{title: '在最好的年华里闯出一片天地', desc: '58.9W人看过', img: '/static/imgs/c3.jpg', boxStyle: 'width: 330rpx;', titleStyle: 'line-height:38rpx;', descStyle: 'line-height:34rpx;margin-top:12rpx;'}
 				]
 			}
 		}

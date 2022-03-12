@@ -2,7 +2,7 @@
 title: 横向tabs：myp-tabs-h
 type: guide
 order: 102
-page: https://mypui.asnowsoft.cn/h5/#/pages/base/tabs
+page: /static/h5/#/pages/base/tabs
 ---
 
 ## Props

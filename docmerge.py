@@ -3,7 +3,7 @@
 import os
 import json
 
-BASE_URL = 'https://mypui.asnowsoft.cn/h5/#/'
+BASE_URL = '/static/h5/#/'
 
 
 # since my python is default python2

@@ -10,13 +10,13 @@
 		</view>
 		<view class="sc-users">
 			<view class="sc-users-item" style="left: 56rpx;">
-				<image src="https://mypui.asnowsoft.cn/imgs/a9.jpg" class="sc-users-av" mode="aspectFill"></image>
+				<image src="/static/imgs/a9.jpg" class="sc-users-av" mode="aspectFill"></image>
 			</view>
 			<view class="sc-users-item" style="left: 28rpx;">
-				<image src="https://mypui.asnowsoft.cn/imgs/a9.jpg" class="sc-users-av" mode="aspectFill"></image>
+				<image src="/static/imgs/a9.jpg" class="sc-users-av" mode="aspectFill"></image>
 			</view>
 			<view class="sc-users-item" style="left: 0;">
-				<image src="https://mypui.asnowsoft.cn/imgs/a9.jpg" class="sc-users-av" mode="aspectFill"></image>
+				<image src="/static/imgs/a9.jpg" class="sc-users-av" mode="aspectFill"></image>
 			</view>
 		</view>
 	</view>

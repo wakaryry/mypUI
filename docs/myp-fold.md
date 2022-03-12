@@ -2,7 +2,7 @@
 title: 收展：myp-fold
 type: guide
 order: 257
-page: https://mypui.asnowsoft.cn/h5/#/pages/base/fold
+page: /static/h5/#/pages/base/fold
 ---
 
 ## Props

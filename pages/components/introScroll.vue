@@ -18,27 +18,27 @@
 		data() {
 			return {
 				items: [{
-					avatar: 'https://mypui.asnowsoft.cn/imgs/bear.jpg',
+					avatar: '/static/imgs/bear.jpg',
 					name: '风格化',
 					cares: '28.9万粉丝',
 					intro: 'scss主题配置'
 				}, {
-					avatar: 'https://mypui.asnowsoft.cn/imgs/cat.jpg',
+					avatar: '/static/imgs/cat.jpg',
 					name: '统一',
 					cares: '66.6万粉丝',
 					intro: '一套代码适用全端'
 				}, {
-					avatar: 'https://mypui.asnowsoft.cn/imgs/pig.jpg',
+					avatar: '/static/imgs/pig.jpg',
 					name: '性能好',
 					cares: '128.9万粉丝',
 					intro: '针对优化，体验好'
 				}, {
-					avatar: 'https://mypui.asnowsoft.cn/imgs/girl.jpg',
+					avatar: '/static/imgs/girl.jpg',
 					name: '效率高',
 					cares: '328.9万粉丝',
 					intro: '可进阶，越用越快'
 				}, {
-					avatar: 'https://mypui.asnowsoft.cn/imgs/hen.jpg',
+					avatar: '/static/imgs/hen.jpg',
 					name: '规范',
 					cares: '828.9万粉丝',
 					intro: '学习的绝对帮手'

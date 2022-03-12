@@ -1,25 +1,25 @@
 <template>
 	<view class="cf">
 		<view class="cf-bg">
-			<image src="https://mypui.asnowsoft.cn/imgs/bg-white.jpg" class="cf-bg-cover" mode="aspectFill"></image>
+			<image src="/static/imgs/bg-white.jpg" class="cf-bg-cover" mode="aspectFill"></image>
 		</view>
 		<view class="cf-title-bg">
-			<image class="cf-title-bg-cover" src="https://mypui.asnowsoft.cn/imgs/bg-slice.png" mode="aspectFit"></image>
+			<image class="cf-title-bg-cover" src="/static/imgs/bg-slice.png" mode="aspectFit"></image>
 		</view>
 		<view class="cf-title">
 			<text class="cf-title-text">Modal</text>
-			<image class="cf-title-hint" src="https://mypui.asnowsoft.cn/imgs/drop.png" mode="aspectFit"></image>
+			<image class="cf-title-hint" src="/static/imgs/drop.png" mode="aspectFit"></image>
 		</view>
 		<view class="cf-body">
 			<view class="cf-item" v-for="(item,idx) in items" :key="idx" bubble="true" @tap="toSelect(item)">
 				<view class="cf-item-bg">
-					<image src="https://mypui.asnowsoft.cn/imgs/box.png" class="cf-item-bg-cover" mode="aspectFit"></image>
+					<image src="/static/imgs/box.png" class="cf-item-bg-cover" mode="aspectFit"></image>
 				</view>
 				<view class="cf-item-tl">
-					<image src="https://mypui.asnowsoft.cn/imgs/top-left.png" class="cf-item-tl-bg" mode="aspectFit"></image>
+					<image src="/static/imgs/top-left.png" class="cf-item-tl-bg" mode="aspectFit"></image>
 				</view>
 				<view class="cf-item-br">
-					<image src="https://mypui.asnowsoft.cn/imgs/bottom-right.png" class="cf-item-br-bg" mode="aspectFit"></image>
+					<image src="/static/imgs/bottom-right.png" class="cf-item-br-bg" mode="aspectFit"></image>
 				</view>
 				<view class="cf-item-title">
 					<text class="cf-item-title-text" v-for="(char,index) in item.title" :key="index">{{char}}</text>
@@ -27,7 +27,7 @@
 			</view>
 		</view>
 		<view class="cf-right">
-			<image src="https://mypui.asnowsoft.cn/imgs/bird.png" class="cf-right-bg" mode="aspectFit"></image>
+			<image src="/static/imgs/bird.png" class="cf-right-bg" mode="aspectFit"></image>
 		</view>
 	</view>
 </template>

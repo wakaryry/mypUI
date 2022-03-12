@@ -2,7 +2,7 @@
 title: 横向列表：myp-scroll-inline
 type: guide
 order: 66
-page: https://mypui.asnowsoft.cn/h5/#/pages/scroll/h
+page: /static/h5/#/pages/scroll/h
 ---
 
 ## Props

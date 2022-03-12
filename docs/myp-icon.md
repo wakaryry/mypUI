@@ -2,7 +2,7 @@
 title: 图标：myp-icon
 type: guide
 order: 204
-page: https://mypui.asnowsoft.cn/h5/#/pages/base/icon
+page: /static/h5/#/pages/base/icon
 ---
 
 ## Props

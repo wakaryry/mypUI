@@ -2,7 +2,7 @@
 title: 布局：myp-flex
 type: guide
 order: 30
-page: https://mypui.asnowsoft.cn/h5/#/pages/flex/flex
+page: /static/h5/#/pages/flex/flex
 ---
 
 ## Props

@@ -1,7 +1,7 @@
 <template>
 	<view>
 		<myp-height height="status-nav" boxStyle="width:750rpx;position:relative;">
-			<image src="https://mypui.asnowsoft.cn/imgs/c7.jpg" style="position: absolute;left: 0;top: 0;bottom: 0;width: 750rpx;" mode="aspectFill"></image>
+			<image src="/static/imgs/c7.jpg" style="position: absolute;left: 0;top: 0;bottom: 0;width: 750rpx;" mode="aspectFill"></image>
 			<myp-navbar bgType="none" :fixed="false" :lefts="leftIcons" title="导航栏" @leftAction="navLeftAction" boxStyle="position:absolute;left:0;bottom:0;top:0;width:750rpx;"></myp-navbar>
 		</myp-height>
 		<myp-list :down="null" :up="null" bgType="page">

@@ -83,7 +83,7 @@
             "mode" : "hash",
             "base" : "/h5/"
         },
-        "domain" : "https://mypui.asnowsoft.cn",
+        "domain" : "https://mypui.redou.vip",
         "optimization" : {
             "treeShaking" : {
                 "enable" : true

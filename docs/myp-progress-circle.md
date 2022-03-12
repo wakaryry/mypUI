@@ -2,7 +2,7 @@
 title: 环状进度条：myp-progress-circle
 type: guide
 order: 211
-page: https://mypui.asnowsoft.cn/h5/#/pages/base/progress_circle
+page: /static/h5/#/pages/base/progress_circle
 ---
 
 ## Props

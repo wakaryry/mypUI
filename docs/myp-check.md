@@ -2,7 +2,7 @@
 title: 单多选：myp-check
 type: guide
 order: 155
-page: https://mypui.asnowsoft.cn/h5/#/pages/base/check
+page: /static/h5/#/pages/base/check
 ---
 
 ## Props

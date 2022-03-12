@@ -2,7 +2,7 @@
 title: 输入框：myp-input
 type: guide
 order: 152
-page: https://mypui.asnowsoft.cn/h5/#/pages/base/input
+page: /static/h5/#/pages/base/input
 ---
 
 ## Props

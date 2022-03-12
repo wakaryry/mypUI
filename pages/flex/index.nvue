@@ -17,20 +17,20 @@
 						<view class="fi-left" bubble="true" @tap="toPage({page: 'flex_wing'})">
 							<text class="myp-color-inverse myp-size-ll" style="margin-left: 72rpx;margin-top: 72rpx;">测距</text>
 							<text class="myp-color-inverse myp-size-base" style="margin-top: 24rpx; margin-left: 72rpx;">myp-wing水平距离设置</text>
-							<image class="fi-left-img" src="https://mypui.asnowsoft.cn/imgs/unb-up.png" mode="aspectFill"></image>
+							<image class="fi-left-img" src="/static/imgs/unb-up.png" mode="aspectFill"></image>
 						</view>
 					</view>
 					<view class="fi-center" bubble="true" @tap="toPage({page: 'flex_flex'})">
 						<text class="myp-color-inverse myp-size-ll" style="margin-left: 72rpx;margin-top: 72rpx;">Flex布局</text>
 						<text class="myp-color-inverse myp-size-base" style="margin-top: 24rpx; margin-left: 72rpx;">myp-flex组件化布局方式</text>
-						<image class="fi-center-img" src="https://mypui.asnowsoft.cn/imgs/bed.png" mode="aspectFill"></image>
+						<image class="fi-center-img" src="/static/imgs/bed.png" mode="aspectFill"></image>
 					</view>
 					<view>
 						<view style="height: 20rpx;"></view>
 						<view class="fi-right" bubble="true" @tap="toPage({page: 'flex_space'})">
 							<text class="myp-color-inverse myp-size-ll" style="margin-left: 72rpx;margin-top: 72rpx;">间距</text>
 							<text class="myp-color-inverse myp-size-base" style="margin-top: 24rpx; margin-left: 72rpx;">myp-space垂直距离设置</text>
-							<image class="fi-right-img" src="https://mypui.asnowsoft.cn/imgs/unb-up.png" mode="aspectFill"></image>
+							<image class="fi-right-img" src="/static/imgs/unb-up.png" mode="aspectFill"></image>
 						</view>
 					</view>
 					<view style="width: 75rpx;"></view>

@@ -2,7 +2,7 @@
 title: 选择内容：myp-picker-content
 type: guide
 order: 165
-page: https://mypui.asnowsoft.cn/h5/#/pages/picker/index
+page: /static/h5/#/pages/picker/index
 ---
 
 ## Props

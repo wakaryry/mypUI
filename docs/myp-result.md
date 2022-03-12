@@ -2,7 +2,7 @@
 title: 结果展示：myp-result
 type: guide
 order: 216
-page: https://mypui.asnowsoft.cn/h5/#/pages/base/result
+page: /static/h5/#/pages/base/result
 ---
 
 ## Props

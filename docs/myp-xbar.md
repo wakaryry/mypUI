@@ -2,7 +2,7 @@
 title: 底部安全区：myp-xbar
 type: guide
 order: 76
-page: https://mypui.asnowsoft.cn/h5/#/pages/base/height
+page: /static/h5/#/pages/base/height
 ---
 
 ## Props

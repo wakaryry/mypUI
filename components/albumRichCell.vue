@@ -1,11 +1,11 @@
 <template>
 	<view class="arc">
-		<image class="arc-av" src="https://mypui.asnowsoft.cn/imgs/a10.jpg" mode="aspectFill"></image>
+		<image class="arc-av" src="/static/imgs/a10.jpg" mode="aspectFill"></image>
 		<view class="arc-body">
 			<text class="arc-title">家乡的荷花开了，青蛙大了</text>
 			<text class="arc-time">5月20日</text>
 			<text class="arc-content">无论你走到哪里，都应该始终记得：过去都是假的。</text>
-			<image class="arc-cover" src="https://mypui.asnowsoft.cn/imgs/c7.jpg" mode="aspectFill"></image>
+			<image class="arc-cover" src="/static/imgs/c7.jpg" mode="aspectFill"></image>
 			<view class="arc-actions">
 				<view class="arc-actions-left">
 					<view class="arc-item">

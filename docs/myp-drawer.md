@@ -2,7 +2,7 @@
 title: 抽屉：myp-drawer
 type: guide
 order: 104
-page: https://mypui.asnowsoft.cn/h5/#/pages/drawer/index
+page: /static/h5/#/pages/drawer/index
 ---
 
 ## Props

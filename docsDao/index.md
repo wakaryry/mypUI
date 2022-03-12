@@ -180,9 +180,9 @@ onLaunch: function() {
 
 **Android APP下载地址**
 
-[Android Demo APK下载](https://mypui.asnowsoft.cn/apk/mypUI.apk)
+[Android Demo APK下载](/static/apk/mypUI.apk)
 
-![Android下载](https://mypui.asnowsoft.cn/apk/mypUI.png)
+![Android下载](/static/apk/mypUI.png)
 
 <p class="tip">想了解我们是怎么使用 mypUI 的吗？又如何对 mypUI 有一个更加全面的了解？或者说站在一个代码设计者的角度去了解 mypUI? 纵观全局，对你更加高效的使用mypUI非常有用。建议您一定要看看</p>
 

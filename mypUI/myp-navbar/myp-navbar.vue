@@ -315,7 +315,8 @@
 			width: 200rpx;
 		}
 		&-title {
-			width: 350rpx;
+			// width: 350rpx;
+			flex: 1;
 			
 			&-text {
 				max-width: 350rpx;

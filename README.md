@@ -2,6 +2,9 @@
 
 **第一个高效且强悍的nvue开源组件库。做最好、最顺手的nvue组件库**
 
+## 重磅推荐：[nPro-全新nvue/vue全端组件库](https://ext.dcloud.net.cn/plugin?id=5169)
+## vue3，纯组合式API。支持vue2.
+
 - 适用于`nvue`页面的组件与工具（app端对应weex，不再是webview）；
 - 纯`flex`布局，符合`weex`规范（兼容Vue页面只需要加几个display:flex即可）；
 - 规范与统一，确保代码质量和开发效率；

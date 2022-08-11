@@ -1,7 +1,7 @@
 {
 	"id": "myp-ui",
   "name": "myp-ui",
-  "version": "2.9.10",
+  "version": "2.9.12",
   "description": "**第一个高效且强悍的nvue开源组件库。做最好、最顺手的nvue组件库**",
   "main": "main.js",
   "scripts": {
@@ -29,10 +29,6 @@
     "HBuilderX": "^3.1.20"
 },
 "dcloudext": {
-    "category": [
-        "前端页面模板",
-        "uni-app前端项目模板"
-    ],
     "sale": {
         "regular": {
             "price": "0.00"
@@ -49,7 +45,8 @@
         "data": "无",
         "permissions": "无"
     },
-    "npmurl": "https://www.npmjs.com/package/@mypui/myp-ui"
+    "npmurl": "https://www.npmjs.com/package/@mypui/myp-ui",
+    "type": "uniapp-template-project"
 },
 "uni_modules": {
     "platforms": {

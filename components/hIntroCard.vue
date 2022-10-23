@@ -6,7 +6,7 @@
 					<image class="hic-head-image-image" :src="item.avatar" mode="aspectFill"></image>
 					<image class="hic-head-image-badge" src="/static/vip.png" mode="aspectFill"></image>
 				</view>
-				<view class="hic-head-body">
+				<view class="hic-head-body myp-flex-column">
 					<text class="hic-head-name">{{item.name}}</text>
 					<text class="hic-head-desc">{{item.desc}}</text>
 				</view>

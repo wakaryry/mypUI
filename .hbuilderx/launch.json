@@ -10,6 +10,10 @@
      	{
      		"launchtype" : "remote"
      	},
+     	"mp-weixin" : 
+     	{
+     		"launchtype" : "remote"
+     	},
      	"type" : "uniCloud"
      }
     ]
